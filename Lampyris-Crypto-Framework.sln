@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lampyris.Server.Crypto.OKX", "Lampyris.Server.Crypto.OKX\Lampyris.Server.Crypto.OKX.csproj", "{6F1E118C-35CF-4C4C-BA13-55A2F22BEFBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lampyris.CSharp.Common", "Lampyris.CSharp.Common\Lampyris.CSharp.Common.csproj", "{89E6A3CB-FCC6-486F-90E5-445997F222EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lampyris.Server.Crypto.Common", "Lampyris.Server.Crypto.Common\Lampyris.Server.Crypto.Common.csproj", "{3DA941C0-B105-45F0-9BDA-43CDDAB61CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lampyris.Server.Crypto.Binance", "Lampyris.Server.Crypto.Binance\Lampyris.Server.Crypto.Binance.csproj", "{5EF2ECBA-E967-4B3D-BFEC-D12F24D19785}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F1E118C-35CF-4C4C-BA13-55A2F22BEFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1E118C-35CF-4C4C-BA13-55A2F22BEFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1E118C-35CF-4C4C-BA13-55A2F22BEFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1E118C-35CF-4C4C-BA13-55A2F22BEFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E6A3CB-FCC6-486F-90E5-445997F222EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E6A3CB-FCC6-486F-90E5-445997F222EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E6A3CB-FCC6-486F-90E5-445997F222EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E6A3CB-FCC6-486F-90E5-445997F222EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DA941C0-B105-45F0-9BDA-43CDDAB61CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DA941C0-B105-45F0-9BDA-43CDDAB61CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DA941C0-B105-45F0-9BDA-43CDDAB61CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DA941C0-B105-45F0-9BDA-43CDDAB61CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EF2ECBA-E967-4B3D-BFEC-D12F24D19785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EF2ECBA-E967-4B3D-BFEC-D12F24D19785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EF2ECBA-E967-4B3D-BFEC-D12F24D19785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EF2ECBA-E967-4B3D-BFEC-D12F24D19785}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Lampyris_Crypto_Framework</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Sources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lampyris.CSharp.Common\Lampyris.CSharp.Common.csproj" />
+    <ProjectReference Include="..\Server.Common\Lampyris.CSharp.Common.csproj" />
+    <ProjectReference Include="..\Server.Crypto.Common\Lampyris.Server.Crypto.Common.csproj" />
+  </ItemGroup>
+
+</Project>
