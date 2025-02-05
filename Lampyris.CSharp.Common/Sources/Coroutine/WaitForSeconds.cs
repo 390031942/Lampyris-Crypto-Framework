@@ -1,5 +1,4 @@
 ﻿namespace Lampyris.CSharp.Common;
-
 public class WaitForSeconds : AsyncOperation
 {
     private double m_WaitTimeSeconds;

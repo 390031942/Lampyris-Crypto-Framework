@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 public class WaitForHttpResponse : IEnumerator
 {
     private Task<HttpResponseMessage> m_Task;
-    private HttpResponseMessage       m_Response;
-    private HttpRequestInternal       m_Client;
+    private HttpResponseMessage?      m_Response;
+    private HttpRequestExecutor       m_Client;
 
     public WaitForHttpResponse(string url)
     {
@@ -39,7 +39,7 @@ public class WaitForHttpResponse : IEnumerator
         m_Client = HttpRequest.GetTemp();
     }
 
-    public object Current => m_Response;
+    public object? Current => m_Response;
 
     public string Result
     {

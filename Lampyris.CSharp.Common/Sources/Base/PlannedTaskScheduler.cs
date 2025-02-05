@@ -1,6 +1,9 @@
 ﻿namespace Lampyris.CSharp.Common;
 
-public class CallTimer:BehaviourSingleton<CallTimer>
+using System;
+
+[Component]
+public class PlannedTaskScheduler:ILifecycle
 {
     /* 自增的key */
     private int m_IncreaseKey = 0;
@@ -11,10 +14,12 @@ public class CallTimer:BehaviourSingleton<CallTimer>
     /* 要移除ID的临时列表 */
     private readonly List<int> m_ShouldRemoveIDList = new List<int>();
 
+    private long m_LastTimestamp = 0L;
+
     private enum DelayHandlerType
     {
         Interval = 0,
-        FrameLoop = 1,
+        Tick = 1,
     }
 
     private class DelayHandler
@@ -28,7 +33,7 @@ public class CallTimer:BehaviourSingleton<CallTimer>
         public int              TotalFrame;
     }
 
-    public int SetInterval(Action action,float delayMs,int repeatTime = -1)
+    public int AddTimeTask(Action action,float delayMs,int repeatTime = -1)
     {
         lock (m_Id2DelayHandlerDict)
         {
@@ -45,14 +50,14 @@ public class CallTimer:BehaviourSingleton<CallTimer>
         }
     }
 
-    public int SetFrameLoop(Action action,int delayFrame,int repeatTime = -1)
+    public int AddTickTask(Action action,int delayFrame,int repeatTime = -1)
     {
         lock (m_Id2DelayHandlerDict)
         {
             int id = m_IncreaseKey++;
             m_Id2DelayHandlerDict[id] = new DelayHandler()
             {
-                Type = DelayHandlerType.FrameLoop,
+                Type = DelayHandlerType.Tick,
                 Action = action,
                 DelayFrame = delayFrame,
                 RepeatTime = repeatTime,
@@ -62,7 +67,7 @@ public class CallTimer:BehaviourSingleton<CallTimer>
         }
     }
 
-    public void ClearTimer(int id)
+    public void Clear(int id)
     {
         lock (m_Id2DelayHandlerDict)
         {
@@ -73,15 +78,13 @@ public class CallTimer:BehaviourSingleton<CallTimer>
         }
     }
 
-    public override void OnStart()
-    {
-       
-    }
-
-    public override void OnUpdate(float deltaTime)
+    public override void OnUpdate()
     {
         lock (m_Id2DelayHandlerDict)
         {
+            long timestamp = DateTimeUtil.GetCurrentTimestamp();
+            long deltaTime = timestamp - m_LastTimestamp;
+
             foreach (var pair in m_Id2DelayHandlerDict)
             {
                 bool shouldDoAction = false;
@@ -121,14 +124,10 @@ public class CallTimer:BehaviourSingleton<CallTimer>
 
             foreach (int id in m_ShouldRemoveIDList)
             {
-                ClearTimer(id);
+                Clear(id);
             }
             m_ShouldRemoveIDList.Clear();
+            m_LastTimestamp = timestamp;
         }
-    }
-
-    public override void OnDestroy()
-    {
-    
     }
 }

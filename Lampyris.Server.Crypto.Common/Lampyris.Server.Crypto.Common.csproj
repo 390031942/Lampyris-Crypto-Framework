@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Trading\" />
     <Folder Include="Quote\" />
     <Folder Include="AccountManagement\" />
     <Folder Include="Notice\" />
+    <Folder Include="Trading\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,14 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public class LogManager:Singleton<LogManager>
+public class LogService
 {
     private readonly List<ILogger> m_LoggerList = new List<ILogger>();
     
     // 以下是格式化输出日志的时候，Log类型的缩写
-    private const string c_INFO    = "INFO";
-    private const string c_WARNING = "WARN";
-    private const string c_ERROR   = "ERROR";
+    private const string InfoString    = "INFO";
+    private const string WarningString = "WARN";
+    private const string ErrorString   = "ERROR";
 
     public void AddLogger(ILogger logger)
     {
@@ -20,17 +20,17 @@ public class LogManager:Singleton<LogManager>
 
     public void LogInfo(string message)
     {
-        Log(c_INFO, message);
+        Log(InfoString, message);
     }
 
     public void LogWarning(string message)
     {
-        Log(c_WARNING, message);
+        Log(WarningString, message);
     }
 
     public void LogError(string message)
     {
-        Log(c_ERROR, message);
+        Log(ErrorString, message);
     }
 
     private void Log(string level, string message)

@@ -13,8 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lampyris.CSharp.Common\Lampyris.CSharp.Common.csproj" />
-    <ProjectReference Include="..\Server.Common\Lampyris.CSharp.Common.csproj" />
-    <ProjectReference Include="..\Server.Crypto.Common\Lampyris.Server.Crypto.Common.csproj" />
   </ItemGroup>
 
 </Project>

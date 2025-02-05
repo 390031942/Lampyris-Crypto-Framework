@@ -13,14 +13,14 @@ public class NamedValueAttribute : Attribute
     }
 }
 
-public class EnumNameManager
+public class EnumNameService
 {
     // 用于存储枚举值和名称的映射
     private static Dictionary<Enum, string>                   ms_NameMap      = new ();
     private static Dictionary<Type, Dictionary<string, Enum>> ms_NameValueMap = new ();
     private static Dictionary<Type, List<string>>             ms_NameListMap  = new ();
 
-    static EnumNameManager()
+    static EnumNameService()
     {
         // 在静态构造函数中扫描并记录所有枚举值的名称
         ScanAndRecordEnumNames();

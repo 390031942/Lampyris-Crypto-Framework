@@ -2,78 +2,44 @@
 
 using System.Reflection;
 
-public class Application:Singleton<Application>
+public static class Application
 {
-    private IocContainerService m_IocContainerService = new IocContainerService();
+    private static IocContainerService ms_IocContainerService = new IocContainerService();
 
     // 运行标志
-    private bool m_AppRunning = false;
+    private static bool ms_AppRunning = false;
 
-    public bool AppRunning => m_AppRunning;
+    public static bool AppRunning => ms_AppRunning;
 
-    public Application() 
+    static Application() 
     {
         AppDomain.CurrentDomain.ProcessExit += new EventHandler((object? sender, EventArgs e) => {
             Quit();
         });
     }
-    private readonly List<BehaviourSingletonBase> m_InstanceList = new List<BehaviourSingletonBase>()
-    {
-        CallTimer.Instance,
-        CoroutineManager.Instance,
-    };
 
-    public void Quit()
+    public static void Quit()
     {
-        if (m_AppRunning)
-        {
-            m_AppRunning = false;
-            for (int i = m_InstanceList.Count - 1; i >= 0; i--)
-            {
-                var behaviourSingletonBase = m_InstanceList[i];
-                behaviourSingletonBase.OnDestroy();
-            }
-            SerializationManager.Instance.OnDestroy();
-        }
+
     }
 
-    public int Run()
+    public static int Run()
     {
         try
         {
             LoadAppConfig();
             LoadIocContainer();
-
-            foreach (var behaviourSingletonBase in m_InstanceList)
-            {
-                behaviourSingletonBase.OnStart();
-            }
-            SerializationManager.Instance.OnStart();
-
-            m_AppRunning = true;
-             
-            long timestamp = 0;
-            while (m_AppRunning)
-            {
-                long timestamp2 = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
-                long deltaTime = timestamp2 - timestamp;
-                foreach (var behaviourSingletonBase in m_InstanceList)
-                {
-                    behaviourSingletonBase.OnUpdate(deltaTime);
-                }
-                timestamp = timestamp2;
-            }
         }
         catch (Exception ex)
         {
-            LogManager.Instance.LogError($"Uncaught exception:{ex.Message}\n\nStack trace:\n{ex.StackTrace}");
+            // LogManager.Instance.LogError($"Uncaught exception:{ex.Message}\n\nStack trace:\n{ex.StackTrace}");
             return 1;
         }
 
         return 0;
     }
 
-    private void LoadAppConfig()
+    private static void LoadAppConfig()
     {
         var assembly = Assembly.GetExecutingAssembly();
         var types = assembly.GetTypes();
@@ -106,15 +72,15 @@ public class Application:Singleton<Application>
             Console.WriteLine($"Version: {appConfigInstance.Version}");
         }
     }
-    private void LoadIocContainer()
+    private static void LoadIocContainer()
     {
         // 注册组件（通过扫描 [Component] 注解）
-        m_IocContainerService.RegisterComponents(Assembly.GetEntryAssembly());
+        ms_IocContainerService.RegisterComponents(Assembly.GetEntryAssembly());
 
         // 注册组件（通过 XML 配置）
-        m_IocContainerService.RegisterComponentsFromXml("components.xml");
+        ms_IocContainerService.RegisterComponentsFromXml("components.xml");
 
         // 执行依赖注入
-        m_IocContainerService.PerformDependencyInjection();
+        ms_IocContainerService.PerformDependencyInjection();
     }
 }

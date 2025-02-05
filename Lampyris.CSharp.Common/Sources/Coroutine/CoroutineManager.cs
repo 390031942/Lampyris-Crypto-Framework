@@ -3,36 +3,33 @@ namespace Lampyris.CSharp.Common;
 using System.Collections;
 using System.Collections.Generic;
 
-public class CoroutineManager:BehaviourSingleton<CoroutineManager>
+[Component]
+public class CoroutineManager:ILifecycle
 {
-    private readonly List<IEnumerator> m_coroutines = new List<IEnumerator>();
+    private readonly List<IEnumerator> m_Coroutines = new List<IEnumerator>();
 
     public void StartCoroutine(IEnumerator coroutine)
     {
-        if (m_coroutines.Contains(coroutine))
+        if (m_Coroutines.Contains(coroutine))
             return;
         
-        m_coroutines.Add(coroutine);
+        m_Coroutines.Add(coroutine);
     }
 
     public void RemoveCoroutine(IEnumerator coroutine)
     {
-        if (!m_coroutines.Contains(coroutine))
+        if (!m_Coroutines.Contains(coroutine))
             return;
         
-        m_coroutines.Remove(coroutine);
+        m_Coroutines.Remove(coroutine);
     }
 
-    public override void OnStart()
+    public override void OnUpdate()
     {
-    }
-
-    public override void OnUpdate(float dTime)
-    {
-        for (int i = m_coroutines.Count - 1; i >= 0; i--)
+        for (int i = m_Coroutines.Count - 1; i >= 0; i--)
         {
             bool needMoveNext = false;
-            IEnumerator coroutine = m_coroutines[i];
+            IEnumerator coroutine = m_Coroutines[i];
             if (coroutine.Current is IEnumerator nestedCoroutine)
             {
                 if (nestedCoroutine.MoveNext())
@@ -48,13 +45,9 @@ public class CoroutineManager:BehaviourSingleton<CoroutineManager>
             {
                 if (!coroutine.MoveNext())
                 {
-                    m_coroutines.Remove(coroutine);
+                    m_Coroutines.Remove(coroutine);
                 }
             }
         }
-    }
-
-    public override void OnDestroy()
-    {
     }
 }

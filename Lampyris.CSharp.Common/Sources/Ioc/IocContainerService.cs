@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using System.Xml.Linq;
+﻿namespace Lampyris.CSharp.Common;
 
-namespace Lampyris.CSharp.Common;
+using System.Reflection;
+using System.Xml.Linq;
 
 public class IocContainerService
 {

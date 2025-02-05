@@ -5,7 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class IniConfigManager:BehaviourSingleton<IniConfigManager>
+[Component]
+public class IniConfigManager:ILifecycle
 {
     private readonly Dictionary<string, IniFile> m_IniFiles = new Dictionary<string, IniFile>(StringComparer.OrdinalIgnoreCase);
 
