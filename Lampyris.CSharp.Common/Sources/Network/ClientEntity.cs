@@ -1,4 +1,4 @@
-namespace Lampyris.Framework.Server.Common;
+namespace Lampyris.CSharp.Common;
 
 using System.Net.Sockets;
 

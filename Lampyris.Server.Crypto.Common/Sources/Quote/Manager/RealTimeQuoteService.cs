@@ -1,13 +1,17 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public static class RealTimeQuoteService
+using Lampyris.CSharp.Common;
+
+[Component]
+public class AbstractRealTimeQuoteService
 {
-    private static Dictionary<string, QuoteTickerData> ms_RealTimeQuoteDataMap = new ();
+    private Dictionary<string, QuoteTickerData> m_RealTimeQuoteDataMap = new ();
 
-    private static long ms_LastestTimestamp = DateTimeUtil.GetCurrentTimestamp();
+    private long m_LastestTimestamp = Lampyris.CSharp.Common.DateTimeUtil.GetCurrentTimestamp();
 
-    private static List<QuoteTickerData> ms_RealTimeQuoteDataList = new ();
-    public static IReadOnlyCollection<QuoteTickerData> TickQuote(InstType instType)
+    private List<QuoteTickerData> m_RealTimeQuoteDataList = new ();
+
+    public IReadOnlyCollection<QuoteTickerData> TickQuote()
     {
         string url = NetworkConfig.BaseUrl + $"/api/v5/market/tickers?instType={instType}";
         HttpRequest.GetSync(url,(json =>

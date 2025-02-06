@@ -1,15 +1,14 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public class QuoteCacheService:BehaviourSingleton<QuoteCacheService>
+using Lampyris.CSharp.Common;
+
+[Component]
+public class QuoteCacheService:ILifecycle
 {
-    /*
-     * Key   = instId
-     * Value = {Key = OkxBarSize, Value = List<QuoteCandleData>}
-     */
-    private Dictionary<string, Dictionary<BarSize, List<QuoteCandleData>>> m_CandleDataMap = new ();
+    [Autowired]
+    private readonly Logger m_logService;
 
-    private Dictionary<InstType, HashSet<string>> m_Inst2InstIdListMap = new ();
-
+    private HashSet<string> m_allSymbolSet = new ();
 
     public override void OnStart()
     {
@@ -41,17 +40,17 @@ public class QuoteCacheService:BehaviourSingleton<QuoteCacheService>
         return new List<QuoteCandleData>();
     }
 
-    public void Storage(string instId, BarSize barSize, List<QuoteCandleData> dataList)
+    public void Storage(string symbol, BarSize barSize, List<QuoteCandleData> dataList)
     {
-        if (string.IsNullOrEmpty(instId)) 
+        if (string.IsNullOrEmpty(symbol)) 
         {
-            LogManager.Instance.LogError("param \"instId\" can not be null or empty!");
+            m_logService.LogError("param \"instId\" can not be null or empty!");
             return;
         }
 
         if(dataList == null || dataList.Count <= 0)
         {
-            LogManager.Instance.LogError("param \"dataList\" can not be null or empty!");
+            m_logService.LogError("param \"dataList\" can not be null or empty!");
             return;
 
         } 
@@ -144,47 +143,17 @@ public class QuoteCacheService:BehaviourSingleton<QuoteCacheService>
         }
     }
 
-    public void Foreach(InstType okxInstType, Action<string> foreachFunc)
+    public void Foreach(Action<string> foreachFunc)
     {
         if (foreachFunc == null)
             return;
 
-        if (!m_Inst2InstIdListMap.ContainsKey(okxInstType))
-            return;
-
-        var instIdList = m_Inst2InstIdListMap[okxInstType];
-        foreach(var instId in instIdList)
+        foreach (var symbol in m_allSymbolSet)
         {
             if(foreachFunc != null)
             {
-                foreachFunc(instId);
+                foreachFunc(symbol);
             }    
-        }
-    }
-
-    public void StorageInstId(InstType okxInstType, string instId)
-    {
-        if(!m_Inst2InstIdListMap.ContainsKey(okxInstType))
-        {
-            m_Inst2InstIdListMap[okxInstType] = new HashSet<string>();
-        }
-        var instIdList = m_Inst2InstIdListMap[okxInstType];
-        instIdList.Add(instId);
-    }
-
-    public override void OnDestroy()
-    {
-        foreach (var pair in m_CandleDataMap)
-        {
-            string instId = pair.Key;
-            foreach (var pair2 in pair.Value)
-            {
-                var barSize = pair2.Key;
-                var candleDatas = pair2.Value;
-
-                var barSizeName = EnumNameManager.GetName(barSize);
-                SerializationManager.Instance.Register(pair.Value, $"quote-cache/{instId}_{barSize}.bin");
-            }
         }
     }
 }

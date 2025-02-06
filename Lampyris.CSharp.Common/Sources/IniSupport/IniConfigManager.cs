@@ -1,98 +1,150 @@
 ﻿namespace Lampyris.CSharp.Common;
 
-using System.Reflection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Reflection;
 
-[Component]
-public class IniConfigManager:ILifecycle
+public static class IniConfigManager
 {
-    private readonly Dictionary<string, IniFile> m_IniFiles = new Dictionary<string, IniFile>(StringComparer.OrdinalIgnoreCase);
+    private static Dictionary<Type, object> ms_Type2ConfigObjectMap = new();
 
-    private void LoadConfig(string fileName, FieldInfo[] fields)
+    // 获取配置对象
+    public static T GetConfig<T>() where T : new()
     {
-        foreach (var field in fields)
-        {
-            var attribute = field.GetCustomAttribute<IniConfigAttribute>();
-            if (attribute != null)
-            {
-                if (!m_IniFiles.ContainsKey(fileName))
-                {
-                    m_IniFiles[fileName] = new IniFile(fileName);
-                }
+        var type = typeof(T);
 
-                string value = m_IniFiles[fileName].ReadValue(attribute.Section, attribute.Key, attribute.DefaultValue);
-                var convertedValue = Convert.ChangeType(value, field.FieldType);
-                field.SetValue(null, convertedValue);
+        if (ms_Type2ConfigObjectMap.ContainsKey(type))
+        {
+            return (T)ms_Type2ConfigObjectMap[type];
+        }
+
+        // 获取类型上的 [IniFile] 属性
+        var iniFileAttribute = type.GetCustomAttribute<IniFileAttribute>();
+        if (iniFileAttribute == null)
+        {
+            Logger.LogWarning($"Class {type.Name} doesn't have an [IniFile] attribute.");
+            return default(T);
+        }
+
+        string fileName = iniFileAttribute.FileName;
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            Logger.LogWarning($"[IniFile] attribute must specify a valid file name.");
+            return default(T);
+        }
+
+        // 如果文件不存在，创建默认文件
+        if (!File.Exists(fileName))
+        {
+            SaveConfig(new T());
+        }
+
+        // 加载 INI 文件
+        var config = new T();
+        var iniData = File.ReadAllLines(fileName);
+        var currentSection = string.Empty;
+        var sectionData = new Dictionary<string, Dictionary<string, string>>();
+
+        foreach (var line in iniData)
+        {
+            var trimmedLine = line.Trim();
+            if (string.IsNullOrEmpty(trimmedLine) || trimmedLine.StartsWith(";") || trimmedLine.StartsWith("#") || trimmedLine.StartsWith("//"))
+            {
+                continue; // 忽略空行和注释
             }
-        }
-    }
 
-    private void SaveConfig(string fileName, FieldInfo[] fields)
-    {
-        foreach (var field in fields)
-        {
-            var attribute = field.GetCustomAttribute<IniConfigAttribute>();
-            if(attribute != null)
+            if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
             {
-                if (!m_IniFiles.ContainsKey(fileName))
+                currentSection = trimmedLine.Trim('[', ']');
+                if (!sectionData.ContainsKey(currentSection))
                 {
-                    m_IniFiles[fileName] = new IniFile(fileName);
-                }
-
-                string? value = field.GetValue(null)?.ToString();
-                if(value != null)
-                {
-                    m_IniFiles[fileName].WriteValue(attribute.Section, attribute.Key, value);
+                    sectionData[currentSection] = new Dictionary<string, string>();
                 }
             }
-        }
-
-        foreach (var iniFile in m_IniFiles.Values)
-        {
-            iniFile.Save();
-        }
-    }
-
-    private void ExecutionSaveLoad(bool isSave)
-    {
-        Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-
-        foreach (Assembly assembly in assemblies)
-        {
-            // 获取程序集中的所有类型
-            Type[] types = assembly.GetTypes();
-            foreach (Type type in types)
+            else if (!string.IsNullOrEmpty(currentSection))
             {
-                IniFileAttribute? attribute = type.GetCustomAttribute<IniFileAttribute>();
-                if (attribute != null)
+                var keyValue = trimmedLine.Split(new[] { '=' }, 2);
+                if (keyValue.Length == 2)
                 {
-                    FieldInfo[] fields = type.GetFields(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-                        .Where(field => Attribute.IsDefined(field, typeof(IniConfigAttribute))).ToArray();
-
-                    if (isSave)
-                    {
-                        SaveConfig(attribute.FileName,fields);
-                    }
-                    else
-                    {
-                        LoadConfig(attribute.FileName,fields);
-                    }
+                    var key = keyValue[0].Trim();
+                    var value = keyValue[1].Trim();
+                    sectionData[currentSection][key] = value;
                 }
             }
         }
+
+        // 映射到对象
+        foreach (var member in type.GetMembers(BindingFlags.Public | BindingFlags.Instance))
+        {
+            var sectionAttribute = member.GetCustomAttribute<SectionAttribute>();
+            if (sectionAttribute == null) continue;
+
+            var sectionName = sectionAttribute.Name;
+            if (sectionData.TryGetValue(type.Name, out var section) && section.TryGetValue(sectionName, out var value))
+            {
+                if (member is FieldInfo field)
+                {
+                    field.SetValue(config, Convert.ChangeType(value, field.FieldType));
+                }
+                else if (member is PropertyInfo property && property.CanWrite)
+                {
+                    property.SetValue(config, Convert.ChangeType(value, property.PropertyType));
+                }
+            }
+        }
+
+        ms_Type2ConfigObjectMap[type] = config;
+        return config;
     }
 
-    public override void OnStart()
+    // 保存配置对象到 INI 文件
+    public static void SaveConfig<T>(T config) where T : new()
     {
-        base.OnStart();
-        ExecutionSaveLoad(false);
-    }
+        var type = typeof(T);
+        var iniFileAttribute = type.GetCustomAttribute<IniFileAttribute>();
+        if (iniFileAttribute == null)
+        {
+            throw new InvalidOperationException($"Class {type.Name} must have an [IniFile] attribute.");
+        }
 
-    public override void OnDestroy()
-    {
-        ExecutionSaveLoad(true);
-        base.OnDestroy();
+        string fileName = iniFileAttribute.FileName;
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            throw new InvalidOperationException($"[IniFile] attribute must specify a valid file name.");
+        }
+
+        var iniData = new Dictionary<string, Dictionary<string, string>>();
+
+        foreach (var member in type.GetMembers(BindingFlags.Public | BindingFlags.Instance))
+        {
+            var sectionAttribute = member.GetCustomAttribute<SectionAttribute>();
+            if (sectionAttribute == null) continue;
+
+            var sectionName = sectionAttribute.Name;
+            var value = member is FieldInfo field
+                ? field.GetValue(config)?.ToString()
+                : member is PropertyInfo property ? property.GetValue(config)?.ToString() : null;
+
+            if (!iniData.ContainsKey(type.Name))
+            {
+                iniData[type.Name] = new Dictionary<string, string>();
+            }
+
+            iniData[type.Name][sectionName] = value ?? string.Empty;
+        }
+
+        using (var writer = new StreamWriter(fileName))
+        {
+            foreach (var section in iniData)
+            {
+                writer.WriteLine($"[{section.Key}]");
+                foreach (var kvp in section.Value)
+                {
+                    writer.WriteLine($"{kvp.Key}={kvp.Value}");
+                }
+                writer.WriteLine();
+            }
+        }
     }
 }

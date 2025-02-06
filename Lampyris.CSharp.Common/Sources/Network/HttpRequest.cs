@@ -83,7 +83,7 @@ public static class HttpRequest
         m_HttpRequestSync.GetSync(url, callback);
     }
 
-    public static HttpRequestExecutor GetTemp()
+    public static HttpRequestExecutor GetExecutor()
     {
         lock (ms_HttpRequestExecutors)
         {

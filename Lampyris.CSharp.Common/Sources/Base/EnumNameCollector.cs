@@ -3,24 +3,24 @@ namespace Lampyris.CSharp.Common;
 using System.Reflection;
 
 [AttributeUsage(AttributeTargets.Field)]
-public class NamedValueAttribute : Attribute
+public class EnumNamedValueAttribute : Attribute
 {
     public string Name { get; private set; }
 
-    public NamedValueAttribute(string name)
+    public EnumNamedValueAttribute(string name)
     {
         this.Name = name;
     }
 }
 
-public class EnumNameService
+public static class EnumNameCollector
 {
     // 用于存储枚举值和名称的映射
     private static Dictionary<Enum, string>                   ms_NameMap      = new ();
     private static Dictionary<Type, Dictionary<string, Enum>> ms_NameValueMap = new ();
     private static Dictionary<Type, List<string>>             ms_NameListMap  = new ();
 
-    static EnumNameService()
+    static EnumNameCollector()
     {
         // 在静态构造函数中扫描并记录所有枚举值的名称
         ScanAndRecordEnumNames();
@@ -39,7 +39,7 @@ public class EnumNameService
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
             foreach (var field in fields)
             {
-                var attribute = field.GetCustomAttribute<NamedValueAttribute>();
+                var attribute = field.GetCustomAttribute<EnumNamedValueAttribute>();
                 if (attribute != null)
                 {
                     var enumValue = field.GetValue(null) as Enum;

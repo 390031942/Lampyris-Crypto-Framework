@@ -2,19 +2,18 @@
 
 using System;
 
-[Component]
-public class PlannedTaskScheduler:ILifecycle
+public static class PlannedTaskScheduler
 {
     /* 自增的key */
-    private int m_IncreaseKey = 0;
+    private static int m_IncreaseKey = 0;
 
     /* key对应的DelayHandler */
-    private readonly Dictionary<int, DelayHandler> m_Id2DelayHandlerDict = new Dictionary<int, DelayHandler>();
+    private static readonly Dictionary<int, DelayHandler> m_Id2DelayHandlerDict = new Dictionary<int, DelayHandler>();
 
     /* 要移除ID的临时列表 */
-    private readonly List<int> m_ShouldRemoveIDList = new List<int>();
+    private static readonly List<int> m_ShouldRemoveIDList = new List<int>();
 
-    private long m_LastTimestamp = 0L;
+    private static long m_LastTimestamp = 0L;
 
     private enum DelayHandlerType
     {
@@ -33,7 +32,7 @@ public class PlannedTaskScheduler:ILifecycle
         public int              TotalFrame;
     }
 
-    public int AddTimeTask(Action action,float delayMs,int repeatTime = -1)
+    public static int AddTimeTask(Action action,float delayMs,int repeatTime = -1)
     {
         lock (m_Id2DelayHandlerDict)
         {
@@ -50,7 +49,7 @@ public class PlannedTaskScheduler:ILifecycle
         }
     }
 
-    public int AddTickTask(Action action,int delayFrame,int repeatTime = -1)
+    public static int AddTickTask(Action action,int delayFrame,int repeatTime = -1)
     {
         lock (m_Id2DelayHandlerDict)
         {
@@ -67,7 +66,7 @@ public class PlannedTaskScheduler:ILifecycle
         }
     }
 
-    public void Clear(int id)
+    public static void Clear(int id)
     {
         lock (m_Id2DelayHandlerDict)
         {
@@ -78,7 +77,7 @@ public class PlannedTaskScheduler:ILifecycle
         }
     }
 
-    public override void OnUpdate()
+    public static void Update()
     {
         lock (m_Id2DelayHandlerDict)
         {

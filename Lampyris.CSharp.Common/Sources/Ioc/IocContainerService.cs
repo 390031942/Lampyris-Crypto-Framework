@@ -46,7 +46,7 @@ public class IocContainerService
 
             if (string.IsNullOrEmpty(typeName))
             {
-                throw new InvalidOperationException("Component type is missing in XML configuration.");
+                throw new InvalidOperationException($"Component type '{typeName}' is missing in XML configuration.");
             }
 
             var type = Type.GetType(typeName);

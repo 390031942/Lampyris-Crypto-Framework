@@ -1,9 +1,15 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public static class MarketMonitorService
+using Lampyris.CSharp.Common;
+
+[Component]
+public class MarketMonitorService
 {
+    [Autowired]
+    private QuoteCacheService m_QuoteCacheService;
+
     // 每个instId对应的异动信息
-    private class PerInstActiveInfo
+    protected class PerInstActiveInfo
     {
         // 新高新低 部分
         public double   HighPerc;
@@ -26,14 +32,14 @@ public static class MarketMonitorService
         public DateTime VolumeIncreaseTimestmap;
     }
 
-    private static List<QuoteCandleData>      ms_QuoteCandleDatas = new List<QuoteCandleData>();
+    protected List<QuoteCandleData>                 m_QuoteCandleDatas = new List<QuoteCandleData>();
+                                                    
+    protected Func<double, double, bool>            m_Greater = (double lhs, double rhs) => { return lhs > rhs; };
+    protected Func<double, double, bool>            m_Lesser  = (double lhs, double rhs) => { return lhs < rhs; };
 
-    private static Func<double, double, bool> ms_Greater = (double lhs, double rhs) => { return lhs > rhs; }; 
-    private static Func<double, double, bool> ms_Lesser  = (double lhs, double rhs) => { return lhs < rhs; };
+    protected Dictionary<string, PerInstActiveInfo> m_PerInstActiveInfoMap = new();
 
-    private static Dictionary<string, PerInstActiveInfo> ms_PerInstActiveInfoMap = new();
-
-    private static bool CompareMovingAverage(QuoteCandleData lhs, QuoteCandleData rhs, Func<double,double,bool> compareFunc) 
+    protected bool CompareMovingAverage(QuoteCandleData lhs, QuoteCandleData rhs, Func<double,double,bool> compareFunc) 
     {
         if(!(compareFunc(lhs.MA5 ,rhs.MA5)  &&
              compareFunc(lhs.MA10,rhs.MA10) && 
@@ -47,31 +53,31 @@ public static class MarketMonitorService
         return true;
     }
 
-    public static void Reset()
+    public void Reset()
     {
-        ms_PerInstActiveInfoMap.Clear();
+        m_PerInstActiveInfoMap.Clear();
     }
 
 
-    public static void Tick()
+    public void Tick()
     {
-        QuoteCacheService.Instance.Foreach(InstType.SWAP, (string instId) => 
+        m_QuoteCacheService.Foreach((string instId) => 
         {
             QuoteTickerData tickerData = RealTimeQuoteService.Query(instId);
             if(tickerData == null)
                 return;
 
-            if (!ms_PerInstActiveInfoMap.ContainsKey(instId))
-                ms_PerInstActiveInfoMap[instId] = new PerInstActiveInfo();
+            if (!m_PerInstActiveInfoMap.ContainsKey(instId))
+                m_PerInstActiveInfoMap[instId] = new PerInstActiveInfo();
 
-            PerInstActiveInfo perInstActiveInfo = ms_PerInstActiveInfoMap[instId];
+            PerInstActiveInfo perInstActiveInfo = m_PerInstActiveInfoMap[instId];
             
-            QuoteCacheService.Instance.QueryLastestNoAlloc(instId, BarSize._1m, ms_QuoteCandleDatas, 30);    
-            MACalculator.Calculate(ms_QuoteCandleDatas);
+            QuoteCacheService.Instance.QueryLastestNoAlloc(instId, BarSize._1m, m_QuoteCandleDatas, 30);    
+            MACalculator.Calculate(m_QuoteCandleDatas);
             DateTime now = DateTime.Now;
 
             // 采样最近 1min k线, 判断上升/下降通道
-            if(ms_QuoteCandleDatas.Count >= 10)
+            if(m_QuoteCandleDatas.Count >= 10)
             {
                 bool isRise = true;
                 bool isFall = true;
@@ -79,9 +85,9 @@ public static class MarketMonitorService
                 // 1min 均线上升通道判定
                 if (DateTimeUtil.GetOkxBarTimeSpanDiff(perInstActiveInfo.OneMinKTrendTimestamp, now, BarSize._1m) > 0)
                 {
-                    for (int i = ms_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinMA5Threshold; i < ms_QuoteCandleDatas.Count - 2; i++)
+                    for (int i = m_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinMA5Threshold; i < m_QuoteCandleDatas.Count - 2; i++)
                     {
-                        if (!CompareMovingAverage(ms_QuoteCandleDatas[i - 1], ms_QuoteCandleDatas[i], ms_Lesser))
+                        if (!CompareMovingAverage(m_QuoteCandleDatas[i - 1], m_QuoteCandleDatas[i], m_Lesser))
                         {
                             isRise = false;
                             break;
@@ -90,9 +96,9 @@ public static class MarketMonitorService
                     if (!isRise)
                     {
                         // 1min 均线下降通道判定
-                        for (int i = ms_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinMA5Threshold; i < ms_QuoteCandleDatas.Count - 2; i++)
+                        for (int i = m_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinMA5Threshold; i < m_QuoteCandleDatas.Count - 2; i++)
                         {
-                            if (!CompareMovingAverage(ms_QuoteCandleDatas[i - 1], ms_QuoteCandleDatas[i], ms_Greater))
+                            if (!CompareMovingAverage(m_QuoteCandleDatas[i - 1], m_QuoteCandleDatas[i], m_Greater))
                             {
                                 isFall = false;
                                 break;
@@ -116,23 +122,23 @@ public static class MarketMonitorService
             // 采样最近 1min k线, 判断连红,连绿
             if (DateTimeUtil.GetOkxBarTimeSpanDiff(perInstActiveInfo.OneMinContinuousColorTimestamp, now, BarSize._1m) > 0)
             {
-                if (ms_QuoteCandleDatas.Count >= MarketMonitorSetting.OneMinSameColorCandleThreshold)
+                if (m_QuoteCandleDatas.Count >= MarketMonitorSetting.OneMinSameColorCandleThreshold)
                 {
                     bool MA5candleContinuousRiseUp = true;
                     bool MA5candleContinuousRiseDown = true;
 
-                    for (int i = ms_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinSameColorCandleThreshold; i < ms_QuoteCandleDatas.Count - 2; i++)
+                    for (int i = m_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinSameColorCandleThreshold; i < m_QuoteCandleDatas.Count - 2; i++)
                     {
-                        if (ms_QuoteCandleDatas[i - 1].Close >= ms_QuoteCandleDatas[i].Close)
+                        if (m_QuoteCandleDatas[i - 1].Close >= m_QuoteCandleDatas[i].Close)
                         {
                             MA5candleContinuousRiseUp = false;
                             break;
                         }
                     }
 
-                    for (int i = ms_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinSameColorCandleThreshold; i < ms_QuoteCandleDatas.Count - 2; i++)
+                    for (int i = m_QuoteCandleDatas.Count - MarketMonitorSetting.OneMinSameColorCandleThreshold; i < m_QuoteCandleDatas.Count - 2; i++)
                     {
-                        if (ms_QuoteCandleDatas[i - 1].Close <= ms_QuoteCandleDatas[i].Close)
+                        if (m_QuoteCandleDatas[i - 1].Close <= m_QuoteCandleDatas[i].Close)
                         {
                             MA5candleContinuousRiseDown = false;
                             break;
@@ -155,22 +161,22 @@ public static class MarketMonitorService
             // 采样最近5根 15min k线, 判断连红连绿+上升通道
             if (DateTimeUtil.GetOkxBarTimeSpanDiff(perInstActiveInfo.FifteenMinContinuousColorTimestamp, now, BarSize._15m) > 0)
             {
-                if (ms_QuoteCandleDatas.Count >= 5)
+                if (m_QuoteCandleDatas.Count >= 5)
                 {
                     bool candleContinuousRiseUp = true;
                     bool candleContinuousRiseDown = true;
 
-                    for (int i = ms_QuoteCandleDatas.Count - 5; i < ms_QuoteCandleDatas.Count - 2; i++)
+                    for (int i = m_QuoteCandleDatas.Count - 5; i < m_QuoteCandleDatas.Count - 2; i++)
                     {
-                        if (ms_QuoteCandleDatas[i - 1].Close < ms_QuoteCandleDatas[i].Close)
+                        if (m_QuoteCandleDatas[i - 1].Close < m_QuoteCandleDatas[i].Close)
                         {
                             candleContinuousRiseUp = false;
                             break;
                         }
                     }
-                    for (int i = ms_QuoteCandleDatas.Count - 5; i < ms_QuoteCandleDatas.Count - 2; i++)
+                    for (int i = m_QuoteCandleDatas.Count - 5; i < m_QuoteCandleDatas.Count - 2; i++)
                     {
-                        if (ms_QuoteCandleDatas[i - 1].Close > ms_QuoteCandleDatas[i].Close)
+                        if (m_QuoteCandleDatas[i - 1].Close > m_QuoteCandleDatas[i].Close)
                         {
                             candleContinuousRiseDown = false;
                             break;
@@ -193,13 +199,13 @@ public static class MarketMonitorService
             // 24小时新高/新低且大于1%
             if (DateTimeUtil.GetOkxBarTimeSpanDiff(perInstActiveInfo.HighLowTimestamp, now, BarSize._1m) > 0)
             {
-                if (ms_QuoteCandleDatas.Count >= 10)
+                if (m_QuoteCandleDatas.Count >= 10)
                 {
                     QuoteTickerData realTimeData = RealTimeQuoteService.Query(instId);
                     if (realTimeData != null)
                     {
-                        PerInstActiveInfo newPercentangeInfo = ms_PerInstActiveInfoMap.ContainsKey(instId) ?
-                                                               ms_PerInstActiveInfoMap[instId] : new PerInstActiveInfo();
+                        PerInstActiveInfo newPercentangeInfo = m_PerInstActiveInfoMap.ContainsKey(instId) ?
+                                                               m_PerInstActiveInfoMap[instId] : new PerInstActiveInfo();
                         if (realTimeData.Percentage >= 1)
                         {
                             if (realTimeData.Percentage > newPercentangeInfo.HighPerc)
@@ -223,12 +229,12 @@ public static class MarketMonitorService
             // 分钟级涨速/跌速>1.5%
             if (DateTimeUtil.GetOkxBarTimeSpanDiff(perInstActiveInfo.ChangeSpeedTimestmap, now, BarSize._1m) > 1)
             {
-                if (ms_QuoteCandleDatas.Count >= 3)
+                if (m_QuoteCandleDatas.Count >= 3)
                 {
                     QuoteTickerData realTimeData = RealTimeQuoteService.Query(instId);
 
-                    var data1 = ms_QuoteCandleDatas[ms_QuoteCandleDatas.Count - 1];
-                    var data2 = ms_QuoteCandleDatas[ms_QuoteCandleDatas.Count - 3];
+                    var data1 = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 1];
+                    var data2 = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 3];
 
                     double perc = data1.ChangePercentage(data2);
                     double percThreshold = 1.5;
@@ -249,7 +255,7 @@ public static class MarketMonitorService
             // 区间放量
             if (DateTimeUtil.GetOkxBarTimeSpanDiff(perInstActiveInfo.VolumeIncreaseTimestmap, now, BarSize._1m) > 5)
             {
-                if (ms_QuoteCandleDatas.Count >= 15)
+                if (m_QuoteCandleDatas.Count >= 15)
                 {
                     double moneyAvg3 = 0.0;
                     double moneyAvg15 = 0.0;
@@ -257,9 +263,9 @@ public static class MarketMonitorService
                     {
                         if (i >= 12)
                         {
-                            moneyAvg3 = moneyAvg3 + ms_QuoteCandleDatas[ms_QuoteCandleDatas.Count - i - 1].VolCcy;
+                            moneyAvg3 = moneyAvg3 + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 1].VolCcy;
                         }
-                        moneyAvg15 = moneyAvg15 + ms_QuoteCandleDatas[ms_QuoteCandleDatas.Count - i - 1].VolCcy;
+                        moneyAvg15 = moneyAvg15 + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 1].VolCcy;
                     }
                     moneyAvg3 /= 3;
                     moneyAvg15 /= 15;
@@ -275,15 +281,15 @@ public static class MarketMonitorService
 
             // 脉冲放量
             bool suddenlyBigVolActive = false;
-            if (ms_QuoteCandleDatas.Count >= 6)
+            if (m_QuoteCandleDatas.Count >= 6)
             {
                 double moneySum = 0.0;
                 double maxMoney = 0.0;
-                double curMinMoney = ms_QuoteCandleDatas[ms_QuoteCandleDatas.Count - 1].VolCcy;
+                double curMinMoney = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 1].VolCcy;
 
                 for (int i = 0; i < 5; i++)
                 {
-                    moneySum = moneySum + ms_QuoteCandleDatas[ms_QuoteCandleDatas.Count - i - 2].VolCcy;
+                    moneySum = moneySum + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 2].VolCcy;
                     maxMoney = Math.Max(maxMoney, moneySum);
                 }
 

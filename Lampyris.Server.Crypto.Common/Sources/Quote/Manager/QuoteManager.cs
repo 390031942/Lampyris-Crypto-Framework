@@ -1,6 +1,9 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public class QuoteManager:BehaviourSingleton<QuoteManager>
+using Lampyris.CSharp.Common;
+
+[Component]
+public class QuoteManager:ILifecycle
 {
     /* 最近的数据下载计数，要与m_HistoricalQuoteBarSizesOnInit相等时，才能开启市场监控*/
     private int m_RecentQuoteFinishedDownloadOnInitCounter = 0;
@@ -11,7 +14,7 @@ public class QuoteManager:BehaviourSingleton<QuoteManager>
     /* 初始化需要的行情barSize列表 */
     private readonly List<BarSize> m_HistoricalQuoteBarSizesOnInit = new List<BarSize>() 
     {
-        BarSize._1m,// OkxBarSize._15m,OkxBarSize._1D
+        BarSize._1m, BarSize._15m, BarSize._1D
     };
 
     /* 每分钟需要的行情barSize列表 */
@@ -26,13 +29,13 @@ public class QuoteManager:BehaviourSingleton<QuoteManager>
     public override void OnStart()
     {
         // 启动时需要预下载最新的k线
-        HistoricalQuoteDownloader.DownloadAllRecentCandle(InstType.SWAP, m_HistoricalQuoteBarSizesOnInit, (barSize)=> 
+        HistoricalQuoteDownloader.DownloadAllRecentCandle(m_HistoricalQuoteBarSizesOnInit, (barSize)=> 
         {
             m_RecentQuoteFinishedDownloadOnInitCounter++;
         });
     }
 
-    public override void OnUpdate(float deltaTime)
+    public override void OnUpdate()
     {
         if(!m_IsInitialized)
         {

@@ -20,7 +20,7 @@ public class WaitForQuoteCandleResult : AsyncOperation
 
     public WaitForQuoteCandleResult(string url)
     {
-        m_Task = HttpRequest.GetTemp().GetAsync(url);
+        m_Task = HttpRequest.GetExecutor().GetAsync(url);
     }
 
     public override bool MoveNext()

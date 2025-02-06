@@ -4,45 +4,45 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-public class LogService
+public static class Logger
 {
-    private readonly List<ILogger> m_LoggerList = new List<ILogger>();
+    private static readonly List<ILogger> ms_LoggerList = new List<ILogger>();
     
     // 以下是格式化输出日志的时候，Log类型的缩写
     private const string InfoString    = "INFO";
     private const string WarningString = "WARN";
     private const string ErrorString   = "ERROR";
 
-    public void AddLogger(ILogger logger)
+    public static void AddLogger(ILogger logger)
     {
-        m_LoggerList.Add(logger);
+        ms_LoggerList.Add(logger);
     }
 
-    public void LogInfo(string message)
+    public static void LogInfo(string message)
     {
         Log(InfoString, message);
     }
 
-    public void LogWarning(string message)
+    public static void LogWarning(string message)
     {
         Log(WarningString, message);
     }
 
-    public void LogError(string message)
+    public static void LogError(string message)
     {
         Log(ErrorString, message);
     }
 
-    private void Log(string level, string message)
+    private static void Log(string level, string message)
     {
         string formattedMessage = FormatMessage(level, message);
-        foreach (var logger in m_LoggerList)
+        foreach (var logger in ms_LoggerList)
         {
             logger.Log(formattedMessage);
         }
     }
 
-    private string FormatMessage(string level, string message)
+    private static string FormatMessage(string level, string message)
     {
         var    stackFrame = new StackTrace(3, true).GetFrame(0);
         string timestamp  = DateTime.Now.ToString("HH:mm:ss");

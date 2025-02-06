@@ -2,17 +2,8 @@
 
 using System;
 
-[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Class)]
 public class IniFileAttribute : Attribute
 {
-    public string FileName { get; }
-    public IniFileAttribute(string fileName)
-    {
-        FileName = fileName;
-    }
-
-    public IniFileAttribute()
-    {
-        FileName = "common_setting";
-    }
+    public string FileName { get; set; }
 }

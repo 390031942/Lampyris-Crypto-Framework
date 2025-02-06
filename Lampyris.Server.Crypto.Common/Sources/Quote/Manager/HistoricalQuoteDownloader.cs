@@ -1,34 +1,39 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
+using Lampyris.CSharp.Common;
 using System.Collections;
 
-public static class HistoricalQuoteDownloader
+[Component]
+public class HistoricalQuoteDownloader
 {
-    public static void DownloadSingleCandle(string instId)
+    [Autowired]
+    private CoroutineManager m_CoroutineManager;
+
+    public void DownloadSingleCandle(string symbol)
     {
 
     }
 
-    public static void DownloadCandles(List<string> instIdList)
+    public void DownloadCandles(List<string> instIdList)
     {
 
     }
 
-    public static void DownloadAllRecentCandle(InstType okxInstType, List<BarSize> barSizes, Action<BarSize>? callback = null)
+    public void DownloadAllRecentCandle(List<BarSize> barSizes, Action<BarSize>? callback = null)
     {
         IReadOnlyCollection<QuoteTickerData> dataList = RealTimeQuoteService.TickQuote(okxInstType);
-        List<string> instIdList = new List<string>();
+        List<string> symbolList = new List<string>();
         foreach (QuoteTickerData data in dataList)
         {
-            instIdList.Add(data.InstId);
+            symbolList.Add(data.InstId);
         }
         foreach(BarSize barSize in barSizes)
         {
-            CoroutineManager.Instance.StartCoroutine(DownloadRecentCandleProcess(instIdList, barSize, callback, 0.05 * barSizes.Count));
+            m_CoroutineManager.StartCoroutine(DownloadRecentCandleProcess(barSize, callback, 0.05 * barSizes.Count));
         }
     }
 
-    public static void DownloadAllHistoryCandle(InstType okxInstType, List<BarSize> barSizes, int n, Action<BarSize>? callback = null)
+    public void DownloadAllHistoryCandle(List<BarSize> barSizes, int n, Action<BarSize>? callback = null)
     {
         IReadOnlyCollection<QuoteTickerData> dataList = RealTimeQuoteService.TickQuote(okxInstType);
         List<string> instIdList = new List<string>();
@@ -38,13 +43,13 @@ public static class HistoricalQuoteDownloader
         }
         foreach (BarSize barSize in barSizes)
         {
-            CoroutineManager.Instance.StartCoroutine(DownloadHistoryCandleProcess(instIdList, barSize, n, callback, 0.05 * barSizes.Count));
+            m_CoroutineManager.StartCoroutine(DownloadHistoryCandleProcess(instIdList, barSize, n, callback, 0.05 * barSizes.Count));
         }
     }
 
-    private static IEnumerator DownloadRecentCandleProcess(List<string> instIdList, BarSize okxBarSize, Action<BarSize>? callback, double delaySec = 0.1)
+    private IEnumerator DownloadRecentCandleProcess(List<string> instIdList, BarSize okxBarSize, Action<BarSize>? callback, double delaySec = 0.1)
     {
-        LogManager.Instance.LogInfo($"Start to download recent candle, okxBarSize = {okxBarSize}");
+        m_LogService.LogInfo($"Start to download recent candle, okxBarSize = {okxBarSize}");
         int progress = 0;
         foreach (string instId in instIdList)
         {
@@ -56,10 +61,10 @@ public static class HistoricalQuoteDownloader
 
             yield return new WaitForSeconds(delaySec);
 
-            LogManager.Instance.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize}, process = {++progress}/{instIdList.Count}");
+            m_LogService.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize}, process = {++progress}/{instIdList.Count}");
         }
 
-        LogManager.Instance.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize} Finished!");
+        m_LogService.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize} Finished!");
         callback?.Invoke(okxBarSize);
     }
 

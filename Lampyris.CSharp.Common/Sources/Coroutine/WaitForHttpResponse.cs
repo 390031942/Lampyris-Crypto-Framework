@@ -13,13 +13,13 @@ public class WaitForHttpResponse : IEnumerator
 
     public WaitForHttpResponse(string url)
     {
-        m_Client = HttpRequest.GetTemp();
+        m_Client = HttpRequest.GetExecutor();
         m_Task = m_Client.GetAsync(url);
     }
 
     public WaitForHttpResponse(string url, string content, string? mediaType = "application/json")
     {
-        m_Client = HttpRequest.GetTemp();
+        m_Client = HttpRequest.GetExecutor();
         var requestBody = new StringContent(content, Encoding.UTF8, mediaType);
         m_Task = m_Client.PostAsync(url, requestBody);
     }
@@ -36,7 +36,7 @@ public class WaitForHttpResponse : IEnumerator
 
     public void Reset()
     {
-        m_Client = HttpRequest.GetTemp();
+        m_Client = HttpRequest.GetExecutor();
     }
 
     public object? Current => m_Response;
