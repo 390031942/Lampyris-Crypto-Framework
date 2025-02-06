@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AccountManagement\" />
-    <Folder Include="Notice\" />
+    <Compile Remove="AccountManagement\**" />
+    <Compile Remove="Notice\**" />
+    <EmbeddedResource Remove="AccountManagement\**" />
+    <EmbeddedResource Remove="Notice\**" />
+    <None Remove="AccountManagement\**" />
+    <None Remove="Notice\**" />
   </ItemGroup>
 
   <ItemGroup>
