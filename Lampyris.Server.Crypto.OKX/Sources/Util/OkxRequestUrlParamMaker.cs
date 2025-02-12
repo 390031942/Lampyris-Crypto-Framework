@@ -4,9 +4,9 @@ using System;
 
 public static class OkxRequestUrlParamMaker
 {
-    public static string GetCandleUrl(bool isHistory, string instId, BarSize barSize, DateTime? after, DateTime? before, int? limit)
+    public static string GetCandleUrl(bool isHistory, string symbol, BarSize barSize, DateTime? after, DateTime? before, int? limit)
     {
-        string url = NetworkConfig.BaseUrl + $"/api/v5/market/{(isHistory ? "history-candles" : "candles")}?instId={instId}";
+        string url = NetworkConfig.BaseUrl + $"/api/v5/market/{(isHistory ? "history-candles" : "candles")}?symbol={symbol}";
 
         // barSize
         url += $"&bar={EnumNameManager.GetName(barSize)}";

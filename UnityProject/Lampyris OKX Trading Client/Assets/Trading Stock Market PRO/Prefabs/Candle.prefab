@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8638976183117493945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598053659418760101}
+  - component: {fileID: 8383956784295661194}
+  m_Layer: 0
+  m_Name: Candle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598053659418760101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638976183117493945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8383956784295661194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638976183117493945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52b85c0579c2d64ba2c0d9804416bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataIndex: 0
+  x_max: 0
+  x_min: 0
+  y_max: 0
+  y_min: 0
+  y_opn: 0
+  y_cls: 0
+  x_value: 0
+  y_value: 0
+  goMaxMin: {fileID: 0}
+  goOpenClose: {fileID: 0}
+  prefab: {fileID: 1530734727798887091, guid: 50b4c3306c774ff4e86db56533ca8952, type: 3}
+  colUP: {r: 0.33333334, g: 0.654902, b: 0.25490198, a: 1}
+  colDOWN: {r: 0.9058824, g: 0.26666668, b: 0.27058825, a: 1}
+  L_width: 0
+  M_width: 0

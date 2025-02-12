@@ -4,7 +4,7 @@ public class HttpRequestExecutor
 {
     private readonly HttpClient m_Client = new HttpClient();
 
-    public Task<HttpResponseMessage> GetAsync(string url, Action<string>? callback = null)
+    public Task<HttpResponseMessage> GetAsync(string url, Action<string>? callback = null, List<KeyValuePair<string,string>>? headers = null)
     {
         return Task.Run(async () =>
         {
@@ -20,7 +20,7 @@ public class HttpRequestExecutor
         });
     }
 
-    public void GetSync(string url, Action<string>? callback = null)
+    public void GetSync(string url, Action<string>? callback = null, List<KeyValuePair<string, string>>? headers = null)
     {
         HttpResponseMessage response = m_Client.GetAsync(url).Result;
         if (response.IsSuccessStatusCode)
@@ -30,7 +30,7 @@ public class HttpRequestExecutor
         }
     }
 
-    public Task<HttpResponseMessage> PostAsync(string url, StringContent content, Action<string>? callback = null)
+    public Task<HttpResponseMessage> PostAsync(string url, StringContent content, Action<string>? callback = null, List<KeyValuePair<string, string>>? headers = null)
     {
         return (Task<HttpResponseMessage>)Task.Run(async () =>
         {
@@ -45,7 +45,7 @@ public class HttpRequestExecutor
         });
     }
 
-    public void PostSync(string url, StringContent content, Action<string>? callback = null)
+    public void PostSync(string url, StringContent content, Action<string>? callback = null, List<KeyValuePair<string, string>>? headers = null)
     {
         HttpResponseMessage response = m_Client.PostAsync(url, content).Result;
         if (response.IsSuccessStatusCode)
@@ -62,25 +62,25 @@ public static class HttpRequest
 
     private static readonly HttpRequestExecutor m_HttpRequestSync = new HttpRequestExecutor();
 
-    public static void Get(string url, Action<string> callback)
+    public static void Get(string url, Action<string> callback, List<KeyValuePair<string, string>>? headers = null)
     {
         lock (ms_HttpRequestExecutors)
         {
             if (ms_HttpRequestExecutors.TryPop(out var httpRequest))
             {
-                httpRequest.GetSync(url, callback);
+                httpRequest.GetSync(url, callback, headers);
             }
             else
             {
                 httpRequest = new HttpRequestExecutor();
-                httpRequest.GetSync(url, callback);
+                httpRequest.GetSync(url, callback, headers);
             }
         }
     }
 
-    public static void GetSync(string url, Action<string>? callback = null)
+    public static void GetSync(string url, Action<string>? callback = null, List<KeyValuePair<string, string>>? headers = null)
     {
-        m_HttpRequestSync.GetSync(url, callback);
+        m_HttpRequestSync.GetSync(url, callback, headers);
     }
 
     public static HttpRequestExecutor GetExecutor()

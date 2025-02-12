@@ -29,7 +29,7 @@ public static class OkxResponseJsonParser
                 }
 
                 quoteTickerData.InstType = okxInstType;
-                quoteTickerData.InstId = jObject["instId"].ToObject<string>();
+                quoteTickerData.symbol = jObject["symbol"].ToObject<string>();
                 quoteTickerData.Last = jObject["last"].ToObject<double>();
                 quoteTickerData.LastSz = jObject["lastSz"].ToObject<double>();
                 quoteTickerData.AskPx = jObject["askPx"].ToObject<double>();
@@ -74,9 +74,9 @@ public static class OkxResponseJsonParser
                     return;
                 }
 
-                string instId = jObject["instId"].ToObject<string>();
+                string symbol = jObject["symbol"].ToObject<string>();
 
-                QuoteTickerData quoteTickerData = result.Find((QuoteTickerData data) => { return data.InstId == instId; });
+                QuoteTickerData quoteTickerData = result.Find((QuoteTickerData data) => { return data.symbol == symbol; });
                 if(quoteTickerData == null)
                 {
                     quoteTickerData = new QuoteTickerData();
@@ -84,7 +84,7 @@ public static class OkxResponseJsonParser
                 }
 
                 quoteTickerData.InstType = okxInstType;
-                quoteTickerData.InstId = jObject["instId"].ToObject<string>();
+                quoteTickerData.symbol = jObject["symbol"].ToObject<string>();
                 quoteTickerData.Last = jObject["last"].ToObject<double>();
                 quoteTickerData.LastSz = jObject["lastSz"].ToObject<double>();
                 quoteTickerData.AskPx = jObject["askPx"].ToObject<double>();
@@ -131,8 +131,8 @@ public static class OkxResponseJsonParser
                 quoteCandleData.Low         = jArray[3].ToObject<double>();
                 quoteCandleData.Close       = jArray[4].ToObject<double>();
 
-                quoteCandleData.Vol         = jArray[5].ToObject<double>();
-                quoteCandleData.VolCcy      = jArray[6].ToObject<double>();
+                quoteCandleData.Volume         = jArray[5].ToObject<double>();
+                quoteCandleData.Currency      = jArray[6].ToObject<double>();
                 quoteCandleData.VolCcyQuote = jArray[7].ToObject<double>();
 
                 quoteCandleData.DateTime    = quoteCandleData.DateTime.AddHours(8);

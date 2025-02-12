@@ -2,11 +2,8 @@
 
 public class QuoteTickerData
 {
-    // 产品类型
-    public InstType InstType;
-    
     // 产品ID，如LTC-USD-SWAP
-    public string InstId = "";
+    public string symbol = "";
     
     // 最新成交价
     public double Last;

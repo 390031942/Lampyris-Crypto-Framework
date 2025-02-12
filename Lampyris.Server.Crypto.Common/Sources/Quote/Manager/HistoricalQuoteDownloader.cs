@@ -7,85 +7,87 @@ using System.Collections;
 public class HistoricalQuoteDownloader
 {
     [Autowired]
-    private CoroutineManager m_CoroutineManager;
+    private AbstractRealTimeQuoteService m_RealTimeQuoteService;
+
+    [Autowired]
+    private QuoteCacheService m_QuoteCacheService;
 
     public void DownloadSingleCandle(string symbol)
     {
 
     }
 
-    public void DownloadCandles(List<string> instIdList)
+    public void DownloadCandles(List<string> symbolList)
     {
 
     }
 
     public void DownloadAllRecentCandle(List<BarSize> barSizes, Action<BarSize>? callback = null)
     {
-        IReadOnlyCollection<QuoteTickerData> dataList = RealTimeQuoteService.TickQuote(okxInstType);
+        IReadOnlyCollection<QuoteTickerData> dataList = m_RealTimeQuoteService.GetTickerDataList();
         List<string> symbolList = new List<string>();
         foreach (QuoteTickerData data in dataList)
         {
-            symbolList.Add(data.InstId);
+            symbolList.Add(data.symbol);
         }
         foreach(BarSize barSize in barSizes)
         {
-            m_CoroutineManager.StartCoroutine(DownloadRecentCandleProcess(barSize, callback, 0.05 * barSizes.Count));
+            CoroutineManager.StartCoroutine(DownloadRecentCandleProcess(barSize, callback, 0.05 * barSizes.Count));
         }
     }
 
     public void DownloadAllHistoryCandle(List<BarSize> barSizes, int n, Action<BarSize>? callback = null)
     {
         IReadOnlyCollection<QuoteTickerData> dataList = RealTimeQuoteService.TickQuote(okxInstType);
-        List<string> instIdList = new List<string>();
+        List<string> symbolList = new List<string>();
         foreach (QuoteTickerData data in dataList)
         {
-            instIdList.Add(data.InstId);
+            symbolList.Add(data.symbol);
         }
         foreach (BarSize barSize in barSizes)
         {
-            m_CoroutineManager.StartCoroutine(DownloadHistoryCandleProcess(instIdList, barSize, n, callback, 0.05 * barSizes.Count));
+            CoroutineManager.StartCoroutine(DownloadHistoryCandleProcess(symbolList, barSize, n, callback, 0.05 * barSizes.Count));
         }
     }
 
-    private IEnumerator DownloadRecentCandleProcess(List<string> instIdList, BarSize okxBarSize, Action<BarSize>? callback, double delaySec = 0.1)
+    private IEnumerator DownloadRecentCandleProcess(List<string> symbolList, BarSize okxBarSize, Action<BarSize>? callback, double delaySec = 0.1)
     {
-        m_LogService.LogInfo($"Start to download recent candle, okxBarSize = {okxBarSize}");
+        Logger.LogInfo($"Start to download recent candle, okxBarSize = {okxBarSize}");
         int progress = 0;
-        foreach (string instId in instIdList)
+        foreach (string symbol in symbolList)
         {
-            QuoteCandleData lastestCandleData = QuoteCacheService.Instance.QueryLastest(instId, okxBarSize);
-            var canldeFuture = HistoricalQuoteService.QueryRecentCandleAsync(instId, okxBarSize);
+            QuoteCandleData lastestCandleData = QuoteCacheService.Instance.QueryLastest(symbol, okxBarSize);
+            var canldeFuture =.QueryRecentCandleAsync(symbol, okxBarSize);
             yield return canldeFuture;
 
-            QuoteCacheService.Instance.Storage(instId, okxBarSize, canldeFuture.GetResult());
+            QuoteCacheService.Instance.Storage(symbol, okxBarSize, canldeFuture.GetResult());
 
             yield return new WaitForSeconds(delaySec);
 
-            m_LogService.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize}, process = {++progress}/{instIdList.Count}");
+            Logger.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize}, process = {++progress}/{symbolList.Count}");
         }
 
-        m_LogService.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize} Finished!");
+        Logger.LogInfo($"Downloading recent candle, okxBarSize = {okxBarSize} Finished!");
         callback?.Invoke(okxBarSize);
     }
 
-    private static IEnumerator DownloadHistoryCandleProcess(List<string> instIdList, BarSize okxBarSize, int n, Action<BarSize>? callback, double delaySec = 0.1)
+    private IEnumerator DownloadHistoryCandleProcess(List<string> symbolList, BarSize okxBarSize, int n, Action<BarSize>? callback, double delaySec = 0.1)
     {
-        LogManager.Instance.LogInfo($"Start to download historical candle, okxBarSize = {okxBarSize}");
+        Logger.LogInfo($"Start to download historical candle, okxBarSize = {okxBarSize}");
         int progress = 0;
-        foreach (string instId in instIdList)
+        foreach (string symbol in symbolList)
         {
-            QuoteCandleData lastestCandleData = QuoteCacheService.Instance.QueryLastest(instId, okxBarSize);
-            var canldeFuture = HistoricalQuoteService.QueryHistoryCandleAsync(instId, okxBarSize,limit:n);
+            QuoteCandleData lastestCandleData = m_QuoteCacheService.QueryLastest(symbol, okxBarSize);
+            var canldeFuture = QueryHistoryCandleAsync(symbol, okxBarSize,limit:n);
             yield return canldeFuture;
 
-            QuoteCacheService.Instance.Storage(instId, okxBarSize, canldeFuture.GetResult());
-
+            m_QuoteCacheService.Storage(symbol, okxBarSize, canldeFuture.GetResult());
             yield return new WaitForSeconds(delaySec);
 
-            LogManager.Instance.LogInfo($"Downloading historical candle, okxBarSize = {okxBarSize}, process = {++progress}/{instIdList.Count}");
+            Logger.LogInfo($"Downloading historical candle, okxBarSize = {okxBarSize}, process = {++progress}/{symbolList.Count}");
         }
 
-        LogManager.Instance.LogInfo($"Downloading historical candle, okxBarSize = {okxBarSize} Finished!");
+        Logger.LogInfo($"Downloading historical candle, okxBarSize = {okxBarSize} Finished!");
         callback?.Invoke(okxBarSize);
     }
 }

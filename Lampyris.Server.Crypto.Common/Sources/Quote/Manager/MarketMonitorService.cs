@@ -8,7 +8,7 @@ public class MarketMonitorService
     [Autowired]
     private QuoteCacheService m_QuoteCacheService;
 
-    // 每个instId对应的异动信息
+    // 每个symbol对应的异动信息
     protected class PerInstActiveInfo
     {
         // 新高新低 部分
@@ -61,18 +61,18 @@ public class MarketMonitorService
 
     public void Tick()
     {
-        m_QuoteCacheService.Foreach((string instId) => 
+        m_QuoteCacheService.Foreach((string symbol) => 
         {
-            QuoteTickerData tickerData = RealTimeQuoteService.Query(instId);
+            QuoteTickerData tickerData = RealTimeQuoteService.Query(symbol);
             if(tickerData == null)
                 return;
 
-            if (!m_PerInstActiveInfoMap.ContainsKey(instId))
-                m_PerInstActiveInfoMap[instId] = new PerInstActiveInfo();
+            if (!m_PerInstActiveInfoMap.ContainsKey(symbol))
+                m_PerInstActiveInfoMap[symbol] = new PerInstActiveInfo();
 
-            PerInstActiveInfo perInstActiveInfo = m_PerInstActiveInfoMap[instId];
+            PerInstActiveInfo perInstActiveInfo = m_PerInstActiveInfoMap[symbol];
             
-            QuoteCacheService.Instance.QueryLastestNoAlloc(instId, BarSize._1m, m_QuoteCandleDatas, 30);    
+            QuoteCacheService.Instance.QueryLastestNoAlloc(symbol, BarSize._1m, m_QuoteCandleDatas, 30);    
             MACalculator.Calculate(m_QuoteCandleDatas);
             DateTime now = DateTime.Now;
 
@@ -108,12 +108,12 @@ public class MarketMonitorService
 
                     if(isRise)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 1分均线上升通道");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 1分均线上升通道");
                         perInstActiveInfo.OneMinKTrendTimestamp = now;
                     }
                     else if (isFall)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 1分均线下降通道");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 1分均线下降通道");
                         perInstActiveInfo.OneMinKTrendTimestamp = now;
                     }
                 }
@@ -147,12 +147,12 @@ public class MarketMonitorService
 
                     if (MA5candleContinuousRiseUp)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 1分k线连阳");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 1分k线连阳");
                         perInstActiveInfo.OneMinContinuousColorTimestamp = now;
                     }
                     else if (MA5candleContinuousRiseDown)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 1分k线连阴");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 1分k线连阴");
                         perInstActiveInfo.OneMinContinuousColorTimestamp = now;
                     }
                 }
@@ -185,12 +185,12 @@ public class MarketMonitorService
 
                     if (candleContinuousRiseUp)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 15分k线连阳");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 15分k线连阳");
                         perInstActiveInfo.FifteenMinContinuousColorTimestamp = now;
                     }
                     else if (candleContinuousRiseDown)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 15分k线连阴");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 15分k线连阴");
                         perInstActiveInfo.FifteenMinContinuousColorTimestamp = now;
                     }
                 }
@@ -201,17 +201,17 @@ public class MarketMonitorService
             {
                 if (m_QuoteCandleDatas.Count >= 10)
                 {
-                    QuoteTickerData realTimeData = RealTimeQuoteService.Query(instId);
+                    QuoteTickerData realTimeData = RealTimeQuoteService.Query(symbol);
                     if (realTimeData != null)
                     {
-                        PerInstActiveInfo newPercentangeInfo = m_PerInstActiveInfoMap.ContainsKey(instId) ?
-                                                               m_PerInstActiveInfoMap[instId] : new PerInstActiveInfo();
+                        PerInstActiveInfo newPercentangeInfo = m_PerInstActiveInfoMap.ContainsKey(symbol) ?
+                                                               m_PerInstActiveInfoMap[symbol] : new PerInstActiveInfo();
                         if (realTimeData.Percentage >= 1)
                         {
                             if (realTimeData.Percentage > newPercentangeInfo.HighPerc)
                             {
                                 perInstActiveInfo.HighLowTimestamp = now;
-                                LogManager.Instance.LogInfo($"[异动提示]:{instId} 24小时内新高，达到{realTimeData.Percentage}%");
+                                LogManager.Instance.LogInfo($"[异动提示]:{symbol} 24小时内新高，达到{realTimeData.Percentage}%");
                             }
                         }
                         else if (realTimeData.Percentage <= -1)
@@ -219,7 +219,7 @@ public class MarketMonitorService
                             if (realTimeData.Percentage < newPercentangeInfo.LowPerc)
                             {
                                 perInstActiveInfo.HighLowTimestamp = now;
-                                LogManager.Instance.LogInfo($"[异动提示]:{instId} 24小时内新低，达到{realTimeData.Percentage}%");
+                                LogManager.Instance.LogInfo($"[异动提示]:{symbol} 24小时内新低，达到{realTimeData.Percentage}%");
                             }
                         }
                     }
@@ -231,7 +231,7 @@ public class MarketMonitorService
             {
                 if (m_QuoteCandleDatas.Count >= 3)
                 {
-                    QuoteTickerData realTimeData = RealTimeQuoteService.Query(instId);
+                    QuoteTickerData realTimeData = RealTimeQuoteService.Query(symbol);
 
                     var data1 = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 1];
                     var data2 = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 3];
@@ -242,12 +242,12 @@ public class MarketMonitorService
                     if (perc > percThreshold)
                     {
                         perInstActiveInfo.HighLowTimestamp = now;
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 涨速达到{percThreshold}%，{realTimeData.Percentage}%");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 涨速达到{percThreshold}%，{realTimeData.Percentage}%");
                     }
                     else if(perc < -percThreshold)
                     {
                         perInstActiveInfo.HighLowTimestamp = now;
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 跌速达到{percThreshold}%，{realTimeData.Percentage}%");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 跌速达到{percThreshold}%，{realTimeData.Percentage}%");
                     }
                 }
             }
@@ -263,16 +263,16 @@ public class MarketMonitorService
                     {
                         if (i >= 12)
                         {
-                            moneyAvg3 = moneyAvg3 + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 1].VolCcy;
+                            moneyAvg3 = moneyAvg3 + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 1].Currency;
                         }
-                        moneyAvg15 = moneyAvg15 + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 1].VolCcy;
+                        moneyAvg15 = moneyAvg15 + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 1].Currency;
                     }
                     moneyAvg3 /= 3;
                     moneyAvg15 /= 15;
 
                     if (moneyAvg3 > 5 * moneyAvg15)
                     {
-                        LogManager.Instance.LogInfo($"[异动提示]:{instId} 区间放量{Math.Round(moneyAvg3 / moneyAvg15, 2)}倍");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 区间放量{Math.Round(moneyAvg3 / moneyAvg15, 2)}倍");
                         perInstActiveInfo.VolumeIncreaseTimestmap = now;
                     }
                 }
@@ -285,11 +285,11 @@ public class MarketMonitorService
             {
                 double moneySum = 0.0;
                 double maxMoney = 0.0;
-                double curMinMoney = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 1].VolCcy;
+                double curMinMoney = m_QuoteCandleDatas[m_QuoteCandleDatas.Count - 1].Currency;
 
                 for (int i = 0; i < 5; i++)
                 {
-                    moneySum = moneySum + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 2].VolCcy;
+                    moneySum = moneySum + m_QuoteCandleDatas[m_QuoteCandleDatas.Count - i - 2].Currency;
                     maxMoney = Math.Max(maxMoney, moneySum);
                 }
 

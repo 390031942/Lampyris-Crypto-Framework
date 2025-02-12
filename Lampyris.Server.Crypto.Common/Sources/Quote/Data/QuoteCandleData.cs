@@ -1,53 +1,35 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public class QuoteCandleData:IComparable<QuoteCandleData>
+// {0} symbol, {1} barSize
+[DBTable("quote_candle_data_{0}_{1}")]
+public class QuoteCandleData : IComparable<QuoteCandleData>
 {
-    // 开始时间
-    public DateTime DateTime;
+    [DBColumn("datetime", "DATETIME", isPrimaryKey: true)] // 开始时间，主键
+    public DateTime DateTime { get; set; }
 
-    // 开盘价格
-    public double Open;
+    [DBColumn("open", "DOUBLE")] // 开盘价格
+    public double Open { get; set; }
 
-    // 最高价格
-    public double Close;
+    [DBColumn("close", "DOUBLE")] // 收盘价格
+    public double Close { get; set; }
 
-    // 最低价格
-    public double Low;
+    [DBColumn("low", "DOUBLE")] // 最低价格
+    public double Low { get; set; }
 
-    // 收盘价格
-    public double High;
+    [DBColumn("high", "DOUBLE")] // 最高价格
+    public double High { get; set; }
 
-    /*
-     * 交易量，以张为单位
-     * 如果是衍生品合约，数值为合约的张数。
-     * 如果是币币/币币杠杆，数值为交易货币的数量。
-     */
-    public double Vol;
+    [DBColumn("volume", "DOUBLE")] // 交易量（张）
+    public double Volume { get; set; }
 
-    /*
-     * 交易量，以币为单位
-     * 如果是衍生品合约，数值为交易货币的数量。
-     * 如果是币币/币币杠杆，数值为计价货币的数量。
-     */
-    public double VolCcy;
-
-    /*
-     * 交易量，以计价货币为单位
-     * 如 BTC-USDT和BTC-USDT-SWAP，单位均是USDT。
-     * BTC-USD-SWAP单位是USD。
-     */
-    public double VolCcyQuote;
-
-    // 均线值
-    public double MA5;
-    public double MA10;
-    public double MA20;
+    [DBColumn("currency", "DOUBLE")] // 交易量（USDT）
+    public double Currency { get; set; }
 
     public int CompareTo(QuoteCandleData? other)
     {
-        if (other == null) 
-        { 
-            return 0; 
+        if (other == null)
+        {
+            return 0;
         }
         return other.DateTime.CompareTo(this.DateTime);
     }
@@ -58,6 +40,6 @@ public class QuoteCandleData:IComparable<QuoteCandleData>
         {
             return 0;
         }
-        return Math.Round((other.Close - Close) / Close * 100,2);
+        return Math.Round((other.Close - Close) / Close * 100, 2);
     }
 }
