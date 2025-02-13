@@ -19,24 +19,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="LampyrisPlotRenderer.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-    <QtUic Include="LampyrisPlotRenderer.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <ClCompile Include="LampyrisPlotRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="LampyrisPlotRenderer.h">
-      <Filter>Source Files</Filter>
-    </QtMoc>
   </ItemGroup>
 </Project>
