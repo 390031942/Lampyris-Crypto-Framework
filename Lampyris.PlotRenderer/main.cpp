@@ -194,11 +194,12 @@ public:
         QPainter painter(&image);
 
         // 绘制背景
-        painter.fillRect(image.rect(), config.backgroundColor);
+
         QRect klineAreaRect = image.rect();
         klineAreaRect.setBottom(image.rect().bottom() * 0.7);
         painter.setViewport(klineAreaRect);
         painter.setWindow(0, 0, image.rect().width(), image.rect().height() * 0.7f);
+        painter.fillRect(image.rect(), config.backgroundColor);
 
         double maxPrice = 0, minPrice = 1e9;
         int maxIndex = -1, minIndex = -1;
@@ -219,8 +220,9 @@ public:
         // 预计算均线
         calculateMovingAverages(klineData);
 
-        double gridMaxPrice = ceilModulo(maxPrice, 4, config.gridRowCount);
-        double gridMinPrice = floorModulo(minPrice, 4, config.gridRowCount);
+        double gridMaxPrice = ceilModulo(maxPrice * 1.005, 4, config.gridRowCount);
+        double gridMinPrice = floorModulo(minPrice * 0.995, 4, config.gridRowCount);
+        int gridTextWidth = painter.fontMetrics().horizontalAdvance(formatDoubleWithStep(gridMaxPrice, config.minTick));
 
         // 绘制描述文本
         drawIndicatorText(painter);
@@ -229,7 +231,7 @@ public:
         drawGrid(painter, maxPrice, minPrice, gridMaxPrice, gridMinPrice);
 
         // 绘制 K 线图
-        drawKLines(painter, maxPrice, minPrice, maxIndex, minIndex, gridMaxPrice, gridMinPrice);
+        drawKLines(painter, maxPrice, minPrice, maxIndex, minIndex, gridMaxPrice, gridMinPrice, gridTextWidth);
         
         // 绘制背景
         QRect volumeAreaRect = image.rect();
@@ -239,7 +241,7 @@ public:
         painter.setWindow(0, 0, image.rect().width(), image.rect().height() * 0.3f);
 
         // 绘制成交量柱状图
-        drawVolume(painter);
+        drawVolume(painter, gridTextWidth);
         
         // 保存图片
         image.save(config.outputFile);
@@ -254,18 +256,22 @@ private:
         int cols = config.gridColunnCount;
         int width = painter.viewport().width();
 
-        int textWidth = painter.fontMetrics().horizontalAdvance(config.minTick);
+        // 刻度
+        int textWidth = painter.fontMetrics().horizontalAdvance(formatDoubleWithStep(gridMaxPrice,config.minTick));
         int textHeight = painter.fontMetrics().height();
 
-        for (int i = 1; i <= rows; ++i) {
-            int y = config.gridTopPadding + (i - 1) * painter.viewport().height() / rows;
+        // 网格高度
+        int gridHeight = (painter.viewport().height() - config.gridTopPadding) / (rows - 1);
+
+        for (int i = 0; i < rows; ++i) {
+            int y = config.gridTopPadding + i * gridHeight;
             painter.setPen(config.gridColor);
             painter.drawLine(0, y, config.width, y);
 
             painter.setPen(Qt::darkGray);
 
             double  startX = painter.viewport().width() - textWidth - 5;
-            QString str = formatDoubleWithStep(gridMinPrice + (rows - i) * (gridMaxPrice - gridMinPrice) / rows, config.minTick);
+            QString str = formatDoubleWithStep(gridMaxPrice + i * (gridMinPrice - gridMaxPrice) / (rows - 1), config.minTick);
             painter.drawText(startX, y - textHeight, textWidth, textHeight, 0, str);
         }
 
@@ -317,28 +323,23 @@ private:
         painter.restore();
     }
 
-    void drawKLines(QPainter& painter, double maxPrice, double minPrice, int maxIndex, int minIndex, double gridMaxPrice, double gridMinPrice) {
+    void drawKLines(QPainter& painter, double maxPrice, double minPrice, int maxIndex, int minIndex, double gridMaxPrice, double gridMinPrice, double gridTextWidth) {
         // K 线图区域
-        int klineHeight = painter.viewport().height();
-        int padding = 10; // 上下边距（像素）
-        
-        // 增加上下边距到价格范围
-        double priceRange = maxPrice - minPrice;
-        double paddingPrice = priceRange * 0.05; // 上下边距占价格范围的 5%
-        maxPrice += paddingPrice; // 增加上边距
-        minPrice -= paddingPrice; // 增加下边距
-        priceRange = maxPrice - minPrice; // 更新价格范围
+        int padding = config.gridTopPadding; // 上下边距（像素）
+        int klineAreaHeight = painter.viewport().height() - padding;
 
-        int candleWidth = config.width / klineData.size();
+        // 增加上下边距到价格范围
+        double priceRange = gridMaxPrice - gridMinPrice;
+        int candleWidth = (painter.viewport().width() - gridTextWidth - 5)/ klineData.size();
 
         // 绘制 K 线
         for (size_t i = 0; i < klineData.size(); ++i) {
             const auto& data = klineData[i];
             int x = i * candleWidth;
-            int yOpen = klineHeight - (data.open - minPrice) / priceRange * (klineHeight - 2 * padding) - padding;
-            int yClose = klineHeight - (data.close - minPrice) / priceRange * (klineHeight - 2 * padding) - padding;
-            int yHigh = klineHeight - (data.high - minPrice) / priceRange * (klineHeight - 2 * padding) - padding;
-            int yLow = klineHeight - (data.low - minPrice) / priceRange * (klineHeight - 2 * padding) - padding;
+            int yOpen  = padding + (1 - (data.open  - gridMinPrice) / priceRange) * (klineAreaHeight);
+            int yClose = padding + (1 - (data.close - gridMinPrice) / priceRange) * (klineAreaHeight);
+            int yHigh  = padding + (1 - (data.high  - gridMinPrice) / priceRange) * (klineAreaHeight);
+            int yLow   = padding + (1 - (data.low   - gridMinPrice) / priceRange) * (klineAreaHeight);
 
             QColor color = (data.close >= data.open) ? config.riseColor : config.fallColor;
             painter.setPen(color);
@@ -348,19 +349,19 @@ private:
         }
 
         // 绘制最高价和最低价标记
-        drawPriceMarker(painter, maxIndex, maxPrice, true, klineHeight, priceRange, minPrice, candleWidth, padding);
-        drawPriceMarker(painter, minIndex, minPrice, false, klineHeight, priceRange, minPrice, candleWidth, padding);
+        drawPriceMarker(painter, maxIndex, maxPrice, gridMinPrice, true, klineAreaHeight, priceRange, minPrice, candleWidth, padding);
+        drawPriceMarker(painter, minIndex, minPrice, gridMinPrice, false, klineAreaHeight, priceRange, minPrice, candleWidth, padding);
 
         // 绘制均线
-        drawKLineMA(painter  config.ma5Color, klineHeight, priceRange, minPrice, candleWidth);
-        drawKLineMA(painter, config.ma10Color, klineHeight, priceRange, minPrice, candleWidth);
-        drawKLineMA(painter, config.ma20Color, klineHeight, priceRange, minPrice, candleWidth);
+        // drawKLineMA(painter  offsetof(KLineData, ma5), klineHeight, priceRange, minPrice, candleWidth);
+        // drawKLineMA(painter, offsetof(KLineData, ma10), klineHeight, priceRange, minPrice, candleWidth);
+        // drawKLineMA(painter, offsetof(KLineData, ma20), klineHeight, priceRange, minPrice, candleWidth);
     }
 
-    void drawVolume(QPainter& painter) {
+    void drawVolume(QPainter& painter, double gridTextWidth) {
         // 成交量柱状图区域
         int volumeHeight = painter.viewport().height();
-        int candleWidth = painter.viewport().width() / klineData.size();
+        int candleWidth = (painter.viewport().width() - gridTextWidth - 5) / klineData.size();
 
         // 找到最大成交量，用于归一化
         double maxVolume = 0;
@@ -383,11 +384,6 @@ private:
             painter.setPen(Qt::NoPen);
             painter.drawRect(x, y, candleWidth - 2, height);
         }
-
-        // 绘制均线
-        // drawVolumeMA(painter, calculateMovingAverage(klineData, 5), config.ma5Color, volumeTop, volumeHeight, maxVolume);
-        // drawVolumeMA(painter, calculateMovingAverage(klineData, 10), config.ma10Color, volumeTop, volumeHeight, maxVolume);
-        // drawVolumeMA(painter, calculateMovingAverage(klineData, 20), config.ma20Color, volumeTop, volumeHeight, maxVolume);
     }
 
     // 计算移动平均值并填充到 KLineData 中
@@ -447,25 +443,25 @@ private:
         painter.drawPath(path);
     }
 
-    void drawPriceMarker(QPainter& painter, int index, double price, bool isMax, int klineHeight, double priceRange, double minPrice, int candleWidth, int padding) {
+    void drawPriceMarker(QPainter& painter, int index, double price, double gridMinPrice, bool isMax, int klineAreaHeight, double priceRange, double minPrice, int candleWidth, int padding) {
         if (index < 0 || index >= klineData.size()) return;
 
         // 计算标记位置
         int x = index * candleWidth + candleWidth / 2;
-        int y = klineHeight - (price - minPrice) / priceRange * (klineHeight - 2 * padding) - padding;
+        int y = padding + (1 - (price - gridMinPrice) / priceRange) * (klineAreaHeight);
 
         // 判断虚线延伸方向
         bool extendRight = (index < klineData.size() / 2); // 如果在左半部分，则向右延伸
 
         // 设置虚线样式
         QPen pen;
-        pen.setColor(isMax ? Qt::red : Qt::green); // 红色虚线表示最高价，绿色虚线表示最低价
+        pen.setColor(Qt::darkGray);
         pen.setStyle(Qt::DashLine);                // 设置为虚线
         pen.setWidth(1);
         painter.setPen(pen);
 
         // 绘制虚线
-        int lineLength = 50; // 虚线的长度
+        int lineLength = 20; // 虚线的长度
         int xEnd = extendRight ? x + lineLength : x - lineLength; // 根据方向计算虚线终点
         painter.drawLine(x, y, xEnd, y);
 
@@ -487,17 +483,17 @@ private:
         }
     }
 
-    void drawKLineMA(QPainter& painter, const QColor& color, int klineHeight, double priceRange, double minPrice, int candleWidth) {
-        if (ma.empty()) return;
-
+    void drawKLineMA(QPainter& painter, int fieldOffset, const QColor& color, int klineHeight, double priceRange, double minPrice, int candleWidth) {
         painter.setPen(QPen(color, 2)); // 设置均线颜色和线宽
 
         QPainterPath path;
-        for (size_t i = 0; i < ma.size(); ++i) {
-            if (ma[i] == 0) continue; // 跳过无效数据
+        for (size_t i = 0; i < klineData.size(); ++i) {
+            double ma = *(double*)((&klineData[i]) + fieldOffset);
+            if (ma == 0) continue; 
+                // 跳过无效数据
 
             int x = i * candleWidth + candleWidth / 2;
-            int y = klineHeight - (ma[i] - minPrice) / priceRange * klineHeight;
+            int y = klineHeight - (ma - minPrice) / priceRange * klineHeight;
 
             if (i == 0) {
                 path.moveTo(x, y); // 起点
@@ -506,10 +502,8 @@ private:
                 path.lineTo(x, y); // 连线
             }
         }
-
         painter.drawPath(path);
     }
-
 };
 
 int main(int argc, char* argv[]) {
