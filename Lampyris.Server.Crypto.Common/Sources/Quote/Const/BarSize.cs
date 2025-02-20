@@ -8,6 +8,6 @@ public enum BarSize
 {
     _1m,  _3m, _5m, _15m,
     _30m, _1H, _2H, _4H,
-    _6H, _12H, _1D, _2D,
-    _3D, _1W,  _1M, _3M,
+    _6H, _12H, _1D, _3D, 
+    _1W, _1M,
 }

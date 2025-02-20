@@ -24,8 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Sources\NetLogic\REST\" />
-    <Folder Include="Sources\NetLogic\Websocket\" />
     <Folder Include="Sources\Quote\Util\" />
   </ItemGroup>
 
