@@ -1,10 +1,14 @@
 ﻿namespace Lampyris.Server.Crypto.Binance;
 
 using Lampyris.CSharp.Common;
+using Lampyris.Server.Crypto.Common;
 
 [Component]
 public class MarketDataService
 {
+    [Autowired]
+    private ProxyProvideService m_ProxyProvideService;
+
     /// <summary>
     /// 全体USDT永续合约symbol
     /// </summary>
@@ -17,8 +21,7 @@ public class MarketDataService
 
     public void Init()
     {
-        PlannedTaskScheduler.AddTimeTask()
-    }
+        MarketDataWebSocketClient webSocketClient = new MarketDataWebSocketClient(m_ProxyProvideService.);
 
-    public Task 
+    }
 }
