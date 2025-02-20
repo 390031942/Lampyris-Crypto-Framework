@@ -361,3 +361,204 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# =============== #
+# Unity Generated #
+# =============== #
+
+# 忽略 Unity 的临时文件夹
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# 忽略自动生成的 Visual Studio/MonoDevelop 文件
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# 忽略 Unity 的元数据文件
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# 忽略 Unity 的缓存文件
+*.stackdump
+*.log
+
+# 忽略 Unity 的 Crash 日志
+sysinfo.txt
+
+# 忽略 Unity 的包缓存
+[Pp]ackages/com.unity.package-manager*
+
+# 忽略 Unity 的插件缓存
+[Pp]lugins/*/Android/libs/*.jar.meta
+[Pp]lugins/*/Android/libs/*.aar.meta
+
+# 忽略 Unity 的 Asset Store 下载缓存
+[Aa]ssets/AssetStoreTools*
+
+# 忽略 Unity 的外部工具配置文件
+.vscode/
+.idea/
+*.iml
+
+# 忽略 MacOS 系统文件
+.DS_Store
+
+# 忽略 Windows 系统文件
+Thumbs.db
+Desktop.ini
+
+# 忽略版本控制系统的冲突文件
+*.orig
+
+# 忽略用户本地设置
+UserSettings/
+
+# 忽略 Rider IDE 的文件
+.idea/
+*.sln.iml
+*.sln.ide
+*.sln.ide.meta
+
+# 忽略 JetBrains Rider 的 workspace 文件
+*.workspace.xml
+
+# 忽略 Unity Cloud Build 临时文件
+[Uu]serSettings/EditorUserSettings.asset
+
+# 忽略 Unity 的 Collaborate 文件
+.collab/
+
+# 忽略 Unity 的 DevOps 文件
+.devops/
+
+# 忽略 Unity 的 Addressable Assets 文件夹
+[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/
+
+# 忽略 Unity 的 CacheServer 文件夹
+[Cc]acheServer/
+
+# 忽略 Unity 的 StreamingAssets 文件夹中的临时文件
+[Aa]ssets/[Ss]treaming[Aa]ssets/*.tmp
+
+# 忽略 Unity 的 Build Report 文件
+[Bb]uild[Rr]eport/
+
+# 忽略 Unity 的 ShaderCache 文件夹
+[Ll]ibrary/ShaderCache/
+
+# 忽略 Unity 的 LightingData 文件夹
+[Ll]ibrary/LightingData/
+
+# 忽略 Unity 的 Asset Database 文件夹
+[Ll]ibrary/ArtifactDB/
+
+# 忽略 Unity 的 Editor Logs
+[Ll]ogs/Editor.log
+[Ll]ogs/Editor-prev.log
+
+# 忽略 Unity 的 Crash Dumps
+[Ll]ogs/Crash/
+
+# 忽略 Unity 的 Profiler 数据
+[Mm]emoryCaptures/
+
+# 忽略 Unity 的 Addressables Build Cache
+[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/[Bb]uild[Cc]ache/
+
+# 忽略 Unity 的 Build Pipeline Cache
+[Ll]ibrary/BuildPipeline/
+
+# 忽略 Unity 的 Editor Analytics 数据
+[Ll]ibrary/EditorAnalytics/
+
+# 忽略 Unity 的 Editor Snapshots
+[Ll]ibrary/EditorSnapshots/
+
+# 忽略 Unity 的 Editor Settings
+[Ll]ibrary/EditorSettings/
+
+# 忽略 Unity 的 Editor Preferences
+[Ll]ibrary/EditorPreferences/
+
+# 忽略 Unity 的 Editor Layouts
+[Ll]ibrary/EditorLayouts/
+
+# 忽略 Unity 的 Editor Logs
+[Ll]ibrary/EditorLogs/
+
+# 忽略 Unity 的 Editor Cache
+[Ll]ibrary/EditorCache/
+
+# 忽略 Unity 的 Editor Temp 文件夹
+[Ll]ibrary/EditorTemp/
+
+# 忽略 Unity 的 Editor Build Cache
+[Ll]ibrary/EditorBuildCache/
+
+# 忽略 Unity 的 Editor Build Logs
+[Ll]ibrary/EditorBuildLogs/
+
+# 忽略 Unity 的 Editor Build Reports
+[Ll]ibrary/EditorBuildReports/
+
+# 忽略 Unity 的 Editor Build Settings
+[Ll]ibrary/EditorBuildSettings/
+
+# 忽略 Unity 的 Editor Build Snapshots
+[Ll]ibrary/EditorBuildSnapshots/
+
+# 忽略 Unity 的 Editor Build Preferences
+[Ll]ibrary/EditorBuildPreferences/
+
+# 忽略 Unity 的 Editor Build Layouts
+[Ll]ibrary/EditorBuildLayouts/
+
+# 忽略 Unity 的 Editor Build Logs
+[Ll]ibrary/EditorBuildLogs/
+
+# 忽略 Unity 的 Editor Build Reports
+[Ll]ibrary/EditorBuildReports/
+
+# 忽略 Unity 的 Editor Build Settings
+[Ll]ibrary/EditorBuildSettings/
+
+# 忽略 Unity 的 Editor Build Snapshots
+[Ll]ibrary/EditorBuildSnapshots/
+
+# 忽略 Unity 的 Editor Build Preferences
+[Ll]ibrary/EditorBuildPreferences/
+
+# 忽略 Unity 的 Editor Build Layouts
+[Ll]ibrary/EditorBuildLayouts/
+
+# 忽略 Unity 的 Editor Build Logs
+[Ll]ibrary/EditorBuildLogs/
+
+# 忽略 Unity 的 Editor Build Reports
+[Ll]ibrary/EditorBuildReports/
+
+# 忽略 Unity 的 Editor Build Settings
+[Ll]ibrary/EditorBuildSettings/
+
+# 忽略 Unity 的 Editor Build Snapshots
+[Ll]ibrary/EditorBuildSnapshots/
+
+# 忽略 Unity 的 Editor Build Preferences
+[Ll]ibrary/EditorBuildPreferences/
+
+# 忽略 Unity 的 Editor Build Layouts
+[Ll]ibrary/EditorBuildLayouts/
