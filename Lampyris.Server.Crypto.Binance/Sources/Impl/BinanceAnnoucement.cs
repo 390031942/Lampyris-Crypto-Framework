@@ -1,11 +1,7 @@
-﻿using System;
-using System.IO;
-using System.IO.Compression;
-using System.Net.Http;
+﻿using System.IO.Compression;
 using System.Text;
-using System.Threading.Tasks;
 
-class Program
+class BinanceAnnoucement
 {
     static async Task Main(string[] args)
     {
