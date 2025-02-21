@@ -206,20 +206,20 @@ public class MarketMonitorService
                     {
                         PerInstActiveInfo newPercentangeInfo = m_PerInstActiveInfoMap.ContainsKey(symbol) ?
                                                                m_PerInstActiveInfoMap[symbol] : new PerInstActiveInfo();
-                        if (realTimeData.Percentage >= 1)
+                        if (realTimeData.ChangePerc >= 1)
                         {
-                            if (realTimeData.Percentage > newPercentangeInfo.HighPerc)
+                            if (realTimeData.ChangePerc > newPercentangeInfo.HighPerc)
                             {
                                 perInstActiveInfo.HighLowTimestamp = now;
-                                LogManager.Instance.LogInfo($"[异动提示]:{symbol} 24小时内新高，达到{realTimeData.Percentage}%");
+                                LogManager.Instance.LogInfo($"[异动提示]:{symbol} 24小时内新高，达到{realTimeData.ChangePerc}%");
                             }
                         }
-                        else if (realTimeData.Percentage <= -1)
+                        else if (realTimeData.ChangePerc <= -1)
                         {
-                            if (realTimeData.Percentage < newPercentangeInfo.LowPerc)
+                            if (realTimeData.ChangePerc < newPercentangeInfo.LowPerc)
                             {
                                 perInstActiveInfo.HighLowTimestamp = now;
-                                LogManager.Instance.LogInfo($"[异动提示]:{symbol} 24小时内新低，达到{realTimeData.Percentage}%");
+                                LogManager.Instance.LogInfo($"[异动提示]:{symbol} 24小时内新低，达到{realTimeData.ChangePerc}%");
                             }
                         }
                     }
@@ -242,12 +242,12 @@ public class MarketMonitorService
                     if (perc > percThreshold)
                     {
                         perInstActiveInfo.HighLowTimestamp = now;
-                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 涨速达到{percThreshold}%，{realTimeData.Percentage}%");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 涨速达到{percThreshold}%，{realTimeData.ChangePerc}%");
                     }
                     else if(perc < -percThreshold)
                     {
                         perInstActiveInfo.HighLowTimestamp = now;
-                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 跌速达到{percThreshold}%，{realTimeData.Percentage}%");
+                        LogManager.Instance.LogInfo($"[异动提示]:{symbol} 跌速达到{percThreshold}%，{realTimeData.ChangePerc}%");
                     }
                 }
             }

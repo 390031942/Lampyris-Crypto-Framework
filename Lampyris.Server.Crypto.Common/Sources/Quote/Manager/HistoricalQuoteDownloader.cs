@@ -28,7 +28,7 @@ public class HistoricalQuoteDownloader
         List<string> symbolList = new List<string>();
         foreach (QuoteTickerData data in dataList)
         {
-            symbolList.Add(data.symbol);
+            symbolList.Add(data.Symbol);
         }
         foreach(BarSize barSize in barSizes)
         {
@@ -42,7 +42,7 @@ public class HistoricalQuoteDownloader
         List<string> symbolList = new List<string>();
         foreach (QuoteTickerData data in dataList)
         {
-            symbolList.Add(data.symbol);
+            symbolList.Add(data.Symbol);
         }
         foreach (BarSize barSize in barSizes)
         {

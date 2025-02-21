@@ -2,54 +2,45 @@
 
 public class QuoteTickerData
 {
-    // 产品ID，如LTC-USD-SWAP
-    public string symbol = "";
+    // 合约ID
+    public string Symbol = "";
     
     // 最新成交价
-    public double Last;
+    public double Price;
     
     // 最新成交的数量，0 代表没有成交量
-    public double LastSz;
-    
-    // 卖一价
-    public double AskPx;
-    
-    // 卖一价的挂单数数量
-    public double AskSz;
-    
-    // 买一价
-    public double BidPx;
-    
-    // 买一价的挂单数量
-    public double BidSz;
-    
-    // 24小时开盘价
-    public double Open24h;
-    
+    public double LastSize;
+
     // 24小时最高价
-    public double High24h;
+    public double High;
     
     // 24小时最低价
-    public double Low24h;
+    public double Low;
     
     // 24小时成交量，以币为单位
-    public double VolCcy24h;
+    public double Volumn;
     
     // 24小时成交量，以张为单位
-    public double Vol24h;
-    
-    // UTC 0 时开盘价
-    public double SodUtc0;
-    
-    // UTC+8 时开盘价
-    public double SodUtc8;
+    public double Currency;
     
     // ticker数据产生时间，Unix时间戳的毫秒数格式，如 1597026383085
-    public long Ts;
+    public long   Timestamp;
 
     // 涨幅
-    public double Percentage => Math.Round(((Last - SodUtc8) / SodUtc8) * 100, 2);
+    public double ChangePerc;
+
+    // 涨跌额
+    public double Change;
 
     // 均价
-    public double Avg => VolCcy24h / Vol24h;
+    public double Avg => Volumn / Currency;
+
+    // 标记价格
+    public double MarkPrice;
+
+    // 资金费率
+    public double FundingRate;
+
+    // 下一次资金时间戳
+    public long   NextFundingTime;
 }

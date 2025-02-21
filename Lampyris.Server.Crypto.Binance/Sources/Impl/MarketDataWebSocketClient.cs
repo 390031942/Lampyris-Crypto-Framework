@@ -285,7 +285,7 @@ public class MarketDataWebSocketClient
             Logger.LogWarning("The market ticker data has already been subscribed.");
             return;
         }
-        await SubscribeAsync("!ticker@arr");
+        await SubscribeAsync(MarketDataWebSocketStream.MARKET_TICKER);
         m_MarketTickerSubscribed = true;
     }
 

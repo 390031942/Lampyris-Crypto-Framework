@@ -2,6 +2,7 @@
 
 using Lampyris.CSharp.Common;
 using Newtonsoft.Json;
+using System;
 using System.Net.Sockets;
 
 public class ProxyInfoJsonObject
@@ -70,5 +71,10 @@ public class ProxyProvideService:ILifecycle
 
         Logger.LogInfo($"Reachable test result \"{proxyInfo.Address}:{proxyInfo.Port}\": {(result ? "Reachable": "UnReachable")}");
         return result;
+    }
+
+    public ProxyInfo AllocateProxy()
+    {
+        throw new NotImplementedException();
     }
 }
