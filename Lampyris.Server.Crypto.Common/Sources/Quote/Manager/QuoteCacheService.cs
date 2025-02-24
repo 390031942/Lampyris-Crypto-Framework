@@ -12,17 +12,22 @@ public class QuoteCacheService:ILifecycle
 
     public override void OnStart()
     {
-        m_dbService.CreateTable<>
     }
 
     public List<QuoteCandleData> Query(string symbol, BarSize barSize, DateTime startTime, DateTime endTime)
-    {
+    { 
         return new List<QuoteCandleData>();
     }
 
     public void Storage(string symbol, BarSize barSize, List<QuoteCandleData> dataList)
     {
-       
+        string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";
+        DBTable<QuoteCandleData> dbTable = m_dbService.GetTable<QuoteCandleData>(tableName);
+        if(dbTable == null)
+        {
+            dbTable = m_dbService.CreateTable<QuoteCandleData>(tableName);
+        }
+        dbTable.Insert(dataList);
     }
 
     public QuoteCandleData QueryLastest(string symbol, BarSize okxBarSize)

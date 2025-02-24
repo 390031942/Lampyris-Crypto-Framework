@@ -4,13 +4,20 @@ using Lampyris.CSharp.Common;
 using MySql.Data.MySqlClient;
 using System.Reflection;
 
-[IniFile(FileName = "db_connection.ini")]
+[IniFile("db_connection.ini")]
 public class DBConnectionConfig
 {
-    public string serverIP;
-    public string databaseName;
-    public string user;
-    public string password;
+    [IniField]
+    public string ServerIP;
+
+    [IniField]
+    public string DatabaseName;
+
+    [IniField]
+    public string User;
+
+    [IniField]
+    public string Password;
 }
 
 [Component]
@@ -20,7 +27,7 @@ public class DBService:ILifecycle
 
     public override void OnStart()
     {
-        DBConnectionConfig dbConfig = IniConfigManager.GetConfig<DBConnectionConfig>();
+        DBConnectionConfig dbConfig = IniConfigManager.Load<DBConnectionConfig>();
         if(dbConfig == null) 
         {
             Logger.LogError("Failed to connect database: db_connection.ini cannot be found");
@@ -28,7 +35,7 @@ public class DBService:ILifecycle
             return;
         }
 
-        string mySqlConnectStr = $"Server={dbConfig.serverIP};" + 
+        string mySqlConnectStr = $"Server={dbConfig.ServerIP};" + 
                                   "Database={dbConfig.databaseName};" +
                                   "User={dbConfig.user};" + 
                                   "Password={dbConfig.databaseName};";
@@ -45,7 +52,7 @@ public class DBService:ILifecycle
         }
     }
 
-    public void CreateTable<T>(params object[] tableNameArgs)
+    public DBTable<T> CreateTable<T>(params object[] tableNameArgs) where T : class, new()
     {
         var tableAttribute = typeof(T).GetCustomAttribute<DBTableAttribute>();
         if (tableAttribute == null)
@@ -81,9 +88,13 @@ public class DBService:ILifecycle
             command.ExecuteNonQuery();
         }
         Console.WriteLine($"Table '{tableName}' created successfully.");
+
+
+        // 返回 DBTable<T> 实例
+        return new DBTable<T>(tableName, m_Connection);
     }
 
-    public DBTable<T> GetTable<T>(params object[] tableNameArgs) where T : new()
+    public DBTable<T> GetTable<T>(params object[] tableNameArgs) where T : class, new()
     {
         // 获取表名
         var tableAttribute = typeof(T).GetCustomAttribute<DBTableAttribute>();

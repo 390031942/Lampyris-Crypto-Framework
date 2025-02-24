@@ -13,6 +13,11 @@ public class MarketDataService
 
     private Dictionary<string, QuoteTickerData> m_QuoteTickerDataMap = new();
 
+    // 存储所有交易对的涨跌幅百分比
+    private List<double> m_AllPercCacheList = new List<double>();
+
+    private MarketSummaryData m_MarketSummaryData = new MarketSummaryData();
+
     private QuoteTickerData GetOrCreateTickerData(string symbol)
     {
         if (m_QuoteTickerDataMap.ContainsKey(symbol))
@@ -166,8 +171,10 @@ public class MarketDataService
         try
         {
             JArray array = json.ToObject<JArray>();
-            if(array != null)
+            if (array != null)
             {
+                m_AllPercCacheList.Clear();
+
                 for (int i = 0; i < array.Count; i++)
                 {
                     JObject jObject = array.ElementAt(i).ToObject<JObject>();
@@ -175,13 +182,47 @@ public class MarketDataService
                     string symbol = jObject["s"].ToString(); // 交易对符号，例如 "BTCUSDT"
                     var data = GetOrCreateTickerData(symbol);
 
-                    data.Change     = jObject["p"].ToObject<double>(); // 价格变动值
+                    data.Change = jObject["p"].ToObject<double>(); // 价格变动值
                     data.ChangePerc = jObject["P"].ToObject<double>(); // 价格变动百分比
-                    data.High       = jObject["h"].ToObject<double>(); // 24 小时内最高价
-                    data.Low        = jObject["l"].ToObject<double>(); // 24 小时内最高价
-                    data.Price      = jObject["c"].ToObject<double>(); // 现价
-                    data.Volumn     = jObject["v"].ToObject<double>(); // 24 小时内成交量
-                    data.Currency   = jObject["q"].ToObject<double>(); // 24 小时内成交额
+                    data.High = jObject["h"].ToObject<double>(); // 24 小时内最高价
+                    data.Low = jObject["l"].ToObject<double>(); // 24 小时内最低价
+                    data.Price = jObject["c"].ToObject<double>(); // 现价
+                    data.Volumn = jObject["v"].ToObject<double>(); // 24 小时内成交量
+                    data.Currency = jObject["q"].ToObject<double>(); // 24 小时内成交额
+
+                    // 根据涨跌幅百分比统计涨、跌、平数量
+                    if (data.ChangePerc > 0)
+                    {
+                        m_MarketSummaryData.RiseCount++;
+                    }
+                    else if (data.ChangePerc < 0)
+                    {
+                        m_MarketSummaryData.FallCount++;
+                    }
+                    else
+                    {
+                        m_MarketSummaryData.UnchangedCount++;
+                    }
+
+                    // 收集涨跌幅百分比
+                    m_AllPercCacheList.Add(data.ChangePerc);
+                }
+
+                // 计算平均涨跌幅
+                if (m_AllPercCacheList.Count > 0)
+                {
+                    m_MarketSummaryData.AvgChangePerc = NumericalUtlity.RoundPercentage(m_AllPercCacheList.Average());
+
+                    // 对涨跌幅进行排序
+                    var sortedChangePercList = m_AllPercCacheList.OrderByDescending(x => x).ToList();
+
+                    // 计算前10名平均涨跌幅（不足10个则计算最大数量）
+                    int topCount = Math.Min(10, sortedChangePercList.Count);
+                    m_MarketSummaryData.Top10AvgChangePerc = NumericalUtlity.RoundPercentage(sortedChangePercList.Take(topCount).Average());
+
+                    // 计算后10名平均涨跌幅（不足10个则计算最大数量）
+                    int lastCount = Math.Min(10, sortedChangePercList.Count);
+                    m_MarketSummaryData.Last10AvgChangePerc = NumericalUtlity.RoundPercentage(sortedChangePercList.Skip(sortedChangePercList.Count - lastCount).Average());
                 }
             }
         }

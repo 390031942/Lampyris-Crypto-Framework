@@ -13,11 +13,12 @@ public class DBColumnProperty
     public DBColumnAttribute Attribute;
 };
 
-public class DBTable<T>
+public class DBTable<T> where T:class, new()
 {
     private readonly MySqlConnection               m_Connection;
     private readonly string                        m_TableName;
     private readonly string                        m_dbInsertString;
+    private readonly string                        m_dbQueryString;
     private static readonly List<DBColumnProperty> ms_ColumnList = new List<DBColumnProperty>();
 
     static DBTable()
@@ -42,12 +43,14 @@ public class DBTable<T>
         m_TableName  = tableName;
         m_Connection = connection;
 
+        string fieldString = string.Join(", ", ms_ColumnList.Select(c => c.ColumnName));
         StringBuilder sb = new StringBuilder();
         sb.Append($"INSERT INTO {m_TableName} (");
-        sb.Append(string.Join(", ", ms_ColumnList.Select(c => c.ColumnName)));
+        sb.Append(fieldString);
         sb.Append(") VALUES {0};");
 
         m_dbInsertString = sb.ToString();
+        m_dbQueryString =  $"SELECT {fieldString} FROM {m_TableName}";
     }
 
     public void Insert(T entity)
@@ -119,4 +122,58 @@ public class DBTable<T>
 
         Console.WriteLine($"Batch data inserted into table '{m_TableName}' successfully.");
     }
+
+    public List<T> Query(string queryCondition, string orderBy, bool ascending)
+    {
+        List<T> result = new List<T>();
+
+        // 构建查询 SQL
+        StringBuilder sb = new StringBuilder();
+        sb.Append(m_dbQueryString);
+
+        // 添加查询条件
+        if (!string.IsNullOrEmpty(queryCondition))
+        {
+            sb.Append($" WHERE {queryCondition}");
+        }
+
+        // 添加排序条件
+        if (!string.IsNullOrEmpty(orderBy))
+        {
+            sb.Append($" ORDER BY {orderBy} {(ascending ? "ASC" : "DESC")}");
+        }
+
+        string querySql = sb.ToString();
+
+        // 执行查询
+        using (var command = new MySqlCommand(querySql, m_Connection))
+        {
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // 创建实体对象
+                    T entity = new T();
+
+                    // 遍历列并赋值到实体对象
+                    foreach (var column in ms_ColumnList)
+                    {
+                        var columnName = column.ColumnName;
+                        var property = column.PropertyInfo;
+
+                        if (!reader.IsDBNull(reader.GetOrdinal(columnName)))
+                        {
+                            var value = reader[columnName];
+                            property.SetValue(entity, Convert.ChangeType(value, property.PropertyType));
+                        }
+                    }
+
+                    result.Add(entity);
+                }
+            }
+        }
+
+        return result;
+    }
+
 }

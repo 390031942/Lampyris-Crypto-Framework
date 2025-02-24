@@ -7,144 +7,163 @@ using System.Reflection;
 
 public static class IniConfigManager
 {
-    private static Dictionary<Type, object> ms_Type2ConfigObjectMap = new();
-
-    // 获取配置对象
-    public static T GetConfig<T>() where T : new()
+    /// <summary>
+    /// 从 INI 文件加载配置到对象
+    /// </summary>
+    /// <typeparam name="T">目标对象的类型</typeparam>
+    /// <returns>加载后的对象</returns>
+    public static T Load<T>() where T : new()
     {
+        // 获取类上的 IniFileAttribute
         var type = typeof(T);
-
-        if (ms_Type2ConfigObjectMap.ContainsKey(type))
-        {
-            return (T)ms_Type2ConfigObjectMap[type];
-        }
-
-        // 获取类型上的 [IniFile] 属性
         var iniFileAttribute = type.GetCustomAttribute<IniFileAttribute>();
         if (iniFileAttribute == null)
         {
-            Logger.LogWarning($"Class {type.Name} doesn't have an [IniFile] attribute.");
-            return default(T);
+            throw new InvalidOperationException($"Class {type.Name} does not have IniFileAttribute.");
         }
 
         string fileName = iniFileAttribute.FileName;
-        if (string.IsNullOrWhiteSpace(fileName))
-        {
-            Logger.LogWarning($"[IniFile] attribute must specify a valid file name.");
-            return default(T);
-        }
-
-        // 如果文件不存在，创建默认文件
         if (!File.Exists(fileName))
         {
-            SaveConfig(new T());
+            throw new FileNotFoundException($"INI file '{fileName}' not found.");
         }
 
-        // 加载 INI 文件
-        var config = new T();
+        // 读取 INI 文件内容
         var iniData = File.ReadAllLines(fileName);
-        var currentSection = string.Empty;
-        var sectionData = new Dictionary<string, Dictionary<string, string>>();
 
-        foreach (var line in iniData)
-        {
-            var trimmedLine = line.Trim();
-            if (string.IsNullOrEmpty(trimmedLine) || trimmedLine.StartsWith(";") || trimmedLine.StartsWith("#") || trimmedLine.StartsWith("//"))
-            {
-                continue; // 忽略空行和注释
-            }
+        // 创建目标对象
+        var instance = new T();
 
-            if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
-            {
-                currentSection = trimmedLine.Trim('[', ']');
-                if (!sectionData.ContainsKey(currentSection))
-                {
-                    sectionData[currentSection] = new Dictionary<string, string>();
-                }
-            }
-            else if (!string.IsNullOrEmpty(currentSection))
-            {
-                var keyValue = trimmedLine.Split(new[] { '=' }, 2);
-                if (keyValue.Length == 2)
-                {
-                    var key = keyValue[0].Trim();
-                    var value = keyValue[1].Trim();
-                    sectionData[currentSection][key] = value;
-                }
-            }
-        }
-
-        // 映射到对象
+        // 遍历类的字段和属性
         foreach (var member in type.GetMembers(BindingFlags.Public | BindingFlags.Instance))
         {
-            var sectionAttribute = member.GetCustomAttribute<SectionAttribute>();
-            if (sectionAttribute == null) continue;
+            var iniFieldAttribute = member.GetCustomAttribute<IniFieldAttribute>();
+            if (iniFieldAttribute == null) continue;
 
-            var sectionName = sectionAttribute.Name;
-            if (sectionData.TryGetValue(type.Name, out var section) && section.TryGetValue(sectionName, out var value))
+            string section = iniFieldAttribute.Section;
+            string name = iniFieldAttribute.Name;
+
+            // 查找 INI 文件中的对应值
+            string value = GetIniValue(iniData, section, name);
+            if (value == null) continue;
+
+            // 设置值到对象的字段或属性
+            if (member is PropertyInfo property && property.CanWrite)
             {
-                if (member is FieldInfo field)
-                {
-                    field.SetValue(config, Convert.ChangeType(value, field.FieldType));
-                }
-                else if (member is PropertyInfo property && property.CanWrite)
-                {
-                    property.SetValue(config, Convert.ChangeType(value, property.PropertyType));
-                }
+                property.SetValue(instance, Convert.ChangeType(value, property.PropertyType));
+            }
+            else if (member is FieldInfo field)
+            {
+                field.SetValue(instance, Convert.ChangeType(value, field.FieldType));
             }
         }
 
-        ms_Type2ConfigObjectMap[type] = config;
-        return config;
+        return instance;
     }
 
-    // 保存配置对象到 INI 文件
-    public static void SaveConfig<T>(T config) where T : new()
+    /// <summary>
+    /// 保存对象到 INI 文件
+    /// </summary>
+    /// <typeparam name="T">目标对象的类型</typeparam>
+    /// <param name="obj">要保存的对象</param>
+    public static void Save<T>(T obj)
     {
+        // 获取类上的 IniFileAttribute
         var type = typeof(T);
         var iniFileAttribute = type.GetCustomAttribute<IniFileAttribute>();
         if (iniFileAttribute == null)
         {
-            throw new InvalidOperationException($"Class {type.Name} must have an [IniFile] attribute.");
+            throw new InvalidOperationException($"Class {type.Name} does not have IniFileAttribute.");
         }
 
         string fileName = iniFileAttribute.FileName;
-        if (string.IsNullOrWhiteSpace(fileName))
-        {
-            throw new InvalidOperationException($"[IniFile] attribute must specify a valid file name.");
-        }
 
-        var iniData = new Dictionary<string, Dictionary<string, string>>();
+        // 用于存储 INI 文件内容
+        var iniData = new Dictionary<string, List<(string Key, string Value, string Desc)>>();
 
+        // 遍历类的字段和属性
         foreach (var member in type.GetMembers(BindingFlags.Public | BindingFlags.Instance))
         {
-            var sectionAttribute = member.GetCustomAttribute<SectionAttribute>();
-            if (sectionAttribute == null) continue;
+            var iniFieldAttribute = member.GetCustomAttribute<IniFieldAttribute>();
+            if (iniFieldAttribute == null) continue;
 
-            var sectionName = sectionAttribute.Name;
-            var value = member is FieldInfo field
-                ? field.GetValue(config)?.ToString()
-                : member is PropertyInfo property ? property.GetValue(config)?.ToString() : null;
+            string section = iniFieldAttribute.Section;
+            string name = iniFieldAttribute.Name;
+            string desc = iniFieldAttribute.Desc; // 获取描述信息
+            string value = null;
 
-            if (!iniData.ContainsKey(type.Name))
+            // 获取字段或属性的值
+            if (member is PropertyInfo property && property.CanRead)
             {
-                iniData[type.Name] = new Dictionary<string, string>();
+                value = property.GetValue(obj)?.ToString();
+            }
+            else if (member is FieldInfo field)
+            {
+                value = field.GetValue(obj)?.ToString();
             }
 
-            iniData[type.Name][sectionName] = value ?? string.Empty;
+            if (value == null) continue;
+
+            // 添加到 INI 数据结构
+            if (!iniData.ContainsKey(section))
+            {
+                iniData[section] = new List<(string Key, string Value, string Desc)>();
+            }
+            iniData[section].Add((name, value, desc));
         }
 
+        // 写入 INI 文件
         using (var writer = new StreamWriter(fileName))
         {
             foreach (var section in iniData)
             {
-                writer.WriteLine($"[{section.Key}]");
-                foreach (var kvp in section.Value)
+                writer.WriteLine($"[{section.Key}]"); // 写入节名
+                foreach (var (key, value, desc) in section.Value)
                 {
-                    writer.WriteLine($"{kvp.Key}={kvp.Value}");
+                    if (!string.IsNullOrEmpty(desc))
+                    {
+                        writer.WriteLine($"; {desc}"); // 写入注释
+                    }
+                    writer.WriteLine($"{key}={value}"); // 写入键值对
                 }
-                writer.WriteLine();
+                writer.WriteLine(); // 空行分隔
             }
         }
+    }
+
+    /// <summary>
+    /// 从 INI 数据中获取值
+    /// </summary>
+    private static string GetIniValue(string[] iniData, string section, string key)
+    {
+        bool inSection = false;
+
+        foreach (var line in iniData)
+        {
+            var trimmedLine = line.Trim();
+
+            // 跳过空行和注释
+            if (string.IsNullOrEmpty(trimmedLine) || trimmedLine.StartsWith(";"))
+                continue;
+
+            // 检查是否是一个新的 section
+            if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
+            {
+                inSection = trimmedLine.Trim('[', ']') == section;
+                continue;
+            }
+
+            // 如果在目标 section 中，查找 key
+            if (inSection && trimmedLine.Contains("="))
+            {
+                var parts = trimmedLine.Split(new[] { '=' }, 2);
+                if (parts[0].Trim() == key)
+                {
+                    return parts[1].Trim();
+                }
+            }
+        }
+
+        return null;
     }
 }

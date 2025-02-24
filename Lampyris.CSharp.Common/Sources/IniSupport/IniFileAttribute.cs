@@ -6,4 +6,9 @@ using System;
 public class IniFileAttribute : Attribute
 {
     public string FileName { get; set; }
+
+    public IniFileAttribute(string fileName)
+    {
+        FileName = fileName;
+    }
 }

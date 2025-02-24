@@ -2,7 +2,7 @@
 
 public static class DateTimeUtil
 {
-    public static double GetOkxBarTimeSpanDiff(DateTime lhs, DateTime rhs, BarSize BarSize)
+    public static double GetBarTimeSpanDiff(DateTime lhs, DateTime rhs, BarSize BarSize)
     {
         TimeSpan timeSpan = rhs - lhs;
 
