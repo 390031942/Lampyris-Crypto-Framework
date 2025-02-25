@@ -8,7 +8,7 @@ public interface ICacheService
     T? Get<T>(string key);
 
     // 检查键是否存在
-    bool Exists(string key);
+    bool ContainsKey(string key);
 
     // 删除缓存
     void Remove(string key);

@@ -13,7 +13,7 @@ public static class CacheServiceFactory
 {
     private static readonly ConcurrentDictionary<CacheServiceType, ICacheService> m_CacheServices = new();
 
-    public static ICacheService CreateCacheService(CacheServiceType cacheServiceType)
+    public static ICacheService Get(CacheServiceType cacheServiceType)
     {
         // 如果实例已存在，则直接返回；否则创建新实例并存储
         return m_CacheServices.GetOrAdd(cacheServiceType, type =>

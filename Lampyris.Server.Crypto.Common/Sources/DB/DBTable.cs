@@ -13,6 +13,27 @@ public class DBColumnProperty
     public DBColumnAttribute Attribute;
 };
 
+public class SQLParamMaker
+{
+    private List<KeyValuePair<string, object>> m_ResultList = new List<KeyValuePair<string, object>>();
+
+    public static SQLParamMaker Begin()
+    {
+        return new SQLParamMaker();
+    }
+
+    public SQLParamMaker Append(string key, object value)
+    {
+        m_ResultList.Add(new KeyValuePair<string, object>(key, value));
+        return this;
+    }
+
+    public KeyValuePair<string, object>[] End()
+    {
+        return m_ResultList.ToArray();
+    }
+}
+
 public class DBTable<T> where T:class, new()
 {
     private readonly MySqlConnection               m_Connection;
@@ -123,7 +144,7 @@ public class DBTable<T> where T:class, new()
         Console.WriteLine($"Batch data inserted into table '{m_TableName}' successfully.");
     }
 
-    public List<T> Query(string queryCondition, string orderBy, bool ascending)
+    public List<T> Query(string queryCondition, KeyValuePair<string,object>[]? parameters = null, string orderBy = "", bool ascending = true)
     {
         List<T> result = new List<T>();
 
@@ -148,6 +169,13 @@ public class DBTable<T> where T:class, new()
         // 执行查询
         using (var command = new MySqlCommand(querySql, m_Connection))
         {
+            if (parameters != null)
+            {
+                foreach (var pair in parameters)
+                {
+                    command.Parameters.AddWithValue(pair.Key, pair.Value);
+                }
+            }
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())

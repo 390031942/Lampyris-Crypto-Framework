@@ -47,7 +47,7 @@ public class RedisCacheService : ICacheService
     }
 
     // 检查键是否存在
-    public bool Exists(string key)
+    public bool ContainsKey(string key)
     {
         return m_DB.KeyExists(key);
     }
