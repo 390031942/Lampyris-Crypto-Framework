@@ -23,13 +23,20 @@ class Program
         var intervals = new[] { "1m", "15m", "1d" };
 
         // 起始日期
-        var startDate = new DateTime(2020, 1, 1);
         var endDate = DateTime.UtcNow;
 
         // 多线程下载
         var tasks = new List<Task>();
         foreach (var symbol in symbols)
         {
+            var startDate = new DateTime(2020, 1, 1);
+            var onBoardDate = DateTimeOffset.FromUnixTimeMilliseconds(symbol.OnboardDate).UtcDateTime;
+            onBoardDate = new DateTime(onBoardDate.Year, onBoardDate.Month, onBoardDate.Day);
+
+            if ((onBoardDate - startDate).TotalDays > 0)
+            {
+                startDate = onBoardDate;
+            }
             foreach (var interval in intervals)
             {
                 tasks.Add(Task.Run(async () =>

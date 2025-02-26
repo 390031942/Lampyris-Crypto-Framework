@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 public class DatabaseService
 {
-    private const string ConnectionString = "Server=localhost;Database=BinanceData;Uid=root;Pwd=yourpassword;";
+    private const string ConnectionString = "Server=localhost;Port=3306;Database=lampyris.server.crypto.binance;Uid=root;Pwd=lampyris-dev;SslMode=Required;";
 
     public DatabaseService()
     {

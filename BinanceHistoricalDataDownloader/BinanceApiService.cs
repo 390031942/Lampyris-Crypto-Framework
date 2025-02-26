@@ -33,7 +33,7 @@ public class BinanceApiService
                 symbols.Add(new SymbolInfo
                 {
                     Symbol = symbol.Symbol,
-                    OnboardDate = DateTimeOffset.FromUnixTimeMilliseconds(symbol.OnboardDate).UtcDateTime
+                    OnboardDate = symbol.OnboardDate
                 });
             }
         }
