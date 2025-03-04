@@ -14,6 +14,17 @@ public class DownloadService
         _httpClient = new HttpClient();
     }
 
+    public static int GetExpectedDataCount(string interval)
+    {
+        if (interval == "1m")
+            return 1440;
+        else if (interval == "15m")
+            return 1440 / 15;
+        else if (interval == "1d")
+            return 1;
+        return 0;
+    }
+
     public async Task<List<List<object>>> DownloadKlineDataAsync(string symbol, string interval, string date)
     {
         string baseUrl = "https://data.binance.vision/data/futures/um/daily/klines";
@@ -43,19 +54,23 @@ public class DownloadService
 
             foreach (var line in File.ReadAllLines(csvFile))
             {
-                var values = line.Split(',');
-                var row = new List<object>
+                try
                 {
-                    long.Parse(values[0]), // OpenTime
-                    double.Parse(values[1]), // Open
-                    double.Parse(values[2]), // High
-                    double.Parse(values[3]), // Low
-                    double.Parse(values[4]), // Close
-                    double.Parse(values[5]), // Volume
-                    long.Parse(values[6]), // CloseTime
-                    double.Parse(values[7]) // QuoteAssetVolume
-                };
-                data.Add(row);
+                    var values = line.Split(',');
+                    var row = new List<object>
+                    {
+                        long.Parse(values[0]), // OpenTime
+                        double.Parse(values[1]), // Open
+                        double.Parse(values[2]), // High
+                        double.Parse(values[3]), // Low
+                        double.Parse(values[4]), // Close
+                        double.Parse(values[5]), // Volume
+                        long.Parse(values[6]), // CloseTime
+                        double.Parse(values[7]) // QuoteAssetVolume
+                    };
+                    data.Add(row);
+                }
+                catch { }
             }
 
             return data;
