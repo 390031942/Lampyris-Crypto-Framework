@@ -251,7 +251,7 @@ class Program
                         string key = $"{symbol}_{interval}";
                         DateTime currentDate = progress.ContainsKey(key) ? progress[key].AddDays(1) : startDate;
 
-                        while (currentDate < endDate)
+                        while (currentDate <= endDate)
                         {
                             try
                             {
