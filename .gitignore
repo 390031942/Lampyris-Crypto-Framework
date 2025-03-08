@@ -376,9 +376,7 @@ FodyWeavers.xsd
 [Mm]emoryCaptures/
 
 # 忽略自动生成的 Visual Studio/MonoDevelop 文件
-*.csproj
 *.unityproj
-*.sln
 *.suo
 *.tmp
 *.user
