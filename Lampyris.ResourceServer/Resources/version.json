@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "files": [
+        {
+            "name": "plugin.dll",
+            "version": "1.0.0"
+        },
+        {
+            "name": "ui_config.json",
+            "version": "1.0.0"
+        }
+    ]
+}
