@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinanceHistoricalDataDownlo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lampyris.ResourceServer", "Lampyris.ResourceServer\Lampyris.ResourceServer.csproj", "{832AD1E0-2289-4EA9-859B-65F8FBEEA149}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lampyris.Client.Launcher", "Lampyris.Client.Launcher\Lampyris.Client.Launcher.vcxproj", "{710886BF-5D5E-303E-B912-0846E4E22857}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,8 +88,19 @@ Global
 		{832AD1E0-2289-4EA9-859B-65F8FBEEA149}.Release|Any CPU.Build.0 = Release|Any CPU
 		{832AD1E0-2289-4EA9-859B-65F8FBEEA149}.Release|x64.ActiveCfg = Release|Any CPU
 		{832AD1E0-2289-4EA9-859B-65F8FBEEA149}.Release|x64.Build.0 = Release|Any CPU
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Debug|Any CPU.Build.0 = Debug|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Debug|x64.ActiveCfg = Debug|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Debug|x64.Build.0 = Debug|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Release|Any CPU.ActiveCfg = Release|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Release|Any CPU.Build.0 = Release|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Release|x64.ActiveCfg = Release|x64
+		{710886BF-5D5E-303E-B912-0846E4E22857}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19F86DBE-4FE9-49E0-B1BB-9D9DD78CA186}
 	EndGlobalSection
 EndGlobal

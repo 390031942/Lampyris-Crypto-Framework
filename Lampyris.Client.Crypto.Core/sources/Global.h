@@ -1,0 +1,8 @@
+#include <QtCore/qglobal.h>
+#include <interface/IPlugin.h>
+
+#if defined(LAMPYRIS_CLIENT_CRYPTO_CORE_LIBRARY)
+#define LAMPYRISCLIENTCRYPTOCORE_EXPORT Q_DECL_EXPORT
+#else
+#define LAMPYRISCLIENTCRYPTOCORE_EXPORT Q_DECL_IMPORT
+#endif
