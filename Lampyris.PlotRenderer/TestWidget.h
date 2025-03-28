@@ -7,6 +7,7 @@
 #include <QSplitter>
 #include "CandleChartWidget.h"
 #include "VolumeChartWidget.h"
+#include <array>
 
 class TestWidget : public QWidget {
 	Q_OBJECT
@@ -50,7 +51,15 @@ private:
 
     void handleMouseMove(QPoint mousePos);
 
-    void handleKeyArrowLeftOrRight();
+    void handleKeyArrowLeftOrRight(int key);
 
-    void handleKeyArrowUpOrDown();
+    void handleKeyArrowUpOrDown(int key);
+
+    void recalculateContextParam();
+
+    const std::array<float,13> widthArray = { 0.0625, 0.125, 0.25, 0.5, 0.7, 1, 2, 3, 4, 6, 12, 18, 24 };
+
+    int m_widthArrayIndex = 6;
+
+    const int MAX_LIMIT = 1500;
 };
