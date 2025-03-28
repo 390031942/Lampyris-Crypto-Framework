@@ -37,7 +37,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>_Qt-static</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;network</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -66,6 +66,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalOptions>/execution-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -102,7 +103,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BetterSplitter.cpp" />
+    <ClCompile Include="BinanceAPI.cpp" />
+    <ClCompile Include="CandleChartWidget.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathUtil.cpp" />
+    <ClCompile Include="PlotRenderer.cpp" />
+    <ClCompile Include="QuoteCandleData.cpp" />
+    <ClCompile Include="RenderConfig.cpp" />
+    <ClCompile Include="TestWidget.cpp" />
+    <ClCompile Include="VolumeChartWidget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RenderContext.h" />
+    <QtMoc Include="VolumeChartWidget.h" />
+    <QtMoc Include="CandleChartWidget.h" />
+    <QtMoc Include="BetterSplitter.h" />
+    <QtMoc Include="BinanceAPI.h" />
+    <ClInclude Include="MathUtil.h" />
+    <ClInclude Include="PlotRenderer.h" />
+    <ClInclude Include="QuoteCandleData.h" />
+    <ClInclude Include="RenderConfig.h" />
+    <QtMoc Include="TestWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
