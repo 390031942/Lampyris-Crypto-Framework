@@ -30,11 +30,9 @@ public:
                                     
     void                            drawIndicatorText(QPainter& painter);
                                     
-    void                            drawCandleChart(QPainter& painter,
-                                                    CandleRenderContext context);
+    void                            drawCandleChart(QPainter& painter);
                                     
-    void                            drawVolume(QPainter& painter, 
-                                               double gridTextWidth);
+    void                            drawVolume(QPainter& painter);
                                     
     void                            calculateMovingAverages(std::vector<QuoteCandleDataPtr>& QuoteCandleData);
                                     
@@ -64,7 +62,10 @@ public:
                                                 double minPrice,
                                                 int candleWidth);
 
+    void                            setRenderContext(CandleRenderContext* context) 
+    { m_context = context;}
 private:
     RenderConfig                    m_config;
     std::vector<QuoteCandleDataPtr> m_dataList;
+    CandleRenderContext*            m_context;
 };                                  

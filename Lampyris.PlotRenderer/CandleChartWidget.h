@@ -5,12 +5,24 @@
 #include "QuoteCandleData.h"
 #include "RenderContext.h"
 
+class PlotRenderer;
 class CandleChartWidget:public QWidget {
 	Q_OBJECT
 
 protected:
 	void paintEvent(QPaintEvent* e) override;
+
+	void mouseMoveEvent(QMouseEvent* e) override {
+		QWidget::mouseMoveEvent(e);
+	}
 public:
 	CandleChartWidget(QWidget *parent);
 	~CandleChartWidget();
+
+	void setRenderer(PlotRenderer* renderer) {
+		m_renderer = renderer;
+	}
+
+private:
+	PlotRenderer* m_renderer;
 };

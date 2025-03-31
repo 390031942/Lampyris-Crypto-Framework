@@ -31,7 +31,7 @@ void PlotRenderer::render(QPainter& painter) {
     drawGrid(painter, maxPrice, minPrice, gridMaxPrice, gridMinPrice);
 
     // 绘制 K 线图
-    drawCandleChart(painter, maxPrice, minPrice, maxIndex, minIndex, gridMaxPrice, gridMinPrice, gridTextWidth);
+    // drawCandleChart(painter, maxPrice, minPrice, maxIndex, minIndex, gridMaxPrice, gridMinPrice, gridTextWidth);
 
     // 绘制背景
     // QRect volumeAreaRect = image.rect();
@@ -41,7 +41,7 @@ void PlotRenderer::render(QPainter& painter) {
     // painter.setWindow(0, 0, image.rect().width(), image.rect().height() * 0.3f);
 
     // 绘制成交量柱状图
-    drawVolume(painter, gridTextWidth);
+    drawVolume(painter);
 
     // 保存图片
     // image.save(config.outputFile);
@@ -119,34 +119,44 @@ void PlotRenderer::drawIndicatorText(QPainter& painter) {
     painter.restore();
 }
 
-void PlotRenderer::drawCandleChart(QPainter& painter, CandleRenderContext context) {
+void PlotRenderer::drawCandleChart(QPainter& painter) {
+    if (m_context->dataList.empty()) {
+        return;
+    }
+
     QRect viewport = painter.viewport();
     // K 线图区域
     int klineAreaHeight = viewport.height();
 
     // 增加上下边距到价格范围
-    double priceRange = context.gridMaxPrice - context.gridMinPrice;
-    int candleWidth = (painter.viewport().width() - context.gridTextWidth - 5) / m_dataList.size();
+    double priceRange = m_context->gridMaxPrice - m_context->gridMinPrice;
+    float candleWidth = m_context->width;
 
     // 绘制 K 线
-    for (size_t i = 0; i < m_dataList.size(); ++i) {
-        const auto& data = m_dataList[i];
-        int x = i * candleWidth;
-        int yOpen  = (1 - (data->open  - context.gridMinPrice) / priceRange) * (klineAreaHeight);
-        int yClose = (1 - (data->close - context.gridMinPrice) / priceRange) * (klineAreaHeight);
-        int yHigh  = (1 - (data->high  - context.gridMinPrice) / priceRange) * (klineAreaHeight);
-        int yLow   = (1 - (data->low   - context.gridMinPrice) / priceRange) * (klineAreaHeight);
+    for (size_t i = m_context->startIndex; i < m_context->endIndex; ++i) {
+        const auto& data = m_context->dataList[i];
+        float x = m_context->leftOffset + (i - m_context->startIndex) * (candleWidth + m_context->spacing);
+        float yOpen  = (1.0 - float(data->open  - m_context->gridMinPrice) / priceRange) * float(klineAreaHeight);
+        float yClose = (1.0 - float(data->close - m_context->gridMinPrice) / priceRange) * float(klineAreaHeight);
+        float yHigh  = (1.0 - float(data->high  - m_context->gridMinPrice) / priceRange) * float(klineAreaHeight);
+        float yLow   = (1.0 - float(data->low   - m_context->gridMinPrice) / priceRange) * float(klineAreaHeight);
 
         QColor color = (data->close >= data->open) ? m_config.riseColor : m_config.fallColor;
         painter.setPen(color);
-        painter.drawLine(x + candleWidth / 2, yHigh, x + candleWidth / 2, yLow); // 绘制影线
+        painter.drawLine(QPointF(x + candleWidth / 2.0, yHigh),QPointF(x + candleWidth / 2, yLow)); // 绘制影线
         painter.setBrush(color);
-        painter.drawRect(x, std::min(yOpen, yClose), candleWidth - 2, std::abs(yClose - yOpen)); // 绘制实体
+        painter.drawRect(QRectF(x, std::min(yOpen, yClose), candleWidth, std::abs(yClose - yOpen))); // 绘制实体
+
+        // 绘制focus的竖线
+        if (m_context->focusIndex >= 0 && m_context->focusIndex == i) {
+            painter.setPen(Qt::black);
+            painter.drawLine(QPointF(x + candleWidth / 2.0, 0), QPointF(x + candleWidth / 2, klineAreaHeight)); // 绘制影线
+        }
     }
 
     // 绘制最高价和最低价标记
-    drawPriceMarker(painter, context.maxIndex, context.maxPrice, context.gridMinPrice, true, klineAreaHeight, priceRange, context.minPrice, candleWidth, 0);
-    drawPriceMarker(painter, context.minIndex, context.minPrice, context.gridMinPrice, false, klineAreaHeight, priceRange, context.minPrice, candleWidth, 0);
+    drawPriceMarker(painter, m_context->maxIndex, m_context->maxPrice, m_context->gridMinPrice, true, klineAreaHeight, priceRange,  m_context->minPrice, candleWidth, 0);
+    drawPriceMarker(painter, m_context->minIndex, m_context->minPrice, m_context->gridMinPrice, false, klineAreaHeight, priceRange, m_context->minPrice, candleWidth, 0);
 
     // 绘制均线
     // drawKLineMA(painter  offsetof(QuoteCandleData, ma5), klineHeight, priceRange, minPrice, candleWidth);
@@ -154,10 +164,10 @@ void PlotRenderer::drawCandleChart(QPainter& painter, CandleRenderContext contex
     // drawKLineMA(painter, offsetof(QuoteCandleData, ma20), klineHeight, priceRange, minPrice, candleWidth);
 }
 
-void PlotRenderer::drawVolume(QPainter& painter, double gridTextWidth) {
+void PlotRenderer::drawVolume(QPainter& painter) {
     // 成交量柱状图区域
     int volumeHeight = painter.viewport().height();
-    int candleWidth = (painter.viewport().width() - gridTextWidth - 5) / m_dataList.size();
+    int candleWidth = m_context->width;
 
     // 找到最大成交量，用于归一化
     double maxVolume = 0;
@@ -168,8 +178,8 @@ void PlotRenderer::drawVolume(QPainter& painter, double gridTextWidth) {
     }
 
     // 绘制每根成交量柱状图
-    for (size_t i = 0; i < m_dataList.size(); ++i) {
-        const auto& data = m_dataList[i];
+    for (size_t i = 0; i < m_context->dataList.size(); ++i) {
+        const auto& data = m_context->dataList[i];
         int x = i * candleWidth;
         int y = volumeHeight - (data->volume / maxVolume) * volumeHeight;
         int height = (data->volume / maxVolume) * volumeHeight;

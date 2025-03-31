@@ -22,10 +22,11 @@ struct CandleRenderContext {
 	int                           endIndex;
 
 	// 当前选中的数据的索引
-	int                           focusIndex;
+	int                           focusIndex = -1;
+	bool                          needAdjustFocusIndex = false;
 
 	// 单根k线的宽度
-	int                           width;
+	double                        width;
 
 	// 是否等待在更早的历史数据加载
 	bool                          isWaitingHistoryData;
@@ -35,4 +36,10 @@ struct CandleRenderContext {
 
 	// 数据是否完整
 	bool                          isFullData;
+
+	// 图标左侧固定偏移值
+	double                        leftOffset = 10;
+
+	// 水平间距
+	double                        spacing = 5;
 };

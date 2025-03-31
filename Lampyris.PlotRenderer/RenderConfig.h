@@ -6,15 +6,15 @@
 // 配置参数结构
 struct RenderConfig {
     QColor backgroundColor;
-    QColor gridColor;
+    QColor gridColor = QColor(Qt::white);
 
     QColor ma5Color;
     QColor ma10Color;
     QColor ma20Color;
 
-    QColor riseColor; // 涨的颜色
-    QColor fallColor; // 跌的颜色
-    QColor flatColor; // 平的颜色
+    QColor riseColor = QColor(244,79,95); // 涨的颜色
+    QColor fallColor = QColor(82,189,133); // 跌的颜色
+    QColor flatColor = QColor(139,143,152); // 平的颜色
     int width;
     int height;
 

@@ -130,24 +130,14 @@ int main1(int argc, char* argv[]) {
 }
 
 #include "BetterSplitter.h"
-#include "CandleChartWidget.h"
-#include "VolumeChartWidget.h"
 #include <QMainWindow>
+#include "TestWidget.h"
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
-    QMainWindow mw;
-    mw.setStyleSheet("QWidget { background-color: rgb(0,0,0);}");
-    QSplitter* splitter = new BetterSplitter(Qt::Orientation::Vertical);
-    splitter->setChildrenCollapsible(false);
-    splitter->addWidget(new CandleChartWidget(splitter));
-    splitter->addWidget(new VolumeChartWidget(splitter));
-    mw.setCentralWidget(splitter);
-    splitter->setHandleWidth(10);
-    // ÉèÖÃ QSplitterHandle µÄÑÕÉ«
-    splitter->setStyleSheet("QSplitter::handle { background-color: rgb(132,142,154); }");
-    mw.show();
+    TestWidget w(nullptr);
+    w.show();
 
     return app.exec();
 }

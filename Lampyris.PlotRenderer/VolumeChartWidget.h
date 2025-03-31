@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QPaintEvent>
 
+class PlotRenderer;
 class VolumeChartWidget  : public QWidget {
 	Q_OBJECT
 protected:
@@ -10,4 +11,11 @@ protected:
 public:
 	VolumeChartWidget(QWidget *parent);
 	~VolumeChartWidget();
+
+	void setRenderer(PlotRenderer* renderer) {
+		m_renderer = renderer;
+	}
+
+private:
+	PlotRenderer* m_renderer;
 };
