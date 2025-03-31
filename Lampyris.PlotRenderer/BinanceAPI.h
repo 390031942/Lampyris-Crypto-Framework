@@ -14,6 +14,7 @@
 #include <QWaitCondition>
 #include <vector>
 #include <memory>
+#include <QSslSocket>
 
 #include "QuoteCandleData.h"
 
@@ -105,6 +106,10 @@ private:
 
     // 单次请求的发送函数
     void sendKlinesRequest(const QString& symbol, const QString& interval, int limit, const QDateTime& startTime, const QDateTime& endTime) {
+        qDebug() << "Supports SSL:" << QSslSocket::supportsSsl();
+        qDebug() << "SSL Library Version:" << QSslSocket::sslLibraryVersionString();
+        qDebug() << "SSL Build Version:" << QSslSocket::sslLibraryBuildVersionString();
+        
         // 构造请求 URL
         QUrl url("https://fapi.binance.com/fapi/v1/klines");
         QUrlQuery query;
@@ -146,7 +151,7 @@ private:
             emit dataFetched(dataList);
 
             reply->deleteLater();
-            });
+        });
     }
 
     // 解析 JSON 数据为 QuoteCandleDataPtr 列表

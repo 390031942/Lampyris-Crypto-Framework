@@ -19,8 +19,8 @@ struct RenderConfig {
     int height;
 
     // kÏßÍ¼Íø¸ñ
-    int    gridColunnCount;
-    int    gridRowCount;
+    int    gridColunnCount = 5;
+    int    gridRowCount = 4;
     int    gridTopPadding;
 
     QString minTick;

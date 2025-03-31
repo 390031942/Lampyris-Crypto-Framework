@@ -132,6 +132,8 @@ int main1(int argc, char* argv[]) {
 #include "BetterSplitter.h"
 #include <QMainWindow>
 #include "TestWidget.h"
+#include <QSslConfiguration>
+#include "qsslsocket.h"
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);

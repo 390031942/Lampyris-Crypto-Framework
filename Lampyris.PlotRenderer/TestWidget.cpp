@@ -45,9 +45,11 @@ void TestWidget::keyPressEvent(QKeyEvent* e) {
 	auto key = e->key();
 	if (key == Qt::Key::Key_Left || key == Qt::Key::Key_Right) {
 		this->handleKeyArrowLeftOrRight(key);
+		this->repaintChart();
 	}
 	else if (key == Qt::Key::Key_Up || key == Qt::Key::Key_Down) {
 		this->handleKeyArrowUpOrDown(key);
+		this->repaintChart();
 	}
 	else if (key == Qt::Key::Key_Escape) {
 		this->m_context.focusIndex = -1;
@@ -145,18 +147,21 @@ TestWidget::TestWidget(QWidget *parent)
 	m_volumeChart(new VolumeChartWidget(this)),
 	m_betterSplitter(new BetterSplitter(Qt::Orientation::Vertical,this)) {
 
+	// 设置 QSplitter 的 handle 样式
+	m_betterSplitter->setStyleSheet("QSplitter::handle { background: gray; }");
+	m_betterSplitter->setHandleWidth(1);
+
 	QHBoxLayout* layout = new QHBoxLayout(this);
 	layout->setContentsMargins(0, 0, 0, 0);
 	this->setLayout(layout);
 	layout->addWidget(m_betterSplitter);
-	// layout->addWidget(m_candleChart);
+	layout->addWidget(m_candleChart);
 
 	m_betterSplitter->addWidget(m_candleChart);
 	m_betterSplitter->addWidget(m_volumeChart);
-	m_volumeChart->setMaximumHeight(0);
 
 	QObject::connect(&api, &BinanceAPI::dataFetched, this, &TestWidget::onDataFetched);
-	api.fetchKlines("BTCUSDT", "1m", 1000);
+	api.fetchKlines("VINEUSDT", "1m", 1000);
 	m_context.expectedSize = 1000;
 
 	this->m_candleChart->installEventFilter(this);
@@ -177,6 +182,7 @@ TestWidget::TestWidget(QWidget *parent)
 		this->m_candleChart->repaint();
 		this->m_volumeChart->repaint();
 	});
+
 	// timer->setInterval(30);
 	// timer->start();
 }
@@ -204,21 +210,25 @@ void TestWidget::handleKeyArrowLeftOrRight(int key) {
 		}
 		else {
 			m_context.focusIndex = m_context.focusIndex - 1;
+			if (m_context.focusIndex < m_context.startIndex) {
+				m_context.startIndex -= 1;
+				m_context.endIndex -= 1;
+			}
 		}
 
 		if (m_context.focusIndex < 0) {
 			if (!m_context.isFullData) {
 				// 请求新的历史数据
 				m_context.isWaitingHistoryData = true;
-				api.fetchKlinesFromEndTime("BTCUSDT", "1m", 100, m_context.dataList.front()->dateTime);
+				api.fetchKlinesFromEndTime("VINEUSDT", "1m", 100, m_context.dataList.front()->dateTime);
 				m_context.expectedSize = 100;
 				m_context.needAdjustFocusIndex = 100;
 			}
 			else {
+				m_context.startIndex = 0;
 				m_context.focusIndex = 0;
 			}
 		}
-		m_context.startIndex = std::max(0, m_context.startIndex - 1);
 	}
 	else if (key == Qt::Key::Key_Right) {
 		if (m_context.focusIndex == -1) {
@@ -227,7 +237,7 @@ void TestWidget::handleKeyArrowLeftOrRight(int key) {
 		else {
 			m_context.focusIndex = std::min((int)m_context.dataList.size() - 1, m_context.focusIndex + 1);
 			if (m_context.focusIndex >= m_context.endIndex) {
-				if (m_context.endIndex + 1 <= m_context.dataList.size() - 1) {
+				if (m_context.endIndex < m_context.dataList.size()) {
 					m_context.startIndex += 1;
 					m_context.endIndex += 1;
 				}
@@ -262,8 +272,9 @@ void TestWidget::handleKeyArrowUpOrDown(int key) {
 			if (m_context.startIndex < 0) {
 				// 请求新的历史数据
 				m_context.isWaitingHistoryData = true;
-				api.fetchKlinesFromEndTime("BTCUSDT", "1m", std::min(MAX_LIMIT, -m_context.startIndex), m_context.dataList.front()->dateTime);
+				api.fetchKlinesFromEndTime("VINEUSDT", "1m", -m_context.startIndex, m_context.dataList.front()->dateTime);
 				m_context.expectedSize = -m_context.startIndex;
+				m_context.startIndex = 0;
 			}
 			else {
 				this->recalculateContextParam();
@@ -271,9 +282,9 @@ void TestWidget::handleKeyArrowUpOrDown(int key) {
 			}
 		}
 		else {
-			double ratio = (double)(m_context.focusIndex - m_context.startIndex) / (double)currentCount;
-			int leftSideExpectedCount = ratio * expectedCount;
-			int rightSideExpectedCount = expectedCount - leftSideExpectedCount;
+			double ratio = currentCount >= 1 ? (double)(m_context.focusIndex - m_context.startIndex) / (double)(currentCount - 1) : 0.0;
+			int leftSideExpectedCount = (1 - ratio) * diffCount;
+			int rightSideExpectedCount = diffCount - leftSideExpectedCount;
 
 			if (m_context.endIndex + rightSideExpectedCount > m_context.dataList.size()) {
 				int exceedCount = (m_context.endIndex + rightSideExpectedCount) - m_context.dataList.size();
@@ -282,10 +293,14 @@ void TestWidget::handleKeyArrowUpOrDown(int key) {
 			}
 
 			m_context.startIndex -= leftSideExpectedCount;
+			m_context.endIndex += rightSideExpectedCount;
+
 			if (m_context.startIndex < 0) {
 				// 请求新的历史数据
 				m_context.isWaitingHistoryData = true;
-				api.fetchKlinesFromEndTime("BTCUSDT", "1m", std::min(MAX_LIMIT, m_context.startIndex), m_context.dataList.front()->dateTime);
+				api.fetchKlinesFromEndTime("VINEUSDT", "1m", -m_context.startIndex, m_context.dataList.front()->dateTime);
+				m_context.expectedSize = -m_context.startIndex;
+				m_context.startIndex = 0;
 			}
 			else {
 				this->recalculateContextParam();

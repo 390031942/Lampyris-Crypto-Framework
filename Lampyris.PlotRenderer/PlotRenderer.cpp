@@ -1,4 +1,5 @@
 #include "PlotRenderer.h"
+#include <QPainterPath>
 
 void PlotRenderer::render(QPainter& painter) {
     double maxPrice = 0, minPrice = 1e9;
@@ -165,22 +166,30 @@ void PlotRenderer::drawCandleChart(QPainter& painter) {
 }
 
 void PlotRenderer::drawVolume(QPainter& painter) {
+    if (m_context->dataList.empty()) {
+        return;
+    }
+
     // 成交量柱状图区域
     int volumeHeight = painter.viewport().height();
     int candleWidth = m_context->width;
+    // K 线图区域
+    QRect viewport = painter.viewport();
+    int klineAreaHeight = viewport.height();
 
     // 找到最大成交量，用于归一化
     double maxVolume = 0;
     double minVolume = 1e30;
-    for (const auto& data : m_dataList) {
+    for (size_t i = m_context->startIndex; i < m_context->endIndex; ++i) {
+        const auto& data = m_context->dataList[i];
         maxVolume = std::max(maxVolume, data->volume);
         minVolume = std::min(minVolume, data->volume);
     }
 
     // 绘制每根成交量柱状图
-    for (size_t i = 0; i < m_context->dataList.size(); ++i) {
+    for (size_t i = m_context->startIndex; i < m_context->endIndex; ++i) {
         const auto& data = m_context->dataList[i];
-        int x = i * candleWidth;
+        float x = m_context->leftOffset + (i - m_context->startIndex) * (candleWidth + m_context->spacing);
         int y = volumeHeight - (data->volume / maxVolume) * volumeHeight;
         int height = (data->volume / maxVolume) * volumeHeight;
 
@@ -188,7 +197,13 @@ void PlotRenderer::drawVolume(QPainter& painter) {
         QColor color = (data->close >= data->open) ? m_config.riseColor : m_config.fallColor;
         painter.setBrush(color);
         painter.setPen(Qt::NoPen);
-        painter.drawRect(x, y, candleWidth - 2, height);
+        painter.drawRect(x, y, candleWidth, height);
+
+        // 绘制focus的竖线
+        if (m_context->focusIndex >= 0 && m_context->focusIndex == i) {
+            painter.setPen(Qt::black);
+            painter.drawLine(QPointF(x + candleWidth / 2.0, 0), QPointF(x + candleWidth / 2, klineAreaHeight)); // 绘制影线
+        }
     }
 }
 
@@ -250,19 +265,21 @@ void PlotRenderer::drawVolumeMA(QPainter& painter, const std::vector<double>& ma
 }
 
 void PlotRenderer::drawPriceMarker(QPainter& painter, int index, double price, double gridMinPrice, bool isMax, int klineAreaHeight, double priceRange, double minPrice, int candleWidth, int padding) {
-    if (index < 0 || index >= m_dataList.size()) return;
+    if (m_context->dataList.empty()) {
+        return;
+    }
 
     // 计算标记位置
-    int x = index * candleWidth + candleWidth / 2;
-    int y = padding + (1 - (price - gridMinPrice) / priceRange) * (klineAreaHeight);
+    float x = m_context->leftOffset + (index - m_context->startIndex) * (candleWidth + m_context->spacing);
+    float y = padding + (1 - (price - gridMinPrice) / priceRange) * (klineAreaHeight);
 
     // 判断虚线延伸方向
-    bool extendRight = (index < m_dataList.size() / 2); // 如果在左半部分，则向右延伸
+    bool extendRight = (index < (m_context->endIndex - m_context->startIndex) / 2); // 如果在左半部分，则向右延伸
 
     // 设置虚线样式
     QPen pen;
     pen.setColor(Qt::darkGray);
-    pen.setStyle(Qt::DashLine);                // 设置为虚线
+    pen.setStyle(Qt::DashLine);// 设置为虚线
     pen.setWidth(1);
     painter.setPen(pen);
 
@@ -272,7 +289,7 @@ void PlotRenderer::drawPriceMarker(QPainter& painter, int index, double price, d
     painter.drawLine(x, y, xEnd, y);
 
     // 绘制价格文字
-    QString priceText = QString::number(price, 'f', 2);
+    QString priceText = QString::number(price, 'f', 2); 
     QFont font = painter.font();
     font.setPointSize(10);
     painter.setFont(font);
@@ -283,6 +300,7 @@ void PlotRenderer::drawPriceMarker(QPainter& painter, int index, double price, d
         // 如果向右延伸，文字显示在虚线右端
         painter.drawText(xEnd + textOffset, y, priceText);
     }
+
     else {
         // 如果向左延伸，文字显示在虚线左端
         painter.drawText(xEnd - textOffset - painter.fontMetrics().horizontalAdvance(priceText), y, priceText);
