@@ -19,11 +19,7 @@ public:
                                     
     void                            render(QPainter& painter);
                                     
-    void                            drawGrid(QPainter& painter, 
-                                             double maxPrice, 
-                                             double minPrice,
-                                             double gridMaxPrice, 
-                                             double gridMinPrice);
+    void                            drawGrid(QPainter& painter);
                                     
     QString                         makeMAIndicatorString(int period,
                                                           double value);

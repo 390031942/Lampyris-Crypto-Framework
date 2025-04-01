@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+package binance;
+
+// 交易功能相关消息
+message OrderRequest {
+    enum OrderType {
+        LIMIT = 0;       // 限价单
+        MARKET = 1;      // 市价单
+        STOP_LOSS = 2;   // 止损单
+        TAKE_PROFIT = 3; // 止盈单
+        CONDITIONAL = 4; // 条件单
+    }
+
+    string symbol = 1;          // 交易对，例如 BTCUSDT
+    OrderType order_type = 2;   // 订单类型
+    double quantity = 3;        // 订单数量（以 USDT 为单位）
+    double price = 4;           // 订单价格（限价单需要）
+    double stop_price = 5;      // 止损或止盈触发价格（止损单/止盈单需要）
+    bool reduce_only = 6;       // 是否为只减仓订单
+    int32 leverage = 7;         // 杠杆倍数
+}
+
+message OrderResponse {
+    string order_id = 1;        // 订单 ID
+    string status = 2;          // 订单状态，例如 "FILLED", "CANCELED", "NEW"
+    double executed_quantity = 3; // 已成交数量
+    double executed_price = 4;  // 成交均价
+    string message = 5;         // 错误或成功信息
+}
+
+message CancelOrderRequest {
+    string order_id = 1;        // 订单 ID
+    string symbol = 2;          // 交易对，例如 BTCUSDT
+}
+
+message CancelOrderResponse {
+    string order_id = 1;        // 订单 ID
+    string status = 2;          // 订单状态，例如 "CANCELED"
+    string message = 3;         // 错误或成功信息
+}
+
+message QueryOrdersRequest {
+    string symbol = 1;          // 交易对，例如 BTCUSDT
+    int64 start_time = 2;       // 起始时间（毫秒）
+    int64 end_time = 3;         // 结束时间（毫秒）
+    int32 limit = 4;            // 返回的订单数量限制
+}
+
+message Order {
+    string order_id = 1;        // 订单 ID
+    string symbol = 2;          // 交易对
+    string status = 3;          // 订单状态
+    double executed_quantity = 4; // 已成交数量
+    double executed_price = 5;  // 成交均价
+    int64 timestamp = 6;        // 订单时间戳
+}
+
+message QueryOrdersResponse {
+    repeated Order orders = 1;  // 订单列表
+}
+
+message LeverageRequest {
+    string symbol = 1;          // 交易对，例如 BTCUSDT
+    int32 leverage = 2;         // 杠杆倍数（查询时可为空）
+}
+
+message LeverageResponse {
+    string symbol = 1;          // 交易对
+    int32 leverage = 2;         // 当前杠杆倍数
+    string message = 3;         // 错误或成功信息
+}
+
+// 行情功能相关消息
+message TickerRequest {
+    repeated string symbols = 1; // 查询的交易对列表，例如 ["BTCUSDT", "ETHUSDT"]
+}
+
+message Ticker {
+    string symbol = 1;          // 交易对
+    double mark_price = 2;      // 标记价格
+    double funding_rate = 3;    // 资金费率
+    int64 funding_time = 4;     // 资金结算时间（毫秒）
+}
+
+message TickerResponse {
+    repeated Ticker tickers = 1; // Ticker 列表
+}
+
+message SubscribeTradeRequest {
+    string symbol = 1;          // 交易对
+    bool subscribe = 2;         // true: 订阅, false: 取消订阅
+}
+
+message SubscribeDepthRequest {
+    string symbol = 1;          // 交易对
+    bool subscribe = 2;         // true: 订阅, false: 取消订阅
+}
+
+message KlineRequest {
+    string symbol = 1;          // 交易对
+    string interval = 2;        // K线周期，例如 "1m", "5m", "1h", "1d"
+    int64 start_time = 3;       // 起始时间（毫秒）
+    int64 end_time = 4;         // 结束时间（毫秒）
+    int32 limit = 5;            // 返回的 K 线数量限制
+}
+
+message Kline {
+    int64 open_time = 1;        // 开盘时间
+    double open = 2;            // 开盘价
+    double high = 3;            // 最高价
+    double low = 4;             // 最低价
+    double close = 5;           // 收盘价
+    double volume = 6;          // 成交量
+    int64 close_time = 7;       // 收盘时间
+}
+
+message KlineResponse {
+    repeated Kline klines = 1;  // K 线数据列表
+}
+
+message SubscribeKlineRequest {
+    string symbol = 1;          // 交易对
+    string interval = 2;        // K线周期
+    bool subscribe = 3;         // true: 订阅, false: 取消订阅
+}
+
+// 账户分析相关消息
+message AccountAnalysisRequest {
+    int64 start_time = 1;       // 起始时间（毫秒）
+    int64 end_time = 2;         // 结束时间（毫秒）
+}
+
+message AccountAsset {
+    string asset = 1;           // 资产类型，例如 USDT
+    double total = 2;           // 总资产
+    double available = 3;       // 可用资产
+}
+
+message AccountAnalysisResponse {
+    double total_asset = 1;     // 总资产
+    repeated AccountAsset assets = 2; // 各资产详情
+    repeated TimeSeriesAsset time_series = 3; // 资产随时间的走势
+}
+
+message TimeSeriesAsset {
+    int64 timestamp = 1;        // 时间戳（毫秒）
+    double total_asset = 2;     // 总资产
+}

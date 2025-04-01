@@ -53,6 +53,10 @@ private:
 
     void recalculateContextParam();
 
+    QString getMinTick(const QString& symbol);
+
+    QString removeTrailingZeros(const QString& numberStr);
+
     const std::array<double, 13> widthArray = { 0.0625, 0.125, 0.25, 0.5, 0.7, 1, 2, 3, 4, 6, 12, 18, 24 };
 
     int m_widthArrayIndex = 9;

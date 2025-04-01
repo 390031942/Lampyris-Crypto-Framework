@@ -48,4 +48,9 @@ struct CandleRenderContext {
 	double                        gridScaleTextRightPadding = 24;
 	double                        gridScaleTextWidth = 0.0;
 
+	inline double gridScaleAreaWidth() {
+		return gridScaleTextLeftPadding + gridScaleTextRightPadding + gridScaleTextWidth;
+	}
+
+	QString                       minTick;
 };

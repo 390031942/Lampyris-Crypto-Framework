@@ -23,13 +23,13 @@ void PlotRenderer::render(QPainter& painter) {
 
     double gridMaxPrice = MathUtil::ceilModulo(maxPrice * 1.005, 4, m_config.gridRowCount);
     double gridMinPrice = MathUtil::floorModulo(minPrice * 0.995, 4, m_config.gridRowCount);
-    int gridTextWidth = painter.fontMetrics().horizontalAdvance(MathUtil::formatDoubleWithStep(gridMaxPrice, m_config.minTick));
+    int gridTextWidth = painter.fontMetrics().horizontalAdvance(MathUtil::formatDoubleWithStep(gridMaxPrice, m_context->minTick));
 
     // 绘制描述文本
     drawIndicatorText(painter);
 
     // 绘制网格
-    drawGrid(painter, maxPrice, minPrice, gridMaxPrice, gridMinPrice);
+    // drawGrid(painter, maxPrice, minPrice, gridMaxPrice, gridMinPrice);
 
     // 绘制 K 线图
     // drawCandleChart(painter, maxPrice, minPrice, maxIndex, minIndex, gridMaxPrice, gridMinPrice, gridTextWidth);
@@ -48,40 +48,41 @@ void PlotRenderer::render(QPainter& painter) {
     // image.save(config.outputFile);
 }
 
-void PlotRenderer::drawGrid(QPainter& painter, double maxPrice, double minPrice, double gridMaxPrice, double gridMinPrice) {
+void PlotRenderer::drawGrid(QPainter& painter) {
     int rows = m_config.gridRowCount;
-    int cols = m_config.gridColunnCount;
     int width = painter.viewport().width();
+    int height = painter.viewport().height();
 
     // 刻度
-    int textWidth = painter.fontMetrics().horizontalAdvance(MathUtil::formatDoubleWithStep(gridMaxPrice, m_config.minTick));
+    int textWidth = m_context->gridScaleTextWidth;
     int textHeight = painter.fontMetrics().height();
 
     // 网格高度
     int gridHeight = (painter.viewport().height() - m_config.gridTopPadding) / (rows - 1);
 
+    // 网格右侧竖线位置
+    int gridEndPosX = width - m_context->gridScaleTextLeftPadding - m_context->gridScaleTextRightPadding - m_context->gridScaleTextWidth;
+    int gridScaleTextPosX = gridEndPosX + m_context->gridScaleTextLeftPadding;
     for (int i = 0; i < rows; ++i) {
         int y = m_config.gridTopPadding + i * gridHeight;
         painter.setPen(m_config.gridColor);
-        painter.drawLine(0, y, m_config.width, y);
+        painter.drawLine(0, y, gridEndPosX, y);
 
         painter.setPen(Qt::darkGray);
 
-        double  startX = painter.viewport().width() - textWidth - 5;
-        QString str = MathUtil::formatDoubleWithStep(gridMaxPrice + i * (gridMinPrice - gridMaxPrice) / (rows - 1), m_config.minTick);
-        painter.drawText(startX, y - textHeight, textWidth, textHeight, 0, str);
+        double gridPrice = m_context->gridMaxPrice + i * (m_context->gridMinPrice - m_context->gridMaxPrice) / (rows - 1);
+        QString gridPriceStr = QString::number(gridPrice);
+        int realWidth = painter.fontMetrics().horizontalAdvance(gridPriceStr);
+        QString str = MathUtil::formatDoubleWithStep(gridPrice, m_context->minTick);
+        painter.drawText(gridScaleTextPosX, y - textHeight, textWidth, textHeight, 0, str);
     }
 
-    painter.setPen(m_config.gridColor);
-    int y = m_config.gridTopPadding + (rows - 1) * painter.viewport().height() / rows;
-    for (int i = 1; i <= cols; ++i) {
-        int x = i * width / cols;
-        painter.drawLine(x, m_config.gridTopPadding, x, y);
-    }
+    // 网格右侧竖线作为边界
+    painter.drawLine(gridEndPosX, m_config.gridTopPadding, gridEndPosX, height);
 }
 
 QString PlotRenderer::makeMAIndicatorString(int period, double value) {
-    return QString("MA(%1):%2").arg(period).arg(value > 0 ? MathUtil::formatDoubleWithStep(value, m_config.minTick) : "-");
+    return QString("MA(%1):%2").arg(period).arg(value > 0 ? MathUtil::formatDoubleWithStep(value, m_context->minTick) : "-");
 }
 
 void PlotRenderer::drawIndicatorText(QPainter& painter) {
@@ -269,6 +270,7 @@ void PlotRenderer::drawPriceMarker(QPainter& painter, int index, double price, d
         return;
     }
 
+    painter.save();
     // 计算标记位置
     float x = m_context->leftOffset + (index - m_context->startIndex) * (candleWidth + m_context->spacing);
     float y = padding + (1 - (price - gridMinPrice) / priceRange) * (klineAreaHeight);
@@ -305,6 +307,7 @@ void PlotRenderer::drawPriceMarker(QPainter& painter, int index, double price, d
         // 如果向左延伸，文字显示在虚线左端
         painter.drawText(xEnd - textOffset - painter.fontMetrics().horizontalAdvance(priceText), y, priceText);
     }
+    painter.restore();
 }
 
 void PlotRenderer::drawKLineMA(QPainter& painter, int fieldOffset, const QColor& color, int klineHeight, double priceRange, double minPrice, int candleWidth) {

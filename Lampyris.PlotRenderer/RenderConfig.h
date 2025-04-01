@@ -6,7 +6,7 @@
 // 配置参数结构
 struct RenderConfig {
     QColor backgroundColor;
-    QColor gridColor = QColor(Qt::white);
+    QColor gridColor = QColor(Qt::black);
 
     QColor ma5Color;
     QColor ma10Color;
@@ -22,7 +22,5 @@ struct RenderConfig {
     int    gridColunnCount = 5;
     int    gridRowCount = 4;
     int    gridTopPadding;
-
-    QString minTick;
 };
 

@@ -3,6 +3,10 @@
 #include "PlotRenderer.h"
 #include <qlayout.h>
 #include <QTimer>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <qregularexpression.h>
 
 // 事件过滤器
 bool TestWidget::eventFilter(QObject* watched, QEvent* event) {
@@ -29,8 +33,8 @@ void TestWidget::resizeEvent(QResizeEvent* e) {
 		QSize size = e->size();
 		int width = size.width();
 
-		int oldCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, e->oldSize().width());
-		int newCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, e->size().width());
+		int oldCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, e->oldSize().width() - this->m_context.gridScaleAreaWidth());
+		int newCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, e->size().width() - this->m_context.gridScaleAreaWidth());
 
 		if (oldCount != newCount && oldCount < m_context.dataList.size()) {
 			m_context.startIndex = m_context.endIndex - newCount;
@@ -183,6 +187,7 @@ TestWidget::TestWidget(QWidget *parent)
 		this->m_volumeChart->repaint();
 	});
 
+	m_context.minTick = getMinTick("VINEUSDT");
 	// timer->setInterval(30);
 	// timer->start();
 }
@@ -261,7 +266,7 @@ void TestWidget::handleKeyArrowUpOrDown(int key) {
 		m_widthArrayIndex = targetWidthArrayIndex;
 		m_context.width = widthArray[targetWidthArrayIndex];
 		m_context.spacing = 0.5 * m_context.width;
-		int expectedCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width());
+		int expectedCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width() - this->m_context.gridScaleAreaWidth());
 		int currentCount = m_context.endIndex - m_context.startIndex;
 		int diffCount = expectedCount - currentCount;
 		
@@ -343,6 +348,81 @@ void TestWidget::recalculateContextParam() {
 	m_context.gridMinPrice = MathUtil::floorModulo(m_context.minPrice, 4, gridRowCount);
 }
 
+QString TestWidget::getMinTick(const QString& symbol) {
+	// Binance API 地址
+	const QString apiUrl = "https://fapi.binance.com/fapi/v1/exchangeInfo";
+
+	// 创建网络访问管理器
+	QNetworkAccessManager manager;
+
+	// 创建 HTTP 请求
+	QNetworkRequest request;
+	request.setUrl(QUrl(apiUrl));
+
+	// 同步发送请求
+	QNetworkReply* reply = manager.get(request);
+
+	// 使用事件循环等待请求完成
+	QEventLoop loop;
+	QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+	loop.exec();
+
+	// 检查请求是否成功
+	if (reply->error() != QNetworkReply::NoError) {
+		qWarning() << "Error:" << reply->errorString();
+		reply->deleteLater();
+		return QString();
+	}
+
+	// 解析返回的 JSON 数据
+	QByteArray responseData = reply->readAll();
+	reply->deleteLater();
+
+	QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
+	if (!jsonDoc.isObject()) {
+		qWarning() << "Invalid JSON response";
+		return QString();
+	}
+
+	QJsonObject jsonObj = jsonDoc.object();
+	if (!jsonObj.contains("symbols")) {
+		qWarning() << "Missing 'symbols' in response";
+		return QString();
+	}
+
+	QJsonArray symbolsArray = jsonObj["symbols"].toArray();
+	for (const QJsonValue& value : symbolsArray) {
+		QJsonObject symbolObj = value.toObject();
+		if (symbolObj["symbol"].toString() == symbol) {
+			// 找到目标交易对，提取 minTick 信息
+			if (symbolObj.contains("filters")) {
+				QJsonArray filtersArray = symbolObj["filters"].toArray();
+				for (const QJsonValue& filterValue : filtersArray) {
+					QJsonObject filterObj = filterValue.toObject();
+					if (filterObj["filterType"].toString() == "PRICE_FILTER") {
+						return removeTrailingZeros(filterObj["tickSize"].toString());
+					}
+				}
+			}
+		}
+	}
+
+	// 如果未找到目标交易对或 minTick 信息
+	qWarning() << "Symbol or minTick not found";
+	return QString();
+}
+
+QString TestWidget::removeTrailingZeros(const QString& numberStr) {
+	// 使用 QRegularExpression 替代 QRegExp
+	QRegularExpression trailingZerosRegex("0+$");
+	QRegularExpression trailingDotRegex("\\.$");
+
+	QString result = numberStr;
+	result.remove(trailingZerosRegex); // 移除尾随的 0
+	result.remove(trailingDotRegex);   // 移除孤立的小数点
+	return result;
+}
+
 void TestWidget::reset() {
 	m_widthArrayIndex = 11;
 	m_context.width = widthArray[m_widthArrayIndex];
@@ -365,11 +445,11 @@ void TestWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) 
 		this->reset();
 
 		// 计算刻度文本长度
-		m_context.gridScaleTextWidth = QFontMetrics(QApplication::font()).horizontalAdvance(QString::number(dataList.back()->close));
+		double close = dataList.back()->close;
+		m_context.gridScaleTextWidth = QFontMetrics(QApplication::font()).horizontalAdvance(QString::number(close));
 
 		// 要预留刻度的空间
-		int scaleTextTotalWidth = m_context.gridScaleTextWidth + m_context.gridScaleTextLeftPadding + m_context.gridScaleTextRightPadding;
-		int candleCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width() - scaleTextTotalWidth);
+		int candleCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width() - this->m_context.gridScaleAreaWidth());
 
 		this->m_context.endIndex = (int)m_context.dataList.size();
 		this->m_context.startIndex = this->m_context.endIndex - candleCount;

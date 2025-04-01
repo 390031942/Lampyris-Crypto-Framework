@@ -4,6 +4,7 @@
 void CandleChartWidget::paintEvent(QPaintEvent* e) {
 	QPainter p(this);
 	m_renderer->drawCandleChart(p);
+	m_renderer->drawGrid(p);
 }
 
 CandleChartWidget::CandleChartWidget(QWidget *parent)
