@@ -42,4 +42,10 @@ struct CandleRenderContext {
 
 	// 水平间距
 	double                        spacing = 5;
+
+	// 网格右侧刻度文本的宽度
+	double                        gridScaleTextLeftPadding  = 10;
+	double                        gridScaleTextRightPadding = 24;
+	double                        gridScaleTextWidth = 0.0;
+
 };

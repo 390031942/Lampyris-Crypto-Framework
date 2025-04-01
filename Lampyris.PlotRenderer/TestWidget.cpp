@@ -334,12 +334,12 @@ void TestWidget::recalculateContextParam() {
 			m_context.minPrice = data->low;
 		}
 	}
-
+	 
 	// 计算grid最高价和最低价
-	const int gridRowCount = 5;
+	const int gridRowCount = 5; 
 	const int gridColCount = 4;
 
- 	m_context.gridMaxPrice = MathUtil::ceilModulo(m_context.maxPrice, 4, gridRowCount);
+ 	m_context.gridMaxPrice = MathUtil::ceilModulo(m_context.maxPrice , 4, gridRowCount);
 	m_context.gridMinPrice = MathUtil::floorModulo(m_context.minPrice, 4, gridRowCount);
 }
 
@@ -364,9 +364,16 @@ void TestWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) 
 	if (this->m_isFirstTime) {
 		this->reset();
 
-		int candleCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width());
+		// 计算刻度文本长度
+		m_context.gridScaleTextWidth = QFontMetrics(QApplication::font()).horizontalAdvance(QString::number(dataList.back()->close));
+
+		// 要预留刻度的空间
+		int scaleTextTotalWidth = m_context.gridScaleTextWidth + m_context.gridScaleTextLeftPadding + m_context.gridScaleTextRightPadding;
+		int candleCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width() - scaleTextTotalWidth);
+
 		this->m_context.endIndex = (int)m_context.dataList.size();
 		this->m_context.startIndex = this->m_context.endIndex - candleCount;
+
 	}
 	else {
 		this->m_context.startIndex = 0;
@@ -377,6 +384,7 @@ void TestWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) 
 			m_context.endIndex = std::min((int)m_context.dataList.size(), m_context.endIndex + (int)dataList.size());
 		}
 	}
+
 	m_context.expectedSize = 0;
 	this->m_isFirstTime = false;
 
