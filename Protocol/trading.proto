@@ -1,149 +1,151 @@
 syntax = "proto3";
 
-package binance;
+package lampyris.crypto.protocol.trading;
 
 enum OrderType {
     LIMIT = 0;       // 限价单
     MARKET = 1;      // 市价单
     STOP_LOSS = 2;   // 止损单
     TAKE_PROFIT = 3; // 止盈单
-    CONDITIONAL = 4; // 条件单
+    STOP_LOSS_MARKET = 4;   // 止损市价单
+    TAKE_PROFIT_MARKET = 5; // 止盈市价单
+    TRAILING_STOP_MARKET = 6; // 跟踪止损单
 }
 
-// 交易功能相关消息
-message OrderRequest {
+enum OrderStatus {
+    NEW = 1; // 新建订单
+    PARTIALLY_FILLED = 2; // 部分成交
+    FILLED = 3; // 全部成交
+    CANCELED = 4; // 已撤销
+    REJECTED = 5; // 被拒绝
+    EXPIRED = 6; // 订单过期(根据timeInForce参数规则)
+    EXPIRED_IN_MATCH = 7; // 订单被STP过期(STP 是一种防止自成交（Self-Trade）的机制，主要用于避免同一个账户的订单在市场中互相成交)
+}
+
+enum TimeInForceType {
+    GTC = 1; // Good Till Cancel 成交为止（下单后仅有1年有效期，1年后自动取消）
+    IOC = 2; // Immediate or Cancel 无法立即成交(吃单)的部分就撤销
+    FOK = 3; // Fill or Kill 无法全部立即成交就撤销
+    GTX = 4; // Good Till Crossing 无法成为挂单方就撤销
+    GTD = 5; // Good Till Date 在特定时间之前有效，到期自动撤销
+}
+
+enum TradeSide {
+    BUY = 1;
+    SELL = 2;
+}
+
+// 条件单触发类型
+enum ConditionOrderTriggerType {
+    PRICE = 1; // 到达指定价格
+    RISE_SPEED = 2; // 涨速(%)
+    INTERVAL = 3; // 间隔时间(int64时间戳)
+}
+
+// 条件单触发数据
+message ConditionTriggerBean {
+    ConditionOrderTriggerType type = 1;
+    string value = 2; // 取值，需要转为字符串
+}
+
+message OrderBean {
     string symbol = 1;          // 交易对，例如 BTCUSDT
-    OrderType order_type = 2;   // 订单类型
-    double quantity = 3;        // 订单数量（以 USDT 为单位）
-    double price = 4;           // 订单价格（限价单需要）
-    double stop_price = 5;      // 止损或止盈触发价格（止损单/止盈单需要）
-    bool reduce_only = 6;       // 是否为只减仓订单
-    int32 leverage = 7;         // 杠杆倍数
+    TradeSide side = 2;         // 订单方向
+    OrderType orderType = 3;    // 订单类型
+    double quantity = 4;        // 订单数量（以标的为单位）
+    double cashQuantity = 5;    // 订单数量（以USDT为单位）
+    double price = 6;           // 订单价格（限价单需要）
+    TimeInForceType tifType = 7; // 订单有效方式
+    int64 goodTillDate = 8;      // TIF为GTD时订单的自动取消时间
+    bool reduceOnly = 9;         // 是否只减仓
+    repeated ConditionTriggerBean condition = 10; // 条件列表
 }
 
-message OrderResponse {
-    string order_id = 1;        // 订单 ID
-    string status = 2;          // 订单状态，例如 "FILLED", "CANCELED", "NEW"
-    double executed_quantity = 3; // 已成交数量
-    double executed_price = 4;  // 成交均价
-    string message = 5;         // 错误或成功信息
+message OrderStatusBean {
+    OrderBean orderBean = 1;    // 订单基本信息
+    int32  orderId = 2;         // 订单ID
+    OrderStatus status = 3;     // 订单状态
+    double filledQuantity = 4;  // 已成交数量
+    double avgFilledPrice = 5;  // 成交均价
 }
 
-message CancelOrderRequest {
-    string order_id = 1;        // 订单 ID
-    string symbol = 2;          // 交易对，例如 BTCUSDT
+// 请求-下单
+message ReqPlaceOrder {
+    OrderBean orderBean = 1;
 }
 
-message CancelOrderResponse {
-    string order_id = 1;        // 订单 ID
-    string status = 2;          // 订单状态，例如 "CANCELED"
-    string message = 3;         // 错误或成功信息
+// 请求-修改订单
+message ReqModifyOrder {
+    string orderId = 1; // 订单 ID
+    OrderBean orderBean = 2;
 }
 
-message QueryOrdersRequest {
-    string symbol = 1;          // 交易对，例如 BTCUSDT
-    int64 start_time = 2;       // 起始时间（毫秒）
-    int64 end_time = 3;         // 结束时间（毫秒）
-    int32 limit = 4;            // 返回的订单数量限制
+// 请求-撤单
+message ReqCancelOrder {
+    string orderId = 1;  // 订单 ID
 }
 
-message Order {
-    string order_id = 1;        // 订单 ID
-    string symbol = 2;          // 交易对
-    string status = 3;          // 订单状态
-    double executed_quantity = 4; // 已成交数量
-    double executed_price = 5;  // 成交均价
-    int64 timestamp = 6;        // 订单时间戳
+// 请求-一键清仓
+message ReqOneKeyClosePosition {
+    repeated string symbols = 1; // 交易对列表   
 }
 
-message QueryOrdersResponse {
-    repeated Order orders = 1;  // 订单列表
+// 请求-查询订单
+message ReqQueryActiveOrders {
+    string symbol = 1; // 交易对(可选)   
 }
 
-message LeverageRequest {
-    string symbol = 1;          // 交易对，例如 BTCUSDT
-    int32 leverage = 2;         // 杠杆倍数（查询时可为空）
+// 请求-查询历史订单
+message ReqQueryHistoricalOrders {
+    string symbol = 1; // 交易对(可选)   
+    int64 beginTime = 2; // 开始时间(可选)
+    int64 endTime = 3; // 结束时间(可选)
 }
 
-message LeverageResponse {
-    string symbol = 1;          // 交易对
-    int32 leverage = 2;         // 当前杠杆倍数
-    string message = 3;         // 错误或成功信息
+// 请求-查询当前持仓
+message ReqQueryPositions {
+    string symbol = 1; // 交易对(可选)   
 }
 
-// 行情功能相关消息
-message TickerRequest {
-    repeated string symbols = 1; // 查询的交易对列表，例如 ["BTCUSDT", "ETHUSDT"]
+// 杠杆倍数信息
+message LeverageBean {
+    string symbol = 1; // 交易对
+    int32 leverage = 2; // 杠杆倍数
 }
 
-message Ticker {
-    string symbol = 1;          // 交易对
-    double mark_price = 2;      // 标记价格
-    double funding_rate = 3;    // 资金费率
-    int64 funding_time = 4;     // 资金结算时间（毫秒）
+// 请求-批量设置杠杆倍数
+message ReqSetLeverage {
+    repeated LeverageBean beanList = 1;
 }
 
-message TickerResponse {
-    repeated Ticker tickers = 1; // Ticker 列表
+// 请求-查询杠杆倍数
+message ReqQueryLeverage {
+    string symbol = 1; // 交易对(若为空，则返回全部symbol的 LeverageBean)
 }
 
-message SubscribeTradeRequest {
-    string symbol = 1;          // 交易对
-    bool subscribe = 2;         // true: 订阅, false: 取消订阅
+// 响应-杠杆倍数信息
+message ResQueryLeverage {
+    repeated LeverageBean beanList = 1;
 }
 
-message SubscribeDepthRequest {
-    string symbol = 1;          // 交易对
-    bool subscribe = 2;         // true: 订阅, false: 取消订阅
+// 请求-查询杠杆分层
+message ReqQueryLeverageBracket {
+    string symbol = 1; // 交易对(若为空，则返回全部symbol的 SymbolLeverageBracketBean)
+} 
+
+// 响应-查询杠杆分层
+message ResQueryLeverageBracket {
+    repeated SymbolLeverageBracketBean beanList = 1;
 }
 
-message KlineRequest {
-    string symbol = 1;          // 交易对
-    string interval = 2;        // K线周期，例如 "1m", "5m", "1h", "1d"
-    int64 start_time = 3;       // 起始时间（毫秒）
-    int64 end_time = 4;         // 结束时间（毫秒）
-    int32 limit = 5;            // 返回的 K 线数量限制
+// 某symbol的全部杠杆分层信息
+message SymbolLeverageBracketBean {
+    repeated LeverageBracketBean beanList = 1;
 }
 
-message Kline {
-    int64 open_time = 1;        // 开盘时间
-    double open = 2;            // 开盘价
-    double high = 3;            // 最高价
-    double low = 4;             // 最低价
-    double close = 5;           // 收盘价
-    double volume = 6;          // 成交量
-    int64 close_time = 7;       // 收盘时间
-}
-
-message KlineResponse {
-    repeated Kline klines = 1;  // K 线数据列表
-}
-
-message SubscribeKlineRequest {
-    string symbol = 1;          // 交易对
-    string interval = 2;        // K线周期
-    bool subscribe = 3;         // true: 订阅, false: 取消订阅
-}
-
-// 账户分析相关消息
-message AccountAnalysisRequest {
-    int64 start_time = 1;       // 起始时间（毫秒）
-    int64 end_time = 2;         // 结束时间（毫秒）
-}
-
-message AccountAsset {
-    string asset = 1;           // 资产类型，例如 USDT
-    double total = 2;           // 总资产
-    double available = 3;       // 可用资产
-}
-
-message AccountAnalysisResponse {
-    double total_asset = 1;     // 总资产
-    repeated AccountAsset assets = 2; // 各资产详情
-    repeated TimeSeriesAsset time_series = 3; // 资产随时间的走势
-}
-
-message TimeSeriesAsset {
-    int64 timestamp = 1;        // 时间戳（毫秒）
-    double total_asset = 2;     // 总资产
+// 某symbol的某个杠杆分层信息
+message LeverageBracketBean {
+    int32 leverage = 1; // 当前分层下的最大杠杆倍数
+    int32 notionalCap = 2; // 当前分层下的名义价值上限
+    int32 notionalFloor = 3; // 当前分层下的名义价值下限
 }

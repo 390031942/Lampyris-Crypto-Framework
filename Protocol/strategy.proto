@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package lampyris.crypto.protocol.strategy;
+
+/*---------- 策略配置 数据 ----------*/
+// 策略配置信息
+message StreategyConfigBean {
+    int32 strategyId = 1; // 策略ID，后端程序决定
+    int32 strategyName = 2; // 策略ID，后端程序决定
+    repeated StreategyFieldBean fieldsList = 3; // 字段信息
+}
+
+// 策略字段信息
+message StreategyFieldBean {
+    string name = 1; // 字段名称 
+    string type = 2; // 字段类型(请求中不传)
+    string value = 3; // 字段取值
+}
+
+// 请求-设置策略
+message ReqModifyStreategySetting {
+    StreategyConfigBean bean = 1;
+}
+
+// 响应-设置策略
+message ResModifyStreategySetting {
+    bool success = 1;
+    string errorMessage = 2;
+}
+
+// 响应-策略列表
+message ResStreategySettings {
+    repeated StreategyConfigBean configBeanList = 1;
+}
+
+// 策略执行信息
+message StrategyExectionInfoBean {
+    repeated int32 correspondingOrderIds = 1; // 关联的订单ID
+    StreategyConfigBean usedConfigBean = 2; // 执行时所采用的配置
+    int64 exectionTimestamp = 3; // 执行时间
+}
+
+// 请求-查询订单执行信息
+message ReqQueryStrategyExectionInfo {
+    int32 strategyId = 1; // 策略ID
+    int32 filterRecentDays = 2; // 过滤选项，表示查看近若干天的数据(如果传0，表示全部都看,如果传3，表示仅查看"近3天"的)
+}
+
+// 响应-查询订单执行信息
+message ResQueryStrategyExectionInfo {
+}
+/*---------------------------------*/ 

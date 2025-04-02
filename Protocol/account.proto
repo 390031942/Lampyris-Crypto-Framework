@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package lampyris.crypto.protocol.account;
+
+message ReqLogin {
+    string deviceMAC = 1;
+}
+
+message ReqHeartBeat {
+    int64 clientTime = 1;
+}
+
+message ResHeartBeat {
+    int64 serverTime = 1;
+}
+
+message AccountAssetInfoBean {
+    double balance = 1; // 资产数(USDT)
+    double positionValue = 2; // 持仓价值(USDT)
+    double unrealizedPnL = 3; // 未实现盈亏(USDT)
+    double dailyPnL = 4; // 今日盈亏(USDT)
+    double dailyPnLPercentage = 5; // 今日盈亏比例(%)
+    double availableBalance = 6; // 可用资金(USDT)
+    double maxWithdrawAmount = 7; // 最大可转出数目(USDT)
+}
+
+message SubAccountInfoBean {
+    int32 accountId = 1; // 子账户ID
+    AccountAssetInfoBean assetInfo = 2; // 子账户拥有的资产信息
+    string ownerName = 3; // 账户拥有者名称(便于沟通)
+    string ownerEmail = 4; // 账户拥有者邮箱地址
+    string ownerPhoneNumber = 5; // 账户拥有者手机号码
+    bool isRoot = 6; // 是否根账户，这涉及到资金的转移
+}
+
+message ResQuerySubAcccountList {
+    SubAccountInfoBean beanList = 1;
+}
+
+message ReqAccountSummaryUpdate {
+    bool isCancel = 1;
+}
+
+message ResAccountSummaryUpdate {
+    AccountAssetInfoBean assetInfo = 1; // 账户拥有的资产信息
+}
+
+enum AssetTransferType {
+    RE_AVGERAGE_SUB_ACCOUNT = 1; // 子账户资产再平均
+    TO_ROOT_ACCOUNT = 2; // 子账户转移到根账户
+    TO_WALLET_ACCOUNT = 3; // 根账户到钱包账户
+}
+
+message ReqAccountAssetTransfer {
+    AssetTransferType type = 1;
+}
+
+message AssetTransferHistoryInfoDetailBean {
+    int32 sourceAccountId = 1;   // 源账户ID
+    int32 targetAccountId = 2;   // 目标账户ID
+    double amount = 3;  // 数量(USDT) 
+}
+
+message AssetTransferHistoryInfoBean {
+    AssetTransferType type = 1;
+    repeated AssetTransferHistoryInfoDetailBean detailBeanList = 2;
+    int64 transferStartTimestamp = 3; // 发起时间
+    int64 transferFinishedTimestamp = 4; // 完成时间(如果没完成则为-1)
+}
+
+message ReqQueryAssetTransferHistory {
+    
+}
