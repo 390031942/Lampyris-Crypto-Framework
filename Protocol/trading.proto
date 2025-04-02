@@ -13,33 +13,33 @@ enum OrderType {
 }
 
 enum OrderStatus {
-    NEW = 1; // 新建订单
-    PARTIALLY_FILLED = 2; // 部分成交
-    FILLED = 3; // 全部成交
-    CANCELED = 4; // 已撤销
-    REJECTED = 5; // 被拒绝
-    EXPIRED = 6; // 订单过期(根据timeInForce参数规则)
-    EXPIRED_IN_MATCH = 7; // 订单被STP过期(STP 是一种防止自成交（Self-Trade）的机制，主要用于避免同一个账户的订单在市场中互相成交)
+    NEW = 0; // 新建订单
+    PARTIALLY_FILLED = 1; // 部分成交
+    FILLED = 2; // 全部成交
+    CANCELED = 3; // 已撤销
+    REJECTED = 4; // 被拒绝
+    EXPIRED = 5; // 订单过期(根据timeInForce参数规则)
+    EXPIRED_IN_MATCH = 6; // 订单被STP过期(STP 是一种防止自成交（Self-Trade）的机制，主要用于避免同一个账户的订单在市场中互相成交)
 }
 
 enum TimeInForceType {
-    GTC = 1; // Good Till Cancel 成交为止（下单后仅有1年有效期，1年后自动取消）
-    IOC = 2; // Immediate or Cancel 无法立即成交(吃单)的部分就撤销
-    FOK = 3; // Fill or Kill 无法全部立即成交就撤销
-    GTX = 4; // Good Till Crossing 无法成为挂单方就撤销
-    GTD = 5; // Good Till Date 在特定时间之前有效，到期自动撤销
+    GTC = 0; // Good Till Cancel 成交为止（下单后仅有1年有效期，1年后自动取消）
+    IOC = 1; // Immediate or Cancel 无法立即成交(吃单)的部分就撤销
+    FOK = 2; // Fill or Kill 无法全部立即成交就撤销
+    GTX = 3; // Good Till Crossing 无法成为挂单方就撤销
+    GTD = 4; // Good Till Date 在特定时间之前有效，到期自动撤销
 }
 
 enum TradeSide {
-    BUY = 1;
-    SELL = 2;
+    BUY = 0;
+    SELL = 1;
 }
 
 // 条件单触发类型
 enum ConditionOrderTriggerType {
-    PRICE = 1; // 到达指定价格
-    RISE_SPEED = 2; // 涨速(%)
-    INTERVAL = 3; // 间隔时间(int64时间戳)
+    PRICE = 0; // 到达指定价格
+    RISE_SPEED = 1; // 涨速(%)
+    INTERVAL = 2; // 间隔时间(int64时间戳)
 }
 
 // 条件单触发数据

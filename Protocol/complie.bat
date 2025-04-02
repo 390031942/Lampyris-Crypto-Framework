@@ -1,30 +1,73 @@
-@echo off
-REM 设置工作目录为当前脚本所在目录
+@echo on
+REM Set the working directory to the current script's location
 setlocal
 cd /d %~dp0
 
-REM 定义输入目录和输出目录
+REM Define input directory and output directories for C++ and C#
 set INPUT_DIR=%~dp0
-set OUTPUT_DIR=%~dp0output
+set CPP_OUTPUT_DIR=%~dp0output/cpp
+set CSHARP_OUTPUT_DIR=%~dp0output/csharp
 
-REM 确保输出目录存在
-if not exist "%OUTPUT_DIR%" (
-    mkdir "%OUTPUT_DIR%"
+REM Define the parent directory for copying files
+set CPP_DST_DIR=%~dp0../Lampyris.Client.Crypto.Core/sources/Protocol
+set CSHARP_DST_DIR=%~dp0../Lampyris.Server.Crypto.Common/sources/Protocol
+
+REM Ensure the output directories exist
+if not exist "%CPP_OUTPUT_DIR%" (
+    mkdir "%CPP_OUTPUT_DIR%"
+)
+if not exist "%CSHARP_OUTPUT_DIR%" (
+    mkdir "%CSHARP_OUTPUT_DIR%"
 )
 
-REM 定义proto文件列表
+REM Define the list of proto files to compile
 set PROTO_FILES=account.proto app.proto quote.proto strategy.proto trading.proto
 
-REM 遍历每个proto文件并编译为C++和C#代码
+REM Loop through each proto file and compile to C++ and C# code
 for %%F in (%PROTO_FILES%) do (
-    echo 编译 %%F 为 C++ 和 C# 文件...
+    echo Compiling %%F to C++ and C# files...
 
-    REM 编译为C++文件
-    bin\protoc.exe --cpp_out="%OUTPUT_DIR%" --experimental_allow_proto3_optional --proto_path="%INPUT_DIR%" %%F
+    REM Compile to C++ files
+    bin\protoc.exe --cpp_out="%CPP_OUTPUT_DIR%" --experimental_allow_proto3_optional %%F
+    if %errorlevel% neq 0 (
+        echo [ERROR] Failed to compile %%F to C++ files.
+        pause
+        exit /b %errorlevel%
+    )
 
-    REM 编译为C#文件，使用驼峰命名法
-    bin\protoc.exe --csharp_out="%OUTPUT_DIR%" --experimental_allow_proto3_optional --csharp_opt=property_name=camel_case --proto_path="%INPUT_DIR%" %%F
+    REM Compile to C# files
+    bin\protoc.exe --csharp_out="%CSHARP_OUTPUT_DIR%" --experimental_allow_proto3_optional %%F
+    if %errorlevel% neq 0 (
+        echo [ERROR] Failed to compile %%F to C# files.
+        pause
+        exit /b %errorlevel%
+    )
+
+    echo [INFO] Successfully compiled %%F.
+
+    REM Rename .pb.cc and .pb.h files to .cc and .h
+    echo Renaming generated C++ files for %%F...
+
+    for %%G in ("%CPP_OUTPUT_DIR%\*.pb.h") do (
+        ren "%%G" "%%~nG"
+    )
+    for %%G in ("%CPP_OUTPUT_DIR%\*.pb") do (
+        ren "%%G" "%%~nG.h"
+    )
+    for %%G in ("%CPP_OUTPUT_DIR%\*.pb.cc") do (
+        ren "%%G" "%%~nG"
+    )
+    for %%G in ("%CPP_OUTPUT_DIR%\*.pb") do (
+        ren "%%G" "%%~nG.cpp"
+    )
+    echo [INFO] Renaming completed for %%F.
+
+    REM Copy renamed files to the parent directory
+    echo Copying renamed files for %%F to the parent directory...
+    xcopy "%CPP_OUTPUT_DIR%" "%CPP_DST_DIR%" /E /Y >nul
+    xcopy "%CSHARP_OUTPUT_DIR%" "%CSHARP_DST_DIR%" /E /Y >nul
+    echo [INFO] Files for %%F copied successfully.
 )
 
-echo 编译完成，所有文件已输出到 "%OUTPUT_DIR%" 文件夹。
+echo Compilation completed. All files have been exported to the "output" folder and copied to the parent directory.
 pause

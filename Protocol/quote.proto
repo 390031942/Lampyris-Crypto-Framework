@@ -20,18 +20,18 @@ message SymbolTickerDataBean {
 
 // 排序规则
 enum SymbolTickerDataSortType {
-    NONE  = 1, // 不排序
-    PRICE = 2, // 根据现价
-    CURRENCY = 3, // 根据24h成交额
-    PERCENTAGE = 4, // 根据UTC+0涨幅
-    FUNDING_RATE = 5, // 根据资金费率
-    FUNDING_LEFT_TIME = 6, // 根据资金结算时间倒计时
+    NONE  = 0; // 不排序
+    PRICE = 1; // 根据现价
+    CURRENCY = 2; // 根据24h成交额
+    PERCENTAGE = 3; // 根据UTC+0涨幅
+    FUNDING_RATE = 4; // 根据资金费率
+    FUNDING_LEFT_TIME = 5; // 根据资金结算时间倒计时
 }
 
 // 请求-订阅ticker数据
 message ReqSubscribeTickerData {
     bool isCancel = 1;  // 是否取消订阅
-    bool isAscending = 2； // 是否升序排序
+    bool isAscending = 2; // 是否升序排序
     SymbolTickerDataSortType sortType = 3; // 排序的类型
 }
 
@@ -51,7 +51,7 @@ message ReqSubscribeTradeData {
 // 响应-推送的某交易对的成交数据
 message SymbolTradeDataBean {
     string symbol = 1;  // 交易对
-    repeated TradeDataBean beanList = 2；
+    repeated TradeDataBean beanList = 2;
 }
 
 // 成交数据
@@ -86,7 +86,7 @@ message ReqCandlestickQuery {
 message ResCandlestickQuery {
     string symbol = 1; // 交易对
     string barSize = 2; // 周期
-    repeated CandlestickBean beanList;
+    repeated CandlestickBean beanList = 3;
 }
 
 // 响应-查询指定时间内某个周期的k线数据
@@ -111,7 +111,7 @@ message CandlestickBean {
 /*--------- 交易规则 数据 ----------*/
 // 请求-订阅k线更新
 message ReqTradeRule {
-    repeated SymbolTradeRuleBean beanList;
+    repeated SymbolTradeRuleBean beanList = 1;
 }
 
 message SymbolTradeRuleBean {
@@ -120,9 +120,9 @@ message SymbolTradeRuleBean {
     double minPrice = 3;
     double priceTickSize = 4;
     double maxQuantity = 5;
-    double minQuantity = 5;
-    double quantityTickSize = 5;
-    double minNotional = 5;
+    double minQuantity = 6;
+    double quantityTickSize = 7;
+    double minNotional = 8;
 }
 /*---------------------------------*/ 
 

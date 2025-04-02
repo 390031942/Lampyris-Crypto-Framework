@@ -46,9 +46,9 @@ message ResAccountSummaryUpdate {
 }
 
 enum AssetTransferType {
-    RE_AVGERAGE_SUB_ACCOUNT = 1; // 子账户资产再平均
-    TO_ROOT_ACCOUNT = 2; // 子账户转移到根账户
-    TO_WALLET_ACCOUNT = 3; // 根账户到钱包账户
+    RE_AVGERAGE_SUB_ACCOUNT = 0; // 子账户资产再平均
+    TO_ROOT_ACCOUNT = 1; // 子账户转移到根账户
+    TO_WALLET_ACCOUNT = 2; // 根账户到钱包账户
 }
 
 message ReqAccountAssetTransfer {

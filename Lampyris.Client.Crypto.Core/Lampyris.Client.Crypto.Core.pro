@@ -19,7 +19,8 @@ SOURCES += \
     sources/UI/Standalong/MainStatusBar.cpp \
     sources/UI/Standalong/MainTitleBar.cpp \
     sources/UI/Standalong/MainToolBar.cpp \
-    sources/UI/Standalong/MainWidget.cpp
+    sources/UI/Standalong/MainWidget.cpp \
+    sources/Protocol/MainWidget.cpp \
 
 HEADERS += \
     sources/Global.h \
