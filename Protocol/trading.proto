@@ -2,16 +2,16 @@ syntax = "proto3";
 
 package binance;
 
+enum OrderType {
+    LIMIT = 0;       // 限价单
+    MARKET = 1;      // 市价单
+    STOP_LOSS = 2;   // 止损单
+    TAKE_PROFIT = 3; // 止盈单
+    CONDITIONAL = 4; // 条件单
+}
+
 // 交易功能相关消息
 message OrderRequest {
-    enum OrderType {
-        LIMIT = 0;       // 限价单
-        MARKET = 1;      // 市价单
-        STOP_LOSS = 2;   // 止损单
-        TAKE_PROFIT = 3; // 止盈单
-        CONDITIONAL = 4; // 条件单
-    }
-
     string symbol = 1;          // 交易对，例如 BTCUSDT
     OrderType order_type = 2;   // 订单类型
     double quantity = 3;        // 订单数量（以 USDT 为单位）
