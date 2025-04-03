@@ -1,12 +1,12 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
 using Lampyris.CSharp.Common;
+using Lampyris.Crypto.Protocol.Trading;
 
 public class OrderInfo
 {
     public string            Symbol = "";
-    public OrderSide         Side;
-    public OrderPositionSide PositionSide;
+    public TradeSide         Side;
     public OrderType         OrderType;
     public double            Price;
     public ExtraOrderInfo?   ExtraOrderInfo = null;
@@ -14,16 +14,16 @@ public class OrderInfo
 
 public class OrderStateInfo
 {
-    public string     Symbol = "";
-    public string     OrderId = "";
-    public string     ClientOrderId = "";
-    public OrderSide  Side;
-    public OrderType  OrderType;
-    public OrderState Quantity;
-    public double     Price;
-    public double     FilledQuantity;
-    public double     AveragePrice;
-    public long       UpdateTime;
+    public string      Symbol = "";
+    public string      OrderId = "";
+    public string      ClientOrderId = "";
+    public TradeSide   Side;
+    public OrderType   OrderType;
+    public OrderStatus Status;
+    public double      Price;
+    public double      FilledQuantity;
+    public double      AveragePrice;
+    public long        UpdateTime;
 }
 
 [Component]

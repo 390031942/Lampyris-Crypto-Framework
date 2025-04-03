@@ -3,7 +3,7 @@
 /*
  * 被DBColumnAttribute标记的类可以作为数据库表格中的一列
  */
-[AttributeUsage(AttributeTargets.Property)]
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class DBColumnAttribute : Attribute
 {
     public string ColumnName { get; }
@@ -11,7 +11,7 @@ public class DBColumnAttribute : Attribute
     public bool IsPrimaryKey { get; }
     public bool IsAutoIncrement { get; }
 
-    public DBColumnAttribute(string columnName, string dataType, bool isPrimaryKey = false, bool isAutoIncrement = false)
+    public DBColumnAttribute(string columnName, string dataType, bool isPrimaryKey = false, bool isAutoIncrement = false, bool isNotNull = false)
     {
         ColumnName = columnName;
         DataType = dataType;

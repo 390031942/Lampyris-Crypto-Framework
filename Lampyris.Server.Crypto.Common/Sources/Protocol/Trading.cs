@@ -27,7 +27,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
             "Cg10cmFkaW5nLnByb3RvEiBsYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJh",
             "ZGluZyJwChRDb25kaXRpb25UcmlnZ2VyQmVhbhJJCgR0eXBlGAEgASgOMjsu",
             "bGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuQ29uZGl0aW9uT3Jk",
-            "ZXJUcmlnZ2VyVHlwZRINCgV2YWx1ZRgCIAEoCSKGAwoJT3JkZXJCZWFuEg4K",
+            "ZXJUcmlnZ2VyVHlwZRINCgV2YWx1ZRgCIAEoCSKbAwoJT3JkZXJCZWFuEg4K",
             "BnN5bWJvbBgBIAEoCRI5CgRzaWRlGAIgASgOMisubGFtcHlyaXMuY3J5cHRv",
             "LnByb3RvY29sLnRyYWRpbmcuVHJhZGVTaWRlEj4KCW9yZGVyVHlwZRgDIAEo",
             "DjIrLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyVHlw",
@@ -36,49 +36,49 @@ namespace Lampyris.Crypto.Protocol.Trading {
             "by5wcm90b2NvbC50cmFkaW5nLlRpbWVJbkZvcmNlVHlwZRIUCgxnb29kVGls",
             "bERhdGUYCCABKAMSEgoKcmVkdWNlT25seRgJIAEoCBJJCgljb25kaXRpb24Y",
             "CiADKAsyNi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5Db25k",
-            "aXRpb25UcmlnZ2VyQmVhbiLRAQoPT3JkZXJTdGF0dXNCZWFuEj4KCW9yZGVy",
-            "QmVhbhgBIAEoCzIrLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5n",
-            "Lk9yZGVyQmVhbhIPCgdvcmRlcklkGAIgASgFEj0KBnN0YXR1cxgDIAEoDjIt",
-            "LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyU3RhdHVz",
-            "EhYKDmZpbGxlZFF1YW50aXR5GAQgASgBEhYKDmF2Z0ZpbGxlZFByaWNlGAUg",
-            "ASgBIk8KDVJlcVBsYWNlT3JkZXISPgoJb3JkZXJCZWFuGAEgASgLMisubGFt",
-            "cHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuT3JkZXJCZWFuImEKDlJl",
-            "cU1vZGlmeU9yZGVyEg8KB29yZGVySWQYASABKAkSPgoJb3JkZXJCZWFuGAIg",
-            "ASgLMisubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuT3JkZXJC",
-            "ZWFuIiEKDlJlcUNhbmNlbE9yZGVyEg8KB29yZGVySWQYASABKAkiKQoWUmVx",
-            "T25lS2V5Q2xvc2VQb3NpdGlvbhIPCgdzeW1ib2xzGAEgAygJIiYKFFJlcVF1",
-            "ZXJ5QWN0aXZlT3JkZXJzEg4KBnN5bWJvbBgBIAEoCSJOChhSZXFRdWVyeUhp",
-            "c3RvcmljYWxPcmRlcnMSDgoGc3ltYm9sGAEgASgJEhEKCWJlZ2luVGltZRgC",
-            "IAEoAxIPCgdlbmRUaW1lGAMgASgDIiMKEVJlcVF1ZXJ5UG9zaXRpb25zEg4K",
-            "BnN5bWJvbBgBIAEoCSIwCgxMZXZlcmFnZUJlYW4SDgoGc3ltYm9sGAEgASgJ",
-            "EhAKCGxldmVyYWdlGAIgASgFIlIKDlJlcVNldExldmVyYWdlEkAKCGJlYW5M",
-            "aXN0GAEgAygLMi4ubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcu",
-            "TGV2ZXJhZ2VCZWFuIiIKEFJlcVF1ZXJ5TGV2ZXJhZ2USDgoGc3ltYm9sGAEg",
-            "ASgJIlQKEFJlc1F1ZXJ5TGV2ZXJhZ2USQAoIYmVhbkxpc3QYASADKAsyLi5s",
-            "YW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5MZXZlcmFnZUJlYW4i",
-            "KQoXUmVxUXVlcnlMZXZlcmFnZUJyYWNrZXQSDgoGc3ltYm9sGAEgASgJImgK",
-            "F1Jlc1F1ZXJ5TGV2ZXJhZ2VCcmFja2V0Ek0KCGJlYW5MaXN0GAEgAygLMjsu",
-            "bGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuU3ltYm9sTGV2ZXJh",
-            "Z2VCcmFja2V0QmVhbiJkChlTeW1ib2xMZXZlcmFnZUJyYWNrZXRCZWFuEkcK",
-            "CGJlYW5MaXN0GAEgAygLMjUubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRy",
-            "YWRpbmcuTGV2ZXJhZ2VCcmFja2V0QmVhbiJTChNMZXZlcmFnZUJyYWNrZXRC",
-            "ZWFuEhAKCGxldmVyYWdlGAEgASgFEhMKC25vdGlvbmFsQ2FwGAIgASgFEhUK",
-            "DW5vdGlvbmFsRmxvb3IYAyABKAUqigEKCU9yZGVyVHlwZRIJCgVMSU1JVBAA",
-            "EgoKBk1BUktFVBABEg0KCVNUT1BfTE9TUxACEg8KC1RBS0VfUFJPRklUEAMS",
-            "FAoQU1RPUF9MT1NTX01BUktFVBAEEhYKElRBS0VfUFJPRklUX01BUktFVBAF",
-            "EhgKFFRSQUlMSU5HX1NUT1BfTUFSS0VUEAYqdwoLT3JkZXJTdGF0dXMSBwoD",
-            "TkVXEAASFAoQUEFSVElBTExZX0ZJTExFRBABEgoKBkZJTExFRBACEgwKCENB",
-            "TkNFTEVEEAMSDAoIUkVKRUNURUQQBBILCgdFWFBJUkVEEAUSFAoQRVhQSVJF",
-            "RF9JTl9NQVRDSBAGKj4KD1RpbWVJbkZvcmNlVHlwZRIHCgNHVEMQABIHCgNJ",
-            "T0MQARIHCgNGT0sQAhIHCgNHVFgQAxIHCgNHVEQQBCoeCglUcmFkZVNpZGUS",
-            "BwoDQlVZEAASCAoEU0VMTBABKkQKGUNvbmRpdGlvbk9yZGVyVHJpZ2dlclR5",
-            "cGUSCQoFUFJJQ0UQABIOCgpSSVNFX1NQRUVEEAESDAoISU5URVJWQUwQAmIG",
-            "cHJvdG8z"));
+            "aXRpb25UcmlnZ2VyQmVhbhITCgtjcmVhdGVkVGltZRgLIAEoAyLRAQoPT3Jk",
+            "ZXJTdGF0dXNCZWFuEj4KCW9yZGVyQmVhbhgBIAEoCzIrLmxhbXB5cmlzLmNy",
+            "eXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyQmVhbhIPCgdvcmRlcklkGAIg",
+            "ASgFEj0KBnN0YXR1cxgDIAEoDjItLmxhbXB5cmlzLmNyeXB0by5wcm90b2Nv",
+            "bC50cmFkaW5nLk9yZGVyU3RhdHVzEhYKDmZpbGxlZFF1YW50aXR5GAQgASgB",
+            "EhYKDmF2Z0ZpbGxlZFByaWNlGAUgASgBIk8KDVJlcVBsYWNlT3JkZXISPgoJ",
+            "b3JkZXJCZWFuGAEgASgLMisubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRy",
+            "YWRpbmcuT3JkZXJCZWFuImEKDlJlcU1vZGlmeU9yZGVyEg8KB29yZGVySWQY",
+            "ASABKAkSPgoJb3JkZXJCZWFuGAIgASgLMisubGFtcHlyaXMuY3J5cHRvLnBy",
+            "b3RvY29sLnRyYWRpbmcuT3JkZXJCZWFuIiEKDlJlcUNhbmNlbE9yZGVyEg8K",
+            "B29yZGVySWQYASABKAkiKQoWUmVxT25lS2V5Q2xvc2VQb3NpdGlvbhIPCgdz",
+            "eW1ib2xzGAEgAygJIiYKFFJlcVF1ZXJ5QWN0aXZlT3JkZXJzEg4KBnN5bWJv",
+            "bBgBIAEoCSJOChhSZXFRdWVyeUhpc3RvcmljYWxPcmRlcnMSDgoGc3ltYm9s",
+            "GAEgASgJEhEKCWJlZ2luVGltZRgCIAEoAxIPCgdlbmRUaW1lGAMgASgDIiMK",
+            "EVJlcVF1ZXJ5UG9zaXRpb25zEg4KBnN5bWJvbBgBIAEoCSIwCgxMZXZlcmFn",
+            "ZUJlYW4SDgoGc3ltYm9sGAEgASgJEhAKCGxldmVyYWdlGAIgASgFIlIKDlJl",
+            "cVNldExldmVyYWdlEkAKCGJlYW5MaXN0GAEgAygLMi4ubGFtcHlyaXMuY3J5",
+            "cHRvLnByb3RvY29sLnRyYWRpbmcuTGV2ZXJhZ2VCZWFuIiIKEFJlcVF1ZXJ5",
+            "TGV2ZXJhZ2USDgoGc3ltYm9sGAEgASgJIlQKEFJlc1F1ZXJ5TGV2ZXJhZ2US",
+            "QAoIYmVhbkxpc3QYASADKAsyLi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wu",
+            "dHJhZGluZy5MZXZlcmFnZUJlYW4iKQoXUmVxUXVlcnlMZXZlcmFnZUJyYWNr",
+            "ZXQSDgoGc3ltYm9sGAEgASgJImgKF1Jlc1F1ZXJ5TGV2ZXJhZ2VCcmFja2V0",
+            "Ek0KCGJlYW5MaXN0GAEgAygLMjsubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
+            "LnRyYWRpbmcuU3ltYm9sTGV2ZXJhZ2VCcmFja2V0QmVhbiJkChlTeW1ib2xM",
+            "ZXZlcmFnZUJyYWNrZXRCZWFuEkcKCGJlYW5MaXN0GAEgAygLMjUubGFtcHly",
+            "aXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuTGV2ZXJhZ2VCcmFja2V0QmVh",
+            "biJTChNMZXZlcmFnZUJyYWNrZXRCZWFuEhAKCGxldmVyYWdlGAEgASgFEhMK",
+            "C25vdGlvbmFsQ2FwGAIgASgFEhUKDW5vdGlvbmFsRmxvb3IYAyABKAUqigEK",
+            "CU9yZGVyVHlwZRIJCgVMSU1JVBAAEgoKBk1BUktFVBABEg0KCVNUT1BfTE9T",
+            "UxACEg8KC1RBS0VfUFJPRklUEAMSFAoQU1RPUF9MT1NTX01BUktFVBAEEhYK",
+            "ElRBS0VfUFJPRklUX01BUktFVBAFEhgKFFRSQUlMSU5HX1NUT1BfTUFSS0VU",
+            "EAYqdwoLT3JkZXJTdGF0dXMSBwoDTkVXEAASFAoQUEFSVElBTExZX0ZJTExF",
+            "RBABEgoKBkZJTExFRBACEgwKCENBTkNFTEVEEAMSDAoIUkVKRUNURUQQBBIL",
+            "CgdFWFBJUkVEEAUSFAoQRVhQSVJFRF9JTl9NQVRDSBAGKj4KD1RpbWVJbkZv",
+            "cmNlVHlwZRIHCgNHVEMQABIHCgNJT0MQARIHCgNGT0sQAhIHCgNHVFgQAxIH",
+            "CgNHVEQQBCoeCglUcmFkZVNpZGUSBwoDQlVZEAASCAoEU0VMTBABKkQKGUNv",
+            "bmRpdGlvbk9yZGVyVHJpZ2dlclR5cGUSCQoFUFJJQ0UQABIOCgpSSVNFX1NQ",
+            "RUVEEAESDAoISU5URVJWQUwQAmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lampyris.Crypto.Protocol.Trading.OrderType), typeof(global::Lampyris.Crypto.Protocol.Trading.OrderStatus), typeof(global::Lampyris.Crypto.Protocol.Trading.TimeInForceType), typeof(global::Lampyris.Crypto.Protocol.Trading.TradeSide), typeof(global::Lampyris.Crypto.Protocol.Trading.ConditionOrderTriggerType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean), global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean.Parser, new[]{ "Type", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.OrderBean), global::Lampyris.Crypto.Protocol.Trading.OrderBean.Parser, new[]{ "Symbol", "Side", "OrderType", "Quantity", "CashQuantity", "Price", "TifType", "GoodTillDate", "ReduceOnly", "Condition" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.OrderBean), global::Lampyris.Crypto.Protocol.Trading.OrderBean.Parser, new[]{ "Symbol", "Side", "OrderType", "Quantity", "CashQuantity", "Price", "TifType", "GoodTillDate", "ReduceOnly", "Condition", "CreatedTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean), global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean.Parser, new[]{ "OrderBean", "OrderId", "Status", "FilledQuantity", "AvgFilledPrice" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder), global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder.Parser, new[]{ "OrderBean" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder), global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder.Parser, new[]{ "OrderId", "OrderBean" }, null, null, null, null),
@@ -498,6 +498,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       goodTillDate_ = other.goodTillDate_;
       reduceOnly_ = other.reduceOnly_;
       condition_ = other.condition_.Clone();
+      createdTime_ = other.createdTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -656,6 +657,21 @@ namespace Lampyris.Crypto.Protocol.Trading {
       get { return condition_; }
     }
 
+    /// <summary>Field number for the "createdTime" field.</summary>
+    public const int CreatedTimeFieldNumber = 11;
+    private long createdTime_;
+    /// <summary>
+    /// 创建时间
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long CreatedTime {
+      get { return createdTime_; }
+      set {
+        createdTime_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -681,6 +697,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (GoodTillDate != other.GoodTillDate) return false;
       if (ReduceOnly != other.ReduceOnly) return false;
       if(!condition_.Equals(other.condition_)) return false;
+      if (CreatedTime != other.CreatedTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -698,6 +715,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (GoodTillDate != 0L) hash ^= GoodTillDate.GetHashCode();
       if (ReduceOnly != false) hash ^= ReduceOnly.GetHashCode();
       hash ^= condition_.GetHashCode();
+      if (CreatedTime != 0L) hash ^= CreatedTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -753,6 +771,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteBool(ReduceOnly);
       }
       condition_.WriteTo(output, _repeated_condition_codec);
+      if (CreatedTime != 0L) {
+        output.WriteRawTag(88);
+        output.WriteInt64(CreatedTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -800,6 +822,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteBool(ReduceOnly);
       }
       condition_.WriteTo(ref output, _repeated_condition_codec);
+      if (CreatedTime != 0L) {
+        output.WriteRawTag(88);
+        output.WriteInt64(CreatedTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -838,6 +864,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
         size += 1 + 1;
       }
       size += condition_.CalculateSize(_repeated_condition_codec);
+      if (CreatedTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CreatedTime);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -878,6 +907,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
         ReduceOnly = other.ReduceOnly;
       }
       condition_.Add(other.condition_);
+      if (other.CreatedTime != 0L) {
+        CreatedTime = other.CreatedTime;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -937,6 +969,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
             condition_.AddEntriesFrom(input, _repeated_condition_codec);
             break;
           }
+          case 88: {
+            CreatedTime = input.ReadInt64();
+            break;
+          }
         }
       }
     #endif
@@ -994,6 +1030,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
           }
           case 82: {
             condition_.AddEntriesFrom(ref input, _repeated_condition_codec);
+            break;
+          }
+          case 88: {
+            CreatedTime = input.ReadInt64();
             break;
           }
         }

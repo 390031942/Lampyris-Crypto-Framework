@@ -2,7 +2,7 @@
 
 using Lampyris.CSharp.Common;
 using Lampyris.Server.Crypto.Common;
-using DateTimeUtil = Common.DateTimeUtil;
+using DateTimeUtilEx = Common.DateTimeUtilEx;
 
 [Component]
 public class MarketMonitorService
@@ -72,7 +72,7 @@ public class MarketMonitorService
             bool isFall = true;
 
             // 1min 均线上升通道判定
-            if (DateTimeUtil.GetBarTimeSpanDiff(perSymbolActiveInfo.OneMinKTrendTimestamp, now, BarSize._1m) > 0)
+            if (DateTimeUtilEx.GetBarTimeSpanDiff(perSymbolActiveInfo.OneMinKTrendTimestamp, now, BarSize._1m) > 0)
             {
                 for (int i = m_QuoteCandleDatas.Count - m_settings.OneMinMA5Threshold; i < m_QuoteCandleDatas.Count - 2; i++)
                 {
@@ -109,7 +109,7 @@ public class MarketMonitorService
         }
 
         // 采样最近 1min k线, 判断连红,连绿
-        if (DateTimeUtil.GetBarTimeSpanDiff(perSymbolActiveInfo.OneMinContinuousColorTimestamp, now, BarSize._1m) > 0)
+        if (DateTimeUtilEx.GetBarTimeSpanDiff(perSymbolActiveInfo.OneMinContinuousColorTimestamp, now, BarSize._1m) > 0)
         {
             if (m_QuoteCandleDatas.Count >= m_settings.OneMinSameColorCandleThreshold)
             {
@@ -148,7 +148,7 @@ public class MarketMonitorService
         }
 
         // 采样最近5根 15min k线, 判断连红连绿+上升通道
-        if (DateTimeUtil.GetBarTimeSpanDiff(perSymbolActiveInfo.FifteenMinContinuousColorTimestamp, now, BarSize._15m) > 0)
+        if (DateTimeUtilEx.GetBarTimeSpanDiff(perSymbolActiveInfo.FifteenMinContinuousColorTimestamp, now, BarSize._15m) > 0)
         {
             if (m_QuoteCandleDatas.Count >= 5)
             {
@@ -186,7 +186,7 @@ public class MarketMonitorService
         }
 
         // 24小时新高/新低且大于1%
-        if (DateTimeUtil.GetBarTimeSpanDiff(perSymbolActiveInfo.HighLowTimestamp, now, BarSize._1m) > 0)
+        if (DateTimeUtilEx.GetBarTimeSpanDiff(perSymbolActiveInfo.HighLowTimestamp, now, BarSize._1m) > 0)
         {
             if (m_QuoteCandleDatas.Count >= 10)
             {
@@ -216,7 +216,7 @@ public class MarketMonitorService
         }
 
         // 分钟级涨速/跌速>1.5%
-        if (DateTimeUtil.GetBarTimeSpanDiff(perSymbolActiveInfo.ChangeSpeedTimestmap, now, BarSize._1m) > 1)
+        if (DateTimeUtilEx.GetBarTimeSpanDiff(perSymbolActiveInfo.ChangeSpeedTimestmap, now, BarSize._1m) > 1)
         {
             if (m_QuoteCandleDatas.Count >= 3)
             {
@@ -242,7 +242,7 @@ public class MarketMonitorService
         }
 
         // 区间放量
-        if (DateTimeUtil.GetBarTimeSpanDiff(perSymbolActiveInfo.VolumeIncreaseTimestmap, now, BarSize._1m) > 5)
+        if (DateTimeUtilEx.GetBarTimeSpanDiff(perSymbolActiveInfo.VolumeIncreaseTimestmap, now, BarSize._1m) > 5)
         {
             if (m_QuoteCandleDatas.Count >= 15)
             {

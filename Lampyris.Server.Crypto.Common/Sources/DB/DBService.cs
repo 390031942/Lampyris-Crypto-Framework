@@ -11,19 +11,17 @@ public class DBConnectionConfig
     public string ServerIP;
 
     [IniField]
-    public string DatabaseName;
-
-    [IniField]
     public string User;
 
     [IniField]
     public string Password;
 }
 
-[Component]
-public class DBService:ILifecycle
+public abstract class DBService:ILifecycle
 {
     private MySqlConnection m_Connection;
+
+    public abstract string DatebaseName { get; }
 
     public override void OnStart()
     {
@@ -36,9 +34,9 @@ public class DBService:ILifecycle
         }
 
         string mySqlConnectStr = $"Server={dbConfig.ServerIP};" + 
-                                  "Database={dbConfig.databaseName};" +
-                                  "User={dbConfig.user};" + 
-                                  "Password={dbConfig.databaseName};";
+                                 $"Database={DatebaseName};" +
+                                 $"User={dbConfig.User};" +
+                                 $"Password={dbConfig.Password};";
 
         m_Connection = new MySqlConnection(mySqlConnectStr);
         m_Connection.Open();

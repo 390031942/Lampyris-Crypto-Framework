@@ -1,4 +1,4 @@
-@echo on
+@echo off
 REM Set the working directory to the current script's location
 setlocal
 cd /d %~dp0
@@ -20,8 +20,10 @@ if not exist "%CSHARP_OUTPUT_DIR%" (
     mkdir "%CSHARP_OUTPUT_DIR%"
 )
 
+bin\ProtocolCommonFileCodeGen.exe C:\Users\Administrator\source\repos\Lampyris-Crypto-Framework\Protocol
+
 REM Define the list of proto files to compile
-set PROTO_FILES=account.proto app.proto quote.proto strategy.proto trading.proto
+set PROTO_FILES=account.proto app.proto quote.proto strategy.proto trading.proto common.proto
 
 REM Loop through each proto file and compile to C++ and C# code
 for %%F in (%PROTO_FILES%) do (
@@ -48,24 +50,13 @@ for %%F in (%PROTO_FILES%) do (
     REM Rename .pb.cc and .pb.h files to .cc and .h
     echo Renaming generated C++ files for %%F...
 
-    for %%G in ("%CPP_OUTPUT_DIR%\*.pb.h") do (
-        ren "%%G" "%%~nG"
-    )
-    for %%G in ("%CPP_OUTPUT_DIR%\*.pb") do (
-        ren "%%G" "%%~nG.h"
-    )
-    for %%G in ("%CPP_OUTPUT_DIR%\*.pb.cc") do (
-        ren "%%G" "%%~nG"
-    )
-    for %%G in ("%CPP_OUTPUT_DIR%\*.pb") do (
-        ren "%%G" "%%~nG.cpp"
-    )
+    bin\ProtocolCppFilePostProcesstor.exe "%CPP_OUTPUT_DIR%"
     echo [INFO] Renaming completed for %%F.
 
     REM Copy renamed files to the parent directory
     echo Copying renamed files for %%F to the parent directory...
     xcopy "%CPP_OUTPUT_DIR%" "%CPP_DST_DIR%" /E /Y >nul
-    xcopy "%CSHARP_OUTPUT_DIR%" "%CSHARP_DST_DIR%" /E /Y >nul
+    xcopy "%CSHARP_OUTPUT_DIR%" "%CSHARP_DST_DIR%" /E /Y /I >nul
     echo [INFO] Files for %%F copied successfully.
 )
 

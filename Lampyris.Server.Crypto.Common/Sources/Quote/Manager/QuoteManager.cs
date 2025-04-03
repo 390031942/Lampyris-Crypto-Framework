@@ -51,7 +51,7 @@ public class QuoteManager:ILifecycle
                 {
                     DateTime lastDt = RealTimeQuoteService.QueryLatestDateTime();
                     DateTime curDt = DateTime.Now;
-                    if (DateTimeUtil.GetBarTimeSpanDiff(lastDt, curDt, BarSize._1m) != 0)
+                    if (DateTimeUtilEx.GetBarTimeSpanDiff(lastDt, curDt, BarSize._1m) != 0)
                     {
                         HistoricalQuoteDownloader.DownloadAllHistoryCandle(InstType.SWAP, m_HistoricalQuoteBarSizesPerMin, 2);
                     }

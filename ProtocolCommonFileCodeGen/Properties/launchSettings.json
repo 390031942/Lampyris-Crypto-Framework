@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ProtocolCommonFileCodeGen": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Administrator\\source\\repos\\Lampyris-Crypto-Framework\\Protocol"
+    }
+  }
+}

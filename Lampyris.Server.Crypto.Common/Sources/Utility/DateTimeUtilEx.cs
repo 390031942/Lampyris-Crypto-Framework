@@ -1,6 +1,6 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public static class DateTimeUtil
+public static class DateTimeUtilEx
 {
     public static double GetBarTimeSpanDiff(DateTime lhs, DateTime rhs, BarSize BarSize)
     {

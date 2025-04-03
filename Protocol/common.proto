@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+// 自动生成的 common.proto 文件
+
+package lampyris.crypto.protocol.common;
+
+import "account.proto";
+import "app.proto";
+import "quote.proto";
+import "strategy.proto";
+import "trading.proto";
+
+message Request {
+    oneof request_type {
+        lampyris.crypto.protocol.app.ReqLogin reqLogin = 1;
+        lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 2;
+        lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 3;
+        lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 4;
+        lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 5;
+        lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 6;
+        lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 7;
+        lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 8;
+        lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 9;
+        lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 10;
+        lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 11;
+        lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 12;
+        lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 13;
+        lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 14;
+        lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 15;
+        lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 16;
+        lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 17;
+        lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 18;
+        lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 19;
+        lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 20;
+        lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 21;
+        lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 22;
+        lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 23;
+        lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 24;
+    }
+}
+
+message Response {
+    oneof response_type {
+        lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 1;
+        lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 2;
+        lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 3;
+        lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 4;
+        lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 5;
+        lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 6;
+        lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 7;
+        lampyris.crypto.protocol.app.ResLogin resLogin = 8;
+        lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 9;
+        lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 10;
+        lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 11;
+        lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 12;
+        lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 13;
+        lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 14;
+        lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 15;
+        lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 16;
+        lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 17;
+        lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 18;
+        lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 19;
+        lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 20;
+        lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 21;
+        lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 22;
+        lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 23;
+        lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 24;
+        lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 25;
+        lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 26;
+        lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 27;
+        lampyris.crypto.protocol.trading.OrderBean orderBean = 28;
+        lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 29;
+        lampyris.crypto.protocol.trading.LeverageBean leverageBean = 30;
+        lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 31;
+        lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 32;
+        lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 33;
+        lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 34;
+    }
+}

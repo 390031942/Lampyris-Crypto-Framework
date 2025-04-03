@@ -59,6 +59,7 @@ message OrderBean {
     int64 goodTillDate = 8;      // TIF为GTD时订单的自动取消时间
     bool reduceOnly = 9;         // 是否只减仓
     repeated ConditionTriggerBean condition = 10; // 条件列表
+    int64 createdTime = 11;      // 创建时间
 }
 
 message OrderStatusBean {
