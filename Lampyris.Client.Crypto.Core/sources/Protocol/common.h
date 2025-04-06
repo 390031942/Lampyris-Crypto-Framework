@@ -141,40 +141,43 @@ class Response final : public ::google::protobuf::Message
     return *internal_default_instance();
   }
   enum ResponseTypeCase {
-    kResHeartBeat = 1,
-    kAccountAssetInfoBean = 2,
-    kSubAccountInfoBean = 3,
-    kResQuerySubAcccountList = 4,
-    kResAccountSummaryUpdate = 5,
-    kAssetTransferHistoryInfoDetailBean = 6,
-    kAssetTransferHistoryInfoBean = 7,
-    kResLogin = 8,
-    kSymbolTickerDataBean = 9,
-    kResSubscribeTickerData = 10,
-    kSymbolTradeDataBean = 11,
-    kTradeDataBean = 12,
-    kResCandlestickQuery = 13,
-    kCandlestickUpdateBean = 14,
-    kCandlestickBean = 15,
-    kSymbolTradeRuleBean = 16,
-    kMarketMonitorNoticeBean = 17,
-    kSelfSelectedSymbolInfoBean = 18,
-    kSelfSelectedSymbolGroupBean = 19,
-    kResSelfSelectedSymbol = 20,
-    kStreategyConfigBean = 21,
-    kStreategyFieldBean = 22,
-    kResModifyStreategySetting = 23,
-    kResStreategySettings = 24,
-    kStrategyExectionInfoBean = 25,
-    kResQueryStrategyExectionInfo = 26,
-    kConditionTriggerBean = 27,
-    kOrderBean = 28,
-    kOrderStatusBean = 29,
-    kLeverageBean = 30,
-    kResQueryLeverage = 31,
-    kResQueryLeverageBracket = 32,
-    kSymbolLeverageBracketBean = 33,
-    kLeverageBracketBean = 34,
+    kAccountAssetInfoBean = 1,
+    kSubAccountInfoBean = 2,
+    kResQuerySubAcccountList = 3,
+    kResAccountSummaryUpdate = 4,
+    kAssetTransferHistoryInfoDetailBean = 5,
+    kAssetTransferHistoryInfoBean = 6,
+    kResLogin = 7,
+    kResHeartBeat = 8,
+    kResNotice = 9,
+    kSymbolTickerDataBean = 10,
+    kResSubscribeTickerData = 11,
+    kSymbolTradeDataBean = 12,
+    kTradeDataBean = 13,
+    kResCandlestickQuery = 14,
+    kCandlestickUpdateBean = 15,
+    kCandlestickBean = 16,
+    kResTradeRule = 17,
+    kSymbolTradeRuleBean = 18,
+    kMarketMonitorNoticeListBean = 19,
+    kMarketMonitorNoticeBean = 20,
+    kSelfSelectedSymbolInfoBean = 21,
+    kSelfSelectedSymbolGroupBean = 22,
+    kResSelfSelectedSymbol = 23,
+    kStreategyConfigBean = 24,
+    kStreategyFieldBean = 25,
+    kResModifyStreategySetting = 26,
+    kResStreategySettings = 27,
+    kStrategyExectionInfoBean = 28,
+    kResQueryStrategyExectionInfo = 29,
+    kConditionTriggerBean = 30,
+    kOrderBean = 31,
+    kOrderStatusBean = 32,
+    kLeverageBean = 33,
+    kResQueryLeverage = 34,
+    kResQueryLeverageBracket = 35,
+    kSymbolLeverageBracketBean = 36,
+    kLeverageBracketBean = 37,
     RESPONSE_TYPE_NOT_SET = 0,
   };
   static inline const Response* internal_default_instance() {
@@ -268,61 +271,45 @@ class Response final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kResHeartBeatFieldNumber = 1,
-    kAccountAssetInfoBeanFieldNumber = 2,
-    kSubAccountInfoBeanFieldNumber = 3,
-    kResQuerySubAcccountListFieldNumber = 4,
-    kResAccountSummaryUpdateFieldNumber = 5,
-    kAssetTransferHistoryInfoDetailBeanFieldNumber = 6,
-    kAssetTransferHistoryInfoBeanFieldNumber = 7,
-    kResLoginFieldNumber = 8,
-    kSymbolTickerDataBeanFieldNumber = 9,
-    kResSubscribeTickerDataFieldNumber = 10,
-    kSymbolTradeDataBeanFieldNumber = 11,
-    kTradeDataBeanFieldNumber = 12,
-    kResCandlestickQueryFieldNumber = 13,
-    kCandlestickUpdateBeanFieldNumber = 14,
-    kCandlestickBeanFieldNumber = 15,
-    kSymbolTradeRuleBeanFieldNumber = 16,
-    kMarketMonitorNoticeBeanFieldNumber = 17,
-    kSelfSelectedSymbolInfoBeanFieldNumber = 18,
-    kSelfSelectedSymbolGroupBeanFieldNumber = 19,
-    kResSelfSelectedSymbolFieldNumber = 20,
-    kStreategyConfigBeanFieldNumber = 21,
-    kStreategyFieldBeanFieldNumber = 22,
-    kResModifyStreategySettingFieldNumber = 23,
-    kResStreategySettingsFieldNumber = 24,
-    kStrategyExectionInfoBeanFieldNumber = 25,
-    kResQueryStrategyExectionInfoFieldNumber = 26,
-    kConditionTriggerBeanFieldNumber = 27,
-    kOrderBeanFieldNumber = 28,
-    kOrderStatusBeanFieldNumber = 29,
-    kLeverageBeanFieldNumber = 30,
-    kResQueryLeverageFieldNumber = 31,
-    kResQueryLeverageBracketFieldNumber = 32,
-    kSymbolLeverageBracketBeanFieldNumber = 33,
-    kLeverageBracketBeanFieldNumber = 34,
+    kAccountAssetInfoBeanFieldNumber = 1,
+    kSubAccountInfoBeanFieldNumber = 2,
+    kResQuerySubAcccountListFieldNumber = 3,
+    kResAccountSummaryUpdateFieldNumber = 4,
+    kAssetTransferHistoryInfoDetailBeanFieldNumber = 5,
+    kAssetTransferHistoryInfoBeanFieldNumber = 6,
+    kResLoginFieldNumber = 7,
+    kResHeartBeatFieldNumber = 8,
+    kResNoticeFieldNumber = 9,
+    kSymbolTickerDataBeanFieldNumber = 10,
+    kResSubscribeTickerDataFieldNumber = 11,
+    kSymbolTradeDataBeanFieldNumber = 12,
+    kTradeDataBeanFieldNumber = 13,
+    kResCandlestickQueryFieldNumber = 14,
+    kCandlestickUpdateBeanFieldNumber = 15,
+    kCandlestickBeanFieldNumber = 16,
+    kResTradeRuleFieldNumber = 17,
+    kSymbolTradeRuleBeanFieldNumber = 18,
+    kMarketMonitorNoticeListBeanFieldNumber = 19,
+    kMarketMonitorNoticeBeanFieldNumber = 20,
+    kSelfSelectedSymbolInfoBeanFieldNumber = 21,
+    kSelfSelectedSymbolGroupBeanFieldNumber = 22,
+    kResSelfSelectedSymbolFieldNumber = 23,
+    kStreategyConfigBeanFieldNumber = 24,
+    kStreategyFieldBeanFieldNumber = 25,
+    kResModifyStreategySettingFieldNumber = 26,
+    kResStreategySettingsFieldNumber = 27,
+    kStrategyExectionInfoBeanFieldNumber = 28,
+    kResQueryStrategyExectionInfoFieldNumber = 29,
+    kConditionTriggerBeanFieldNumber = 30,
+    kOrderBeanFieldNumber = 31,
+    kOrderStatusBeanFieldNumber = 32,
+    kLeverageBeanFieldNumber = 33,
+    kResQueryLeverageFieldNumber = 34,
+    kResQueryLeverageBracketFieldNumber = 35,
+    kSymbolLeverageBracketBeanFieldNumber = 36,
+    kLeverageBracketBeanFieldNumber = 37,
   };
-  // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 1;
-  bool has_resheartbeat() const;
-  private:
-  bool _internal_has_resheartbeat() const;
-
-  public:
-  void clear_resheartbeat() ;
-  const ::lampyris::crypto::protocol::app::ResHeartBeat& resheartbeat() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResHeartBeat* release_resheartbeat();
-  ::lampyris::crypto::protocol::app::ResHeartBeat* mutable_resheartbeat();
-  void set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
-  void unsafe_arena_set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
-  ::lampyris::crypto::protocol::app::ResHeartBeat* unsafe_arena_release_resheartbeat();
-
-  private:
-  const ::lampyris::crypto::protocol::app::ResHeartBeat& _internal_resheartbeat() const;
-  ::lampyris::crypto::protocol::app::ResHeartBeat* _internal_mutable_resheartbeat();
-
-  public:
-  // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 2;
+  // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 1;
   bool has_accountassetinfobean() const;
   private:
   bool _internal_has_accountassetinfobean() const;
@@ -341,7 +328,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::AccountAssetInfoBean* _internal_mutable_accountassetinfobean();
 
   public:
-  // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 3;
+  // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 2;
   bool has_subaccountinfobean() const;
   private:
   bool _internal_has_subaccountinfobean() const;
@@ -360,7 +347,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::SubAccountInfoBean* _internal_mutable_subaccountinfobean();
 
   public:
-  // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 4;
+  // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 3;
   bool has_resquerysubacccountlist() const;
   private:
   bool _internal_has_resquerysubacccountlist() const;
@@ -379,7 +366,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* _internal_mutable_resquerysubacccountlist();
 
   public:
-  // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 5;
+  // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 4;
   bool has_resaccountsummaryupdate() const;
   private:
   bool _internal_has_resaccountsummaryupdate() const;
@@ -398,7 +385,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* _internal_mutable_resaccountsummaryupdate();
 
   public:
-  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 6;
+  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 5;
   bool has_assettransferhistoryinfodetailbean() const;
   private:
   bool _internal_has_assettransferhistoryinfodetailbean() const;
@@ -417,7 +404,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* _internal_mutable_assettransferhistoryinfodetailbean();
 
   public:
-  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 7;
+  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 6;
   bool has_assettransferhistoryinfobean() const;
   private:
   bool _internal_has_assettransferhistoryinfobean() const;
@@ -436,7 +423,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* _internal_mutable_assettransferhistoryinfobean();
 
   public:
-  // .lampyris.crypto.protocol.app.ResLogin resLogin = 8;
+  // .lampyris.crypto.protocol.app.ResLogin resLogin = 7;
   bool has_reslogin() const;
   private:
   bool _internal_has_reslogin() const;
@@ -455,7 +442,45 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::app::ResLogin* _internal_mutable_reslogin();
 
   public:
-  // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 9;
+  // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 8;
+  bool has_resheartbeat() const;
+  private:
+  bool _internal_has_resheartbeat() const;
+
+  public:
+  void clear_resheartbeat() ;
+  const ::lampyris::crypto::protocol::app::ResHeartBeat& resheartbeat() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResHeartBeat* release_resheartbeat();
+  ::lampyris::crypto::protocol::app::ResHeartBeat* mutable_resheartbeat();
+  void set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
+  void unsafe_arena_set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
+  ::lampyris::crypto::protocol::app::ResHeartBeat* unsafe_arena_release_resheartbeat();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ResHeartBeat& _internal_resheartbeat() const;
+  ::lampyris::crypto::protocol::app::ResHeartBeat* _internal_mutable_resheartbeat();
+
+  public:
+  // .lampyris.crypto.protocol.app.ResNotice resNotice = 9;
+  bool has_resnotice() const;
+  private:
+  bool _internal_has_resnotice() const;
+
+  public:
+  void clear_resnotice() ;
+  const ::lampyris::crypto::protocol::app::ResNotice& resnotice() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResNotice* release_resnotice();
+  ::lampyris::crypto::protocol::app::ResNotice* mutable_resnotice();
+  void set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value);
+  void unsafe_arena_set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value);
+  ::lampyris::crypto::protocol::app::ResNotice* unsafe_arena_release_resnotice();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ResNotice& _internal_resnotice() const;
+  ::lampyris::crypto::protocol::app::ResNotice* _internal_mutable_resnotice();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 10;
   bool has_symboltickerdatabean() const;
   private:
   bool _internal_has_symboltickerdatabean() const;
@@ -474,7 +499,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* _internal_mutable_symboltickerdatabean();
 
   public:
-  // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 10;
+  // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 11;
   bool has_ressubscribetickerdata() const;
   private:
   bool _internal_has_ressubscribetickerdata() const;
@@ -493,7 +518,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* _internal_mutable_ressubscribetickerdata();
 
   public:
-  // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 11;
+  // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 12;
   bool has_symboltradedatabean() const;
   private:
   bool _internal_has_symboltradedatabean() const;
@@ -512,7 +537,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* _internal_mutable_symboltradedatabean();
 
   public:
-  // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 12;
+  // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 13;
   bool has_tradedatabean() const;
   private:
   bool _internal_has_tradedatabean() const;
@@ -531,7 +556,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::TradeDataBean* _internal_mutable_tradedatabean();
 
   public:
-  // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 13;
+  // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 14;
   bool has_rescandlestickquery() const;
   private:
   bool _internal_has_rescandlestickquery() const;
@@ -550,7 +575,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ResCandlestickQuery* _internal_mutable_rescandlestickquery();
 
   public:
-  // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 14;
+  // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 15;
   bool has_candlestickupdatebean() const;
   private:
   bool _internal_has_candlestickupdatebean() const;
@@ -569,7 +594,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* _internal_mutable_candlestickupdatebean();
 
   public:
-  // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 15;
+  // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 16;
   bool has_candlestickbean() const;
   private:
   bool _internal_has_candlestickbean() const;
@@ -588,7 +613,26 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::CandlestickBean* _internal_mutable_candlestickbean();
 
   public:
-  // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 16;
+  // .lampyris.crypto.protocol.quote.ResTradeRule resTradeRule = 17;
+  bool has_restraderule() const;
+  private:
+  bool _internal_has_restraderule() const;
+
+  public:
+  void clear_restraderule() ;
+  const ::lampyris::crypto::protocol::quote::ResTradeRule& restraderule() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResTradeRule* release_restraderule();
+  ::lampyris::crypto::protocol::quote::ResTradeRule* mutable_restraderule();
+  void set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value);
+  void unsafe_arena_set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value);
+  ::lampyris::crypto::protocol::quote::ResTradeRule* unsafe_arena_release_restraderule();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::ResTradeRule& _internal_restraderule() const;
+  ::lampyris::crypto::protocol::quote::ResTradeRule* _internal_mutable_restraderule();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 18;
   bool has_symboltraderulebean() const;
   private:
   bool _internal_has_symboltraderulebean() const;
@@ -607,7 +651,26 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* _internal_mutable_symboltraderulebean();
 
   public:
-  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 17;
+  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean marketMonitorNoticeListBean = 19;
+  bool has_marketmonitornoticelistbean() const;
+  private:
+  bool _internal_has_marketmonitornoticelistbean() const;
+
+  public:
+  void clear_marketmonitornoticelistbean() ;
+  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& marketmonitornoticelistbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* release_marketmonitornoticelistbean();
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* mutable_marketmonitornoticelistbean();
+  void set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value);
+  void unsafe_arena_set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value);
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* unsafe_arena_release_marketmonitornoticelistbean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& _internal_marketmonitornoticelistbean() const;
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* _internal_mutable_marketmonitornoticelistbean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 20;
   bool has_marketmonitornoticebean() const;
   private:
   bool _internal_has_marketmonitornoticebean() const;
@@ -626,7 +689,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* _internal_mutable_marketmonitornoticebean();
 
   public:
-  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 18;
+  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 21;
   bool has_selfselectedsymbolinfobean() const;
   private:
   bool _internal_has_selfselectedsymbolinfobean() const;
@@ -645,7 +708,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* _internal_mutable_selfselectedsymbolinfobean();
 
   public:
-  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 19;
+  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 22;
   bool has_selfselectedsymbolgroupbean() const;
   private:
   bool _internal_has_selfselectedsymbolgroupbean() const;
@@ -664,7 +727,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* _internal_mutable_selfselectedsymbolgroupbean();
 
   public:
-  // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 20;
+  // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 23;
   bool has_resselfselectedsymbol() const;
   private:
   bool _internal_has_resselfselectedsymbol() const;
@@ -683,7 +746,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* _internal_mutable_resselfselectedsymbol();
 
   public:
-  // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 21;
+  // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 24;
   bool has_streategyconfigbean() const;
   private:
   bool _internal_has_streategyconfigbean() const;
@@ -702,7 +765,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::StreategyConfigBean* _internal_mutable_streategyconfigbean();
 
   public:
-  // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 22;
+  // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 25;
   bool has_streategyfieldbean() const;
   private:
   bool _internal_has_streategyfieldbean() const;
@@ -721,7 +784,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::StreategyFieldBean* _internal_mutable_streategyfieldbean();
 
   public:
-  // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 23;
+  // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 26;
   bool has_resmodifystreategysetting() const;
   private:
   bool _internal_has_resmodifystreategysetting() const;
@@ -740,7 +803,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* _internal_mutable_resmodifystreategysetting();
 
   public:
-  // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 24;
+  // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 27;
   bool has_resstreategysettings() const;
   private:
   bool _internal_has_resstreategysettings() const;
@@ -759,7 +822,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::ResStreategySettings* _internal_mutable_resstreategysettings();
 
   public:
-  // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 25;
+  // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 28;
   bool has_strategyexectioninfobean() const;
   private:
   bool _internal_has_strategyexectioninfobean() const;
@@ -778,7 +841,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* _internal_mutable_strategyexectioninfobean();
 
   public:
-  // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 26;
+  // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 29;
   bool has_resquerystrategyexectioninfo() const;
   private:
   bool _internal_has_resquerystrategyexectioninfo() const;
@@ -797,7 +860,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* _internal_mutable_resquerystrategyexectioninfo();
 
   public:
-  // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 27;
+  // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 30;
   bool has_conditiontriggerbean() const;
   private:
   bool _internal_has_conditiontriggerbean() const;
@@ -816,7 +879,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ConditionTriggerBean* _internal_mutable_conditiontriggerbean();
 
   public:
-  // .lampyris.crypto.protocol.trading.OrderBean orderBean = 28;
+  // .lampyris.crypto.protocol.trading.OrderBean orderBean = 31;
   bool has_orderbean() const;
   private:
   bool _internal_has_orderbean() const;
@@ -835,7 +898,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::OrderBean* _internal_mutable_orderbean();
 
   public:
-  // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 29;
+  // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 32;
   bool has_orderstatusbean() const;
   private:
   bool _internal_has_orderstatusbean() const;
@@ -854,7 +917,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::OrderStatusBean* _internal_mutable_orderstatusbean();
 
   public:
-  // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 30;
+  // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 33;
   bool has_leveragebean() const;
   private:
   bool _internal_has_leveragebean() const;
@@ -873,7 +936,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::LeverageBean* _internal_mutable_leveragebean();
 
   public:
-  // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 31;
+  // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 34;
   bool has_resqueryleverage() const;
   private:
   bool _internal_has_resqueryleverage() const;
@@ -892,7 +955,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ResQueryLeverage* _internal_mutable_resqueryleverage();
 
   public:
-  // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 32;
+  // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 35;
   bool has_resqueryleveragebracket() const;
   private:
   bool _internal_has_resqueryleveragebracket() const;
@@ -911,7 +974,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* _internal_mutable_resqueryleveragebracket();
 
   public:
-  // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 33;
+  // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 36;
   bool has_symbolleveragebracketbean() const;
   private:
   bool _internal_has_symbolleveragebracketbean() const;
@@ -930,7 +993,7 @@ class Response final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* _internal_mutable_symbolleveragebracketbean();
 
   public:
-  // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 34;
+  // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 37;
   bool has_leveragebracketbean() const;
   private:
   bool _internal_has_leveragebracketbean() const;
@@ -954,7 +1017,6 @@ class Response final : public ::google::protobuf::Message
   // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.common.Response)
  private:
   class _Internal;
-  void set_has_resheartbeat();
   void set_has_accountassetinfobean();
   void set_has_subaccountinfobean();
   void set_has_resquerysubacccountlist();
@@ -962,6 +1024,8 @@ class Response final : public ::google::protobuf::Message
   void set_has_assettransferhistoryinfodetailbean();
   void set_has_assettransferhistoryinfobean();
   void set_has_reslogin();
+  void set_has_resheartbeat();
+  void set_has_resnotice();
   void set_has_symboltickerdatabean();
   void set_has_ressubscribetickerdata();
   void set_has_symboltradedatabean();
@@ -969,7 +1033,9 @@ class Response final : public ::google::protobuf::Message
   void set_has_rescandlestickquery();
   void set_has_candlestickupdatebean();
   void set_has_candlestickbean();
+  void set_has_restraderule();
   void set_has_symboltraderulebean();
+  void set_has_marketmonitornoticelistbean();
   void set_has_marketmonitornoticebean();
   void set_has_selfselectedsymbolinfobean();
   void set_has_selfselectedsymbolgroupbean();
@@ -992,7 +1058,7 @@ class Response final : public ::google::protobuf::Message
   inline void clear_has_response_type();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 34, 34,
+      0, 37, 37,
       0, 7>
       _table_;
 
@@ -1013,7 +1079,6 @@ class Response final : public ::google::protobuf::Message
     union ResponseTypeUnion {
       constexpr ResponseTypeUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::lampyris::crypto::protocol::app::ResHeartBeat* resheartbeat_;
       ::lampyris::crypto::protocol::account::AccountAssetInfoBean* accountassetinfobean_;
       ::lampyris::crypto::protocol::account::SubAccountInfoBean* subaccountinfobean_;
       ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* resquerysubacccountlist_;
@@ -1021,6 +1086,8 @@ class Response final : public ::google::protobuf::Message
       ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* assettransferhistoryinfodetailbean_;
       ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* assettransferhistoryinfobean_;
       ::lampyris::crypto::protocol::app::ResLogin* reslogin_;
+      ::lampyris::crypto::protocol::app::ResHeartBeat* resheartbeat_;
+      ::lampyris::crypto::protocol::app::ResNotice* resnotice_;
       ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* symboltickerdatabean_;
       ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* ressubscribetickerdata_;
       ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* symboltradedatabean_;
@@ -1028,7 +1095,9 @@ class Response final : public ::google::protobuf::Message
       ::lampyris::crypto::protocol::quote::ResCandlestickQuery* rescandlestickquery_;
       ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* candlestickupdatebean_;
       ::lampyris::crypto::protocol::quote::CandlestickBean* candlestickbean_;
+      ::lampyris::crypto::protocol::quote::ResTradeRule* restraderule_;
       ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* symboltraderulebean_;
+      ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* marketmonitornoticelistbean_;
       ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* marketmonitornoticebean_;
       ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* selfselectedsymbolinfobean_;
       ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* selfselectedsymbolgroupbean_;
@@ -1113,30 +1182,31 @@ class Request final : public ::google::protobuf::Message
     return *internal_default_instance();
   }
   enum RequestTypeCase {
-    kReqLogin = 1,
-    kReqHeartBeat = 2,
-    kReqAccountSummaryUpdate = 3,
-    kReqAccountAssetTransfer = 4,
-    kReqQueryAssetTransferHistory = 5,
-    kReqUploadAppBehaviour = 6,
-    kReqSubscribeTickerData = 7,
-    kReqSubscribeTradeData = 8,
-    kReqSubscribeCandlestickUpdate = 9,
-    kReqCandlestickQuery = 10,
-    kReqTradeRule = 11,
-    kReqSelfSelectedSymbol = 12,
-    kReqModifyStreategySetting = 13,
-    kReqQueryStrategyExectionInfo = 14,
-    kReqPlaceOrder = 15,
-    kReqModifyOrder = 16,
-    kReqCancelOrder = 17,
-    kReqOneKeyClosePosition = 18,
-    kReqQueryActiveOrders = 19,
-    kReqQueryHistoricalOrders = 20,
-    kReqQueryPositions = 21,
-    kReqSetLeverage = 22,
-    kReqQueryLeverage = 23,
-    kReqQueryLeverageBracket = 24,
+    kReqAccountSummaryUpdate = 1,
+    kReqAccountAssetTransfer = 2,
+    kReqQueryAssetTransferHistory = 3,
+    kReqLogin = 4,
+    kReqLogout = 5,
+    kReqHeartBeat = 6,
+    kReqUploadAppBehaviour = 7,
+    kReqSubscribeTickerData = 8,
+    kReqSubscribeTradeData = 9,
+    kReqSubscribeCandlestickUpdate = 10,
+    kReqCandlestickQuery = 11,
+    kReqTradeRule = 12,
+    kReqSelfSelectedSymbol = 13,
+    kReqModifyStreategySetting = 14,
+    kReqQueryStrategyExectionInfo = 15,
+    kReqPlaceOrder = 16,
+    kReqModifyOrder = 17,
+    kReqCancelOrder = 18,
+    kReqOneKeyClosePosition = 19,
+    kReqQueryActiveOrders = 20,
+    kReqQueryHistoricalOrders = 21,
+    kReqQueryPositions = 22,
+    kReqSetLeverage = 23,
+    kReqQueryLeverage = 24,
+    kReqQueryLeverageBracket = 25,
     REQUEST_TYPE_NOT_SET = 0,
   };
   static inline const Request* internal_default_instance() {
@@ -1230,70 +1300,33 @@ class Request final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kReqLoginFieldNumber = 1,
-    kReqHeartBeatFieldNumber = 2,
-    kReqAccountSummaryUpdateFieldNumber = 3,
-    kReqAccountAssetTransferFieldNumber = 4,
-    kReqQueryAssetTransferHistoryFieldNumber = 5,
-    kReqUploadAppBehaviourFieldNumber = 6,
-    kReqSubscribeTickerDataFieldNumber = 7,
-    kReqSubscribeTradeDataFieldNumber = 8,
-    kReqSubscribeCandlestickUpdateFieldNumber = 9,
-    kReqCandlestickQueryFieldNumber = 10,
-    kReqTradeRuleFieldNumber = 11,
-    kReqSelfSelectedSymbolFieldNumber = 12,
-    kReqModifyStreategySettingFieldNumber = 13,
-    kReqQueryStrategyExectionInfoFieldNumber = 14,
-    kReqPlaceOrderFieldNumber = 15,
-    kReqModifyOrderFieldNumber = 16,
-    kReqCancelOrderFieldNumber = 17,
-    kReqOneKeyClosePositionFieldNumber = 18,
-    kReqQueryActiveOrdersFieldNumber = 19,
-    kReqQueryHistoricalOrdersFieldNumber = 20,
-    kReqQueryPositionsFieldNumber = 21,
-    kReqSetLeverageFieldNumber = 22,
-    kReqQueryLeverageFieldNumber = 23,
-    kReqQueryLeverageBracketFieldNumber = 24,
+    kReqAccountSummaryUpdateFieldNumber = 1,
+    kReqAccountAssetTransferFieldNumber = 2,
+    kReqQueryAssetTransferHistoryFieldNumber = 3,
+    kReqLoginFieldNumber = 4,
+    kReqLogoutFieldNumber = 5,
+    kReqHeartBeatFieldNumber = 6,
+    kReqUploadAppBehaviourFieldNumber = 7,
+    kReqSubscribeTickerDataFieldNumber = 8,
+    kReqSubscribeTradeDataFieldNumber = 9,
+    kReqSubscribeCandlestickUpdateFieldNumber = 10,
+    kReqCandlestickQueryFieldNumber = 11,
+    kReqTradeRuleFieldNumber = 12,
+    kReqSelfSelectedSymbolFieldNumber = 13,
+    kReqModifyStreategySettingFieldNumber = 14,
+    kReqQueryStrategyExectionInfoFieldNumber = 15,
+    kReqPlaceOrderFieldNumber = 16,
+    kReqModifyOrderFieldNumber = 17,
+    kReqCancelOrderFieldNumber = 18,
+    kReqOneKeyClosePositionFieldNumber = 19,
+    kReqQueryActiveOrdersFieldNumber = 20,
+    kReqQueryHistoricalOrdersFieldNumber = 21,
+    kReqQueryPositionsFieldNumber = 22,
+    kReqSetLeverageFieldNumber = 23,
+    kReqQueryLeverageFieldNumber = 24,
+    kReqQueryLeverageBracketFieldNumber = 25,
   };
-  // .lampyris.crypto.protocol.app.ReqLogin reqLogin = 1;
-  bool has_reqlogin() const;
-  private:
-  bool _internal_has_reqlogin() const;
-
-  public:
-  void clear_reqlogin() ;
-  const ::lampyris::crypto::protocol::app::ReqLogin& reqlogin() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ReqLogin* release_reqlogin();
-  ::lampyris::crypto::protocol::app::ReqLogin* mutable_reqlogin();
-  void set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* value);
-  void unsafe_arena_set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* value);
-  ::lampyris::crypto::protocol::app::ReqLogin* unsafe_arena_release_reqlogin();
-
-  private:
-  const ::lampyris::crypto::protocol::app::ReqLogin& _internal_reqlogin() const;
-  ::lampyris::crypto::protocol::app::ReqLogin* _internal_mutable_reqlogin();
-
-  public:
-  // .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 2;
-  bool has_reqheartbeat() const;
-  private:
-  bool _internal_has_reqheartbeat() const;
-
-  public:
-  void clear_reqheartbeat() ;
-  const ::lampyris::crypto::protocol::app::ReqHeartBeat& reqheartbeat() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ReqHeartBeat* release_reqheartbeat();
-  ::lampyris::crypto::protocol::app::ReqHeartBeat* mutable_reqheartbeat();
-  void set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* value);
-  void unsafe_arena_set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* value);
-  ::lampyris::crypto::protocol::app::ReqHeartBeat* unsafe_arena_release_reqheartbeat();
-
-  private:
-  const ::lampyris::crypto::protocol::app::ReqHeartBeat& _internal_reqheartbeat() const;
-  ::lampyris::crypto::protocol::app::ReqHeartBeat* _internal_mutable_reqheartbeat();
-
-  public:
-  // .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 3;
+  // .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 1;
   bool has_reqaccountsummaryupdate() const;
   private:
   bool _internal_has_reqaccountsummaryupdate() const;
@@ -1312,7 +1345,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate* _internal_mutable_reqaccountsummaryupdate();
 
   public:
-  // .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 4;
+  // .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 2;
   bool has_reqaccountassettransfer() const;
   private:
   bool _internal_has_reqaccountassettransfer() const;
@@ -1331,7 +1364,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::ReqAccountAssetTransfer* _internal_mutable_reqaccountassettransfer();
 
   public:
-  // .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 5;
+  // .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 3;
   bool has_reqqueryassettransferhistory() const;
   private:
   bool _internal_has_reqqueryassettransferhistory() const;
@@ -1350,7 +1383,64 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory* _internal_mutable_reqqueryassettransferhistory();
 
   public:
-  // .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 6;
+  // .lampyris.crypto.protocol.app.ReqLogin reqLogin = 4;
+  bool has_reqlogin() const;
+  private:
+  bool _internal_has_reqlogin() const;
+
+  public:
+  void clear_reqlogin() ;
+  const ::lampyris::crypto::protocol::app::ReqLogin& reqlogin() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ReqLogin* release_reqlogin();
+  ::lampyris::crypto::protocol::app::ReqLogin* mutable_reqlogin();
+  void set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* value);
+  void unsafe_arena_set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* value);
+  ::lampyris::crypto::protocol::app::ReqLogin* unsafe_arena_release_reqlogin();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ReqLogin& _internal_reqlogin() const;
+  ::lampyris::crypto::protocol::app::ReqLogin* _internal_mutable_reqlogin();
+
+  public:
+  // .lampyris.crypto.protocol.app.ReqLogout reqLogout = 5;
+  bool has_reqlogout() const;
+  private:
+  bool _internal_has_reqlogout() const;
+
+  public:
+  void clear_reqlogout() ;
+  const ::lampyris::crypto::protocol::app::ReqLogout& reqlogout() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ReqLogout* release_reqlogout();
+  ::lampyris::crypto::protocol::app::ReqLogout* mutable_reqlogout();
+  void set_allocated_reqlogout(::lampyris::crypto::protocol::app::ReqLogout* value);
+  void unsafe_arena_set_allocated_reqlogout(::lampyris::crypto::protocol::app::ReqLogout* value);
+  ::lampyris::crypto::protocol::app::ReqLogout* unsafe_arena_release_reqlogout();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ReqLogout& _internal_reqlogout() const;
+  ::lampyris::crypto::protocol::app::ReqLogout* _internal_mutable_reqlogout();
+
+  public:
+  // .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 6;
+  bool has_reqheartbeat() const;
+  private:
+  bool _internal_has_reqheartbeat() const;
+
+  public:
+  void clear_reqheartbeat() ;
+  const ::lampyris::crypto::protocol::app::ReqHeartBeat& reqheartbeat() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ReqHeartBeat* release_reqheartbeat();
+  ::lampyris::crypto::protocol::app::ReqHeartBeat* mutable_reqheartbeat();
+  void set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* value);
+  void unsafe_arena_set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* value);
+  ::lampyris::crypto::protocol::app::ReqHeartBeat* unsafe_arena_release_reqheartbeat();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ReqHeartBeat& _internal_reqheartbeat() const;
+  ::lampyris::crypto::protocol::app::ReqHeartBeat* _internal_mutable_reqheartbeat();
+
+  public:
+  // .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 7;
   bool has_requploadappbehaviour() const;
   private:
   bool _internal_has_requploadappbehaviour() const;
@@ -1369,7 +1459,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::app::ReqUploadAppBehaviour* _internal_mutable_requploadappbehaviour();
 
   public:
-  // .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 7;
+  // .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 8;
   bool has_reqsubscribetickerdata() const;
   private:
   bool _internal_has_reqsubscribetickerdata() const;
@@ -1388,7 +1478,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ReqSubscribeTickerData* _internal_mutable_reqsubscribetickerdata();
 
   public:
-  // .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 8;
+  // .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 9;
   bool has_reqsubscribetradedata() const;
   private:
   bool _internal_has_reqsubscribetradedata() const;
@@ -1407,7 +1497,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ReqSubscribeTradeData* _internal_mutable_reqsubscribetradedata();
 
   public:
-  // .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 9;
+  // .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 10;
   bool has_reqsubscribecandlestickupdate() const;
   private:
   bool _internal_has_reqsubscribecandlestickupdate() const;
@@ -1426,7 +1516,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ReqSubscribeCandlestickUpdate* _internal_mutable_reqsubscribecandlestickupdate();
 
   public:
-  // .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 10;
+  // .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 11;
   bool has_reqcandlestickquery() const;
   private:
   bool _internal_has_reqcandlestickquery() const;
@@ -1445,7 +1535,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ReqCandlestickQuery* _internal_mutable_reqcandlestickquery();
 
   public:
-  // .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 11;
+  // .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 12;
   bool has_reqtraderule() const;
   private:
   bool _internal_has_reqtraderule() const;
@@ -1464,7 +1554,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ReqTradeRule* _internal_mutable_reqtraderule();
 
   public:
-  // .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 12;
+  // .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 13;
   bool has_reqselfselectedsymbol() const;
   private:
   bool _internal_has_reqselfselectedsymbol() const;
@@ -1483,7 +1573,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol* _internal_mutable_reqselfselectedsymbol();
 
   public:
-  // .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 13;
+  // .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 14;
   bool has_reqmodifystreategysetting() const;
   private:
   bool _internal_has_reqmodifystreategysetting() const;
@@ -1502,7 +1592,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::ReqModifyStreategySetting* _internal_mutable_reqmodifystreategysetting();
 
   public:
-  // .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 14;
+  // .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 15;
   bool has_reqquerystrategyexectioninfo() const;
   private:
   bool _internal_has_reqquerystrategyexectioninfo() const;
@@ -1521,7 +1611,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::strategy::ReqQueryStrategyExectionInfo* _internal_mutable_reqquerystrategyexectioninfo();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 15;
+  // .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 16;
   bool has_reqplaceorder() const;
   private:
   bool _internal_has_reqplaceorder() const;
@@ -1540,7 +1630,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqPlaceOrder* _internal_mutable_reqplaceorder();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 16;
+  // .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 17;
   bool has_reqmodifyorder() const;
   private:
   bool _internal_has_reqmodifyorder() const;
@@ -1559,7 +1649,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqModifyOrder* _internal_mutable_reqmodifyorder();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 17;
+  // .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 18;
   bool has_reqcancelorder() const;
   private:
   bool _internal_has_reqcancelorder() const;
@@ -1578,7 +1668,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqCancelOrder* _internal_mutable_reqcancelorder();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 18;
+  // .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 19;
   bool has_reqonekeycloseposition() const;
   private:
   bool _internal_has_reqonekeycloseposition() const;
@@ -1597,7 +1687,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqOneKeyClosePosition* _internal_mutable_reqonekeycloseposition();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 19;
+  // .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 20;
   bool has_reqqueryactiveorders() const;
   private:
   bool _internal_has_reqqueryactiveorders() const;
@@ -1616,7 +1706,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqQueryActiveOrders* _internal_mutable_reqqueryactiveorders();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 20;
+  // .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 21;
   bool has_reqqueryhistoricalorders() const;
   private:
   bool _internal_has_reqqueryhistoricalorders() const;
@@ -1635,7 +1725,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqQueryHistoricalOrders* _internal_mutable_reqqueryhistoricalorders();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 21;
+  // .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 22;
   bool has_reqquerypositions() const;
   private:
   bool _internal_has_reqquerypositions() const;
@@ -1654,7 +1744,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqQueryPositions* _internal_mutable_reqquerypositions();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 22;
+  // .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 23;
   bool has_reqsetleverage() const;
   private:
   bool _internal_has_reqsetleverage() const;
@@ -1673,7 +1763,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqSetLeverage* _internal_mutable_reqsetleverage();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 23;
+  // .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 24;
   bool has_reqqueryleverage() const;
   private:
   bool _internal_has_reqqueryleverage() const;
@@ -1692,7 +1782,7 @@ class Request final : public ::google::protobuf::Message
   ::lampyris::crypto::protocol::trading::ReqQueryLeverage* _internal_mutable_reqqueryleverage();
 
   public:
-  // .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 24;
+  // .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 25;
   bool has_reqqueryleveragebracket() const;
   private:
   bool _internal_has_reqqueryleveragebracket() const;
@@ -1716,11 +1806,12 @@ class Request final : public ::google::protobuf::Message
   // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.common.Request)
  private:
   class _Internal;
-  void set_has_reqlogin();
-  void set_has_reqheartbeat();
   void set_has_reqaccountsummaryupdate();
   void set_has_reqaccountassettransfer();
   void set_has_reqqueryassettransferhistory();
+  void set_has_reqlogin();
+  void set_has_reqlogout();
+  void set_has_reqheartbeat();
   void set_has_requploadappbehaviour();
   void set_has_reqsubscribetickerdata();
   void set_has_reqsubscribetradedata();
@@ -1744,7 +1835,7 @@ class Request final : public ::google::protobuf::Message
   inline void clear_has_request_type();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 24, 24,
+      0, 25, 25,
       0, 2>
       _table_;
 
@@ -1765,11 +1856,12 @@ class Request final : public ::google::protobuf::Message
     union RequestTypeUnion {
       constexpr RequestTypeUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::lampyris::crypto::protocol::app::ReqLogin* reqlogin_;
-      ::lampyris::crypto::protocol::app::ReqHeartBeat* reqheartbeat_;
       ::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate* reqaccountsummaryupdate_;
       ::lampyris::crypto::protocol::account::ReqAccountAssetTransfer* reqaccountassettransfer_;
       ::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory* reqqueryassettransferhistory_;
+      ::lampyris::crypto::protocol::app::ReqLogin* reqlogin_;
+      ::lampyris::crypto::protocol::app::ReqLogout* reqlogout_;
+      ::lampyris::crypto::protocol::app::ReqHeartBeat* reqheartbeat_;
       ::lampyris::crypto::protocol::app::ReqUploadAppBehaviour* requploadappbehaviour_;
       ::lampyris::crypto::protocol::quote::ReqSubscribeTickerData* reqsubscribetickerdata_;
       ::lampyris::crypto::protocol::quote::ReqSubscribeTradeData* reqsubscribetradedata_;
@@ -1814,143 +1906,7 @@ class Request final : public ::google::protobuf::Message
 
 // Request
 
-// .lampyris.crypto.protocol.app.ReqLogin reqLogin = 1;
-inline bool Request::has_reqlogin() const {
-  return request_type_case() == kReqLogin;
-}
-inline bool Request::_internal_has_reqlogin() const {
-  return request_type_case() == kReqLogin;
-}
-inline void Request::set_has_reqlogin() {
-  _impl_._oneof_case_[0] = kReqLogin;
-}
-inline ::lampyris::crypto::protocol::app::ReqLogin* Request::release_reqlogin() {
-  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Request.reqLogin)
-  if (request_type_case() == kReqLogin) {
-    clear_has_request_type();
-    auto* temp = _impl_.request_type_.reqlogin_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.request_type_.reqlogin_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::lampyris::crypto::protocol::app::ReqLogin& Request::_internal_reqlogin() const {
-  return request_type_case() == kReqLogin ? *_impl_.request_type_.reqlogin_ : reinterpret_cast<::lampyris::crypto::protocol::app::ReqLogin&>(::lampyris::crypto::protocol::app::_ReqLogin_default_instance_);
-}
-inline const ::lampyris::crypto::protocol::app::ReqLogin& Request::reqlogin() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Request.reqLogin)
-  return _internal_reqlogin();
-}
-inline ::lampyris::crypto::protocol::app::ReqLogin* Request::unsafe_arena_release_reqlogin() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Request.reqLogin)
-  if (request_type_case() == kReqLogin) {
-    clear_has_request_type();
-    auto* temp = _impl_.request_type_.reqlogin_;
-    _impl_.request_type_.reqlogin_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void Request::unsafe_arena_set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_request_type();
-  if (value) {
-    set_has_reqlogin();
-    _impl_.request_type_.reqlogin_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Request.reqLogin)
-}
-inline ::lampyris::crypto::protocol::app::ReqLogin* Request::_internal_mutable_reqlogin() {
-  if (request_type_case() != kReqLogin) {
-    clear_request_type();
-    set_has_reqlogin();
-    _impl_.request_type_.reqlogin_ =
-        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ReqLogin>(GetArena());
-  }
-  return _impl_.request_type_.reqlogin_;
-}
-inline ::lampyris::crypto::protocol::app::ReqLogin* Request::mutable_reqlogin() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::lampyris::crypto::protocol::app::ReqLogin* _msg = _internal_mutable_reqlogin();
-  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Request.reqLogin)
-  return _msg;
-}
-
-// .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 2;
-inline bool Request::has_reqheartbeat() const {
-  return request_type_case() == kReqHeartBeat;
-}
-inline bool Request::_internal_has_reqheartbeat() const {
-  return request_type_case() == kReqHeartBeat;
-}
-inline void Request::set_has_reqheartbeat() {
-  _impl_._oneof_case_[0] = kReqHeartBeat;
-}
-inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::release_reqheartbeat() {
-  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Request.reqHeartBeat)
-  if (request_type_case() == kReqHeartBeat) {
-    clear_has_request_type();
-    auto* temp = _impl_.request_type_.reqheartbeat_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.request_type_.reqheartbeat_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::lampyris::crypto::protocol::app::ReqHeartBeat& Request::_internal_reqheartbeat() const {
-  return request_type_case() == kReqHeartBeat ? *_impl_.request_type_.reqheartbeat_ : reinterpret_cast<::lampyris::crypto::protocol::app::ReqHeartBeat&>(::lampyris::crypto::protocol::app::_ReqHeartBeat_default_instance_);
-}
-inline const ::lampyris::crypto::protocol::app::ReqHeartBeat& Request::reqheartbeat() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Request.reqHeartBeat)
-  return _internal_reqheartbeat();
-}
-inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::unsafe_arena_release_reqheartbeat() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Request.reqHeartBeat)
-  if (request_type_case() == kReqHeartBeat) {
-    clear_has_request_type();
-    auto* temp = _impl_.request_type_.reqheartbeat_;
-    _impl_.request_type_.reqheartbeat_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void Request::unsafe_arena_set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_request_type();
-  if (value) {
-    set_has_reqheartbeat();
-    _impl_.request_type_.reqheartbeat_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Request.reqHeartBeat)
-}
-inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::_internal_mutable_reqheartbeat() {
-  if (request_type_case() != kReqHeartBeat) {
-    clear_request_type();
-    set_has_reqheartbeat();
-    _impl_.request_type_.reqheartbeat_ =
-        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ReqHeartBeat>(GetArena());
-  }
-  return _impl_.request_type_.reqheartbeat_;
-}
-inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::mutable_reqheartbeat() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::lampyris::crypto::protocol::app::ReqHeartBeat* _msg = _internal_mutable_reqheartbeat();
-  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Request.reqHeartBeat)
-  return _msg;
-}
-
-// .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 3;
+// .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 1;
 inline bool Request::has_reqaccountsummaryupdate() const {
   return request_type_case() == kReqAccountSummaryUpdate;
 }
@@ -2018,7 +1974,7 @@ inline ::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate* Request::
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 4;
+// .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 2;
 inline bool Request::has_reqaccountassettransfer() const {
   return request_type_case() == kReqAccountAssetTransfer;
 }
@@ -2086,7 +2042,7 @@ inline ::lampyris::crypto::protocol::account::ReqAccountAssetTransfer* Request::
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 5;
+// .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 3;
 inline bool Request::has_reqqueryassettransferhistory() const {
   return request_type_case() == kReqQueryAssetTransferHistory;
 }
@@ -2154,7 +2110,211 @@ inline ::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory* Requ
   return _msg;
 }
 
-// .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 6;
+// .lampyris.crypto.protocol.app.ReqLogin reqLogin = 4;
+inline bool Request::has_reqlogin() const {
+  return request_type_case() == kReqLogin;
+}
+inline bool Request::_internal_has_reqlogin() const {
+  return request_type_case() == kReqLogin;
+}
+inline void Request::set_has_reqlogin() {
+  _impl_._oneof_case_[0] = kReqLogin;
+}
+inline ::lampyris::crypto::protocol::app::ReqLogin* Request::release_reqlogin() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Request.reqLogin)
+  if (request_type_case() == kReqLogin) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.reqlogin_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.request_type_.reqlogin_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::app::ReqLogin& Request::_internal_reqlogin() const {
+  return request_type_case() == kReqLogin ? *_impl_.request_type_.reqlogin_ : reinterpret_cast<::lampyris::crypto::protocol::app::ReqLogin&>(::lampyris::crypto::protocol::app::_ReqLogin_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::app::ReqLogin& Request::reqlogin() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Request.reqLogin)
+  return _internal_reqlogin();
+}
+inline ::lampyris::crypto::protocol::app::ReqLogin* Request::unsafe_arena_release_reqlogin() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Request.reqLogin)
+  if (request_type_case() == kReqLogin) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.reqlogin_;
+    _impl_.request_type_.reqlogin_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Request::unsafe_arena_set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_request_type();
+  if (value) {
+    set_has_reqlogin();
+    _impl_.request_type_.reqlogin_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Request.reqLogin)
+}
+inline ::lampyris::crypto::protocol::app::ReqLogin* Request::_internal_mutable_reqlogin() {
+  if (request_type_case() != kReqLogin) {
+    clear_request_type();
+    set_has_reqlogin();
+    _impl_.request_type_.reqlogin_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ReqLogin>(GetArena());
+  }
+  return _impl_.request_type_.reqlogin_;
+}
+inline ::lampyris::crypto::protocol::app::ReqLogin* Request::mutable_reqlogin() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::app::ReqLogin* _msg = _internal_mutable_reqlogin();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Request.reqLogin)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.app.ReqLogout reqLogout = 5;
+inline bool Request::has_reqlogout() const {
+  return request_type_case() == kReqLogout;
+}
+inline bool Request::_internal_has_reqlogout() const {
+  return request_type_case() == kReqLogout;
+}
+inline void Request::set_has_reqlogout() {
+  _impl_._oneof_case_[0] = kReqLogout;
+}
+inline ::lampyris::crypto::protocol::app::ReqLogout* Request::release_reqlogout() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Request.reqLogout)
+  if (request_type_case() == kReqLogout) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.reqlogout_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.request_type_.reqlogout_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::app::ReqLogout& Request::_internal_reqlogout() const {
+  return request_type_case() == kReqLogout ? *_impl_.request_type_.reqlogout_ : reinterpret_cast<::lampyris::crypto::protocol::app::ReqLogout&>(::lampyris::crypto::protocol::app::_ReqLogout_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::app::ReqLogout& Request::reqlogout() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Request.reqLogout)
+  return _internal_reqlogout();
+}
+inline ::lampyris::crypto::protocol::app::ReqLogout* Request::unsafe_arena_release_reqlogout() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Request.reqLogout)
+  if (request_type_case() == kReqLogout) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.reqlogout_;
+    _impl_.request_type_.reqlogout_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Request::unsafe_arena_set_allocated_reqlogout(::lampyris::crypto::protocol::app::ReqLogout* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_request_type();
+  if (value) {
+    set_has_reqlogout();
+    _impl_.request_type_.reqlogout_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Request.reqLogout)
+}
+inline ::lampyris::crypto::protocol::app::ReqLogout* Request::_internal_mutable_reqlogout() {
+  if (request_type_case() != kReqLogout) {
+    clear_request_type();
+    set_has_reqlogout();
+    _impl_.request_type_.reqlogout_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ReqLogout>(GetArena());
+  }
+  return _impl_.request_type_.reqlogout_;
+}
+inline ::lampyris::crypto::protocol::app::ReqLogout* Request::mutable_reqlogout() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::app::ReqLogout* _msg = _internal_mutable_reqlogout();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Request.reqLogout)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 6;
+inline bool Request::has_reqheartbeat() const {
+  return request_type_case() == kReqHeartBeat;
+}
+inline bool Request::_internal_has_reqheartbeat() const {
+  return request_type_case() == kReqHeartBeat;
+}
+inline void Request::set_has_reqheartbeat() {
+  _impl_._oneof_case_[0] = kReqHeartBeat;
+}
+inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::release_reqheartbeat() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Request.reqHeartBeat)
+  if (request_type_case() == kReqHeartBeat) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.reqheartbeat_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.request_type_.reqheartbeat_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::app::ReqHeartBeat& Request::_internal_reqheartbeat() const {
+  return request_type_case() == kReqHeartBeat ? *_impl_.request_type_.reqheartbeat_ : reinterpret_cast<::lampyris::crypto::protocol::app::ReqHeartBeat&>(::lampyris::crypto::protocol::app::_ReqHeartBeat_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::app::ReqHeartBeat& Request::reqheartbeat() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Request.reqHeartBeat)
+  return _internal_reqheartbeat();
+}
+inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::unsafe_arena_release_reqheartbeat() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Request.reqHeartBeat)
+  if (request_type_case() == kReqHeartBeat) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.reqheartbeat_;
+    _impl_.request_type_.reqheartbeat_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Request::unsafe_arena_set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_request_type();
+  if (value) {
+    set_has_reqheartbeat();
+    _impl_.request_type_.reqheartbeat_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Request.reqHeartBeat)
+}
+inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::_internal_mutable_reqheartbeat() {
+  if (request_type_case() != kReqHeartBeat) {
+    clear_request_type();
+    set_has_reqheartbeat();
+    _impl_.request_type_.reqheartbeat_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ReqHeartBeat>(GetArena());
+  }
+  return _impl_.request_type_.reqheartbeat_;
+}
+inline ::lampyris::crypto::protocol::app::ReqHeartBeat* Request::mutable_reqheartbeat() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::app::ReqHeartBeat* _msg = _internal_mutable_reqheartbeat();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Request.reqHeartBeat)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 7;
 inline bool Request::has_requploadappbehaviour() const {
   return request_type_case() == kReqUploadAppBehaviour;
 }
@@ -2222,7 +2382,7 @@ inline ::lampyris::crypto::protocol::app::ReqUploadAppBehaviour* Request::mutabl
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 7;
+// .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 8;
 inline bool Request::has_reqsubscribetickerdata() const {
   return request_type_case() == kReqSubscribeTickerData;
 }
@@ -2290,7 +2450,7 @@ inline ::lampyris::crypto::protocol::quote::ReqSubscribeTickerData* Request::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 8;
+// .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 9;
 inline bool Request::has_reqsubscribetradedata() const {
   return request_type_case() == kReqSubscribeTradeData;
 }
@@ -2358,7 +2518,7 @@ inline ::lampyris::crypto::protocol::quote::ReqSubscribeTradeData* Request::muta
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 9;
+// .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 10;
 inline bool Request::has_reqsubscribecandlestickupdate() const {
   return request_type_case() == kReqSubscribeCandlestickUpdate;
 }
@@ -2426,7 +2586,7 @@ inline ::lampyris::crypto::protocol::quote::ReqSubscribeCandlestickUpdate* Reque
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 10;
+// .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 11;
 inline bool Request::has_reqcandlestickquery() const {
   return request_type_case() == kReqCandlestickQuery;
 }
@@ -2494,7 +2654,7 @@ inline ::lampyris::crypto::protocol::quote::ReqCandlestickQuery* Request::mutabl
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 11;
+// .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 12;
 inline bool Request::has_reqtraderule() const {
   return request_type_case() == kReqTradeRule;
 }
@@ -2562,7 +2722,7 @@ inline ::lampyris::crypto::protocol::quote::ReqTradeRule* Request::mutable_reqtr
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 12;
+// .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 13;
 inline bool Request::has_reqselfselectedsymbol() const {
   return request_type_case() == kReqSelfSelectedSymbol;
 }
@@ -2630,7 +2790,7 @@ inline ::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol* Request::muta
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 13;
+// .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 14;
 inline bool Request::has_reqmodifystreategysetting() const {
   return request_type_case() == kReqModifyStreategySetting;
 }
@@ -2698,7 +2858,7 @@ inline ::lampyris::crypto::protocol::strategy::ReqModifyStreategySetting* Reques
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 14;
+// .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 15;
 inline bool Request::has_reqquerystrategyexectioninfo() const {
   return request_type_case() == kReqQueryStrategyExectionInfo;
 }
@@ -2766,7 +2926,7 @@ inline ::lampyris::crypto::protocol::strategy::ReqQueryStrategyExectionInfo* Req
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 15;
+// .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 16;
 inline bool Request::has_reqplaceorder() const {
   return request_type_case() == kReqPlaceOrder;
 }
@@ -2834,7 +2994,7 @@ inline ::lampyris::crypto::protocol::trading::ReqPlaceOrder* Request::mutable_re
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 16;
+// .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 17;
 inline bool Request::has_reqmodifyorder() const {
   return request_type_case() == kReqModifyOrder;
 }
@@ -2902,7 +3062,7 @@ inline ::lampyris::crypto::protocol::trading::ReqModifyOrder* Request::mutable_r
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 17;
+// .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 18;
 inline bool Request::has_reqcancelorder() const {
   return request_type_case() == kReqCancelOrder;
 }
@@ -2970,7 +3130,7 @@ inline ::lampyris::crypto::protocol::trading::ReqCancelOrder* Request::mutable_r
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 18;
+// .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 19;
 inline bool Request::has_reqonekeycloseposition() const {
   return request_type_case() == kReqOneKeyClosePosition;
 }
@@ -3038,7 +3198,7 @@ inline ::lampyris::crypto::protocol::trading::ReqOneKeyClosePosition* Request::m
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 19;
+// .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 20;
 inline bool Request::has_reqqueryactiveorders() const {
   return request_type_case() == kReqQueryActiveOrders;
 }
@@ -3106,7 +3266,7 @@ inline ::lampyris::crypto::protocol::trading::ReqQueryActiveOrders* Request::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 20;
+// .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 21;
 inline bool Request::has_reqqueryhistoricalorders() const {
   return request_type_case() == kReqQueryHistoricalOrders;
 }
@@ -3174,7 +3334,7 @@ inline ::lampyris::crypto::protocol::trading::ReqQueryHistoricalOrders* Request:
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 21;
+// .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 22;
 inline bool Request::has_reqquerypositions() const {
   return request_type_case() == kReqQueryPositions;
 }
@@ -3242,7 +3402,7 @@ inline ::lampyris::crypto::protocol::trading::ReqQueryPositions* Request::mutabl
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 22;
+// .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 23;
 inline bool Request::has_reqsetleverage() const {
   return request_type_case() == kReqSetLeverage;
 }
@@ -3310,7 +3470,7 @@ inline ::lampyris::crypto::protocol::trading::ReqSetLeverage* Request::mutable_r
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 23;
+// .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 24;
 inline bool Request::has_reqqueryleverage() const {
   return request_type_case() == kReqQueryLeverage;
 }
@@ -3378,7 +3538,7 @@ inline ::lampyris::crypto::protocol::trading::ReqQueryLeverage* Request::mutable
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 24;
+// .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 25;
 inline bool Request::has_reqqueryleveragebracket() const {
   return request_type_case() == kReqQueryLeverageBracket;
 }
@@ -3459,75 +3619,7 @@ inline Request::RequestTypeCase Request::request_type_case() const {
 
 // Response
 
-// .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 1;
-inline bool Response::has_resheartbeat() const {
-  return response_type_case() == kResHeartBeat;
-}
-inline bool Response::_internal_has_resheartbeat() const {
-  return response_type_case() == kResHeartBeat;
-}
-inline void Response::set_has_resheartbeat() {
-  _impl_._oneof_case_[0] = kResHeartBeat;
-}
-inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::release_resheartbeat() {
-  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resHeartBeat)
-  if (response_type_case() == kResHeartBeat) {
-    clear_has_response_type();
-    auto* temp = _impl_.response_type_.resheartbeat_;
-    if (GetArena() != nullptr) {
-      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
-    }
-    _impl_.response_type_.resheartbeat_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline const ::lampyris::crypto::protocol::app::ResHeartBeat& Response::_internal_resheartbeat() const {
-  return response_type_case() == kResHeartBeat ? *_impl_.response_type_.resheartbeat_ : reinterpret_cast<::lampyris::crypto::protocol::app::ResHeartBeat&>(::lampyris::crypto::protocol::app::_ResHeartBeat_default_instance_);
-}
-inline const ::lampyris::crypto::protocol::app::ResHeartBeat& Response::resheartbeat() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resHeartBeat)
-  return _internal_resheartbeat();
-}
-inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::unsafe_arena_release_resheartbeat() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resHeartBeat)
-  if (response_type_case() == kResHeartBeat) {
-    clear_has_response_type();
-    auto* temp = _impl_.response_type_.resheartbeat_;
-    _impl_.response_type_.resheartbeat_ = nullptr;
-    return temp;
-  } else {
-    return nullptr;
-  }
-}
-inline void Response::unsafe_arena_set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value) {
-  // We rely on the oneof clear method to free the earlier contents
-  // of this oneof. We can directly use the pointer we're given to
-  // set the new value.
-  clear_response_type();
-  if (value) {
-    set_has_resheartbeat();
-    _impl_.response_type_.resheartbeat_ = value;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resHeartBeat)
-}
-inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::_internal_mutable_resheartbeat() {
-  if (response_type_case() != kResHeartBeat) {
-    clear_response_type();
-    set_has_resheartbeat();
-    _impl_.response_type_.resheartbeat_ =
-        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ResHeartBeat>(GetArena());
-  }
-  return _impl_.response_type_.resheartbeat_;
-}
-inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::mutable_resheartbeat() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::lampyris::crypto::protocol::app::ResHeartBeat* _msg = _internal_mutable_resheartbeat();
-  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resHeartBeat)
-  return _msg;
-}
-
-// .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 2;
+// .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 1;
 inline bool Response::has_accountassetinfobean() const {
   return response_type_case() == kAccountAssetInfoBean;
 }
@@ -3595,7 +3687,7 @@ inline ::lampyris::crypto::protocol::account::AccountAssetInfoBean* Response::mu
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 3;
+// .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 2;
 inline bool Response::has_subaccountinfobean() const {
   return response_type_case() == kSubAccountInfoBean;
 }
@@ -3663,7 +3755,7 @@ inline ::lampyris::crypto::protocol::account::SubAccountInfoBean* Response::muta
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 4;
+// .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 3;
 inline bool Response::has_resquerysubacccountlist() const {
   return response_type_case() == kResQuerySubAcccountList;
 }
@@ -3731,7 +3823,7 @@ inline ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* Response:
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 5;
+// .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 4;
 inline bool Response::has_resaccountsummaryupdate() const {
   return response_type_case() == kResAccountSummaryUpdate;
 }
@@ -3799,7 +3891,7 @@ inline ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* Response:
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 6;
+// .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 5;
 inline bool Response::has_assettransferhistoryinfodetailbean() const {
   return response_type_case() == kAssetTransferHistoryInfoDetailBean;
 }
@@ -3867,7 +3959,7 @@ inline ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean
   return _msg;
 }
 
-// .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 7;
+// .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 6;
 inline bool Response::has_assettransferhistoryinfobean() const {
   return response_type_case() == kAssetTransferHistoryInfoBean;
 }
@@ -3935,7 +4027,7 @@ inline ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* Resp
   return _msg;
 }
 
-// .lampyris.crypto.protocol.app.ResLogin resLogin = 8;
+// .lampyris.crypto.protocol.app.ResLogin resLogin = 7;
 inline bool Response::has_reslogin() const {
   return response_type_case() == kResLogin;
 }
@@ -4003,7 +4095,143 @@ inline ::lampyris::crypto::protocol::app::ResLogin* Response::mutable_reslogin()
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 9;
+// .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 8;
+inline bool Response::has_resheartbeat() const {
+  return response_type_case() == kResHeartBeat;
+}
+inline bool Response::_internal_has_resheartbeat() const {
+  return response_type_case() == kResHeartBeat;
+}
+inline void Response::set_has_resheartbeat() {
+  _impl_._oneof_case_[0] = kResHeartBeat;
+}
+inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::release_resheartbeat() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resHeartBeat)
+  if (response_type_case() == kResHeartBeat) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resheartbeat_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.resheartbeat_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::app::ResHeartBeat& Response::_internal_resheartbeat() const {
+  return response_type_case() == kResHeartBeat ? *_impl_.response_type_.resheartbeat_ : reinterpret_cast<::lampyris::crypto::protocol::app::ResHeartBeat&>(::lampyris::crypto::protocol::app::_ResHeartBeat_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::app::ResHeartBeat& Response::resheartbeat() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resHeartBeat)
+  return _internal_resheartbeat();
+}
+inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::unsafe_arena_release_resheartbeat() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resHeartBeat)
+  if (response_type_case() == kResHeartBeat) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resheartbeat_;
+    _impl_.response_type_.resheartbeat_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_resheartbeat();
+    _impl_.response_type_.resheartbeat_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resHeartBeat)
+}
+inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::_internal_mutable_resheartbeat() {
+  if (response_type_case() != kResHeartBeat) {
+    clear_response_type();
+    set_has_resheartbeat();
+    _impl_.response_type_.resheartbeat_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ResHeartBeat>(GetArena());
+  }
+  return _impl_.response_type_.resheartbeat_;
+}
+inline ::lampyris::crypto::protocol::app::ResHeartBeat* Response::mutable_resheartbeat() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::app::ResHeartBeat* _msg = _internal_mutable_resheartbeat();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resHeartBeat)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.app.ResNotice resNotice = 9;
+inline bool Response::has_resnotice() const {
+  return response_type_case() == kResNotice;
+}
+inline bool Response::_internal_has_resnotice() const {
+  return response_type_case() == kResNotice;
+}
+inline void Response::set_has_resnotice() {
+  _impl_._oneof_case_[0] = kResNotice;
+}
+inline ::lampyris::crypto::protocol::app::ResNotice* Response::release_resnotice() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resNotice)
+  if (response_type_case() == kResNotice) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resnotice_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.resnotice_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::app::ResNotice& Response::_internal_resnotice() const {
+  return response_type_case() == kResNotice ? *_impl_.response_type_.resnotice_ : reinterpret_cast<::lampyris::crypto::protocol::app::ResNotice&>(::lampyris::crypto::protocol::app::_ResNotice_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::app::ResNotice& Response::resnotice() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resNotice)
+  return _internal_resnotice();
+}
+inline ::lampyris::crypto::protocol::app::ResNotice* Response::unsafe_arena_release_resnotice() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resNotice)
+  if (response_type_case() == kResNotice) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resnotice_;
+    _impl_.response_type_.resnotice_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_resnotice();
+    _impl_.response_type_.resnotice_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resNotice)
+}
+inline ::lampyris::crypto::protocol::app::ResNotice* Response::_internal_mutable_resnotice() {
+  if (response_type_case() != kResNotice) {
+    clear_response_type();
+    set_has_resnotice();
+    _impl_.response_type_.resnotice_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::app::ResNotice>(GetArena());
+  }
+  return _impl_.response_type_.resnotice_;
+}
+inline ::lampyris::crypto::protocol::app::ResNotice* Response::mutable_resnotice() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::app::ResNotice* _msg = _internal_mutable_resnotice();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resNotice)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 10;
 inline bool Response::has_symboltickerdatabean() const {
   return response_type_case() == kSymbolTickerDataBean;
 }
@@ -4071,7 +4299,7 @@ inline ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* Response::muta
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 10;
+// .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 11;
 inline bool Response::has_ressubscribetickerdata() const {
   return response_type_case() == kResSubscribeTickerData;
 }
@@ -4139,7 +4367,7 @@ inline ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* Response::mu
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 11;
+// .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 12;
 inline bool Response::has_symboltradedatabean() const {
   return response_type_case() == kSymbolTradeDataBean;
 }
@@ -4207,7 +4435,7 @@ inline ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* Response::mutab
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 12;
+// .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 13;
 inline bool Response::has_tradedatabean() const {
   return response_type_case() == kTradeDataBean;
 }
@@ -4275,7 +4503,7 @@ inline ::lampyris::crypto::protocol::quote::TradeDataBean* Response::mutable_tra
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 13;
+// .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 14;
 inline bool Response::has_rescandlestickquery() const {
   return response_type_case() == kResCandlestickQuery;
 }
@@ -4343,7 +4571,7 @@ inline ::lampyris::crypto::protocol::quote::ResCandlestickQuery* Response::mutab
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 14;
+// .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 15;
 inline bool Response::has_candlestickupdatebean() const {
   return response_type_case() == kCandlestickUpdateBean;
 }
@@ -4411,7 +4639,7 @@ inline ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* Response::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 15;
+// .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 16;
 inline bool Response::has_candlestickbean() const {
   return response_type_case() == kCandlestickBean;
 }
@@ -4479,7 +4707,75 @@ inline ::lampyris::crypto::protocol::quote::CandlestickBean* Response::mutable_c
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 16;
+// .lampyris.crypto.protocol.quote.ResTradeRule resTradeRule = 17;
+inline bool Response::has_restraderule() const {
+  return response_type_case() == kResTradeRule;
+}
+inline bool Response::_internal_has_restraderule() const {
+  return response_type_case() == kResTradeRule;
+}
+inline void Response::set_has_restraderule() {
+  _impl_._oneof_case_[0] = kResTradeRule;
+}
+inline ::lampyris::crypto::protocol::quote::ResTradeRule* Response::release_restraderule() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resTradeRule)
+  if (response_type_case() == kResTradeRule) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.restraderule_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.restraderule_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::quote::ResTradeRule& Response::_internal_restraderule() const {
+  return response_type_case() == kResTradeRule ? *_impl_.response_type_.restraderule_ : reinterpret_cast<::lampyris::crypto::protocol::quote::ResTradeRule&>(::lampyris::crypto::protocol::quote::_ResTradeRule_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::quote::ResTradeRule& Response::restraderule() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resTradeRule)
+  return _internal_restraderule();
+}
+inline ::lampyris::crypto::protocol::quote::ResTradeRule* Response::unsafe_arena_release_restraderule() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resTradeRule)
+  if (response_type_case() == kResTradeRule) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.restraderule_;
+    _impl_.response_type_.restraderule_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_restraderule();
+    _impl_.response_type_.restraderule_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resTradeRule)
+}
+inline ::lampyris::crypto::protocol::quote::ResTradeRule* Response::_internal_mutable_restraderule() {
+  if (response_type_case() != kResTradeRule) {
+    clear_response_type();
+    set_has_restraderule();
+    _impl_.response_type_.restraderule_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::quote::ResTradeRule>(GetArena());
+  }
+  return _impl_.response_type_.restraderule_;
+}
+inline ::lampyris::crypto::protocol::quote::ResTradeRule* Response::mutable_restraderule() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::quote::ResTradeRule* _msg = _internal_mutable_restraderule();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resTradeRule)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 18;
 inline bool Response::has_symboltraderulebean() const {
   return response_type_case() == kSymbolTradeRuleBean;
 }
@@ -4547,7 +4843,75 @@ inline ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* Response::mutab
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 17;
+// .lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean marketMonitorNoticeListBean = 19;
+inline bool Response::has_marketmonitornoticelistbean() const {
+  return response_type_case() == kMarketMonitorNoticeListBean;
+}
+inline bool Response::_internal_has_marketmonitornoticelistbean() const {
+  return response_type_case() == kMarketMonitorNoticeListBean;
+}
+inline void Response::set_has_marketmonitornoticelistbean() {
+  _impl_._oneof_case_[0] = kMarketMonitorNoticeListBean;
+}
+inline ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* Response::release_marketmonitornoticelistbean() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.marketMonitorNoticeListBean)
+  if (response_type_case() == kMarketMonitorNoticeListBean) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.marketmonitornoticelistbean_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.marketmonitornoticelistbean_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& Response::_internal_marketmonitornoticelistbean() const {
+  return response_type_case() == kMarketMonitorNoticeListBean ? *_impl_.response_type_.marketmonitornoticelistbean_ : reinterpret_cast<::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean&>(::lampyris::crypto::protocol::quote::_MarketMonitorNoticeListBean_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& Response::marketmonitornoticelistbean() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.marketMonitorNoticeListBean)
+  return _internal_marketmonitornoticelistbean();
+}
+inline ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* Response::unsafe_arena_release_marketmonitornoticelistbean() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.marketMonitorNoticeListBean)
+  if (response_type_case() == kMarketMonitorNoticeListBean) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.marketmonitornoticelistbean_;
+    _impl_.response_type_.marketmonitornoticelistbean_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_marketmonitornoticelistbean();
+    _impl_.response_type_.marketmonitornoticelistbean_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.marketMonitorNoticeListBean)
+}
+inline ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* Response::_internal_mutable_marketmonitornoticelistbean() {
+  if (response_type_case() != kMarketMonitorNoticeListBean) {
+    clear_response_type();
+    set_has_marketmonitornoticelistbean();
+    _impl_.response_type_.marketmonitornoticelistbean_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean>(GetArena());
+  }
+  return _impl_.response_type_.marketmonitornoticelistbean_;
+}
+inline ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* Response::mutable_marketmonitornoticelistbean() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* _msg = _internal_mutable_marketmonitornoticelistbean();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.marketMonitorNoticeListBean)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 20;
 inline bool Response::has_marketmonitornoticebean() const {
   return response_type_case() == kMarketMonitorNoticeBean;
 }
@@ -4615,7 +4979,7 @@ inline ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* Response::m
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 18;
+// .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 21;
 inline bool Response::has_selfselectedsymbolinfobean() const {
   return response_type_case() == kSelfSelectedSymbolInfoBean;
 }
@@ -4683,7 +5047,7 @@ inline ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* Response
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 19;
+// .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 22;
 inline bool Response::has_selfselectedsymbolgroupbean() const {
   return response_type_case() == kSelfSelectedSymbolGroupBean;
 }
@@ -4751,7 +5115,7 @@ inline ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* Respons
   return _msg;
 }
 
-// .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 20;
+// .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 23;
 inline bool Response::has_resselfselectedsymbol() const {
   return response_type_case() == kResSelfSelectedSymbol;
 }
@@ -4819,7 +5183,7 @@ inline ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* Response::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 21;
+// .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 24;
 inline bool Response::has_streategyconfigbean() const {
   return response_type_case() == kStreategyConfigBean;
 }
@@ -4887,7 +5251,7 @@ inline ::lampyris::crypto::protocol::strategy::StreategyConfigBean* Response::mu
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 22;
+// .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 25;
 inline bool Response::has_streategyfieldbean() const {
   return response_type_case() == kStreategyFieldBean;
 }
@@ -4955,7 +5319,7 @@ inline ::lampyris::crypto::protocol::strategy::StreategyFieldBean* Response::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 23;
+// .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 26;
 inline bool Response::has_resmodifystreategysetting() const {
   return response_type_case() == kResModifyStreategySetting;
 }
@@ -5023,7 +5387,7 @@ inline ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* Respon
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 24;
+// .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 27;
 inline bool Response::has_resstreategysettings() const {
   return response_type_case() == kResStreategySettings;
 }
@@ -5091,7 +5455,7 @@ inline ::lampyris::crypto::protocol::strategy::ResStreategySettings* Response::m
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 25;
+// .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 28;
 inline bool Response::has_strategyexectioninfobean() const {
   return response_type_case() == kStrategyExectionInfoBean;
 }
@@ -5159,7 +5523,7 @@ inline ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* Respons
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 26;
+// .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 29;
 inline bool Response::has_resquerystrategyexectioninfo() const {
   return response_type_case() == kResQueryStrategyExectionInfo;
 }
@@ -5227,7 +5591,7 @@ inline ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* Res
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 27;
+// .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 30;
 inline bool Response::has_conditiontriggerbean() const {
   return response_type_case() == kConditionTriggerBean;
 }
@@ -5295,7 +5659,7 @@ inline ::lampyris::crypto::protocol::trading::ConditionTriggerBean* Response::mu
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.OrderBean orderBean = 28;
+// .lampyris.crypto.protocol.trading.OrderBean orderBean = 31;
 inline bool Response::has_orderbean() const {
   return response_type_case() == kOrderBean;
 }
@@ -5363,7 +5727,7 @@ inline ::lampyris::crypto::protocol::trading::OrderBean* Response::mutable_order
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 29;
+// .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 32;
 inline bool Response::has_orderstatusbean() const {
   return response_type_case() == kOrderStatusBean;
 }
@@ -5431,7 +5795,7 @@ inline ::lampyris::crypto::protocol::trading::OrderStatusBean* Response::mutable
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 30;
+// .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 33;
 inline bool Response::has_leveragebean() const {
   return response_type_case() == kLeverageBean;
 }
@@ -5499,7 +5863,7 @@ inline ::lampyris::crypto::protocol::trading::LeverageBean* Response::mutable_le
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 31;
+// .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 34;
 inline bool Response::has_resqueryleverage() const {
   return response_type_case() == kResQueryLeverage;
 }
@@ -5567,7 +5931,7 @@ inline ::lampyris::crypto::protocol::trading::ResQueryLeverage* Response::mutabl
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 32;
+// .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 35;
 inline bool Response::has_resqueryleveragebracket() const {
   return response_type_case() == kResQueryLeverageBracket;
 }
@@ -5635,7 +5999,7 @@ inline ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* Response:
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 33;
+// .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 36;
 inline bool Response::has_symbolleveragebracketbean() const {
   return response_type_case() == kSymbolLeverageBracketBean;
 }
@@ -5703,7 +6067,7 @@ inline ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* Respons
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 34;
+// .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 37;
 inline bool Response::has_leveragebracketbean() const {
   return response_type_case() == kLeverageBracketBean;
 }

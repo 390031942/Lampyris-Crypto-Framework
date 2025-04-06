@@ -2,18 +2,6 @@ syntax = "proto3";
 
 package lampyris.crypto.protocol.account;
 
-message ReqLogin {
-    string deviceMAC = 1;
-}
-
-message ReqHeartBeat {
-    int64 clientTime = 1;
-}
-
-message ResHeartBeat {
-    int64 serverTime = 1;
-}
-
 message AccountAssetInfoBean {
     double balance = 1; // 资产数(USDT)
     double positionValue = 2; // 持仓价值(USDT)

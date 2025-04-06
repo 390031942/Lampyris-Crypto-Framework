@@ -75,6 +75,10 @@ public abstract class DBService:ILifecycle
                 {
                     columnDefinition += " AUTO_INCREMENT";
                 }
+                if (columnAttribute.IsNotNull)
+                {
+                    columnDefinition += " NOT NULL";
+                }
                 columns.Add(columnDefinition);
             }
         }

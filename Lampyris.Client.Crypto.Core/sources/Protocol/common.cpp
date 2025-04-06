@@ -123,6 +123,7 @@ const ::uint32_t
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::common::Request, _impl_.request_type_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::common::Response, _internal_metadata_),
@@ -166,13 +167,16 @@ const ::uint32_t
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::common::Response, _impl_.response_type_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::lampyris::crypto::protocol::common::Request)},
-        {33, -1, -1, sizeof(::lampyris::crypto::protocol::common::Response)},
+        {34, -1, -1, sizeof(::lampyris::crypto::protocol::common::Response)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::lampyris::crypto::protocol::common::_Request_default_instance_._instance,
@@ -182,135 +186,142 @@ const char descriptor_table_protodef_common_2eproto[] ABSL_ATTRIBUTE_SECTION_VAR
     protodesc_cold) = {
     "\n\014common.proto\022\037lampyris.crypto.protocol"
     ".common\032\raccount.proto\032\tapp.proto\032\013quote"
-    ".proto\032\016strategy.proto\032\rtrading.proto\"\255\020"
-    "\n\007Request\022:\n\010reqLogin\030\001 \001(\0132&.lampyris.c"
-    "rypto.protocol.app.ReqLoginH\000\022B\n\014reqHear"
-    "tBeat\030\002 \001(\0132*.lampyris.crypto.protocol.a"
-    "pp.ReqHeartBeatH\000\022\\\n\027reqAccountSummaryUp"
-    "date\030\003 \001(\01329.lampyris.crypto.protocol.ac"
-    "count.ReqAccountSummaryUpdateH\000\022\\\n\027reqAc"
-    "countAssetTransfer\030\004 \001(\01329.lampyris.cryp"
-    "to.protocol.account.ReqAccountAssetTrans"
-    "ferH\000\022f\n\034reqQueryAssetTransferHistory\030\005 "
-    "\001(\0132>.lampyris.crypto.protocol.account.R"
-    "eqQueryAssetTransferHistoryH\000\022T\n\025reqUplo"
-    "adAppBehaviour\030\006 \001(\01323.lampyris.crypto.p"
-    "rotocol.app.ReqUploadAppBehaviourH\000\022X\n\026r"
-    "eqSubscribeTickerData\030\007 \001(\01326.lampyris.c"
-    "rypto.protocol.quote.ReqSubscribeTickerD"
-    "ataH\000\022V\n\025reqSubscribeTradeData\030\010 \001(\01325.l"
-    "ampyris.crypto.protocol.quote.ReqSubscri"
-    "beTradeDataH\000\022f\n\035reqSubscribeCandlestick"
-    "Update\030\t \001(\0132=.lampyris.crypto.protocol."
-    "quote.ReqSubscribeCandlestickUpdateH\000\022R\n"
-    "\023reqCandlestickQuery\030\n \001(\01323.lampyris.cr"
-    "ypto.protocol.quote.ReqCandlestickQueryH"
-    "\000\022D\n\014reqTradeRule\030\013 \001(\0132,.lampyris.crypt"
-    "o.protocol.quote.ReqTradeRuleH\000\022V\n\025reqSe"
-    "lfSelectedSymbol\030\014 \001(\01325.lampyris.crypto"
-    ".protocol.quote.ReqSelfSelectedSymbolH\000\022"
-    "a\n\031reqModifyStreategySetting\030\r \001(\0132<.lam"
-    "pyris.crypto.protocol.strategy.ReqModify"
-    "StreategySettingH\000\022g\n\034reqQueryStrategyEx"
-    "ectionInfo\030\016 \001(\0132\?.lampyris.crypto.proto"
-    "col.strategy.ReqQueryStrategyExectionInf"
-    "oH\000\022H\n\rreqPlaceOrder\030\017 \001(\0132/.lampyris.cr"
-    "ypto.protocol.trading.ReqPlaceOrderH\000\022J\n"
-    "\016reqModifyOrder\030\020 \001(\01320.lampyris.crypto."
-    "protocol.trading.ReqModifyOrderH\000\022J\n\016req"
-    "CancelOrder\030\021 \001(\01320.lampyris.crypto.prot"
-    "ocol.trading.ReqCancelOrderH\000\022Z\n\026reqOneK"
-    "eyClosePosition\030\022 \001(\01328.lampyris.crypto."
-    "protocol.trading.ReqOneKeyClosePositionH"
-    "\000\022V\n\024reqQueryActiveOrders\030\023 \001(\01326.lampyr"
-    "is.crypto.protocol.trading.ReqQueryActiv"
-    "eOrdersH\000\022^\n\030reqQueryHistoricalOrders\030\024 "
-    "\001(\0132:.lampyris.crypto.protocol.trading.R"
-    "eqQueryHistoricalOrdersH\000\022P\n\021reqQueryPos"
-    "itions\030\025 \001(\01323.lampyris.crypto.protocol."
-    "trading.ReqQueryPositionsH\000\022J\n\016reqSetLev"
-    "erage\030\026 \001(\01320.lampyris.crypto.protocol.t"
-    "rading.ReqSetLeverageH\000\022N\n\020reqQueryLever"
-    "age\030\027 \001(\01322.lampyris.crypto.protocol.tra"
-    "ding.ReqQueryLeverageH\000\022\\\n\027reqQueryLever"
-    "ageBracket\030\030 \001(\01329.lampyris.crypto.proto"
-    "col.trading.ReqQueryLeverageBracketH\000B\016\n"
-    "\014request_type\"\271\027\n\010Response\022B\n\014resHeartBe"
-    "at\030\001 \001(\0132*.lampyris.crypto.protocol.app."
-    "ResHeartBeatH\000\022V\n\024accountAssetInfoBean\030\002"
-    " \001(\01326.lampyris.crypto.protocol.account."
-    "AccountAssetInfoBeanH\000\022R\n\022subAccountInfo"
-    "Bean\030\003 \001(\01324.lampyris.crypto.protocol.ac"
-    "count.SubAccountInfoBeanH\000\022\\\n\027resQuerySu"
-    "bAcccountList\030\004 \001(\01329.lampyris.crypto.pr"
-    "otocol.account.ResQuerySubAcccountListH\000"
-    "\022\\\n\027resAccountSummaryUpdate\030\005 \001(\01329.lamp"
-    "yris.crypto.protocol.account.ResAccountS"
-    "ummaryUpdateH\000\022r\n\"assetTransferHistoryIn"
-    "foDetailBean\030\006 \001(\0132D.lampyris.crypto.pro"
-    "tocol.account.AssetTransferHistoryInfoDe"
-    "tailBeanH\000\022f\n\034assetTransferHistoryInfoBe"
-    "an\030\007 \001(\0132>.lampyris.crypto.protocol.acco"
-    "unt.AssetTransferHistoryInfoBeanH\000\022:\n\010re"
-    "sLogin\030\010 \001(\0132&.lampyris.crypto.protocol."
-    "app.ResLoginH\000\022T\n\024symbolTickerDataBean\030\t"
-    " \001(\01324.lampyris.crypto.protocol.quote.Sy"
-    "mbolTickerDataBeanH\000\022X\n\026resSubscribeTick"
-    "erData\030\n \001(\01326.lampyris.crypto.protocol."
-    "quote.ResSubscribeTickerDataH\000\022R\n\023symbol"
-    "TradeDataBean\030\013 \001(\01323.lampyris.crypto.pr"
-    "otocol.quote.SymbolTradeDataBeanH\000\022F\n\rtr"
-    "adeDataBean\030\014 \001(\0132-.lampyris.crypto.prot"
-    "ocol.quote.TradeDataBeanH\000\022R\n\023resCandles"
-    "tickQuery\030\r \001(\01323.lampyris.crypto.protoc"
-    "ol.quote.ResCandlestickQueryH\000\022V\n\025candle"
-    "stickUpdateBean\030\016 \001(\01325.lampyris.crypto."
-    "protocol.quote.CandlestickUpdateBeanH\000\022J"
-    "\n\017candlestickBean\030\017 \001(\0132/.lampyris.crypt"
-    "o.protocol.quote.CandlestickBeanH\000\022R\n\023sy"
-    "mbolTradeRuleBean\030\020 \001(\01323.lampyris.crypt"
-    "o.protocol.quote.SymbolTradeRuleBeanH\000\022Z"
-    "\n\027marketMonitorNoticeBean\030\021 \001(\01327.lampyr"
-    "is.crypto.protocol.quote.MarketMonitorNo"
-    "ticeBeanH\000\022`\n\032selfSelectedSymbolInfoBean"
-    "\030\022 \001(\0132:.lampyris.crypto.protocol.quote."
-    "SelfSelectedSymbolInfoBeanH\000\022b\n\033selfSele"
-    "ctedSymbolGroupBean\030\023 \001(\0132;.lampyris.cry"
-    "pto.protocol.quote.SelfSelectedSymbolGro"
-    "upBeanH\000\022V\n\025resSelfSelectedSymbol\030\024 \001(\0132"
-    "5.lampyris.crypto.protocol.quote.ResSelf"
-    "SelectedSymbolH\000\022U\n\023streategyConfigBean\030"
-    "\025 \001(\01326.lampyris.crypto.protocol.strateg"
-    "y.StreategyConfigBeanH\000\022S\n\022streategyFiel"
-    "dBean\030\026 \001(\01325.lampyris.crypto.protocol.s"
-    "trategy.StreategyFieldBeanH\000\022a\n\031resModif"
-    "yStreategySetting\030\027 \001(\0132<.lampyris.crypt"
-    "o.protocol.strategy.ResModifyStreategySe"
-    "ttingH\000\022W\n\024resStreategySettings\030\030 \001(\01327."
-    "lampyris.crypto.protocol.strategy.ResStr"
-    "eategySettingsH\000\022_\n\030strategyExectionInfo"
-    "Bean\030\031 \001(\0132;.lampyris.crypto.protocol.st"
-    "rategy.StrategyExectionInfoBeanH\000\022g\n\034res"
-    "QueryStrategyExectionInfo\030\032 \001(\0132\?.lampyr"
-    "is.crypto.protocol.strategy.ResQueryStra"
-    "tegyExectionInfoH\000\022V\n\024conditionTriggerBe"
-    "an\030\033 \001(\01326.lampyris.crypto.protocol.trad"
-    "ing.ConditionTriggerBeanH\000\022@\n\torderBean\030"
-    "\034 \001(\0132+.lampyris.crypto.protocol.trading"
-    ".OrderBeanH\000\022L\n\017orderStatusBean\030\035 \001(\01321."
-    "lampyris.crypto.protocol.trading.OrderSt"
-    "atusBeanH\000\022F\n\014leverageBean\030\036 \001(\0132..lampy"
-    "ris.crypto.protocol.trading.LeverageBean"
-    "H\000\022N\n\020resQueryLeverage\030\037 \001(\01322.lampyris."
-    "crypto.protocol.trading.ResQueryLeverage"
-    "H\000\022\\\n\027resQueryLeverageBracket\030  \001(\01329.la"
-    "mpyris.crypto.protocol.trading.ResQueryL"
-    "everageBracketH\000\022`\n\031symbolLeverageBracke"
-    "tBean\030! \001(\0132;.lampyris.crypto.protocol.t"
-    "rading.SymbolLeverageBracketBeanH\000\022T\n\023le"
-    "verageBracketBean\030\" \001(\01325.lampyris.crypt"
-    "o.protocol.trading.LeverageBracketBeanH\000"
-    "B\017\n\rresponse_typeb\006proto3"
+    ".proto\032\016strategy.proto\032\rtrading.proto\"\353\020"
+    "\n\007Request\022\\\n\027reqAccountSummaryUpdate\030\001 \001"
+    "(\01329.lampyris.crypto.protocol.account.Re"
+    "qAccountSummaryUpdateH\000\022\\\n\027reqAccountAss"
+    "etTransfer\030\002 \001(\01329.lampyris.crypto.proto"
+    "col.account.ReqAccountAssetTransferH\000\022f\n"
+    "\034reqQueryAssetTransferHistory\030\003 \001(\0132>.la"
+    "mpyris.crypto.protocol.account.ReqQueryA"
+    "ssetTransferHistoryH\000\022:\n\010reqLogin\030\004 \001(\0132"
+    "&.lampyris.crypto.protocol.app.ReqLoginH"
+    "\000\022<\n\treqLogout\030\005 \001(\0132\'.lampyris.crypto.p"
+    "rotocol.app.ReqLogoutH\000\022B\n\014reqHeartBeat\030"
+    "\006 \001(\0132*.lampyris.crypto.protocol.app.Req"
+    "HeartBeatH\000\022T\n\025reqUploadAppBehaviour\030\007 \001"
+    "(\01323.lampyris.crypto.protocol.app.ReqUpl"
+    "oadAppBehaviourH\000\022X\n\026reqSubscribeTickerD"
+    "ata\030\010 \001(\01326.lampyris.crypto.protocol.quo"
+    "te.ReqSubscribeTickerDataH\000\022V\n\025reqSubscr"
+    "ibeTradeData\030\t \001(\01325.lampyris.crypto.pro"
+    "tocol.quote.ReqSubscribeTradeDataH\000\022f\n\035r"
+    "eqSubscribeCandlestickUpdate\030\n \001(\0132=.lam"
+    "pyris.crypto.protocol.quote.ReqSubscribe"
+    "CandlestickUpdateH\000\022R\n\023reqCandlestickQue"
+    "ry\030\013 \001(\01323.lampyris.crypto.protocol.quot"
+    "e.ReqCandlestickQueryH\000\022D\n\014reqTradeRule\030"
+    "\014 \001(\0132,.lampyris.crypto.protocol.quote.R"
+    "eqTradeRuleH\000\022V\n\025reqSelfSelectedSymbol\030\r"
+    " \001(\01325.lampyris.crypto.protocol.quote.Re"
+    "qSelfSelectedSymbolH\000\022a\n\031reqModifyStreat"
+    "egySetting\030\016 \001(\0132<.lampyris.crypto.proto"
+    "col.strategy.ReqModifyStreategySettingH\000"
+    "\022g\n\034reqQueryStrategyExectionInfo\030\017 \001(\0132\?"
+    ".lampyris.crypto.protocol.strategy.ReqQu"
+    "eryStrategyExectionInfoH\000\022H\n\rreqPlaceOrd"
+    "er\030\020 \001(\0132/.lampyris.crypto.protocol.trad"
+    "ing.ReqPlaceOrderH\000\022J\n\016reqModifyOrder\030\021 "
+    "\001(\01320.lampyris.crypto.protocol.trading.R"
+    "eqModifyOrderH\000\022J\n\016reqCancelOrder\030\022 \001(\0132"
+    "0.lampyris.crypto.protocol.trading.ReqCa"
+    "ncelOrderH\000\022Z\n\026reqOneKeyClosePosition\030\023 "
+    "\001(\01328.lampyris.crypto.protocol.trading.R"
+    "eqOneKeyClosePositionH\000\022V\n\024reqQueryActiv"
+    "eOrders\030\024 \001(\01326.lampyris.crypto.protocol"
+    ".trading.ReqQueryActiveOrdersH\000\022^\n\030reqQu"
+    "eryHistoricalOrders\030\025 \001(\0132:.lampyris.cry"
+    "pto.protocol.trading.ReqQueryHistoricalO"
+    "rdersH\000\022P\n\021reqQueryPositions\030\026 \001(\01323.lam"
+    "pyris.crypto.protocol.trading.ReqQueryPo"
+    "sitionsH\000\022J\n\016reqSetLeverage\030\027 \001(\01320.lamp"
+    "yris.crypto.protocol.trading.ReqSetLever"
+    "ageH\000\022N\n\020reqQueryLeverage\030\030 \001(\01322.lampyr"
+    "is.crypto.protocol.trading.ReqQueryLever"
+    "ageH\000\022\\\n\027reqQueryLeverageBracket\030\031 \001(\01329"
+    ".lampyris.crypto.protocol.trading.ReqQue"
+    "ryLeverageBracketH\000B\016\n\014request_type\"\241\031\n\010"
+    "Response\022V\n\024accountAssetInfoBean\030\001 \001(\01326"
+    ".lampyris.crypto.protocol.account.Accoun"
+    "tAssetInfoBeanH\000\022R\n\022subAccountInfoBean\030\002"
+    " \001(\01324.lampyris.crypto.protocol.account."
+    "SubAccountInfoBeanH\000\022\\\n\027resQuerySubAccco"
+    "untList\030\003 \001(\01329.lampyris.crypto.protocol"
+    ".account.ResQuerySubAcccountListH\000\022\\\n\027re"
+    "sAccountSummaryUpdate\030\004 \001(\01329.lampyris.c"
+    "rypto.protocol.account.ResAccountSummary"
+    "UpdateH\000\022r\n\"assetTransferHistoryInfoDeta"
+    "ilBean\030\005 \001(\0132D.lampyris.crypto.protocol."
+    "account.AssetTransferHistoryInfoDetailBe"
+    "anH\000\022f\n\034assetTransferHistoryInfoBean\030\006 \001"
+    "(\0132>.lampyris.crypto.protocol.account.As"
+    "setTransferHistoryInfoBeanH\000\022:\n\010resLogin"
+    "\030\007 \001(\0132&.lampyris.crypto.protocol.app.Re"
+    "sLoginH\000\022B\n\014resHeartBeat\030\010 \001(\0132*.lampyri"
+    "s.crypto.protocol.app.ResHeartBeatH\000\022<\n\t"
+    "resNotice\030\t \001(\0132\'.lampyris.crypto.protoc"
+    "ol.app.ResNoticeH\000\022T\n\024symbolTickerDataBe"
+    "an\030\n \001(\01324.lampyris.crypto.protocol.quot"
+    "e.SymbolTickerDataBeanH\000\022X\n\026resSubscribe"
+    "TickerData\030\013 \001(\01326.lampyris.crypto.proto"
+    "col.quote.ResSubscribeTickerDataH\000\022R\n\023sy"
+    "mbolTradeDataBean\030\014 \001(\01323.lampyris.crypt"
+    "o.protocol.quote.SymbolTradeDataBeanH\000\022F"
+    "\n\rtradeDataBean\030\r \001(\0132-.lampyris.crypto."
+    "protocol.quote.TradeDataBeanH\000\022R\n\023resCan"
+    "dlestickQuery\030\016 \001(\01323.lampyris.crypto.pr"
+    "otocol.quote.ResCandlestickQueryH\000\022V\n\025ca"
+    "ndlestickUpdateBean\030\017 \001(\01325.lampyris.cry"
+    "pto.protocol.quote.CandlestickUpdateBean"
+    "H\000\022J\n\017candlestickBean\030\020 \001(\0132/.lampyris.c"
+    "rypto.protocol.quote.CandlestickBeanH\000\022D"
+    "\n\014resTradeRule\030\021 \001(\0132,.lampyris.crypto.p"
+    "rotocol.quote.ResTradeRuleH\000\022R\n\023symbolTr"
+    "adeRuleBean\030\022 \001(\01323.lampyris.crypto.prot"
+    "ocol.quote.SymbolTradeRuleBeanH\000\022b\n\033mark"
+    "etMonitorNoticeListBean\030\023 \001(\0132;.lampyris"
+    ".crypto.protocol.quote.MarketMonitorNoti"
+    "ceListBeanH\000\022Z\n\027marketMonitorNoticeBean\030"
+    "\024 \001(\01327.lampyris.crypto.protocol.quote.M"
+    "arketMonitorNoticeBeanH\000\022`\n\032selfSelected"
+    "SymbolInfoBean\030\025 \001(\0132:.lampyris.crypto.p"
+    "rotocol.quote.SelfSelectedSymbolInfoBean"
+    "H\000\022b\n\033selfSelectedSymbolGroupBean\030\026 \001(\0132"
+    ";.lampyris.crypto.protocol.quote.SelfSel"
+    "ectedSymbolGroupBeanH\000\022V\n\025resSelfSelecte"
+    "dSymbol\030\027 \001(\01325.lampyris.crypto.protocol"
+    ".quote.ResSelfSelectedSymbolH\000\022U\n\023streat"
+    "egyConfigBean\030\030 \001(\01326.lampyris.crypto.pr"
+    "otocol.strategy.StreategyConfigBeanH\000\022S\n"
+    "\022streategyFieldBean\030\031 \001(\01325.lampyris.cry"
+    "pto.protocol.strategy.StreategyFieldBean"
+    "H\000\022a\n\031resModifyStreategySetting\030\032 \001(\0132<."
+    "lampyris.crypto.protocol.strategy.ResMod"
+    "ifyStreategySettingH\000\022W\n\024resStreategySet"
+    "tings\030\033 \001(\01327.lampyris.crypto.protocol.s"
+    "trategy.ResStreategySettingsH\000\022_\n\030strate"
+    "gyExectionInfoBean\030\034 \001(\0132;.lampyris.cryp"
+    "to.protocol.strategy.StrategyExectionInf"
+    "oBeanH\000\022g\n\034resQueryStrategyExectionInfo\030"
+    "\035 \001(\0132\?.lampyris.crypto.protocol.strateg"
+    "y.ResQueryStrategyExectionInfoH\000\022V\n\024cond"
+    "itionTriggerBean\030\036 \001(\01326.lampyris.crypto"
+    ".protocol.trading.ConditionTriggerBeanH\000"
+    "\022@\n\torderBean\030\037 \001(\0132+.lampyris.crypto.pr"
+    "otocol.trading.OrderBeanH\000\022L\n\017orderStatu"
+    "sBean\030  \001(\01321.lampyris.crypto.protocol.t"
+    "rading.OrderStatusBeanH\000\022F\n\014leverageBean"
+    "\030! \001(\0132..lampyris.crypto.protocol.tradin"
+    "g.LeverageBeanH\000\022N\n\020resQueryLeverage\030\" \001"
+    "(\01322.lampyris.crypto.protocol.trading.Re"
+    "sQueryLeverageH\000\022\\\n\027resQueryLeverageBrac"
+    "ket\030# \001(\01329.lampyris.crypto.protocol.tra"
+    "ding.ResQueryLeverageBracketH\000\022`\n\031symbol"
+    "LeverageBracketBean\030$ \001(\0132;.lampyris.cry"
+    "pto.protocol.trading.SymbolLeverageBrack"
+    "etBeanH\000\022T\n\023leverageBracketBean\030% \001(\01325."
+    "lampyris.crypto.protocol.trading.Leverag"
+    "eBracketBeanH\000B\017\n\rresponse_typeb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_common_2eproto_deps[5] =
     {
@@ -324,7 +335,7 @@ static ::absl::once_flag descriptor_table_common_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_common_2eproto = {
     false,
     false,
-    5225,
+    5519,
     descriptor_table_protodef_common_2eproto,
     "common.proto",
     &descriptor_table_common_2eproto_once,
@@ -349,54 +360,6 @@ class Request::_Internal {
       PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::common::Request, _impl_._oneof_case_);
 };
 
-void Request::set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* reqlogin) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  clear_request_type();
-  if (reqlogin) {
-    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(reqlogin)->GetArena();
-    if (message_arena != submessage_arena) {
-      reqlogin = ::google::protobuf::internal::GetOwnedMessage(message_arena, reqlogin, submessage_arena);
-    }
-    set_has_reqlogin();
-    _impl_.request_type_.reqlogin_ = reqlogin;
-  }
-  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Request.reqLogin)
-}
-void Request::clear_reqlogin() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_type_case() == kReqLogin) {
-    if (GetArena() == nullptr) {
-      delete _impl_.request_type_.reqlogin_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqlogin_);
-    }
-    clear_has_request_type();
-  }
-}
-void Request::set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* reqheartbeat) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  clear_request_type();
-  if (reqheartbeat) {
-    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(reqheartbeat)->GetArena();
-    if (message_arena != submessage_arena) {
-      reqheartbeat = ::google::protobuf::internal::GetOwnedMessage(message_arena, reqheartbeat, submessage_arena);
-    }
-    set_has_reqheartbeat();
-    _impl_.request_type_.reqheartbeat_ = reqheartbeat;
-  }
-  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Request.reqHeartBeat)
-}
-void Request::clear_reqheartbeat() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (request_type_case() == kReqHeartBeat) {
-    if (GetArena() == nullptr) {
-      delete _impl_.request_type_.reqheartbeat_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqheartbeat_);
-    }
-    clear_has_request_type();
-  }
-}
 void Request::set_allocated_reqaccountsummaryupdate(::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate* reqaccountsummaryupdate) {
   ::google::protobuf::Arena* message_arena = GetArena();
   clear_request_type();
@@ -465,6 +428,78 @@ void Request::clear_reqqueryassettransferhistory() {
       delete _impl_.request_type_.reqqueryassettransferhistory_;
     } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
       ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqqueryassettransferhistory_);
+    }
+    clear_has_request_type();
+  }
+}
+void Request::set_allocated_reqlogin(::lampyris::crypto::protocol::app::ReqLogin* reqlogin) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_type();
+  if (reqlogin) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(reqlogin)->GetArena();
+    if (message_arena != submessage_arena) {
+      reqlogin = ::google::protobuf::internal::GetOwnedMessage(message_arena, reqlogin, submessage_arena);
+    }
+    set_has_reqlogin();
+    _impl_.request_type_.reqlogin_ = reqlogin;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Request.reqLogin)
+}
+void Request::clear_reqlogin() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (request_type_case() == kReqLogin) {
+    if (GetArena() == nullptr) {
+      delete _impl_.request_type_.reqlogin_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqlogin_);
+    }
+    clear_has_request_type();
+  }
+}
+void Request::set_allocated_reqlogout(::lampyris::crypto::protocol::app::ReqLogout* reqlogout) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_type();
+  if (reqlogout) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(reqlogout)->GetArena();
+    if (message_arena != submessage_arena) {
+      reqlogout = ::google::protobuf::internal::GetOwnedMessage(message_arena, reqlogout, submessage_arena);
+    }
+    set_has_reqlogout();
+    _impl_.request_type_.reqlogout_ = reqlogout;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Request.reqLogout)
+}
+void Request::clear_reqlogout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (request_type_case() == kReqLogout) {
+    if (GetArena() == nullptr) {
+      delete _impl_.request_type_.reqlogout_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqlogout_);
+    }
+    clear_has_request_type();
+  }
+}
+void Request::set_allocated_reqheartbeat(::lampyris::crypto::protocol::app::ReqHeartBeat* reqheartbeat) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_type();
+  if (reqheartbeat) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(reqheartbeat)->GetArena();
+    if (message_arena != submessage_arena) {
+      reqheartbeat = ::google::protobuf::internal::GetOwnedMessage(message_arena, reqheartbeat, submessage_arena);
+    }
+    set_has_reqheartbeat();
+    _impl_.request_type_.reqheartbeat_ = reqheartbeat;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Request.reqHeartBeat)
+}
+void Request::clear_reqheartbeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (request_type_case() == kReqHeartBeat) {
+    if (GetArena() == nullptr) {
+      delete _impl_.request_type_.reqheartbeat_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqheartbeat_);
     }
     clear_has_request_type();
   }
@@ -957,12 +992,6 @@ Request::Request(
   switch (request_type_case()) {
     case REQUEST_TYPE_NOT_SET:
       break;
-      case kReqLogin:
-        _impl_.request_type_.reqlogin_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqLogin>(arena, *from._impl_.request_type_.reqlogin_);
-        break;
-      case kReqHeartBeat:
-        _impl_.request_type_.reqheartbeat_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqHeartBeat>(arena, *from._impl_.request_type_.reqheartbeat_);
-        break;
       case kReqAccountSummaryUpdate:
         _impl_.request_type_.reqaccountsummaryupdate_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate>(arena, *from._impl_.request_type_.reqaccountsummaryupdate_);
         break;
@@ -971,6 +1000,15 @@ Request::Request(
         break;
       case kReqQueryAssetTransferHistory:
         _impl_.request_type_.reqqueryassettransferhistory_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory>(arena, *from._impl_.request_type_.reqqueryassettransferhistory_);
+        break;
+      case kReqLogin:
+        _impl_.request_type_.reqlogin_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqLogin>(arena, *from._impl_.request_type_.reqlogin_);
+        break;
+      case kReqLogout:
+        _impl_.request_type_.reqlogout_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqLogout>(arena, *from._impl_.request_type_.reqlogout_);
+        break;
+      case kReqHeartBeat:
+        _impl_.request_type_.reqheartbeat_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqHeartBeat>(arena, *from._impl_.request_type_.reqheartbeat_);
         break;
       case kReqUploadAppBehaviour:
         _impl_.request_type_.requploadappbehaviour_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqUploadAppBehaviour>(arena, *from._impl_.request_type_.requploadappbehaviour_);
@@ -1061,22 +1099,6 @@ void Request::clear_request_type() {
 // @@protoc_insertion_point(one_of_clear_start:lampyris.crypto.protocol.common.Request)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   switch (request_type_case()) {
-    case kReqLogin: {
-      if (GetArena() == nullptr) {
-        delete _impl_.request_type_.reqlogin_;
-      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqlogin_);
-      }
-      break;
-    }
-    case kReqHeartBeat: {
-      if (GetArena() == nullptr) {
-        delete _impl_.request_type_.reqheartbeat_;
-      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqheartbeat_);
-      }
-      break;
-    }
     case kReqAccountSummaryUpdate: {
       if (GetArena() == nullptr) {
         delete _impl_.request_type_.reqaccountsummaryupdate_;
@@ -1098,6 +1120,30 @@ void Request::clear_request_type() {
         delete _impl_.request_type_.reqqueryassettransferhistory_;
       } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
         ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqqueryassettransferhistory_);
+      }
+      break;
+    }
+    case kReqLogin: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_type_.reqlogin_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqlogin_);
+      }
+      break;
+    }
+    case kReqLogout: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_type_.reqlogout_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqlogout_);
+      }
+      break;
+    }
+    case kReqHeartBeat: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_type_.reqheartbeat_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.reqheartbeat_);
       }
       break;
     }
@@ -1297,16 +1343,16 @@ const ::google::protobuf::internal::ClassData* Request::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 24, 24, 0, 2> Request::_table_ = {
+const ::_pbi::TcParseTable<0, 25, 25, 0, 2> Request::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    24, 0,  // max_field_number, fast_idx_mask
+    25, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4278190080,  // skipmap
+    4261412864,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    24,  // num_field_entries
-    24,  // num_aux_entries
+    25,  // num_field_entries
+    25,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -1319,84 +1365,88 @@ const ::_pbi::TcParseTable<0, 24, 24, 0, 2> Request::_table_ = {
   }}, {{
     65535, 65535
   }}, {{
-    // .lampyris.crypto.protocol.app.ReqLogin reqLogin = 1;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqlogin_), _Internal::kOneofCaseOffset + 0, 0,
+    // .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 1;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqaccountsummaryupdate_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 2;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqheartbeat_), _Internal::kOneofCaseOffset + 0, 1,
+    // .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 2;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqaccountassettransfer_), _Internal::kOneofCaseOffset + 0, 1,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 3;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqaccountsummaryupdate_), _Internal::kOneofCaseOffset + 0, 2,
+    // .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 3;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryassettransferhistory_), _Internal::kOneofCaseOffset + 0, 2,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 4;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqaccountassettransfer_), _Internal::kOneofCaseOffset + 0, 3,
+    // .lampyris.crypto.protocol.app.ReqLogin reqLogin = 4;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqlogin_), _Internal::kOneofCaseOffset + 0, 3,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 5;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryassettransferhistory_), _Internal::kOneofCaseOffset + 0, 4,
+    // .lampyris.crypto.protocol.app.ReqLogout reqLogout = 5;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqlogout_), _Internal::kOneofCaseOffset + 0, 4,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 6;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.requploadappbehaviour_), _Internal::kOneofCaseOffset + 0, 5,
+    // .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 6;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqheartbeat_), _Internal::kOneofCaseOffset + 0, 5,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 7;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsubscribetickerdata_), _Internal::kOneofCaseOffset + 0, 6,
+    // .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 7;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.requploadappbehaviour_), _Internal::kOneofCaseOffset + 0, 6,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 8;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsubscribetradedata_), _Internal::kOneofCaseOffset + 0, 7,
+    // .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 8;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsubscribetickerdata_), _Internal::kOneofCaseOffset + 0, 7,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 9;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsubscribecandlestickupdate_), _Internal::kOneofCaseOffset + 0, 8,
+    // .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 9;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsubscribetradedata_), _Internal::kOneofCaseOffset + 0, 8,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 10;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqcandlestickquery_), _Internal::kOneofCaseOffset + 0, 9,
+    // .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 10;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsubscribecandlestickupdate_), _Internal::kOneofCaseOffset + 0, 9,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 11;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqtraderule_), _Internal::kOneofCaseOffset + 0, 10,
+    // .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 11;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqcandlestickquery_), _Internal::kOneofCaseOffset + 0, 10,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 12;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqselfselectedsymbol_), _Internal::kOneofCaseOffset + 0, 11,
+    // .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 12;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqtraderule_), _Internal::kOneofCaseOffset + 0, 11,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 13;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqmodifystreategysetting_), _Internal::kOneofCaseOffset + 0, 12,
+    // .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 13;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqselfselectedsymbol_), _Internal::kOneofCaseOffset + 0, 12,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 14;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqquerystrategyexectioninfo_), _Internal::kOneofCaseOffset + 0, 13,
+    // .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 14;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqmodifystreategysetting_), _Internal::kOneofCaseOffset + 0, 13,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 15;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqplaceorder_), _Internal::kOneofCaseOffset + 0, 14,
+    // .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 15;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqquerystrategyexectioninfo_), _Internal::kOneofCaseOffset + 0, 14,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 16;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqmodifyorder_), _Internal::kOneofCaseOffset + 0, 15,
+    // .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 16;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqplaceorder_), _Internal::kOneofCaseOffset + 0, 15,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 17;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqcancelorder_), _Internal::kOneofCaseOffset + 0, 16,
+    // .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 17;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqmodifyorder_), _Internal::kOneofCaseOffset + 0, 16,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 18;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqonekeycloseposition_), _Internal::kOneofCaseOffset + 0, 17,
+    // .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 18;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqcancelorder_), _Internal::kOneofCaseOffset + 0, 17,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 19;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryactiveorders_), _Internal::kOneofCaseOffset + 0, 18,
+    // .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 19;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqonekeycloseposition_), _Internal::kOneofCaseOffset + 0, 18,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 20;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryhistoricalorders_), _Internal::kOneofCaseOffset + 0, 19,
+    // .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 20;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryactiveorders_), _Internal::kOneofCaseOffset + 0, 19,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 21;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqquerypositions_), _Internal::kOneofCaseOffset + 0, 20,
+    // .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 21;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryhistoricalorders_), _Internal::kOneofCaseOffset + 0, 20,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 22;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsetleverage_), _Internal::kOneofCaseOffset + 0, 21,
+    // .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 22;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqquerypositions_), _Internal::kOneofCaseOffset + 0, 21,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 23;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryleverage_), _Internal::kOneofCaseOffset + 0, 22,
+    // .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 23;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqsetleverage_), _Internal::kOneofCaseOffset + 0, 22,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 24;
-    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryleveragebracket_), _Internal::kOneofCaseOffset + 0, 23,
+    // .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 24;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryleverage_), _Internal::kOneofCaseOffset + 0, 23,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 25;
+    {PROTOBUF_FIELD_OFFSET(Request, _impl_.request_type_.reqqueryleveragebracket_), _Internal::kOneofCaseOffset + 0, 24,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
-    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqLogin>()},
-    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqHeartBeat>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ReqAccountAssetTransfer>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqLogin>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqLogout>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqHeartBeat>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqUploadAppBehaviour>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ReqSubscribeTickerData>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ReqSubscribeTradeData>()},
@@ -1447,147 +1497,153 @@ PROTOBUF_NOINLINE void Request::Clear() {
           (void)cached_has_bits;
 
           switch (this_.request_type_case()) {
-            case kReqLogin: {
-              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  1, *this_._impl_.request_type_.reqlogin_, this_._impl_.request_type_.reqlogin_->GetCachedSize(), target,
-                  stream);
-              break;
-            }
-            case kReqHeartBeat: {
-              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  2, *this_._impl_.request_type_.reqheartbeat_, this_._impl_.request_type_.reqheartbeat_->GetCachedSize(), target,
-                  stream);
-              break;
-            }
             case kReqAccountSummaryUpdate: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  3, *this_._impl_.request_type_.reqaccountsummaryupdate_, this_._impl_.request_type_.reqaccountsummaryupdate_->GetCachedSize(), target,
+                  1, *this_._impl_.request_type_.reqaccountsummaryupdate_, this_._impl_.request_type_.reqaccountsummaryupdate_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqAccountAssetTransfer: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  4, *this_._impl_.request_type_.reqaccountassettransfer_, this_._impl_.request_type_.reqaccountassettransfer_->GetCachedSize(), target,
+                  2, *this_._impl_.request_type_.reqaccountassettransfer_, this_._impl_.request_type_.reqaccountassettransfer_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryAssetTransferHistory: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  5, *this_._impl_.request_type_.reqqueryassettransferhistory_, this_._impl_.request_type_.reqqueryassettransferhistory_->GetCachedSize(), target,
+                  3, *this_._impl_.request_type_.reqqueryassettransferhistory_, this_._impl_.request_type_.reqqueryassettransferhistory_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kReqLogin: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  4, *this_._impl_.request_type_.reqlogin_, this_._impl_.request_type_.reqlogin_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kReqLogout: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  5, *this_._impl_.request_type_.reqlogout_, this_._impl_.request_type_.reqlogout_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kReqHeartBeat: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  6, *this_._impl_.request_type_.reqheartbeat_, this_._impl_.request_type_.reqheartbeat_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqUploadAppBehaviour: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  6, *this_._impl_.request_type_.requploadappbehaviour_, this_._impl_.request_type_.requploadappbehaviour_->GetCachedSize(), target,
+                  7, *this_._impl_.request_type_.requploadappbehaviour_, this_._impl_.request_type_.requploadappbehaviour_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqSubscribeTickerData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  7, *this_._impl_.request_type_.reqsubscribetickerdata_, this_._impl_.request_type_.reqsubscribetickerdata_->GetCachedSize(), target,
+                  8, *this_._impl_.request_type_.reqsubscribetickerdata_, this_._impl_.request_type_.reqsubscribetickerdata_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqSubscribeTradeData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  8, *this_._impl_.request_type_.reqsubscribetradedata_, this_._impl_.request_type_.reqsubscribetradedata_->GetCachedSize(), target,
+                  9, *this_._impl_.request_type_.reqsubscribetradedata_, this_._impl_.request_type_.reqsubscribetradedata_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqSubscribeCandlestickUpdate: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  9, *this_._impl_.request_type_.reqsubscribecandlestickupdate_, this_._impl_.request_type_.reqsubscribecandlestickupdate_->GetCachedSize(), target,
+                  10, *this_._impl_.request_type_.reqsubscribecandlestickupdate_, this_._impl_.request_type_.reqsubscribecandlestickupdate_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqCandlestickQuery: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  10, *this_._impl_.request_type_.reqcandlestickquery_, this_._impl_.request_type_.reqcandlestickquery_->GetCachedSize(), target,
+                  11, *this_._impl_.request_type_.reqcandlestickquery_, this_._impl_.request_type_.reqcandlestickquery_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqTradeRule: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  11, *this_._impl_.request_type_.reqtraderule_, this_._impl_.request_type_.reqtraderule_->GetCachedSize(), target,
+                  12, *this_._impl_.request_type_.reqtraderule_, this_._impl_.request_type_.reqtraderule_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqSelfSelectedSymbol: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  12, *this_._impl_.request_type_.reqselfselectedsymbol_, this_._impl_.request_type_.reqselfselectedsymbol_->GetCachedSize(), target,
+                  13, *this_._impl_.request_type_.reqselfselectedsymbol_, this_._impl_.request_type_.reqselfselectedsymbol_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqModifyStreategySetting: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  13, *this_._impl_.request_type_.reqmodifystreategysetting_, this_._impl_.request_type_.reqmodifystreategysetting_->GetCachedSize(), target,
+                  14, *this_._impl_.request_type_.reqmodifystreategysetting_, this_._impl_.request_type_.reqmodifystreategysetting_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryStrategyExectionInfo: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  14, *this_._impl_.request_type_.reqquerystrategyexectioninfo_, this_._impl_.request_type_.reqquerystrategyexectioninfo_->GetCachedSize(), target,
+                  15, *this_._impl_.request_type_.reqquerystrategyexectioninfo_, this_._impl_.request_type_.reqquerystrategyexectioninfo_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqPlaceOrder: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  15, *this_._impl_.request_type_.reqplaceorder_, this_._impl_.request_type_.reqplaceorder_->GetCachedSize(), target,
+                  16, *this_._impl_.request_type_.reqplaceorder_, this_._impl_.request_type_.reqplaceorder_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqModifyOrder: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  16, *this_._impl_.request_type_.reqmodifyorder_, this_._impl_.request_type_.reqmodifyorder_->GetCachedSize(), target,
+                  17, *this_._impl_.request_type_.reqmodifyorder_, this_._impl_.request_type_.reqmodifyorder_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqCancelOrder: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  17, *this_._impl_.request_type_.reqcancelorder_, this_._impl_.request_type_.reqcancelorder_->GetCachedSize(), target,
+                  18, *this_._impl_.request_type_.reqcancelorder_, this_._impl_.request_type_.reqcancelorder_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqOneKeyClosePosition: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  18, *this_._impl_.request_type_.reqonekeycloseposition_, this_._impl_.request_type_.reqonekeycloseposition_->GetCachedSize(), target,
+                  19, *this_._impl_.request_type_.reqonekeycloseposition_, this_._impl_.request_type_.reqonekeycloseposition_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryActiveOrders: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  19, *this_._impl_.request_type_.reqqueryactiveorders_, this_._impl_.request_type_.reqqueryactiveorders_->GetCachedSize(), target,
+                  20, *this_._impl_.request_type_.reqqueryactiveorders_, this_._impl_.request_type_.reqqueryactiveorders_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryHistoricalOrders: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  20, *this_._impl_.request_type_.reqqueryhistoricalorders_, this_._impl_.request_type_.reqqueryhistoricalorders_->GetCachedSize(), target,
+                  21, *this_._impl_.request_type_.reqqueryhistoricalorders_, this_._impl_.request_type_.reqqueryhistoricalorders_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryPositions: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  21, *this_._impl_.request_type_.reqquerypositions_, this_._impl_.request_type_.reqquerypositions_->GetCachedSize(), target,
+                  22, *this_._impl_.request_type_.reqquerypositions_, this_._impl_.request_type_.reqquerypositions_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqSetLeverage: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  22, *this_._impl_.request_type_.reqsetleverage_, this_._impl_.request_type_.reqsetleverage_->GetCachedSize(), target,
+                  23, *this_._impl_.request_type_.reqsetleverage_, this_._impl_.request_type_.reqsetleverage_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryLeverage: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  23, *this_._impl_.request_type_.reqqueryleverage_, this_._impl_.request_type_.reqqueryleverage_->GetCachedSize(), target,
+                  24, *this_._impl_.request_type_.reqqueryleverage_, this_._impl_.request_type_.reqqueryleverage_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kReqQueryLeverageBracket: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  24, *this_._impl_.request_type_.reqqueryleveragebracket_, this_._impl_.request_type_.reqqueryleveragebracket_->GetCachedSize(), target,
+                  25, *this_._impl_.request_type_.reqqueryleveragebracket_, this_._impl_.request_type_.reqqueryleveragebracket_->GetCachedSize(), target,
                   stream);
               break;
             }
@@ -1618,145 +1674,151 @@ PROTOBUF_NOINLINE void Request::Clear() {
           (void)cached_has_bits;
 
           switch (this_.request_type_case()) {
-            // .lampyris.crypto.protocol.app.ReqLogin reqLogin = 1;
-            case kReqLogin: {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqlogin_);
-              break;
-            }
-            // .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 2;
-            case kReqHeartBeat: {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqheartbeat_);
-              break;
-            }
-            // .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 3;
+            // .lampyris.crypto.protocol.account.ReqAccountSummaryUpdate reqAccountSummaryUpdate = 1;
             case kReqAccountSummaryUpdate: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqaccountsummaryupdate_);
               break;
             }
-            // .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 4;
+            // .lampyris.crypto.protocol.account.ReqAccountAssetTransfer reqAccountAssetTransfer = 2;
             case kReqAccountAssetTransfer: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqaccountassettransfer_);
               break;
             }
-            // .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 5;
+            // .lampyris.crypto.protocol.account.ReqQueryAssetTransferHistory reqQueryAssetTransferHistory = 3;
             case kReqQueryAssetTransferHistory: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqqueryassettransferhistory_);
               break;
             }
-            // .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 6;
+            // .lampyris.crypto.protocol.app.ReqLogin reqLogin = 4;
+            case kReqLogin: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqlogin_);
+              break;
+            }
+            // .lampyris.crypto.protocol.app.ReqLogout reqLogout = 5;
+            case kReqLogout: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqlogout_);
+              break;
+            }
+            // .lampyris.crypto.protocol.app.ReqHeartBeat reqHeartBeat = 6;
+            case kReqHeartBeat: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqheartbeat_);
+              break;
+            }
+            // .lampyris.crypto.protocol.app.ReqUploadAppBehaviour reqUploadAppBehaviour = 7;
             case kReqUploadAppBehaviour: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.requploadappbehaviour_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 7;
+            // .lampyris.crypto.protocol.quote.ReqSubscribeTickerData reqSubscribeTickerData = 8;
             case kReqSubscribeTickerData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqsubscribetickerdata_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 8;
+            // .lampyris.crypto.protocol.quote.ReqSubscribeTradeData reqSubscribeTradeData = 9;
             case kReqSubscribeTradeData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqsubscribetradedata_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 9;
+            // .lampyris.crypto.protocol.quote.ReqSubscribeCandlestickUpdate reqSubscribeCandlestickUpdate = 10;
             case kReqSubscribeCandlestickUpdate: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqsubscribecandlestickupdate_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 10;
+            // .lampyris.crypto.protocol.quote.ReqCandlestickQuery reqCandlestickQuery = 11;
             case kReqCandlestickQuery: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqcandlestickquery_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 11;
+            // .lampyris.crypto.protocol.quote.ReqTradeRule reqTradeRule = 12;
             case kReqTradeRule: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqtraderule_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 12;
+            // .lampyris.crypto.protocol.quote.ReqSelfSelectedSymbol reqSelfSelectedSymbol = 13;
             case kReqSelfSelectedSymbol: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqselfselectedsymbol_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 13;
+            // .lampyris.crypto.protocol.strategy.ReqModifyStreategySetting reqModifyStreategySetting = 14;
             case kReqModifyStreategySetting: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqmodifystreategysetting_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 14;
+            // .lampyris.crypto.protocol.strategy.ReqQueryStrategyExectionInfo reqQueryStrategyExectionInfo = 15;
             case kReqQueryStrategyExectionInfo: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqquerystrategyexectioninfo_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 15;
+            // .lampyris.crypto.protocol.trading.ReqPlaceOrder reqPlaceOrder = 16;
             case kReqPlaceOrder: {
-              total_size += 1 +
+              total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqplaceorder_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 16;
+            // .lampyris.crypto.protocol.trading.ReqModifyOrder reqModifyOrder = 17;
             case kReqModifyOrder: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqmodifyorder_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 17;
+            // .lampyris.crypto.protocol.trading.ReqCancelOrder reqCancelOrder = 18;
             case kReqCancelOrder: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqcancelorder_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 18;
+            // .lampyris.crypto.protocol.trading.ReqOneKeyClosePosition reqOneKeyClosePosition = 19;
             case kReqOneKeyClosePosition: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqonekeycloseposition_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 19;
+            // .lampyris.crypto.protocol.trading.ReqQueryActiveOrders reqQueryActiveOrders = 20;
             case kReqQueryActiveOrders: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqqueryactiveorders_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 20;
+            // .lampyris.crypto.protocol.trading.ReqQueryHistoricalOrders reqQueryHistoricalOrders = 21;
             case kReqQueryHistoricalOrders: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqqueryhistoricalorders_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 21;
+            // .lampyris.crypto.protocol.trading.ReqQueryPositions reqQueryPositions = 22;
             case kReqQueryPositions: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqquerypositions_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 22;
+            // .lampyris.crypto.protocol.trading.ReqSetLeverage reqSetLeverage = 23;
             case kReqSetLeverage: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqsetleverage_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 23;
+            // .lampyris.crypto.protocol.trading.ReqQueryLeverage reqQueryLeverage = 24;
             case kReqQueryLeverage: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqqueryleverage_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 24;
+            // .lampyris.crypto.protocol.trading.ReqQueryLeverageBracket reqQueryLeverageBracket = 25;
             case kReqQueryLeverageBracket: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.reqqueryleveragebracket_);
@@ -1790,24 +1852,6 @@ void Request::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google:
     }
 
     switch (oneof_from_case) {
-      case kReqLogin: {
-        if (oneof_needs_init) {
-          _this->_impl_.request_type_.reqlogin_ =
-              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqLogin>(arena, *from._impl_.request_type_.reqlogin_);
-        } else {
-          _this->_impl_.request_type_.reqlogin_->MergeFrom(from._internal_reqlogin());
-        }
-        break;
-      }
-      case kReqHeartBeat: {
-        if (oneof_needs_init) {
-          _this->_impl_.request_type_.reqheartbeat_ =
-              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqHeartBeat>(arena, *from._impl_.request_type_.reqheartbeat_);
-        } else {
-          _this->_impl_.request_type_.reqheartbeat_->MergeFrom(from._internal_reqheartbeat());
-        }
-        break;
-      }
       case kReqAccountSummaryUpdate: {
         if (oneof_needs_init) {
           _this->_impl_.request_type_.reqaccountsummaryupdate_ =
@@ -1832,6 +1876,33 @@ void Request::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google:
               ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory>(arena, *from._impl_.request_type_.reqqueryassettransferhistory_);
         } else {
           _this->_impl_.request_type_.reqqueryassettransferhistory_->MergeFrom(from._internal_reqqueryassettransferhistory());
+        }
+        break;
+      }
+      case kReqLogin: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_type_.reqlogin_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqLogin>(arena, *from._impl_.request_type_.reqlogin_);
+        } else {
+          _this->_impl_.request_type_.reqlogin_->MergeFrom(from._internal_reqlogin());
+        }
+        break;
+      }
+      case kReqLogout: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_type_.reqlogout_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqLogout>(arena, *from._impl_.request_type_.reqlogout_);
+        } else {
+          _this->_impl_.request_type_.reqlogout_->MergeFrom(from._internal_reqlogout());
+        }
+        break;
+      }
+      case kReqHeartBeat: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_type_.reqheartbeat_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ReqHeartBeat>(arena, *from._impl_.request_type_.reqheartbeat_);
+        } else {
+          _this->_impl_.request_type_.reqheartbeat_->MergeFrom(from._internal_reqheartbeat());
         }
         break;
       }
@@ -2039,30 +2110,6 @@ class Response::_Internal {
       PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::common::Response, _impl_._oneof_case_);
 };
 
-void Response::set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* resheartbeat) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  clear_response_type();
-  if (resheartbeat) {
-    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(resheartbeat)->GetArena();
-    if (message_arena != submessage_arena) {
-      resheartbeat = ::google::protobuf::internal::GetOwnedMessage(message_arena, resheartbeat, submessage_arena);
-    }
-    set_has_resheartbeat();
-    _impl_.response_type_.resheartbeat_ = resheartbeat;
-  }
-  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Response.resHeartBeat)
-}
-void Response::clear_resheartbeat() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (response_type_case() == kResHeartBeat) {
-    if (GetArena() == nullptr) {
-      delete _impl_.response_type_.resheartbeat_;
-    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.resheartbeat_);
-    }
-    clear_has_response_type();
-  }
-}
 void Response::set_allocated_accountassetinfobean(::lampyris::crypto::protocol::account::AccountAssetInfoBean* accountassetinfobean) {
   ::google::protobuf::Arena* message_arena = GetArena();
   clear_response_type();
@@ -2227,6 +2274,54 @@ void Response::clear_reslogin() {
       delete _impl_.response_type_.reslogin_;
     } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
       ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.reslogin_);
+    }
+    clear_has_response_type();
+  }
+}
+void Response::set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* resheartbeat) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_response_type();
+  if (resheartbeat) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(resheartbeat)->GetArena();
+    if (message_arena != submessage_arena) {
+      resheartbeat = ::google::protobuf::internal::GetOwnedMessage(message_arena, resheartbeat, submessage_arena);
+    }
+    set_has_resheartbeat();
+    _impl_.response_type_.resheartbeat_ = resheartbeat;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Response.resHeartBeat)
+}
+void Response::clear_resheartbeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (response_type_case() == kResHeartBeat) {
+    if (GetArena() == nullptr) {
+      delete _impl_.response_type_.resheartbeat_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.resheartbeat_);
+    }
+    clear_has_response_type();
+  }
+}
+void Response::set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* resnotice) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_response_type();
+  if (resnotice) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(resnotice)->GetArena();
+    if (message_arena != submessage_arena) {
+      resnotice = ::google::protobuf::internal::GetOwnedMessage(message_arena, resnotice, submessage_arena);
+    }
+    set_has_resnotice();
+    _impl_.response_type_.resnotice_ = resnotice;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Response.resNotice)
+}
+void Response::clear_resnotice() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (response_type_case() == kResNotice) {
+    if (GetArena() == nullptr) {
+      delete _impl_.response_type_.resnotice_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.resnotice_);
     }
     clear_has_response_type();
   }
@@ -2399,6 +2494,30 @@ void Response::clear_candlestickbean() {
     clear_has_response_type();
   }
 }
+void Response::set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* restraderule) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_response_type();
+  if (restraderule) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(restraderule)->GetArena();
+    if (message_arena != submessage_arena) {
+      restraderule = ::google::protobuf::internal::GetOwnedMessage(message_arena, restraderule, submessage_arena);
+    }
+    set_has_restraderule();
+    _impl_.response_type_.restraderule_ = restraderule;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Response.resTradeRule)
+}
+void Response::clear_restraderule() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (response_type_case() == kResTradeRule) {
+    if (GetArena() == nullptr) {
+      delete _impl_.response_type_.restraderule_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.restraderule_);
+    }
+    clear_has_response_type();
+  }
+}
 void Response::set_allocated_symboltraderulebean(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* symboltraderulebean) {
   ::google::protobuf::Arena* message_arena = GetArena();
   clear_response_type();
@@ -2419,6 +2538,30 @@ void Response::clear_symboltraderulebean() {
       delete _impl_.response_type_.symboltraderulebean_;
     } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
       ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.symboltraderulebean_);
+    }
+    clear_has_response_type();
+  }
+}
+void Response::set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* marketmonitornoticelistbean) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_response_type();
+  if (marketmonitornoticelistbean) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(marketmonitornoticelistbean)->GetArena();
+    if (message_arena != submessage_arena) {
+      marketmonitornoticelistbean = ::google::protobuf::internal::GetOwnedMessage(message_arena, marketmonitornoticelistbean, submessage_arena);
+    }
+    set_has_marketmonitornoticelistbean();
+    _impl_.response_type_.marketmonitornoticelistbean_ = marketmonitornoticelistbean;
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.common.Response.marketMonitorNoticeListBean)
+}
+void Response::clear_marketmonitornoticelistbean() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (response_type_case() == kMarketMonitorNoticeListBean) {
+    if (GetArena() == nullptr) {
+      delete _impl_.response_type_.marketmonitornoticelistbean_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.marketmonitornoticelistbean_);
     }
     clear_has_response_type();
   }
@@ -2887,9 +3030,6 @@ Response::Response(
   switch (response_type_case()) {
     case RESPONSE_TYPE_NOT_SET:
       break;
-      case kResHeartBeat:
-        _impl_.response_type_.resheartbeat_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResHeartBeat>(arena, *from._impl_.response_type_.resheartbeat_);
-        break;
       case kAccountAssetInfoBean:
         _impl_.response_type_.accountassetinfobean_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::account::AccountAssetInfoBean>(arena, *from._impl_.response_type_.accountassetinfobean_);
         break;
@@ -2910,6 +3050,12 @@ Response::Response(
         break;
       case kResLogin:
         _impl_.response_type_.reslogin_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResLogin>(arena, *from._impl_.response_type_.reslogin_);
+        break;
+      case kResHeartBeat:
+        _impl_.response_type_.resheartbeat_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResHeartBeat>(arena, *from._impl_.response_type_.resheartbeat_);
+        break;
+      case kResNotice:
+        _impl_.response_type_.resnotice_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResNotice>(arena, *from._impl_.response_type_.resnotice_);
         break;
       case kSymbolTickerDataBean:
         _impl_.response_type_.symboltickerdatabean_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::SymbolTickerDataBean>(arena, *from._impl_.response_type_.symboltickerdatabean_);
@@ -2932,8 +3078,14 @@ Response::Response(
       case kCandlestickBean:
         _impl_.response_type_.candlestickbean_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::CandlestickBean>(arena, *from._impl_.response_type_.candlestickbean_);
         break;
+      case kResTradeRule:
+        _impl_.response_type_.restraderule_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::ResTradeRule>(arena, *from._impl_.response_type_.restraderule_);
+        break;
       case kSymbolTradeRuleBean:
         _impl_.response_type_.symboltraderulebean_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::SymbolTradeRuleBean>(arena, *from._impl_.response_type_.symboltraderulebean_);
+        break;
+      case kMarketMonitorNoticeListBean:
+        _impl_.response_type_.marketmonitornoticelistbean_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean>(arena, *from._impl_.response_type_.marketmonitornoticelistbean_);
         break;
       case kMarketMonitorNoticeBean:
         _impl_.response_type_.marketmonitornoticebean_ = ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean>(arena, *from._impl_.response_type_.marketmonitornoticebean_);
@@ -3021,14 +3173,6 @@ void Response::clear_response_type() {
 // @@protoc_insertion_point(one_of_clear_start:lampyris.crypto.protocol.common.Response)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   switch (response_type_case()) {
-    case kResHeartBeat: {
-      if (GetArena() == nullptr) {
-        delete _impl_.response_type_.resheartbeat_;
-      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
-        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.resheartbeat_);
-      }
-      break;
-    }
     case kAccountAssetInfoBean: {
       if (GetArena() == nullptr) {
         delete _impl_.response_type_.accountassetinfobean_;
@@ -3082,6 +3226,22 @@ void Response::clear_response_type() {
         delete _impl_.response_type_.reslogin_;
       } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
         ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.reslogin_);
+      }
+      break;
+    }
+    case kResHeartBeat: {
+      if (GetArena() == nullptr) {
+        delete _impl_.response_type_.resheartbeat_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.resheartbeat_);
+      }
+      break;
+    }
+    case kResNotice: {
+      if (GetArena() == nullptr) {
+        delete _impl_.response_type_.resnotice_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.resnotice_);
       }
       break;
     }
@@ -3141,11 +3301,27 @@ void Response::clear_response_type() {
       }
       break;
     }
+    case kResTradeRule: {
+      if (GetArena() == nullptr) {
+        delete _impl_.response_type_.restraderule_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.restraderule_);
+      }
+      break;
+    }
     case kSymbolTradeRuleBean: {
       if (GetArena() == nullptr) {
         delete _impl_.response_type_.symboltraderulebean_;
       } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
         ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.symboltraderulebean_);
+      }
+      break;
+    }
+    case kMarketMonitorNoticeListBean: {
+      if (GetArena() == nullptr) {
+        delete _impl_.response_type_.marketmonitornoticelistbean_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.response_type_.marketmonitornoticelistbean_);
       }
       break;
     }
@@ -3337,16 +3513,16 @@ const ::google::protobuf::internal::ClassData* Response::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 34, 34, 0, 7> Response::_table_ = {
+const ::_pbi::TcParseTable<0, 37, 37, 0, 7> Response::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    34, 0,  // max_field_number, fast_idx_mask
+    37, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     0,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    34,  // num_field_entries
-    34,  // num_aux_entries
+    37,  // num_field_entries
+    37,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -3358,113 +3534,121 @@ const ::_pbi::TcParseTable<0, 34, 34, 0, 7> Response::_table_ = {
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     33, 0, 1,
-    65532, 32,
+    65504, 32,
     65535, 65535
   }}, {{
-    // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 1;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resheartbeat_), _Internal::kOneofCaseOffset + 0, 0,
+    // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 1;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.accountassetinfobean_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 2;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.accountassetinfobean_), _Internal::kOneofCaseOffset + 0, 1,
+    // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 2;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.subaccountinfobean_), _Internal::kOneofCaseOffset + 0, 1,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 3;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.subaccountinfobean_), _Internal::kOneofCaseOffset + 0, 2,
+    // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 3;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resquerysubacccountlist_), _Internal::kOneofCaseOffset + 0, 2,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 4;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resquerysubacccountlist_), _Internal::kOneofCaseOffset + 0, 3,
+    // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 4;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resaccountsummaryupdate_), _Internal::kOneofCaseOffset + 0, 3,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 5;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resaccountsummaryupdate_), _Internal::kOneofCaseOffset + 0, 4,
+    // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 5;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.assettransferhistoryinfodetailbean_), _Internal::kOneofCaseOffset + 0, 4,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 6;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.assettransferhistoryinfodetailbean_), _Internal::kOneofCaseOffset + 0, 5,
+    // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 6;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.assettransferhistoryinfobean_), _Internal::kOneofCaseOffset + 0, 5,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 7;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.assettransferhistoryinfobean_), _Internal::kOneofCaseOffset + 0, 6,
+    // .lampyris.crypto.protocol.app.ResLogin resLogin = 7;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.reslogin_), _Internal::kOneofCaseOffset + 0, 6,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.app.ResLogin resLogin = 8;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.reslogin_), _Internal::kOneofCaseOffset + 0, 7,
+    // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 8;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resheartbeat_), _Internal::kOneofCaseOffset + 0, 7,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 9;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symboltickerdatabean_), _Internal::kOneofCaseOffset + 0, 8,
+    // .lampyris.crypto.protocol.app.ResNotice resNotice = 9;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resnotice_), _Internal::kOneofCaseOffset + 0, 8,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 10;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.ressubscribetickerdata_), _Internal::kOneofCaseOffset + 0, 9,
+    // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 10;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symboltickerdatabean_), _Internal::kOneofCaseOffset + 0, 9,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 11;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symboltradedatabean_), _Internal::kOneofCaseOffset + 0, 10,
+    // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 11;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.ressubscribetickerdata_), _Internal::kOneofCaseOffset + 0, 10,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 12;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.tradedatabean_), _Internal::kOneofCaseOffset + 0, 11,
+    // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 12;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symboltradedatabean_), _Internal::kOneofCaseOffset + 0, 11,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 13;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.rescandlestickquery_), _Internal::kOneofCaseOffset + 0, 12,
+    // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 13;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.tradedatabean_), _Internal::kOneofCaseOffset + 0, 12,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 14;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.candlestickupdatebean_), _Internal::kOneofCaseOffset + 0, 13,
+    // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 14;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.rescandlestickquery_), _Internal::kOneofCaseOffset + 0, 13,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 15;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.candlestickbean_), _Internal::kOneofCaseOffset + 0, 14,
+    // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 15;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.candlestickupdatebean_), _Internal::kOneofCaseOffset + 0, 14,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 16;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symboltraderulebean_), _Internal::kOneofCaseOffset + 0, 15,
+    // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 16;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.candlestickbean_), _Internal::kOneofCaseOffset + 0, 15,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 17;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.marketmonitornoticebean_), _Internal::kOneofCaseOffset + 0, 16,
+    // .lampyris.crypto.protocol.quote.ResTradeRule resTradeRule = 17;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.restraderule_), _Internal::kOneofCaseOffset + 0, 16,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 18;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.selfselectedsymbolinfobean_), _Internal::kOneofCaseOffset + 0, 17,
+    // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 18;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symboltraderulebean_), _Internal::kOneofCaseOffset + 0, 17,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 19;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.selfselectedsymbolgroupbean_), _Internal::kOneofCaseOffset + 0, 18,
+    // .lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean marketMonitorNoticeListBean = 19;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.marketmonitornoticelistbean_), _Internal::kOneofCaseOffset + 0, 18,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 20;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resselfselectedsymbol_), _Internal::kOneofCaseOffset + 0, 19,
+    // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 20;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.marketmonitornoticebean_), _Internal::kOneofCaseOffset + 0, 19,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 21;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.streategyconfigbean_), _Internal::kOneofCaseOffset + 0, 20,
+    // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 21;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.selfselectedsymbolinfobean_), _Internal::kOneofCaseOffset + 0, 20,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 22;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.streategyfieldbean_), _Internal::kOneofCaseOffset + 0, 21,
+    // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 22;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.selfselectedsymbolgroupbean_), _Internal::kOneofCaseOffset + 0, 21,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 23;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resmodifystreategysetting_), _Internal::kOneofCaseOffset + 0, 22,
+    // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 23;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resselfselectedsymbol_), _Internal::kOneofCaseOffset + 0, 22,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 24;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resstreategysettings_), _Internal::kOneofCaseOffset + 0, 23,
+    // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 24;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.streategyconfigbean_), _Internal::kOneofCaseOffset + 0, 23,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 25;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.strategyexectioninfobean_), _Internal::kOneofCaseOffset + 0, 24,
+    // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 25;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.streategyfieldbean_), _Internal::kOneofCaseOffset + 0, 24,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 26;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resquerystrategyexectioninfo_), _Internal::kOneofCaseOffset + 0, 25,
+    // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 26;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resmodifystreategysetting_), _Internal::kOneofCaseOffset + 0, 25,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 27;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.conditiontriggerbean_), _Internal::kOneofCaseOffset + 0, 26,
+    // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 27;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resstreategysettings_), _Internal::kOneofCaseOffset + 0, 26,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.OrderBean orderBean = 28;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.orderbean_), _Internal::kOneofCaseOffset + 0, 27,
+    // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 28;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.strategyexectioninfobean_), _Internal::kOneofCaseOffset + 0, 27,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 29;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.orderstatusbean_), _Internal::kOneofCaseOffset + 0, 28,
+    // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 29;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resquerystrategyexectioninfo_), _Internal::kOneofCaseOffset + 0, 28,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 30;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.leveragebean_), _Internal::kOneofCaseOffset + 0, 29,
+    // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 30;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.conditiontriggerbean_), _Internal::kOneofCaseOffset + 0, 29,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 31;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resqueryleverage_), _Internal::kOneofCaseOffset + 0, 30,
+    // .lampyris.crypto.protocol.trading.OrderBean orderBean = 31;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.orderbean_), _Internal::kOneofCaseOffset + 0, 30,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 32;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resqueryleveragebracket_), _Internal::kOneofCaseOffset + 0, 31,
+    // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 32;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.orderstatusbean_), _Internal::kOneofCaseOffset + 0, 31,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 33;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symbolleveragebracketbean_), _Internal::kOneofCaseOffset + 0, 32,
+    // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 33;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.leveragebean_), _Internal::kOneofCaseOffset + 0, 32,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 34;
-    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.leveragebracketbean_), _Internal::kOneofCaseOffset + 0, 33,
+    // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 34;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resqueryleverage_), _Internal::kOneofCaseOffset + 0, 33,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 35;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.resqueryleveragebracket_), _Internal::kOneofCaseOffset + 0, 34,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 36;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.symbolleveragebracketbean_), _Internal::kOneofCaseOffset + 0, 35,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 37;
+    {PROTOBUF_FIELD_OFFSET(Response, _impl_.response_type_.leveragebracketbean_), _Internal::kOneofCaseOffset + 0, 36,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
-    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ResHeartBeat>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::AccountAssetInfoBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::SubAccountInfoBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ResQuerySubAcccountList>()},
@@ -3472,6 +3656,8 @@ const ::_pbi::TcParseTable<0, 34, 34, 0, 7> Response::_table_ = {
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ResLogin>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ResHeartBeat>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ResNotice>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SymbolTickerDataBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ResSubscribeTickerData>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SymbolTradeDataBean>()},
@@ -3479,7 +3665,9 @@ const ::_pbi::TcParseTable<0, 34, 34, 0, 7> Response::_table_ = {
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ResCandlestickQuery>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::CandlestickUpdateBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::CandlestickBean>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ResTradeRule>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SymbolTradeRuleBean>()},
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean>()},
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean>()},
@@ -3529,207 +3717,225 @@ PROTOBUF_NOINLINE void Response::Clear() {
           (void)cached_has_bits;
 
           switch (this_.response_type_case()) {
-            case kResHeartBeat: {
-              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  1, *this_._impl_.response_type_.resheartbeat_, this_._impl_.response_type_.resheartbeat_->GetCachedSize(), target,
-                  stream);
-              break;
-            }
             case kAccountAssetInfoBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  2, *this_._impl_.response_type_.accountassetinfobean_, this_._impl_.response_type_.accountassetinfobean_->GetCachedSize(), target,
+                  1, *this_._impl_.response_type_.accountassetinfobean_, this_._impl_.response_type_.accountassetinfobean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSubAccountInfoBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  3, *this_._impl_.response_type_.subaccountinfobean_, this_._impl_.response_type_.subaccountinfobean_->GetCachedSize(), target,
+                  2, *this_._impl_.response_type_.subaccountinfobean_, this_._impl_.response_type_.subaccountinfobean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResQuerySubAcccountList: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  4, *this_._impl_.response_type_.resquerysubacccountlist_, this_._impl_.response_type_.resquerysubacccountlist_->GetCachedSize(), target,
+                  3, *this_._impl_.response_type_.resquerysubacccountlist_, this_._impl_.response_type_.resquerysubacccountlist_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResAccountSummaryUpdate: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  5, *this_._impl_.response_type_.resaccountsummaryupdate_, this_._impl_.response_type_.resaccountsummaryupdate_->GetCachedSize(), target,
+                  4, *this_._impl_.response_type_.resaccountsummaryupdate_, this_._impl_.response_type_.resaccountsummaryupdate_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kAssetTransferHistoryInfoDetailBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  6, *this_._impl_.response_type_.assettransferhistoryinfodetailbean_, this_._impl_.response_type_.assettransferhistoryinfodetailbean_->GetCachedSize(), target,
+                  5, *this_._impl_.response_type_.assettransferhistoryinfodetailbean_, this_._impl_.response_type_.assettransferhistoryinfodetailbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kAssetTransferHistoryInfoBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  7, *this_._impl_.response_type_.assettransferhistoryinfobean_, this_._impl_.response_type_.assettransferhistoryinfobean_->GetCachedSize(), target,
+                  6, *this_._impl_.response_type_.assettransferhistoryinfobean_, this_._impl_.response_type_.assettransferhistoryinfobean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResLogin: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  8, *this_._impl_.response_type_.reslogin_, this_._impl_.response_type_.reslogin_->GetCachedSize(), target,
+                  7, *this_._impl_.response_type_.reslogin_, this_._impl_.response_type_.reslogin_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kResHeartBeat: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  8, *this_._impl_.response_type_.resheartbeat_, this_._impl_.response_type_.resheartbeat_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kResNotice: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  9, *this_._impl_.response_type_.resnotice_, this_._impl_.response_type_.resnotice_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSymbolTickerDataBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  9, *this_._impl_.response_type_.symboltickerdatabean_, this_._impl_.response_type_.symboltickerdatabean_->GetCachedSize(), target,
+                  10, *this_._impl_.response_type_.symboltickerdatabean_, this_._impl_.response_type_.symboltickerdatabean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResSubscribeTickerData: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  10, *this_._impl_.response_type_.ressubscribetickerdata_, this_._impl_.response_type_.ressubscribetickerdata_->GetCachedSize(), target,
+                  11, *this_._impl_.response_type_.ressubscribetickerdata_, this_._impl_.response_type_.ressubscribetickerdata_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSymbolTradeDataBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  11, *this_._impl_.response_type_.symboltradedatabean_, this_._impl_.response_type_.symboltradedatabean_->GetCachedSize(), target,
+                  12, *this_._impl_.response_type_.symboltradedatabean_, this_._impl_.response_type_.symboltradedatabean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kTradeDataBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  12, *this_._impl_.response_type_.tradedatabean_, this_._impl_.response_type_.tradedatabean_->GetCachedSize(), target,
+                  13, *this_._impl_.response_type_.tradedatabean_, this_._impl_.response_type_.tradedatabean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResCandlestickQuery: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  13, *this_._impl_.response_type_.rescandlestickquery_, this_._impl_.response_type_.rescandlestickquery_->GetCachedSize(), target,
+                  14, *this_._impl_.response_type_.rescandlestickquery_, this_._impl_.response_type_.rescandlestickquery_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kCandlestickUpdateBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  14, *this_._impl_.response_type_.candlestickupdatebean_, this_._impl_.response_type_.candlestickupdatebean_->GetCachedSize(), target,
+                  15, *this_._impl_.response_type_.candlestickupdatebean_, this_._impl_.response_type_.candlestickupdatebean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kCandlestickBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  15, *this_._impl_.response_type_.candlestickbean_, this_._impl_.response_type_.candlestickbean_->GetCachedSize(), target,
+                  16, *this_._impl_.response_type_.candlestickbean_, this_._impl_.response_type_.candlestickbean_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kResTradeRule: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  17, *this_._impl_.response_type_.restraderule_, this_._impl_.response_type_.restraderule_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSymbolTradeRuleBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  16, *this_._impl_.response_type_.symboltraderulebean_, this_._impl_.response_type_.symboltraderulebean_->GetCachedSize(), target,
+                  18, *this_._impl_.response_type_.symboltraderulebean_, this_._impl_.response_type_.symboltraderulebean_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kMarketMonitorNoticeListBean: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  19, *this_._impl_.response_type_.marketmonitornoticelistbean_, this_._impl_.response_type_.marketmonitornoticelistbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kMarketMonitorNoticeBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  17, *this_._impl_.response_type_.marketmonitornoticebean_, this_._impl_.response_type_.marketmonitornoticebean_->GetCachedSize(), target,
+                  20, *this_._impl_.response_type_.marketmonitornoticebean_, this_._impl_.response_type_.marketmonitornoticebean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSelfSelectedSymbolInfoBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  18, *this_._impl_.response_type_.selfselectedsymbolinfobean_, this_._impl_.response_type_.selfselectedsymbolinfobean_->GetCachedSize(), target,
+                  21, *this_._impl_.response_type_.selfselectedsymbolinfobean_, this_._impl_.response_type_.selfselectedsymbolinfobean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSelfSelectedSymbolGroupBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  19, *this_._impl_.response_type_.selfselectedsymbolgroupbean_, this_._impl_.response_type_.selfselectedsymbolgroupbean_->GetCachedSize(), target,
+                  22, *this_._impl_.response_type_.selfselectedsymbolgroupbean_, this_._impl_.response_type_.selfselectedsymbolgroupbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResSelfSelectedSymbol: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  20, *this_._impl_.response_type_.resselfselectedsymbol_, this_._impl_.response_type_.resselfselectedsymbol_->GetCachedSize(), target,
+                  23, *this_._impl_.response_type_.resselfselectedsymbol_, this_._impl_.response_type_.resselfselectedsymbol_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kStreategyConfigBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  21, *this_._impl_.response_type_.streategyconfigbean_, this_._impl_.response_type_.streategyconfigbean_->GetCachedSize(), target,
+                  24, *this_._impl_.response_type_.streategyconfigbean_, this_._impl_.response_type_.streategyconfigbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kStreategyFieldBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  22, *this_._impl_.response_type_.streategyfieldbean_, this_._impl_.response_type_.streategyfieldbean_->GetCachedSize(), target,
+                  25, *this_._impl_.response_type_.streategyfieldbean_, this_._impl_.response_type_.streategyfieldbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResModifyStreategySetting: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  23, *this_._impl_.response_type_.resmodifystreategysetting_, this_._impl_.response_type_.resmodifystreategysetting_->GetCachedSize(), target,
+                  26, *this_._impl_.response_type_.resmodifystreategysetting_, this_._impl_.response_type_.resmodifystreategysetting_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResStreategySettings: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  24, *this_._impl_.response_type_.resstreategysettings_, this_._impl_.response_type_.resstreategysettings_->GetCachedSize(), target,
+                  27, *this_._impl_.response_type_.resstreategysettings_, this_._impl_.response_type_.resstreategysettings_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kStrategyExectionInfoBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  25, *this_._impl_.response_type_.strategyexectioninfobean_, this_._impl_.response_type_.strategyexectioninfobean_->GetCachedSize(), target,
+                  28, *this_._impl_.response_type_.strategyexectioninfobean_, this_._impl_.response_type_.strategyexectioninfobean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResQueryStrategyExectionInfo: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  26, *this_._impl_.response_type_.resquerystrategyexectioninfo_, this_._impl_.response_type_.resquerystrategyexectioninfo_->GetCachedSize(), target,
+                  29, *this_._impl_.response_type_.resquerystrategyexectioninfo_, this_._impl_.response_type_.resquerystrategyexectioninfo_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kConditionTriggerBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  27, *this_._impl_.response_type_.conditiontriggerbean_, this_._impl_.response_type_.conditiontriggerbean_->GetCachedSize(), target,
+                  30, *this_._impl_.response_type_.conditiontriggerbean_, this_._impl_.response_type_.conditiontriggerbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kOrderBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  28, *this_._impl_.response_type_.orderbean_, this_._impl_.response_type_.orderbean_->GetCachedSize(), target,
+                  31, *this_._impl_.response_type_.orderbean_, this_._impl_.response_type_.orderbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kOrderStatusBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  29, *this_._impl_.response_type_.orderstatusbean_, this_._impl_.response_type_.orderstatusbean_->GetCachedSize(), target,
+                  32, *this_._impl_.response_type_.orderstatusbean_, this_._impl_.response_type_.orderstatusbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kLeverageBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  30, *this_._impl_.response_type_.leveragebean_, this_._impl_.response_type_.leveragebean_->GetCachedSize(), target,
+                  33, *this_._impl_.response_type_.leveragebean_, this_._impl_.response_type_.leveragebean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResQueryLeverage: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  31, *this_._impl_.response_type_.resqueryleverage_, this_._impl_.response_type_.resqueryleverage_->GetCachedSize(), target,
+                  34, *this_._impl_.response_type_.resqueryleverage_, this_._impl_.response_type_.resqueryleverage_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kResQueryLeverageBracket: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  32, *this_._impl_.response_type_.resqueryleveragebracket_, this_._impl_.response_type_.resqueryleveragebracket_->GetCachedSize(), target,
+                  35, *this_._impl_.response_type_.resqueryleveragebracket_, this_._impl_.response_type_.resqueryleveragebracket_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kSymbolLeverageBracketBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  33, *this_._impl_.response_type_.symbolleveragebracketbean_, this_._impl_.response_type_.symbolleveragebracketbean_->GetCachedSize(), target,
+                  36, *this_._impl_.response_type_.symbolleveragebracketbean_, this_._impl_.response_type_.symbolleveragebracketbean_->GetCachedSize(), target,
                   stream);
               break;
             }
             case kLeverageBracketBean: {
               target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                  34, *this_._impl_.response_type_.leveragebracketbean_, this_._impl_.response_type_.leveragebracketbean_->GetCachedSize(), target,
+                  37, *this_._impl_.response_type_.leveragebracketbean_, this_._impl_.response_type_.leveragebracketbean_->GetCachedSize(), target,
                   stream);
               break;
             }
@@ -3760,205 +3966,223 @@ PROTOBUF_NOINLINE void Response::Clear() {
           (void)cached_has_bits;
 
           switch (this_.response_type_case()) {
-            // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 1;
-            case kResHeartBeat: {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resheartbeat_);
-              break;
-            }
-            // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 2;
+            // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 1;
             case kAccountAssetInfoBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.accountassetinfobean_);
               break;
             }
-            // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 3;
+            // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 2;
             case kSubAccountInfoBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.subaccountinfobean_);
               break;
             }
-            // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 4;
+            // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 3;
             case kResQuerySubAcccountList: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resquerysubacccountlist_);
               break;
             }
-            // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 5;
+            // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 4;
             case kResAccountSummaryUpdate: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resaccountsummaryupdate_);
               break;
             }
-            // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 6;
+            // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 5;
             case kAssetTransferHistoryInfoDetailBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.assettransferhistoryinfodetailbean_);
               break;
             }
-            // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 7;
+            // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 6;
             case kAssetTransferHistoryInfoBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.assettransferhistoryinfobean_);
               break;
             }
-            // .lampyris.crypto.protocol.app.ResLogin resLogin = 8;
+            // .lampyris.crypto.protocol.app.ResLogin resLogin = 7;
             case kResLogin: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.reslogin_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 9;
+            // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 8;
+            case kResHeartBeat: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resheartbeat_);
+              break;
+            }
+            // .lampyris.crypto.protocol.app.ResNotice resNotice = 9;
+            case kResNotice: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resnotice_);
+              break;
+            }
+            // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 10;
             case kSymbolTickerDataBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.symboltickerdatabean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 10;
+            // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 11;
             case kResSubscribeTickerData: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.ressubscribetickerdata_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 11;
+            // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 12;
             case kSymbolTradeDataBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.symboltradedatabean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 12;
+            // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 13;
             case kTradeDataBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.tradedatabean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 13;
+            // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 14;
             case kResCandlestickQuery: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.rescandlestickquery_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 14;
+            // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 15;
             case kCandlestickUpdateBean: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.candlestickupdatebean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 15;
+            // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 16;
             case kCandlestickBean: {
-              total_size += 1 +
+              total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.candlestickbean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 16;
+            // .lampyris.crypto.protocol.quote.ResTradeRule resTradeRule = 17;
+            case kResTradeRule: {
+              total_size += 2 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.restraderule_);
+              break;
+            }
+            // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 18;
             case kSymbolTradeRuleBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.symboltraderulebean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 17;
+            // .lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean marketMonitorNoticeListBean = 19;
+            case kMarketMonitorNoticeListBean: {
+              total_size += 2 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.marketmonitornoticelistbean_);
+              break;
+            }
+            // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 20;
             case kMarketMonitorNoticeBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.marketmonitornoticebean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 18;
+            // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 21;
             case kSelfSelectedSymbolInfoBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.selfselectedsymbolinfobean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 19;
+            // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 22;
             case kSelfSelectedSymbolGroupBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.selfselectedsymbolgroupbean_);
               break;
             }
-            // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 20;
+            // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 23;
             case kResSelfSelectedSymbol: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resselfselectedsymbol_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 21;
+            // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 24;
             case kStreategyConfigBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.streategyconfigbean_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 22;
+            // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 25;
             case kStreategyFieldBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.streategyfieldbean_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 23;
+            // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 26;
             case kResModifyStreategySetting: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resmodifystreategysetting_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 24;
+            // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 27;
             case kResStreategySettings: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resstreategysettings_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 25;
+            // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 28;
             case kStrategyExectionInfoBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.strategyexectioninfobean_);
               break;
             }
-            // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 26;
+            // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 29;
             case kResQueryStrategyExectionInfo: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resquerystrategyexectioninfo_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 27;
+            // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 30;
             case kConditionTriggerBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.conditiontriggerbean_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.OrderBean orderBean = 28;
+            // .lampyris.crypto.protocol.trading.OrderBean orderBean = 31;
             case kOrderBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.orderbean_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 29;
+            // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 32;
             case kOrderStatusBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.orderstatusbean_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 30;
+            // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 33;
             case kLeverageBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.leveragebean_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 31;
+            // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 34;
             case kResQueryLeverage: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resqueryleverage_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 32;
+            // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 35;
             case kResQueryLeverageBracket: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.resqueryleveragebracket_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 33;
+            // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 36;
             case kSymbolLeverageBracketBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.symbolleveragebracketbean_);
               break;
             }
-            // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 34;
+            // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 37;
             case kLeverageBracketBean: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.response_type_.leveragebracketbean_);
@@ -3992,15 +4216,6 @@ void Response::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
     }
 
     switch (oneof_from_case) {
-      case kResHeartBeat: {
-        if (oneof_needs_init) {
-          _this->_impl_.response_type_.resheartbeat_ =
-              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResHeartBeat>(arena, *from._impl_.response_type_.resheartbeat_);
-        } else {
-          _this->_impl_.response_type_.resheartbeat_->MergeFrom(from._internal_resheartbeat());
-        }
-        break;
-      }
       case kAccountAssetInfoBean: {
         if (oneof_needs_init) {
           _this->_impl_.response_type_.accountassetinfobean_ =
@@ -4061,6 +4276,24 @@ void Response::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
               ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResLogin>(arena, *from._impl_.response_type_.reslogin_);
         } else {
           _this->_impl_.response_type_.reslogin_->MergeFrom(from._internal_reslogin());
+        }
+        break;
+      }
+      case kResHeartBeat: {
+        if (oneof_needs_init) {
+          _this->_impl_.response_type_.resheartbeat_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResHeartBeat>(arena, *from._impl_.response_type_.resheartbeat_);
+        } else {
+          _this->_impl_.response_type_.resheartbeat_->MergeFrom(from._internal_resheartbeat());
+        }
+        break;
+      }
+      case kResNotice: {
+        if (oneof_needs_init) {
+          _this->_impl_.response_type_.resnotice_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::app::ResNotice>(arena, *from._impl_.response_type_.resnotice_);
+        } else {
+          _this->_impl_.response_type_.resnotice_->MergeFrom(from._internal_resnotice());
         }
         break;
       }
@@ -4127,12 +4360,30 @@ void Response::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google
         }
         break;
       }
+      case kResTradeRule: {
+        if (oneof_needs_init) {
+          _this->_impl_.response_type_.restraderule_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::ResTradeRule>(arena, *from._impl_.response_type_.restraderule_);
+        } else {
+          _this->_impl_.response_type_.restraderule_->MergeFrom(from._internal_restraderule());
+        }
+        break;
+      }
       case kSymbolTradeRuleBean: {
         if (oneof_needs_init) {
           _this->_impl_.response_type_.symboltraderulebean_ =
               ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::SymbolTradeRuleBean>(arena, *from._impl_.response_type_.symboltraderulebean_);
         } else {
           _this->_impl_.response_type_.symboltraderulebean_->MergeFrom(from._internal_symboltraderulebean());
+        }
+        break;
+      }
+      case kMarketMonitorNoticeListBean: {
+        if (oneof_needs_init) {
+          _this->_impl_.response_type_.marketmonitornoticelistbean_ =
+              ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean>(arena, *from._impl_.response_type_.marketmonitornoticelistbean_);
+        } else {
+          _this->_impl_.response_type_.marketmonitornoticelistbean_->MergeFrom(from._internal_marketmonitornoticelistbean());
         }
         break;
       }

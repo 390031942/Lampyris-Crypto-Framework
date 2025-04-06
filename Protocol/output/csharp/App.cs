@@ -26,24 +26,44 @@ namespace Lampyris.Crypto.Protocol.App {
           string.Concat(
             "CglhcHAucHJvdG8SHGxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5hcHAiMQoI",
             "UmVxTG9naW4SEQoJZGV2aWNlTUFDGAEgASgJEhIKCmRldmljZU5hbWUYAiAB",
-            "KAkiIAoIUmVzTG9naW4SFAoMZXJyb3JNZXNzYWdlGAEgASgJIjgKDFJlcUhl",
-            "YXJ0QmVhdBISCgpjbGllbnRUaW1lGAEgASgDEhQKDGlzRm9yZWdyb3VuZBgC",
-            "IAEoCCIiCgxSZXNIZWFydEJlYXQSEgoKc2VydmVyVGltZRgBIAEoAyJLChVS",
-            "ZXFVcGxvYWRBcHBCZWhhdmlvdXISDgoGc3ltYm9sGAEgASgJEhEKCXRpbWVz",
-            "dGFtcBgCIAEoAxIPCgdpc0VudGVyGAMgASgIYgZwcm90bzM="));
+            "KAkiHgoJUmVxTG9nb3V0EhEKCWRldmljZU1BQxgBIAEoCSIgCghSZXNMb2dp",
+            "bhIUCgxlcnJvck1lc3NhZ2UYASABKAkiOAoMUmVxSGVhcnRCZWF0EhIKCmNs",
+            "aWVudFRpbWUYASABKAMSFAoMaXNGb3JlZ3JvdW5kGAIgASgIIiIKDFJlc0hl",
+            "YXJ0QmVhdBISCgpzZXJ2ZXJUaW1lGAEgASgDIksKFVJlcVVwbG9hZEFwcEJl",
+            "aGF2aW91chIOCgZzeW1ib2wYASABKAkSEQoJdGltZXN0YW1wGAIgASgDEg8K",
+            "B2lzRW50ZXIYAyABKAgiVAoJUmVzTm90aWNlEg8KB2NvbnRlbnQYASABKAkS",
+            "NgoEdHlwZRgCIAEoDjIoLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5hcHAu",
+            "Tm90aWNlVHlwZSooCgpOb3RpY2VUeXBlEgkKBVRvYXN0EAASDwoLQWxlcnRE",
+            "aWFsb2cQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lampyris.Crypto.Protocol.App.NoticeType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ReqLogin), global::Lampyris.Crypto.Protocol.App.ReqLogin.Parser, new[]{ "DeviceMAC", "DeviceName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ReqLogout), global::Lampyris.Crypto.Protocol.App.ReqLogout.Parser, new[]{ "DeviceMAC" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ResLogin), global::Lampyris.Crypto.Protocol.App.ResLogin.Parser, new[]{ "ErrorMessage" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ReqHeartBeat), global::Lampyris.Crypto.Protocol.App.ReqHeartBeat.Parser, new[]{ "ClientTime", "IsForeground" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ResHeartBeat), global::Lampyris.Crypto.Protocol.App.ResHeartBeat.Parser, new[]{ "ServerTime" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour), global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour.Parser, new[]{ "Symbol", "Timestamp", "IsEnter" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour), global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour.Parser, new[]{ "Symbol", "Timestamp", "IsEnter" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.App.ResNotice), global::Lampyris.Crypto.Protocol.App.ResNotice.Parser, new[]{ "Content", "Type" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum NoticeType {
+    /// <summary>
+    /// Toast式消息
+    /// </summary>
+    [pbr::OriginalName("Toast")] Toast = 0,
+    /// <summary>
+    /// 系统弹窗
+    /// </summary>
+    [pbr::OriginalName("AlertDialog")] AlertDialog = 1,
+  }
+
+  #endregion
+
   #region Messages
   /// <summary>
   /// 请求-登录
@@ -290,6 +310,210 @@ namespace Lampyris.Crypto.Protocol.App {
   }
 
   /// <summary>
+  /// 请求-登出
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ReqLogout : pb::IMessage<ReqLogout>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ReqLogout> _parser = new pb::MessageParser<ReqLogout>(() => new ReqLogout());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ReqLogout> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ReqLogout() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ReqLogout(ReqLogout other) : this() {
+      deviceMAC_ = other.deviceMAC_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ReqLogout Clone() {
+      return new ReqLogout(this);
+    }
+
+    /// <summary>Field number for the "deviceMAC" field.</summary>
+    public const int DeviceMACFieldNumber = 1;
+    private string deviceMAC_ = "";
+    /// <summary>
+    /// 设备MAC地址标识了用户ID
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DeviceMAC {
+      get { return deviceMAC_; }
+      set {
+        deviceMAC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ReqLogout);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ReqLogout other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DeviceMAC != other.DeviceMAC) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DeviceMAC.Length != 0) hash ^= DeviceMAC.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (DeviceMAC.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceMAC);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (DeviceMAC.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DeviceMAC);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (DeviceMAC.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceMAC);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ReqLogout other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DeviceMAC.Length != 0) {
+        DeviceMAC = other.DeviceMAC;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            DeviceMAC = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            DeviceMAC = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
   /// 响应-登录
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -307,7 +531,7 @@ namespace Lampyris.Crypto.Protocol.App {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -511,7 +735,7 @@ namespace Lampyris.Crypto.Protocol.App {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -755,7 +979,7 @@ namespace Lampyris.Crypto.Protocol.App {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -959,7 +1183,7 @@ namespace Lampyris.Crypto.Protocol.App {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1216,6 +1440,250 @@ namespace Lampyris.Crypto.Protocol.App {
           }
           case 24: {
             IsEnter = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// 响应-服务端发送弹窗
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ResNotice : pb::IMessage<ResNotice>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ResNotice> _parser = new pb::MessageParser<ResNotice>(() => new ResNotice());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ResNotice> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResNotice() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResNotice(ResNotice other) : this() {
+      content_ = other.content_;
+      type_ = other.type_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResNotice Clone() {
+      return new ResNotice(this);
+    }
+
+    /// <summary>Field number for the "content" field.</summary>
+    public const int ContentFieldNumber = 1;
+    private string content_ = "";
+    /// <summary>
+    /// 内容
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Content {
+      get { return content_; }
+      set {
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::Lampyris.Crypto.Protocol.App.NoticeType type_ = global::Lampyris.Crypto.Protocol.App.NoticeType.Toast;
+    /// <summary>
+    /// 弹窗类型
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.App.NoticeType Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ResNotice);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ResNotice other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Content != other.Content) return false;
+      if (Type != other.Type) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Content.Length != 0) hash ^= Content.GetHashCode();
+      if (Type != global::Lampyris.Crypto.Protocol.App.NoticeType.Toast) hash ^= Type.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Content.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Content);
+      }
+      if (Type != global::Lampyris.Crypto.Protocol.App.NoticeType.Toast) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Content.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Content);
+      }
+      if (Type != global::Lampyris.Crypto.Protocol.App.NoticeType.Toast) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Content.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+      }
+      if (Type != global::Lampyris.Crypto.Protocol.App.NoticeType.Toast) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ResNotice other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Content.Length != 0) {
+        Content = other.Content;
+      }
+      if (other.Type != global::Lampyris.Crypto.Protocol.App.NoticeType.Toast) {
+        Type = other.Type;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Content = input.ReadString();
+            break;
+          }
+          case 16: {
+            Type = (global::Lampyris.Crypto.Protocol.App.NoticeType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Content = input.ReadString();
+            break;
+          }
+          case 16: {
+            Type = (global::Lampyris.Crypto.Protocol.App.NoticeType) input.ReadEnum();
             break;
           }
         }

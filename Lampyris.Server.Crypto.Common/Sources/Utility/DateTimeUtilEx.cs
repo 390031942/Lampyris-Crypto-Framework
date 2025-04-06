@@ -30,16 +30,12 @@ public static class DateTimeUtilEx
                 return (int)(timeSpan.TotalHours / 12);
             case BarSize._1D:
                 return (int)(timeSpan.TotalDays);
-            case BarSize._2D:
-                return (int)(timeSpan.TotalDays / 2);
             case BarSize._3D:
                 return (int)(timeSpan.TotalDays / 3);
             case BarSize._1W:
                 return (int)(timeSpan.TotalDays / 7);
             case BarSize._1M:
                 return Math.Abs(lhs.Year * lhs.Month - rhs.Year * rhs.Month);
-            case BarSize._3M:
-                return Math.Abs(lhs.Year * lhs.Month - rhs.Year * rhs.Month) / 3;
         }
 
         return 0;

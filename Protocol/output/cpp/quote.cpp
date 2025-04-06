@@ -101,21 +101,14 @@ inline constexpr SymbolTickerDataBean::Impl_::Impl_(
         symbol_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        currency_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        fundingrate_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        nextfundingtime_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
         price_{0},
         percentage_{0},
+        currency_{0},
         markprice_{0},
         indexprice_{0},
+        fundingrate_{0},
+        nextfundingtime_{::int64_t{0}},
         risespeed_{0},
-        pricechanged_{false},
         _cached_size_{0} {}
 
 template <typename>
@@ -167,6 +160,31 @@ struct SelfSelectedSymbolInfoBeanDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SelfSelectedSymbolInfoBeanDefaultTypeInternal _SelfSelectedSymbolInfoBean_default_instance_;
 
+inline constexpr ReqTradeRule::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : symbollist_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ReqTradeRule::ReqTradeRule(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ReqTradeRuleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ReqTradeRuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ReqTradeRuleDefaultTypeInternal() {}
+  union {
+    ReqTradeRule _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqTradeRuleDefaultTypeInternal _ReqTradeRule_default_instance_;
+
 inline constexpr ReqSubscribeTradeData::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : symbols_{},
@@ -196,8 +214,6 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr ReqSubscribeTickerData::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : iscancel_{false},
-        isascending_{false},
-        sorttype_{static_cast< ::lampyris::crypto::protocol::quote::SymbolTickerDataSortType >(0)},
         _cached_size_{0} {}
 
 template <typename>
@@ -381,7 +397,6 @@ inline constexpr SelfSelectedSymbolGroupBean::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         candelete_{false},
-        sortingorder_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -403,6 +418,31 @@ struct SelfSelectedSymbolGroupBeanDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SelfSelectedSymbolGroupBeanDefaultTypeInternal _SelfSelectedSymbolGroupBean_default_instance_;
+
+inline constexpr ResTradeRule::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : beanlist_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ResTradeRule::ResTradeRule(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ResTradeRuleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ResTradeRuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ResTradeRuleDefaultTypeInternal() {}
+  union {
+    ResTradeRule _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResTradeRuleDefaultTypeInternal _ResTradeRule_default_instance_;
 
 inline constexpr ResSubscribeTickerData::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -460,13 +500,13 @@ struct ResCandlestickQueryDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResCandlestickQueryDefaultTypeInternal _ResCandlestickQuery_default_instance_;
 
-inline constexpr ReqTradeRule::Impl_::Impl_(
+inline constexpr MarketMonitorNoticeListBean::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : beanlist_{},
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR ReqTradeRule::ReqTradeRule(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR MarketMonitorNoticeListBean::MarketMonitorNoticeListBean(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
@@ -474,16 +514,16 @@ PROTOBUF_CONSTEXPR ReqTradeRule::ReqTradeRule(::_pbi::ConstantInitialized)
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct ReqTradeRuleDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ReqTradeRuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ReqTradeRuleDefaultTypeInternal() {}
+struct MarketMonitorNoticeListBeanDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MarketMonitorNoticeListBeanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MarketMonitorNoticeListBeanDefaultTypeInternal() {}
   union {
-    ReqTradeRule _instance;
+    MarketMonitorNoticeListBean _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqTradeRuleDefaultTypeInternal _ReqTradeRule_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MarketMonitorNoticeListBeanDefaultTypeInternal _MarketMonitorNoticeListBean_default_instance_;
 
 inline constexpr CandlestickUpdateBean::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -519,7 +559,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr ResSelfSelectedSymbol::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : grouolist_{},
+      : grouplist_{},
         _cached_size_{0} {}
 
 template <typename>
@@ -544,7 +584,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr ReqSelfSelectedSymbol::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : grouolist_{},
+      : grouplist_{},
         _cached_size_{0} {}
 
 template <typename>
@@ -570,7 +610,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace protocol
 }  // namespace crypto
 }  // namespace lampyris
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_quote_2eproto[1];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_quote_2eproto = nullptr;
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_quote_2eproto = nullptr;
 const ::uint32_t
@@ -592,7 +633,6 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTickerDataBean, _impl_.indexprice_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTickerDataBean, _impl_.fundingrate_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTickerDataBean, _impl_.nextfundingtime_),
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTickerDataBean, _impl_.pricechanged_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTickerDataBean, _impl_.risespeed_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTickerDataBean, _impl_.labels_),
         ~0u,  // no _has_bits_
@@ -604,8 +644,6 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqSubscribeTickerData, _impl_.iscancel_),
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqSubscribeTickerData, _impl_.isascending_),
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqSubscribeTickerData, _impl_.sorttype_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ResSubscribeTickerData, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -723,7 +761,16 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqTradeRule, _impl_.beanlist_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqTradeRule, _impl_.symbollist_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ResTradeRule, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ResTradeRule, _impl_.beanlist_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -740,6 +787,15 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean, _impl_.minquantity_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean, _impl_.quantityticksize_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean, _impl_.minnotional_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean, _impl_.beanlist_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -774,7 +830,6 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean, _impl_.name_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean, _impl_.candelete_),
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean, _impl_.sortingorder_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean, _impl_.symbollist_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol, _internal_metadata_),
@@ -784,7 +839,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol, _impl_.grouolist_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol, _impl_.grouplist_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -793,29 +848,31 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol, _impl_.grouolist_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol, _impl_.grouplist_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SymbolTickerDataBean)},
-        {19, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSubscribeTickerData)},
-        {30, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResSubscribeTickerData)},
-        {39, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSubscribeTradeData)},
-        {49, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SymbolTradeDataBean)},
-        {59, -1, -1, sizeof(::lampyris::crypto::protocol::quote::TradeDataBean)},
-        {73, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSubscribeCandlestickUpdate)},
-        {84, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqCandlestickQuery)},
-        {97, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResCandlestickQuery)},
-        {108, 120, -1, sizeof(::lampyris::crypto::protocol::quote::CandlestickUpdateBean)},
-        {124, -1, -1, sizeof(::lampyris::crypto::protocol::quote::CandlestickBean)},
-        {139, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqTradeRule)},
-        {148, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean)},
-        {164, -1, -1, sizeof(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean)},
-        {177, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean)},
-        {188, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean)},
-        {200, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol)},
-        {209, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol)},
+        {18, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSubscribeTickerData)},
+        {27, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResSubscribeTickerData)},
+        {36, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSubscribeTradeData)},
+        {46, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SymbolTradeDataBean)},
+        {56, -1, -1, sizeof(::lampyris::crypto::protocol::quote::TradeDataBean)},
+        {70, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSubscribeCandlestickUpdate)},
+        {81, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqCandlestickQuery)},
+        {94, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResCandlestickQuery)},
+        {105, 117, -1, sizeof(::lampyris::crypto::protocol::quote::CandlestickUpdateBean)},
+        {121, -1, -1, sizeof(::lampyris::crypto::protocol::quote::CandlestickBean)},
+        {136, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqTradeRule)},
+        {145, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResTradeRule)},
+        {154, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean)},
+        {170, -1, -1, sizeof(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean)},
+        {179, -1, -1, sizeof(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean)},
+        {192, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean)},
+        {203, -1, -1, sizeof(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean)},
+        {214, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol)},
+        {223, -1, -1, sizeof(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::lampyris::crypto::protocol::quote::_SymbolTickerDataBean_default_instance_._instance,
@@ -830,7 +887,9 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::lampyris::crypto::protocol::quote::_CandlestickUpdateBean_default_instance_._instance,
     &::lampyris::crypto::protocol::quote::_CandlestickBean_default_instance_._instance,
     &::lampyris::crypto::protocol::quote::_ReqTradeRule_default_instance_._instance,
+    &::lampyris::crypto::protocol::quote::_ResTradeRule_default_instance_._instance,
     &::lampyris::crypto::protocol::quote::_SymbolTradeRuleBean_default_instance_._instance,
+    &::lampyris::crypto::protocol::quote::_MarketMonitorNoticeListBean_default_instance_._instance,
     &::lampyris::crypto::protocol::quote::_MarketMonitorNoticeBean_default_instance_._instance,
     &::lampyris::crypto::protocol::quote::_SelfSelectedSymbolInfoBean_default_instance_._instance,
     &::lampyris::crypto::protocol::quote::_SelfSelectedSymbolGroupBean_default_instance_._instance,
@@ -840,16 +899,13 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_quote_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\013quote.proto\022\036lampyris.crypto.protocol."
-    "quote\"\351\001\n\024SymbolTickerDataBean\022\016\n\006symbol"
+    "quote\"\323\001\n\024SymbolTickerDataBean\022\016\n\006symbol"
     "\030\001 \001(\t\022\r\n\005price\030\002 \001(\001\022\022\n\npercentage\030\003 \001("
-    "\001\022\020\n\010currency\030\004 \001(\t\022\021\n\tmarkPrice\030\005 \001(\001\022\022"
-    "\n\nindexPrice\030\006 \001(\001\022\023\n\013fundingRate\030\007 \001(\t\022"
-    "\027\n\017nextFundingTime\030\010 \001(\t\022\024\n\014priceChanged"
-    "\030\t \001(\010\022\021\n\triseSpeed\030\n \001(\001\022\016\n\006labels\030\013 \003("
-    "\t\"\213\001\n\026ReqSubscribeTickerData\022\020\n\010isCancel"
-    "\030\001 \001(\010\022\023\n\013isAscending\030\002 \001(\010\022J\n\010sortType\030"
-    "\003 \001(\01628.lampyris.crypto.protocol.quote.S"
-    "ymbolTickerDataSortType\"`\n\026ResSubscribeT"
+    "\001\022\020\n\010currency\030\004 \001(\001\022\021\n\tmarkPrice\030\005 \001(\001\022\022"
+    "\n\nindexPrice\030\006 \001(\001\022\023\n\013fundingRate\030\007 \001(\001\022"
+    "\027\n\017nextFundingTime\030\010 \001(\003\022\021\n\triseSpeed\030\t "
+    "\001(\001\022\016\n\006labels\030\n \003(\t\"*\n\026ReqSubscribeTicke"
+    "rData\022\020\n\010isCancel\030\001 \001(\010\"`\n\026ResSubscribeT"
     "ickerData\022F\n\010beanList\030\001 \003(\01324.lampyris.c"
     "rypto.protocol.quote.SymbolTickerDataBea"
     "n\":\n\025ReqSubscribeTradeData\022\017\n\007symbols\030\001 "
@@ -873,43 +929,43 @@ const char descriptor_table_protodef_quote_2eproto[] ABSL_ATTRIBUTE_SECTION_VARI
     "sEnd\030\004 \001(\010\"y\n\017CandlestickBean\022\014\n\004time\030\001 "
     "\001(\003\022\014\n\004open\030\002 \001(\001\022\014\n\004high\030\003 \001(\001\022\013\n\003low\030\004"
     " \001(\001\022\r\n\005close\030\005 \001(\001\022\016\n\006volume\030\006 \001(\001\022\020\n\010c"
-    "urrency\030\007 \001(\001\"U\n\014ReqTradeRule\022E\n\010beanLis"
-    "t\030\001 \003(\01323.lampyris.crypto.protocol.quote"
-    ".SymbolTradeRuleBean\"\271\001\n\023SymbolTradeRule"
-    "Bean\022\016\n\006symbol\030\001 \001(\t\022\020\n\010maxPrice\030\002 \001(\001\022\020"
-    "\n\010minPrice\030\003 \001(\001\022\025\n\rpriceTickSize\030\004 \001(\001\022"
-    "\023\n\013maxQuantity\030\005 \001(\001\022\023\n\013minQuantity\030\006 \001("
-    "\001\022\030\n\020quantityTickSize\030\007 \001(\001\022\023\n\013minNotion"
-    "al\030\010 \001(\001\"t\n\027MarketMonitorNoticeBean\022\016\n\006s"
-    "ymbol\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\022\n\nnotice"
-    "Type\030\003 \001(\005\022\r\n\005value\030\004 \001(\t\022\023\n\013noticeLevel"
-    "\030\005 \001(\005\"U\n\032SelfSelectedSymbolInfoBean\022\016\n\006"
-    "symbol\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\024\n\014initi"
-    "alPrice\030\003 \001(\001\"\244\001\n\033SelfSelectedSymbolGrou"
-    "pBean\022\014\n\004name\030\001 \001(\t\022\021\n\tcanDelete\030\002 \001(\010\022\024"
-    "\n\014sortingOrder\030\003 \001(\005\022N\n\nsymbolList\030\004 \003(\013"
+    "urrency\030\007 \001(\001\"\"\n\014ReqTradeRule\022\022\n\nsymbolL"
+    "ist\030\001 \003(\t\"U\n\014ResTradeRule\022E\n\010beanList\030\001 "
+    "\003(\01323.lampyris.crypto.protocol.quote.Sym"
+    "bolTradeRuleBean\"\271\001\n\023SymbolTradeRuleBean"
+    "\022\016\n\006symbol\030\001 \001(\t\022\020\n\010maxPrice\030\002 \001(\001\022\020\n\010mi"
+    "nPrice\030\003 \001(\001\022\025\n\rpriceTickSize\030\004 \001(\001\022\023\n\013m"
+    "axQuantity\030\005 \001(\001\022\023\n\013minQuantity\030\006 \001(\001\022\030\n"
+    "\020quantityTickSize\030\007 \001(\001\022\023\n\013minNotional\030\010"
+    " \001(\001\"h\n\033MarketMonitorNoticeListBean\022I\n\010b"
+    "eanList\030\001 \003(\01327.lampyris.crypto.protocol"
+    ".quote.MarketMonitorNoticeBean\"t\n\027Market"
+    "MonitorNoticeBean\022\016\n\006symbol\030\001 \001(\t\022\021\n\ttim"
+    "estamp\030\002 \001(\003\022\022\n\nnoticeType\030\003 \001(\005\022\r\n\005valu"
+    "e\030\004 \001(\t\022\023\n\013noticeLevel\030\005 \001(\005\"U\n\032SelfSele"
+    "ctedSymbolInfoBean\022\016\n\006symbol\030\001 \001(\t\022\021\n\tti"
+    "mestamp\030\002 \001(\003\022\024\n\014initialPrice\030\003 \001(\001\"\216\001\n\033"
+    "SelfSelectedSymbolGroupBean\022\014\n\004name\030\001 \001("
+    "\t\022\021\n\tcanDelete\030\002 \001(\010\022N\n\nsymbolList\030\003 \003(\013"
     "2:.lampyris.crypto.protocol.quote.SelfSe"
     "lectedSymbolInfoBean\"g\n\025ReqSelfSelectedS"
-    "ymbol\022N\n\tgrouoList\030\001 \003(\0132;.lampyris.cryp"
+    "ymbol\022N\n\tgroupList\030\001 \003(\0132;.lampyris.cryp"
     "to.protocol.quote.SelfSelectedSymbolGrou"
-    "pBean\"g\n\025ResSelfSelectedSymbol\022N\n\tgrouoL"
+    "pBean\"g\n\025ResSelfSelectedSymbol\022N\n\tgroupL"
     "ist\030\001 \003(\0132;.lampyris.crypto.protocol.quo"
-    "te.SelfSelectedSymbolGroupBean*v\n\030Symbol"
-    "TickerDataSortType\022\010\n\004NONE\020\000\022\t\n\005PRICE\020\001\022"
-    "\014\n\010CURRENCY\020\002\022\016\n\nPERCENTAGE\020\003\022\020\n\014FUNDING"
-    "_RATE\020\004\022\025\n\021FUNDING_LEFT_TIME\020\005b\006proto3"
+    "te.SelfSelectedSymbolGroupBeanb\006proto3"
 };
 static ::absl::once_flag descriptor_table_quote_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_quote_2eproto = {
     false,
     false,
-    2358,
+    2238,
     descriptor_table_protodef_quote_2eproto,
     "quote.proto",
     &descriptor_table_quote_2eproto_once,
     nullptr,
     0,
-    18,
+    20,
     schemas,
     file_default_instances,
     TableStruct_quote_2eproto::offsets,
@@ -920,15 +976,6 @@ namespace lampyris {
 namespace crypto {
 namespace protocol {
 namespace quote {
-const ::google::protobuf::EnumDescriptor* SymbolTickerDataSortType_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_quote_2eproto);
-  return file_level_enum_descriptors_quote_2eproto[0];
-}
-PROTOBUF_CONSTINIT const uint32_t SymbolTickerDataSortType_internal_data_[] = {
-    393216u, 0u, };
-bool SymbolTickerDataSortType_IsValid(int value) {
-  return 0 <= value && value <= 5;
-}
 // ===================================================================
 
 class SymbolTickerDataBean::_Internal {
@@ -949,9 +996,6 @@ inline PROTOBUF_NDEBUG_INLINE SymbolTickerDataBean::Impl_::Impl_(
     const Impl_& from, const ::lampyris::crypto::protocol::quote::SymbolTickerDataBean& from_msg)
       : labels_{visibility, arena, from.labels_},
         symbol_(arena, from.symbol_),
-        currency_(arena, from.currency_),
-        fundingrate_(arena, from.fundingrate_),
-        nextfundingtime_(arena, from.nextfundingtime_),
         _cached_size_{0} {}
 
 SymbolTickerDataBean::SymbolTickerDataBean(
@@ -971,9 +1015,9 @@ SymbolTickerDataBean::SymbolTickerDataBean(
                offsetof(Impl_, price_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, price_),
-           offsetof(Impl_, pricechanged_) -
+           offsetof(Impl_, risespeed_) -
                offsetof(Impl_, price_) +
-               sizeof(Impl_::pricechanged_));
+               sizeof(Impl_::risespeed_));
 
   // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.quote.SymbolTickerDataBean)
 }
@@ -982,9 +1026,6 @@ inline PROTOBUF_NDEBUG_INLINE SymbolTickerDataBean::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : labels_{visibility, arena},
         symbol_(arena),
-        currency_(arena),
-        fundingrate_(arena),
-        nextfundingtime_(arena),
         _cached_size_{0} {}
 
 inline void SymbolTickerDataBean::SharedCtor(::_pb::Arena* arena) {
@@ -992,9 +1033,9 @@ inline void SymbolTickerDataBean::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, price_),
            0,
-           offsetof(Impl_, pricechanged_) -
+           offsetof(Impl_, risespeed_) -
                offsetof(Impl_, price_) +
-               sizeof(Impl_::pricechanged_));
+               sizeof(Impl_::risespeed_));
 }
 SymbolTickerDataBean::~SymbolTickerDataBean() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.quote.SymbolTickerDataBean)
@@ -1005,9 +1046,6 @@ inline void SymbolTickerDataBean::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.symbol_.Destroy();
-  this_._impl_.currency_.Destroy();
-  this_._impl_.fundingrate_.Destroy();
-  this_._impl_.nextfundingtime_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -1059,15 +1097,15 @@ const ::google::protobuf::internal::ClassData* SymbolTickerDataBean::GetClassDat
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 11, 0, 114, 2> SymbolTickerDataBean::_table_ = {
+const ::_pbi::TcParseTable<4, 10, 0, 80, 2> SymbolTickerDataBean::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    11, 120,  // max_field_number, fast_idx_mask
+    10, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294965248,  // skipmap
+    4294966272,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    11,  // num_field_entries
+    10,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -1087,30 +1125,28 @@ const ::_pbi::TcParseTable<4, 11, 0, 114, 2> SymbolTickerDataBean::_table_ = {
     // double percentage = 3;
     {::_pbi::TcParser::FastF64S1,
      {25, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.percentage_)}},
-    // string currency = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.currency_)}},
+    // double currency = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.currency_)}},
     // double markPrice = 5;
     {::_pbi::TcParser::FastF64S1,
      {41, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.markprice_)}},
     // double indexPrice = 6;
     {::_pbi::TcParser::FastF64S1,
      {49, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.indexprice_)}},
-    // string fundingRate = 7;
-    {::_pbi::TcParser::FastUS1,
-     {58, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.fundingrate_)}},
-    // string nextFundingTime = 8;
-    {::_pbi::TcParser::FastUS1,
-     {66, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.nextfundingtime_)}},
-    // bool priceChanged = 9;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SymbolTickerDataBean, _impl_.pricechanged_), 63>(),
-     {72, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.pricechanged_)}},
-    // double riseSpeed = 10;
+    // double fundingRate = 7;
     {::_pbi::TcParser::FastF64S1,
-     {81, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.risespeed_)}},
-    // repeated string labels = 11;
+     {57, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.fundingrate_)}},
+    // int64 nextFundingTime = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(SymbolTickerDataBean, _impl_.nextfundingtime_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.nextfundingtime_)}},
+    // double riseSpeed = 9;
+    {::_pbi::TcParser::FastF64S1,
+     {73, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.risespeed_)}},
+    // repeated string labels = 10;
     {::_pbi::TcParser::FastUR1,
-     {90, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.labels_)}},
+     {82, 63, 0, PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.labels_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -1127,39 +1163,33 @@ const ::_pbi::TcParseTable<4, 11, 0, 114, 2> SymbolTickerDataBean::_table_ = {
     // double percentage = 3;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.percentage_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // string currency = 4;
+    // double currency = 4;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.currency_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
     // double markPrice = 5;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.markprice_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
     // double indexPrice = 6;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.indexprice_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // string fundingRate = 7;
+    // double fundingRate = 7;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.fundingrate_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string nextFundingTime = 8;
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // int64 nextFundingTime = 8;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.nextfundingtime_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // bool priceChanged = 9;
-    {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.pricechanged_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // double riseSpeed = 10;
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
+    // double riseSpeed = 9;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.risespeed_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
-    // repeated string labels = 11;
+    // repeated string labels = 10;
     {PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.labels_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
   }},
   // no aux_entries
   {{
-    "\63\6\0\0\10\0\0\13\17\0\0\6\0\0\0\0"
+    "\63\6\0\0\0\0\0\0\0\0\6\0\0\0\0\0"
     "lampyris.crypto.protocol.quote.SymbolTickerDataBean"
     "symbol"
-    "currency"
-    "fundingRate"
-    "nextFundingTime"
     "labels"
   }},
 };
@@ -1173,12 +1203,9 @@ PROTOBUF_NOINLINE void SymbolTickerDataBean::Clear() {
 
   _impl_.labels_.Clear();
   _impl_.symbol_.ClearToEmpty();
-  _impl_.currency_.ClearToEmpty();
-  _impl_.fundingrate_.ClearToEmpty();
-  _impl_.nextfundingtime_.ClearToEmpty();
   ::memset(&_impl_.price_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.pricechanged_) -
-      reinterpret_cast<char*>(&_impl_.price_)) + sizeof(_impl_.pricechanged_));
+      reinterpret_cast<char*>(&_impl_.risespeed_) -
+      reinterpret_cast<char*>(&_impl_.price_)) + sizeof(_impl_.risespeed_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1219,12 +1246,11 @@ PROTOBUF_NOINLINE void SymbolTickerDataBean::Clear() {
                 3, this_._internal_percentage(), target);
           }
 
-          // string currency = 4;
-          if (!this_._internal_currency().empty()) {
-            const std::string& _s = this_._internal_currency();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.quote.SymbolTickerDataBean.currency");
-            target = stream->WriteStringMaybeAliased(4, _s, target);
+          // double currency = 4;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_currency()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                4, this_._internal_currency(), target);
           }
 
           // double markPrice = 5;
@@ -1241,42 +1267,33 @@ PROTOBUF_NOINLINE void SymbolTickerDataBean::Clear() {
                 6, this_._internal_indexprice(), target);
           }
 
-          // string fundingRate = 7;
-          if (!this_._internal_fundingrate().empty()) {
-            const std::string& _s = this_._internal_fundingrate();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.quote.SymbolTickerDataBean.fundingRate");
-            target = stream->WriteStringMaybeAliased(7, _s, target);
-          }
-
-          // string nextFundingTime = 8;
-          if (!this_._internal_nextfundingtime().empty()) {
-            const std::string& _s = this_._internal_nextfundingtime();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.quote.SymbolTickerDataBean.nextFundingTime");
-            target = stream->WriteStringMaybeAliased(8, _s, target);
-          }
-
-          // bool priceChanged = 9;
-          if (this_._internal_pricechanged() != 0) {
+          // double fundingRate = 7;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_fundingrate()) != 0) {
             target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteBoolToArray(
-                9, this_._internal_pricechanged(), target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                7, this_._internal_fundingrate(), target);
           }
 
-          // double riseSpeed = 10;
+          // int64 nextFundingTime = 8;
+          if (this_._internal_nextfundingtime() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt64ToArrayWithField<8>(
+                    stream, this_._internal_nextfundingtime(), target);
+          }
+
+          // double riseSpeed = 9;
           if (::absl::bit_cast<::uint64_t>(this_._internal_risespeed()) != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteDoubleToArray(
-                10, this_._internal_risespeed(), target);
+                9, this_._internal_risespeed(), target);
           }
 
-          // repeated string labels = 11;
+          // repeated string labels = 10;
           for (int i = 0, n = this_._internal_labels_size(); i < n; ++i) {
             const auto& s = this_._internal_labels().Get(i);
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.quote.SymbolTickerDataBean.labels");
-            target = stream->WriteString(11, s, target);
+            target = stream->WriteString(10, s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -1304,7 +1321,7 @@ PROTOBUF_NOINLINE void SymbolTickerDataBean::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated string labels = 11;
+            // repeated string labels = 10;
             {
               total_size +=
                   1 * ::google::protobuf::internal::FromIntSize(this_._internal_labels().size());
@@ -1320,27 +1337,16 @@ PROTOBUF_NOINLINE void SymbolTickerDataBean::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_symbol());
             }
-            // string currency = 4;
-            if (!this_._internal_currency().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_currency());
-            }
-            // string fundingRate = 7;
-            if (!this_._internal_fundingrate().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_fundingrate());
-            }
-            // string nextFundingTime = 8;
-            if (!this_._internal_nextfundingtime().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_nextfundingtime());
-            }
             // double price = 2;
             if (::absl::bit_cast<::uint64_t>(this_._internal_price()) != 0) {
               total_size += 9;
             }
             // double percentage = 3;
             if (::absl::bit_cast<::uint64_t>(this_._internal_percentage()) != 0) {
+              total_size += 9;
+            }
+            // double currency = 4;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_currency()) != 0) {
               total_size += 9;
             }
             // double markPrice = 5;
@@ -1351,13 +1357,18 @@ PROTOBUF_NOINLINE void SymbolTickerDataBean::Clear() {
             if (::absl::bit_cast<::uint64_t>(this_._internal_indexprice()) != 0) {
               total_size += 9;
             }
-            // double riseSpeed = 10;
-            if (::absl::bit_cast<::uint64_t>(this_._internal_risespeed()) != 0) {
+            // double fundingRate = 7;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_fundingrate()) != 0) {
               total_size += 9;
             }
-            // bool priceChanged = 9;
-            if (this_._internal_pricechanged() != 0) {
-              total_size += 2;
+            // int64 nextFundingTime = 8;
+            if (this_._internal_nextfundingtime() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+                  this_._internal_nextfundingtime());
+            }
+            // double riseSpeed = 9;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_risespeed()) != 0) {
+              total_size += 9;
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1376,20 +1387,14 @@ void SymbolTickerDataBean::MergeImpl(::google::protobuf::MessageLite& to_msg, co
   if (!from._internal_symbol().empty()) {
     _this->_internal_set_symbol(from._internal_symbol());
   }
-  if (!from._internal_currency().empty()) {
-    _this->_internal_set_currency(from._internal_currency());
-  }
-  if (!from._internal_fundingrate().empty()) {
-    _this->_internal_set_fundingrate(from._internal_fundingrate());
-  }
-  if (!from._internal_nextfundingtime().empty()) {
-    _this->_internal_set_nextfundingtime(from._internal_nextfundingtime());
-  }
   if (::absl::bit_cast<::uint64_t>(from._internal_price()) != 0) {
     _this->_impl_.price_ = from._impl_.price_;
   }
   if (::absl::bit_cast<::uint64_t>(from._internal_percentage()) != 0) {
     _this->_impl_.percentage_ = from._impl_.percentage_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_currency()) != 0) {
+    _this->_impl_.currency_ = from._impl_.currency_;
   }
   if (::absl::bit_cast<::uint64_t>(from._internal_markprice()) != 0) {
     _this->_impl_.markprice_ = from._impl_.markprice_;
@@ -1397,11 +1402,14 @@ void SymbolTickerDataBean::MergeImpl(::google::protobuf::MessageLite& to_msg, co
   if (::absl::bit_cast<::uint64_t>(from._internal_indexprice()) != 0) {
     _this->_impl_.indexprice_ = from._impl_.indexprice_;
   }
+  if (::absl::bit_cast<::uint64_t>(from._internal_fundingrate()) != 0) {
+    _this->_impl_.fundingrate_ = from._impl_.fundingrate_;
+  }
+  if (from._internal_nextfundingtime() != 0) {
+    _this->_impl_.nextfundingtime_ = from._impl_.nextfundingtime_;
+  }
   if (::absl::bit_cast<::uint64_t>(from._internal_risespeed()) != 0) {
     _this->_impl_.risespeed_ = from._impl_.risespeed_;
-  }
-  if (from._internal_pricechanged() != 0) {
-    _this->_impl_.pricechanged_ = from._impl_.pricechanged_;
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1421,12 +1429,9 @@ void SymbolTickerDataBean::InternalSwap(SymbolTickerDataBean* PROTOBUF_RESTRICT 
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.labels_.InternalSwap(&other->_impl_.labels_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.symbol_, &other->_impl_.symbol_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.currency_, &other->_impl_.currency_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.fundingrate_, &other->_impl_.fundingrate_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nextfundingtime_, &other->_impl_.nextfundingtime_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.pricechanged_)
-      + sizeof(SymbolTickerDataBean::_impl_.pricechanged_)
+      PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.risespeed_)
+      + sizeof(SymbolTickerDataBean::_impl_.risespeed_)
       - PROTOBUF_FIELD_OFFSET(SymbolTickerDataBean, _impl_.price_)>(
           reinterpret_cast<char*>(&_impl_.price_),
           reinterpret_cast<char*>(&other->_impl_.price_));
@@ -1462,12 +1467,7 @@ inline PROTOBUF_NDEBUG_INLINE ReqSubscribeTickerData::Impl_::Impl_(
 
 inline void ReqSubscribeTickerData::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, iscancel_),
-           0,
-           offsetof(Impl_, sorttype_) -
-               offsetof(Impl_, iscancel_) +
-               sizeof(Impl_::sorttype_));
+  _impl_.iscancel_ = {};
 }
 ReqSubscribeTickerData::~ReqSubscribeTickerData() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.quote.ReqSubscribeTickerData)
@@ -1516,15 +1516,15 @@ const ::google::protobuf::internal::ClassData* ReqSubscribeTickerData::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 0, 2> ReqSubscribeTickerData::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ReqSubscribeTickerData::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    1, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -1534,28 +1534,15 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> ReqSubscribeTickerData::_table_ = {
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ReqSubscribeTickerData>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
     // bool isCancel = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ReqSubscribeTickerData, _impl_.iscancel_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.iscancel_)}},
-    // bool isAscending = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ReqSubscribeTickerData, _impl_.isascending_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.isascending_)}},
-    // .lampyris.crypto.protocol.quote.SymbolTickerDataSortType sortType = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ReqSubscribeTickerData, _impl_.sorttype_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.sorttype_)}},
   }}, {{
     65535, 65535
   }}, {{
     // bool isCancel = 1;
     {PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.iscancel_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool isAscending = 2;
-    {PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.isascending_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // .lampyris.crypto.protocol.quote.SymbolTickerDataSortType sortType = 3;
-    {PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.sorttype_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }},
   // no aux_entries
   {{
@@ -1569,9 +1556,7 @@ PROTOBUF_NOINLINE void ReqSubscribeTickerData::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.iscancel_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.sorttype_) -
-      reinterpret_cast<char*>(&_impl_.iscancel_)) + sizeof(_impl_.sorttype_));
+  _impl_.iscancel_ = false;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1597,20 +1582,6 @@ PROTOBUF_NOINLINE void ReqSubscribeTickerData::Clear() {
                 1, this_._internal_iscancel(), target);
           }
 
-          // bool isAscending = 2;
-          if (this_._internal_isascending() != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteBoolToArray(
-                2, this_._internal_isascending(), target);
-          }
-
-          // .lampyris.crypto.protocol.quote.SymbolTickerDataSortType sortType = 3;
-          if (this_._internal_sorttype() != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteEnumToArray(
-                3, this_._internal_sorttype(), target);
-          }
-
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1634,20 +1605,10 @@ PROTOBUF_NOINLINE void ReqSubscribeTickerData::Clear() {
           // Prevent compiler warnings about cached_has_bits being unused
           (void)cached_has_bits;
 
-          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
             // bool isCancel = 1;
             if (this_._internal_iscancel() != 0) {
               total_size += 2;
-            }
-            // bool isAscending = 2;
-            if (this_._internal_isascending() != 0) {
-              total_size += 2;
-            }
-            // .lampyris.crypto.protocol.quote.SymbolTickerDataSortType sortType = 3;
-            if (this_._internal_sorttype() != 0) {
-              total_size += 1 +
-                            ::_pbi::WireFormatLite::EnumSize(this_._internal_sorttype());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1665,12 +1626,6 @@ void ReqSubscribeTickerData::MergeImpl(::google::protobuf::MessageLite& to_msg, 
   if (from._internal_iscancel() != 0) {
     _this->_impl_.iscancel_ = from._impl_.iscancel_;
   }
-  if (from._internal_isascending() != 0) {
-    _this->_impl_.isascending_ = from._impl_.isascending_;
-  }
-  if (from._internal_sorttype() != 0) {
-    _this->_impl_.sorttype_ = from._impl_.sorttype_;
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1685,12 +1640,7 @@ void ReqSubscribeTickerData::CopyFrom(const ReqSubscribeTickerData& from) {
 void ReqSubscribeTickerData::InternalSwap(ReqSubscribeTickerData* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.sorttype_)
-      + sizeof(ReqSubscribeTickerData::_impl_.sorttype_)
-      - PROTOBUF_FIELD_OFFSET(ReqSubscribeTickerData, _impl_.iscancel_)>(
-          reinterpret_cast<char*>(&_impl_.iscancel_),
-          reinterpret_cast<char*>(&other->_impl_.iscancel_));
+        swap(_impl_.iscancel_, other->_impl_.iscancel_);
 }
 
 ::google::protobuf::Metadata ReqSubscribeTickerData::GetMetadata() const {
@@ -4500,7 +4450,7 @@ ReqTradeRule::ReqTradeRule(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE ReqTradeRule::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::lampyris::crypto::protocol::quote::ReqTradeRule& from_msg)
-      : beanlist_{visibility, arena, from.beanlist_},
+      : symbollist_{visibility, arena, from.symbollist_},
         _cached_size_{0} {}
 
 ReqTradeRule::ReqTradeRule(
@@ -4522,7 +4472,7 @@ ReqTradeRule::ReqTradeRule(
 inline PROTOBUF_NDEBUG_INLINE ReqTradeRule::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : beanlist_{visibility, arena},
+      : symbollist_{visibility, arena},
         _cached_size_{0} {}
 
 inline void ReqTradeRule::SharedCtor(::_pb::Arena* arena) {
@@ -4545,8 +4495,8 @@ inline void* ReqTradeRule::PlacementNew_(const void*, void* mem,
 }
 constexpr auto ReqTradeRule::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(ReqTradeRule, _impl_.beanlist_) +
-          decltype(ReqTradeRule::_impl_.beanlist_)::
+      PROTOBUF_FIELD_OFFSET(ReqTradeRule, _impl_.symbollist_) +
+          decltype(ReqTradeRule::_impl_.symbollist_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -4587,7 +4537,7 @@ const ::google::protobuf::internal::ClassData* ReqTradeRule::GetClassData() cons
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReqTradeRule::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 62, 2> ReqTradeRule::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -4596,8 +4546,8 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReqTradeRule::_table_ = {
     4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
     1,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -4605,18 +4555,21 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReqTradeRule::_table_ = {
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ReqTradeRule>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
-    {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqTradeRule, _impl_.beanlist_)}},
+    // repeated string symbolList = 1;
+    {::_pbi::TcParser::FastUR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqTradeRule, _impl_.symbollist_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
-    {PROTOBUF_FIELD_OFFSET(ReqTradeRule, _impl_.beanlist_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SymbolTradeRuleBean>()},
-  }}, {{
+    // repeated string symbolList = 1;
+    {PROTOBUF_FIELD_OFFSET(ReqTradeRule, _impl_.symbollist_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\53\12\0\0\0\0\0\0"
+    "lampyris.crypto.protocol.quote.ReqTradeRule"
+    "symbolList"
   }},
 };
 
@@ -4627,7 +4580,7 @@ PROTOBUF_NOINLINE void ReqTradeRule::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.beanlist_.Clear();
+  _impl_.symbollist_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -4646,15 +4599,12 @@ PROTOBUF_NOINLINE void ReqTradeRule::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
-          for (unsigned i = 0, n = static_cast<unsigned>(
-                                   this_._internal_beanlist_size());
-               i < n; i++) {
-            const auto& repfield = this_._internal_beanlist().Get(i);
-            target =
-                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                    1, repfield, repfield.GetCachedSize(),
-                    target, stream);
+          // repeated string symbolList = 1;
+          for (int i = 0, n = this_._internal_symbollist_size(); i < n; ++i) {
+            const auto& s = this_._internal_symbollist().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.quote.ReqTradeRule.symbolList");
+            target = stream->WriteString(1, s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -4682,11 +4632,13 @@ PROTOBUF_NOINLINE void ReqTradeRule::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
+            // repeated string symbolList = 1;
             {
-              total_size += 1UL * this_._internal_beanlist_size();
-              for (const auto& msg : this_._internal_beanlist()) {
-                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_symbollist().size());
+              for (int i = 0, n = this_._internal_symbollist().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_symbollist().Get(i));
               }
             }
           }
@@ -4702,8 +4654,7 @@ void ReqTradeRule::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::go
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_beanlist()->MergeFrom(
-      from._internal_beanlist());
+  _this->_internal_mutable_symbollist()->MergeFrom(from._internal_symbollist());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -4718,10 +4669,252 @@ void ReqTradeRule::CopyFrom(const ReqTradeRule& from) {
 void ReqTradeRule::InternalSwap(ReqTradeRule* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.beanlist_.InternalSwap(&other->_impl_.beanlist_);
+  _impl_.symbollist_.InternalSwap(&other->_impl_.symbollist_);
 }
 
 ::google::protobuf::Metadata ReqTradeRule::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ResTradeRule::_Internal {
+ public:
+};
+
+ResTradeRule::ResTradeRule(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.quote.ResTradeRule)
+}
+inline PROTOBUF_NDEBUG_INLINE ResTradeRule::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::quote::ResTradeRule& from_msg)
+      : beanlist_{visibility, arena, from.beanlist_},
+        _cached_size_{0} {}
+
+ResTradeRule::ResTradeRule(
+    ::google::protobuf::Arena* arena,
+    const ResTradeRule& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ResTradeRule* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.quote.ResTradeRule)
+}
+inline PROTOBUF_NDEBUG_INLINE ResTradeRule::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : beanlist_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void ResTradeRule::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ResTradeRule::~ResTradeRule() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.quote.ResTradeRule)
+  SharedDtor(*this);
+}
+inline void ResTradeRule::SharedDtor(MessageLite& self) {
+  ResTradeRule& this_ = static_cast<ResTradeRule&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* ResTradeRule::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ResTradeRule(arena);
+}
+constexpr auto ResTradeRule::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(ResTradeRule, _impl_.beanlist_) +
+          decltype(ResTradeRule::_impl_.beanlist_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(ResTradeRule), alignof(ResTradeRule), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&ResTradeRule::PlacementNew_,
+                                 sizeof(ResTradeRule),
+                                 alignof(ResTradeRule));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ResTradeRule::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ResTradeRule_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ResTradeRule::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ResTradeRule>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ResTradeRule::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ResTradeRule>(), &ResTradeRule::ByteSizeLong,
+            &ResTradeRule::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ResTradeRule, _impl_._cached_size_),
+        false,
+    },
+    &ResTradeRule::kDescriptorMethods,
+    &descriptor_table_quote_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ResTradeRule::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ResTradeRule::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ResTradeRule>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ResTradeRule, _impl_.beanlist_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
+    {PROTOBUF_FIELD_OFFSET(ResTradeRule, _impl_.beanlist_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SymbolTradeRuleBean>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void ResTradeRule::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.quote.ResTradeRule)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.beanlist_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ResTradeRule::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ResTradeRule& this_ = static_cast<const ResTradeRule&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ResTradeRule::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ResTradeRule& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.quote.ResTradeRule)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_beanlist_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_beanlist().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.quote.ResTradeRule)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ResTradeRule::ByteSizeLong(const MessageLite& base) {
+          const ResTradeRule& this_ = static_cast<const ResTradeRule&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ResTradeRule::ByteSizeLong() const {
+          const ResTradeRule& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.quote.ResTradeRule)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .lampyris.crypto.protocol.quote.SymbolTradeRuleBean beanList = 1;
+            {
+              total_size += 1UL * this_._internal_beanlist_size();
+              for (const auto& msg : this_._internal_beanlist()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ResTradeRule::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ResTradeRule*>(&to_msg);
+  auto& from = static_cast<const ResTradeRule&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.quote.ResTradeRule)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_beanlist()->MergeFrom(
+      from._internal_beanlist());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ResTradeRule::CopyFrom(const ResTradeRule& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.quote.ResTradeRule)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ResTradeRule::InternalSwap(ResTradeRule* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.beanlist_.InternalSwap(&other->_impl_.beanlist_);
+}
+
+::google::protobuf::Metadata ResTradeRule::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -5116,6 +5309,248 @@ void SymbolTradeRuleBean::InternalSwap(SymbolTradeRuleBean* PROTOBUF_RESTRICT ot
 }
 
 ::google::protobuf::Metadata SymbolTradeRuleBean::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class MarketMonitorNoticeListBean::_Internal {
+ public:
+};
+
+MarketMonitorNoticeListBean::MarketMonitorNoticeListBean(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+}
+inline PROTOBUF_NDEBUG_INLINE MarketMonitorNoticeListBean::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& from_msg)
+      : beanlist_{visibility, arena, from.beanlist_},
+        _cached_size_{0} {}
+
+MarketMonitorNoticeListBean::MarketMonitorNoticeListBean(
+    ::google::protobuf::Arena* arena,
+    const MarketMonitorNoticeListBean& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  MarketMonitorNoticeListBean* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+}
+inline PROTOBUF_NDEBUG_INLINE MarketMonitorNoticeListBean::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : beanlist_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void MarketMonitorNoticeListBean::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+MarketMonitorNoticeListBean::~MarketMonitorNoticeListBean() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+  SharedDtor(*this);
+}
+inline void MarketMonitorNoticeListBean::SharedDtor(MessageLite& self) {
+  MarketMonitorNoticeListBean& this_ = static_cast<MarketMonitorNoticeListBean&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* MarketMonitorNoticeListBean::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) MarketMonitorNoticeListBean(arena);
+}
+constexpr auto MarketMonitorNoticeListBean::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(MarketMonitorNoticeListBean, _impl_.beanlist_) +
+          decltype(MarketMonitorNoticeListBean::_impl_.beanlist_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(MarketMonitorNoticeListBean), alignof(MarketMonitorNoticeListBean), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&MarketMonitorNoticeListBean::PlacementNew_,
+                                 sizeof(MarketMonitorNoticeListBean),
+                                 alignof(MarketMonitorNoticeListBean));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull MarketMonitorNoticeListBean::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_MarketMonitorNoticeListBean_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &MarketMonitorNoticeListBean::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<MarketMonitorNoticeListBean>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &MarketMonitorNoticeListBean::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<MarketMonitorNoticeListBean>(), &MarketMonitorNoticeListBean::ByteSizeLong,
+            &MarketMonitorNoticeListBean::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(MarketMonitorNoticeListBean, _impl_._cached_size_),
+        false,
+    },
+    &MarketMonitorNoticeListBean::kDescriptorMethods,
+    &descriptor_table_quote_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* MarketMonitorNoticeListBean::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> MarketMonitorNoticeListBean::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean beanList = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MarketMonitorNoticeListBean, _impl_.beanlist_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean beanList = 1;
+    {PROTOBUF_FIELD_OFFSET(MarketMonitorNoticeListBean, _impl_.beanlist_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void MarketMonitorNoticeListBean::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.beanlist_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* MarketMonitorNoticeListBean::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const MarketMonitorNoticeListBean& this_ = static_cast<const MarketMonitorNoticeListBean&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* MarketMonitorNoticeListBean::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const MarketMonitorNoticeListBean& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean beanList = 1;
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_beanlist_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_beanlist().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t MarketMonitorNoticeListBean::ByteSizeLong(const MessageLite& base) {
+          const MarketMonitorNoticeListBean& this_ = static_cast<const MarketMonitorNoticeListBean&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t MarketMonitorNoticeListBean::ByteSizeLong() const {
+          const MarketMonitorNoticeListBean& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean beanList = 1;
+            {
+              total_size += 1UL * this_._internal_beanlist_size();
+              for (const auto& msg : this_._internal_beanlist()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void MarketMonitorNoticeListBean::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<MarketMonitorNoticeListBean*>(&to_msg);
+  auto& from = static_cast<const MarketMonitorNoticeListBean&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_beanlist()->MergeFrom(
+      from._internal_beanlist());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MarketMonitorNoticeListBean::CopyFrom(const MarketMonitorNoticeListBean& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void MarketMonitorNoticeListBean::InternalSwap(MarketMonitorNoticeListBean* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.beanlist_.InternalSwap(&other->_impl_.beanlist_);
+}
+
+::google::protobuf::Metadata MarketMonitorNoticeListBean::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -5797,13 +6232,7 @@ SelfSelectedSymbolGroupBean::SelfSelectedSymbolGroupBean(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, candelete_),
-           reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, candelete_),
-           offsetof(Impl_, sortingorder_) -
-               offsetof(Impl_, candelete_) +
-               sizeof(Impl_::sortingorder_));
+  _impl_.candelete_ = from._impl_.candelete_;
 
   // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean)
 }
@@ -5816,12 +6245,7 @@ inline PROTOBUF_NDEBUG_INLINE SelfSelectedSymbolGroupBean::Impl_::Impl_(
 
 inline void SelfSelectedSymbolGroupBean::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, candelete_),
-           0,
-           offsetof(Impl_, sortingorder_) -
-               offsetof(Impl_, candelete_) +
-               sizeof(Impl_::sortingorder_));
+  _impl_.candelete_ = {};
 }
 SelfSelectedSymbolGroupBean::~SelfSelectedSymbolGroupBean() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean)
@@ -5883,15 +6307,15 @@ const ::google::protobuf::internal::ClassData* SelfSelectedSymbolGroupBean::GetC
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 1, 71, 2> SelfSelectedSymbolGroupBean::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 1, 71, 2> SelfSelectedSymbolGroupBean::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    3,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -5901,18 +6325,16 @@ const ::_pbi::TcParseTable<2, 4, 1, 71, 2> SelfSelectedSymbolGroupBean::_table_ 
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 4;
-    {::_pbi::TcParser::FastMtR1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.symbollist_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string name = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.name_)}},
     // bool canDelete = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(SelfSelectedSymbolGroupBean, _impl_.candelete_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.candelete_)}},
-    // int32 sortingOrder = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SelfSelectedSymbolGroupBean, _impl_.sortingorder_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.sortingorder_)}},
+    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 3;
+    {::_pbi::TcParser::FastMtR1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.symbollist_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -5922,10 +6344,7 @@ const ::_pbi::TcParseTable<2, 4, 1, 71, 2> SelfSelectedSymbolGroupBean::_table_ 
     // bool canDelete = 2;
     {PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.candelete_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // int32 sortingOrder = 3;
-    {PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.sortingorder_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 4;
+    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 3;
     {PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.symbollist_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
@@ -5946,9 +6365,7 @@ PROTOBUF_NOINLINE void SelfSelectedSymbolGroupBean::Clear() {
 
   _impl_.symbollist_.Clear();
   _impl_.name_.ClearToEmpty();
-  ::memset(&_impl_.candelete_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.sortingorder_) -
-      reinterpret_cast<char*>(&_impl_.candelete_)) + sizeof(_impl_.sortingorder_));
+  _impl_.candelete_ = false;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -5982,21 +6399,14 @@ PROTOBUF_NOINLINE void SelfSelectedSymbolGroupBean::Clear() {
                 2, this_._internal_candelete(), target);
           }
 
-          // int32 sortingOrder = 3;
-          if (this_._internal_sortingorder() != 0) {
-            target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<3>(
-                    stream, this_._internal_sortingorder(), target);
-          }
-
-          // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 4;
+          // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 3;
           for (unsigned i = 0, n = static_cast<unsigned>(
                                    this_._internal_symbollist_size());
                i < n; i++) {
             const auto& repfield = this_._internal_symbollist().Get(i);
             target =
                 ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                    4, repfield, repfield.GetCachedSize(),
+                    3, repfield, repfield.GetCachedSize(),
                     target, stream);
           }
 
@@ -6025,7 +6435,7 @@ PROTOBUF_NOINLINE void SelfSelectedSymbolGroupBean::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 4;
+            // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean symbolList = 3;
             {
               total_size += 1UL * this_._internal_symbollist_size();
               for (const auto& msg : this_._internal_symbollist()) {
@@ -6042,11 +6452,6 @@ PROTOBUF_NOINLINE void SelfSelectedSymbolGroupBean::Clear() {
             // bool canDelete = 2;
             if (this_._internal_candelete() != 0) {
               total_size += 2;
-            }
-            // int32 sortingOrder = 3;
-            if (this_._internal_sortingorder() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-                  this_._internal_sortingorder());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -6069,9 +6474,6 @@ void SelfSelectedSymbolGroupBean::MergeImpl(::google::protobuf::MessageLite& to_
   if (from._internal_candelete() != 0) {
     _this->_impl_.candelete_ = from._impl_.candelete_;
   }
-  if (from._internal_sortingorder() != 0) {
-    _this->_impl_.sortingorder_ = from._impl_.sortingorder_;
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -6090,12 +6492,7 @@ void SelfSelectedSymbolGroupBean::InternalSwap(SelfSelectedSymbolGroupBean* PROT
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.symbollist_.InternalSwap(&other->_impl_.symbollist_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.sortingorder_)
-      + sizeof(SelfSelectedSymbolGroupBean::_impl_.sortingorder_)
-      - PROTOBUF_FIELD_OFFSET(SelfSelectedSymbolGroupBean, _impl_.candelete_)>(
-          reinterpret_cast<char*>(&_impl_.candelete_),
-          reinterpret_cast<char*>(&other->_impl_.candelete_));
+        swap(_impl_.candelete_, other->_impl_.candelete_);
 }
 
 ::google::protobuf::Metadata SelfSelectedSymbolGroupBean::GetMetadata() const {
@@ -6119,7 +6516,7 @@ ReqSelfSelectedSymbol::ReqSelfSelectedSymbol(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE ReqSelfSelectedSymbol::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol& from_msg)
-      : grouolist_{visibility, arena, from.grouolist_},
+      : grouplist_{visibility, arena, from.grouplist_},
         _cached_size_{0} {}
 
 ReqSelfSelectedSymbol::ReqSelfSelectedSymbol(
@@ -6141,7 +6538,7 @@ ReqSelfSelectedSymbol::ReqSelfSelectedSymbol(
 inline PROTOBUF_NDEBUG_INLINE ReqSelfSelectedSymbol::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : grouolist_{visibility, arena},
+      : grouplist_{visibility, arena},
         _cached_size_{0} {}
 
 inline void ReqSelfSelectedSymbol::SharedCtor(::_pb::Arena* arena) {
@@ -6164,8 +6561,8 @@ inline void* ReqSelfSelectedSymbol::PlacementNew_(const void*, void* mem,
 }
 constexpr auto ReqSelfSelectedSymbol::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(ReqSelfSelectedSymbol, _impl_.grouolist_) +
-          decltype(ReqSelfSelectedSymbol::_impl_.grouolist_)::
+      PROTOBUF_FIELD_OFFSET(ReqSelfSelectedSymbol, _impl_.grouplist_) +
+          decltype(ReqSelfSelectedSymbol::_impl_.grouplist_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -6224,14 +6621,14 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReqSelfSelectedSymbol::_table_ = {
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ReqSelfSelectedSymbol>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
+    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
     {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqSelfSelectedSymbol, _impl_.grouolist_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqSelfSelectedSymbol, _impl_.grouplist_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
-    {PROTOBUF_FIELD_OFFSET(ReqSelfSelectedSymbol, _impl_.grouolist_), 0, 0,
+    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
+    {PROTOBUF_FIELD_OFFSET(ReqSelfSelectedSymbol, _impl_.grouplist_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean>()},
@@ -6246,7 +6643,7 @@ PROTOBUF_NOINLINE void ReqSelfSelectedSymbol::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.grouolist_.Clear();
+  _impl_.grouplist_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -6265,11 +6662,11 @@ PROTOBUF_NOINLINE void ReqSelfSelectedSymbol::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
+          // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
           for (unsigned i = 0, n = static_cast<unsigned>(
-                                   this_._internal_grouolist_size());
+                                   this_._internal_grouplist_size());
                i < n; i++) {
-            const auto& repfield = this_._internal_grouolist().Get(i);
+            const auto& repfield = this_._internal_grouplist().Get(i);
             target =
                 ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
                     1, repfield, repfield.GetCachedSize(),
@@ -6301,10 +6698,10 @@ PROTOBUF_NOINLINE void ReqSelfSelectedSymbol::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
+            // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
             {
-              total_size += 1UL * this_._internal_grouolist_size();
-              for (const auto& msg : this_._internal_grouolist()) {
+              total_size += 1UL * this_._internal_grouplist_size();
+              for (const auto& msg : this_._internal_grouplist()) {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
@@ -6321,8 +6718,8 @@ void ReqSelfSelectedSymbol::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_grouolist()->MergeFrom(
-      from._internal_grouolist());
+  _this->_internal_mutable_grouplist()->MergeFrom(
+      from._internal_grouplist());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -6337,7 +6734,7 @@ void ReqSelfSelectedSymbol::CopyFrom(const ReqSelfSelectedSymbol& from) {
 void ReqSelfSelectedSymbol::InternalSwap(ReqSelfSelectedSymbol* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.grouolist_.InternalSwap(&other->_impl_.grouolist_);
+  _impl_.grouplist_.InternalSwap(&other->_impl_.grouplist_);
 }
 
 ::google::protobuf::Metadata ReqSelfSelectedSymbol::GetMetadata() const {
@@ -6361,7 +6758,7 @@ ResSelfSelectedSymbol::ResSelfSelectedSymbol(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE ResSelfSelectedSymbol::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol& from_msg)
-      : grouolist_{visibility, arena, from.grouolist_},
+      : grouplist_{visibility, arena, from.grouplist_},
         _cached_size_{0} {}
 
 ResSelfSelectedSymbol::ResSelfSelectedSymbol(
@@ -6383,7 +6780,7 @@ ResSelfSelectedSymbol::ResSelfSelectedSymbol(
 inline PROTOBUF_NDEBUG_INLINE ResSelfSelectedSymbol::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : grouolist_{visibility, arena},
+      : grouplist_{visibility, arena},
         _cached_size_{0} {}
 
 inline void ResSelfSelectedSymbol::SharedCtor(::_pb::Arena* arena) {
@@ -6406,8 +6803,8 @@ inline void* ResSelfSelectedSymbol::PlacementNew_(const void*, void* mem,
 }
 constexpr auto ResSelfSelectedSymbol::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(ResSelfSelectedSymbol, _impl_.grouolist_) +
-          decltype(ResSelfSelectedSymbol::_impl_.grouolist_)::
+      PROTOBUF_FIELD_OFFSET(ResSelfSelectedSymbol, _impl_.grouplist_) +
+          decltype(ResSelfSelectedSymbol::_impl_.grouplist_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -6466,14 +6863,14 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ResSelfSelectedSymbol::_table_ = {
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
+    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
     {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ResSelfSelectedSymbol, _impl_.grouolist_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ResSelfSelectedSymbol, _impl_.grouplist_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
-    {PROTOBUF_FIELD_OFFSET(ResSelfSelectedSymbol, _impl_.grouolist_), 0, 0,
+    // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
+    {PROTOBUF_FIELD_OFFSET(ResSelfSelectedSymbol, _impl_.grouplist_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean>()},
@@ -6488,7 +6885,7 @@ PROTOBUF_NOINLINE void ResSelfSelectedSymbol::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.grouolist_.Clear();
+  _impl_.grouplist_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -6507,11 +6904,11 @@ PROTOBUF_NOINLINE void ResSelfSelectedSymbol::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
+          // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
           for (unsigned i = 0, n = static_cast<unsigned>(
-                                   this_._internal_grouolist_size());
+                                   this_._internal_grouplist_size());
                i < n; i++) {
-            const auto& repfield = this_._internal_grouolist().Get(i);
+            const auto& repfield = this_._internal_grouplist().Get(i);
             target =
                 ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
                     1, repfield, repfield.GetCachedSize(),
@@ -6543,10 +6940,10 @@ PROTOBUF_NOINLINE void ResSelfSelectedSymbol::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean grouoList = 1;
+            // repeated .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean groupList = 1;
             {
-              total_size += 1UL * this_._internal_grouolist_size();
-              for (const auto& msg : this_._internal_grouolist()) {
+              total_size += 1UL * this_._internal_grouplist_size();
+              for (const auto& msg : this_._internal_grouplist()) {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
@@ -6563,8 +6960,8 @@ void ResSelfSelectedSymbol::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_grouolist()->MergeFrom(
-      from._internal_grouolist());
+  _this->_internal_mutable_grouplist()->MergeFrom(
+      from._internal_grouplist());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -6579,7 +6976,7 @@ void ResSelfSelectedSymbol::CopyFrom(const ResSelfSelectedSymbol& from) {
 void ResSelfSelectedSymbol::InternalSwap(ResSelfSelectedSymbol* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.grouolist_.InternalSwap(&other->_impl_.grouolist_);
+  _impl_.grouplist_.InternalSwap(&other->_impl_.grouplist_);
 }
 
 ::google::protobuf::Metadata ResSelfSelectedSymbol::GetMetadata() const {

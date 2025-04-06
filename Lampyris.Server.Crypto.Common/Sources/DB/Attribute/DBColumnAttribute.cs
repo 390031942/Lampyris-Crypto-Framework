@@ -11,11 +11,14 @@ public class DBColumnAttribute : Attribute
     public bool IsPrimaryKey { get; }
     public bool IsAutoIncrement { get; }
 
+    public bool IsNotNull { get; }
+
     public DBColumnAttribute(string columnName, string dataType, bool isPrimaryKey = false, bool isAutoIncrement = false, bool isNotNull = false)
     {
         ColumnName = columnName;
         DataType = dataType;
         IsPrimaryKey = isPrimaryKey;
         IsAutoIncrement = isAutoIncrement;
+        IsNotNull = isNotNull;
     }
 }

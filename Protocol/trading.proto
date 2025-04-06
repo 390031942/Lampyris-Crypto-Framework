@@ -147,6 +147,6 @@ message SymbolLeverageBracketBean {
 // 某symbol的某个杠杆分层信息
 message LeverageBracketBean {
     int32 leverage = 1; // 当前分层下的最大杠杆倍数
-    int32 notionalCap = 2; // 当前分层下的名义价值上限
-    int32 notionalFloor = 3; // 当前分层下的名义价值下限
+    double notionalCap = 2; // 当前分层下的名义价值上限
+    double notionalFloor = 3; // 当前分层下的名义价值下限
 }

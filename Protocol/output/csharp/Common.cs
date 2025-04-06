@@ -26,126 +26,132 @@ namespace Lampyris.Crypto.Protocol.Common {
           string.Concat(
             "Cgxjb21tb24ucHJvdG8SH2xhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5jb21t",
             "b24aDWFjY291bnQucHJvdG8aCWFwcC5wcm90bxoLcXVvdGUucHJvdG8aDnN0",
-            "cmF0ZWd5LnByb3RvGg10cmFkaW5nLnByb3RvIq0QCgdSZXF1ZXN0EjoKCHJl",
-            "cUxvZ2luGAEgASgLMiYubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLmFwcC5S",
-            "ZXFMb2dpbkgAEkIKDHJlcUhlYXJ0QmVhdBgCIAEoCzIqLmxhbXB5cmlzLmNy",
-            "eXB0by5wcm90b2NvbC5hcHAuUmVxSGVhcnRCZWF0SAASXAoXcmVxQWNjb3Vu",
-            "dFN1bW1hcnlVcGRhdGUYAyABKAsyOS5sYW1weXJpcy5jcnlwdG8ucHJvdG9j",
-            "b2wuYWNjb3VudC5SZXFBY2NvdW50U3VtbWFyeVVwZGF0ZUgAElwKF3JlcUFj",
-            "Y291bnRBc3NldFRyYW5zZmVyGAQgASgLMjkubGFtcHlyaXMuY3J5cHRvLnBy",
-            "b3RvY29sLmFjY291bnQuUmVxQWNjb3VudEFzc2V0VHJhbnNmZXJIABJmChxy",
-            "ZXFRdWVyeUFzc2V0VHJhbnNmZXJIaXN0b3J5GAUgASgLMj4ubGFtcHlyaXMu",
-            "Y3J5cHRvLnByb3RvY29sLmFjY291bnQuUmVxUXVlcnlBc3NldFRyYW5zZmVy",
-            "SGlzdG9yeUgAElQKFXJlcVVwbG9hZEFwcEJlaGF2aW91chgGIAEoCzIzLmxh",
-            "bXB5cmlzLmNyeXB0by5wcm90b2NvbC5hcHAuUmVxVXBsb2FkQXBwQmVoYXZp",
-            "b3VySAASWAoWcmVxU3Vic2NyaWJlVGlja2VyRGF0YRgHIAEoCzI2LmxhbXB5",
-            "cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5SZXFTdWJzY3JpYmVUaWNrZXJE",
-            "YXRhSAASVgoVcmVxU3Vic2NyaWJlVHJhZGVEYXRhGAggASgLMjUubGFtcHly",
-            "aXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlJlcVN1YnNjcmliZVRyYWRlRGF0",
-            "YUgAEmYKHXJlcVN1YnNjcmliZUNhbmRsZXN0aWNrVXBkYXRlGAkgASgLMj0u",
-            "bGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlJlcVN1YnNjcmliZUNh",
-            "bmRsZXN0aWNrVXBkYXRlSAASUgoTcmVxQ2FuZGxlc3RpY2tRdWVyeRgKIAEo",
-            "CzIzLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5SZXFDYW5kbGVz",
-            "dGlja1F1ZXJ5SAASRAoMcmVxVHJhZGVSdWxlGAsgASgLMiwubGFtcHlyaXMu",
-            "Y3J5cHRvLnByb3RvY29sLnF1b3RlLlJlcVRyYWRlUnVsZUgAElYKFXJlcVNl",
-            "bGZTZWxlY3RlZFN5bWJvbBgMIAEoCzI1LmxhbXB5cmlzLmNyeXB0by5wcm90",
-            "b2NvbC5xdW90ZS5SZXFTZWxmU2VsZWN0ZWRTeW1ib2xIABJhChlyZXFNb2Rp",
-            "ZnlTdHJlYXRlZ3lTZXR0aW5nGA0gASgLMjwubGFtcHlyaXMuY3J5cHRvLnBy",
-            "b3RvY29sLnN0cmF0ZWd5LlJlcU1vZGlmeVN0cmVhdGVneVNldHRpbmdIABJn",
-            "ChxyZXFRdWVyeVN0cmF0ZWd5RXhlY3Rpb25JbmZvGA4gASgLMj8ubGFtcHly",
-            "aXMuY3J5cHRvLnByb3RvY29sLnN0cmF0ZWd5LlJlcVF1ZXJ5U3RyYXRlZ3lF",
-            "eGVjdGlvbkluZm9IABJICg1yZXFQbGFjZU9yZGVyGA8gASgLMi8ubGFtcHly",
-            "aXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuUmVxUGxhY2VPcmRlckgAEkoK",
-            "DnJlcU1vZGlmeU9yZGVyGBAgASgLMjAubGFtcHlyaXMuY3J5cHRvLnByb3Rv",
-            "Y29sLnRyYWRpbmcuUmVxTW9kaWZ5T3JkZXJIABJKCg5yZXFDYW5jZWxPcmRl",
-            "chgRIAEoCzIwLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLlJl",
-            "cUNhbmNlbE9yZGVySAASWgoWcmVxT25lS2V5Q2xvc2VQb3NpdGlvbhgSIAEo",
-            "CzI4LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLlJlcU9uZUtl",
-            "eUNsb3NlUG9zaXRpb25IABJWChRyZXFRdWVyeUFjdGl2ZU9yZGVycxgTIAEo",
-            "CzI2LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLlJlcVF1ZXJ5",
-            "QWN0aXZlT3JkZXJzSAASXgoYcmVxUXVlcnlIaXN0b3JpY2FsT3JkZXJzGBQg",
-            "ASgLMjoubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuUmVxUXVl",
-            "cnlIaXN0b3JpY2FsT3JkZXJzSAASUAoRcmVxUXVlcnlQb3NpdGlvbnMYFSAB",
-            "KAsyMy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5SZXFRdWVy",
-            "eVBvc2l0aW9uc0gAEkoKDnJlcVNldExldmVyYWdlGBYgASgLMjAubGFtcHly",
-            "aXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuUmVxU2V0TGV2ZXJhZ2VIABJO",
-            "ChByZXFRdWVyeUxldmVyYWdlGBcgASgLMjIubGFtcHlyaXMuY3J5cHRvLnBy",
-            "b3RvY29sLnRyYWRpbmcuUmVxUXVlcnlMZXZlcmFnZUgAElwKF3JlcVF1ZXJ5",
-            "TGV2ZXJhZ2VCcmFja2V0GBggASgLMjkubGFtcHlyaXMuY3J5cHRvLnByb3Rv",
-            "Y29sLnRyYWRpbmcuUmVxUXVlcnlMZXZlcmFnZUJyYWNrZXRIAEIOCgxyZXF1",
-            "ZXN0X3R5cGUiuRcKCFJlc3BvbnNlEkIKDHJlc0hlYXJ0QmVhdBgBIAEoCzIq",
-            "LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5hcHAuUmVzSGVhcnRCZWF0SAAS",
-            "VgoUYWNjb3VudEFzc2V0SW5mb0JlYW4YAiABKAsyNi5sYW1weXJpcy5jcnlw",
-            "dG8ucHJvdG9jb2wuYWNjb3VudC5BY2NvdW50QXNzZXRJbmZvQmVhbkgAElIK",
-            "EnN1YkFjY291bnRJbmZvQmVhbhgDIAEoCzI0LmxhbXB5cmlzLmNyeXB0by5w",
-            "cm90b2NvbC5hY2NvdW50LlN1YkFjY291bnRJbmZvQmVhbkgAElwKF3Jlc1F1",
-            "ZXJ5U3ViQWNjY291bnRMaXN0GAQgASgLMjkubGFtcHlyaXMuY3J5cHRvLnBy",
-            "b3RvY29sLmFjY291bnQuUmVzUXVlcnlTdWJBY2Njb3VudExpc3RIABJcChdy",
-            "ZXNBY2NvdW50U3VtbWFyeVVwZGF0ZRgFIAEoCzI5LmxhbXB5cmlzLmNyeXB0",
-            "by5wcm90b2NvbC5hY2NvdW50LlJlc0FjY291bnRTdW1tYXJ5VXBkYXRlSAAS",
-            "cgoiYXNzZXRUcmFuc2Zlckhpc3RvcnlJbmZvRGV0YWlsQmVhbhgGIAEoCzJE",
-            "LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5hY2NvdW50LkFzc2V0VHJhbnNm",
-            "ZXJIaXN0b3J5SW5mb0RldGFpbEJlYW5IABJmChxhc3NldFRyYW5zZmVySGlz",
-            "dG9yeUluZm9CZWFuGAcgASgLMj4ubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
-            "LmFjY291bnQuQXNzZXRUcmFuc2Zlckhpc3RvcnlJbmZvQmVhbkgAEjoKCHJl",
-            "c0xvZ2luGAggASgLMiYubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLmFwcC5S",
-            "ZXNMb2dpbkgAElQKFHN5bWJvbFRpY2tlckRhdGFCZWFuGAkgASgLMjQubGFt",
-            "cHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlN5bWJvbFRpY2tlckRhdGFC",
-            "ZWFuSAASWAoWcmVzU3Vic2NyaWJlVGlja2VyRGF0YRgKIAEoCzI2LmxhbXB5",
-            "cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5SZXNTdWJzY3JpYmVUaWNrZXJE",
-            "YXRhSAASUgoTc3ltYm9sVHJhZGVEYXRhQmVhbhgLIAEoCzIzLmxhbXB5cmlz",
-            "LmNyeXB0by5wcm90b2NvbC5xdW90ZS5TeW1ib2xUcmFkZURhdGFCZWFuSAAS",
-            "RgoNdHJhZGVEYXRhQmVhbhgMIAEoCzItLmxhbXB5cmlzLmNyeXB0by5wcm90",
-            "b2NvbC5xdW90ZS5UcmFkZURhdGFCZWFuSAASUgoTcmVzQ2FuZGxlc3RpY2tR",
-            "dWVyeRgNIAEoCzIzLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5S",
-            "ZXNDYW5kbGVzdGlja1F1ZXJ5SAASVgoVY2FuZGxlc3RpY2tVcGRhdGVCZWFu",
-            "GA4gASgLMjUubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLkNhbmRs",
-            "ZXN0aWNrVXBkYXRlQmVhbkgAEkoKD2NhbmRsZXN0aWNrQmVhbhgPIAEoCzIv",
-            "LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5DYW5kbGVzdGlja0Jl",
-            "YW5IABJSChNzeW1ib2xUcmFkZVJ1bGVCZWFuGBAgASgLMjMubGFtcHlyaXMu",
-            "Y3J5cHRvLnByb3RvY29sLnF1b3RlLlN5bWJvbFRyYWRlUnVsZUJlYW5IABJa",
-            "ChdtYXJrZXRNb25pdG9yTm90aWNlQmVhbhgRIAEoCzI3LmxhbXB5cmlzLmNy",
-            "eXB0by5wcm90b2NvbC5xdW90ZS5NYXJrZXRNb25pdG9yTm90aWNlQmVhbkgA",
-            "EmAKGnNlbGZTZWxlY3RlZFN5bWJvbEluZm9CZWFuGBIgASgLMjoubGFtcHly",
-            "aXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNlbGZTZWxlY3RlZFN5bWJvbElu",
-            "Zm9CZWFuSAASYgobc2VsZlNlbGVjdGVkU3ltYm9sR3JvdXBCZWFuGBMgASgL",
-            "MjsubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNlbGZTZWxlY3Rl",
-            "ZFN5bWJvbEdyb3VwQmVhbkgAElYKFXJlc1NlbGZTZWxlY3RlZFN5bWJvbBgU",
-            "IAEoCzI1LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5SZXNTZWxm",
-            "U2VsZWN0ZWRTeW1ib2xIABJVChNzdHJlYXRlZ3lDb25maWdCZWFuGBUgASgL",
-            "MjYubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnN0cmF0ZWd5LlN0cmVhdGVn",
-            "eUNvbmZpZ0JlYW5IABJTChJzdHJlYXRlZ3lGaWVsZEJlYW4YFiABKAsyNS5s",
-            "YW1weXJpcy5jcnlwdG8ucHJvdG9jb2wuc3RyYXRlZ3kuU3RyZWF0ZWd5Rmll",
-            "bGRCZWFuSAASYQoZcmVzTW9kaWZ5U3RyZWF0ZWd5U2V0dGluZxgXIAEoCzI8",
-            "LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5zdHJhdGVneS5SZXNNb2RpZnlT",
-            "dHJlYXRlZ3lTZXR0aW5nSAASVwoUcmVzU3RyZWF0ZWd5U2V0dGluZ3MYGCAB",
-            "KAsyNy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wuc3RyYXRlZ3kuUmVzU3Ry",
-            "ZWF0ZWd5U2V0dGluZ3NIABJfChhzdHJhdGVneUV4ZWN0aW9uSW5mb0JlYW4Y",
-            "GSABKAsyOy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wuc3RyYXRlZ3kuU3Ry",
-            "YXRlZ3lFeGVjdGlvbkluZm9CZWFuSAASZwoccmVzUXVlcnlTdHJhdGVneUV4",
-            "ZWN0aW9uSW5mbxgaIAEoCzI/LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5z",
-            "dHJhdGVneS5SZXNRdWVyeVN0cmF0ZWd5RXhlY3Rpb25JbmZvSAASVgoUY29u",
-            "ZGl0aW9uVHJpZ2dlckJlYW4YGyABKAsyNi5sYW1weXJpcy5jcnlwdG8ucHJv",
-            "dG9jb2wudHJhZGluZy5Db25kaXRpb25UcmlnZ2VyQmVhbkgAEkAKCW9yZGVy",
-            "QmVhbhgcIAEoCzIrLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5n",
-            "Lk9yZGVyQmVhbkgAEkwKD29yZGVyU3RhdHVzQmVhbhgdIAEoCzIxLmxhbXB5",
-            "cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyU3RhdHVzQmVhbkgA",
-            "EkYKDGxldmVyYWdlQmVhbhgeIAEoCzIuLmxhbXB5cmlzLmNyeXB0by5wcm90",
-            "b2NvbC50cmFkaW5nLkxldmVyYWdlQmVhbkgAEk4KEHJlc1F1ZXJ5TGV2ZXJh",
-            "Z2UYHyABKAsyMi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5S",
-            "ZXNRdWVyeUxldmVyYWdlSAASXAoXcmVzUXVlcnlMZXZlcmFnZUJyYWNrZXQY",
-            "ICABKAsyOS5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5SZXNR",
-            "dWVyeUxldmVyYWdlQnJhY2tldEgAEmAKGXN5bWJvbExldmVyYWdlQnJhY2tl",
-            "dEJlYW4YISABKAsyOy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGlu",
-            "Zy5TeW1ib2xMZXZlcmFnZUJyYWNrZXRCZWFuSAASVAoTbGV2ZXJhZ2VCcmFj",
-            "a2V0QmVhbhgiIAEoCzI1LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFk",
-            "aW5nLkxldmVyYWdlQnJhY2tldEJlYW5IAEIPCg1yZXNwb25zZV90eXBlYgZw",
-            "cm90bzM="));
+            "cmF0ZWd5LnByb3RvGg10cmFkaW5nLnByb3RvIusQCgdSZXF1ZXN0ElwKF3Jl",
+            "cUFjY291bnRTdW1tYXJ5VXBkYXRlGAEgASgLMjkubGFtcHlyaXMuY3J5cHRv",
+            "LnByb3RvY29sLmFjY291bnQuUmVxQWNjb3VudFN1bW1hcnlVcGRhdGVIABJc",
+            "ChdyZXFBY2NvdW50QXNzZXRUcmFuc2ZlchgCIAEoCzI5LmxhbXB5cmlzLmNy",
+            "eXB0by5wcm90b2NvbC5hY2NvdW50LlJlcUFjY291bnRBc3NldFRyYW5zZmVy",
+            "SAASZgoccmVxUXVlcnlBc3NldFRyYW5zZmVySGlzdG9yeRgDIAEoCzI+Lmxh",
+            "bXB5cmlzLmNyeXB0by5wcm90b2NvbC5hY2NvdW50LlJlcVF1ZXJ5QXNzZXRU",
+            "cmFuc2Zlckhpc3RvcnlIABI6CghyZXFMb2dpbhgEIAEoCzImLmxhbXB5cmlz",
+            "LmNyeXB0by5wcm90b2NvbC5hcHAuUmVxTG9naW5IABI8CglyZXFMb2dvdXQY",
+            "BSABKAsyJy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wuYXBwLlJlcUxvZ291",
+            "dEgAEkIKDHJlcUhlYXJ0QmVhdBgGIAEoCzIqLmxhbXB5cmlzLmNyeXB0by5w",
+            "cm90b2NvbC5hcHAuUmVxSGVhcnRCZWF0SAASVAoVcmVxVXBsb2FkQXBwQmVo",
+            "YXZpb3VyGAcgASgLMjMubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLmFwcC5S",
+            "ZXFVcGxvYWRBcHBCZWhhdmlvdXJIABJYChZyZXFTdWJzY3JpYmVUaWNrZXJE",
+            "YXRhGAggASgLMjYubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlJl",
+            "cVN1YnNjcmliZVRpY2tlckRhdGFIABJWChVyZXFTdWJzY3JpYmVUcmFkZURh",
+            "dGEYCSABKAsyNS5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuUmVx",
+            "U3Vic2NyaWJlVHJhZGVEYXRhSAASZgodcmVxU3Vic2NyaWJlQ2FuZGxlc3Rp",
+            "Y2tVcGRhdGUYCiABKAsyPS5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVv",
+            "dGUuUmVxU3Vic2NyaWJlQ2FuZGxlc3RpY2tVcGRhdGVIABJSChNyZXFDYW5k",
+            "bGVzdGlja1F1ZXJ5GAsgASgLMjMubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
+            "LnF1b3RlLlJlcUNhbmRsZXN0aWNrUXVlcnlIABJECgxyZXFUcmFkZVJ1bGUY",
+            "DCABKAsyLC5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuUmVxVHJh",
+            "ZGVSdWxlSAASVgoVcmVxU2VsZlNlbGVjdGVkU3ltYm9sGA0gASgLMjUubGFt",
+            "cHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlJlcVNlbGZTZWxlY3RlZFN5",
+            "bWJvbEgAEmEKGXJlcU1vZGlmeVN0cmVhdGVneVNldHRpbmcYDiABKAsyPC5s",
+            "YW1weXJpcy5jcnlwdG8ucHJvdG9jb2wuc3RyYXRlZ3kuUmVxTW9kaWZ5U3Ry",
+            "ZWF0ZWd5U2V0dGluZ0gAEmcKHHJlcVF1ZXJ5U3RyYXRlZ3lFeGVjdGlvbklu",
+            "Zm8YDyABKAsyPy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wuc3RyYXRlZ3ku",
+            "UmVxUXVlcnlTdHJhdGVneUV4ZWN0aW9uSW5mb0gAEkgKDXJlcVBsYWNlT3Jk",
+            "ZXIYECABKAsyLy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5S",
+            "ZXFQbGFjZU9yZGVySAASSgoOcmVxTW9kaWZ5T3JkZXIYESABKAsyMC5sYW1w",
+            "eXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5SZXFNb2RpZnlPcmRlckgA",
+            "EkoKDnJlcUNhbmNlbE9yZGVyGBIgASgLMjAubGFtcHlyaXMuY3J5cHRvLnBy",
+            "b3RvY29sLnRyYWRpbmcuUmVxQ2FuY2VsT3JkZXJIABJaChZyZXFPbmVLZXlD",
+            "bG9zZVBvc2l0aW9uGBMgASgLMjgubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
+            "LnRyYWRpbmcuUmVxT25lS2V5Q2xvc2VQb3NpdGlvbkgAElYKFHJlcVF1ZXJ5",
+            "QWN0aXZlT3JkZXJzGBQgASgLMjYubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
+            "LnRyYWRpbmcuUmVxUXVlcnlBY3RpdmVPcmRlcnNIABJeChhyZXFRdWVyeUhp",
+            "c3RvcmljYWxPcmRlcnMYFSABKAsyOi5sYW1weXJpcy5jcnlwdG8ucHJvdG9j",
+            "b2wudHJhZGluZy5SZXFRdWVyeUhpc3RvcmljYWxPcmRlcnNIABJQChFyZXFR",
+            "dWVyeVBvc2l0aW9ucxgWIAEoCzIzLmxhbXB5cmlzLmNyeXB0by5wcm90b2Nv",
+            "bC50cmFkaW5nLlJlcVF1ZXJ5UG9zaXRpb25zSAASSgoOcmVxU2V0TGV2ZXJh",
+            "Z2UYFyABKAsyMC5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5S",
+            "ZXFTZXRMZXZlcmFnZUgAEk4KEHJlcVF1ZXJ5TGV2ZXJhZ2UYGCABKAsyMi5s",
+            "YW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5SZXFRdWVyeUxldmVy",
+            "YWdlSAASXAoXcmVxUXVlcnlMZXZlcmFnZUJyYWNrZXQYGSABKAsyOS5sYW1w",
+            "eXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5SZXFRdWVyeUxldmVyYWdl",
+            "QnJhY2tldEgAQg4KDHJlcXVlc3RfdHlwZSKhGQoIUmVzcG9uc2USVgoUYWNj",
+            "b3VudEFzc2V0SW5mb0JlYW4YASABKAsyNi5sYW1weXJpcy5jcnlwdG8ucHJv",
+            "dG9jb2wuYWNjb3VudC5BY2NvdW50QXNzZXRJbmZvQmVhbkgAElIKEnN1YkFj",
+            "Y291bnRJbmZvQmVhbhgCIAEoCzI0LmxhbXB5cmlzLmNyeXB0by5wcm90b2Nv",
+            "bC5hY2NvdW50LlN1YkFjY291bnRJbmZvQmVhbkgAElwKF3Jlc1F1ZXJ5U3Vi",
+            "QWNjY291bnRMaXN0GAMgASgLMjkubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
+            "LmFjY291bnQuUmVzUXVlcnlTdWJBY2Njb3VudExpc3RIABJcChdyZXNBY2Nv",
+            "dW50U3VtbWFyeVVwZGF0ZRgEIAEoCzI5LmxhbXB5cmlzLmNyeXB0by5wcm90",
+            "b2NvbC5hY2NvdW50LlJlc0FjY291bnRTdW1tYXJ5VXBkYXRlSAAScgoiYXNz",
+            "ZXRUcmFuc2Zlckhpc3RvcnlJbmZvRGV0YWlsQmVhbhgFIAEoCzJELmxhbXB5",
+            "cmlzLmNyeXB0by5wcm90b2NvbC5hY2NvdW50LkFzc2V0VHJhbnNmZXJIaXN0",
+            "b3J5SW5mb0RldGFpbEJlYW5IABJmChxhc3NldFRyYW5zZmVySGlzdG9yeUlu",
+            "Zm9CZWFuGAYgASgLMj4ubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLmFjY291",
+            "bnQuQXNzZXRUcmFuc2Zlckhpc3RvcnlJbmZvQmVhbkgAEjoKCHJlc0xvZ2lu",
+            "GAcgASgLMiYubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLmFwcC5SZXNMb2dp",
+            "bkgAEkIKDHJlc0hlYXJ0QmVhdBgIIAEoCzIqLmxhbXB5cmlzLmNyeXB0by5w",
+            "cm90b2NvbC5hcHAuUmVzSGVhcnRCZWF0SAASPAoJcmVzTm90aWNlGAkgASgL",
+            "MicubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLmFwcC5SZXNOb3RpY2VIABJU",
+            "ChRzeW1ib2xUaWNrZXJEYXRhQmVhbhgKIAEoCzI0LmxhbXB5cmlzLmNyeXB0",
+            "by5wcm90b2NvbC5xdW90ZS5TeW1ib2xUaWNrZXJEYXRhQmVhbkgAElgKFnJl",
+            "c1N1YnNjcmliZVRpY2tlckRhdGEYCyABKAsyNi5sYW1weXJpcy5jcnlwdG8u",
+            "cHJvdG9jb2wucXVvdGUuUmVzU3Vic2NyaWJlVGlja2VyRGF0YUgAElIKE3N5",
+            "bWJvbFRyYWRlRGF0YUJlYW4YDCABKAsyMy5sYW1weXJpcy5jcnlwdG8ucHJv",
+            "dG9jb2wucXVvdGUuU3ltYm9sVHJhZGVEYXRhQmVhbkgAEkYKDXRyYWRlRGF0",
+            "YUJlYW4YDSABKAsyLS5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUu",
+            "VHJhZGVEYXRhQmVhbkgAElIKE3Jlc0NhbmRsZXN0aWNrUXVlcnkYDiABKAsy",
+            "My5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuUmVzQ2FuZGxlc3Rp",
+            "Y2tRdWVyeUgAElYKFWNhbmRsZXN0aWNrVXBkYXRlQmVhbhgPIAEoCzI1Lmxh",
+            "bXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5DYW5kbGVzdGlja1VwZGF0",
+            "ZUJlYW5IABJKCg9jYW5kbGVzdGlja0JlYW4YECABKAsyLy5sYW1weXJpcy5j",
+            "cnlwdG8ucHJvdG9jb2wucXVvdGUuQ2FuZGxlc3RpY2tCZWFuSAASRAoMcmVz",
+            "VHJhZGVSdWxlGBEgASgLMiwubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1",
+            "b3RlLlJlc1RyYWRlUnVsZUgAElIKE3N5bWJvbFRyYWRlUnVsZUJlYW4YEiAB",
+            "KAsyMy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuU3ltYm9sVHJh",
+            "ZGVSdWxlQmVhbkgAEmIKG21hcmtldE1vbml0b3JOb3RpY2VMaXN0QmVhbhgT",
+            "IAEoCzI7LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5NYXJrZXRN",
+            "b25pdG9yTm90aWNlTGlzdEJlYW5IABJaChdtYXJrZXRNb25pdG9yTm90aWNl",
+            "QmVhbhgUIAEoCzI3LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5xdW90ZS5N",
+            "YXJrZXRNb25pdG9yTm90aWNlQmVhbkgAEmAKGnNlbGZTZWxlY3RlZFN5bWJv",
+            "bEluZm9CZWFuGBUgASgLMjoubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1",
+            "b3RlLlNlbGZTZWxlY3RlZFN5bWJvbEluZm9CZWFuSAASYgobc2VsZlNlbGVj",
+            "dGVkU3ltYm9sR3JvdXBCZWFuGBYgASgLMjsubGFtcHlyaXMuY3J5cHRvLnBy",
+            "b3RvY29sLnF1b3RlLlNlbGZTZWxlY3RlZFN5bWJvbEdyb3VwQmVhbkgAElYK",
+            "FXJlc1NlbGZTZWxlY3RlZFN5bWJvbBgXIAEoCzI1LmxhbXB5cmlzLmNyeXB0",
+            "by5wcm90b2NvbC5xdW90ZS5SZXNTZWxmU2VsZWN0ZWRTeW1ib2xIABJVChNz",
+            "dHJlYXRlZ3lDb25maWdCZWFuGBggASgLMjYubGFtcHlyaXMuY3J5cHRvLnBy",
+            "b3RvY29sLnN0cmF0ZWd5LlN0cmVhdGVneUNvbmZpZ0JlYW5IABJTChJzdHJl",
+            "YXRlZ3lGaWVsZEJlYW4YGSABKAsyNS5sYW1weXJpcy5jcnlwdG8ucHJvdG9j",
+            "b2wuc3RyYXRlZ3kuU3RyZWF0ZWd5RmllbGRCZWFuSAASYQoZcmVzTW9kaWZ5",
+            "U3RyZWF0ZWd5U2V0dGluZxgaIAEoCzI8LmxhbXB5cmlzLmNyeXB0by5wcm90",
+            "b2NvbC5zdHJhdGVneS5SZXNNb2RpZnlTdHJlYXRlZ3lTZXR0aW5nSAASVwoU",
+            "cmVzU3RyZWF0ZWd5U2V0dGluZ3MYGyABKAsyNy5sYW1weXJpcy5jcnlwdG8u",
+            "cHJvdG9jb2wuc3RyYXRlZ3kuUmVzU3RyZWF0ZWd5U2V0dGluZ3NIABJfChhz",
+            "dHJhdGVneUV4ZWN0aW9uSW5mb0JlYW4YHCABKAsyOy5sYW1weXJpcy5jcnlw",
+            "dG8ucHJvdG9jb2wuc3RyYXRlZ3kuU3RyYXRlZ3lFeGVjdGlvbkluZm9CZWFu",
+            "SAASZwoccmVzUXVlcnlTdHJhdGVneUV4ZWN0aW9uSW5mbxgdIAEoCzI/Lmxh",
+            "bXB5cmlzLmNyeXB0by5wcm90b2NvbC5zdHJhdGVneS5SZXNRdWVyeVN0cmF0",
+            "ZWd5RXhlY3Rpb25JbmZvSAASVgoUY29uZGl0aW9uVHJpZ2dlckJlYW4YHiAB",
+            "KAsyNi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5Db25kaXRp",
+            "b25UcmlnZ2VyQmVhbkgAEkAKCW9yZGVyQmVhbhgfIAEoCzIrLmxhbXB5cmlz",
+            "LmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyQmVhbkgAEkwKD29yZGVy",
+            "U3RhdHVzQmVhbhggIAEoCzIxLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50",
+            "cmFkaW5nLk9yZGVyU3RhdHVzQmVhbkgAEkYKDGxldmVyYWdlQmVhbhghIAEo",
+            "CzIuLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLkxldmVyYWdl",
+            "QmVhbkgAEk4KEHJlc1F1ZXJ5TGV2ZXJhZ2UYIiABKAsyMi5sYW1weXJpcy5j",
+            "cnlwdG8ucHJvdG9jb2wudHJhZGluZy5SZXNRdWVyeUxldmVyYWdlSAASXAoX",
+            "cmVzUXVlcnlMZXZlcmFnZUJyYWNrZXQYIyABKAsyOS5sYW1weXJpcy5jcnlw",
+            "dG8ucHJvdG9jb2wudHJhZGluZy5SZXNRdWVyeUxldmVyYWdlQnJhY2tldEgA",
+            "EmAKGXN5bWJvbExldmVyYWdlQnJhY2tldEJlYW4YJCABKAsyOy5sYW1weXJp",
+            "cy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5TeW1ib2xMZXZlcmFnZUJyYWNr",
+            "ZXRCZWFuSAASVAoTbGV2ZXJhZ2VCcmFja2V0QmVhbhglIAEoCzI1LmxhbXB5",
+            "cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLkxldmVyYWdlQnJhY2tldEJl",
+            "YW5IAEIPCg1yZXNwb25zZV90eXBlYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Lampyris.Crypto.Protocol.Account.AccountReflection.Descriptor, global::Lampyris.Crypto.Protocol.App.AppReflection.Descriptor, global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor, global::Lampyris.Crypto.Protocol.Strategy.StrategyReflection.Descriptor, global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Common.Request), global::Lampyris.Crypto.Protocol.Common.Request.Parser, new[]{ "ReqLogin", "ReqHeartBeat", "ReqAccountSummaryUpdate", "ReqAccountAssetTransfer", "ReqQueryAssetTransferHistory", "ReqUploadAppBehaviour", "ReqSubscribeTickerData", "ReqSubscribeTradeData", "ReqSubscribeCandlestickUpdate", "ReqCandlestickQuery", "ReqTradeRule", "ReqSelfSelectedSymbol", "ReqModifyStreategySetting", "ReqQueryStrategyExectionInfo", "ReqPlaceOrder", "ReqModifyOrder", "ReqCancelOrder", "ReqOneKeyClosePosition", "ReqQueryActiveOrders", "ReqQueryHistoricalOrders", "ReqQueryPositions", "ReqSetLeverage", "ReqQueryLeverage", "ReqQueryLeverageBracket" }, new[]{ "RequestType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Common.Response), global::Lampyris.Crypto.Protocol.Common.Response.Parser, new[]{ "ResHeartBeat", "AccountAssetInfoBean", "SubAccountInfoBean", "ResQuerySubAcccountList", "ResAccountSummaryUpdate", "AssetTransferHistoryInfoDetailBean", "AssetTransferHistoryInfoBean", "ResLogin", "SymbolTickerDataBean", "ResSubscribeTickerData", "SymbolTradeDataBean", "TradeDataBean", "ResCandlestickQuery", "CandlestickUpdateBean", "CandlestickBean", "SymbolTradeRuleBean", "MarketMonitorNoticeBean", "SelfSelectedSymbolInfoBean", "SelfSelectedSymbolGroupBean", "ResSelfSelectedSymbol", "StreategyConfigBean", "StreategyFieldBean", "ResModifyStreategySetting", "ResStreategySettings", "StrategyExectionInfoBean", "ResQueryStrategyExectionInfo", "ConditionTriggerBean", "OrderBean", "OrderStatusBean", "LeverageBean", "ResQueryLeverage", "ResQueryLeverageBracket", "SymbolLeverageBracketBean", "LeverageBracketBean" }, new[]{ "ResponseType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Common.Request), global::Lampyris.Crypto.Protocol.Common.Request.Parser, new[]{ "ReqAccountSummaryUpdate", "ReqAccountAssetTransfer", "ReqQueryAssetTransferHistory", "ReqLogin", "ReqLogout", "ReqHeartBeat", "ReqUploadAppBehaviour", "ReqSubscribeTickerData", "ReqSubscribeTradeData", "ReqSubscribeCandlestickUpdate", "ReqCandlestickQuery", "ReqTradeRule", "ReqSelfSelectedSymbol", "ReqModifyStreategySetting", "ReqQueryStrategyExectionInfo", "ReqPlaceOrder", "ReqModifyOrder", "ReqCancelOrder", "ReqOneKeyClosePosition", "ReqQueryActiveOrders", "ReqQueryHistoricalOrders", "ReqQueryPositions", "ReqSetLeverage", "ReqQueryLeverage", "ReqQueryLeverageBracket" }, new[]{ "RequestType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Common.Response), global::Lampyris.Crypto.Protocol.Common.Response.Parser, new[]{ "AccountAssetInfoBean", "SubAccountInfoBean", "ResQuerySubAcccountList", "ResAccountSummaryUpdate", "AssetTransferHistoryInfoDetailBean", "AssetTransferHistoryInfoBean", "ResLogin", "ResHeartBeat", "ResNotice", "SymbolTickerDataBean", "ResSubscribeTickerData", "SymbolTradeDataBean", "TradeDataBean", "ResCandlestickQuery", "CandlestickUpdateBean", "CandlestickBean", "ResTradeRule", "SymbolTradeRuleBean", "MarketMonitorNoticeListBean", "MarketMonitorNoticeBean", "SelfSelectedSymbolInfoBean", "SelfSelectedSymbolGroupBean", "ResSelfSelectedSymbol", "StreategyConfigBean", "StreategyFieldBean", "ResModifyStreategySetting", "ResStreategySettings", "StrategyExectionInfoBean", "ResQueryStrategyExectionInfo", "ConditionTriggerBean", "OrderBean", "OrderStatusBean", "LeverageBean", "ResQueryLeverage", "ResQueryLeverageBracket", "SymbolLeverageBracketBean", "LeverageBracketBean" }, new[]{ "ResponseType" }, null, null, null)
           }));
     }
     #endregion
@@ -188,12 +194,6 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Request(Request other) : this() {
       switch (other.RequestTypeCase) {
-        case RequestTypeOneofCase.ReqLogin:
-          ReqLogin = other.ReqLogin.Clone();
-          break;
-        case RequestTypeOneofCase.ReqHeartBeat:
-          ReqHeartBeat = other.ReqHeartBeat.Clone();
-          break;
         case RequestTypeOneofCase.ReqAccountSummaryUpdate:
           ReqAccountSummaryUpdate = other.ReqAccountSummaryUpdate.Clone();
           break;
@@ -202,6 +202,15 @@ namespace Lampyris.Crypto.Protocol.Common {
           break;
         case RequestTypeOneofCase.ReqQueryAssetTransferHistory:
           ReqQueryAssetTransferHistory = other.ReqQueryAssetTransferHistory.Clone();
+          break;
+        case RequestTypeOneofCase.ReqLogin:
+          ReqLogin = other.ReqLogin.Clone();
+          break;
+        case RequestTypeOneofCase.ReqLogout:
+          ReqLogout = other.ReqLogout.Clone();
+          break;
+        case RequestTypeOneofCase.ReqHeartBeat:
+          ReqHeartBeat = other.ReqHeartBeat.Clone();
           break;
         case RequestTypeOneofCase.ReqUploadAppBehaviour:
           ReqUploadAppBehaviour = other.ReqUploadAppBehaviour.Clone();
@@ -271,32 +280,8 @@ namespace Lampyris.Crypto.Protocol.Common {
       return new Request(this);
     }
 
-    /// <summary>Field number for the "reqLogin" field.</summary>
-    public const int ReqLoginFieldNumber = 1;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Lampyris.Crypto.Protocol.App.ReqLogin ReqLogin {
-      get { return requestTypeCase_ == RequestTypeOneofCase.ReqLogin ? (global::Lampyris.Crypto.Protocol.App.ReqLogin) requestType_ : null; }
-      set {
-        requestType_ = value;
-        requestTypeCase_ = value == null ? RequestTypeOneofCase.None : RequestTypeOneofCase.ReqLogin;
-      }
-    }
-
-    /// <summary>Field number for the "reqHeartBeat" field.</summary>
-    public const int ReqHeartBeatFieldNumber = 2;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Lampyris.Crypto.Protocol.App.ReqHeartBeat ReqHeartBeat {
-      get { return requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat ? (global::Lampyris.Crypto.Protocol.App.ReqHeartBeat) requestType_ : null; }
-      set {
-        requestType_ = value;
-        requestTypeCase_ = value == null ? RequestTypeOneofCase.None : RequestTypeOneofCase.ReqHeartBeat;
-      }
-    }
-
     /// <summary>Field number for the "reqAccountSummaryUpdate" field.</summary>
-    public const int ReqAccountSummaryUpdateFieldNumber = 3;
+    public const int ReqAccountSummaryUpdateFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.ReqAccountSummaryUpdate ReqAccountSummaryUpdate {
@@ -308,7 +293,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqAccountAssetTransfer" field.</summary>
-    public const int ReqAccountAssetTransferFieldNumber = 4;
+    public const int ReqAccountAssetTransferFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.ReqAccountAssetTransfer ReqAccountAssetTransfer {
@@ -320,7 +305,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryAssetTransferHistory" field.</summary>
-    public const int ReqQueryAssetTransferHistoryFieldNumber = 5;
+    public const int ReqQueryAssetTransferHistoryFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.ReqQueryAssetTransferHistory ReqQueryAssetTransferHistory {
@@ -331,8 +316,44 @@ namespace Lampyris.Crypto.Protocol.Common {
       }
     }
 
+    /// <summary>Field number for the "reqLogin" field.</summary>
+    public const int ReqLoginFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.App.ReqLogin ReqLogin {
+      get { return requestTypeCase_ == RequestTypeOneofCase.ReqLogin ? (global::Lampyris.Crypto.Protocol.App.ReqLogin) requestType_ : null; }
+      set {
+        requestType_ = value;
+        requestTypeCase_ = value == null ? RequestTypeOneofCase.None : RequestTypeOneofCase.ReqLogin;
+      }
+    }
+
+    /// <summary>Field number for the "reqLogout" field.</summary>
+    public const int ReqLogoutFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.App.ReqLogout ReqLogout {
+      get { return requestTypeCase_ == RequestTypeOneofCase.ReqLogout ? (global::Lampyris.Crypto.Protocol.App.ReqLogout) requestType_ : null; }
+      set {
+        requestType_ = value;
+        requestTypeCase_ = value == null ? RequestTypeOneofCase.None : RequestTypeOneofCase.ReqLogout;
+      }
+    }
+
+    /// <summary>Field number for the "reqHeartBeat" field.</summary>
+    public const int ReqHeartBeatFieldNumber = 6;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.App.ReqHeartBeat ReqHeartBeat {
+      get { return requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat ? (global::Lampyris.Crypto.Protocol.App.ReqHeartBeat) requestType_ : null; }
+      set {
+        requestType_ = value;
+        requestTypeCase_ = value == null ? RequestTypeOneofCase.None : RequestTypeOneofCase.ReqHeartBeat;
+      }
+    }
+
     /// <summary>Field number for the "reqUploadAppBehaviour" field.</summary>
-    public const int ReqUploadAppBehaviourFieldNumber = 6;
+    public const int ReqUploadAppBehaviourFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour ReqUploadAppBehaviour {
@@ -344,7 +365,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqSubscribeTickerData" field.</summary>
-    public const int ReqSubscribeTickerDataFieldNumber = 7;
+    public const int ReqSubscribeTickerDataFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData ReqSubscribeTickerData {
@@ -356,7 +377,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqSubscribeTradeData" field.</summary>
-    public const int ReqSubscribeTradeDataFieldNumber = 8;
+    public const int ReqSubscribeTradeDataFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData ReqSubscribeTradeData {
@@ -368,7 +389,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqSubscribeCandlestickUpdate" field.</summary>
-    public const int ReqSubscribeCandlestickUpdateFieldNumber = 9;
+    public const int ReqSubscribeCandlestickUpdateFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeCandlestickUpdate ReqSubscribeCandlestickUpdate {
@@ -380,7 +401,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqCandlestickQuery" field.</summary>
-    public const int ReqCandlestickQueryFieldNumber = 10;
+    public const int ReqCandlestickQueryFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ReqCandlestickQuery ReqCandlestickQuery {
@@ -392,7 +413,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqTradeRule" field.</summary>
-    public const int ReqTradeRuleFieldNumber = 11;
+    public const int ReqTradeRuleFieldNumber = 12;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule ReqTradeRule {
@@ -404,7 +425,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqSelfSelectedSymbol" field.</summary>
-    public const int ReqSelfSelectedSymbolFieldNumber = 12;
+    public const int ReqSelfSelectedSymbolFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol ReqSelfSelectedSymbol {
@@ -416,7 +437,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqModifyStreategySetting" field.</summary>
-    public const int ReqModifyStreategySettingFieldNumber = 13;
+    public const int ReqModifyStreategySettingFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.ReqModifyStreategySetting ReqModifyStreategySetting {
@@ -428,7 +449,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryStrategyExectionInfo" field.</summary>
-    public const int ReqQueryStrategyExectionInfoFieldNumber = 14;
+    public const int ReqQueryStrategyExectionInfoFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.ReqQueryStrategyExectionInfo ReqQueryStrategyExectionInfo {
@@ -440,7 +461,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqPlaceOrder" field.</summary>
-    public const int ReqPlaceOrderFieldNumber = 15;
+    public const int ReqPlaceOrderFieldNumber = 16;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder ReqPlaceOrder {
@@ -452,7 +473,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqModifyOrder" field.</summary>
-    public const int ReqModifyOrderFieldNumber = 16;
+    public const int ReqModifyOrderFieldNumber = 17;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder ReqModifyOrder {
@@ -464,7 +485,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqCancelOrder" field.</summary>
-    public const int ReqCancelOrderFieldNumber = 17;
+    public const int ReqCancelOrderFieldNumber = 18;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder ReqCancelOrder {
@@ -476,7 +497,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqOneKeyClosePosition" field.</summary>
-    public const int ReqOneKeyClosePositionFieldNumber = 18;
+    public const int ReqOneKeyClosePositionFieldNumber = 19;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition ReqOneKeyClosePosition {
@@ -488,7 +509,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryActiveOrders" field.</summary>
-    public const int ReqQueryActiveOrdersFieldNumber = 19;
+    public const int ReqQueryActiveOrdersFieldNumber = 20;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders ReqQueryActiveOrders {
@@ -500,7 +521,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryHistoricalOrders" field.</summary>
-    public const int ReqQueryHistoricalOrdersFieldNumber = 20;
+    public const int ReqQueryHistoricalOrdersFieldNumber = 21;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders ReqQueryHistoricalOrders {
@@ -512,7 +533,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryPositions" field.</summary>
-    public const int ReqQueryPositionsFieldNumber = 21;
+    public const int ReqQueryPositionsFieldNumber = 22;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions ReqQueryPositions {
@@ -524,7 +545,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqSetLeverage" field.</summary>
-    public const int ReqSetLeverageFieldNumber = 22;
+    public const int ReqSetLeverageFieldNumber = 23;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage ReqSetLeverage {
@@ -536,7 +557,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryLeverage" field.</summary>
-    public const int ReqQueryLeverageFieldNumber = 23;
+    public const int ReqQueryLeverageFieldNumber = 24;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage ReqQueryLeverage {
@@ -548,7 +569,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "reqQueryLeverageBracket" field.</summary>
-    public const int ReqQueryLeverageBracketFieldNumber = 24;
+    public const int ReqQueryLeverageBracketFieldNumber = 25;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverageBracket ReqQueryLeverageBracket {
@@ -563,30 +584,31 @@ namespace Lampyris.Crypto.Protocol.Common {
     /// <summary>Enum of possible cases for the "request_type" oneof.</summary>
     public enum RequestTypeOneofCase {
       None = 0,
-      ReqLogin = 1,
-      ReqHeartBeat = 2,
-      ReqAccountSummaryUpdate = 3,
-      ReqAccountAssetTransfer = 4,
-      ReqQueryAssetTransferHistory = 5,
-      ReqUploadAppBehaviour = 6,
-      ReqSubscribeTickerData = 7,
-      ReqSubscribeTradeData = 8,
-      ReqSubscribeCandlestickUpdate = 9,
-      ReqCandlestickQuery = 10,
-      ReqTradeRule = 11,
-      ReqSelfSelectedSymbol = 12,
-      ReqModifyStreategySetting = 13,
-      ReqQueryStrategyExectionInfo = 14,
-      ReqPlaceOrder = 15,
-      ReqModifyOrder = 16,
-      ReqCancelOrder = 17,
-      ReqOneKeyClosePosition = 18,
-      ReqQueryActiveOrders = 19,
-      ReqQueryHistoricalOrders = 20,
-      ReqQueryPositions = 21,
-      ReqSetLeverage = 22,
-      ReqQueryLeverage = 23,
-      ReqQueryLeverageBracket = 24,
+      ReqAccountSummaryUpdate = 1,
+      ReqAccountAssetTransfer = 2,
+      ReqQueryAssetTransferHistory = 3,
+      ReqLogin = 4,
+      ReqLogout = 5,
+      ReqHeartBeat = 6,
+      ReqUploadAppBehaviour = 7,
+      ReqSubscribeTickerData = 8,
+      ReqSubscribeTradeData = 9,
+      ReqSubscribeCandlestickUpdate = 10,
+      ReqCandlestickQuery = 11,
+      ReqTradeRule = 12,
+      ReqSelfSelectedSymbol = 13,
+      ReqModifyStreategySetting = 14,
+      ReqQueryStrategyExectionInfo = 15,
+      ReqPlaceOrder = 16,
+      ReqModifyOrder = 17,
+      ReqCancelOrder = 18,
+      ReqOneKeyClosePosition = 19,
+      ReqQueryActiveOrders = 20,
+      ReqQueryHistoricalOrders = 21,
+      ReqQueryPositions = 22,
+      ReqSetLeverage = 23,
+      ReqQueryLeverage = 24,
+      ReqQueryLeverageBracket = 25,
     }
     private RequestTypeOneofCase requestTypeCase_ = RequestTypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -617,11 +639,12 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ReqLogin, other.ReqLogin)) return false;
-      if (!object.Equals(ReqHeartBeat, other.ReqHeartBeat)) return false;
       if (!object.Equals(ReqAccountSummaryUpdate, other.ReqAccountSummaryUpdate)) return false;
       if (!object.Equals(ReqAccountAssetTransfer, other.ReqAccountAssetTransfer)) return false;
       if (!object.Equals(ReqQueryAssetTransferHistory, other.ReqQueryAssetTransferHistory)) return false;
+      if (!object.Equals(ReqLogin, other.ReqLogin)) return false;
+      if (!object.Equals(ReqLogout, other.ReqLogout)) return false;
+      if (!object.Equals(ReqHeartBeat, other.ReqHeartBeat)) return false;
       if (!object.Equals(ReqUploadAppBehaviour, other.ReqUploadAppBehaviour)) return false;
       if (!object.Equals(ReqSubscribeTickerData, other.ReqSubscribeTickerData)) return false;
       if (!object.Equals(ReqSubscribeTradeData, other.ReqSubscribeTradeData)) return false;
@@ -649,11 +672,12 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) hash ^= ReqLogin.GetHashCode();
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) hash ^= ReqHeartBeat.GetHashCode();
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountSummaryUpdate) hash ^= ReqAccountSummaryUpdate.GetHashCode();
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountAssetTransfer) hash ^= ReqAccountAssetTransfer.GetHashCode();
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryAssetTransferHistory) hash ^= ReqQueryAssetTransferHistory.GetHashCode();
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) hash ^= ReqLogin.GetHashCode();
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogout) hash ^= ReqLogout.GetHashCode();
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) hash ^= ReqHeartBeat.GetHashCode();
       if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) hash ^= ReqUploadAppBehaviour.GetHashCode();
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTickerData) hash ^= ReqSubscribeTickerData.GetHashCode();
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTradeData) hash ^= ReqSubscribeTradeData.GetHashCode();
@@ -692,100 +716,104 @@ namespace Lampyris.Crypto.Protocol.Common {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
-        output.WriteRawTag(10);
-        output.WriteMessage(ReqLogin);
-      }
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
-        output.WriteRawTag(18);
-        output.WriteMessage(ReqHeartBeat);
-      }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountSummaryUpdate) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(10);
         output.WriteMessage(ReqAccountSummaryUpdate);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountAssetTransfer) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteMessage(ReqAccountAssetTransfer);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryAssetTransferHistory) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(26);
         output.WriteMessage(ReqQueryAssetTransferHistory);
       }
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ReqLogin);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogout) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ReqLogout);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
         output.WriteRawTag(50);
+        output.WriteMessage(ReqHeartBeat);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
+        output.WriteRawTag(58);
         output.WriteMessage(ReqUploadAppBehaviour);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTickerData) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(ReqSubscribeTickerData);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTradeData) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(ReqSubscribeTradeData);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeCandlestickUpdate) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(82);
         output.WriteMessage(ReqSubscribeCandlestickUpdate);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqCandlestickQuery) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(90);
         output.WriteMessage(ReqCandlestickQuery);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqTradeRule) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(98);
         output.WriteMessage(ReqTradeRule);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSelfSelectedSymbol) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(ReqSelfSelectedSymbol);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyStreategySetting) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(ReqModifyStreategySetting);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryStrategyExectionInfo) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteMessage(ReqQueryStrategyExectionInfo);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqPlaceOrder) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(130, 1);
         output.WriteMessage(ReqPlaceOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyOrder) {
-        output.WriteRawTag(130, 1);
+        output.WriteRawTag(138, 1);
         output.WriteMessage(ReqModifyOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqCancelOrder) {
-        output.WriteRawTag(138, 1);
+        output.WriteRawTag(146, 1);
         output.WriteMessage(ReqCancelOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqOneKeyClosePosition) {
-        output.WriteRawTag(146, 1);
+        output.WriteRawTag(154, 1);
         output.WriteMessage(ReqOneKeyClosePosition);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryActiveOrders) {
-        output.WriteRawTag(154, 1);
+        output.WriteRawTag(162, 1);
         output.WriteMessage(ReqQueryActiveOrders);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryHistoricalOrders) {
-        output.WriteRawTag(162, 1);
+        output.WriteRawTag(170, 1);
         output.WriteMessage(ReqQueryHistoricalOrders);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryPositions) {
-        output.WriteRawTag(170, 1);
+        output.WriteRawTag(178, 1);
         output.WriteMessage(ReqQueryPositions);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSetLeverage) {
-        output.WriteRawTag(178, 1);
+        output.WriteRawTag(186, 1);
         output.WriteMessage(ReqSetLeverage);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverage) {
-        output.WriteRawTag(186, 1);
+        output.WriteRawTag(194, 1);
         output.WriteMessage(ReqQueryLeverage);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverageBracket) {
-        output.WriteRawTag(194, 1);
+        output.WriteRawTag(202, 1);
         output.WriteMessage(ReqQueryLeverageBracket);
       }
       if (_unknownFields != null) {
@@ -798,100 +826,104 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
-        output.WriteRawTag(10);
-        output.WriteMessage(ReqLogin);
-      }
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
-        output.WriteRawTag(18);
-        output.WriteMessage(ReqHeartBeat);
-      }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountSummaryUpdate) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(10);
         output.WriteMessage(ReqAccountSummaryUpdate);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountAssetTransfer) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(18);
         output.WriteMessage(ReqAccountAssetTransfer);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryAssetTransferHistory) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(26);
         output.WriteMessage(ReqQueryAssetTransferHistory);
       }
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ReqLogin);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogout) {
+        output.WriteRawTag(42);
+        output.WriteMessage(ReqLogout);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
         output.WriteRawTag(50);
+        output.WriteMessage(ReqHeartBeat);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
+        output.WriteRawTag(58);
         output.WriteMessage(ReqUploadAppBehaviour);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTickerData) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(ReqSubscribeTickerData);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTradeData) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(ReqSubscribeTradeData);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeCandlestickUpdate) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(82);
         output.WriteMessage(ReqSubscribeCandlestickUpdate);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqCandlestickQuery) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(90);
         output.WriteMessage(ReqCandlestickQuery);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqTradeRule) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(98);
         output.WriteMessage(ReqTradeRule);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSelfSelectedSymbol) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(ReqSelfSelectedSymbol);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyStreategySetting) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(ReqModifyStreategySetting);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryStrategyExectionInfo) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteMessage(ReqQueryStrategyExectionInfo);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqPlaceOrder) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(130, 1);
         output.WriteMessage(ReqPlaceOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyOrder) {
-        output.WriteRawTag(130, 1);
+        output.WriteRawTag(138, 1);
         output.WriteMessage(ReqModifyOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqCancelOrder) {
-        output.WriteRawTag(138, 1);
+        output.WriteRawTag(146, 1);
         output.WriteMessage(ReqCancelOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqOneKeyClosePosition) {
-        output.WriteRawTag(146, 1);
+        output.WriteRawTag(154, 1);
         output.WriteMessage(ReqOneKeyClosePosition);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryActiveOrders) {
-        output.WriteRawTag(154, 1);
+        output.WriteRawTag(162, 1);
         output.WriteMessage(ReqQueryActiveOrders);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryHistoricalOrders) {
-        output.WriteRawTag(162, 1);
+        output.WriteRawTag(170, 1);
         output.WriteMessage(ReqQueryHistoricalOrders);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryPositions) {
-        output.WriteRawTag(170, 1);
+        output.WriteRawTag(178, 1);
         output.WriteMessage(ReqQueryPositions);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqSetLeverage) {
-        output.WriteRawTag(178, 1);
+        output.WriteRawTag(186, 1);
         output.WriteMessage(ReqSetLeverage);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverage) {
-        output.WriteRawTag(186, 1);
+        output.WriteRawTag(194, 1);
         output.WriteMessage(ReqQueryLeverage);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverageBracket) {
-        output.WriteRawTag(194, 1);
+        output.WriteRawTag(202, 1);
         output.WriteMessage(ReqQueryLeverageBracket);
       }
       if (_unknownFields != null) {
@@ -904,12 +936,6 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqLogin);
-      }
-      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqHeartBeat);
-      }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountSummaryUpdate) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqAccountSummaryUpdate);
       }
@@ -918,6 +944,15 @@ namespace Lampyris.Crypto.Protocol.Common {
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryAssetTransferHistory) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqQueryAssetTransferHistory);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqLogin);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqLogout) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqLogout);
+      }
+      if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqHeartBeat);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqUploadAppBehaviour);
@@ -947,7 +982,7 @@ namespace Lampyris.Crypto.Protocol.Common {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqQueryStrategyExectionInfo);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqPlaceOrder) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReqPlaceOrder);
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReqPlaceOrder);
       }
       if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyOrder) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(ReqModifyOrder);
@@ -989,18 +1024,6 @@ namespace Lampyris.Crypto.Protocol.Common {
         return;
       }
       switch (other.RequestTypeCase) {
-        case RequestTypeOneofCase.ReqLogin:
-          if (ReqLogin == null) {
-            ReqLogin = new global::Lampyris.Crypto.Protocol.App.ReqLogin();
-          }
-          ReqLogin.MergeFrom(other.ReqLogin);
-          break;
-        case RequestTypeOneofCase.ReqHeartBeat:
-          if (ReqHeartBeat == null) {
-            ReqHeartBeat = new global::Lampyris.Crypto.Protocol.App.ReqHeartBeat();
-          }
-          ReqHeartBeat.MergeFrom(other.ReqHeartBeat);
-          break;
         case RequestTypeOneofCase.ReqAccountSummaryUpdate:
           if (ReqAccountSummaryUpdate == null) {
             ReqAccountSummaryUpdate = new global::Lampyris.Crypto.Protocol.Account.ReqAccountSummaryUpdate();
@@ -1018,6 +1041,24 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryAssetTransferHistory = new global::Lampyris.Crypto.Protocol.Account.ReqQueryAssetTransferHistory();
           }
           ReqQueryAssetTransferHistory.MergeFrom(other.ReqQueryAssetTransferHistory);
+          break;
+        case RequestTypeOneofCase.ReqLogin:
+          if (ReqLogin == null) {
+            ReqLogin = new global::Lampyris.Crypto.Protocol.App.ReqLogin();
+          }
+          ReqLogin.MergeFrom(other.ReqLogin);
+          break;
+        case RequestTypeOneofCase.ReqLogout:
+          if (ReqLogout == null) {
+            ReqLogout = new global::Lampyris.Crypto.Protocol.App.ReqLogout();
+          }
+          ReqLogout.MergeFrom(other.ReqLogout);
+          break;
+        case RequestTypeOneofCase.ReqHeartBeat:
+          if (ReqHeartBeat == null) {
+            ReqHeartBeat = new global::Lampyris.Crypto.Protocol.App.ReqHeartBeat();
+          }
+          ReqHeartBeat.MergeFrom(other.ReqHeartBeat);
           break;
         case RequestTypeOneofCase.ReqUploadAppBehaviour:
           if (ReqUploadAppBehaviour == null) {
@@ -1155,24 +1196,6 @@ namespace Lampyris.Crypto.Protocol.Common {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::Lampyris.Crypto.Protocol.App.ReqLogin subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqLogin();
-            if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
-              subBuilder.MergeFrom(ReqLogin);
-            }
-            input.ReadMessage(subBuilder);
-            ReqLogin = subBuilder;
-            break;
-          }
-          case 18: {
-            global::Lampyris.Crypto.Protocol.App.ReqHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqHeartBeat();
-            if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
-              subBuilder.MergeFrom(ReqHeartBeat);
-            }
-            input.ReadMessage(subBuilder);
-            ReqHeartBeat = subBuilder;
-            break;
-          }
-          case 26: {
             global::Lampyris.Crypto.Protocol.Account.ReqAccountSummaryUpdate subBuilder = new global::Lampyris.Crypto.Protocol.Account.ReqAccountSummaryUpdate();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountSummaryUpdate) {
               subBuilder.MergeFrom(ReqAccountSummaryUpdate);
@@ -1181,7 +1204,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqAccountSummaryUpdate = subBuilder;
             break;
           }
-          case 34: {
+          case 18: {
             global::Lampyris.Crypto.Protocol.Account.ReqAccountAssetTransfer subBuilder = new global::Lampyris.Crypto.Protocol.Account.ReqAccountAssetTransfer();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountAssetTransfer) {
               subBuilder.MergeFrom(ReqAccountAssetTransfer);
@@ -1190,7 +1213,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqAccountAssetTransfer = subBuilder;
             break;
           }
-          case 42: {
+          case 26: {
             global::Lampyris.Crypto.Protocol.Account.ReqQueryAssetTransferHistory subBuilder = new global::Lampyris.Crypto.Protocol.Account.ReqQueryAssetTransferHistory();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryAssetTransferHistory) {
               subBuilder.MergeFrom(ReqQueryAssetTransferHistory);
@@ -1199,7 +1222,34 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryAssetTransferHistory = subBuilder;
             break;
           }
+          case 34: {
+            global::Lampyris.Crypto.Protocol.App.ReqLogin subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqLogin();
+            if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
+              subBuilder.MergeFrom(ReqLogin);
+            }
+            input.ReadMessage(subBuilder);
+            ReqLogin = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Lampyris.Crypto.Protocol.App.ReqLogout subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqLogout();
+            if (requestTypeCase_ == RequestTypeOneofCase.ReqLogout) {
+              subBuilder.MergeFrom(ReqLogout);
+            }
+            input.ReadMessage(subBuilder);
+            ReqLogout = subBuilder;
+            break;
+          }
           case 50: {
+            global::Lampyris.Crypto.Protocol.App.ReqHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqHeartBeat();
+            if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
+              subBuilder.MergeFrom(ReqHeartBeat);
+            }
+            input.ReadMessage(subBuilder);
+            ReqHeartBeat = subBuilder;
+            break;
+          }
+          case 58: {
             global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
               subBuilder.MergeFrom(ReqUploadAppBehaviour);
@@ -1208,7 +1258,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqUploadAppBehaviour = subBuilder;
             break;
           }
-          case 58: {
+          case 66: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTickerData) {
               subBuilder.MergeFrom(ReqSubscribeTickerData);
@@ -1217,7 +1267,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSubscribeTickerData = subBuilder;
             break;
           }
-          case 66: {
+          case 74: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTradeData) {
               subBuilder.MergeFrom(ReqSubscribeTradeData);
@@ -1226,7 +1276,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSubscribeTradeData = subBuilder;
             break;
           }
-          case 74: {
+          case 82: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeCandlestickUpdate subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeCandlestickUpdate();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeCandlestickUpdate) {
               subBuilder.MergeFrom(ReqSubscribeCandlestickUpdate);
@@ -1235,7 +1285,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSubscribeCandlestickUpdate = subBuilder;
             break;
           }
-          case 82: {
+          case 90: {
             global::Lampyris.Crypto.Protocol.Quote.ReqCandlestickQuery subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqCandlestickQuery();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqCandlestickQuery) {
               subBuilder.MergeFrom(ReqCandlestickQuery);
@@ -1244,7 +1294,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqCandlestickQuery = subBuilder;
             break;
           }
-          case 90: {
+          case 98: {
             global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqTradeRule) {
               subBuilder.MergeFrom(ReqTradeRule);
@@ -1253,7 +1303,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqTradeRule = subBuilder;
             break;
           }
-          case 98: {
+          case 106: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSelfSelectedSymbol) {
               subBuilder.MergeFrom(ReqSelfSelectedSymbol);
@@ -1262,7 +1312,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSelfSelectedSymbol = subBuilder;
             break;
           }
-          case 106: {
+          case 114: {
             global::Lampyris.Crypto.Protocol.Strategy.ReqModifyStreategySetting subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ReqModifyStreategySetting();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyStreategySetting) {
               subBuilder.MergeFrom(ReqModifyStreategySetting);
@@ -1271,7 +1321,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqModifyStreategySetting = subBuilder;
             break;
           }
-          case 114: {
+          case 122: {
             global::Lampyris.Crypto.Protocol.Strategy.ReqQueryStrategyExectionInfo subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ReqQueryStrategyExectionInfo();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryStrategyExectionInfo) {
               subBuilder.MergeFrom(ReqQueryStrategyExectionInfo);
@@ -1280,7 +1330,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryStrategyExectionInfo = subBuilder;
             break;
           }
-          case 122: {
+          case 130: {
             global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqPlaceOrder) {
               subBuilder.MergeFrom(ReqPlaceOrder);
@@ -1289,7 +1339,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqPlaceOrder = subBuilder;
             break;
           }
-          case 130: {
+          case 138: {
             global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyOrder) {
               subBuilder.MergeFrom(ReqModifyOrder);
@@ -1298,7 +1348,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqModifyOrder = subBuilder;
             break;
           }
-          case 138: {
+          case 146: {
             global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqCancelOrder) {
               subBuilder.MergeFrom(ReqCancelOrder);
@@ -1307,7 +1357,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqCancelOrder = subBuilder;
             break;
           }
-          case 146: {
+          case 154: {
             global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqOneKeyClosePosition) {
               subBuilder.MergeFrom(ReqOneKeyClosePosition);
@@ -1316,7 +1366,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqOneKeyClosePosition = subBuilder;
             break;
           }
-          case 154: {
+          case 162: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryActiveOrders) {
               subBuilder.MergeFrom(ReqQueryActiveOrders);
@@ -1325,7 +1375,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryActiveOrders = subBuilder;
             break;
           }
-          case 162: {
+          case 170: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryHistoricalOrders) {
               subBuilder.MergeFrom(ReqQueryHistoricalOrders);
@@ -1334,7 +1384,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryHistoricalOrders = subBuilder;
             break;
           }
-          case 170: {
+          case 178: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryPositions) {
               subBuilder.MergeFrom(ReqQueryPositions);
@@ -1343,7 +1393,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryPositions = subBuilder;
             break;
           }
-          case 178: {
+          case 186: {
             global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSetLeverage) {
               subBuilder.MergeFrom(ReqSetLeverage);
@@ -1352,7 +1402,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSetLeverage = subBuilder;
             break;
           }
-          case 186: {
+          case 194: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverage) {
               subBuilder.MergeFrom(ReqQueryLeverage);
@@ -1361,7 +1411,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryLeverage = subBuilder;
             break;
           }
-          case 194: {
+          case 202: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverageBracket subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverageBracket();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverageBracket) {
               subBuilder.MergeFrom(ReqQueryLeverageBracket);
@@ -1390,24 +1440,6 @@ namespace Lampyris.Crypto.Protocol.Common {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::Lampyris.Crypto.Protocol.App.ReqLogin subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqLogin();
-            if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
-              subBuilder.MergeFrom(ReqLogin);
-            }
-            input.ReadMessage(subBuilder);
-            ReqLogin = subBuilder;
-            break;
-          }
-          case 18: {
-            global::Lampyris.Crypto.Protocol.App.ReqHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqHeartBeat();
-            if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
-              subBuilder.MergeFrom(ReqHeartBeat);
-            }
-            input.ReadMessage(subBuilder);
-            ReqHeartBeat = subBuilder;
-            break;
-          }
-          case 26: {
             global::Lampyris.Crypto.Protocol.Account.ReqAccountSummaryUpdate subBuilder = new global::Lampyris.Crypto.Protocol.Account.ReqAccountSummaryUpdate();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountSummaryUpdate) {
               subBuilder.MergeFrom(ReqAccountSummaryUpdate);
@@ -1416,7 +1448,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqAccountSummaryUpdate = subBuilder;
             break;
           }
-          case 34: {
+          case 18: {
             global::Lampyris.Crypto.Protocol.Account.ReqAccountAssetTransfer subBuilder = new global::Lampyris.Crypto.Protocol.Account.ReqAccountAssetTransfer();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqAccountAssetTransfer) {
               subBuilder.MergeFrom(ReqAccountAssetTransfer);
@@ -1425,7 +1457,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqAccountAssetTransfer = subBuilder;
             break;
           }
-          case 42: {
+          case 26: {
             global::Lampyris.Crypto.Protocol.Account.ReqQueryAssetTransferHistory subBuilder = new global::Lampyris.Crypto.Protocol.Account.ReqQueryAssetTransferHistory();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryAssetTransferHistory) {
               subBuilder.MergeFrom(ReqQueryAssetTransferHistory);
@@ -1434,7 +1466,34 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryAssetTransferHistory = subBuilder;
             break;
           }
+          case 34: {
+            global::Lampyris.Crypto.Protocol.App.ReqLogin subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqLogin();
+            if (requestTypeCase_ == RequestTypeOneofCase.ReqLogin) {
+              subBuilder.MergeFrom(ReqLogin);
+            }
+            input.ReadMessage(subBuilder);
+            ReqLogin = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Lampyris.Crypto.Protocol.App.ReqLogout subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqLogout();
+            if (requestTypeCase_ == RequestTypeOneofCase.ReqLogout) {
+              subBuilder.MergeFrom(ReqLogout);
+            }
+            input.ReadMessage(subBuilder);
+            ReqLogout = subBuilder;
+            break;
+          }
           case 50: {
+            global::Lampyris.Crypto.Protocol.App.ReqHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqHeartBeat();
+            if (requestTypeCase_ == RequestTypeOneofCase.ReqHeartBeat) {
+              subBuilder.MergeFrom(ReqHeartBeat);
+            }
+            input.ReadMessage(subBuilder);
+            ReqHeartBeat = subBuilder;
+            break;
+          }
+          case 58: {
             global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour subBuilder = new global::Lampyris.Crypto.Protocol.App.ReqUploadAppBehaviour();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqUploadAppBehaviour) {
               subBuilder.MergeFrom(ReqUploadAppBehaviour);
@@ -1443,7 +1502,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqUploadAppBehaviour = subBuilder;
             break;
           }
-          case 58: {
+          case 66: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTickerData) {
               subBuilder.MergeFrom(ReqSubscribeTickerData);
@@ -1452,7 +1511,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSubscribeTickerData = subBuilder;
             break;
           }
-          case 66: {
+          case 74: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeTradeData) {
               subBuilder.MergeFrom(ReqSubscribeTradeData);
@@ -1461,7 +1520,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSubscribeTradeData = subBuilder;
             break;
           }
-          case 74: {
+          case 82: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeCandlestickUpdate subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeCandlestickUpdate();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSubscribeCandlestickUpdate) {
               subBuilder.MergeFrom(ReqSubscribeCandlestickUpdate);
@@ -1470,7 +1529,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSubscribeCandlestickUpdate = subBuilder;
             break;
           }
-          case 82: {
+          case 90: {
             global::Lampyris.Crypto.Protocol.Quote.ReqCandlestickQuery subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqCandlestickQuery();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqCandlestickQuery) {
               subBuilder.MergeFrom(ReqCandlestickQuery);
@@ -1479,7 +1538,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqCandlestickQuery = subBuilder;
             break;
           }
-          case 90: {
+          case 98: {
             global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqTradeRule) {
               subBuilder.MergeFrom(ReqTradeRule);
@@ -1488,7 +1547,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqTradeRule = subBuilder;
             break;
           }
-          case 98: {
+          case 106: {
             global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSelfSelectedSymbol) {
               subBuilder.MergeFrom(ReqSelfSelectedSymbol);
@@ -1497,7 +1556,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSelfSelectedSymbol = subBuilder;
             break;
           }
-          case 106: {
+          case 114: {
             global::Lampyris.Crypto.Protocol.Strategy.ReqModifyStreategySetting subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ReqModifyStreategySetting();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyStreategySetting) {
               subBuilder.MergeFrom(ReqModifyStreategySetting);
@@ -1506,7 +1565,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqModifyStreategySetting = subBuilder;
             break;
           }
-          case 114: {
+          case 122: {
             global::Lampyris.Crypto.Protocol.Strategy.ReqQueryStrategyExectionInfo subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ReqQueryStrategyExectionInfo();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryStrategyExectionInfo) {
               subBuilder.MergeFrom(ReqQueryStrategyExectionInfo);
@@ -1515,7 +1574,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryStrategyExectionInfo = subBuilder;
             break;
           }
-          case 122: {
+          case 130: {
             global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqPlaceOrder) {
               subBuilder.MergeFrom(ReqPlaceOrder);
@@ -1524,7 +1583,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqPlaceOrder = subBuilder;
             break;
           }
-          case 130: {
+          case 138: {
             global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqModifyOrder) {
               subBuilder.MergeFrom(ReqModifyOrder);
@@ -1533,7 +1592,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqModifyOrder = subBuilder;
             break;
           }
-          case 138: {
+          case 146: {
             global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqCancelOrder) {
               subBuilder.MergeFrom(ReqCancelOrder);
@@ -1542,7 +1601,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqCancelOrder = subBuilder;
             break;
           }
-          case 146: {
+          case 154: {
             global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqOneKeyClosePosition) {
               subBuilder.MergeFrom(ReqOneKeyClosePosition);
@@ -1551,7 +1610,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqOneKeyClosePosition = subBuilder;
             break;
           }
-          case 154: {
+          case 162: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryActiveOrders) {
               subBuilder.MergeFrom(ReqQueryActiveOrders);
@@ -1560,7 +1619,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryActiveOrders = subBuilder;
             break;
           }
-          case 162: {
+          case 170: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryHistoricalOrders) {
               subBuilder.MergeFrom(ReqQueryHistoricalOrders);
@@ -1569,7 +1628,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryHistoricalOrders = subBuilder;
             break;
           }
-          case 170: {
+          case 178: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryPositions) {
               subBuilder.MergeFrom(ReqQueryPositions);
@@ -1578,7 +1637,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryPositions = subBuilder;
             break;
           }
-          case 178: {
+          case 186: {
             global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqSetLeverage) {
               subBuilder.MergeFrom(ReqSetLeverage);
@@ -1587,7 +1646,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqSetLeverage = subBuilder;
             break;
           }
-          case 186: {
+          case 194: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverage) {
               subBuilder.MergeFrom(ReqQueryLeverage);
@@ -1596,7 +1655,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ReqQueryLeverage = subBuilder;
             break;
           }
-          case 194: {
+          case 202: {
             global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverageBracket subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverageBracket();
             if (requestTypeCase_ == RequestTypeOneofCase.ReqQueryLeverageBracket) {
               subBuilder.MergeFrom(ReqQueryLeverageBracket);
@@ -1648,9 +1707,6 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Response(Response other) : this() {
       switch (other.ResponseTypeCase) {
-        case ResponseTypeOneofCase.ResHeartBeat:
-          ResHeartBeat = other.ResHeartBeat.Clone();
-          break;
         case ResponseTypeOneofCase.AccountAssetInfoBean:
           AccountAssetInfoBean = other.AccountAssetInfoBean.Clone();
           break;
@@ -1671,6 +1727,12 @@ namespace Lampyris.Crypto.Protocol.Common {
           break;
         case ResponseTypeOneofCase.ResLogin:
           ResLogin = other.ResLogin.Clone();
+          break;
+        case ResponseTypeOneofCase.ResHeartBeat:
+          ResHeartBeat = other.ResHeartBeat.Clone();
+          break;
+        case ResponseTypeOneofCase.ResNotice:
+          ResNotice = other.ResNotice.Clone();
           break;
         case ResponseTypeOneofCase.SymbolTickerDataBean:
           SymbolTickerDataBean = other.SymbolTickerDataBean.Clone();
@@ -1693,8 +1755,14 @@ namespace Lampyris.Crypto.Protocol.Common {
         case ResponseTypeOneofCase.CandlestickBean:
           CandlestickBean = other.CandlestickBean.Clone();
           break;
+        case ResponseTypeOneofCase.ResTradeRule:
+          ResTradeRule = other.ResTradeRule.Clone();
+          break;
         case ResponseTypeOneofCase.SymbolTradeRuleBean:
           SymbolTradeRuleBean = other.SymbolTradeRuleBean.Clone();
+          break;
+        case ResponseTypeOneofCase.MarketMonitorNoticeListBean:
+          MarketMonitorNoticeListBean = other.MarketMonitorNoticeListBean.Clone();
           break;
         case ResponseTypeOneofCase.MarketMonitorNoticeBean:
           MarketMonitorNoticeBean = other.MarketMonitorNoticeBean.Clone();
@@ -1761,20 +1829,8 @@ namespace Lampyris.Crypto.Protocol.Common {
       return new Response(this);
     }
 
-    /// <summary>Field number for the "resHeartBeat" field.</summary>
-    public const int ResHeartBeatFieldNumber = 1;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Lampyris.Crypto.Protocol.App.ResHeartBeat ResHeartBeat {
-      get { return responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat ? (global::Lampyris.Crypto.Protocol.App.ResHeartBeat) responseType_ : null; }
-      set {
-        responseType_ = value;
-        responseTypeCase_ = value == null ? ResponseTypeOneofCase.None : ResponseTypeOneofCase.ResHeartBeat;
-      }
-    }
-
     /// <summary>Field number for the "accountAssetInfoBean" field.</summary>
-    public const int AccountAssetInfoBeanFieldNumber = 2;
+    public const int AccountAssetInfoBeanFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.AccountAssetInfoBean AccountAssetInfoBean {
@@ -1786,7 +1842,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "subAccountInfoBean" field.</summary>
-    public const int SubAccountInfoBeanFieldNumber = 3;
+    public const int SubAccountInfoBeanFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.SubAccountInfoBean SubAccountInfoBean {
@@ -1798,7 +1854,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resQuerySubAcccountList" field.</summary>
-    public const int ResQuerySubAcccountListFieldNumber = 4;
+    public const int ResQuerySubAcccountListFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.ResQuerySubAcccountList ResQuerySubAcccountList {
@@ -1810,7 +1866,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resAccountSummaryUpdate" field.</summary>
-    public const int ResAccountSummaryUpdateFieldNumber = 5;
+    public const int ResAccountSummaryUpdateFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.ResAccountSummaryUpdate ResAccountSummaryUpdate {
@@ -1822,7 +1878,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "assetTransferHistoryInfoDetailBean" field.</summary>
-    public const int AssetTransferHistoryInfoDetailBeanFieldNumber = 6;
+    public const int AssetTransferHistoryInfoDetailBeanFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoDetailBean AssetTransferHistoryInfoDetailBean {
@@ -1834,7 +1890,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "assetTransferHistoryInfoBean" field.</summary>
-    public const int AssetTransferHistoryInfoBeanFieldNumber = 7;
+    public const int AssetTransferHistoryInfoBeanFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoBean AssetTransferHistoryInfoBean {
@@ -1846,7 +1902,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resLogin" field.</summary>
-    public const int ResLoginFieldNumber = 8;
+    public const int ResLoginFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.App.ResLogin ResLogin {
@@ -1857,8 +1913,32 @@ namespace Lampyris.Crypto.Protocol.Common {
       }
     }
 
+    /// <summary>Field number for the "resHeartBeat" field.</summary>
+    public const int ResHeartBeatFieldNumber = 8;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.App.ResHeartBeat ResHeartBeat {
+      get { return responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat ? (global::Lampyris.Crypto.Protocol.App.ResHeartBeat) responseType_ : null; }
+      set {
+        responseType_ = value;
+        responseTypeCase_ = value == null ? ResponseTypeOneofCase.None : ResponseTypeOneofCase.ResHeartBeat;
+      }
+    }
+
+    /// <summary>Field number for the "resNotice" field.</summary>
+    public const int ResNoticeFieldNumber = 9;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.App.ResNotice ResNotice {
+      get { return responseTypeCase_ == ResponseTypeOneofCase.ResNotice ? (global::Lampyris.Crypto.Protocol.App.ResNotice) responseType_ : null; }
+      set {
+        responseType_ = value;
+        responseTypeCase_ = value == null ? ResponseTypeOneofCase.None : ResponseTypeOneofCase.ResNotice;
+      }
+    }
+
     /// <summary>Field number for the "symbolTickerDataBean" field.</summary>
-    public const int SymbolTickerDataBeanFieldNumber = 9;
+    public const int SymbolTickerDataBeanFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean SymbolTickerDataBean {
@@ -1870,7 +1950,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resSubscribeTickerData" field.</summary>
-    public const int ResSubscribeTickerDataFieldNumber = 10;
+    public const int ResSubscribeTickerDataFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData ResSubscribeTickerData {
@@ -1882,7 +1962,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "symbolTradeDataBean" field.</summary>
-    public const int SymbolTradeDataBeanFieldNumber = 11;
+    public const int SymbolTradeDataBeanFieldNumber = 12;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean SymbolTradeDataBean {
@@ -1894,7 +1974,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "tradeDataBean" field.</summary>
-    public const int TradeDataBeanFieldNumber = 12;
+    public const int TradeDataBeanFieldNumber = 13;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.TradeDataBean TradeDataBean {
@@ -1906,7 +1986,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resCandlestickQuery" field.</summary>
-    public const int ResCandlestickQueryFieldNumber = 13;
+    public const int ResCandlestickQueryFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery ResCandlestickQuery {
@@ -1918,7 +1998,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "candlestickUpdateBean" field.</summary>
-    public const int CandlestickUpdateBeanFieldNumber = 14;
+    public const int CandlestickUpdateBeanFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean CandlestickUpdateBean {
@@ -1930,7 +2010,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "candlestickBean" field.</summary>
-    public const int CandlestickBeanFieldNumber = 15;
+    public const int CandlestickBeanFieldNumber = 16;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.CandlestickBean CandlestickBean {
@@ -1941,8 +2021,20 @@ namespace Lampyris.Crypto.Protocol.Common {
       }
     }
 
+    /// <summary>Field number for the "resTradeRule" field.</summary>
+    public const int ResTradeRuleFieldNumber = 17;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.Quote.ResTradeRule ResTradeRule {
+      get { return responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule ? (global::Lampyris.Crypto.Protocol.Quote.ResTradeRule) responseType_ : null; }
+      set {
+        responseType_ = value;
+        responseTypeCase_ = value == null ? ResponseTypeOneofCase.None : ResponseTypeOneofCase.ResTradeRule;
+      }
+    }
+
     /// <summary>Field number for the "symbolTradeRuleBean" field.</summary>
-    public const int SymbolTradeRuleBeanFieldNumber = 16;
+    public const int SymbolTradeRuleBeanFieldNumber = 18;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean SymbolTradeRuleBean {
@@ -1953,8 +2045,20 @@ namespace Lampyris.Crypto.Protocol.Common {
       }
     }
 
+    /// <summary>Field number for the "marketMonitorNoticeListBean" field.</summary>
+    public const int MarketMonitorNoticeListBeanFieldNumber = 19;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean MarketMonitorNoticeListBean {
+      get { return responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean ? (global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean) responseType_ : null; }
+      set {
+        responseType_ = value;
+        responseTypeCase_ = value == null ? ResponseTypeOneofCase.None : ResponseTypeOneofCase.MarketMonitorNoticeListBean;
+      }
+    }
+
     /// <summary>Field number for the "marketMonitorNoticeBean" field.</summary>
-    public const int MarketMonitorNoticeBeanFieldNumber = 17;
+    public const int MarketMonitorNoticeBeanFieldNumber = 20;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean MarketMonitorNoticeBean {
@@ -1966,7 +2070,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "selfSelectedSymbolInfoBean" field.</summary>
-    public const int SelfSelectedSymbolInfoBeanFieldNumber = 18;
+    public const int SelfSelectedSymbolInfoBeanFieldNumber = 21;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean SelfSelectedSymbolInfoBean {
@@ -1978,7 +2082,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "selfSelectedSymbolGroupBean" field.</summary>
-    public const int SelfSelectedSymbolGroupBeanFieldNumber = 19;
+    public const int SelfSelectedSymbolGroupBeanFieldNumber = 22;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean SelfSelectedSymbolGroupBean {
@@ -1990,7 +2094,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resSelfSelectedSymbol" field.</summary>
-    public const int ResSelfSelectedSymbolFieldNumber = 20;
+    public const int ResSelfSelectedSymbolFieldNumber = 23;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol ResSelfSelectedSymbol {
@@ -2002,7 +2106,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "streategyConfigBean" field.</summary>
-    public const int StreategyConfigBeanFieldNumber = 21;
+    public const int StreategyConfigBeanFieldNumber = 24;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.StreategyConfigBean StreategyConfigBean {
@@ -2014,7 +2118,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "streategyFieldBean" field.</summary>
-    public const int StreategyFieldBeanFieldNumber = 22;
+    public const int StreategyFieldBeanFieldNumber = 25;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.StreategyFieldBean StreategyFieldBean {
@@ -2026,7 +2130,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resModifyStreategySetting" field.</summary>
-    public const int ResModifyStreategySettingFieldNumber = 23;
+    public const int ResModifyStreategySettingFieldNumber = 26;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.ResModifyStreategySetting ResModifyStreategySetting {
@@ -2038,7 +2142,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resStreategySettings" field.</summary>
-    public const int ResStreategySettingsFieldNumber = 24;
+    public const int ResStreategySettingsFieldNumber = 27;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.ResStreategySettings ResStreategySettings {
@@ -2050,7 +2154,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "strategyExectionInfoBean" field.</summary>
-    public const int StrategyExectionInfoBeanFieldNumber = 25;
+    public const int StrategyExectionInfoBeanFieldNumber = 28;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.StrategyExectionInfoBean StrategyExectionInfoBean {
@@ -2062,7 +2166,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resQueryStrategyExectionInfo" field.</summary>
-    public const int ResQueryStrategyExectionInfoFieldNumber = 26;
+    public const int ResQueryStrategyExectionInfoFieldNumber = 29;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Strategy.ResQueryStrategyExectionInfo ResQueryStrategyExectionInfo {
@@ -2074,7 +2178,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "conditionTriggerBean" field.</summary>
-    public const int ConditionTriggerBeanFieldNumber = 27;
+    public const int ConditionTriggerBeanFieldNumber = 30;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean ConditionTriggerBean {
@@ -2086,7 +2190,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "orderBean" field.</summary>
-    public const int OrderBeanFieldNumber = 28;
+    public const int OrderBeanFieldNumber = 31;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.OrderBean OrderBean {
@@ -2098,7 +2202,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "orderStatusBean" field.</summary>
-    public const int OrderStatusBeanFieldNumber = 29;
+    public const int OrderStatusBeanFieldNumber = 32;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean OrderStatusBean {
@@ -2110,7 +2214,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "leverageBean" field.</summary>
-    public const int LeverageBeanFieldNumber = 30;
+    public const int LeverageBeanFieldNumber = 33;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.LeverageBean LeverageBean {
@@ -2122,7 +2226,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resQueryLeverage" field.</summary>
-    public const int ResQueryLeverageFieldNumber = 31;
+    public const int ResQueryLeverageFieldNumber = 34;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage ResQueryLeverage {
@@ -2134,7 +2238,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "resQueryLeverageBracket" field.</summary>
-    public const int ResQueryLeverageBracketFieldNumber = 32;
+    public const int ResQueryLeverageBracketFieldNumber = 35;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverageBracket ResQueryLeverageBracket {
@@ -2146,7 +2250,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "symbolLeverageBracketBean" field.</summary>
-    public const int SymbolLeverageBracketBeanFieldNumber = 33;
+    public const int SymbolLeverageBracketBeanFieldNumber = 36;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.SymbolLeverageBracketBean SymbolLeverageBracketBean {
@@ -2158,7 +2262,7 @@ namespace Lampyris.Crypto.Protocol.Common {
     }
 
     /// <summary>Field number for the "leverageBracketBean" field.</summary>
-    public const int LeverageBracketBeanFieldNumber = 34;
+    public const int LeverageBracketBeanFieldNumber = 37;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::Lampyris.Crypto.Protocol.Trading.LeverageBracketBean LeverageBracketBean {
@@ -2173,40 +2277,43 @@ namespace Lampyris.Crypto.Protocol.Common {
     /// <summary>Enum of possible cases for the "response_type" oneof.</summary>
     public enum ResponseTypeOneofCase {
       None = 0,
-      ResHeartBeat = 1,
-      AccountAssetInfoBean = 2,
-      SubAccountInfoBean = 3,
-      ResQuerySubAcccountList = 4,
-      ResAccountSummaryUpdate = 5,
-      AssetTransferHistoryInfoDetailBean = 6,
-      AssetTransferHistoryInfoBean = 7,
-      ResLogin = 8,
-      SymbolTickerDataBean = 9,
-      ResSubscribeTickerData = 10,
-      SymbolTradeDataBean = 11,
-      TradeDataBean = 12,
-      ResCandlestickQuery = 13,
-      CandlestickUpdateBean = 14,
-      CandlestickBean = 15,
-      SymbolTradeRuleBean = 16,
-      MarketMonitorNoticeBean = 17,
-      SelfSelectedSymbolInfoBean = 18,
-      SelfSelectedSymbolGroupBean = 19,
-      ResSelfSelectedSymbol = 20,
-      StreategyConfigBean = 21,
-      StreategyFieldBean = 22,
-      ResModifyStreategySetting = 23,
-      ResStreategySettings = 24,
-      StrategyExectionInfoBean = 25,
-      ResQueryStrategyExectionInfo = 26,
-      ConditionTriggerBean = 27,
-      OrderBean = 28,
-      OrderStatusBean = 29,
-      LeverageBean = 30,
-      ResQueryLeverage = 31,
-      ResQueryLeverageBracket = 32,
-      SymbolLeverageBracketBean = 33,
-      LeverageBracketBean = 34,
+      AccountAssetInfoBean = 1,
+      SubAccountInfoBean = 2,
+      ResQuerySubAcccountList = 3,
+      ResAccountSummaryUpdate = 4,
+      AssetTransferHistoryInfoDetailBean = 5,
+      AssetTransferHistoryInfoBean = 6,
+      ResLogin = 7,
+      ResHeartBeat = 8,
+      ResNotice = 9,
+      SymbolTickerDataBean = 10,
+      ResSubscribeTickerData = 11,
+      SymbolTradeDataBean = 12,
+      TradeDataBean = 13,
+      ResCandlestickQuery = 14,
+      CandlestickUpdateBean = 15,
+      CandlestickBean = 16,
+      ResTradeRule = 17,
+      SymbolTradeRuleBean = 18,
+      MarketMonitorNoticeListBean = 19,
+      MarketMonitorNoticeBean = 20,
+      SelfSelectedSymbolInfoBean = 21,
+      SelfSelectedSymbolGroupBean = 22,
+      ResSelfSelectedSymbol = 23,
+      StreategyConfigBean = 24,
+      StreategyFieldBean = 25,
+      ResModifyStreategySetting = 26,
+      ResStreategySettings = 27,
+      StrategyExectionInfoBean = 28,
+      ResQueryStrategyExectionInfo = 29,
+      ConditionTriggerBean = 30,
+      OrderBean = 31,
+      OrderStatusBean = 32,
+      LeverageBean = 33,
+      ResQueryLeverage = 34,
+      ResQueryLeverageBracket = 35,
+      SymbolLeverageBracketBean = 36,
+      LeverageBracketBean = 37,
     }
     private ResponseTypeOneofCase responseTypeCase_ = ResponseTypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2237,7 +2344,6 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ResHeartBeat, other.ResHeartBeat)) return false;
       if (!object.Equals(AccountAssetInfoBean, other.AccountAssetInfoBean)) return false;
       if (!object.Equals(SubAccountInfoBean, other.SubAccountInfoBean)) return false;
       if (!object.Equals(ResQuerySubAcccountList, other.ResQuerySubAcccountList)) return false;
@@ -2245,6 +2351,8 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (!object.Equals(AssetTransferHistoryInfoDetailBean, other.AssetTransferHistoryInfoDetailBean)) return false;
       if (!object.Equals(AssetTransferHistoryInfoBean, other.AssetTransferHistoryInfoBean)) return false;
       if (!object.Equals(ResLogin, other.ResLogin)) return false;
+      if (!object.Equals(ResHeartBeat, other.ResHeartBeat)) return false;
+      if (!object.Equals(ResNotice, other.ResNotice)) return false;
       if (!object.Equals(SymbolTickerDataBean, other.SymbolTickerDataBean)) return false;
       if (!object.Equals(ResSubscribeTickerData, other.ResSubscribeTickerData)) return false;
       if (!object.Equals(SymbolTradeDataBean, other.SymbolTradeDataBean)) return false;
@@ -2252,7 +2360,9 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (!object.Equals(ResCandlestickQuery, other.ResCandlestickQuery)) return false;
       if (!object.Equals(CandlestickUpdateBean, other.CandlestickUpdateBean)) return false;
       if (!object.Equals(CandlestickBean, other.CandlestickBean)) return false;
+      if (!object.Equals(ResTradeRule, other.ResTradeRule)) return false;
       if (!object.Equals(SymbolTradeRuleBean, other.SymbolTradeRuleBean)) return false;
+      if (!object.Equals(MarketMonitorNoticeListBean, other.MarketMonitorNoticeListBean)) return false;
       if (!object.Equals(MarketMonitorNoticeBean, other.MarketMonitorNoticeBean)) return false;
       if (!object.Equals(SelfSelectedSymbolInfoBean, other.SelfSelectedSymbolInfoBean)) return false;
       if (!object.Equals(SelfSelectedSymbolGroupBean, other.SelfSelectedSymbolGroupBean)) return false;
@@ -2279,7 +2389,6 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) hash ^= ResHeartBeat.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.AccountAssetInfoBean) hash ^= AccountAssetInfoBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.SubAccountInfoBean) hash ^= SubAccountInfoBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQuerySubAcccountList) hash ^= ResQuerySubAcccountList.GetHashCode();
@@ -2287,6 +2396,8 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoDetailBean) hash ^= AssetTransferHistoryInfoDetailBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoBean) hash ^= AssetTransferHistoryInfoBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.ResLogin) hash ^= ResLogin.GetHashCode();
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) hash ^= ResHeartBeat.GetHashCode();
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResNotice) hash ^= ResNotice.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) hash ^= SymbolTickerDataBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.ResSubscribeTickerData) hash ^= ResSubscribeTickerData.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeDataBean) hash ^= SymbolTradeDataBean.GetHashCode();
@@ -2294,7 +2405,9 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (responseTypeCase_ == ResponseTypeOneofCase.ResCandlestickQuery) hash ^= ResCandlestickQuery.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickUpdateBean) hash ^= CandlestickUpdateBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickBean) hash ^= CandlestickBean.GetHashCode();
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule) hash ^= ResTradeRule.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeRuleBean) hash ^= SymbolTradeRuleBean.GetHashCode();
+      if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean) hash ^= MarketMonitorNoticeListBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeBean) hash ^= MarketMonitorNoticeBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolInfoBean) hash ^= SelfSelectedSymbolInfoBean.GetHashCode();
       if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolGroupBean) hash ^= SelfSelectedSymbolGroupBean.GetHashCode();
@@ -2332,140 +2445,152 @@ namespace Lampyris.Crypto.Protocol.Common {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
-        output.WriteRawTag(10);
-        output.WriteMessage(ResHeartBeat);
-      }
       if (responseTypeCase_ == ResponseTypeOneofCase.AccountAssetInfoBean) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteMessage(AccountAssetInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SubAccountInfoBean) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(SubAccountInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQuerySubAcccountList) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(ResQuerySubAcccountList);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResAccountSummaryUpdate) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(ResAccountSummaryUpdate);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoDetailBean) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteMessage(AssetTransferHistoryInfoDetailBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoBean) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(AssetTransferHistoryInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResLogin) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteMessage(ResLogin);
       }
-      if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
+        output.WriteRawTag(66);
+        output.WriteMessage(ResHeartBeat);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResNotice) {
         output.WriteRawTag(74);
+        output.WriteMessage(ResNotice);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
+        output.WriteRawTag(82);
         output.WriteMessage(SymbolTickerDataBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResSubscribeTickerData) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(90);
         output.WriteMessage(ResSubscribeTickerData);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeDataBean) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(98);
         output.WriteMessage(SymbolTradeDataBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.TradeDataBean) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(TradeDataBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResCandlestickQuery) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(ResCandlestickQuery);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickUpdateBean) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteMessage(CandlestickUpdateBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickBean) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(130, 1);
         output.WriteMessage(CandlestickBean);
       }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(ResTradeRule);
+      }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeRuleBean) {
-        output.WriteRawTag(130, 1);
+        output.WriteRawTag(146, 1);
         output.WriteMessage(SymbolTradeRuleBean);
       }
+      if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean) {
+        output.WriteRawTag(154, 1);
+        output.WriteMessage(MarketMonitorNoticeListBean);
+      }
       if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeBean) {
-        output.WriteRawTag(138, 1);
+        output.WriteRawTag(162, 1);
         output.WriteMessage(MarketMonitorNoticeBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolInfoBean) {
-        output.WriteRawTag(146, 1);
+        output.WriteRawTag(170, 1);
         output.WriteMessage(SelfSelectedSymbolInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolGroupBean) {
-        output.WriteRawTag(154, 1);
+        output.WriteRawTag(178, 1);
         output.WriteMessage(SelfSelectedSymbolGroupBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResSelfSelectedSymbol) {
-        output.WriteRawTag(162, 1);
+        output.WriteRawTag(186, 1);
         output.WriteMessage(ResSelfSelectedSymbol);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.StreategyConfigBean) {
-        output.WriteRawTag(170, 1);
+        output.WriteRawTag(194, 1);
         output.WriteMessage(StreategyConfigBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.StreategyFieldBean) {
-        output.WriteRawTag(178, 1);
+        output.WriteRawTag(202, 1);
         output.WriteMessage(StreategyFieldBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResModifyStreategySetting) {
-        output.WriteRawTag(186, 1);
+        output.WriteRawTag(210, 1);
         output.WriteMessage(ResModifyStreategySetting);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResStreategySettings) {
-        output.WriteRawTag(194, 1);
+        output.WriteRawTag(218, 1);
         output.WriteMessage(ResStreategySettings);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.StrategyExectionInfoBean) {
-        output.WriteRawTag(202, 1);
+        output.WriteRawTag(226, 1);
         output.WriteMessage(StrategyExectionInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryStrategyExectionInfo) {
-        output.WriteRawTag(210, 1);
+        output.WriteRawTag(234, 1);
         output.WriteMessage(ResQueryStrategyExectionInfo);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ConditionTriggerBean) {
-        output.WriteRawTag(218, 1);
+        output.WriteRawTag(242, 1);
         output.WriteMessage(ConditionTriggerBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.OrderBean) {
-        output.WriteRawTag(226, 1);
+        output.WriteRawTag(250, 1);
         output.WriteMessage(OrderBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.OrderStatusBean) {
-        output.WriteRawTag(234, 1);
+        output.WriteRawTag(130, 2);
         output.WriteMessage(OrderStatusBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBean) {
-        output.WriteRawTag(242, 1);
+        output.WriteRawTag(138, 2);
         output.WriteMessage(LeverageBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverage) {
-        output.WriteRawTag(250, 1);
+        output.WriteRawTag(146, 2);
         output.WriteMessage(ResQueryLeverage);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverageBracket) {
-        output.WriteRawTag(130, 2);
+        output.WriteRawTag(154, 2);
         output.WriteMessage(ResQueryLeverageBracket);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolLeverageBracketBean) {
-        output.WriteRawTag(138, 2);
+        output.WriteRawTag(162, 2);
         output.WriteMessage(SymbolLeverageBracketBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBracketBean) {
-        output.WriteRawTag(146, 2);
+        output.WriteRawTag(170, 2);
         output.WriteMessage(LeverageBracketBean);
       }
       if (_unknownFields != null) {
@@ -2478,140 +2603,152 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
-        output.WriteRawTag(10);
-        output.WriteMessage(ResHeartBeat);
-      }
       if (responseTypeCase_ == ResponseTypeOneofCase.AccountAssetInfoBean) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteMessage(AccountAssetInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SubAccountInfoBean) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(SubAccountInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQuerySubAcccountList) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(ResQuerySubAcccountList);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResAccountSummaryUpdate) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(ResAccountSummaryUpdate);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoDetailBean) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteMessage(AssetTransferHistoryInfoDetailBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoBean) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(AssetTransferHistoryInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResLogin) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteMessage(ResLogin);
       }
-      if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
+        output.WriteRawTag(66);
+        output.WriteMessage(ResHeartBeat);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResNotice) {
         output.WriteRawTag(74);
+        output.WriteMessage(ResNotice);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
+        output.WriteRawTag(82);
         output.WriteMessage(SymbolTickerDataBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResSubscribeTickerData) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(90);
         output.WriteMessage(ResSubscribeTickerData);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeDataBean) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(98);
         output.WriteMessage(SymbolTradeDataBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.TradeDataBean) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(TradeDataBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResCandlestickQuery) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(ResCandlestickQuery);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickUpdateBean) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteMessage(CandlestickUpdateBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickBean) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(130, 1);
         output.WriteMessage(CandlestickBean);
       }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(ResTradeRule);
+      }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeRuleBean) {
-        output.WriteRawTag(130, 1);
+        output.WriteRawTag(146, 1);
         output.WriteMessage(SymbolTradeRuleBean);
       }
+      if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean) {
+        output.WriteRawTag(154, 1);
+        output.WriteMessage(MarketMonitorNoticeListBean);
+      }
       if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeBean) {
-        output.WriteRawTag(138, 1);
+        output.WriteRawTag(162, 1);
         output.WriteMessage(MarketMonitorNoticeBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolInfoBean) {
-        output.WriteRawTag(146, 1);
+        output.WriteRawTag(170, 1);
         output.WriteMessage(SelfSelectedSymbolInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolGroupBean) {
-        output.WriteRawTag(154, 1);
+        output.WriteRawTag(178, 1);
         output.WriteMessage(SelfSelectedSymbolGroupBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResSelfSelectedSymbol) {
-        output.WriteRawTag(162, 1);
+        output.WriteRawTag(186, 1);
         output.WriteMessage(ResSelfSelectedSymbol);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.StreategyConfigBean) {
-        output.WriteRawTag(170, 1);
+        output.WriteRawTag(194, 1);
         output.WriteMessage(StreategyConfigBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.StreategyFieldBean) {
-        output.WriteRawTag(178, 1);
+        output.WriteRawTag(202, 1);
         output.WriteMessage(StreategyFieldBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResModifyStreategySetting) {
-        output.WriteRawTag(186, 1);
+        output.WriteRawTag(210, 1);
         output.WriteMessage(ResModifyStreategySetting);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResStreategySettings) {
-        output.WriteRawTag(194, 1);
+        output.WriteRawTag(218, 1);
         output.WriteMessage(ResStreategySettings);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.StrategyExectionInfoBean) {
-        output.WriteRawTag(202, 1);
+        output.WriteRawTag(226, 1);
         output.WriteMessage(StrategyExectionInfoBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryStrategyExectionInfo) {
-        output.WriteRawTag(210, 1);
+        output.WriteRawTag(234, 1);
         output.WriteMessage(ResQueryStrategyExectionInfo);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ConditionTriggerBean) {
-        output.WriteRawTag(218, 1);
+        output.WriteRawTag(242, 1);
         output.WriteMessage(ConditionTriggerBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.OrderBean) {
-        output.WriteRawTag(226, 1);
+        output.WriteRawTag(250, 1);
         output.WriteMessage(OrderBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.OrderStatusBean) {
-        output.WriteRawTag(234, 1);
+        output.WriteRawTag(130, 2);
         output.WriteMessage(OrderStatusBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBean) {
-        output.WriteRawTag(242, 1);
+        output.WriteRawTag(138, 2);
         output.WriteMessage(LeverageBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverage) {
-        output.WriteRawTag(250, 1);
+        output.WriteRawTag(146, 2);
         output.WriteMessage(ResQueryLeverage);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverageBracket) {
-        output.WriteRawTag(130, 2);
+        output.WriteRawTag(154, 2);
         output.WriteMessage(ResQueryLeverageBracket);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolLeverageBracketBean) {
-        output.WriteRawTag(138, 2);
+        output.WriteRawTag(162, 2);
         output.WriteMessage(SymbolLeverageBracketBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBracketBean) {
-        output.WriteRawTag(146, 2);
+        output.WriteRawTag(170, 2);
         output.WriteMessage(LeverageBracketBean);
       }
       if (_unknownFields != null) {
@@ -2624,9 +2761,6 @@ namespace Lampyris.Crypto.Protocol.Common {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ResHeartBeat);
-      }
       if (responseTypeCase_ == ResponseTypeOneofCase.AccountAssetInfoBean) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(AccountAssetInfoBean);
       }
@@ -2648,6 +2782,12 @@ namespace Lampyris.Crypto.Protocol.Common {
       if (responseTypeCase_ == ResponseTypeOneofCase.ResLogin) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ResLogin);
       }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ResHeartBeat);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResNotice) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ResNotice);
+      }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(SymbolTickerDataBean);
       }
@@ -2667,10 +2807,16 @@ namespace Lampyris.Crypto.Protocol.Common {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CandlestickUpdateBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickBean) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CandlestickBean);
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(CandlestickBean);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ResTradeRule);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeRuleBean) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(SymbolTradeRuleBean);
+      }
+      if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(MarketMonitorNoticeListBean);
       }
       if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeBean) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(MarketMonitorNoticeBean);
@@ -2739,12 +2885,6 @@ namespace Lampyris.Crypto.Protocol.Common {
         return;
       }
       switch (other.ResponseTypeCase) {
-        case ResponseTypeOneofCase.ResHeartBeat:
-          if (ResHeartBeat == null) {
-            ResHeartBeat = new global::Lampyris.Crypto.Protocol.App.ResHeartBeat();
-          }
-          ResHeartBeat.MergeFrom(other.ResHeartBeat);
-          break;
         case ResponseTypeOneofCase.AccountAssetInfoBean:
           if (AccountAssetInfoBean == null) {
             AccountAssetInfoBean = new global::Lampyris.Crypto.Protocol.Account.AccountAssetInfoBean();
@@ -2786,6 +2926,18 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResLogin = new global::Lampyris.Crypto.Protocol.App.ResLogin();
           }
           ResLogin.MergeFrom(other.ResLogin);
+          break;
+        case ResponseTypeOneofCase.ResHeartBeat:
+          if (ResHeartBeat == null) {
+            ResHeartBeat = new global::Lampyris.Crypto.Protocol.App.ResHeartBeat();
+          }
+          ResHeartBeat.MergeFrom(other.ResHeartBeat);
+          break;
+        case ResponseTypeOneofCase.ResNotice:
+          if (ResNotice == null) {
+            ResNotice = new global::Lampyris.Crypto.Protocol.App.ResNotice();
+          }
+          ResNotice.MergeFrom(other.ResNotice);
           break;
         case ResponseTypeOneofCase.SymbolTickerDataBean:
           if (SymbolTickerDataBean == null) {
@@ -2829,11 +2981,23 @@ namespace Lampyris.Crypto.Protocol.Common {
           }
           CandlestickBean.MergeFrom(other.CandlestickBean);
           break;
+        case ResponseTypeOneofCase.ResTradeRule:
+          if (ResTradeRule == null) {
+            ResTradeRule = new global::Lampyris.Crypto.Protocol.Quote.ResTradeRule();
+          }
+          ResTradeRule.MergeFrom(other.ResTradeRule);
+          break;
         case ResponseTypeOneofCase.SymbolTradeRuleBean:
           if (SymbolTradeRuleBean == null) {
             SymbolTradeRuleBean = new global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean();
           }
           SymbolTradeRuleBean.MergeFrom(other.SymbolTradeRuleBean);
+          break;
+        case ResponseTypeOneofCase.MarketMonitorNoticeListBean:
+          if (MarketMonitorNoticeListBean == null) {
+            MarketMonitorNoticeListBean = new global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean();
+          }
+          MarketMonitorNoticeListBean.MergeFrom(other.MarketMonitorNoticeListBean);
           break;
         case ResponseTypeOneofCase.MarketMonitorNoticeBean:
           if (MarketMonitorNoticeBean == null) {
@@ -2965,15 +3129,6 @@ namespace Lampyris.Crypto.Protocol.Common {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            global::Lampyris.Crypto.Protocol.App.ResHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ResHeartBeat();
-            if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
-              subBuilder.MergeFrom(ResHeartBeat);
-            }
-            input.ReadMessage(subBuilder);
-            ResHeartBeat = subBuilder;
-            break;
-          }
-          case 18: {
             global::Lampyris.Crypto.Protocol.Account.AccountAssetInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.AccountAssetInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.AccountAssetInfoBean) {
               subBuilder.MergeFrom(AccountAssetInfoBean);
@@ -2982,7 +3137,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             AccountAssetInfoBean = subBuilder;
             break;
           }
-          case 26: {
+          case 18: {
             global::Lampyris.Crypto.Protocol.Account.SubAccountInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.SubAccountInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SubAccountInfoBean) {
               subBuilder.MergeFrom(SubAccountInfoBean);
@@ -2991,7 +3146,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SubAccountInfoBean = subBuilder;
             break;
           }
-          case 34: {
+          case 26: {
             global::Lampyris.Crypto.Protocol.Account.ResQuerySubAcccountList subBuilder = new global::Lampyris.Crypto.Protocol.Account.ResQuerySubAcccountList();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQuerySubAcccountList) {
               subBuilder.MergeFrom(ResQuerySubAcccountList);
@@ -3000,7 +3155,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQuerySubAcccountList = subBuilder;
             break;
           }
-          case 42: {
+          case 34: {
             global::Lampyris.Crypto.Protocol.Account.ResAccountSummaryUpdate subBuilder = new global::Lampyris.Crypto.Protocol.Account.ResAccountSummaryUpdate();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResAccountSummaryUpdate) {
               subBuilder.MergeFrom(ResAccountSummaryUpdate);
@@ -3009,7 +3164,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResAccountSummaryUpdate = subBuilder;
             break;
           }
-          case 50: {
+          case 42: {
             global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoDetailBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoDetailBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoDetailBean) {
               subBuilder.MergeFrom(AssetTransferHistoryInfoDetailBean);
@@ -3018,7 +3173,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             AssetTransferHistoryInfoDetailBean = subBuilder;
             break;
           }
-          case 58: {
+          case 50: {
             global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoBean) {
               subBuilder.MergeFrom(AssetTransferHistoryInfoBean);
@@ -3027,7 +3182,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             AssetTransferHistoryInfoBean = subBuilder;
             break;
           }
-          case 66: {
+          case 58: {
             global::Lampyris.Crypto.Protocol.App.ResLogin subBuilder = new global::Lampyris.Crypto.Protocol.App.ResLogin();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResLogin) {
               subBuilder.MergeFrom(ResLogin);
@@ -3036,7 +3191,25 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResLogin = subBuilder;
             break;
           }
+          case 66: {
+            global::Lampyris.Crypto.Protocol.App.ResHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ResHeartBeat();
+            if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
+              subBuilder.MergeFrom(ResHeartBeat);
+            }
+            input.ReadMessage(subBuilder);
+            ResHeartBeat = subBuilder;
+            break;
+          }
           case 74: {
+            global::Lampyris.Crypto.Protocol.App.ResNotice subBuilder = new global::Lampyris.Crypto.Protocol.App.ResNotice();
+            if (responseTypeCase_ == ResponseTypeOneofCase.ResNotice) {
+              subBuilder.MergeFrom(ResNotice);
+            }
+            input.ReadMessage(subBuilder);
+            ResNotice = subBuilder;
+            break;
+          }
+          case 82: {
             global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
               subBuilder.MergeFrom(SymbolTickerDataBean);
@@ -3045,7 +3218,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolTickerDataBean = subBuilder;
             break;
           }
-          case 82: {
+          case 90: {
             global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResSubscribeTickerData) {
               subBuilder.MergeFrom(ResSubscribeTickerData);
@@ -3054,7 +3227,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResSubscribeTickerData = subBuilder;
             break;
           }
-          case 90: {
+          case 98: {
             global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeDataBean) {
               subBuilder.MergeFrom(SymbolTradeDataBean);
@@ -3063,7 +3236,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolTradeDataBean = subBuilder;
             break;
           }
-          case 98: {
+          case 106: {
             global::Lampyris.Crypto.Protocol.Quote.TradeDataBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.TradeDataBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.TradeDataBean) {
               subBuilder.MergeFrom(TradeDataBean);
@@ -3072,7 +3245,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             TradeDataBean = subBuilder;
             break;
           }
-          case 106: {
+          case 114: {
             global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResCandlestickQuery) {
               subBuilder.MergeFrom(ResCandlestickQuery);
@@ -3081,7 +3254,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResCandlestickQuery = subBuilder;
             break;
           }
-          case 114: {
+          case 122: {
             global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickUpdateBean) {
               subBuilder.MergeFrom(CandlestickUpdateBean);
@@ -3090,7 +3263,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             CandlestickUpdateBean = subBuilder;
             break;
           }
-          case 122: {
+          case 130: {
             global::Lampyris.Crypto.Protocol.Quote.CandlestickBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.CandlestickBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickBean) {
               subBuilder.MergeFrom(CandlestickBean);
@@ -3099,7 +3272,16 @@ namespace Lampyris.Crypto.Protocol.Common {
             CandlestickBean = subBuilder;
             break;
           }
-          case 130: {
+          case 138: {
+            global::Lampyris.Crypto.Protocol.Quote.ResTradeRule subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResTradeRule();
+            if (responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule) {
+              subBuilder.MergeFrom(ResTradeRule);
+            }
+            input.ReadMessage(subBuilder);
+            ResTradeRule = subBuilder;
+            break;
+          }
+          case 146: {
             global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeRuleBean) {
               subBuilder.MergeFrom(SymbolTradeRuleBean);
@@ -3108,7 +3290,16 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolTradeRuleBean = subBuilder;
             break;
           }
-          case 138: {
+          case 154: {
+            global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean();
+            if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean) {
+              subBuilder.MergeFrom(MarketMonitorNoticeListBean);
+            }
+            input.ReadMessage(subBuilder);
+            MarketMonitorNoticeListBean = subBuilder;
+            break;
+          }
+          case 162: {
             global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeBean) {
               subBuilder.MergeFrom(MarketMonitorNoticeBean);
@@ -3117,7 +3308,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             MarketMonitorNoticeBean = subBuilder;
             break;
           }
-          case 146: {
+          case 170: {
             global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolInfoBean) {
               subBuilder.MergeFrom(SelfSelectedSymbolInfoBean);
@@ -3126,7 +3317,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SelfSelectedSymbolInfoBean = subBuilder;
             break;
           }
-          case 154: {
+          case 178: {
             global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolGroupBean) {
               subBuilder.MergeFrom(SelfSelectedSymbolGroupBean);
@@ -3135,7 +3326,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SelfSelectedSymbolGroupBean = subBuilder;
             break;
           }
-          case 162: {
+          case 186: {
             global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResSelfSelectedSymbol) {
               subBuilder.MergeFrom(ResSelfSelectedSymbol);
@@ -3144,7 +3335,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResSelfSelectedSymbol = subBuilder;
             break;
           }
-          case 170: {
+          case 194: {
             global::Lampyris.Crypto.Protocol.Strategy.StreategyConfigBean subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.StreategyConfigBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.StreategyConfigBean) {
               subBuilder.MergeFrom(StreategyConfigBean);
@@ -3153,7 +3344,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             StreategyConfigBean = subBuilder;
             break;
           }
-          case 178: {
+          case 202: {
             global::Lampyris.Crypto.Protocol.Strategy.StreategyFieldBean subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.StreategyFieldBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.StreategyFieldBean) {
               subBuilder.MergeFrom(StreategyFieldBean);
@@ -3162,7 +3353,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             StreategyFieldBean = subBuilder;
             break;
           }
-          case 186: {
+          case 210: {
             global::Lampyris.Crypto.Protocol.Strategy.ResModifyStreategySetting subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ResModifyStreategySetting();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResModifyStreategySetting) {
               subBuilder.MergeFrom(ResModifyStreategySetting);
@@ -3171,7 +3362,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResModifyStreategySetting = subBuilder;
             break;
           }
-          case 194: {
+          case 218: {
             global::Lampyris.Crypto.Protocol.Strategy.ResStreategySettings subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ResStreategySettings();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResStreategySettings) {
               subBuilder.MergeFrom(ResStreategySettings);
@@ -3180,7 +3371,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResStreategySettings = subBuilder;
             break;
           }
-          case 202: {
+          case 226: {
             global::Lampyris.Crypto.Protocol.Strategy.StrategyExectionInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.StrategyExectionInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.StrategyExectionInfoBean) {
               subBuilder.MergeFrom(StrategyExectionInfoBean);
@@ -3189,7 +3380,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             StrategyExectionInfoBean = subBuilder;
             break;
           }
-          case 210: {
+          case 234: {
             global::Lampyris.Crypto.Protocol.Strategy.ResQueryStrategyExectionInfo subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ResQueryStrategyExectionInfo();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryStrategyExectionInfo) {
               subBuilder.MergeFrom(ResQueryStrategyExectionInfo);
@@ -3198,7 +3389,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQueryStrategyExectionInfo = subBuilder;
             break;
           }
-          case 218: {
+          case 242: {
             global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.ConditionTriggerBean) {
               subBuilder.MergeFrom(ConditionTriggerBean);
@@ -3207,7 +3398,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ConditionTriggerBean = subBuilder;
             break;
           }
-          case 226: {
+          case 250: {
             global::Lampyris.Crypto.Protocol.Trading.OrderBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.OrderBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.OrderBean) {
               subBuilder.MergeFrom(OrderBean);
@@ -3216,7 +3407,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             OrderBean = subBuilder;
             break;
           }
-          case 234: {
+          case 258: {
             global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.OrderStatusBean) {
               subBuilder.MergeFrom(OrderStatusBean);
@@ -3225,7 +3416,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             OrderStatusBean = subBuilder;
             break;
           }
-          case 242: {
+          case 266: {
             global::Lampyris.Crypto.Protocol.Trading.LeverageBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.LeverageBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBean) {
               subBuilder.MergeFrom(LeverageBean);
@@ -3234,7 +3425,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             LeverageBean = subBuilder;
             break;
           }
-          case 250: {
+          case 274: {
             global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverage) {
               subBuilder.MergeFrom(ResQueryLeverage);
@@ -3243,7 +3434,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQueryLeverage = subBuilder;
             break;
           }
-          case 258: {
+          case 282: {
             global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverageBracket subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverageBracket();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverageBracket) {
               subBuilder.MergeFrom(ResQueryLeverageBracket);
@@ -3252,7 +3443,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQueryLeverageBracket = subBuilder;
             break;
           }
-          case 266: {
+          case 290: {
             global::Lampyris.Crypto.Protocol.Trading.SymbolLeverageBracketBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.SymbolLeverageBracketBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolLeverageBracketBean) {
               subBuilder.MergeFrom(SymbolLeverageBracketBean);
@@ -3261,7 +3452,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolLeverageBracketBean = subBuilder;
             break;
           }
-          case 274: {
+          case 298: {
             global::Lampyris.Crypto.Protocol.Trading.LeverageBracketBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.LeverageBracketBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBracketBean) {
               subBuilder.MergeFrom(LeverageBracketBean);
@@ -3290,15 +3481,6 @@ namespace Lampyris.Crypto.Protocol.Common {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            global::Lampyris.Crypto.Protocol.App.ResHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ResHeartBeat();
-            if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
-              subBuilder.MergeFrom(ResHeartBeat);
-            }
-            input.ReadMessage(subBuilder);
-            ResHeartBeat = subBuilder;
-            break;
-          }
-          case 18: {
             global::Lampyris.Crypto.Protocol.Account.AccountAssetInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.AccountAssetInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.AccountAssetInfoBean) {
               subBuilder.MergeFrom(AccountAssetInfoBean);
@@ -3307,7 +3489,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             AccountAssetInfoBean = subBuilder;
             break;
           }
-          case 26: {
+          case 18: {
             global::Lampyris.Crypto.Protocol.Account.SubAccountInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.SubAccountInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SubAccountInfoBean) {
               subBuilder.MergeFrom(SubAccountInfoBean);
@@ -3316,7 +3498,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SubAccountInfoBean = subBuilder;
             break;
           }
-          case 34: {
+          case 26: {
             global::Lampyris.Crypto.Protocol.Account.ResQuerySubAcccountList subBuilder = new global::Lampyris.Crypto.Protocol.Account.ResQuerySubAcccountList();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQuerySubAcccountList) {
               subBuilder.MergeFrom(ResQuerySubAcccountList);
@@ -3325,7 +3507,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQuerySubAcccountList = subBuilder;
             break;
           }
-          case 42: {
+          case 34: {
             global::Lampyris.Crypto.Protocol.Account.ResAccountSummaryUpdate subBuilder = new global::Lampyris.Crypto.Protocol.Account.ResAccountSummaryUpdate();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResAccountSummaryUpdate) {
               subBuilder.MergeFrom(ResAccountSummaryUpdate);
@@ -3334,7 +3516,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResAccountSummaryUpdate = subBuilder;
             break;
           }
-          case 50: {
+          case 42: {
             global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoDetailBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoDetailBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoDetailBean) {
               subBuilder.MergeFrom(AssetTransferHistoryInfoDetailBean);
@@ -3343,7 +3525,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             AssetTransferHistoryInfoDetailBean = subBuilder;
             break;
           }
-          case 58: {
+          case 50: {
             global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Account.AssetTransferHistoryInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.AssetTransferHistoryInfoBean) {
               subBuilder.MergeFrom(AssetTransferHistoryInfoBean);
@@ -3352,7 +3534,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             AssetTransferHistoryInfoBean = subBuilder;
             break;
           }
-          case 66: {
+          case 58: {
             global::Lampyris.Crypto.Protocol.App.ResLogin subBuilder = new global::Lampyris.Crypto.Protocol.App.ResLogin();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResLogin) {
               subBuilder.MergeFrom(ResLogin);
@@ -3361,7 +3543,25 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResLogin = subBuilder;
             break;
           }
+          case 66: {
+            global::Lampyris.Crypto.Protocol.App.ResHeartBeat subBuilder = new global::Lampyris.Crypto.Protocol.App.ResHeartBeat();
+            if (responseTypeCase_ == ResponseTypeOneofCase.ResHeartBeat) {
+              subBuilder.MergeFrom(ResHeartBeat);
+            }
+            input.ReadMessage(subBuilder);
+            ResHeartBeat = subBuilder;
+            break;
+          }
           case 74: {
+            global::Lampyris.Crypto.Protocol.App.ResNotice subBuilder = new global::Lampyris.Crypto.Protocol.App.ResNotice();
+            if (responseTypeCase_ == ResponseTypeOneofCase.ResNotice) {
+              subBuilder.MergeFrom(ResNotice);
+            }
+            input.ReadMessage(subBuilder);
+            ResNotice = subBuilder;
+            break;
+          }
+          case 82: {
             global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTickerDataBean) {
               subBuilder.MergeFrom(SymbolTickerDataBean);
@@ -3370,7 +3570,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolTickerDataBean = subBuilder;
             break;
           }
-          case 82: {
+          case 90: {
             global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResSubscribeTickerData) {
               subBuilder.MergeFrom(ResSubscribeTickerData);
@@ -3379,7 +3579,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResSubscribeTickerData = subBuilder;
             break;
           }
-          case 90: {
+          case 98: {
             global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeDataBean) {
               subBuilder.MergeFrom(SymbolTradeDataBean);
@@ -3388,7 +3588,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolTradeDataBean = subBuilder;
             break;
           }
-          case 98: {
+          case 106: {
             global::Lampyris.Crypto.Protocol.Quote.TradeDataBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.TradeDataBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.TradeDataBean) {
               subBuilder.MergeFrom(TradeDataBean);
@@ -3397,7 +3597,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             TradeDataBean = subBuilder;
             break;
           }
-          case 106: {
+          case 114: {
             global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResCandlestickQuery) {
               subBuilder.MergeFrom(ResCandlestickQuery);
@@ -3406,7 +3606,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResCandlestickQuery = subBuilder;
             break;
           }
-          case 114: {
+          case 122: {
             global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickUpdateBean) {
               subBuilder.MergeFrom(CandlestickUpdateBean);
@@ -3415,7 +3615,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             CandlestickUpdateBean = subBuilder;
             break;
           }
-          case 122: {
+          case 130: {
             global::Lampyris.Crypto.Protocol.Quote.CandlestickBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.CandlestickBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.CandlestickBean) {
               subBuilder.MergeFrom(CandlestickBean);
@@ -3424,7 +3624,16 @@ namespace Lampyris.Crypto.Protocol.Common {
             CandlestickBean = subBuilder;
             break;
           }
-          case 130: {
+          case 138: {
+            global::Lampyris.Crypto.Protocol.Quote.ResTradeRule subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResTradeRule();
+            if (responseTypeCase_ == ResponseTypeOneofCase.ResTradeRule) {
+              subBuilder.MergeFrom(ResTradeRule);
+            }
+            input.ReadMessage(subBuilder);
+            ResTradeRule = subBuilder;
+            break;
+          }
+          case 146: {
             global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolTradeRuleBean) {
               subBuilder.MergeFrom(SymbolTradeRuleBean);
@@ -3433,7 +3642,16 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolTradeRuleBean = subBuilder;
             break;
           }
-          case 138: {
+          case 154: {
+            global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean();
+            if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeListBean) {
+              subBuilder.MergeFrom(MarketMonitorNoticeListBean);
+            }
+            input.ReadMessage(subBuilder);
+            MarketMonitorNoticeListBean = subBuilder;
+            break;
+          }
+          case 162: {
             global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.MarketMonitorNoticeBean) {
               subBuilder.MergeFrom(MarketMonitorNoticeBean);
@@ -3442,7 +3660,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             MarketMonitorNoticeBean = subBuilder;
             break;
           }
-          case 146: {
+          case 170: {
             global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolInfoBean) {
               subBuilder.MergeFrom(SelfSelectedSymbolInfoBean);
@@ -3451,7 +3669,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SelfSelectedSymbolInfoBean = subBuilder;
             break;
           }
-          case 154: {
+          case 178: {
             global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean subBuilder = new global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SelfSelectedSymbolGroupBean) {
               subBuilder.MergeFrom(SelfSelectedSymbolGroupBean);
@@ -3460,7 +3678,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SelfSelectedSymbolGroupBean = subBuilder;
             break;
           }
-          case 162: {
+          case 186: {
             global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol subBuilder = new global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResSelfSelectedSymbol) {
               subBuilder.MergeFrom(ResSelfSelectedSymbol);
@@ -3469,7 +3687,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResSelfSelectedSymbol = subBuilder;
             break;
           }
-          case 170: {
+          case 194: {
             global::Lampyris.Crypto.Protocol.Strategy.StreategyConfigBean subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.StreategyConfigBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.StreategyConfigBean) {
               subBuilder.MergeFrom(StreategyConfigBean);
@@ -3478,7 +3696,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             StreategyConfigBean = subBuilder;
             break;
           }
-          case 178: {
+          case 202: {
             global::Lampyris.Crypto.Protocol.Strategy.StreategyFieldBean subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.StreategyFieldBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.StreategyFieldBean) {
               subBuilder.MergeFrom(StreategyFieldBean);
@@ -3487,7 +3705,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             StreategyFieldBean = subBuilder;
             break;
           }
-          case 186: {
+          case 210: {
             global::Lampyris.Crypto.Protocol.Strategy.ResModifyStreategySetting subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ResModifyStreategySetting();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResModifyStreategySetting) {
               subBuilder.MergeFrom(ResModifyStreategySetting);
@@ -3496,7 +3714,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResModifyStreategySetting = subBuilder;
             break;
           }
-          case 194: {
+          case 218: {
             global::Lampyris.Crypto.Protocol.Strategy.ResStreategySettings subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ResStreategySettings();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResStreategySettings) {
               subBuilder.MergeFrom(ResStreategySettings);
@@ -3505,7 +3723,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResStreategySettings = subBuilder;
             break;
           }
-          case 202: {
+          case 226: {
             global::Lampyris.Crypto.Protocol.Strategy.StrategyExectionInfoBean subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.StrategyExectionInfoBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.StrategyExectionInfoBean) {
               subBuilder.MergeFrom(StrategyExectionInfoBean);
@@ -3514,7 +3732,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             StrategyExectionInfoBean = subBuilder;
             break;
           }
-          case 210: {
+          case 234: {
             global::Lampyris.Crypto.Protocol.Strategy.ResQueryStrategyExectionInfo subBuilder = new global::Lampyris.Crypto.Protocol.Strategy.ResQueryStrategyExectionInfo();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryStrategyExectionInfo) {
               subBuilder.MergeFrom(ResQueryStrategyExectionInfo);
@@ -3523,7 +3741,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQueryStrategyExectionInfo = subBuilder;
             break;
           }
-          case 218: {
+          case 242: {
             global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.ConditionTriggerBean) {
               subBuilder.MergeFrom(ConditionTriggerBean);
@@ -3532,7 +3750,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ConditionTriggerBean = subBuilder;
             break;
           }
-          case 226: {
+          case 250: {
             global::Lampyris.Crypto.Protocol.Trading.OrderBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.OrderBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.OrderBean) {
               subBuilder.MergeFrom(OrderBean);
@@ -3541,7 +3759,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             OrderBean = subBuilder;
             break;
           }
-          case 234: {
+          case 258: {
             global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.OrderStatusBean) {
               subBuilder.MergeFrom(OrderStatusBean);
@@ -3550,7 +3768,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             OrderStatusBean = subBuilder;
             break;
           }
-          case 242: {
+          case 266: {
             global::Lampyris.Crypto.Protocol.Trading.LeverageBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.LeverageBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBean) {
               subBuilder.MergeFrom(LeverageBean);
@@ -3559,7 +3777,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             LeverageBean = subBuilder;
             break;
           }
-          case 250: {
+          case 274: {
             global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverage) {
               subBuilder.MergeFrom(ResQueryLeverage);
@@ -3568,7 +3786,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQueryLeverage = subBuilder;
             break;
           }
-          case 258: {
+          case 282: {
             global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverageBracket subBuilder = new global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverageBracket();
             if (responseTypeCase_ == ResponseTypeOneofCase.ResQueryLeverageBracket) {
               subBuilder.MergeFrom(ResQueryLeverageBracket);
@@ -3577,7 +3795,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             ResQueryLeverageBracket = subBuilder;
             break;
           }
-          case 266: {
+          case 290: {
             global::Lampyris.Crypto.Protocol.Trading.SymbolLeverageBracketBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.SymbolLeverageBracketBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.SymbolLeverageBracketBean) {
               subBuilder.MergeFrom(SymbolLeverageBracketBean);
@@ -3586,7 +3804,7 @@ namespace Lampyris.Crypto.Protocol.Common {
             SymbolLeverageBracketBean = subBuilder;
             break;
           }
-          case 274: {
+          case 298: {
             global::Lampyris.Crypto.Protocol.Trading.LeverageBracketBean subBuilder = new global::Lampyris.Crypto.Protocol.Trading.LeverageBracketBean();
             if (responseTypeCase_ == ResponseTypeOneofCase.LeverageBracketBean) {
               subBuilder.MergeFrom(LeverageBracketBean);

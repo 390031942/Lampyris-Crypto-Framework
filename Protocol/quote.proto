@@ -8,31 +8,18 @@ message SymbolTickerDataBean {
     string symbol = 1;          // 交易对
     double price = 2;           // 最近价格
     double percentage = 3;      // UTC+0涨跌幅(%)
-    string currency = 4;        // 24小时内成交额
+    double currency = 4;        // 24小时内成交额
     double markPrice = 5;       // 最近标记价格
     double indexPrice = 6;      // 最近指数价格
-    string fundingRate = 7;     // 资金费率
-    string nextFundingTime = 8; // 下个资金结算时间
-    bool   priceChanged = 9;    // 是否有价格变动
-    double riseSpeed = 10;      // 涨速(%s)
-    repeated string labels = 11;// 异动历史标签
-}
-
-// 排序规则
-enum SymbolTickerDataSortType {
-    NONE  = 0; // 不排序
-    PRICE = 1; // 根据现价
-    CURRENCY = 2; // 根据24h成交额
-    PERCENTAGE = 3; // 根据UTC+0涨幅
-    FUNDING_RATE = 4; // 根据资金费率
-    FUNDING_LEFT_TIME = 5; // 根据资金结算时间倒计时
+    double fundingRate = 7;     // 资金费率
+    int64  nextFundingTime = 8; // 下个资金结算时间
+    double riseSpeed = 9;      // 涨速(%s)
+    repeated string labels = 10;// 异动历史标签
 }
 
 // 请求-订阅ticker数据
 message ReqSubscribeTickerData {
     bool isCancel = 1;  // 是否取消订阅
-    bool isAscending = 2; // 是否升序排序
-    SymbolTickerDataSortType sortType = 3; // 排序的类型
 }
 
 // 响应-订阅ticker数据
@@ -111,6 +98,10 @@ message CandlestickBean {
 /*--------- 交易规则 数据 ----------*/
 // 请求-订阅k线更新
 message ReqTradeRule {
+    repeated string symbolList = 1; // 交易对列表(传空表示全体)
+}
+
+message ResTradeRule {
     repeated SymbolTradeRuleBean beanList = 1;
 }
 
@@ -127,6 +118,10 @@ message SymbolTradeRuleBean {
 /*---------------------------------*/ 
 
 /*--------- 异动信息 数据 ----------*/
+message MarketMonitorNoticeListBean {
+    repeated MarketMonitorNoticeBean beanList = 1;
+}
+
 message MarketMonitorNoticeBean {
     string symbol = 1; // 交易对
     int64 timestamp = 2; // 时间戳
@@ -146,15 +141,14 @@ message SelfSelectedSymbolInfoBean {
 message SelfSelectedSymbolGroupBean {
     string name = 1; // 自选组名称
     bool canDelete = 2; // 是否可删除
-    int32 sortingOrder = 3; // 排序顺序
-    repeated SelfSelectedSymbolInfoBean symbolList = 4; // 交易对列表(ReqSetSelfSelectedSymbol中不传)
+    repeated SelfSelectedSymbolInfoBean symbolList = 3; // 交易对列表(ReqSetSelfSelectedSymbol中不传)
 }
 
 message ReqSelfSelectedSymbol {
-    repeated SelfSelectedSymbolGroupBean grouoList = 1; // 自选组bean列表(全量)
+    repeated SelfSelectedSymbolGroupBean groupList = 1; // 自选组bean列表(全量)
 }
 
 message ResSelfSelectedSymbol {
-    repeated SelfSelectedSymbolGroupBean grouoList = 1; // 自选组bean列表(全量)
+    repeated SelfSelectedSymbolGroupBean groupList = 1; // 自选组bean列表(全量)
 }
 /*---------------------------------*/ 

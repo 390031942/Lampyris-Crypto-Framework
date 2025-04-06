@@ -29,6 +29,34 @@ namespace crypto {
 namespace protocol {
 namespace app {
 
+inline constexpr ResNotice::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : content_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        type_{static_cast< ::lampyris::crypto::protocol::app::NoticeType >(0)},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ResNotice::ResNotice(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ResNoticeDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ResNoticeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ResNoticeDefaultTypeInternal() {}
+  union {
+    ResNotice _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResNoticeDefaultTypeInternal _ResNotice_default_instance_;
+
 inline constexpr ResLogin::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : errormessage_(
@@ -110,6 +138,33 @@ struct ReqUploadAppBehaviourDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqUploadAppBehaviourDefaultTypeInternal _ReqUploadAppBehaviour_default_instance_;
 
+inline constexpr ReqLogout::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : devicemac_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ReqLogout::ReqLogout(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ReqLogoutDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ReqLogoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ReqLogoutDefaultTypeInternal() {}
+  union {
+    ReqLogout _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqLogoutDefaultTypeInternal _ReqLogout_default_instance_;
+
 inline constexpr ReqLogin::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : devicemac_(
@@ -169,8 +224,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace protocol
 }  // namespace crypto
 }  // namespace lampyris
-static constexpr const ::_pb::EnumDescriptor**
-    file_level_enum_descriptors_app_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_app_2eproto[1];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_app_2eproto = nullptr;
 const ::uint32_t
@@ -186,6 +240,15 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqLogin, _impl_.devicemac_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqLogin, _impl_.devicename_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqLogout, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqLogout, _impl_.devicemac_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ResLogin, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -225,45 +288,63 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqUploadAppBehaviour, _impl_.symbol_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqUploadAppBehaviour, _impl_.timestamp_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ReqUploadAppBehaviour, _impl_.isenter_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ResNotice, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ResNotice, _impl_.content_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::app::ResNotice, _impl_.type_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::lampyris::crypto::protocol::app::ReqLogin)},
-        {10, -1, -1, sizeof(::lampyris::crypto::protocol::app::ResLogin)},
-        {19, -1, -1, sizeof(::lampyris::crypto::protocol::app::ReqHeartBeat)},
-        {29, -1, -1, sizeof(::lampyris::crypto::protocol::app::ResHeartBeat)},
-        {38, -1, -1, sizeof(::lampyris::crypto::protocol::app::ReqUploadAppBehaviour)},
+        {10, -1, -1, sizeof(::lampyris::crypto::protocol::app::ReqLogout)},
+        {19, -1, -1, sizeof(::lampyris::crypto::protocol::app::ResLogin)},
+        {28, -1, -1, sizeof(::lampyris::crypto::protocol::app::ReqHeartBeat)},
+        {38, -1, -1, sizeof(::lampyris::crypto::protocol::app::ResHeartBeat)},
+        {47, -1, -1, sizeof(::lampyris::crypto::protocol::app::ReqUploadAppBehaviour)},
+        {58, -1, -1, sizeof(::lampyris::crypto::protocol::app::ResNotice)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::lampyris::crypto::protocol::app::_ReqLogin_default_instance_._instance,
+    &::lampyris::crypto::protocol::app::_ReqLogout_default_instance_._instance,
     &::lampyris::crypto::protocol::app::_ResLogin_default_instance_._instance,
     &::lampyris::crypto::protocol::app::_ReqHeartBeat_default_instance_._instance,
     &::lampyris::crypto::protocol::app::_ResHeartBeat_default_instance_._instance,
     &::lampyris::crypto::protocol::app::_ReqUploadAppBehaviour_default_instance_._instance,
+    &::lampyris::crypto::protocol::app::_ResNotice_default_instance_._instance,
 };
 const char descriptor_table_protodef_app_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\tapp.proto\022\034lampyris.crypto.protocol.ap"
     "p\"1\n\010ReqLogin\022\021\n\tdeviceMAC\030\001 \001(\t\022\022\n\ndevi"
-    "ceName\030\002 \001(\t\" \n\010ResLogin\022\024\n\014errorMessage"
-    "\030\001 \001(\t\"8\n\014ReqHeartBeat\022\022\n\nclientTime\030\001 \001"
-    "(\003\022\024\n\014isForeground\030\002 \001(\010\"\"\n\014ResHeartBeat"
-    "\022\022\n\nserverTime\030\001 \001(\003\"K\n\025ReqUploadAppBeha"
-    "viour\022\016\n\006symbol\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003"
-    "\022\017\n\007isEnter\030\003 \001(\010b\006proto3"
+    "ceName\030\002 \001(\t\"\036\n\tReqLogout\022\021\n\tdeviceMAC\030\001"
+    " \001(\t\" \n\010ResLogin\022\024\n\014errorMessage\030\001 \001(\t\"8"
+    "\n\014ReqHeartBeat\022\022\n\nclientTime\030\001 \001(\003\022\024\n\014is"
+    "Foreground\030\002 \001(\010\"\"\n\014ResHeartBeat\022\022\n\nserv"
+    "erTime\030\001 \001(\003\"K\n\025ReqUploadAppBehaviour\022\016\n"
+    "\006symbol\030\001 \001(\t\022\021\n\ttimestamp\030\002 \001(\003\022\017\n\007isEn"
+    "ter\030\003 \001(\010\"T\n\tResNotice\022\017\n\007content\030\001 \001(\t\022"
+    "6\n\004type\030\002 \001(\0162(.lampyris.crypto.protocol"
+    ".app.NoticeType*(\n\nNoticeType\022\t\n\005Toast\020\000"
+    "\022\017\n\013AlertDialog\020\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_app_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_app_2eproto = {
     false,
     false,
-    305,
+    465,
     descriptor_table_protodef_app_2eproto,
     "app.proto",
     &descriptor_table_app_2eproto_once,
     nullptr,
     0,
-    5,
+    7,
     schemas,
     file_default_instances,
     TableStruct_app_2eproto::offsets,
@@ -274,6 +355,15 @@ namespace lampyris {
 namespace crypto {
 namespace protocol {
 namespace app {
+const ::google::protobuf::EnumDescriptor* NoticeType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_app_2eproto);
+  return file_level_enum_descriptors_app_2eproto[0];
+}
+PROTOBUF_CONSTINIT const uint32_t NoticeType_internal_data_[] = {
+    131072u, 0u, };
+bool NoticeType_IsValid(int value) {
+  return 0 <= value && value <= 1;
+}
 // ===================================================================
 
 class ReqLogin::_Internal {
@@ -532,6 +622,237 @@ void ReqLogin::InternalSwap(ReqLogin* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata ReqLogin::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ReqLogout::_Internal {
+ public:
+};
+
+ReqLogout::ReqLogout(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.app.ReqLogout)
+}
+inline PROTOBUF_NDEBUG_INLINE ReqLogout::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::app::ReqLogout& from_msg)
+      : devicemac_(arena, from.devicemac_),
+        _cached_size_{0} {}
+
+ReqLogout::ReqLogout(
+    ::google::protobuf::Arena* arena,
+    const ReqLogout& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ReqLogout* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.app.ReqLogout)
+}
+inline PROTOBUF_NDEBUG_INLINE ReqLogout::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : devicemac_(arena),
+        _cached_size_{0} {}
+
+inline void ReqLogout::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ReqLogout::~ReqLogout() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.app.ReqLogout)
+  SharedDtor(*this);
+}
+inline void ReqLogout::SharedDtor(MessageLite& self) {
+  ReqLogout& this_ = static_cast<ReqLogout&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.devicemac_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* ReqLogout::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ReqLogout(arena);
+}
+constexpr auto ReqLogout::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ReqLogout),
+                                            alignof(ReqLogout));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ReqLogout::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ReqLogout_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ReqLogout::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ReqLogout>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ReqLogout::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ReqLogout>(), &ReqLogout::ByteSizeLong,
+            &ReqLogout::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ReqLogout, _impl_._cached_size_),
+        false,
+    },
+    &ReqLogout::kDescriptorMethods,
+    &descriptor_table_app_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ReqLogout::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 56, 2> ReqLogout::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ReqLogout>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string deviceMAC = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqLogout, _impl_.devicemac_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string deviceMAC = 1;
+    {PROTOBUF_FIELD_OFFSET(ReqLogout, _impl_.devicemac_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\46\11\0\0\0\0\0\0"
+    "lampyris.crypto.protocol.app.ReqLogout"
+    "deviceMAC"
+  }},
+};
+
+PROTOBUF_NOINLINE void ReqLogout::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.app.ReqLogout)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.devicemac_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ReqLogout::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ReqLogout& this_ = static_cast<const ReqLogout&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ReqLogout::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ReqLogout& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.app.ReqLogout)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string deviceMAC = 1;
+          if (!this_._internal_devicemac().empty()) {
+            const std::string& _s = this_._internal_devicemac();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.app.ReqLogout.deviceMAC");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.app.ReqLogout)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ReqLogout::ByteSizeLong(const MessageLite& base) {
+          const ReqLogout& this_ = static_cast<const ReqLogout&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ReqLogout::ByteSizeLong() const {
+          const ReqLogout& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.app.ReqLogout)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // string deviceMAC = 1;
+            if (!this_._internal_devicemac().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_devicemac());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ReqLogout::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ReqLogout*>(&to_msg);
+  auto& from = static_cast<const ReqLogout&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.app.ReqLogout)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_devicemac().empty()) {
+    _this->_internal_set_devicemac(from._internal_devicemac());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ReqLogout::CopyFrom(const ReqLogout& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.app.ReqLogout)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ReqLogout::InternalSwap(ReqLogout* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.devicemac_, &other->_impl_.devicemac_, arena);
+}
+
+::google::protobuf::Metadata ReqLogout::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -1506,6 +1827,263 @@ void ReqUploadAppBehaviour::InternalSwap(ReqUploadAppBehaviour* PROTOBUF_RESTRIC
 }
 
 ::google::protobuf::Metadata ReqUploadAppBehaviour::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ResNotice::_Internal {
+ public:
+};
+
+ResNotice::ResNotice(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.app.ResNotice)
+}
+inline PROTOBUF_NDEBUG_INLINE ResNotice::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::app::ResNotice& from_msg)
+      : content_(arena, from.content_),
+        _cached_size_{0} {}
+
+ResNotice::ResNotice(
+    ::google::protobuf::Arena* arena,
+    const ResNotice& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ResNotice* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.type_ = from._impl_.type_;
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.app.ResNotice)
+}
+inline PROTOBUF_NDEBUG_INLINE ResNotice::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : content_(arena),
+        _cached_size_{0} {}
+
+inline void ResNotice::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.type_ = {};
+}
+ResNotice::~ResNotice() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.app.ResNotice)
+  SharedDtor(*this);
+}
+inline void ResNotice::SharedDtor(MessageLite& self) {
+  ResNotice& this_ = static_cast<ResNotice&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.content_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* ResNotice::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ResNotice(arena);
+}
+constexpr auto ResNotice::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ResNotice),
+                                            alignof(ResNotice));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ResNotice::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ResNotice_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ResNotice::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ResNotice>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ResNotice::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ResNotice>(), &ResNotice::ByteSizeLong,
+            &ResNotice::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ResNotice, _impl_._cached_size_),
+        false,
+    },
+    &ResNotice::kDescriptorMethods,
+    &descriptor_table_app_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ResNotice::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 54, 2> ResNotice::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::app::ResNotice>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .lampyris.crypto.protocol.app.NoticeType type = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ResNotice, _impl_.type_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ResNotice, _impl_.type_)}},
+    // string content = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ResNotice, _impl_.content_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string content = 1;
+    {PROTOBUF_FIELD_OFFSET(ResNotice, _impl_.content_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .lampyris.crypto.protocol.app.NoticeType type = 2;
+    {PROTOBUF_FIELD_OFFSET(ResNotice, _impl_.type_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\46\7\0\0\0\0\0\0"
+    "lampyris.crypto.protocol.app.ResNotice"
+    "content"
+  }},
+};
+
+PROTOBUF_NOINLINE void ResNotice::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.app.ResNotice)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.content_.ClearToEmpty();
+  _impl_.type_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ResNotice::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ResNotice& this_ = static_cast<const ResNotice&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ResNotice::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ResNotice& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.app.ResNotice)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string content = 1;
+          if (!this_._internal_content().empty()) {
+            const std::string& _s = this_._internal_content();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.app.ResNotice.content");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // .lampyris.crypto.protocol.app.NoticeType type = 2;
+          if (this_._internal_type() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                2, this_._internal_type(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.app.ResNotice)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ResNotice::ByteSizeLong(const MessageLite& base) {
+          const ResNotice& this_ = static_cast<const ResNotice&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ResNotice::ByteSizeLong() const {
+          const ResNotice& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.app.ResNotice)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string content = 1;
+            if (!this_._internal_content().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_content());
+            }
+            // .lampyris.crypto.protocol.app.NoticeType type = 2;
+            if (this_._internal_type() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_type());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ResNotice::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ResNotice*>(&to_msg);
+  auto& from = static_cast<const ResNotice&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.app.ResNotice)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_content().empty()) {
+    _this->_internal_set_content(from._internal_content());
+  }
+  if (from._internal_type() != 0) {
+    _this->_impl_.type_ = from._impl_.type_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ResNotice::CopyFrom(const ResNotice& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.app.ResNotice)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ResNotice::InternalSwap(ResNotice* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, &other->_impl_.content_, arena);
+  swap(_impl_.type_, other->_impl_.type_);
+}
+
+::google::protobuf::Metadata ResNotice::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

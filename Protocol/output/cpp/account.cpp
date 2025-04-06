@@ -28,31 +28,6 @@ namespace lampyris {
 namespace crypto {
 namespace protocol {
 namespace account {
-
-inline constexpr ResHeartBeat::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : servertime_{::int64_t{0}},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR ResHeartBeat::ResHeartBeat(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct ResHeartBeatDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ResHeartBeatDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ResHeartBeatDefaultTypeInternal() {}
-  union {
-    ResHeartBeat _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResHeartBeatDefaultTypeInternal _ResHeartBeat_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR ReqQueryAssetTransferHistory::ReqQueryAssetTransferHistory(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -71,58 +46,6 @@ struct ReqQueryAssetTransferHistoryDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqQueryAssetTransferHistoryDefaultTypeInternal _ReqQueryAssetTransferHistory_default_instance_;
-
-inline constexpr ReqLogin::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : devicemac_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR ReqLogin::ReqLogin(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct ReqLoginDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ReqLoginDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ReqLoginDefaultTypeInternal() {}
-  union {
-    ReqLogin _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqLoginDefaultTypeInternal _ReqLogin_default_instance_;
-
-inline constexpr ReqHeartBeat::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : clienttime_{::int64_t{0}},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR ReqHeartBeat::ReqHeartBeat(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct ReqHeartBeatDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ReqHeartBeatDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ReqHeartBeatDefaultTypeInternal() {}
-  union {
-    ReqHeartBeat _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqHeartBeatDefaultTypeInternal _ReqHeartBeat_default_instance_;
 
 inline constexpr ReqAccountSummaryUpdate::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -356,33 +279,6 @@ const ::uint32_t
     TableStruct_account_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
         ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::ReqLogin, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::ReqLogin, _impl_.devicemac_),
-        ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::ReqHeartBeat, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::ReqHeartBeat, _impl_.clienttime_),
-        ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::ResHeartBeat, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::ResHeartBeat, _impl_.servertime_),
-        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::account::AccountAssetInfoBean, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -490,23 +386,17 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqLogin)},
-        {9, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqHeartBeat)},
-        {18, -1, -1, sizeof(::lampyris::crypto::protocol::account::ResHeartBeat)},
-        {27, -1, -1, sizeof(::lampyris::crypto::protocol::account::AccountAssetInfoBean)},
-        {42, 56, -1, sizeof(::lampyris::crypto::protocol::account::SubAccountInfoBean)},
-        {62, 71, -1, sizeof(::lampyris::crypto::protocol::account::ResQuerySubAcccountList)},
-        {72, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate)},
-        {81, 90, -1, sizeof(::lampyris::crypto::protocol::account::ResAccountSummaryUpdate)},
-        {91, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqAccountAssetTransfer)},
-        {100, -1, -1, sizeof(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean)},
-        {111, -1, -1, sizeof(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean)},
-        {123, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory)},
+        {0, -1, -1, sizeof(::lampyris::crypto::protocol::account::AccountAssetInfoBean)},
+        {15, 29, -1, sizeof(::lampyris::crypto::protocol::account::SubAccountInfoBean)},
+        {35, 44, -1, sizeof(::lampyris::crypto::protocol::account::ResQuerySubAcccountList)},
+        {45, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqAccountSummaryUpdate)},
+        {54, 63, -1, sizeof(::lampyris::crypto::protocol::account::ResAccountSummaryUpdate)},
+        {64, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqAccountAssetTransfer)},
+        {73, -1, -1, sizeof(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean)},
+        {84, -1, -1, sizeof(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean)},
+        {96, -1, -1, sizeof(::lampyris::crypto::protocol::account::ReqQueryAssetTransferHistory)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
-    &::lampyris::crypto::protocol::account::_ReqLogin_default_instance_._instance,
-    &::lampyris::crypto::protocol::account::_ReqHeartBeat_default_instance_._instance,
-    &::lampyris::crypto::protocol::account::_ResHeartBeat_default_instance_._instance,
     &::lampyris::crypto::protocol::account::_AccountAssetInfoBean_default_instance_._instance,
     &::lampyris::crypto::protocol::account::_SubAccountInfoBean_default_instance_._instance,
     &::lampyris::crypto::protocol::account::_ResQuerySubAcccountList_default_instance_._instance,
@@ -520,52 +410,49 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_account_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\raccount.proto\022 lampyris.crypto.protoco"
-    "l.account\"\035\n\010ReqLogin\022\021\n\tdeviceMAC\030\001 \001(\t"
-    "\"\"\n\014ReqHeartBeat\022\022\n\nclientTime\030\001 \001(\003\"\"\n\014"
-    "ResHeartBeat\022\022\n\nserverTime\030\001 \001(\003\"\270\001\n\024Acc"
-    "ountAssetInfoBean\022\017\n\007balance\030\001 \001(\001\022\025\n\rpo"
-    "sitionValue\030\002 \001(\001\022\025\n\runrealizedPnL\030\003 \001(\001"
-    "\022\020\n\010dailyPnL\030\004 \001(\001\022\032\n\022dailyPnLPercentage"
-    "\030\005 \001(\001\022\030\n\020availableBalance\030\006 \001(\001\022\031\n\021maxW"
-    "ithdrawAmount\030\007 \001(\001\"\303\001\n\022SubAccountInfoBe"
-    "an\022\021\n\taccountId\030\001 \001(\005\022I\n\tassetInfo\030\002 \001(\013"
-    "26.lampyris.crypto.protocol.account.Acco"
-    "untAssetInfoBean\022\021\n\townerName\030\003 \001(\t\022\022\n\no"
-    "wnerEmail\030\004 \001(\t\022\030\n\020ownerPhoneNumber\030\005 \001("
-    "\t\022\016\n\006isRoot\030\006 \001(\010\"a\n\027ResQuerySubAcccount"
-    "List\022F\n\010beanList\030\001 \001(\01324.lampyris.crypto"
-    ".protocol.account.SubAccountInfoBean\"+\n\027"
-    "ReqAccountSummaryUpdate\022\020\n\010isCancel\030\001 \001("
-    "\010\"d\n\027ResAccountSummaryUpdate\022I\n\tassetInf"
-    "o\030\001 \001(\01326.lampyris.crypto.protocol.accou"
-    "nt.AccountAssetInfoBean\"\\\n\027ReqAccountAss"
-    "etTransfer\022A\n\004type\030\001 \001(\01623.lampyris.cryp"
-    "to.protocol.account.AssetTransferType\"f\n"
-    "\"AssetTransferHistoryInfoDetailBean\022\027\n\017s"
-    "ourceAccountId\030\001 \001(\005\022\027\n\017targetAccountId\030"
-    "\002 \001(\005\022\016\n\006amount\030\003 \001(\001\"\202\002\n\034AssetTransferH"
-    "istoryInfoBean\022A\n\004type\030\001 \001(\01623.lampyris."
-    "crypto.protocol.account.AssetTransferTyp"
-    "e\022\\\n\016detailBeanList\030\002 \003(\0132D.lampyris.cry"
-    "pto.protocol.account.AssetTransferHistor"
-    "yInfoDetailBean\022\036\n\026transferStartTimestam"
-    "p\030\003 \001(\003\022!\n\031transferFinishedTimestamp\030\004 \001"
-    "(\003\"\036\n\034ReqQueryAssetTransferHistory*\\\n\021As"
-    "setTransferType\022\033\n\027RE_AVGERAGE_SUB_ACCOU"
-    "NT\020\000\022\023\n\017TO_ROOT_ACCOUNT\020\001\022\025\n\021TO_WALLET_A"
-    "CCOUNT\020\002b\006proto3"
+    "l.account\"\270\001\n\024AccountAssetInfoBean\022\017\n\007ba"
+    "lance\030\001 \001(\001\022\025\n\rpositionValue\030\002 \001(\001\022\025\n\run"
+    "realizedPnL\030\003 \001(\001\022\020\n\010dailyPnL\030\004 \001(\001\022\032\n\022d"
+    "ailyPnLPercentage\030\005 \001(\001\022\030\n\020availableBala"
+    "nce\030\006 \001(\001\022\031\n\021maxWithdrawAmount\030\007 \001(\001\"\303\001\n"
+    "\022SubAccountInfoBean\022\021\n\taccountId\030\001 \001(\005\022I"
+    "\n\tassetInfo\030\002 \001(\01326.lampyris.crypto.prot"
+    "ocol.account.AccountAssetInfoBean\022\021\n\town"
+    "erName\030\003 \001(\t\022\022\n\nownerEmail\030\004 \001(\t\022\030\n\020owne"
+    "rPhoneNumber\030\005 \001(\t\022\016\n\006isRoot\030\006 \001(\010\"a\n\027Re"
+    "sQuerySubAcccountList\022F\n\010beanList\030\001 \001(\0132"
+    "4.lampyris.crypto.protocol.account.SubAc"
+    "countInfoBean\"+\n\027ReqAccountSummaryUpdate"
+    "\022\020\n\010isCancel\030\001 \001(\010\"d\n\027ResAccountSummaryU"
+    "pdate\022I\n\tassetInfo\030\001 \001(\01326.lampyris.cryp"
+    "to.protocol.account.AccountAssetInfoBean"
+    "\"\\\n\027ReqAccountAssetTransfer\022A\n\004type\030\001 \001("
+    "\01623.lampyris.crypto.protocol.account.Ass"
+    "etTransferType\"f\n\"AssetTransferHistoryIn"
+    "foDetailBean\022\027\n\017sourceAccountId\030\001 \001(\005\022\027\n"
+    "\017targetAccountId\030\002 \001(\005\022\016\n\006amount\030\003 \001(\001\"\202"
+    "\002\n\034AssetTransferHistoryInfoBean\022A\n\004type\030"
+    "\001 \001(\01623.lampyris.crypto.protocol.account"
+    ".AssetTransferType\022\\\n\016detailBeanList\030\002 \003"
+    "(\0132D.lampyris.crypto.protocol.account.As"
+    "setTransferHistoryInfoDetailBean\022\036\n\026tran"
+    "sferStartTimestamp\030\003 \001(\003\022!\n\031transferFini"
+    "shedTimestamp\030\004 \001(\003\"\036\n\034ReqQueryAssetTran"
+    "sferHistory*\\\n\021AssetTransferType\022\033\n\027RE_A"
+    "VGERAGE_SUB_ACCOUNT\020\000\022\023\n\017TO_ROOT_ACCOUNT"
+    "\020\001\022\025\n\021TO_WALLET_ACCOUNT\020\002b\006proto3"
 };
 static ::absl::once_flag descriptor_table_account_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_account_2eproto = {
     false,
     false,
-    1376,
+    1273,
     descriptor_table_protodef_account_2eproto,
     "account.proto",
     &descriptor_table_account_2eproto_once,
     nullptr,
     0,
-    12,
+    9,
     schemas,
     file_default_instances,
     TableStruct_account_2eproto::offsets,
@@ -584,651 +471,6 @@ PROTOBUF_CONSTINIT const uint32_t AssetTransferType_internal_data_[] = {
     196608u, 0u, };
 bool AssetTransferType_IsValid(int value) {
   return 0 <= value && value <= 2;
-}
-// ===================================================================
-
-class ReqLogin::_Internal {
- public:
-};
-
-ReqLogin::ReqLogin(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.account.ReqLogin)
-}
-inline PROTOBUF_NDEBUG_INLINE ReqLogin::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::lampyris::crypto::protocol::account::ReqLogin& from_msg)
-      : devicemac_(arena, from.devicemac_),
-        _cached_size_{0} {}
-
-ReqLogin::ReqLogin(
-    ::google::protobuf::Arena* arena,
-    const ReqLogin& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  ReqLogin* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-
-  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.account.ReqLogin)
-}
-inline PROTOBUF_NDEBUG_INLINE ReqLogin::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : devicemac_(arena),
-        _cached_size_{0} {}
-
-inline void ReqLogin::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-}
-ReqLogin::~ReqLogin() {
-  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.account.ReqLogin)
-  SharedDtor(*this);
-}
-inline void ReqLogin::SharedDtor(MessageLite& self) {
-  ReqLogin& this_ = static_cast<ReqLogin&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.devicemac_.Destroy();
-  this_._impl_.~Impl_();
-}
-
-inline void* ReqLogin::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) ReqLogin(arena);
-}
-constexpr auto ReqLogin::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ReqLogin),
-                                            alignof(ReqLogin));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull ReqLogin::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_ReqLogin_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &ReqLogin::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<ReqLogin>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &ReqLogin::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<ReqLogin>(), &ReqLogin::ByteSizeLong,
-            &ReqLogin::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(ReqLogin, _impl_._cached_size_),
-        false,
-    },
-    &ReqLogin::kDescriptorMethods,
-    &descriptor_table_account_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* ReqLogin::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 59, 2> ReqLogin::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ReqLogin>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    // string deviceMAC = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqLogin, _impl_.devicemac_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string deviceMAC = 1;
-    {PROTOBUF_FIELD_OFFSET(ReqLogin, _impl_.devicemac_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\51\11\0\0\0\0\0\0"
-    "lampyris.crypto.protocol.account.ReqLogin"
-    "deviceMAC"
-  }},
-};
-
-PROTOBUF_NOINLINE void ReqLogin::Clear() {
-// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.account.ReqLogin)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.devicemac_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* ReqLogin::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const ReqLogin& this_ = static_cast<const ReqLogin&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* ReqLogin::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const ReqLogin& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.account.ReqLogin)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // string deviceMAC = 1;
-          if (!this_._internal_devicemac().empty()) {
-            const std::string& _s = this_._internal_devicemac();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.account.ReqLogin.deviceMAC");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.account.ReqLogin)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t ReqLogin::ByteSizeLong(const MessageLite& base) {
-          const ReqLogin& this_ = static_cast<const ReqLogin&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t ReqLogin::ByteSizeLong() const {
-          const ReqLogin& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.account.ReqLogin)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-           {
-            // string deviceMAC = 1;
-            if (!this_._internal_devicemac().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_devicemac());
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void ReqLogin::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<ReqLogin*>(&to_msg);
-  auto& from = static_cast<const ReqLogin&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.account.ReqLogin)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_devicemac().empty()) {
-    _this->_internal_set_devicemac(from._internal_devicemac());
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ReqLogin::CopyFrom(const ReqLogin& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.account.ReqLogin)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void ReqLogin::InternalSwap(ReqLogin* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.devicemac_, &other->_impl_.devicemac_, arena);
-}
-
-::google::protobuf::Metadata ReqLogin::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
-class ReqHeartBeat::_Internal {
- public:
-};
-
-ReqHeartBeat::ReqHeartBeat(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.account.ReqHeartBeat)
-}
-ReqHeartBeat::ReqHeartBeat(
-    ::google::protobuf::Arena* arena, const ReqHeartBeat& from)
-    : ReqHeartBeat(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE ReqHeartBeat::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
-
-inline void ReqHeartBeat::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.clienttime_ = {};
-}
-ReqHeartBeat::~ReqHeartBeat() {
-  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.account.ReqHeartBeat)
-  SharedDtor(*this);
-}
-inline void ReqHeartBeat::SharedDtor(MessageLite& self) {
-  ReqHeartBeat& this_ = static_cast<ReqHeartBeat&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.~Impl_();
-}
-
-inline void* ReqHeartBeat::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) ReqHeartBeat(arena);
-}
-constexpr auto ReqHeartBeat::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ReqHeartBeat),
-                                            alignof(ReqHeartBeat));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull ReqHeartBeat::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_ReqHeartBeat_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &ReqHeartBeat::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<ReqHeartBeat>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &ReqHeartBeat::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<ReqHeartBeat>(), &ReqHeartBeat::ByteSizeLong,
-            &ReqHeartBeat::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(ReqHeartBeat, _impl_._cached_size_),
-        false,
-    },
-    &ReqHeartBeat::kDescriptorMethods,
-    &descriptor_table_account_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* ReqHeartBeat::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ReqHeartBeat::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ReqHeartBeat>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    // int64 clientTime = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ReqHeartBeat, _impl_.clienttime_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ReqHeartBeat, _impl_.clienttime_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int64 clientTime = 1;
-    {PROTOBUF_FIELD_OFFSET(ReqHeartBeat, _impl_.clienttime_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-PROTOBUF_NOINLINE void ReqHeartBeat::Clear() {
-// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.account.ReqHeartBeat)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.clienttime_ = ::int64_t{0};
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* ReqHeartBeat::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const ReqHeartBeat& this_ = static_cast<const ReqHeartBeat&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* ReqHeartBeat::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const ReqHeartBeat& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.account.ReqHeartBeat)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // int64 clientTime = 1;
-          if (this_._internal_clienttime() != 0) {
-            target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt64ToArrayWithField<1>(
-                    stream, this_._internal_clienttime(), target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.account.ReqHeartBeat)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t ReqHeartBeat::ByteSizeLong(const MessageLite& base) {
-          const ReqHeartBeat& this_ = static_cast<const ReqHeartBeat&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t ReqHeartBeat::ByteSizeLong() const {
-          const ReqHeartBeat& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.account.ReqHeartBeat)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-           {
-            // int64 clientTime = 1;
-            if (this_._internal_clienttime() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
-                  this_._internal_clienttime());
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void ReqHeartBeat::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<ReqHeartBeat*>(&to_msg);
-  auto& from = static_cast<const ReqHeartBeat&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.account.ReqHeartBeat)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_clienttime() != 0) {
-    _this->_impl_.clienttime_ = from._impl_.clienttime_;
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ReqHeartBeat::CopyFrom(const ReqHeartBeat& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.account.ReqHeartBeat)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void ReqHeartBeat::InternalSwap(ReqHeartBeat* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.clienttime_, other->_impl_.clienttime_);
-}
-
-::google::protobuf::Metadata ReqHeartBeat::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
-class ResHeartBeat::_Internal {
- public:
-};
-
-ResHeartBeat::ResHeartBeat(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.account.ResHeartBeat)
-}
-ResHeartBeat::ResHeartBeat(
-    ::google::protobuf::Arena* arena, const ResHeartBeat& from)
-    : ResHeartBeat(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE ResHeartBeat::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
-
-inline void ResHeartBeat::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.servertime_ = {};
-}
-ResHeartBeat::~ResHeartBeat() {
-  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.account.ResHeartBeat)
-  SharedDtor(*this);
-}
-inline void ResHeartBeat::SharedDtor(MessageLite& self) {
-  ResHeartBeat& this_ = static_cast<ResHeartBeat&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.~Impl_();
-}
-
-inline void* ResHeartBeat::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) ResHeartBeat(arena);
-}
-constexpr auto ResHeartBeat::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ResHeartBeat),
-                                            alignof(ResHeartBeat));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull ResHeartBeat::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_ResHeartBeat_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &ResHeartBeat::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<ResHeartBeat>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &ResHeartBeat::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<ResHeartBeat>(), &ResHeartBeat::ByteSizeLong,
-            &ResHeartBeat::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(ResHeartBeat, _impl_._cached_size_),
-        false,
-    },
-    &ResHeartBeat::kDescriptorMethods,
-    &descriptor_table_account_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* ResHeartBeat::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ResHeartBeat::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::account::ResHeartBeat>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    // int64 serverTime = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ResHeartBeat, _impl_.servertime_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ResHeartBeat, _impl_.servertime_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int64 serverTime = 1;
-    {PROTOBUF_FIELD_OFFSET(ResHeartBeat, _impl_.servertime_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-PROTOBUF_NOINLINE void ResHeartBeat::Clear() {
-// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.account.ResHeartBeat)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.servertime_ = ::int64_t{0};
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* ResHeartBeat::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const ResHeartBeat& this_ = static_cast<const ResHeartBeat&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* ResHeartBeat::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const ResHeartBeat& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.account.ResHeartBeat)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // int64 serverTime = 1;
-          if (this_._internal_servertime() != 0) {
-            target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt64ToArrayWithField<1>(
-                    stream, this_._internal_servertime(), target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.account.ResHeartBeat)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t ResHeartBeat::ByteSizeLong(const MessageLite& base) {
-          const ResHeartBeat& this_ = static_cast<const ResHeartBeat&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t ResHeartBeat::ByteSizeLong() const {
-          const ResHeartBeat& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.account.ResHeartBeat)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-           {
-            // int64 serverTime = 1;
-            if (this_._internal_servertime() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
-                  this_._internal_servertime());
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void ResHeartBeat::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<ResHeartBeat*>(&to_msg);
-  auto& from = static_cast<const ResHeartBeat&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.account.ResHeartBeat)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_servertime() != 0) {
-    _this->_impl_.servertime_ = from._impl_.servertime_;
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ResHeartBeat::CopyFrom(const ResHeartBeat& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.account.ResHeartBeat)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void ResHeartBeat::InternalSwap(ResHeartBeat* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.servertime_, other->_impl_.servertime_);
-}
-
-::google::protobuf::Metadata ResHeartBeat::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 

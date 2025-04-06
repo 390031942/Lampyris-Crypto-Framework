@@ -9,6 +9,11 @@ message ReqLogin {
     string deviceName = 2; // 设备名称
 }
 
+// 请求-登出
+message ReqLogout {
+    string deviceMAC = 1; // 设备MAC地址标识了用户ID
+}
+
 // 响应-登录
 message ResLogin {
     string errorMessage = 1; // 登录报错信息，如果为空说明登陆成功 
@@ -30,5 +35,16 @@ message ReqUploadAppBehaviour {
     string symbol = 1;  // 交易对
     int64 timestamp = 2; // 点击流时间戳
     bool isEnter = 3; // 如果为true，说明客户端打开了symbol的具体行情界面，否则为退出
+}
+
+enum NoticeType {
+    Toast = 0; // Toast式消息
+    AlertDialog = 1; // 系统弹窗
+}
+
+// 响应-服务端发送弹窗
+message ResNotice {
+    string content = 1; // 内容
+    NoticeType type = 2; // 弹窗类型
 }
 /*---------------------------------*/ 

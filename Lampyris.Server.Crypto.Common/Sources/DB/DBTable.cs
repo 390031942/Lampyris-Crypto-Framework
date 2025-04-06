@@ -1,6 +1,9 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
+using Google.Protobuf.Compiler;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -100,7 +103,14 @@ public class DBTable<T> where T:class, new()
             if (columnAttribute != null && !columnAttribute.IsAutoIncrement)
             {
                 var value = property.PropertyInfo.GetValue(entity);
-                var valueString = (value == null ? "NULL" : $"'{value.ToString().Replace("'", "''")}'");
+                var valueString = "";
+
+                if (property.Attribute.DataType == "JSON") {
+                    valueString = JsonConvert.SerializeObject(value);
+                }
+                else {
+                    valueString = (value == null ? "NULL" : $"'{value.ToString().Replace("'", "''")}'");
+                }
 
                 sb.Append(isFirst ? "" : ",");
                 sb.Append(valueString);
@@ -191,8 +201,17 @@ public class DBTable<T> where T:class, new()
 
                         if (!reader.IsDBNull(reader.GetOrdinal(columnName)))
                         {
-                            var value = reader[columnName];
-                            property.SetValue(entity, Convert.ChangeType(value, property.PropertyType));
+                            if (column.Attribute.DataType == "JSON") // Json
+                            {
+                                string json = reader.GetString(reader.GetOrdinal(columnName));
+                                object? obj = JsonConvert.DeserializeObject(json, column.PropertyInfo.PropertyType);
+                                property.SetValue(entity, obj);
+                            }
+                            else
+                            {
+                                var value = reader[columnName];
+                                property.SetValue(entity, Convert.ChangeType(value, property.PropertyType));
+                            }
                         }
                     }
 

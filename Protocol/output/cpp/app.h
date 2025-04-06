@@ -28,6 +28,7 @@
 #include "google/protobuf/message_lite.h"
 #include "google/protobuf/repeated_field.h"  // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
+#include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
 // @@protoc_insertion_point(includes)
 
@@ -61,6 +62,9 @@ extern ReqHeartBeatDefaultTypeInternal _ReqHeartBeat_default_instance_;
 class ReqLogin;
 struct ReqLoginDefaultTypeInternal;
 extern ReqLoginDefaultTypeInternal _ReqLogin_default_instance_;
+class ReqLogout;
+struct ReqLogoutDefaultTypeInternal;
+extern ReqLogoutDefaultTypeInternal _ReqLogout_default_instance_;
 class ReqUploadAppBehaviour;
 struct ReqUploadAppBehaviourDefaultTypeInternal;
 extern ReqUploadAppBehaviourDefaultTypeInternal _ReqUploadAppBehaviour_default_instance_;
@@ -70,6 +74,9 @@ extern ResHeartBeatDefaultTypeInternal _ResHeartBeat_default_instance_;
 class ResLogin;
 struct ResLoginDefaultTypeInternal;
 extern ResLoginDefaultTypeInternal _ResLogin_default_instance_;
+class ResNotice;
+struct ResNoticeDefaultTypeInternal;
+extern ResNoticeDefaultTypeInternal _ResNotice_default_instance_;
 }  // namespace app
 }  // namespace protocol
 }  // namespace crypto
@@ -83,10 +90,251 @@ namespace lampyris {
 namespace crypto {
 namespace protocol {
 namespace app {
+enum NoticeType : int {
+  Toast = 0,
+  AlertDialog = 1,
+  NoticeType_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  NoticeType_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool NoticeType_IsValid(int value);
+extern const uint32_t NoticeType_internal_data_[];
+constexpr NoticeType NoticeType_MIN = static_cast<NoticeType>(0);
+constexpr NoticeType NoticeType_MAX = static_cast<NoticeType>(1);
+constexpr int NoticeType_ARRAYSIZE = 1 + 1;
+const ::google::protobuf::EnumDescriptor*
+NoticeType_descriptor();
+template <typename T>
+const std::string& NoticeType_Name(T value) {
+  static_assert(std::is_same<T, NoticeType>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to NoticeType_Name().");
+  return NoticeType_Name(static_cast<NoticeType>(value));
+}
+template <>
+inline const std::string& NoticeType_Name(NoticeType value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<NoticeType_descriptor,
+                                                 0, 1>(
+      static_cast<int>(value));
+}
+inline bool NoticeType_Parse(absl::string_view name, NoticeType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<NoticeType>(
+      NoticeType_descriptor(), name, value);
+}
 
 // ===================================================================
 
 
+// -------------------------------------------------------------------
+
+class ResNotice final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.app.ResNotice) */ {
+ public:
+  inline ResNotice() : ResNotice(nullptr) {}
+  ~ResNotice() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ResNotice* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ResNotice));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ResNotice(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ResNotice(const ResNotice& from) : ResNotice(nullptr, from) {}
+  inline ResNotice(ResNotice&& from) noexcept
+      : ResNotice(nullptr, std::move(from)) {}
+  inline ResNotice& operator=(const ResNotice& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ResNotice& operator=(ResNotice&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ResNotice& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ResNotice* internal_default_instance() {
+    return reinterpret_cast<const ResNotice*>(
+        &_ResNotice_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(ResNotice& a, ResNotice& b) { a.Swap(&b); }
+  inline void Swap(ResNotice* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ResNotice* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ResNotice* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ResNotice>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ResNotice& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ResNotice& from) { ResNotice::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ResNotice* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.app.ResNotice"; }
+
+ protected:
+  explicit ResNotice(::google::protobuf::Arena* arena);
+  ResNotice(::google::protobuf::Arena* arena, const ResNotice& from);
+  ResNotice(::google::protobuf::Arena* arena, ResNotice&& from) noexcept
+      : ResNotice(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kContentFieldNumber = 1,
+    kTypeFieldNumber = 2,
+  };
+  // string content = 1;
+  void clear_content() ;
+  const std::string& content() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_content(Arg_&& arg, Args_... args);
+  std::string* mutable_content();
+  PROTOBUF_NODISCARD std::string* release_content();
+  void set_allocated_content(std::string* value);
+
+  private:
+  const std::string& _internal_content() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content(
+      const std::string& value);
+  std::string* _internal_mutable_content();
+
+  public:
+  // .lampyris.crypto.protocol.app.NoticeType type = 2;
+  void clear_type() ;
+  ::lampyris::crypto::protocol::app::NoticeType type() const;
+  void set_type(::lampyris::crypto::protocol::app::NoticeType value);
+
+  private:
+  ::lampyris::crypto::protocol::app::NoticeType _internal_type() const;
+  void _internal_set_type(::lampyris::crypto::protocol::app::NoticeType value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.app.ResNotice)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      54, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ResNotice& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr content_;
+    int type_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_app_2eproto;
+};
 // -------------------------------------------------------------------
 
 class ResLogin final : public ::google::protobuf::Message
@@ -148,7 +396,7 @@ class ResLogin final : public ::google::protobuf::Message
     return reinterpret_cast<const ResLogin*>(
         &_ResLogin_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(ResLogin& a, ResLogin& b) { a.Swap(&b); }
   inline void Swap(ResLogin* other) {
     if (other == this) return;
@@ -344,7 +592,7 @@ class ResHeartBeat final : public ::google::protobuf::Message
     return reinterpret_cast<const ResHeartBeat*>(
         &_ResHeartBeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(ResHeartBeat& a, ResHeartBeat& b) { a.Swap(&b); }
   inline void Swap(ResHeartBeat* other) {
     if (other == this) return;
@@ -534,7 +782,7 @@ class ReqUploadAppBehaviour final : public ::google::protobuf::Message
     return reinterpret_cast<const ReqUploadAppBehaviour*>(
         &_ReqUploadAppBehaviour_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(ReqUploadAppBehaviour& a, ReqUploadAppBehaviour& b) { a.Swap(&b); }
   inline void Swap(ReqUploadAppBehaviour* other) {
     if (other == this) return;
@@ -687,6 +935,202 @@ class ReqUploadAppBehaviour final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr symbol_;
     ::int64_t timestamp_;
     bool isenter_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_app_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ReqLogout final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.app.ReqLogout) */ {
+ public:
+  inline ReqLogout() : ReqLogout(nullptr) {}
+  ~ReqLogout() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ReqLogout* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ReqLogout));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ReqLogout(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ReqLogout(const ReqLogout& from) : ReqLogout(nullptr, from) {}
+  inline ReqLogout(ReqLogout&& from) noexcept
+      : ReqLogout(nullptr, std::move(from)) {}
+  inline ReqLogout& operator=(const ReqLogout& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ReqLogout& operator=(ReqLogout&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ReqLogout& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ReqLogout* internal_default_instance() {
+    return reinterpret_cast<const ReqLogout*>(
+        &_ReqLogout_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 1;
+  friend void swap(ReqLogout& a, ReqLogout& b) { a.Swap(&b); }
+  inline void Swap(ReqLogout* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ReqLogout* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ReqLogout* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ReqLogout>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ReqLogout& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ReqLogout& from) { ReqLogout::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ReqLogout* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.app.ReqLogout"; }
+
+ protected:
+  explicit ReqLogout(::google::protobuf::Arena* arena);
+  ReqLogout(::google::protobuf::Arena* arena, const ReqLogout& from);
+  ReqLogout(::google::protobuf::Arena* arena, ReqLogout&& from) noexcept
+      : ReqLogout(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDeviceMACFieldNumber = 1,
+  };
+  // string deviceMAC = 1;
+  void clear_devicemac() ;
+  const std::string& devicemac() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_devicemac(Arg_&& arg, Args_... args);
+  std::string* mutable_devicemac();
+  PROTOBUF_NODISCARD std::string* release_devicemac();
+  void set_allocated_devicemac(std::string* value);
+
+  private:
+  const std::string& _internal_devicemac() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_devicemac(
+      const std::string& value);
+  std::string* _internal_mutable_devicemac();
+
+  public:
+  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.app.ReqLogout)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      56, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ReqLogout& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr devicemac_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -968,7 +1412,7 @@ class ReqHeartBeat final : public ::google::protobuf::Message
     return reinterpret_cast<const ReqHeartBeat*>(
         &_ReqHeartBeat_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 3;
   friend void swap(ReqHeartBeat& a, ReqHeartBeat& b) { a.Swap(&b); }
   inline void Swap(ReqHeartBeat* other) {
     if (other == this) return;
@@ -1224,6 +1668,58 @@ inline void ReqLogin::set_allocated_devicename(std::string* value) {
 
 // -------------------------------------------------------------------
 
+// ReqLogout
+
+// string deviceMAC = 1;
+inline void ReqLogout::clear_devicemac() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.devicemac_.ClearToEmpty();
+}
+inline const std::string& ReqLogout::devicemac() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.app.ReqLogout.deviceMAC)
+  return _internal_devicemac();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ReqLogout::set_devicemac(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.devicemac_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.app.ReqLogout.deviceMAC)
+}
+inline std::string* ReqLogout::mutable_devicemac() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_devicemac();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.app.ReqLogout.deviceMAC)
+  return _s;
+}
+inline const std::string& ReqLogout::_internal_devicemac() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.devicemac_.Get();
+}
+inline void ReqLogout::_internal_set_devicemac(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.devicemac_.Set(value, GetArena());
+}
+inline std::string* ReqLogout::_internal_mutable_devicemac() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.devicemac_.Mutable( GetArena());
+}
+inline std::string* ReqLogout::release_devicemac() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.app.ReqLogout.deviceMAC)
+  return _impl_.devicemac_.Release();
+}
+inline void ReqLogout::set_allocated_devicemac(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.devicemac_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.devicemac_.IsDefault()) {
+    _impl_.devicemac_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.app.ReqLogout.deviceMAC)
+}
+
+// -------------------------------------------------------------------
+
 // ResLogin
 
 // string errorMessage = 1;
@@ -1444,6 +1940,80 @@ inline void ReqUploadAppBehaviour::_internal_set_isenter(bool value) {
   _impl_.isenter_ = value;
 }
 
+// -------------------------------------------------------------------
+
+// ResNotice
+
+// string content = 1;
+inline void ResNotice::clear_content() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_.ClearToEmpty();
+}
+inline const std::string& ResNotice::content() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.app.ResNotice.content)
+  return _internal_content();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ResNotice::set_content(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.app.ResNotice.content)
+}
+inline std::string* ResNotice::mutable_content() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_content();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.app.ResNotice.content)
+  return _s;
+}
+inline const std::string& ResNotice::_internal_content() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.content_.Get();
+}
+inline void ResNotice::_internal_set_content(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_.Set(value, GetArena());
+}
+inline std::string* ResNotice::_internal_mutable_content() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.content_.Mutable( GetArena());
+}
+inline std::string* ResNotice::release_content() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.app.ResNotice.content)
+  return _impl_.content_.Release();
+}
+inline void ResNotice::set_allocated_content(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_.IsDefault()) {
+    _impl_.content_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.app.ResNotice.content)
+}
+
+// .lampyris.crypto.protocol.app.NoticeType type = 2;
+inline void ResNotice::clear_type() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.type_ = 0;
+}
+inline ::lampyris::crypto::protocol::app::NoticeType ResNotice::type() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.app.ResNotice.type)
+  return _internal_type();
+}
+inline void ResNotice::set_type(::lampyris::crypto::protocol::app::NoticeType value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.app.ResNotice.type)
+}
+inline ::lampyris::crypto::protocol::app::NoticeType ResNotice::_internal_type() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::lampyris::crypto::protocol::app::NoticeType>(_impl_.type_);
+}
+inline void ResNotice::_internal_set_type(::lampyris::crypto::protocol::app::NoticeType value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.type_ = value;
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -1454,6 +2024,19 @@ inline void ReqUploadAppBehaviour::_internal_set_isenter(bool value) {
 }  // namespace crypto
 }  // namespace lampyris
 
+
+namespace google {
+namespace protobuf {
+
+template <>
+struct is_proto_enum<::lampyris::crypto::protocol::app::NoticeType> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::lampyris::crypto::protocol::app::NoticeType>() {
+  return ::lampyris::crypto::protocol::app::NoticeType_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

@@ -25,63 +25,60 @@ namespace Lampyris.Crypto.Protocol.Quote {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgtxdW90ZS5wcm90bxIebGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3Rl",
-            "IukBChRTeW1ib2xUaWNrZXJEYXRhQmVhbhIOCgZzeW1ib2wYASABKAkSDQoF",
+            "ItMBChRTeW1ib2xUaWNrZXJEYXRhQmVhbhIOCgZzeW1ib2wYASABKAkSDQoF",
             "cHJpY2UYAiABKAESEgoKcGVyY2VudGFnZRgDIAEoARIQCghjdXJyZW5jeRgE",
-            "IAEoCRIRCgltYXJrUHJpY2UYBSABKAESEgoKaW5kZXhQcmljZRgGIAEoARIT",
-            "CgtmdW5kaW5nUmF0ZRgHIAEoCRIXCg9uZXh0RnVuZGluZ1RpbWUYCCABKAkS",
-            "FAoMcHJpY2VDaGFuZ2VkGAkgASgIEhEKCXJpc2VTcGVlZBgKIAEoARIOCgZs",
-            "YWJlbHMYCyADKAkiiwEKFlJlcVN1YnNjcmliZVRpY2tlckRhdGESEAoIaXND",
-            "YW5jZWwYASABKAgSEwoLaXNBc2NlbmRpbmcYAiABKAgSSgoIc29ydFR5cGUY",
-            "AyABKA4yOC5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuU3ltYm9s",
-            "VGlja2VyRGF0YVNvcnRUeXBlImAKFlJlc1N1YnNjcmliZVRpY2tlckRhdGES",
-            "RgoIYmVhbkxpc3QYASADKAsyNC5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wu",
-            "cXVvdGUuU3ltYm9sVGlja2VyRGF0YUJlYW4iOgoVUmVxU3Vic2NyaWJlVHJh",
-            "ZGVEYXRhEg8KB3N5bWJvbHMYASADKAkSEAoIaXNDYW5jZWwYAiABKAgiZgoT",
-            "U3ltYm9sVHJhZGVEYXRhQmVhbhIOCgZzeW1ib2wYASABKAkSPwoIYmVhbkxp",
-            "c3QYAiADKAsyLS5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuVHJh",
-            "ZGVEYXRhQmVhbiJvCg1UcmFkZURhdGFCZWFuEg4KBnN5bWJvbBgBIAEoCRIR",
-            "Cgl0aW1lc3RhbXAYAiABKAMSDQoFcHJpY2UYAyABKAESDgoGdm9sdW1lGAQg",
-            "ASgBEg0KBWlzQnV5GAUgASgIEg0KBWNvdW50GAYgASgFIlMKHVJlcVN1YnNj",
-            "cmliZUNhbmRsZXN0aWNrVXBkYXRlEg8KB3N5bWJvbHMYASADKAkSDwoHYmFy",
-            "U2l6ZRgCIAEoCRIQCghpc0NhbmNlbBgDIAEoCCJpChNSZXFDYW5kbGVzdGlj",
-            "a1F1ZXJ5Eg4KBnN5bWJvbBgBIAEoCRIPCgdiYXJTaXplGAIgASgJEhEKCXN0",
-            "YXJ0VGltZRgDIAEoAxIPCgdlbmRUaW1lGAQgASgDEg0KBWNvdW50GAUgASgD",
-            "InkKE1Jlc0NhbmRsZXN0aWNrUXVlcnkSDgoGc3ltYm9sGAEgASgJEg8KB2Jh",
-            "clNpemUYAiABKAkSQQoIYmVhbkxpc3QYAyADKAsyLy5sYW1weXJpcy5jcnlw",
-            "dG8ucHJvdG9jb2wucXVvdGUuQ2FuZGxlc3RpY2tCZWFuIoYBChVDYW5kbGVz",
-            "dGlja1VwZGF0ZUJlYW4SDgoGc3ltYm9sGAEgASgJEg8KB2JhclNpemUYAiAB",
-            "KAkSPQoEYmVhbhgDIAEoCzIvLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC5x",
-            "dW90ZS5DYW5kbGVzdGlja0JlYW4SDQoFaXNFbmQYBCABKAgieQoPQ2FuZGxl",
-            "c3RpY2tCZWFuEgwKBHRpbWUYASABKAMSDAoEb3BlbhgCIAEoARIMCgRoaWdo",
-            "GAMgASgBEgsKA2xvdxgEIAEoARINCgVjbG9zZRgFIAEoARIOCgZ2b2x1bWUY",
-            "BiABKAESEAoIY3VycmVuY3kYByABKAEiVQoMUmVxVHJhZGVSdWxlEkUKCGJl",
-            "YW5MaXN0GAEgAygLMjMubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3Rl",
-            "LlN5bWJvbFRyYWRlUnVsZUJlYW4iuQEKE1N5bWJvbFRyYWRlUnVsZUJlYW4S",
-            "DgoGc3ltYm9sGAEgASgJEhAKCG1heFByaWNlGAIgASgBEhAKCG1pblByaWNl",
-            "GAMgASgBEhUKDXByaWNlVGlja1NpemUYBCABKAESEwoLbWF4UXVhbnRpdHkY",
-            "BSABKAESEwoLbWluUXVhbnRpdHkYBiABKAESGAoQcXVhbnRpdHlUaWNrU2l6",
-            "ZRgHIAEoARITCgttaW5Ob3Rpb25hbBgIIAEoASJ0ChdNYXJrZXRNb25pdG9y",
-            "Tm90aWNlQmVhbhIOCgZzeW1ib2wYASABKAkSEQoJdGltZXN0YW1wGAIgASgD",
-            "EhIKCm5vdGljZVR5cGUYAyABKAUSDQoFdmFsdWUYBCABKAkSEwoLbm90aWNl",
-            "TGV2ZWwYBSABKAUiVQoaU2VsZlNlbGVjdGVkU3ltYm9sSW5mb0JlYW4SDgoG",
-            "c3ltYm9sGAEgASgJEhEKCXRpbWVzdGFtcBgCIAEoAxIUCgxpbml0aWFsUHJp",
-            "Y2UYAyABKAEipAEKG1NlbGZTZWxlY3RlZFN5bWJvbEdyb3VwQmVhbhIMCgRu",
-            "YW1lGAEgASgJEhEKCWNhbkRlbGV0ZRgCIAEoCBIUCgxzb3J0aW5nT3JkZXIY",
-            "AyABKAUSTgoKc3ltYm9sTGlzdBgEIAMoCzI6LmxhbXB5cmlzLmNyeXB0by5w",
+            "IAEoARIRCgltYXJrUHJpY2UYBSABKAESEgoKaW5kZXhQcmljZRgGIAEoARIT",
+            "CgtmdW5kaW5nUmF0ZRgHIAEoARIXCg9uZXh0RnVuZGluZ1RpbWUYCCABKAMS",
+            "EQoJcmlzZVNwZWVkGAkgASgBEg4KBmxhYmVscxgKIAMoCSIqChZSZXFTdWJz",
+            "Y3JpYmVUaWNrZXJEYXRhEhAKCGlzQ2FuY2VsGAEgASgIImAKFlJlc1N1YnNj",
+            "cmliZVRpY2tlckRhdGESRgoIYmVhbkxpc3QYASADKAsyNC5sYW1weXJpcy5j",
+            "cnlwdG8ucHJvdG9jb2wucXVvdGUuU3ltYm9sVGlja2VyRGF0YUJlYW4iOgoV",
+            "UmVxU3Vic2NyaWJlVHJhZGVEYXRhEg8KB3N5bWJvbHMYASADKAkSEAoIaXND",
+            "YW5jZWwYAiABKAgiZgoTU3ltYm9sVHJhZGVEYXRhQmVhbhIOCgZzeW1ib2wY",
+            "ASABKAkSPwoIYmVhbkxpc3QYAiADKAsyLS5sYW1weXJpcy5jcnlwdG8ucHJv",
+            "dG9jb2wucXVvdGUuVHJhZGVEYXRhQmVhbiJvCg1UcmFkZURhdGFCZWFuEg4K",
+            "BnN5bWJvbBgBIAEoCRIRCgl0aW1lc3RhbXAYAiABKAMSDQoFcHJpY2UYAyAB",
+            "KAESDgoGdm9sdW1lGAQgASgBEg0KBWlzQnV5GAUgASgIEg0KBWNvdW50GAYg",
+            "ASgFIlMKHVJlcVN1YnNjcmliZUNhbmRsZXN0aWNrVXBkYXRlEg8KB3N5bWJv",
+            "bHMYASADKAkSDwoHYmFyU2l6ZRgCIAEoCRIQCghpc0NhbmNlbBgDIAEoCCJp",
+            "ChNSZXFDYW5kbGVzdGlja1F1ZXJ5Eg4KBnN5bWJvbBgBIAEoCRIPCgdiYXJT",
+            "aXplGAIgASgJEhEKCXN0YXJ0VGltZRgDIAEoAxIPCgdlbmRUaW1lGAQgASgD",
+            "Eg0KBWNvdW50GAUgASgDInkKE1Jlc0NhbmRsZXN0aWNrUXVlcnkSDgoGc3lt",
+            "Ym9sGAEgASgJEg8KB2JhclNpemUYAiABKAkSQQoIYmVhbkxpc3QYAyADKAsy",
+            "Ly5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuQ2FuZGxlc3RpY2tC",
+            "ZWFuIoYBChVDYW5kbGVzdGlja1VwZGF0ZUJlYW4SDgoGc3ltYm9sGAEgASgJ",
+            "Eg8KB2JhclNpemUYAiABKAkSPQoEYmVhbhgDIAEoCzIvLmxhbXB5cmlzLmNy",
+            "eXB0by5wcm90b2NvbC5xdW90ZS5DYW5kbGVzdGlja0JlYW4SDQoFaXNFbmQY",
+            "BCABKAgieQoPQ2FuZGxlc3RpY2tCZWFuEgwKBHRpbWUYASABKAMSDAoEb3Bl",
+            "bhgCIAEoARIMCgRoaWdoGAMgASgBEgsKA2xvdxgEIAEoARINCgVjbG9zZRgF",
+            "IAEoARIOCgZ2b2x1bWUYBiABKAESEAoIY3VycmVuY3kYByABKAEiIgoMUmVx",
+            "VHJhZGVSdWxlEhIKCnN5bWJvbExpc3QYASADKAkiVQoMUmVzVHJhZGVSdWxl",
+            "EkUKCGJlYW5MaXN0GAEgAygLMjMubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
+            "LnF1b3RlLlN5bWJvbFRyYWRlUnVsZUJlYW4iuQEKE1N5bWJvbFRyYWRlUnVs",
+            "ZUJlYW4SDgoGc3ltYm9sGAEgASgJEhAKCG1heFByaWNlGAIgASgBEhAKCG1p",
+            "blByaWNlGAMgASgBEhUKDXByaWNlVGlja1NpemUYBCABKAESEwoLbWF4UXVh",
+            "bnRpdHkYBSABKAESEwoLbWluUXVhbnRpdHkYBiABKAESGAoQcXVhbnRpdHlU",
+            "aWNrU2l6ZRgHIAEoARITCgttaW5Ob3Rpb25hbBgIIAEoASJoChtNYXJrZXRN",
+            "b25pdG9yTm90aWNlTGlzdEJlYW4SSQoIYmVhbkxpc3QYASADKAsyNy5sYW1w",
+            "eXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuTWFya2V0TW9uaXRvck5vdGlj",
+            "ZUJlYW4idAoXTWFya2V0TW9uaXRvck5vdGljZUJlYW4SDgoGc3ltYm9sGAEg",
+            "ASgJEhEKCXRpbWVzdGFtcBgCIAEoAxISCgpub3RpY2VUeXBlGAMgASgFEg0K",
+            "BXZhbHVlGAQgASgJEhMKC25vdGljZUxldmVsGAUgASgFIlUKGlNlbGZTZWxl",
+            "Y3RlZFN5bWJvbEluZm9CZWFuEg4KBnN5bWJvbBgBIAEoCRIRCgl0aW1lc3Rh",
+            "bXAYAiABKAMSFAoMaW5pdGlhbFByaWNlGAMgASgBIo4BChtTZWxmU2VsZWN0",
+            "ZWRTeW1ib2xHcm91cEJlYW4SDAoEbmFtZRgBIAEoCRIRCgljYW5EZWxldGUY",
+            "AiABKAgSTgoKc3ltYm9sTGlzdBgDIAMoCzI6LmxhbXB5cmlzLmNyeXB0by5w",
             "cm90b2NvbC5xdW90ZS5TZWxmU2VsZWN0ZWRTeW1ib2xJbmZvQmVhbiJnChVS",
-            "ZXFTZWxmU2VsZWN0ZWRTeW1ib2wSTgoJZ3JvdW9MaXN0GAEgAygLMjsubGFt",
+            "ZXFTZWxmU2VsZWN0ZWRTeW1ib2wSTgoJZ3JvdXBMaXN0GAEgAygLMjsubGFt",
             "cHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNlbGZTZWxlY3RlZFN5bWJv",
-            "bEdyb3VwQmVhbiJnChVSZXNTZWxmU2VsZWN0ZWRTeW1ib2wSTgoJZ3JvdW9M",
+            "bEdyb3VwQmVhbiJnChVSZXNTZWxmU2VsZWN0ZWRTeW1ib2wSTgoJZ3JvdXBM",
             "aXN0GAEgAygLMjsubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNl",
-            "bGZTZWxlY3RlZFN5bWJvbEdyb3VwQmVhbip2ChhTeW1ib2xUaWNrZXJEYXRh",
-            "U29ydFR5cGUSCAoETk9ORRAAEgkKBVBSSUNFEAESDAoIQ1VSUkVOQ1kQAhIO",
-            "CgpQRVJDRU5UQUdFEAMSEAoMRlVORElOR19SQVRFEAQSFQoRRlVORElOR19M",
-            "RUZUX1RJTUUQBWIGcHJvdG8z"));
+            "bGZTZWxlY3RlZFN5bWJvbEdyb3VwQmVhbmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean), global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean.Parser, new[]{ "Symbol", "Price", "Percentage", "Currency", "MarkPrice", "IndexPrice", "FundingRate", "NextFundingTime", "PriceChanged", "RiseSpeed", "Labels" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData), global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData.Parser, new[]{ "IsCancel", "IsAscending", "SortType" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean), global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataBean.Parser, new[]{ "Symbol", "Price", "Percentage", "Currency", "MarkPrice", "IndexPrice", "FundingRate", "NextFundingTime", "RiseSpeed", "Labels" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData), global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTickerData.Parser, new[]{ "IsCancel" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData), global::Lampyris.Crypto.Protocol.Quote.ResSubscribeTickerData.Parser, new[]{ "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData), global::Lampyris.Crypto.Protocol.Quote.ReqSubscribeTradeData.Parser, new[]{ "Symbols", "IsCancel" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean), global::Lampyris.Crypto.Protocol.Quote.SymbolTradeDataBean.Parser, new[]{ "Symbol", "BeanList" }, null, null, null, null),
@@ -91,51 +88,20 @@ namespace Lampyris.Crypto.Protocol.Quote {
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery), global::Lampyris.Crypto.Protocol.Quote.ResCandlestickQuery.Parser, new[]{ "Symbol", "BarSize", "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean), global::Lampyris.Crypto.Protocol.Quote.CandlestickUpdateBean.Parser, new[]{ "Symbol", "BarSize", "Bean", "IsEnd" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.CandlestickBean), global::Lampyris.Crypto.Protocol.Quote.CandlestickBean.Parser, new[]{ "Time", "Open", "High", "Low", "Close", "Volume", "Currency" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule), global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule.Parser, new[]{ "BeanList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule), global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule.Parser, new[]{ "SymbolList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResTradeRule), global::Lampyris.Crypto.Protocol.Quote.ResTradeRule.Parser, new[]{ "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean), global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean.Parser, new[]{ "Symbol", "MaxPrice", "MinPrice", "PriceTickSize", "MaxQuantity", "MinQuantity", "QuantityTickSize", "MinNotional" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean), global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean.Parser, new[]{ "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean), global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean.Parser, new[]{ "Symbol", "Timestamp", "NoticeType", "Value", "NoticeLevel" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean), global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean.Parser, new[]{ "Symbol", "Timestamp", "InitialPrice" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean), global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean.Parser, new[]{ "Name", "CanDelete", "SortingOrder", "SymbolList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol.Parser, new[]{ "GrouoList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol.Parser, new[]{ "GrouoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean), global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean.Parser, new[]{ "Name", "CanDelete", "SymbolList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol.Parser, new[]{ "GroupList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol.Parser, new[]{ "GroupList" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
-  #region Enums
-  /// <summary>
-  /// 排序规则
-  /// </summary>
-  public enum SymbolTickerDataSortType {
-    /// <summary>
-    /// 不排序
-    /// </summary>
-    [pbr::OriginalName("NONE")] None = 0,
-    /// <summary>
-    /// 根据现价
-    /// </summary>
-    [pbr::OriginalName("PRICE")] Price = 1,
-    /// <summary>
-    /// 根据24h成交额
-    /// </summary>
-    [pbr::OriginalName("CURRENCY")] Currency = 2,
-    /// <summary>
-    /// 根据UTC+0涨幅
-    /// </summary>
-    [pbr::OriginalName("PERCENTAGE")] Percentage = 3,
-    /// <summary>
-    /// 根据资金费率
-    /// </summary>
-    [pbr::OriginalName("FUNDING_RATE")] FundingRate = 4,
-    /// <summary>
-    /// 根据资金结算时间倒计时
-    /// </summary>
-    [pbr::OriginalName("FUNDING_LEFT_TIME")] FundingLeftTime = 5,
-  }
-
-  #endregion
-
   #region Messages
   /// <summary>
   /// 每个Symbol的实时交易信息
@@ -183,7 +149,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       indexPrice_ = other.indexPrice_;
       fundingRate_ = other.fundingRate_;
       nextFundingTime_ = other.nextFundingTime_;
-      priceChanged_ = other.priceChanged_;
       riseSpeed_ = other.riseSpeed_;
       labels_ = other.labels_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -242,16 +207,16 @@ namespace Lampyris.Crypto.Protocol.Quote {
 
     /// <summary>Field number for the "currency" field.</summary>
     public const int CurrencyFieldNumber = 4;
-    private string currency_ = "";
+    private double currency_;
     /// <summary>
     /// 24小时内成交额
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Currency {
+    public double Currency {
       get { return currency_; }
       set {
-        currency_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        currency_ = value;
       }
     }
 
@@ -287,51 +252,36 @@ namespace Lampyris.Crypto.Protocol.Quote {
 
     /// <summary>Field number for the "fundingRate" field.</summary>
     public const int FundingRateFieldNumber = 7;
-    private string fundingRate_ = "";
+    private double fundingRate_;
     /// <summary>
     /// 资金费率
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string FundingRate {
+    public double FundingRate {
       get { return fundingRate_; }
       set {
-        fundingRate_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        fundingRate_ = value;
       }
     }
 
     /// <summary>Field number for the "nextFundingTime" field.</summary>
     public const int NextFundingTimeFieldNumber = 8;
-    private string nextFundingTime_ = "";
+    private long nextFundingTime_;
     /// <summary>
     /// 下个资金结算时间
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string NextFundingTime {
+    public long NextFundingTime {
       get { return nextFundingTime_; }
       set {
-        nextFundingTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "priceChanged" field.</summary>
-    public const int PriceChangedFieldNumber = 9;
-    private bool priceChanged_;
-    /// <summary>
-    /// 是否有价格变动
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool PriceChanged {
-      get { return priceChanged_; }
-      set {
-        priceChanged_ = value;
+        nextFundingTime_ = value;
       }
     }
 
     /// <summary>Field number for the "riseSpeed" field.</summary>
-    public const int RiseSpeedFieldNumber = 10;
+    public const int RiseSpeedFieldNumber = 9;
     private double riseSpeed_;
     /// <summary>
     /// 涨速(%s)
@@ -346,9 +296,9 @@ namespace Lampyris.Crypto.Protocol.Quote {
     }
 
     /// <summary>Field number for the "labels" field.</summary>
-    public const int LabelsFieldNumber = 11;
+    public const int LabelsFieldNumber = 10;
     private static readonly pb::FieldCodec<string> _repeated_labels_codec
-        = pb::FieldCodec.ForString(90);
+        = pb::FieldCodec.ForString(82);
     private readonly pbc::RepeatedField<string> labels_ = new pbc::RepeatedField<string>();
     /// <summary>
     /// 异动历史标签
@@ -377,12 +327,11 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (Symbol != other.Symbol) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Price, other.Price)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Percentage, other.Percentage)) return false;
-      if (Currency != other.Currency) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Currency, other.Currency)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MarkPrice, other.MarkPrice)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(IndexPrice, other.IndexPrice)) return false;
-      if (FundingRate != other.FundingRate) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(FundingRate, other.FundingRate)) return false;
       if (NextFundingTime != other.NextFundingTime) return false;
-      if (PriceChanged != other.PriceChanged) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(RiseSpeed, other.RiseSpeed)) return false;
       if(!labels_.Equals(other.labels_)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -395,12 +344,11 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
       if (Price != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Price);
       if (Percentage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Percentage);
-      if (Currency.Length != 0) hash ^= Currency.GetHashCode();
+      if (Currency != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Currency);
       if (MarkPrice != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MarkPrice);
       if (IndexPrice != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(IndexPrice);
-      if (FundingRate.Length != 0) hash ^= FundingRate.GetHashCode();
-      if (NextFundingTime.Length != 0) hash ^= NextFundingTime.GetHashCode();
-      if (PriceChanged != false) hash ^= PriceChanged.GetHashCode();
+      if (FundingRate != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(FundingRate);
+      if (NextFundingTime != 0L) hash ^= NextFundingTime.GetHashCode();
       if (RiseSpeed != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(RiseSpeed);
       hash ^= labels_.GetHashCode();
       if (_unknownFields != null) {
@@ -433,9 +381,9 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(25);
         output.WriteDouble(Percentage);
       }
-      if (Currency.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Currency);
+      if (Currency != 0D) {
+        output.WriteRawTag(33);
+        output.WriteDouble(Currency);
       }
       if (MarkPrice != 0D) {
         output.WriteRawTag(41);
@@ -445,20 +393,16 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(49);
         output.WriteDouble(IndexPrice);
       }
-      if (FundingRate.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(FundingRate);
+      if (FundingRate != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(FundingRate);
       }
-      if (NextFundingTime.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(NextFundingTime);
-      }
-      if (PriceChanged != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(PriceChanged);
+      if (NextFundingTime != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(NextFundingTime);
       }
       if (RiseSpeed != 0D) {
-        output.WriteRawTag(81);
+        output.WriteRawTag(73);
         output.WriteDouble(RiseSpeed);
       }
       labels_.WriteTo(output, _repeated_labels_codec);
@@ -484,9 +428,9 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(25);
         output.WriteDouble(Percentage);
       }
-      if (Currency.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Currency);
+      if (Currency != 0D) {
+        output.WriteRawTag(33);
+        output.WriteDouble(Currency);
       }
       if (MarkPrice != 0D) {
         output.WriteRawTag(41);
@@ -496,20 +440,16 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(49);
         output.WriteDouble(IndexPrice);
       }
-      if (FundingRate.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(FundingRate);
+      if (FundingRate != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(FundingRate);
       }
-      if (NextFundingTime.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(NextFundingTime);
-      }
-      if (PriceChanged != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(PriceChanged);
+      if (NextFundingTime != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(NextFundingTime);
       }
       if (RiseSpeed != 0D) {
-        output.WriteRawTag(81);
+        output.WriteRawTag(73);
         output.WriteDouble(RiseSpeed);
       }
       labels_.WriteTo(ref output, _repeated_labels_codec);
@@ -532,8 +472,8 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (Percentage != 0D) {
         size += 1 + 8;
       }
-      if (Currency.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Currency);
+      if (Currency != 0D) {
+        size += 1 + 8;
       }
       if (MarkPrice != 0D) {
         size += 1 + 8;
@@ -541,14 +481,11 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (IndexPrice != 0D) {
         size += 1 + 8;
       }
-      if (FundingRate.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(FundingRate);
+      if (FundingRate != 0D) {
+        size += 1 + 8;
       }
-      if (NextFundingTime.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(NextFundingTime);
-      }
-      if (PriceChanged != false) {
-        size += 1 + 1;
+      if (NextFundingTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(NextFundingTime);
       }
       if (RiseSpeed != 0D) {
         size += 1 + 8;
@@ -575,7 +512,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (other.Percentage != 0D) {
         Percentage = other.Percentage;
       }
-      if (other.Currency.Length != 0) {
+      if (other.Currency != 0D) {
         Currency = other.Currency;
       }
       if (other.MarkPrice != 0D) {
@@ -584,14 +521,11 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (other.IndexPrice != 0D) {
         IndexPrice = other.IndexPrice;
       }
-      if (other.FundingRate.Length != 0) {
+      if (other.FundingRate != 0D) {
         FundingRate = other.FundingRate;
       }
-      if (other.NextFundingTime.Length != 0) {
+      if (other.NextFundingTime != 0L) {
         NextFundingTime = other.NextFundingTime;
-      }
-      if (other.PriceChanged != false) {
-        PriceChanged = other.PriceChanged;
       }
       if (other.RiseSpeed != 0D) {
         RiseSpeed = other.RiseSpeed;
@@ -628,8 +562,8 @@ namespace Lampyris.Crypto.Protocol.Quote {
             Percentage = input.ReadDouble();
             break;
           }
-          case 34: {
-            Currency = input.ReadString();
+          case 33: {
+            Currency = input.ReadDouble();
             break;
           }
           case 41: {
@@ -640,23 +574,19 @@ namespace Lampyris.Crypto.Protocol.Quote {
             IndexPrice = input.ReadDouble();
             break;
           }
-          case 58: {
-            FundingRate = input.ReadString();
+          case 57: {
+            FundingRate = input.ReadDouble();
             break;
           }
-          case 66: {
-            NextFundingTime = input.ReadString();
+          case 64: {
+            NextFundingTime = input.ReadInt64();
             break;
           }
-          case 72: {
-            PriceChanged = input.ReadBool();
-            break;
-          }
-          case 81: {
+          case 73: {
             RiseSpeed = input.ReadDouble();
             break;
           }
-          case 90: {
+          case 82: {
             labels_.AddEntriesFrom(input, _repeated_labels_codec);
             break;
           }
@@ -691,8 +621,8 @@ namespace Lampyris.Crypto.Protocol.Quote {
             Percentage = input.ReadDouble();
             break;
           }
-          case 34: {
-            Currency = input.ReadString();
+          case 33: {
+            Currency = input.ReadDouble();
             break;
           }
           case 41: {
@@ -703,23 +633,19 @@ namespace Lampyris.Crypto.Protocol.Quote {
             IndexPrice = input.ReadDouble();
             break;
           }
-          case 58: {
-            FundingRate = input.ReadString();
+          case 57: {
+            FundingRate = input.ReadDouble();
             break;
           }
-          case 66: {
-            NextFundingTime = input.ReadString();
+          case 64: {
+            NextFundingTime = input.ReadInt64();
             break;
           }
-          case 72: {
-            PriceChanged = input.ReadBool();
-            break;
-          }
-          case 81: {
+          case 73: {
             RiseSpeed = input.ReadDouble();
             break;
           }
-          case 90: {
+          case 82: {
             labels_.AddEntriesFrom(ref input, _repeated_labels_codec);
             break;
           }
@@ -769,8 +695,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReqSubscribeTickerData(ReqSubscribeTickerData other) : this() {
       isCancel_ = other.isCancel_;
-      isAscending_ = other.isAscending_;
-      sortType_ = other.sortType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -795,36 +719,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
     }
 
-    /// <summary>Field number for the "isAscending" field.</summary>
-    public const int IsAscendingFieldNumber = 2;
-    private bool isAscending_;
-    /// <summary>
-    /// 是否升序排序
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsAscending {
-      get { return isAscending_; }
-      set {
-        isAscending_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sortType" field.</summary>
-    public const int SortTypeFieldNumber = 3;
-    private global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType sortType_ = global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType.None;
-    /// <summary>
-    /// 排序的类型
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType SortType {
-      get { return sortType_; }
-      set {
-        sortType_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -841,8 +735,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
         return true;
       }
       if (IsCancel != other.IsCancel) return false;
-      if (IsAscending != other.IsAscending) return false;
-      if (SortType != other.SortType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -851,8 +743,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
     public override int GetHashCode() {
       int hash = 1;
       if (IsCancel != false) hash ^= IsCancel.GetHashCode();
-      if (IsAscending != false) hash ^= IsAscending.GetHashCode();
-      if (SortType != global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType.None) hash ^= SortType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -875,14 +765,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(8);
         output.WriteBool(IsCancel);
       }
-      if (IsAscending != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsAscending);
-      }
-      if (SortType != global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType.None) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) SortType);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -897,14 +779,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(8);
         output.WriteBool(IsCancel);
       }
-      if (IsAscending != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsAscending);
-      }
-      if (SortType != global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType.None) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) SortType);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -917,12 +791,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       int size = 0;
       if (IsCancel != false) {
         size += 1 + 1;
-      }
-      if (IsAscending != false) {
-        size += 1 + 1;
-      }
-      if (SortType != global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SortType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -938,12 +806,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
       if (other.IsCancel != false) {
         IsCancel = other.IsCancel;
-      }
-      if (other.IsAscending != false) {
-        IsAscending = other.IsAscending;
-      }
-      if (other.SortType != global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType.None) {
-        SortType = other.SortType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -968,14 +830,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
             IsCancel = input.ReadBool();
             break;
           }
-          case 16: {
-            IsAscending = input.ReadBool();
-            break;
-          }
-          case 24: {
-            SortType = (global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType) input.ReadEnum();
-            break;
-          }
         }
       }
     #endif
@@ -997,14 +851,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
             break;
           case 8: {
             IsCancel = input.ReadBool();
-            break;
-          }
-          case 16: {
-            IsAscending = input.ReadBool();
-            break;
-          }
-          case 24: {
-            SortType = (global::Lampyris.Crypto.Protocol.Quote.SymbolTickerDataSortType) input.ReadEnum();
             break;
           }
         }
@@ -3790,7 +3636,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReqTradeRule(ReqTradeRule other) : this() {
-      beanList_ = other.beanList_.Clone();
+      symbolList_ = other.symbolList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3798,6 +3644,196 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReqTradeRule Clone() {
       return new ReqTradeRule(this);
+    }
+
+    /// <summary>Field number for the "symbolList" field.</summary>
+    public const int SymbolListFieldNumber = 1;
+    private static readonly pb::FieldCodec<string> _repeated_symbolList_codec
+        = pb::FieldCodec.ForString(10);
+    private readonly pbc::RepeatedField<string> symbolList_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// 交易对列表(传空表示全体)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> SymbolList {
+      get { return symbolList_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ReqTradeRule);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ReqTradeRule other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!symbolList_.Equals(other.symbolList_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= symbolList_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      symbolList_.WriteTo(output, _repeated_symbolList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      symbolList_.WriteTo(ref output, _repeated_symbolList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += symbolList_.CalculateSize(_repeated_symbolList_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ReqTradeRule other) {
+      if (other == null) {
+        return;
+      }
+      symbolList_.Add(other.symbolList_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            symbolList_.AddEntriesFrom(input, _repeated_symbolList_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            symbolList_.AddEntriesFrom(ref input, _repeated_symbolList_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ResTradeRule : pb::IMessage<ResTradeRule>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ResTradeRule> _parser = new pb::MessageParser<ResTradeRule>(() => new ResTradeRule());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ResTradeRule> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResTradeRule() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResTradeRule(ResTradeRule other) : this() {
+      beanList_ = other.beanList_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResTradeRule Clone() {
+      return new ResTradeRule(this);
     }
 
     /// <summary>Field number for the "beanList" field.</summary>
@@ -3814,12 +3850,12 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ReqTradeRule);
+      return Equals(other as ResTradeRule);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ReqTradeRule other) {
+    public bool Equals(ResTradeRule other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -3884,7 +3920,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ReqTradeRule other) {
+    public void MergeFrom(ResTradeRule other) {
       if (other == null) {
         return;
       }
@@ -3957,7 +3993,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4406,6 +4442,193 @@ namespace Lampyris.Crypto.Protocol.Quote {
   ///--------- 异动信息 数据 ----------
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MarketMonitorNoticeListBean : pb::IMessage<MarketMonitorNoticeListBean>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MarketMonitorNoticeListBean> _parser = new pb::MessageParser<MarketMonitorNoticeListBean>(() => new MarketMonitorNoticeListBean());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MarketMonitorNoticeListBean> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MarketMonitorNoticeListBean() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MarketMonitorNoticeListBean(MarketMonitorNoticeListBean other) : this() {
+      beanList_ = other.beanList_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MarketMonitorNoticeListBean Clone() {
+      return new MarketMonitorNoticeListBean(this);
+    }
+
+    /// <summary>Field number for the "beanList" field.</summary>
+    public const int BeanListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean> _repeated_beanList_codec
+        = pb::FieldCodec.ForMessage(10, global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean.Parser);
+    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean> beanList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean> BeanList {
+      get { return beanList_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MarketMonitorNoticeListBean);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MarketMonitorNoticeListBean other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!beanList_.Equals(other.beanList_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= beanList_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      beanList_.WriteTo(output, _repeated_beanList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      beanList_.WriteTo(ref output, _repeated_beanList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += beanList_.CalculateSize(_repeated_beanList_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MarketMonitorNoticeListBean other) {
+      if (other == null) {
+        return;
+      }
+      beanList_.Add(other.beanList_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            beanList_.AddEntriesFrom(input, _repeated_beanList_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            beanList_.AddEntriesFrom(ref input, _repeated_beanList_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class MarketMonitorNoticeBean : pb::IMessage<MarketMonitorNoticeBean>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -4420,7 +4643,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4784,7 +5007,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5065,7 +5288,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5087,7 +5310,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
     public SelfSelectedSymbolGroupBean(SelfSelectedSymbolGroupBean other) : this() {
       name_ = other.name_;
       canDelete_ = other.canDelete_;
-      sortingOrder_ = other.sortingOrder_;
       symbolList_ = other.symbolList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -5128,25 +5350,10 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
     }
 
-    /// <summary>Field number for the "sortingOrder" field.</summary>
-    public const int SortingOrderFieldNumber = 3;
-    private int sortingOrder_;
-    /// <summary>
-    /// 排序顺序
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SortingOrder {
-      get { return sortingOrder_; }
-      set {
-        sortingOrder_ = value;
-      }
-    }
-
     /// <summary>Field number for the "symbolList" field.</summary>
-    public const int SymbolListFieldNumber = 4;
+    public const int SymbolListFieldNumber = 3;
     private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean> _repeated_symbolList_codec
-        = pb::FieldCodec.ForMessage(34, global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean.Parser);
+        = pb::FieldCodec.ForMessage(26, global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean.Parser);
     private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean> symbolList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean>();
     /// <summary>
     /// 交易对列表(ReqSetSelfSelectedSymbol中不传)
@@ -5174,7 +5381,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
       if (Name != other.Name) return false;
       if (CanDelete != other.CanDelete) return false;
-      if (SortingOrder != other.SortingOrder) return false;
       if(!symbolList_.Equals(other.symbolList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -5185,7 +5391,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (CanDelete != false) hash ^= CanDelete.GetHashCode();
-      if (SortingOrder != 0) hash ^= SortingOrder.GetHashCode();
       hash ^= symbolList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -5213,10 +5418,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(16);
         output.WriteBool(CanDelete);
       }
-      if (SortingOrder != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(SortingOrder);
-      }
       symbolList_.WriteTo(output, _repeated_symbolList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -5236,10 +5437,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(16);
         output.WriteBool(CanDelete);
       }
-      if (SortingOrder != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(SortingOrder);
-      }
       symbolList_.WriteTo(ref output, _repeated_symbolList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -5256,9 +5453,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
       if (CanDelete != false) {
         size += 1 + 1;
-      }
-      if (SortingOrder != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SortingOrder);
       }
       size += symbolList_.CalculateSize(_repeated_symbolList_codec);
       if (_unknownFields != null) {
@@ -5278,9 +5472,6 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
       if (other.CanDelete != false) {
         CanDelete = other.CanDelete;
-      }
-      if (other.SortingOrder != 0) {
-        SortingOrder = other.SortingOrder;
       }
       symbolList_.Add(other.symbolList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -5310,11 +5501,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
             CanDelete = input.ReadBool();
             break;
           }
-          case 24: {
-            SortingOrder = input.ReadInt32();
-            break;
-          }
-          case 34: {
+          case 26: {
             symbolList_.AddEntriesFrom(input, _repeated_symbolList_codec);
             break;
           }
@@ -5345,11 +5532,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
             CanDelete = input.ReadBool();
             break;
           }
-          case 24: {
-            SortingOrder = input.ReadInt32();
-            break;
-          }
-          case 34: {
+          case 26: {
             symbolList_.AddEntriesFrom(ref input, _repeated_symbolList_codec);
             break;
           }
@@ -5375,7 +5558,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5395,7 +5578,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReqSelfSelectedSymbol(ReqSelfSelectedSymbol other) : this() {
-      grouoList_ = other.grouoList_.Clone();
+      groupList_ = other.groupList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5405,18 +5588,18 @@ namespace Lampyris.Crypto.Protocol.Quote {
       return new ReqSelfSelectedSymbol(this);
     }
 
-    /// <summary>Field number for the "grouoList" field.</summary>
-    public const int GrouoListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> _repeated_grouoList_codec
+    /// <summary>Field number for the "groupList" field.</summary>
+    public const int GroupListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> _repeated_groupList_codec
         = pb::FieldCodec.ForMessage(10, global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean.Parser);
-    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> grouoList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean>();
+    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> groupList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean>();
     /// <summary>
     /// 自选组bean列表(全量)
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> GrouoList {
-      get { return grouoList_; }
+    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> GroupList {
+      get { return groupList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5434,7 +5617,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!grouoList_.Equals(other.grouoList_)) return false;
+      if(!groupList_.Equals(other.groupList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5442,7 +5625,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= grouoList_.GetHashCode();
+      hash ^= groupList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5461,7 +5644,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      grouoList_.WriteTo(output, _repeated_grouoList_codec);
+      groupList_.WriteTo(output, _repeated_groupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5472,7 +5655,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      grouoList_.WriteTo(ref output, _repeated_grouoList_codec);
+      groupList_.WriteTo(ref output, _repeated_groupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5483,7 +5666,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += grouoList_.CalculateSize(_repeated_grouoList_codec);
+      size += groupList_.CalculateSize(_repeated_groupList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5496,7 +5679,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (other == null) {
         return;
       }
-      grouoList_.Add(other.grouoList_);
+      groupList_.Add(other.groupList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5517,7 +5700,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            grouoList_.AddEntriesFrom(input, _repeated_grouoList_codec);
+            groupList_.AddEntriesFrom(input, _repeated_groupList_codec);
             break;
           }
         }
@@ -5540,7 +5723,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            grouoList_.AddEntriesFrom(ref input, _repeated_grouoList_codec);
+            groupList_.AddEntriesFrom(ref input, _repeated_groupList_codec);
             break;
           }
         }
@@ -5565,7 +5748,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5585,7 +5768,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ResSelfSelectedSymbol(ResSelfSelectedSymbol other) : this() {
-      grouoList_ = other.grouoList_.Clone();
+      groupList_ = other.groupList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5595,18 +5778,18 @@ namespace Lampyris.Crypto.Protocol.Quote {
       return new ResSelfSelectedSymbol(this);
     }
 
-    /// <summary>Field number for the "grouoList" field.</summary>
-    public const int GrouoListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> _repeated_grouoList_codec
+    /// <summary>Field number for the "groupList" field.</summary>
+    public const int GroupListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> _repeated_groupList_codec
         = pb::FieldCodec.ForMessage(10, global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean.Parser);
-    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> grouoList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean>();
+    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> groupList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean>();
     /// <summary>
     /// 自选组bean列表(全量)
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> GrouoList {
-      get { return grouoList_; }
+    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean> GroupList {
+      get { return groupList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5624,7 +5807,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!grouoList_.Equals(other.grouoList_)) return false;
+      if(!groupList_.Equals(other.groupList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5632,7 +5815,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= grouoList_.GetHashCode();
+      hash ^= groupList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5651,7 +5834,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      grouoList_.WriteTo(output, _repeated_grouoList_codec);
+      groupList_.WriteTo(output, _repeated_groupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5662,7 +5845,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      grouoList_.WriteTo(ref output, _repeated_grouoList_codec);
+      groupList_.WriteTo(ref output, _repeated_groupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5673,7 +5856,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += grouoList_.CalculateSize(_repeated_grouoList_codec);
+      size += groupList_.CalculateSize(_repeated_groupList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5686,7 +5869,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (other == null) {
         return;
       }
-      grouoList_.Add(other.grouoList_);
+      groupList_.Add(other.groupList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5707,7 +5890,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            grouoList_.AddEntriesFrom(input, _repeated_grouoList_codec);
+            groupList_.AddEntriesFrom(input, _repeated_groupList_codec);
             break;
           }
         }
@@ -5730,7 +5913,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            grouoList_.AddEntriesFrom(ref input, _repeated_grouoList_codec);
+            groupList_.AddEntriesFrom(ref input, _repeated_groupList_codec);
             break;
           }
         }

@@ -72,21 +72,12 @@ extern ReqAccountAssetTransferDefaultTypeInternal _ReqAccountAssetTransfer_defau
 class ReqAccountSummaryUpdate;
 struct ReqAccountSummaryUpdateDefaultTypeInternal;
 extern ReqAccountSummaryUpdateDefaultTypeInternal _ReqAccountSummaryUpdate_default_instance_;
-class ReqHeartBeat;
-struct ReqHeartBeatDefaultTypeInternal;
-extern ReqHeartBeatDefaultTypeInternal _ReqHeartBeat_default_instance_;
-class ReqLogin;
-struct ReqLoginDefaultTypeInternal;
-extern ReqLoginDefaultTypeInternal _ReqLogin_default_instance_;
 class ReqQueryAssetTransferHistory;
 struct ReqQueryAssetTransferHistoryDefaultTypeInternal;
 extern ReqQueryAssetTransferHistoryDefaultTypeInternal _ReqQueryAssetTransferHistory_default_instance_;
 class ResAccountSummaryUpdate;
 struct ResAccountSummaryUpdateDefaultTypeInternal;
 extern ResAccountSummaryUpdateDefaultTypeInternal _ResAccountSummaryUpdate_default_instance_;
-class ResHeartBeat;
-struct ResHeartBeatDefaultTypeInternal;
-extern ResHeartBeatDefaultTypeInternal _ResHeartBeat_default_instance_;
 class ResQuerySubAcccountList;
 struct ResQuerySubAcccountListDefaultTypeInternal;
 extern ResQuerySubAcccountListDefaultTypeInternal _ResQuerySubAcccountList_default_instance_;
@@ -144,196 +135,6 @@ inline bool AssetTransferType_Parse(absl::string_view name, AssetTransferType* v
 // ===================================================================
 
 
-// -------------------------------------------------------------------
-
-class ResHeartBeat final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.account.ResHeartBeat) */ {
- public:
-  inline ResHeartBeat() : ResHeartBeat(nullptr) {}
-  ~ResHeartBeat() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(ResHeartBeat* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(ResHeartBeat));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR ResHeartBeat(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline ResHeartBeat(const ResHeartBeat& from) : ResHeartBeat(nullptr, from) {}
-  inline ResHeartBeat(ResHeartBeat&& from) noexcept
-      : ResHeartBeat(nullptr, std::move(from)) {}
-  inline ResHeartBeat& operator=(const ResHeartBeat& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ResHeartBeat& operator=(ResHeartBeat&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ResHeartBeat& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ResHeartBeat* internal_default_instance() {
-    return reinterpret_cast<const ResHeartBeat*>(
-        &_ResHeartBeat_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 2;
-  friend void swap(ResHeartBeat& a, ResHeartBeat& b) { a.Swap(&b); }
-  inline void Swap(ResHeartBeat* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ResHeartBeat* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ResHeartBeat* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<ResHeartBeat>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const ResHeartBeat& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const ResHeartBeat& from) { ResHeartBeat::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(ResHeartBeat* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.account.ResHeartBeat"; }
-
- protected:
-  explicit ResHeartBeat(::google::protobuf::Arena* arena);
-  ResHeartBeat(::google::protobuf::Arena* arena, const ResHeartBeat& from);
-  ResHeartBeat(::google::protobuf::Arena* arena, ResHeartBeat&& from) noexcept
-      : ResHeartBeat(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kServerTimeFieldNumber = 1,
-  };
-  // int64 serverTime = 1;
-  void clear_servertime() ;
-  ::int64_t servertime() const;
-  void set_servertime(::int64_t value);
-
-  private:
-  ::int64_t _internal_servertime() const;
-  void _internal_set_servertime(::int64_t value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.account.ResHeartBeat)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      0, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const ResHeartBeat& from_msg);
-    ::int64_t servertime_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_account_2eproto;
-};
 // -------------------------------------------------------------------
 
 class ReqQueryAssetTransferHistory final : public ::google::protobuf::internal::ZeroFieldsBase
@@ -394,7 +195,7 @@ class ReqQueryAssetTransferHistory final : public ::google::protobuf::internal::
     return reinterpret_cast<const ReqQueryAssetTransferHistory*>(
         &_ReqQueryAssetTransferHistory_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(ReqQueryAssetTransferHistory& a, ReqQueryAssetTransferHistory& b) { a.Swap(&b); }
   inline void Swap(ReqQueryAssetTransferHistory* other) {
     if (other == this) return;
@@ -481,392 +282,6 @@ class ReqQueryAssetTransferHistory final : public ::google::protobuf::internal::
 };
 // -------------------------------------------------------------------
 
-class ReqLogin final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.account.ReqLogin) */ {
- public:
-  inline ReqLogin() : ReqLogin(nullptr) {}
-  ~ReqLogin() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(ReqLogin* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(ReqLogin));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR ReqLogin(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline ReqLogin(const ReqLogin& from) : ReqLogin(nullptr, from) {}
-  inline ReqLogin(ReqLogin&& from) noexcept
-      : ReqLogin(nullptr, std::move(from)) {}
-  inline ReqLogin& operator=(const ReqLogin& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ReqLogin& operator=(ReqLogin&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ReqLogin& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ReqLogin* internal_default_instance() {
-    return reinterpret_cast<const ReqLogin*>(
-        &_ReqLogin_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 0;
-  friend void swap(ReqLogin& a, ReqLogin& b) { a.Swap(&b); }
-  inline void Swap(ReqLogin* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ReqLogin* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ReqLogin* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<ReqLogin>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const ReqLogin& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const ReqLogin& from) { ReqLogin::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(ReqLogin* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.account.ReqLogin"; }
-
- protected:
-  explicit ReqLogin(::google::protobuf::Arena* arena);
-  ReqLogin(::google::protobuf::Arena* arena, const ReqLogin& from);
-  ReqLogin(::google::protobuf::Arena* arena, ReqLogin&& from) noexcept
-      : ReqLogin(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kDeviceMACFieldNumber = 1,
-  };
-  // string deviceMAC = 1;
-  void clear_devicemac() ;
-  const std::string& devicemac() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_devicemac(Arg_&& arg, Args_... args);
-  std::string* mutable_devicemac();
-  PROTOBUF_NODISCARD std::string* release_devicemac();
-  void set_allocated_devicemac(std::string* value);
-
-  private:
-  const std::string& _internal_devicemac() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_devicemac(
-      const std::string& value);
-  std::string* _internal_mutable_devicemac();
-
-  public:
-  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.account.ReqLogin)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      59, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const ReqLogin& from_msg);
-    ::google::protobuf::internal::ArenaStringPtr devicemac_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_account_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ReqHeartBeat final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.account.ReqHeartBeat) */ {
- public:
-  inline ReqHeartBeat() : ReqHeartBeat(nullptr) {}
-  ~ReqHeartBeat() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(ReqHeartBeat* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(ReqHeartBeat));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR ReqHeartBeat(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline ReqHeartBeat(const ReqHeartBeat& from) : ReqHeartBeat(nullptr, from) {}
-  inline ReqHeartBeat(ReqHeartBeat&& from) noexcept
-      : ReqHeartBeat(nullptr, std::move(from)) {}
-  inline ReqHeartBeat& operator=(const ReqHeartBeat& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ReqHeartBeat& operator=(ReqHeartBeat&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ReqHeartBeat& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ReqHeartBeat* internal_default_instance() {
-    return reinterpret_cast<const ReqHeartBeat*>(
-        &_ReqHeartBeat_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 1;
-  friend void swap(ReqHeartBeat& a, ReqHeartBeat& b) { a.Swap(&b); }
-  inline void Swap(ReqHeartBeat* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ReqHeartBeat* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ReqHeartBeat* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<ReqHeartBeat>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const ReqHeartBeat& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const ReqHeartBeat& from) { ReqHeartBeat::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(ReqHeartBeat* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.account.ReqHeartBeat"; }
-
- protected:
-  explicit ReqHeartBeat(::google::protobuf::Arena* arena);
-  ReqHeartBeat(::google::protobuf::Arena* arena, const ReqHeartBeat& from);
-  ReqHeartBeat(::google::protobuf::Arena* arena, ReqHeartBeat&& from) noexcept
-      : ReqHeartBeat(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kClientTimeFieldNumber = 1,
-  };
-  // int64 clientTime = 1;
-  void clear_clienttime() ;
-  ::int64_t clienttime() const;
-  void set_clienttime(::int64_t value);
-
-  private:
-  ::int64_t _internal_clienttime() const;
-  void _internal_set_clienttime(::int64_t value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.account.ReqHeartBeat)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      0, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const ReqHeartBeat& from_msg);
-    ::int64_t clienttime_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_account_2eproto;
-};
-// -------------------------------------------------------------------
-
 class ReqAccountSummaryUpdate final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.account.ReqAccountSummaryUpdate) */ {
  public:
@@ -926,7 +341,7 @@ class ReqAccountSummaryUpdate final : public ::google::protobuf::Message
     return reinterpret_cast<const ReqAccountSummaryUpdate*>(
         &_ReqAccountSummaryUpdate_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 3;
   friend void swap(ReqAccountSummaryUpdate& a, ReqAccountSummaryUpdate& b) { a.Swap(&b); }
   inline void Swap(ReqAccountSummaryUpdate* other) {
     if (other == this) return;
@@ -1116,7 +531,7 @@ class ReqAccountAssetTransfer final : public ::google::protobuf::Message
     return reinterpret_cast<const ReqAccountAssetTransfer*>(
         &_ReqAccountAssetTransfer_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(ReqAccountAssetTransfer& a, ReqAccountAssetTransfer& b) { a.Swap(&b); }
   inline void Swap(ReqAccountAssetTransfer* other) {
     if (other == this) return;
@@ -1306,7 +721,7 @@ class AssetTransferHistoryInfoDetailBean final : public ::google::protobuf::Mess
     return reinterpret_cast<const AssetTransferHistoryInfoDetailBean*>(
         &_AssetTransferHistoryInfoDetailBean_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 6;
   friend void swap(AssetTransferHistoryInfoDetailBean& a, AssetTransferHistoryInfoDetailBean& b) { a.Swap(&b); }
   inline void Swap(AssetTransferHistoryInfoDetailBean* other) {
     if (other == this) return;
@@ -1520,7 +935,7 @@ class AccountAssetInfoBean final : public ::google::protobuf::Message
     return reinterpret_cast<const AccountAssetInfoBean*>(
         &_AccountAssetInfoBean_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 0;
   friend void swap(AccountAssetInfoBean& a, AccountAssetInfoBean& b) { a.Swap(&b); }
   inline void Swap(AccountAssetInfoBean* other) {
     if (other == this) return;
@@ -1782,7 +1197,7 @@ class SubAccountInfoBean final : public ::google::protobuf::Message
     return reinterpret_cast<const SubAccountInfoBean*>(
         &_SubAccountInfoBean_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 1;
   friend void swap(SubAccountInfoBean& a, SubAccountInfoBean& b) { a.Swap(&b); }
   inline void Swap(SubAccountInfoBean* other) {
     if (other == this) return;
@@ -2056,7 +1471,7 @@ class ResAccountSummaryUpdate final : public ::google::protobuf::Message
     return reinterpret_cast<const ResAccountSummaryUpdate*>(
         &_ResAccountSummaryUpdate_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(ResAccountSummaryUpdate& a, ResAccountSummaryUpdate& b) { a.Swap(&b); }
   inline void Swap(ResAccountSummaryUpdate* other) {
     if (other == this) return;
@@ -2252,7 +1667,7 @@ class AssetTransferHistoryInfoBean final : public ::google::protobuf::Message
     return reinterpret_cast<const AssetTransferHistoryInfoBean*>(
         &_AssetTransferHistoryInfoBean_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(AssetTransferHistoryInfoBean& a, AssetTransferHistoryInfoBean& b) { a.Swap(&b); }
   inline void Swap(AssetTransferHistoryInfoBean* other) {
     if (other == this) return;
@@ -2485,7 +1900,7 @@ class ResQuerySubAcccountList final : public ::google::protobuf::Message
     return reinterpret_cast<const ResQuerySubAcccountList*>(
         &_ResQuerySubAcccountList_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(ResQuerySubAcccountList& a, ResQuerySubAcccountList& b) { a.Swap(&b); }
   inline void Swap(ResQuerySubAcccountList* other) {
     if (other == this) return;
@@ -2633,110 +2048,6 @@ class ResQuerySubAcccountList final : public ::google::protobuf::Message
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// ReqLogin
-
-// string deviceMAC = 1;
-inline void ReqLogin::clear_devicemac() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.devicemac_.ClearToEmpty();
-}
-inline const std::string& ReqLogin::devicemac() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.account.ReqLogin.deviceMAC)
-  return _internal_devicemac();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void ReqLogin::set_devicemac(Arg_&& arg,
-                                                     Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.devicemac_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.account.ReqLogin.deviceMAC)
-}
-inline std::string* ReqLogin::mutable_devicemac() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_devicemac();
-  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.account.ReqLogin.deviceMAC)
-  return _s;
-}
-inline const std::string& ReqLogin::_internal_devicemac() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.devicemac_.Get();
-}
-inline void ReqLogin::_internal_set_devicemac(const std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.devicemac_.Set(value, GetArena());
-}
-inline std::string* ReqLogin::_internal_mutable_devicemac() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.devicemac_.Mutable( GetArena());
-}
-inline std::string* ReqLogin::release_devicemac() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.account.ReqLogin.deviceMAC)
-  return _impl_.devicemac_.Release();
-}
-inline void ReqLogin::set_allocated_devicemac(std::string* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.devicemac_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.devicemac_.IsDefault()) {
-    _impl_.devicemac_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:lampyris.crypto.protocol.account.ReqLogin.deviceMAC)
-}
-
-// -------------------------------------------------------------------
-
-// ReqHeartBeat
-
-// int64 clientTime = 1;
-inline void ReqHeartBeat::clear_clienttime() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.clienttime_ = ::int64_t{0};
-}
-inline ::int64_t ReqHeartBeat::clienttime() const {
-  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.account.ReqHeartBeat.clientTime)
-  return _internal_clienttime();
-}
-inline void ReqHeartBeat::set_clienttime(::int64_t value) {
-  _internal_set_clienttime(value);
-  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.account.ReqHeartBeat.clientTime)
-}
-inline ::int64_t ReqHeartBeat::_internal_clienttime() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.clienttime_;
-}
-inline void ReqHeartBeat::_internal_set_clienttime(::int64_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.clienttime_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// ResHeartBeat
-
-// int64 serverTime = 1;
-inline void ResHeartBeat::clear_servertime() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.servertime_ = ::int64_t{0};
-}
-inline ::int64_t ResHeartBeat::servertime() const {
-  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.account.ResHeartBeat.serverTime)
-  return _internal_servertime();
-}
-inline void ResHeartBeat::set_servertime(::int64_t value) {
-  _internal_set_servertime(value);
-  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.account.ResHeartBeat.serverTime)
-}
-inline ::int64_t ResHeartBeat::_internal_servertime() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.servertime_;
-}
-inline void ResHeartBeat::_internal_set_servertime(::int64_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.servertime_ = value;
-}
-
 // -------------------------------------------------------------------
 
 // AccountAssetInfoBean
