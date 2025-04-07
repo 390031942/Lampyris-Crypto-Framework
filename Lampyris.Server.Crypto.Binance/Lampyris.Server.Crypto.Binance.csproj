@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Binance.Net" Version="10.19.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.8.24" />
   </ItemGroup>
 

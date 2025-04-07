@@ -1,8 +1,6 @@
 ﻿using Lampyris.CSharp.Common;
-using Lampyris.Server.Crypto.Common;
-using MySqlX.XDevAPI.Relational;
 
-namespace Lampyris.Server.Crypto;
+namespace Lampyris.Server.Crypto.Common;
 
 [Component("UserDBService")]
 public class UserDBService:DBService

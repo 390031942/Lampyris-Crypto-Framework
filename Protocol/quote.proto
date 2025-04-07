@@ -152,3 +152,6 @@ message ResSelfSelectedSymbol {
     repeated SelfSelectedSymbolGroupBean groupList = 1; // 自选组bean列表(全量)
 }
 /*---------------------------------*/ 
+
+/*--------- 市场总览 数据 ----------*/
+/*---------------------------------*/ 

@@ -6,59 +6,99 @@ using Lampyris.CSharp.Common;
 [Component]
 public abstract class AbstractTradeService
 {
+    public class PerUserTradeData
+    {
+        // 当前持仓信息
+        public List<PositionInfo> PositionInfoList = new List<PositionInfo>();
+
+        // 当前订单信息
+        public List<OrderStatusInfo> ActiveOrderInfoList = new List<OrderStatusInfo>();
+
+        // 历史订单信息
+        public List<OrderStatusInfo> HistoricalOrderInfoList = new List<OrderStatusInfo>();
+
+        // 杠杆设置信息
+        public Dictionary<string, int> LeverageSettingsDataMap = new Dictionary<string, int>();
+
+        // 杠杆分层信息
+        public Dictionary<string, LeverageBracketInfo> LeverageBracketDataMap = new Dictionary<string, LeverageBracketInfo>();
+    }
+
     /// <summary>
     /// 创建订单(实现)
     /// </summary>
+    /// <param name="clientUserId">用户ID</param>
     /// <param name="order">订单信息</param>
-    public abstract void PlaceOrderImpl(Order order);
+    public abstract void PlaceOrderImpl(int clientUserId, OrderInfo order);
 
-    // 下单
+    /// <summary>
+    /// 创建订单
+    /// </summary>
+    /// <param name="clientUserId">用户ID</param>
+    /// <param name="order"></param>
     public void PlaceOrder(int clientUserId, OrderInfo order)
     {
-        if (order == null)
-        {
-            throw new ArgumentNullException(nameof(order));
-        }
-
-        // 模拟生成订单ID
-        order.OrderId = Guid.NewGuid().ToString();
-        _activeOrders.Add(order);
-
+        PlaceOrderImpl(clientUserId, order);
         Console.WriteLine($"Order placed by user {clientUserId}: {order})");
     }
 
-    // 修改订单
-    public void ModifyOrder(string orderId, OrderInfo updatedOrder)
+    /// <summary>
+    /// 修改订单(实现)
+    /// </summary>
+    /// <param name="orderId">订单ID</param>
+    /// <param name="updatedOrderInfo">待修改的订单信息</param>
+    public abstract void ModifyOrderImpl(int clientUserId, int orderId, OrderInfo updatedOrderInfo);
+
+    /// <summary>
+    /// 修改订单
+    /// </summary>
+    /// <param name="orderId">订单ID</param>
+    /// <param name="updatedOrderInfo">待修改的订单信息</param>
+    public void ModifyOrder(int orderId, OrderInfo updatedOrder)
     {
-        var existingOrder = _activeOrders.FirstOrDefault(o => o.OrderId == orderId);
-        if (existingOrder == null)
-        {
-            throw new Exception($"Order with ID {orderId} not found.");
-        }
-
-        // 更新订单信息
-        existingOrder.Symbol = updatedOrder.Symbol;
-        existingOrder.Quantity = updatedOrder.Quantity;
-        existingOrder.Price = updatedOrder.Price;
-        existingOrder.OrderType = updatedOrder.OrderType;
-
         Console.WriteLine($"Order modified: {orderId}");
     }
 
-    // 撤单
-    public void CancelOrder(string orderId)
+    /// <summary>
+    /// 取消订单
+    /// </summary>
+    /// <param name="orderId">订单ID</param>
+    public void CancelOrder(int orderId)
     {
-        var order = _activeOrders.FirstOrDefault(o => o.OrderId == orderId);
-        if (order == null)
-        {
-            throw new Exception($"Order with ID {orderId} not found.");
-        }
-
-        _activeOrders.Remove(order);
         Console.WriteLine($"Order canceled: {orderId}");
     }
 
-    // 一键清仓
+    /// <summary>
+    /// 取消订单(实现)
+    /// </summary>
+    /// <param name="orderId">订单ID</param>
+    /// <param name="updatedOrderInfo">待修改的订单信息</param>
+    public abstract void CancelOrderAsync(int orderId);
+
+    /// <summary>
+    /// 清仓指定symbol
+    /// </summary>
+    /// <param name="symbol">交易对</param>
+    public void ClosePosition(int clientUserId, string symbol)
+    {
+        OrderInfo orderInfo = new OrderInfo();
+        Console.WriteLine($"Position closed for symbol: {symbol}, Order ID: {order.OrderId}");
+    }
+
+    /// <summary>
+    /// 清仓全部symbol
+    /// </summary>
+    /// <param name="symbol">交易对</param>
+    public void CloseAllPosition(string symbol)
+    {
+        OrderInfo orderInfo = new OrderInfo();
+        Console.WriteLine($"Position closed for symbol: {symbol}, Order ID: {order.OrderId}");
+    }
+
+    /// <summary>
+    /// 批量一键清仓()
+    /// </summary>
+    /// <param name="symbols"></param>
     public void CloseAllPositions(List<string> symbols)
     {
         foreach (var symbol in symbols)

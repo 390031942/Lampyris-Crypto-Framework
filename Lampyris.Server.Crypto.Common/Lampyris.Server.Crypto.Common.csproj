@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Binance.Net" Version="10.19.0" />
     <PackageReference Include="Google.Protobuf" Version="3.30.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.72" />
     <PackageReference Include="StackExchange.Redis" Version="2.8.24" />
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Sources\Data\" />
     <Folder Include="Sources\Quote\Util\" />
   </ItemGroup>
 

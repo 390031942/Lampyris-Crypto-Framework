@@ -9,7 +9,7 @@ public class OrderStatusInfo
     public int OrderId { get; set; }
 
     [DBColumn("order_bean", "TEXT")] // 订单基本信息（存储为 JSON）
-    public OrderInfo OrderBean { get; set; }
+    public OrderInfo OrderInfo { get; set; }
 
     [DBColumn("status", "INTEGER")] // 订单状态
     public OrderStatus Status { get; set; }
