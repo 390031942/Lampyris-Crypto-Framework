@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lampyris.Crypto.Protocol.Trading;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,4 +15,17 @@ public class LeverageSetting
 
     [DBColumn("lerverage", "INTEGER")] // 杠杆倍数
     public int Leverage { get; set; }
+
+
+    [DBColumn("maxNotional", "DECIMAL")] // 当前杠杆倍数下最大开仓名义价值
+    public decimal MaxNotional { get; set; }
+
+    public LeverageBean ToBean()
+    {
+        LeverageBean bean = new LeverageBean();
+        bean.Symbol = Symbol;
+        bean.Leverage = Leverage;
+        bean.MaxNotional = Convert.ToDouble(MaxNotional);
+        return bean;
+    }
 }

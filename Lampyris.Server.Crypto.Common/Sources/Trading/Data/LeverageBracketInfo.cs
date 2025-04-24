@@ -1,4 +1,6 @@
-﻿namespace Lampyris.Server.Crypto.Common;
+﻿using Lampyris.Crypto.Protocol.Trading;
+
+namespace Lampyris.Server.Crypto.Common;
 
 [DBTable("lerverage_bracket")]
 public class LeverageBracketInfo
@@ -10,8 +12,17 @@ public class LeverageBracketInfo
     public int Leverage { get; set; }
 
     [DBColumn("notional_cap", "DOUBLE")] // 当前分层下的名义价值上限
-    public double NotionalCap { get; set; }
+    public decimal NotionalCap { get; set; }
 
     [DBColumn("notional_floor", "DOUBLE")] // 当前分层下的名义价值下限
-    public double NotionalFloor { get; set; }
+    public decimal NotionalFloor { get; set; }
+
+    public LeverageBracketBean ToBean()
+    {
+        LeverageBracketBean bean = new LeverageBracketBean();
+        bean.Leverage = Leverage;
+        bean.NotionalCap = Convert.ToDouble(NotionalCap);
+        bean.NotionalFloor = Convert.ToDouble(NotionalFloor);
+        return bean;
+    }
 }

@@ -3,27 +3,186 @@ using Lampyris.Server.Crypto.Common;
 using Binance.Net.Clients;
 using CryptoExchange.Net.Authentication;
 using CryptoExchange.Net.Interfaces;
+using Binance.Net.Objects.Models.Futures;
+using Lampyris.Crypto.Protocol.App;
+using MySqlX.XDevAPI;
+using CryptoExchange.Net.CommonObjects;
+using Binance.Net.Objects.Models.Futures.Socket;
 
 [Component]
 
-public class AccountManager: AbstractAccountManager<BinanceSocketClient>
+public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceRestClient>
 {
+    [Autowired]
+    private WebSocketService m_WebSocketService;
+
     /// <summary>
-    /// 加载账户配置
+    /// 子账户ID对应的Binance API账户事件监听listenKey
+    /// </summary>
+    private Dictionary<int, string> m_UserId2ListenKeyMap = new ();
+
+    /// <summary>
+    /// 待重新连接的子账户列表
+    /// </summary>
+    private Dictionary<string, SubTradeAccountContext> m_WaitForRetryMap = new();
+
+    public async Task SubscribeToUserDataUpdatesAsync(int accountId, BinanceRestClient restClient, BinanceSocketClient webSocketClient, string listenKey)
+    {
+        // 订阅用户数据更新
+        var subscriptionResult = await webSocketClient.UsdFuturesApi.Account.SubscribeToUserDataUpdatesAsync(
+            listenKey,
+            // 杠杆更新事件回调
+            onLeverageUpdate: leverageUpdate =>
+            {
+                if (leverageUpdate.Data != null && leverageUpdate.Data.LeverageUpdateData != null)
+                {
+                    var data = leverageUpdate.Data.LeverageUpdateData;
+                    m_TradeService.AccountUpdateLeverage(accountId, data.Symbol, data.Leverage);
+                    Logger.LogInfo($"Lererage of sub-account id = {accountId}, symbol = {data.Symbol} changed to {data.Leverage}");
+                }
+            },
+            // 保证金追加事件回调
+            onMarginUpdate: marginUpdate =>
+            {
+                if (marginUpdate.Data != null)
+                {
+                    m_WebSocketService.BroadcastMessage(new ResNotice()
+                    {
+                        Content = "",
+                        Type = NoticeType.AlertDialog,
+                    });
+                }
+            },
+            // 账户更新事件回调
+            onAccountUpdate: accountUpdate =>
+            {
+                if (accountUpdate.Data != null)
+                {
+                    // 资产信息仅仅更新USDT
+                    foreach (var balance in accountUpdate.Data.UpdateData.Balances)
+                    {
+                        if(balance != null && balance.Asset == "USDT")
+                        {
+                            Logger.LogInfo($"Available balance = {balance.WalletBalance}");
+                        }
+                    }
+
+                    // 有持仓的交易对集合
+                    HashSet<string> symbols = m_TradeService.GetSymbolWithPositionSet();
+
+                    // 更新持仓信息
+                    foreach(var apiPosition in accountUpdate.Data.UpdateData.Positions)
+                    {
+                        // 这里出现的symbol移除掉，最终得到的symbol集合就是清仓了的
+                        symbols.Remove(apiPosition.Symbol);
+                        PositionUpdateInfo updateInfo = Converter.ToPositionUpdateInfo(apiPosition);
+                        m_TradeService.UpdatePosition(accountId, updateInfo);
+                    }
+
+                    // 更新已清仓的信息
+                    foreach(string symbol in symbols)
+                    {
+                        m_TradeService.SetClearedPositionForSymbol(accountId, symbol);
+                    }
+                }
+            },
+            // 订单更新事件回调
+            onOrderUpdate: orderUpdate =>
+            {
+                if (orderUpdate.Data != null && orderUpdate.Data.UpdateData != null)
+                {
+                    var rawOrderStatusData = orderUpdate.Data.UpdateData;
+                    OrderStatusInfo orderStatusInfo = Converter.ToOrderStatusInfo(rawOrderStatusData);
+                    m_TradeService.UpdateOrderStatus(accountId, orderStatusInfo);
+                }
+            },
+            // 交易更新事件回调
+            onTradeUpdate: tradeUpdate =>
+            {
+                if(tradeUpdate.Data != null)
+                {
+                    BinanceFuturesStreamTradeUpdate update = tradeUpdate.Data;
+                    // m_TradeService.RecordTrade(accountId, tradeUpdate.Data);
+                }
+            },
+            // ListenKey过期事件回调
+            onListenKeyExpired: listenKeyExpired =>
+            {
+                Logger.LogInfo($"ListenKey for account id {accountId} expired, try to re-obtain");
+                // 在这里处理ListenKey过期逻辑
+                var listenKeyResult = restClient.UsdFuturesApi.Account.StartUserStreamAsync().Result;
+                if (!listenKeyResult.Success)
+                {
+                    Logger.LogError($"Failed to obtain Listen Key：{listenKeyResult.Error?.Message}");
+                }
+            },
+            // 策略更新事件回调
+            onStrategyUpdate: null,
+            // 网格更新事件回调
+            onGridUpdate: null,
+            // 条件订单触发拒绝事件回调
+            onConditionalOrderTriggerRejectUpdate: conditionalOrderTriggerRejectUpdate =>
+            {
+                if (conditionalOrderTriggerRejectUpdate.Data != null && conditionalOrderTriggerRejectUpdate.Data.RejectInfo != null)
+                {
+                    var data = conditionalOrderTriggerRejectUpdate.Data.RejectInfo;
+                    Logger.LogWarning($"Conditional order rejected, account id = {accountId}, orderId = : {data.OrderId}, reason = : {data.Reason}");
+                }
+            },
+            ct: CancellationToken.None
+        );
+
+        // 检查订阅是否成功
+        if (!subscriptionResult.Success)
+        {
+            Logger.LogInfo($"订阅失败: {subscriptionResult.Error}");
+        }
+        else
+        {
+            Logger.LogInfo("订阅成功！");
+        }
+    }
+
+    /// <summary>
+    /// 加载账户配置,创建并初始化WebSocket和Rest Client对象
     /// </summary>
     /// <param name="accounts">账户配置列表</param>
     public override void LoadAccounts(IEnumerable<SubTradeAccount> accounts)
     {
-        m_AccountConfigs.Clear();
-        m_AccountConfigs.AddRange(accounts);
-
         foreach (var account in accounts)
         {
-            if (!m_SubAccountId2Client.ContainsKey(account.AccountId))
+            if (!m_SubAccountIdContextDataMap.ContainsKey(account.AccountId))
             {
-                var client = new BinanceSocketClient();
-                client.SetApiCredentials(new ApiCredentials(account.ApiKey, account.ApiSecret));
-                m_SubAccountId2Client.Add(account.AccountId, client);
+                var subTradeAccountContext = new SubTradeAccountContext();
+                var apiCredentitals = new ApiCredentials(account.ApiKey, account.ApiSecret);
+                
+                // Client
+                var restClient = new BinanceRestClient();
+                restClient.SetApiCredentials(apiCredentitals);
+
+                // 获取 Listen Key
+                var listenKeyResult = restClient.UsdFuturesApi.Account.StartUserStreamAsync().Result;
+                if (!listenKeyResult.Success)
+                {
+                    Logger.LogInfo($"Failed to obtain Listen Key：{listenKeyResult.Error?.Message}");
+                    continue;
+                }
+
+                string listenKey = listenKeyResult.Data;
+                m_UserId2ListenKeyMap[account.AccountId] = listenKey;
+
+                // WebSocket
+                var webSocketClient = new BinanceSocketClient();
+                webSocketClient.SetApiCredentials(apiCredentitals);
+
+
+                subTradeAccountContext.RestClient = restClient;
+                subTradeAccountContext.SocketClient = webSocketClient;
+                subTradeAccountContext.AccountInfo = account;
+
+                // 初始化拥有的资产信息
+                // 绑定资产更新事件
+                Task.Run(async() => await SubscribeToUserDataUpdatesAsync(account.AccountId, restClient, webSocketClient, listenKey));
             }
         }
     }
@@ -33,94 +192,30 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient>
     /// </summary>
     /// <param name="accountId">账户ID</param>
     /// <returns>账户资产信息</returns>
-    public async Task<Binance.Net.Objects.Models.Futures.BinanceFuturesAccountInfo> GetAccountAssetsAsync(int accountId)
+    public async Task<BinanceFuturesAccountInfoV3> GetAccountAssetsAsync(int accountId)
     {
-        var client = GetClient(accountId);
-        var accountInfoResult = await client.FuturesUsdt.Account.GetAccountInfoAsync();
+        var client = GetRestClient(accountId);
+        var accountInfoResult = await client.UsdFuturesApi.Account.GetAccountInfoV3Async();
 
         if (!accountInfoResult.Success)
         {
-            throw new Exception($"获取账户资产信息失败: {accountInfoResult.Error?.Message}");
+            throw new Exception($"Failed to : {accountInfoResult.Error?.Message}");
         }
-
+        
         return accountInfoResult.Data;
     }
 
-    public override Task<bool> TestConnectionAsync(int accountId)
+    public override async Task<bool> TestConnectionAsync(int accountId)
     {
-        var client = GetClient(accountId);
-        var pingResult = client.UsdFuturesApi.ExchangeData.ping().Result;
-
-        return pingResult.Success;
+        var client = GetRestClient(accountId);
+        var pingAsync = client.UsdFuturesApi.ExchangeData.PingAsync();
+        await pingAsync;
+        return pingAsync.Result.Success; 
     }
 
     public override SubTradeAccountSummary GetSubTradeAccountSummary(int accountId)
     {
-        var client = GetClient(accountId);
-        client.UsdFuturesApi.Account.SubscribeToUserDataUpdatesAsync()
-        throw new NotImplementedException();
+        var client = GetRestClient(accountId);
+        client.UsdFuturesApi.Account.GetAccountInfoV2Async(accountId).Result.Data.Positions;
     }
-
-    public async Task ListenToAccountUpdatesAsync(CancellationToken cancellationToken)
-    {
-        var client = GetClient(accountId);
-        try
-        {
-            // 1. 获取 Listen Key
-            var listenKeyResult = await _restClient.UsdFuturesApi.Account.StartUserStreamAsync(cancellationToken);
-            if (!listenKeyResult.Success)
-            {
-                Console.WriteLine($"获取 Listen Key 失败：{listenKeyResult.Error?.Message}");
-                return;
-            }
-
-            string listenKey = listenKeyResult.Data;
-            Console.WriteLine($"成功获取 Listen Key：{listenKey}");
-
-            // 2. 订阅账户更新流
-            var subscriptionResult = await _socketClient.UsdFuturesStreams.SubscribeToUserDataUpdatesAsync(
-                listenKey,
-                onAccountUpdate: data =>
-                {
-                    // 处理账户更新事件
-                    UpdateAccountSummary(data.Data);
-                },
-                onMarginUpdate: data =>
-                {
-                    // 处理持仓更新事件
-                    UpdatePositions(data.Data);
-                },
-                onListenKeyExpired: data =>
-                {
-                    // 处理 Listen Key 过期事件
-                    Console.WriteLine("Listen Key 已过期，请重新启动数据流。");
-                },
-                ct: cancellationToken
-            );
-
-            if (!subscriptionResult.Success)
-            {
-                Console.WriteLine($"订阅账户更新流失败：{subscriptionResult.Error?.Message}");
-                return;
-            }
-
-            Console.WriteLine("成功订阅账户更新流！");
-
-            // 等待取消订阅
-            await Task.Delay(Timeout.Infinite, cancellationToken);
-
-            // 取消订阅
-            await _socketClient.UnsubscribeAsync(subscriptionResult.Data);
-            Console.WriteLine("已取消订阅账户更新流。");
-        }
-        catch (TaskCanceledException)
-        {
-            Console.WriteLine("账户更新监听已取消。");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"监听账户更新时发生异常：{ex.Message}");
-        }
-    }
-
 }

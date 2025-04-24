@@ -60,21 +60,21 @@ public class QuoteCacheService:ILifecycle
         return result;
     }
 
+    // 对于符合缓存策略的数据，可以选择同步写入到缓存里
+    // 缓存策略为:
+    // 1) 对于barSize = 1m的，缓存最近7天的数据，数据按日期分组
+    // 2) 对于barSize = 15m的，缓存最近14天的数据，数据按日期分组
+    // 3) 对于barSize = 1d的，缓存全体数据，数据不分组
+    // 其余情况下不写入缓存
+
     /// <summary>
     /// 存储K线数据到缓存+数据库
     /// </summary>
     /// <param name="symbol">USDT永续合约symbol</param>
     /// <param name="barSize">k线图时间周期</param>
     /// <param name="dataList">k线数据列表</param>
-    public void StorageCandleData(string symbol, BarSize barSize, List<QuoteCandleData> dataList)
+    public void StorageCandleData(string symbol, BarSize barSize, List<QuoteCandleData> dataList, bool cached = false)
     {
-        // 对于符合缓存策略的数据，需要同步写入到缓存里
-        // 缓存策略为:
-        // 1) 对于barSize = 1m的，缓存最近7天的数据，数据为15个一组
-        // 2) 对于barSize = 15m的，缓存最近14天的数据，数据不分组
-        // 3) 对于barSize = 1d的，缓存最近1年的数据，数据不分组
-        // 其余情况下不写入缓存
-
         // TODO:异步写入到数据库
         string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";
         DBTable<QuoteCandleData> dbTable = m_DBService.GetTable<QuoteCandleData>(tableName);
@@ -84,6 +84,25 @@ public class QuoteCacheService:ILifecycle
         }
         dbTable.Insert(dataList);
     }
+
+    /// <summary>
+    /// 存储K线数据到缓存+数据库
+    /// </summary>
+    /// <param name="symbol">USDT永续合约symbol</param>
+    /// <param name="barSize">k线图时间周期</param>
+    /// <param name="dataList">k线数据</param>
+    public void StorageCandleData(string symbol, BarSize barSize, QuoteCandleData data)
+    {
+        // TODO:异步写入到数据库
+        string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";
+        DBTable<QuoteCandleData> dbTable = m_DBService.GetTable<QuoteCandleData>(tableName);
+        if (dbTable == null)
+        {
+            dbTable = m_DBService.CreateTable<QuoteCandleData>(tableName);
+        }
+        dbTable.Insert(data);
+    }
+
 
     /// <summary>
     /// 查询最近一根k线
@@ -117,5 +136,17 @@ public class QuoteCacheService:ILifecycle
     public void QueryLastestCandlesNoAlloc(string symbol, BarSize okxBarSize, List<QuoteCandleData> result, int n)
     {
         
+    }
+
+    /// <summary>
+    /// 查询某个symbol，对于某个时间周期下，数据库中存储了的全体日期列表
+    /// </summary>
+    /// <param name="symbol"></param>
+    /// <param name="barSize"></param>
+    /// <returns></returns>
+    public IEnumerable<DateTime> QueryCandleDateTimeList(string symbol, BarSize barSize)
+    {
+        string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";
+        return m_DBService.QueryField<DateTime>(tableName, "dateTime");
     }
 }

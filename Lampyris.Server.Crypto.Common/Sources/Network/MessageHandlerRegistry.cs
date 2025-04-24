@@ -1,4 +1,5 @@
 using Lampyris.Crypto.Protocol.Common;
+using Lampyris.CSharp.Common;
 using Lampyris.Server.Crypto.Common;
 using System.Reflection;
 
@@ -13,9 +14,8 @@ public class MessageHandlerRegistry
 
     private void RegisterHandlers()
     {
-        var methods = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(assembly => assembly.GetTypes())
-            .SelectMany(type => type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
+        var methods = Components.GetComponentsByTag("MessageHandler")
+            .SelectMany(obj => obj.GetType().GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
             .Where(method => method.GetCustomAttributes<MessageHandlerAttribute>().Any());
 
         foreach (var method in methods)

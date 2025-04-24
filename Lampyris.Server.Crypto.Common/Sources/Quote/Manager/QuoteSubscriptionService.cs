@@ -43,14 +43,14 @@ public class QuoteSubscriptionService
         {
             var bean = m_SymbolTickerDataBeanPool.Get();
             bean.Symbol = quoteTickerData.Symbol;
-            bean.Price = quoteTickerData.Price;
-            bean.Percentage = quoteTickerData.ChangePerc;
-            bean.Currency = quoteTickerData.Volumn;
-            bean.MarkPrice = quoteTickerData.MarkPrice;
-            bean.IndexPrice = quoteTickerData.IndexPrice;
-            bean.FundingRate = quoteTickerData.FundingRate;
+            bean.Price = (double)quoteTickerData.Price;
+            bean.Percentage = (double)quoteTickerData.ChangePerc;
+            bean.Currency = (double)quoteTickerData.Volumn;
+            bean.MarkPrice = (double)quoteTickerData.MarkPrice;
+            bean.IndexPrice = (double)quoteTickerData.IndexPrice;
+            bean.FundingRate = (double)quoteTickerData.FundingRate;
             bean.NextFundingTime = quoteTickerData.NextFundingTime;
-            bean.RiseSpeed = quoteTickerData.RiseSpeed;
+            bean.RiseSpeed = (double)quoteTickerData.RiseSpeed;
             bean.Labels.AddRange(quoteTickerData.Labels);
 
             m_ResSubscribeTickerData.BeanList.Add(bean);
@@ -143,17 +143,17 @@ public class QuoteSubscriptionService
     /// </summary>
     private ObjectPool<SymbolTradeRuleBean> m_SymbolTradeRuleDataPool = new ObjectPool<SymbolTradeRuleBean>();
 
-    public void PushTradeRuleBean(int clientUserId, SymbolTradeRuleData data)
+    public void PushTradeRuleBean(int clientUserId, SymbolTradeRule data)
     {
         SymbolTradeRuleBean bean = ToSymbolTradeDataBean(data);
         m_WebSocketService.PushMessge(clientUserId , bean);
     }
 
-    public void PushTradeRuleBeanList(int clientUserId, List<SymbolTradeRuleData> dataList)
+    public void PushTradeRuleBeanList(int clientUserId, List<SymbolTradeRule> dataList)
     {
         ResTradeRule res = new ResTradeRule();
 
-        foreach (SymbolTradeRuleData data in dataList)
+        foreach (SymbolTradeRule data in dataList)
         {
             var bean = ToSymbolTradeDataBean(data);
         }
@@ -166,17 +166,17 @@ public class QuoteSubscriptionService
         }
     }
 
-    private static SymbolTradeRuleBean ToSymbolTradeDataBean(SymbolTradeRuleData data)
+    private static SymbolTradeRuleBean ToSymbolTradeDataBean(SymbolTradeRule data)
     {
         SymbolTradeRuleBean bean = new SymbolTradeRuleBean();
         bean.Symbol = data.Symbol;
-        bean.MaxPrice = data.MaxPrice;
-        bean.MinPrice = data.MinPrice;
-        bean.PriceTickSize = data.PriceTickSize;
-        bean.MaxQuantity = data.MaxQuantity;
-        bean.MinQuantity = data.MinQuantity;
-        bean.QuantityTickSize = data.QuantityTickSize;
-        bean.MinNotional = data.MinNotional;
+        bean.MaxPrice = (double)data.MaxPrice;
+        bean.MinPrice = (double)data.MinPrice;
+        bean.PriceTickSize = (double)data.PriceStep;
+        bean.MaxQuantity = (double)data.MaxQuantity;
+        bean.MinQuantity = (double)data.MinQuantity;
+        bean.QuantityTickSize = (double)data.QuantityStep;
+        bean.MinNotional = (double)data.MinNotional;
 
         return bean;
     }

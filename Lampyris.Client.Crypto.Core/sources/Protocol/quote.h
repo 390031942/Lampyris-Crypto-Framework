@@ -67,6 +67,9 @@ extern MarketMonitorNoticeBeanDefaultTypeInternal _MarketMonitorNoticeBean_defau
 class MarketMonitorNoticeListBean;
 struct MarketMonitorNoticeListBeanDefaultTypeInternal;
 extern MarketMonitorNoticeListBeanDefaultTypeInternal _MarketMonitorNoticeListBean_default_instance_;
+class MarketPreviewIntervalDataBean;
+struct MarketPreviewIntervalDataBeanDefaultTypeInternal;
+extern MarketPreviewIntervalDataBeanDefaultTypeInternal _MarketPreviewIntervalDataBean_default_instance_;
 class ReqCandlestickQuery;
 struct ReqCandlestickQueryDefaultTypeInternal;
 extern ReqCandlestickQueryDefaultTypeInternal _ReqCandlestickQuery_default_instance_;
@@ -88,6 +91,9 @@ extern ReqTradeRuleDefaultTypeInternal _ReqTradeRule_default_instance_;
 class ResCandlestickQuery;
 struct ResCandlestickQueryDefaultTypeInternal;
 extern ResCandlestickQueryDefaultTypeInternal _ResCandlestickQuery_default_instance_;
+class ResMarketPreviewData;
+struct ResMarketPreviewDataDefaultTypeInternal;
+extern ResMarketPreviewDataDefaultTypeInternal _ResMarketPreviewData_default_instance_;
 class ResSelfSelectedSymbol;
 struct ResSelfSelectedSymbolDefaultTypeInternal;
 extern ResSelfSelectedSymbolDefaultTypeInternal _ResSelfSelectedSymbol_default_instance_;
@@ -544,6 +550,7 @@ class SymbolTradeRuleBean final : public ::google::protobuf::Message
     kMinQuantityFieldNumber = 6,
     kQuantityTickSizeFieldNumber = 7,
     kMinNotionalFieldNumber = 8,
+    kOnBoardTimestampFieldNumber = 9,
   };
   // string symbol = 1;
   void clear_symbol() ;
@@ -631,12 +638,22 @@ class SymbolTradeRuleBean final : public ::google::protobuf::Message
   void _internal_set_minnotional(double value);
 
   public:
+  // int64 onBoardTimestamp = 9;
+  void clear_onboardtimestamp() ;
+  ::int64_t onboardtimestamp() const;
+  void set_onboardtimestamp(::int64_t value);
+
+  private:
+  ::int64_t _internal_onboardtimestamp() const;
+  void _internal_set_onboardtimestamp(::int64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.quote.SymbolTradeRuleBean)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 8, 0,
+      4, 9, 0,
       73, 2>
       _table_;
 
@@ -662,6 +679,7 @@ class SymbolTradeRuleBean final : public ::google::protobuf::Message
     double minquantity_;
     double quantityticksize_;
     double minnotional_;
+    ::int64_t onboardtimestamp_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2294,6 +2312,220 @@ class ReqCandlestickQuery final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class MarketPreviewIntervalDataBean final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean) */ {
+ public:
+  inline MarketPreviewIntervalDataBean() : MarketPreviewIntervalDataBean(nullptr) {}
+  ~MarketPreviewIntervalDataBean() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(MarketPreviewIntervalDataBean* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(MarketPreviewIntervalDataBean));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR MarketPreviewIntervalDataBean(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline MarketPreviewIntervalDataBean(const MarketPreviewIntervalDataBean& from) : MarketPreviewIntervalDataBean(nullptr, from) {}
+  inline MarketPreviewIntervalDataBean(MarketPreviewIntervalDataBean&& from) noexcept
+      : MarketPreviewIntervalDataBean(nullptr, std::move(from)) {}
+  inline MarketPreviewIntervalDataBean& operator=(const MarketPreviewIntervalDataBean& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MarketPreviewIntervalDataBean& operator=(MarketPreviewIntervalDataBean&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MarketPreviewIntervalDataBean& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MarketPreviewIntervalDataBean* internal_default_instance() {
+    return reinterpret_cast<const MarketPreviewIntervalDataBean*>(
+        &_MarketPreviewIntervalDataBean_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 20;
+  friend void swap(MarketPreviewIntervalDataBean& a, MarketPreviewIntervalDataBean& b) { a.Swap(&b); }
+  inline void Swap(MarketPreviewIntervalDataBean* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MarketPreviewIntervalDataBean* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MarketPreviewIntervalDataBean* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<MarketPreviewIntervalDataBean>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const MarketPreviewIntervalDataBean& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const MarketPreviewIntervalDataBean& from) { MarketPreviewIntervalDataBean::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(MarketPreviewIntervalDataBean* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean"; }
+
+ protected:
+  explicit MarketPreviewIntervalDataBean(::google::protobuf::Arena* arena);
+  MarketPreviewIntervalDataBean(::google::protobuf::Arena* arena, const MarketPreviewIntervalDataBean& from);
+  MarketPreviewIntervalDataBean(::google::protobuf::Arena* arena, MarketPreviewIntervalDataBean&& from) noexcept
+      : MarketPreviewIntervalDataBean(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLowerBoundPercFieldNumber = 1,
+    kUpperBoundPercFieldNumber = 2,
+    kCountFieldNumber = 3,
+  };
+  // int32 lowerBoundPerc = 1;
+  void clear_lowerboundperc() ;
+  ::int32_t lowerboundperc() const;
+  void set_lowerboundperc(::int32_t value);
+
+  private:
+  ::int32_t _internal_lowerboundperc() const;
+  void _internal_set_lowerboundperc(::int32_t value);
+
+  public:
+  // int32 upperBoundPerc = 2;
+  void clear_upperboundperc() ;
+  ::int32_t upperboundperc() const;
+  void set_upperboundperc(::int32_t value);
+
+  private:
+  ::int32_t _internal_upperboundperc() const;
+  void _internal_set_upperboundperc(::int32_t value);
+
+  public:
+  // int32 count = 3;
+  void clear_count() ;
+  ::int32_t count() const;
+  void set_count(::int32_t value);
+
+  private:
+  ::int32_t _internal_count() const;
+  void _internal_set_count(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const MarketPreviewIntervalDataBean& from_msg);
+    ::int32_t lowerboundperc_;
+    ::int32_t upperboundperc_;
+    ::int32_t count_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quote_2eproto;
+};
+// -------------------------------------------------------------------
+
 class MarketMonitorNoticeBean final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.quote.MarketMonitorNoticeBean) */ {
  public:
@@ -3634,6 +3866,287 @@ class ResSubscribeTickerData final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const ResSubscribeTickerData& from_msg);
     ::google::protobuf::RepeatedPtrField< ::lampyris::crypto::protocol::quote::SymbolTickerDataBean > beanlist_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_quote_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ResMarketPreviewData final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.quote.ResMarketPreviewData) */ {
+ public:
+  inline ResMarketPreviewData() : ResMarketPreviewData(nullptr) {}
+  ~ResMarketPreviewData() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ResMarketPreviewData* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ResMarketPreviewData));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ResMarketPreviewData(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ResMarketPreviewData(const ResMarketPreviewData& from) : ResMarketPreviewData(nullptr, from) {}
+  inline ResMarketPreviewData(ResMarketPreviewData&& from) noexcept
+      : ResMarketPreviewData(nullptr, std::move(from)) {}
+  inline ResMarketPreviewData& operator=(const ResMarketPreviewData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ResMarketPreviewData& operator=(ResMarketPreviewData&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ResMarketPreviewData& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ResMarketPreviewData* internal_default_instance() {
+    return reinterpret_cast<const ResMarketPreviewData*>(
+        &_ResMarketPreviewData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 21;
+  friend void swap(ResMarketPreviewData& a, ResMarketPreviewData& b) { a.Swap(&b); }
+  inline void Swap(ResMarketPreviewData* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ResMarketPreviewData* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ResMarketPreviewData* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ResMarketPreviewData>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ResMarketPreviewData& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ResMarketPreviewData& from) { ResMarketPreviewData::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ResMarketPreviewData* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.quote.ResMarketPreviewData"; }
+
+ protected:
+  explicit ResMarketPreviewData(::google::protobuf::Arena* arena);
+  ResMarketPreviewData(::google::protobuf::Arena* arena, const ResMarketPreviewData& from);
+  ResMarketPreviewData(::google::protobuf::Arena* arena, ResMarketPreviewData&& from) noexcept
+      : ResMarketPreviewData(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIntervalDataListFieldNumber = 4,
+    kRiseCountFieldNumber = 1,
+    kFlatCountFieldNumber = 2,
+    kTopGainerAvgPercFieldNumber = 5,
+    kBottomGainerAvgPercFieldNumber = 6,
+    kAvgPercFieldNumber = 7,
+    kMainstreamAvgPercFieldNumber = 8,
+    kFallCountFieldNumber = 3,
+  };
+  // repeated .lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean intervalDataList = 4;
+  int intervaldatalist_size() const;
+  private:
+  int _internal_intervaldatalist_size() const;
+
+  public:
+  void clear_intervaldatalist() ;
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* mutable_intervaldatalist(int index);
+  ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>* mutable_intervaldatalist();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>& _internal_intervaldatalist() const;
+  ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>* _internal_mutable_intervaldatalist();
+  public:
+  const ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean& intervaldatalist(int index) const;
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* add_intervaldatalist();
+  const ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>& intervaldatalist() const;
+  // int32 riseCount = 1;
+  void clear_risecount() ;
+  ::int32_t risecount() const;
+  void set_risecount(::int32_t value);
+
+  private:
+  ::int32_t _internal_risecount() const;
+  void _internal_set_risecount(::int32_t value);
+
+  public:
+  // int32 flatCount = 2;
+  void clear_flatcount() ;
+  ::int32_t flatcount() const;
+  void set_flatcount(::int32_t value);
+
+  private:
+  ::int32_t _internal_flatcount() const;
+  void _internal_set_flatcount(::int32_t value);
+
+  public:
+  // double topGainerAvgPerc = 5;
+  void clear_topgaineravgperc() ;
+  double topgaineravgperc() const;
+  void set_topgaineravgperc(double value);
+
+  private:
+  double _internal_topgaineravgperc() const;
+  void _internal_set_topgaineravgperc(double value);
+
+  public:
+  // double bottomGainerAvgPerc = 6;
+  void clear_bottomgaineravgperc() ;
+  double bottomgaineravgperc() const;
+  void set_bottomgaineravgperc(double value);
+
+  private:
+  double _internal_bottomgaineravgperc() const;
+  void _internal_set_bottomgaineravgperc(double value);
+
+  public:
+  // double avgPerc = 7;
+  void clear_avgperc() ;
+  double avgperc() const;
+  void set_avgperc(double value);
+
+  private:
+  double _internal_avgperc() const;
+  void _internal_set_avgperc(double value);
+
+  public:
+  // double mainstreamAvgPerc = 8;
+  void clear_mainstreamavgperc() ;
+  double mainstreamavgperc() const;
+  void set_mainstreamavgperc(double value);
+
+  private:
+  double _internal_mainstreamavgperc() const;
+  void _internal_set_mainstreamavgperc(double value);
+
+  public:
+  // int32 fallCount = 3;
+  void clear_fallcount() ;
+  ::int32_t fallcount() const;
+  void set_fallcount(::int32_t value);
+
+  private:
+  ::int32_t _internal_fallcount() const;
+  void _internal_set_fallcount(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.quote.ResMarketPreviewData)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 8, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ResMarketPreviewData& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean > intervaldatalist_;
+    ::int32_t risecount_;
+    ::int32_t flatcount_;
+    double topgaineravgperc_;
+    double bottomgaineravgperc_;
+    double avgperc_;
+    double mainstreamavgperc_;
+    ::int32_t fallcount_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -6601,6 +7114,28 @@ inline void SymbolTradeRuleBean::_internal_set_minnotional(double value) {
   _impl_.minnotional_ = value;
 }
 
+// int64 onBoardTimestamp = 9;
+inline void SymbolTradeRuleBean::clear_onboardtimestamp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.onboardtimestamp_ = ::int64_t{0};
+}
+inline ::int64_t SymbolTradeRuleBean::onboardtimestamp() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.SymbolTradeRuleBean.onBoardTimestamp)
+  return _internal_onboardtimestamp();
+}
+inline void SymbolTradeRuleBean::set_onboardtimestamp(::int64_t value) {
+  _internal_set_onboardtimestamp(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.SymbolTradeRuleBean.onBoardTimestamp)
+}
+inline ::int64_t SymbolTradeRuleBean::_internal_onboardtimestamp() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.onboardtimestamp_;
+}
+inline void SymbolTradeRuleBean::_internal_set_onboardtimestamp(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.onboardtimestamp_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // MarketMonitorNoticeListBean
@@ -7143,6 +7678,283 @@ inline ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote:
 ResSelfSelectedSymbol::_internal_mutable_grouplist() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.grouplist_;
+}
+
+// -------------------------------------------------------------------
+
+// MarketPreviewIntervalDataBean
+
+// int32 lowerBoundPerc = 1;
+inline void MarketPreviewIntervalDataBean::clear_lowerboundperc() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lowerboundperc_ = 0;
+}
+inline ::int32_t MarketPreviewIntervalDataBean::lowerboundperc() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean.lowerBoundPerc)
+  return _internal_lowerboundperc();
+}
+inline void MarketPreviewIntervalDataBean::set_lowerboundperc(::int32_t value) {
+  _internal_set_lowerboundperc(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean.lowerBoundPerc)
+}
+inline ::int32_t MarketPreviewIntervalDataBean::_internal_lowerboundperc() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.lowerboundperc_;
+}
+inline void MarketPreviewIntervalDataBean::_internal_set_lowerboundperc(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.lowerboundperc_ = value;
+}
+
+// int32 upperBoundPerc = 2;
+inline void MarketPreviewIntervalDataBean::clear_upperboundperc() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.upperboundperc_ = 0;
+}
+inline ::int32_t MarketPreviewIntervalDataBean::upperboundperc() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean.upperBoundPerc)
+  return _internal_upperboundperc();
+}
+inline void MarketPreviewIntervalDataBean::set_upperboundperc(::int32_t value) {
+  _internal_set_upperboundperc(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean.upperBoundPerc)
+}
+inline ::int32_t MarketPreviewIntervalDataBean::_internal_upperboundperc() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.upperboundperc_;
+}
+inline void MarketPreviewIntervalDataBean::_internal_set_upperboundperc(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.upperboundperc_ = value;
+}
+
+// int32 count = 3;
+inline void MarketPreviewIntervalDataBean::clear_count() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.count_ = 0;
+}
+inline ::int32_t MarketPreviewIntervalDataBean::count() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean.count)
+  return _internal_count();
+}
+inline void MarketPreviewIntervalDataBean::set_count(::int32_t value) {
+  _internal_set_count(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean.count)
+}
+inline ::int32_t MarketPreviewIntervalDataBean::_internal_count() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.count_;
+}
+inline void MarketPreviewIntervalDataBean::_internal_set_count(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.count_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ResMarketPreviewData
+
+// int32 riseCount = 1;
+inline void ResMarketPreviewData::clear_risecount() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.risecount_ = 0;
+}
+inline ::int32_t ResMarketPreviewData::risecount() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.riseCount)
+  return _internal_risecount();
+}
+inline void ResMarketPreviewData::set_risecount(::int32_t value) {
+  _internal_set_risecount(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.riseCount)
+}
+inline ::int32_t ResMarketPreviewData::_internal_risecount() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.risecount_;
+}
+inline void ResMarketPreviewData::_internal_set_risecount(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.risecount_ = value;
+}
+
+// int32 flatCount = 2;
+inline void ResMarketPreviewData::clear_flatcount() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.flatcount_ = 0;
+}
+inline ::int32_t ResMarketPreviewData::flatcount() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.flatCount)
+  return _internal_flatcount();
+}
+inline void ResMarketPreviewData::set_flatcount(::int32_t value) {
+  _internal_set_flatcount(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.flatCount)
+}
+inline ::int32_t ResMarketPreviewData::_internal_flatcount() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.flatcount_;
+}
+inline void ResMarketPreviewData::_internal_set_flatcount(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.flatcount_ = value;
+}
+
+// int32 fallCount = 3;
+inline void ResMarketPreviewData::clear_fallcount() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fallcount_ = 0;
+}
+inline ::int32_t ResMarketPreviewData::fallcount() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.fallCount)
+  return _internal_fallcount();
+}
+inline void ResMarketPreviewData::set_fallcount(::int32_t value) {
+  _internal_set_fallcount(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.fallCount)
+}
+inline ::int32_t ResMarketPreviewData::_internal_fallcount() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fallcount_;
+}
+inline void ResMarketPreviewData::_internal_set_fallcount(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fallcount_ = value;
+}
+
+// repeated .lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean intervalDataList = 4;
+inline int ResMarketPreviewData::_internal_intervaldatalist_size() const {
+  return _internal_intervaldatalist().size();
+}
+inline int ResMarketPreviewData::intervaldatalist_size() const {
+  return _internal_intervaldatalist_size();
+}
+inline void ResMarketPreviewData::clear_intervaldatalist() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.intervaldatalist_.Clear();
+}
+inline ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* ResMarketPreviewData::mutable_intervaldatalist(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.quote.ResMarketPreviewData.intervalDataList)
+  return _internal_mutable_intervaldatalist()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>* ResMarketPreviewData::mutable_intervaldatalist()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:lampyris.crypto.protocol.quote.ResMarketPreviewData.intervalDataList)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_intervaldatalist();
+}
+inline const ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean& ResMarketPreviewData::intervaldatalist(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.intervalDataList)
+  return _internal_intervaldatalist().Get(index);
+}
+inline ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* ResMarketPreviewData::add_intervaldatalist() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* _add = _internal_mutable_intervaldatalist()->Add();
+  // @@protoc_insertion_point(field_add:lampyris.crypto.protocol.quote.ResMarketPreviewData.intervalDataList)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>& ResMarketPreviewData::intervaldatalist() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:lampyris.crypto.protocol.quote.ResMarketPreviewData.intervalDataList)
+  return _internal_intervaldatalist();
+}
+inline const ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>&
+ResMarketPreviewData::_internal_intervaldatalist() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.intervaldatalist_;
+}
+inline ::google::protobuf::RepeatedPtrField<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>*
+ResMarketPreviewData::_internal_mutable_intervaldatalist() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.intervaldatalist_;
+}
+
+// double topGainerAvgPerc = 5;
+inline void ResMarketPreviewData::clear_topgaineravgperc() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.topgaineravgperc_ = 0;
+}
+inline double ResMarketPreviewData::topgaineravgperc() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.topGainerAvgPerc)
+  return _internal_topgaineravgperc();
+}
+inline void ResMarketPreviewData::set_topgaineravgperc(double value) {
+  _internal_set_topgaineravgperc(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.topGainerAvgPerc)
+}
+inline double ResMarketPreviewData::_internal_topgaineravgperc() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.topgaineravgperc_;
+}
+inline void ResMarketPreviewData::_internal_set_topgaineravgperc(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.topgaineravgperc_ = value;
+}
+
+// double bottomGainerAvgPerc = 6;
+inline void ResMarketPreviewData::clear_bottomgaineravgperc() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bottomgaineravgperc_ = 0;
+}
+inline double ResMarketPreviewData::bottomgaineravgperc() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.bottomGainerAvgPerc)
+  return _internal_bottomgaineravgperc();
+}
+inline void ResMarketPreviewData::set_bottomgaineravgperc(double value) {
+  _internal_set_bottomgaineravgperc(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.bottomGainerAvgPerc)
+}
+inline double ResMarketPreviewData::_internal_bottomgaineravgperc() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.bottomgaineravgperc_;
+}
+inline void ResMarketPreviewData::_internal_set_bottomgaineravgperc(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bottomgaineravgperc_ = value;
+}
+
+// double avgPerc = 7;
+inline void ResMarketPreviewData::clear_avgperc() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.avgperc_ = 0;
+}
+inline double ResMarketPreviewData::avgperc() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.avgPerc)
+  return _internal_avgperc();
+}
+inline void ResMarketPreviewData::set_avgperc(double value) {
+  _internal_set_avgperc(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.avgPerc)
+}
+inline double ResMarketPreviewData::_internal_avgperc() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.avgperc_;
+}
+inline void ResMarketPreviewData::_internal_set_avgperc(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.avgperc_ = value;
+}
+
+// double mainstreamAvgPerc = 8;
+inline void ResMarketPreviewData::clear_mainstreamavgperc() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mainstreamavgperc_ = 0;
+}
+inline double ResMarketPreviewData::mainstreamavgperc() const {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.quote.ResMarketPreviewData.mainstreamAvgPerc)
+  return _internal_mainstreamavgperc();
+}
+inline void ResMarketPreviewData::set_mainstreamavgperc(double value) {
+  _internal_set_mainstreamavgperc(value);
+  // @@protoc_insertion_point(field_set:lampyris.crypto.protocol.quote.ResMarketPreviewData.mainstreamAvgPerc)
+}
+inline double ResMarketPreviewData::_internal_mainstreamavgperc() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.mainstreamavgperc_;
+}
+inline void ResMarketPreviewData::_internal_set_mainstreamavgperc(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.mainstreamavgperc_ = value;
 }
 
 #ifdef __GNUC__

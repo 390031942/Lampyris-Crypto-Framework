@@ -88,7 +88,7 @@ message CandlestickBean {
     int64  time = 1;        // 开盘时间
     double open = 2;        // 开盘价
     double high = 3;        // 最高价
-    double low = 4;         // 最低价
+    double low = 4;         // 最f低价
     double close = 5;       // 收盘价
     double volume = 6;      // 成交量
     double currency = 7;    // 成交额
@@ -114,6 +114,7 @@ message SymbolTradeRuleBean {
     double minQuantity = 6;
     double quantityTickSize = 7;
     double minNotional = 8;
+    int64  onBoardTimestamp = 9; // 上架时间
 }
 /*---------------------------------*/ 
 
@@ -154,4 +155,20 @@ message ResSelfSelectedSymbol {
 /*---------------------------------*/ 
 
 /*--------- 市场总览 数据 ----------*/
+message MarketPreviewIntervalDataBean {
+    int32 lowerBoundPerc = 1; // 下界(%)
+    int32 upperBoundPerc = 2; // 上界(%)
+    int32 count = 3; // 数量 
+}
+
+message ResMarketPreviewData{
+    int32 riseCount = 1; // 上涨数量
+    int32 flatCount = 2; // 平盘数量
+    int32 fallCount = 3; // 下跌数量
+    repeated MarketPreviewIntervalDataBean intervalDataList = 4; // 涨跌数量区间信息
+    double topGainerAvgPerc = 5; // 涨幅前若干名平均涨跌幅
+    double bottomGainerAvgPerc = 6; // 跌幅前若干名平均涨跌幅
+    double avgPerc = 7; // 全体平均涨跌幅
+    double mainstreamAvgPerc = 8; // 主流币合约平均涨跌幅
+}
 /*---------------------------------*/ 

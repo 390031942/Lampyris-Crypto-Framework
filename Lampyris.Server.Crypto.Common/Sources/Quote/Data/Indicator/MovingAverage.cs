@@ -1,43 +1,71 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-public class MovingAverage : IIndicator
-{
-    private readonly int _period;
+using Lampyris.CSharp.Common;
+using System;
+using System.Reflection.Metadata;
 
-    public MovingAverage(int period)
+public class MovingAverageCalculator : IIndicatorCalculator<decimal>
+{
+    private readonly int m_Period;
+
+    public MovingAverageCalculator(int period)
     {
-        _period = period;
+        m_Period = period;
     }
 
-    public string Name => $"MA{_period}";
-
-    // 计算MA指标
-    public List<double> Calculate(List<QuoteCandleData> data)
+    /// <summary>
+    /// 计算均线的值
+    /// </summary>
+    /// <param name="prices">价格循环列表</param>
+    /// <param name="indicateValues">MA均线指标的值</param>
+    /// <param name="append">是否追加</param>
+    public void CalculateAndStore(CircularQueue<decimal> prices, CircularQueue<decimal> indicateValues,bool append)
     {
-        var result = new List<double>();
-        for (int i = 0; i < data.Count; i++)
+        if (prices.Count <= 0)
         {
-            if (i < _period - 1)
+            return;
+        }
+
+        decimal sum = 0.0m;
+
+        // 如果没数据就全部重新计算
+        if (indicateValues.Count == 0)
+        {
+            for (int i = 0; i < prices.Count; i++)
             {
-                result.Add(double.NaN); // 前期数据不足，返回NaN
+                sum += prices[i];
+                if (i < m_Period)
+                {
+                    indicateValues.Enqueue(decimal.MaxValue);
+                }
+                else
+                {
+                    indicateValues.Enqueue(sum / i);
+                    sum -= prices[i - m_Period];
+                }
+            }
+        }
+        else
+        {
+            // 只计算最新的值
+            for (int i = 0; i < m_Period; i++)
+            {
+                sum = prices[prices.Count - m_Period + i];
+            }
+            decimal avg = sum / m_Period;
+            if (append)
+            {
+                indicateValues.Enqueue(avg);
             }
             else
             {
-                double sum = 0;
-                for (int j = i; j > i - _period; j--)
-                {
-                    sum += data[j].Close;
-                }
-                result.Add(sum / _period);
+                indicateValues[indicateValues.Count - 1] = avg;
             }
         }
-        return result;
     }
 
-    // 查询某一段K线的MA指标
-    public List<double> Query(List<QuoteCandleData> data, DateTime startTime, DateTime endTime)
+    public override string ToString()
     {
-        var filteredData = data.Where(d => d.DateTime >= startTime && d.DateTime <= endTime).ToList();
-        return Calculate(filteredData);
+        return "MA" + m_Period;
     }
 }

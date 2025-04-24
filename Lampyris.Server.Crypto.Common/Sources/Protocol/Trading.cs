@@ -27,67 +27,85 @@ namespace Lampyris.Crypto.Protocol.Trading {
             "Cg10cmFkaW5nLnByb3RvEiBsYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJh",
             "ZGluZyJwChRDb25kaXRpb25UcmlnZ2VyQmVhbhJJCgR0eXBlGAEgASgOMjsu",
             "bGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuQ29uZGl0aW9uT3Jk",
-            "ZXJUcmlnZ2VyVHlwZRINCgV2YWx1ZRgCIAEoCSKbAwoJT3JkZXJCZWFuEg4K",
+            "ZXJUcmlnZ2VyVHlwZRINCgV2YWx1ZRgCIAEoCSLhAwoJT3JkZXJCZWFuEg4K",
             "BnN5bWJvbBgBIAEoCRI5CgRzaWRlGAIgASgOMisubGFtcHlyaXMuY3J5cHRv",
-            "LnByb3RvY29sLnRyYWRpbmcuVHJhZGVTaWRlEj4KCW9yZGVyVHlwZRgDIAEo",
+            "LnByb3RvY29sLnRyYWRpbmcuT3JkZXJTaWRlEj4KCW9yZGVyVHlwZRgDIAEo",
             "DjIrLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyVHlw",
             "ZRIQCghxdWFudGl0eRgEIAEoARIUCgxjYXNoUXVhbnRpdHkYBSABKAESDQoF",
             "cHJpY2UYBiABKAESQgoHdGlmVHlwZRgHIAEoDjIxLmxhbXB5cmlzLmNyeXB0",
             "by5wcm90b2NvbC50cmFkaW5nLlRpbWVJbkZvcmNlVHlwZRIUCgxnb29kVGls",
             "bERhdGUYCCABKAMSEgoKcmVkdWNlT25seRgJIAEoCBJJCgljb25kaXRpb24Y",
             "CiADKAsyNi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5Db25k",
-            "aXRpb25UcmlnZ2VyQmVhbhITCgtjcmVhdGVkVGltZRgLIAEoAyLRAQoPT3Jk",
-            "ZXJTdGF0dXNCZWFuEj4KCW9yZGVyQmVhbhgBIAEoCzIrLmxhbXB5cmlzLmNy",
-            "eXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyQmVhbhIPCgdvcmRlcklkGAIg",
-            "ASgFEj0KBnN0YXR1cxgDIAEoDjItLmxhbXB5cmlzLmNyeXB0by5wcm90b2Nv",
-            "bC50cmFkaW5nLk9yZGVyU3RhdHVzEhYKDmZpbGxlZFF1YW50aXR5GAQgASgB",
-            "EhYKDmF2Z0ZpbGxlZFByaWNlGAUgASgBIk8KDVJlcVBsYWNlT3JkZXISPgoJ",
-            "b3JkZXJCZWFuGAEgASgLMisubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRy",
-            "YWRpbmcuT3JkZXJCZWFuImEKDlJlcU1vZGlmeU9yZGVyEg8KB29yZGVySWQY",
-            "ASABKAkSPgoJb3JkZXJCZWFuGAIgASgLMisubGFtcHlyaXMuY3J5cHRvLnBy",
-            "b3RvY29sLnRyYWRpbmcuT3JkZXJCZWFuIiEKDlJlcUNhbmNlbE9yZGVyEg8K",
-            "B29yZGVySWQYASABKAkiKQoWUmVxT25lS2V5Q2xvc2VQb3NpdGlvbhIPCgdz",
-            "eW1ib2xzGAEgAygJIiYKFFJlcVF1ZXJ5QWN0aXZlT3JkZXJzEg4KBnN5bWJv",
-            "bBgBIAEoCSJOChhSZXFRdWVyeUhpc3RvcmljYWxPcmRlcnMSDgoGc3ltYm9s",
-            "GAEgASgJEhEKCWJlZ2luVGltZRgCIAEoAxIPCgdlbmRUaW1lGAMgASgDIiMK",
-            "EVJlcVF1ZXJ5UG9zaXRpb25zEg4KBnN5bWJvbBgBIAEoCSIwCgxMZXZlcmFn",
-            "ZUJlYW4SDgoGc3ltYm9sGAEgASgJEhAKCGxldmVyYWdlGAIgASgFIlIKDlJl",
-            "cVNldExldmVyYWdlEkAKCGJlYW5MaXN0GAEgAygLMi4ubGFtcHlyaXMuY3J5",
-            "cHRvLnByb3RvY29sLnRyYWRpbmcuTGV2ZXJhZ2VCZWFuIiIKEFJlcVF1ZXJ5",
-            "TGV2ZXJhZ2USDgoGc3ltYm9sGAEgASgJIlQKEFJlc1F1ZXJ5TGV2ZXJhZ2US",
-            "QAoIYmVhbkxpc3QYASADKAsyLi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wu",
-            "dHJhZGluZy5MZXZlcmFnZUJlYW4iKQoXUmVxUXVlcnlMZXZlcmFnZUJyYWNr",
-            "ZXQSDgoGc3ltYm9sGAEgASgJImgKF1Jlc1F1ZXJ5TGV2ZXJhZ2VCcmFja2V0",
-            "Ek0KCGJlYW5MaXN0GAEgAygLMjsubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
-            "LnRyYWRpbmcuU3ltYm9sTGV2ZXJhZ2VCcmFja2V0QmVhbiJkChlTeW1ib2xM",
-            "ZXZlcmFnZUJyYWNrZXRCZWFuEkcKCGJlYW5MaXN0GAEgAygLMjUubGFtcHly",
-            "aXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuTGV2ZXJhZ2VCcmFja2V0QmVh",
-            "biJTChNMZXZlcmFnZUJyYWNrZXRCZWFuEhAKCGxldmVyYWdlGAEgASgFEhMK",
-            "C25vdGlvbmFsQ2FwGAIgASgFEhUKDW5vdGlvbmFsRmxvb3IYAyABKAUqigEK",
-            "CU9yZGVyVHlwZRIJCgVMSU1JVBAAEgoKBk1BUktFVBABEg0KCVNUT1BfTE9T",
-            "UxACEg8KC1RBS0VfUFJPRklUEAMSFAoQU1RPUF9MT1NTX01BUktFVBAEEhYK",
-            "ElRBS0VfUFJPRklUX01BUktFVBAFEhgKFFRSQUlMSU5HX1NUT1BfTUFSS0VU",
-            "EAYqdwoLT3JkZXJTdGF0dXMSBwoDTkVXEAASFAoQUEFSVElBTExZX0ZJTExF",
-            "RBABEgoKBkZJTExFRBACEgwKCENBTkNFTEVEEAMSDAoIUkVKRUNURUQQBBIL",
-            "CgdFWFBJUkVEEAUSFAoQRVhQSVJFRF9JTl9NQVRDSBAGKj4KD1RpbWVJbkZv",
-            "cmNlVHlwZRIHCgNHVEMQABIHCgNJT0MQARIHCgNGT0sQAhIHCgNHVFgQAxIH",
-            "CgNHVEQQBCoeCglUcmFkZVNpZGUSBwoDQlVZEAASCAoEU0VMTBABKkQKGUNv",
-            "bmRpdGlvbk9yZGVyVHJpZ2dlclR5cGUSCQoFUFJJQ0UQABIOCgpSSVNFX1NQ",
-            "RUVEEAESDAoISU5URVJWQUwQAmIGcHJvdG8z"));
+            "aXRpb25UcmlnZ2VyQmVhbhITCgtjcmVhdGVkVGltZRgLIAEoAxJECgxwb3Np",
+            "dGlvblNpZGUYDCABKA4yLi5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJh",
+            "ZGluZy5Qb3NpdGlvblNpZGUi0QEKD09yZGVyU3RhdHVzQmVhbhI+CglvcmRl",
+            "ckJlYW4YASABKAsyKy5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGlu",
+            "Zy5PcmRlckJlYW4SDwoHb3JkZXJJZBgCIAEoAxI9CgZzdGF0dXMYAyABKA4y",
+            "LS5sYW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5PcmRlclN0YXR1",
+            "cxIWCg5maWxsZWRRdWFudGl0eRgEIAEoARIWCg5hdmdGaWxsZWRQcmljZRgF",
+            "IAEoASJPCg1SZXFQbGFjZU9yZGVyEj4KCW9yZGVyQmVhbhgBIAEoCzIrLmxh",
+            "bXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVyQmVhbiJhCg5S",
+            "ZXFNb2RpZnlPcmRlchIPCgdvcmRlcklkGAEgASgDEj4KCW9yZGVyQmVhbhgC",
+            "IAEoCzIrLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLk9yZGVy",
+            "QmVhbiIhCg5SZXFDYW5jZWxPcmRlchIPCgdvcmRlcklkGAEgASgDIikKFlJl",
+            "cU9uZUtleUNsb3NlUG9zaXRpb24SDwoHc3ltYm9scxgBIAMoCSImChRSZXFR",
+            "dWVyeUFjdGl2ZU9yZGVycxIOCgZzeW1ib2wYASABKAkiZwoOUmVzUXVlcnlP",
+            "cmRlcnMSEAoIaXNBY3RpdmUYASABKAgSQwoIYmVhbkxpc3QYAiADKAsyMS5s",
+            "YW1weXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5PcmRlclN0YXR1c0Jl",
+            "YW4iTgoYUmVxUXVlcnlIaXN0b3JpY2FsT3JkZXJzEg4KBnN5bWJvbBgBIAEo",
+            "CRIRCgliZWdpblRpbWUYAiABKAMSDwoHZW5kVGltZRgDIAEoAyIjChFSZXFR",
+            "dWVyeVBvc2l0aW9ucxIOCgZzeW1ib2wYASABKAkixwIKDFBvc2l0aW9uQmVh",
+            "bhIOCgZzeW1ib2wYASABKAkSRAoMcG9zaXRpb25TaWRlGAIgASgOMi4ubGFt",
+            "cHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuUG9zaXRpb25TaWRlEhAK",
+            "CHF1YW50aXR5GAMgASgBEhUKDXVucmVhbGl6ZWRQbkwYBCABKAESEwoLcmVh",
+            "bGl6ZWRQbkwYBSABKAESFQoNaW5pdGlhbE1hcmdpbhgGIAEoARIZChFtYWlu",
+            "dGVuYW5jZU1hcmdpbhgHIAEoARIRCgljb3N0UHJpY2UYCCABKAESEQoJbWFy",
+            "a1ByaWNlGAkgASgBEh0KFWF1dG9EZWxldmVyYWdpbmdMZXZlbBgKIAEoBRIY",
+            "ChBsaXF1aWRhdGlvblByaWNlGAsgASgBEhIKCnVwZGF0ZVRpbWUYDCABKAMi",
+            "VQoRUmVzUXVlcnlQb3NpdGlvbnMSQAoIYmVhbkxpc3QYASADKAsyLi5sYW1w",
+            "eXJpcy5jcnlwdG8ucHJvdG9jb2wudHJhZGluZy5Qb3NpdGlvbkJlYW4iRQoM",
+            "TGV2ZXJhZ2VCZWFuEg4KBnN5bWJvbBgBIAEoCRIQCghsZXZlcmFnZRgCIAEo",
+            "BRITCgttYXhOb3Rpb25hbBgDIAEoASJSCg5SZXFTZXRMZXZlcmFnZRJACghi",
+            "ZWFuTGlzdBgBIAMoCzIuLmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFk",
+            "aW5nLkxldmVyYWdlQmVhbiIiChBSZXFRdWVyeUxldmVyYWdlEg4KBnN5bWJv",
+            "bBgBIAEoCSJUChBSZXNRdWVyeUxldmVyYWdlEkAKCGJlYW5MaXN0GAEgAygL",
+            "Mi4ubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnRyYWRpbmcuTGV2ZXJhZ2VC",
+            "ZWFuIikKF1JlcVF1ZXJ5TGV2ZXJhZ2VCcmFja2V0Eg4KBnN5bWJvbBgBIAEo",
+            "CSJoChdSZXNRdWVyeUxldmVyYWdlQnJhY2tldBJNCghiZWFuTGlzdBgBIAMo",
+            "CzI7LmxhbXB5cmlzLmNyeXB0by5wcm90b2NvbC50cmFkaW5nLlN5bWJvbExl",
+            "dmVyYWdlQnJhY2tldEJlYW4iZAoZU3ltYm9sTGV2ZXJhZ2VCcmFja2V0QmVh",
+            "bhJHCghiZWFuTGlzdBgBIAMoCzI1LmxhbXB5cmlzLmNyeXB0by5wcm90b2Nv",
+            "bC50cmFkaW5nLkxldmVyYWdlQnJhY2tldEJlYW4iUwoTTGV2ZXJhZ2VCcmFj",
+            "a2V0QmVhbhIQCghsZXZlcmFnZRgBIAEoBRITCgtub3Rpb25hbENhcBgCIAEo",
+            "ARIVCg1ub3Rpb25hbEZsb29yGAMgASgBKooBCglPcmRlclR5cGUSCQoFTElN",
+            "SVQQABIKCgZNQVJLRVQQARINCglTVE9QX0xPU1MQAhIPCgtUQUtFX1BST0ZJ",
+            "VBADEhQKEFNUT1BfTE9TU19NQVJLRVQQBBIWChJUQUtFX1BST0ZJVF9NQVJL",
+            "RVQQBRIYChRUUkFJTElOR19TVE9QX01BUktFVBAGKncKC09yZGVyU3RhdHVz",
+            "EgcKA05FVxAAEhQKEFBBUlRJQUxMWV9GSUxMRUQQARIKCgZGSUxMRUQQAhIM",
+            "CghDQU5DRUxFRBADEgwKCFJFSkVDVEVEEAQSCwoHRVhQSVJFRBAFEhQKEEVY",
+            "UElSRURfSU5fTUFUQ0gQBio+Cg9UaW1lSW5Gb3JjZVR5cGUSBwoDR1RDEAAS",
+            "BwoDSU9DEAESBwoDRk9LEAISBwoDR1RYEAMSBwoDR1REEAQqHgoJT3JkZXJT",
+            "aWRlEgcKA0JVWRAAEggKBFNFTEwQASojCgxQb3NpdGlvblNpZGUSCAoETE9O",
+            "RxAAEgkKBVNIT1JUEAEqRAoZQ29uZGl0aW9uT3JkZXJUcmlnZ2VyVHlwZRIJ",
+            "CgVQUklDRRAAEg4KClJJU0VfU1BFRUQQARIMCghJTlRFUlZBTBACYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lampyris.Crypto.Protocol.Trading.OrderType), typeof(global::Lampyris.Crypto.Protocol.Trading.OrderStatus), typeof(global::Lampyris.Crypto.Protocol.Trading.TimeInForceType), typeof(global::Lampyris.Crypto.Protocol.Trading.TradeSide), typeof(global::Lampyris.Crypto.Protocol.Trading.ConditionOrderTriggerType), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Lampyris.Crypto.Protocol.Trading.OrderType), typeof(global::Lampyris.Crypto.Protocol.Trading.OrderStatus), typeof(global::Lampyris.Crypto.Protocol.Trading.TimeInForceType), typeof(global::Lampyris.Crypto.Protocol.Trading.OrderSide), typeof(global::Lampyris.Crypto.Protocol.Trading.PositionSide), typeof(global::Lampyris.Crypto.Protocol.Trading.ConditionOrderTriggerType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean), global::Lampyris.Crypto.Protocol.Trading.ConditionTriggerBean.Parser, new[]{ "Type", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.OrderBean), global::Lampyris.Crypto.Protocol.Trading.OrderBean.Parser, new[]{ "Symbol", "Side", "OrderType", "Quantity", "CashQuantity", "Price", "TifType", "GoodTillDate", "ReduceOnly", "Condition", "CreatedTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.OrderBean), global::Lampyris.Crypto.Protocol.Trading.OrderBean.Parser, new[]{ "Symbol", "Side", "OrderType", "Quantity", "CashQuantity", "Price", "TifType", "GoodTillDate", "ReduceOnly", "Condition", "CreatedTime", "PositionSide" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean), global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean.Parser, new[]{ "OrderBean", "OrderId", "Status", "FilledQuantity", "AvgFilledPrice" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder), global::Lampyris.Crypto.Protocol.Trading.ReqPlaceOrder.Parser, new[]{ "OrderBean" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder), global::Lampyris.Crypto.Protocol.Trading.ReqModifyOrder.Parser, new[]{ "OrderId", "OrderBean" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder), global::Lampyris.Crypto.Protocol.Trading.ReqCancelOrder.Parser, new[]{ "OrderId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition), global::Lampyris.Crypto.Protocol.Trading.ReqOneKeyClosePosition.Parser, new[]{ "Symbols" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders), global::Lampyris.Crypto.Protocol.Trading.ReqQueryActiveOrders.Parser, new[]{ "Symbol" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ResQueryOrders), global::Lampyris.Crypto.Protocol.Trading.ResQueryOrders.Parser, new[]{ "IsActive", "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders), global::Lampyris.Crypto.Protocol.Trading.ReqQueryHistoricalOrders.Parser, new[]{ "Symbol", "BeginTime", "EndTime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions), global::Lampyris.Crypto.Protocol.Trading.ReqQueryPositions.Parser, new[]{ "Symbol" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.LeverageBean), global::Lampyris.Crypto.Protocol.Trading.LeverageBean.Parser, new[]{ "Symbol", "Leverage" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.PositionBean), global::Lampyris.Crypto.Protocol.Trading.PositionBean.Parser, new[]{ "Symbol", "PositionSide", "Quantity", "UnrealizedPnL", "RealizedPnL", "InitialMargin", "MaintenanceMargin", "CostPrice", "MarkPrice", "AutoDeleveragingLevel", "LiquidationPrice", "UpdateTime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ResQueryPositions), global::Lampyris.Crypto.Protocol.Trading.ResQueryPositions.Parser, new[]{ "BeanList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.LeverageBean), global::Lampyris.Crypto.Protocol.Trading.LeverageBean.Parser, new[]{ "Symbol", "Leverage", "MaxNotional" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage), global::Lampyris.Crypto.Protocol.Trading.ReqSetLeverage.Parser, new[]{ "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage), global::Lampyris.Crypto.Protocol.Trading.ReqQueryLeverage.Parser, new[]{ "Symbol" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage), global::Lampyris.Crypto.Protocol.Trading.ResQueryLeverage.Parser, new[]{ "BeanList" }, null, null, null, null),
@@ -186,9 +204,14 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [pbr::OriginalName("GTD")] Gtd = 4,
   }
 
-  public enum TradeSide {
+  public enum OrderSide {
     [pbr::OriginalName("BUY")] Buy = 0,
     [pbr::OriginalName("SELL")] Sell = 1,
+  }
+
+  public enum PositionSide {
+    [pbr::OriginalName("LONG")] Long = 0,
+    [pbr::OriginalName("SHORT")] Short = 1,
   }
 
   /// <summary>
@@ -499,6 +522,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       reduceOnly_ = other.reduceOnly_;
       condition_ = other.condition_.Clone();
       createdTime_ = other.createdTime_;
+      positionSide_ = other.positionSide_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -525,13 +549,13 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
     /// <summary>Field number for the "side" field.</summary>
     public const int SideFieldNumber = 2;
-    private global::Lampyris.Crypto.Protocol.Trading.TradeSide side_ = global::Lampyris.Crypto.Protocol.Trading.TradeSide.Buy;
+    private global::Lampyris.Crypto.Protocol.Trading.OrderSide side_ = global::Lampyris.Crypto.Protocol.Trading.OrderSide.Buy;
     /// <summary>
     /// 订单方向
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Lampyris.Crypto.Protocol.Trading.TradeSide Side {
+    public global::Lampyris.Crypto.Protocol.Trading.OrderSide Side {
       get { return side_; }
       set {
         side_ = value;
@@ -672,6 +696,21 @@ namespace Lampyris.Crypto.Protocol.Trading {
       }
     }
 
+    /// <summary>Field number for the "positionSide" field.</summary>
+    public const int PositionSideFieldNumber = 12;
+    private global::Lampyris.Crypto.Protocol.Trading.PositionSide positionSide_ = global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long;
+    /// <summary>
+    /// 持仓方向
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.Trading.PositionSide PositionSide {
+      get { return positionSide_; }
+      set {
+        positionSide_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -698,6 +737,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (ReduceOnly != other.ReduceOnly) return false;
       if(!condition_.Equals(other.condition_)) return false;
       if (CreatedTime != other.CreatedTime) return false;
+      if (PositionSide != other.PositionSide) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -706,7 +746,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     public override int GetHashCode() {
       int hash = 1;
       if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
-      if (Side != global::Lampyris.Crypto.Protocol.Trading.TradeSide.Buy) hash ^= Side.GetHashCode();
+      if (Side != global::Lampyris.Crypto.Protocol.Trading.OrderSide.Buy) hash ^= Side.GetHashCode();
       if (OrderType != global::Lampyris.Crypto.Protocol.Trading.OrderType.Limit) hash ^= OrderType.GetHashCode();
       if (Quantity != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Quantity);
       if (CashQuantity != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(CashQuantity);
@@ -716,6 +756,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (ReduceOnly != false) hash ^= ReduceOnly.GetHashCode();
       hash ^= condition_.GetHashCode();
       if (CreatedTime != 0L) hash ^= CreatedTime.GetHashCode();
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) hash ^= PositionSide.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -738,7 +779,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(10);
         output.WriteString(Symbol);
       }
-      if (Side != global::Lampyris.Crypto.Protocol.Trading.TradeSide.Buy) {
+      if (Side != global::Lampyris.Crypto.Protocol.Trading.OrderSide.Buy) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Side);
       }
@@ -775,6 +816,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(88);
         output.WriteInt64(CreatedTime);
       }
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) PositionSide);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -789,7 +834,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(10);
         output.WriteString(Symbol);
       }
-      if (Side != global::Lampyris.Crypto.Protocol.Trading.TradeSide.Buy) {
+      if (Side != global::Lampyris.Crypto.Protocol.Trading.OrderSide.Buy) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Side);
       }
@@ -826,6 +871,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(88);
         output.WriteInt64(CreatedTime);
       }
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) PositionSide);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -839,7 +888,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (Symbol.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Symbol);
       }
-      if (Side != global::Lampyris.Crypto.Protocol.Trading.TradeSide.Buy) {
+      if (Side != global::Lampyris.Crypto.Protocol.Trading.OrderSide.Buy) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Side);
       }
       if (OrderType != global::Lampyris.Crypto.Protocol.Trading.OrderType.Limit) {
@@ -867,6 +916,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (CreatedTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(CreatedTime);
       }
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PositionSide);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -882,7 +934,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (other.Symbol.Length != 0) {
         Symbol = other.Symbol;
       }
-      if (other.Side != global::Lampyris.Crypto.Protocol.Trading.TradeSide.Buy) {
+      if (other.Side != global::Lampyris.Crypto.Protocol.Trading.OrderSide.Buy) {
         Side = other.Side;
       }
       if (other.OrderType != global::Lampyris.Crypto.Protocol.Trading.OrderType.Limit) {
@@ -910,6 +962,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (other.CreatedTime != 0L) {
         CreatedTime = other.CreatedTime;
       }
+      if (other.PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        PositionSide = other.PositionSide;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -934,7 +989,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
             break;
           }
           case 16: {
-            Side = (global::Lampyris.Crypto.Protocol.Trading.TradeSide) input.ReadEnum();
+            Side = (global::Lampyris.Crypto.Protocol.Trading.OrderSide) input.ReadEnum();
             break;
           }
           case 24: {
@@ -973,6 +1028,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
             CreatedTime = input.ReadInt64();
             break;
           }
+          case 96: {
+            PositionSide = (global::Lampyris.Crypto.Protocol.Trading.PositionSide) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -997,7 +1056,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
             break;
           }
           case 16: {
-            Side = (global::Lampyris.Crypto.Protocol.Trading.TradeSide) input.ReadEnum();
+            Side = (global::Lampyris.Crypto.Protocol.Trading.OrderSide) input.ReadEnum();
             break;
           }
           case 24: {
@@ -1036,6 +1095,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
             CreatedTime = input.ReadInt64();
             break;
           }
+          case 96: {
+            PositionSide = (global::Lampyris.Crypto.Protocol.Trading.PositionSide) input.ReadEnum();
+            break;
+          }
         }
       }
     }
@@ -1043,6 +1106,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
   }
 
+  /// <summary>
+  /// 订单状态，可包含在Res协议中，也可以单独推送给客户端
+  /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class OrderStatusBean : pb::IMessage<OrderStatusBean>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1109,13 +1175,13 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
     /// <summary>Field number for the "orderId" field.</summary>
     public const int OrderIdFieldNumber = 2;
-    private int orderId_;
+    private long orderId_;
     /// <summary>
     /// 订单ID
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int OrderId {
+    public long OrderId {
       get { return orderId_; }
       set {
         orderId_ = value;
@@ -1195,7 +1261,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     public override int GetHashCode() {
       int hash = 1;
       if (orderBean_ != null) hash ^= OrderBean.GetHashCode();
-      if (OrderId != 0) hash ^= OrderId.GetHashCode();
+      if (OrderId != 0L) hash ^= OrderId.GetHashCode();
       if (Status != global::Lampyris.Crypto.Protocol.Trading.OrderStatus.New) hash ^= Status.GetHashCode();
       if (FilledQuantity != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(FilledQuantity);
       if (AvgFilledPrice != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(AvgFilledPrice);
@@ -1221,9 +1287,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(10);
         output.WriteMessage(OrderBean);
       }
-      if (OrderId != 0) {
+      if (OrderId != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(OrderId);
+        output.WriteInt64(OrderId);
       }
       if (Status != global::Lampyris.Crypto.Protocol.Trading.OrderStatus.New) {
         output.WriteRawTag(24);
@@ -1251,9 +1317,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(10);
         output.WriteMessage(OrderBean);
       }
-      if (OrderId != 0) {
+      if (OrderId != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(OrderId);
+        output.WriteInt64(OrderId);
       }
       if (Status != global::Lampyris.Crypto.Protocol.Trading.OrderStatus.New) {
         output.WriteRawTag(24);
@@ -1280,8 +1346,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (orderBean_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(OrderBean);
       }
-      if (OrderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OrderId);
+      if (OrderId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(OrderId);
       }
       if (Status != global::Lampyris.Crypto.Protocol.Trading.OrderStatus.New) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
@@ -1310,7 +1376,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
         }
         OrderBean.MergeFrom(other.OrderBean);
       }
-      if (other.OrderId != 0) {
+      if (other.OrderId != 0L) {
         OrderId = other.OrderId;
       }
       if (other.Status != global::Lampyris.Crypto.Protocol.Trading.OrderStatus.New) {
@@ -1349,7 +1415,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
             break;
           }
           case 16: {
-            OrderId = input.ReadInt32();
+            OrderId = input.ReadInt64();
             break;
           }
           case 24: {
@@ -1391,7 +1457,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
             break;
           }
           case 16: {
-            OrderId = input.ReadInt32();
+            OrderId = input.ReadInt64();
             break;
           }
           case 24: {
@@ -1674,16 +1740,16 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
     /// <summary>Field number for the "orderId" field.</summary>
     public const int OrderIdFieldNumber = 1;
-    private string orderId_ = "";
+    private long orderId_;
     /// <summary>
     /// 订单 ID
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string OrderId {
+    public long OrderId {
       get { return orderId_; }
       set {
-        orderId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        orderId_ = value;
       }
     }
 
@@ -1723,7 +1789,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OrderId.Length != 0) hash ^= OrderId.GetHashCode();
+      if (OrderId != 0L) hash ^= OrderId.GetHashCode();
       if (orderBean_ != null) hash ^= OrderBean.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1743,9 +1809,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (OrderId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(OrderId);
+      if (OrderId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(OrderId);
       }
       if (orderBean_ != null) {
         output.WriteRawTag(18);
@@ -1761,9 +1827,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (OrderId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(OrderId);
+      if (OrderId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(OrderId);
       }
       if (orderBean_ != null) {
         output.WriteRawTag(18);
@@ -1779,8 +1845,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OrderId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(OrderId);
+      if (OrderId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(OrderId);
       }
       if (orderBean_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(OrderBean);
@@ -1797,7 +1863,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (other == null) {
         return;
       }
-      if (other.OrderId.Length != 0) {
+      if (other.OrderId != 0L) {
         OrderId = other.OrderId;
       }
       if (other.orderBean_ != null) {
@@ -1825,8 +1891,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            OrderId = input.ReadString();
+          case 8: {
+            OrderId = input.ReadInt64();
             break;
           }
           case 18: {
@@ -1855,8 +1921,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            OrderId = input.ReadString();
+          case 8: {
+            OrderId = input.ReadInt64();
             break;
           }
           case 18: {
@@ -1923,16 +1989,16 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
     /// <summary>Field number for the "orderId" field.</summary>
     public const int OrderIdFieldNumber = 1;
-    private string orderId_ = "";
+    private long orderId_;
     /// <summary>
     /// 订单 ID
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string OrderId {
+    public long OrderId {
       get { return orderId_; }
       set {
-        orderId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        orderId_ = value;
       }
     }
 
@@ -1959,7 +2025,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OrderId.Length != 0) hash ^= OrderId.GetHashCode();
+      if (OrderId != 0L) hash ^= OrderId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1978,9 +2044,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (OrderId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(OrderId);
+      if (OrderId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(OrderId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1992,9 +2058,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (OrderId.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(OrderId);
+      if (OrderId != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(OrderId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2006,8 +2072,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OrderId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(OrderId);
+      if (OrderId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(OrderId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2021,7 +2087,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (other == null) {
         return;
       }
-      if (other.OrderId.Length != 0) {
+      if (other.OrderId != 0L) {
         OrderId = other.OrderId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2043,8 +2109,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            OrderId = input.ReadString();
+          case 8: {
+            OrderId = input.ReadInt64();
             break;
           }
         }
@@ -2066,8 +2132,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            OrderId = input.ReadString();
+          case 8: {
+            OrderId = input.ReadInt64();
             break;
           }
         }
@@ -2271,7 +2337,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
   }
 
   /// <summary>
-  /// 请求-查询订单
+  /// 请求-查询生效的订单
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ReqQueryActiveOrders : pb::IMessage<ReqQueryActiveOrders>
@@ -2475,6 +2541,239 @@ namespace Lampyris.Crypto.Protocol.Trading {
   }
 
   /// <summary>
+  /// 响应-查询订单
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ResQueryOrders : pb::IMessage<ResQueryOrders>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ResQueryOrders> _parser = new pb::MessageParser<ResQueryOrders>(() => new ResQueryOrders());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ResQueryOrders> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResQueryOrders() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResQueryOrders(ResQueryOrders other) : this() {
+      isActive_ = other.isActive_;
+      beanList_ = other.beanList_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResQueryOrders Clone() {
+      return new ResQueryOrders(this);
+    }
+
+    /// <summary>Field number for the "isActive" field.</summary>
+    public const int IsActiveFieldNumber = 1;
+    private bool isActive_;
+    /// <summary>
+    /// 是否是生效的订单  
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsActive {
+      get { return isActive_; }
+      set {
+        isActive_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "beanList" field.</summary>
+    public const int BeanListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean> _repeated_beanList_codec
+        = pb::FieldCodec.ForMessage(18, global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean.Parser);
+    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean> beanList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean>();
+    /// <summary>
+    /// 订单状态列表 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Trading.OrderStatusBean> BeanList {
+      get { return beanList_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ResQueryOrders);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ResQueryOrders other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (IsActive != other.IsActive) return false;
+      if(!beanList_.Equals(other.beanList_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (IsActive != false) hash ^= IsActive.GetHashCode();
+      hash ^= beanList_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (IsActive != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(IsActive);
+      }
+      beanList_.WriteTo(output, _repeated_beanList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (IsActive != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(IsActive);
+      }
+      beanList_.WriteTo(ref output, _repeated_beanList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (IsActive != false) {
+        size += 1 + 1;
+      }
+      size += beanList_.CalculateSize(_repeated_beanList_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ResQueryOrders other) {
+      if (other == null) {
+        return;
+      }
+      if (other.IsActive != false) {
+        IsActive = other.IsActive;
+      }
+      beanList_.Add(other.beanList_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            IsActive = input.ReadBool();
+            break;
+          }
+          case 18: {
+            beanList_.AddEntriesFrom(input, _repeated_beanList_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            IsActive = input.ReadBool();
+            break;
+          }
+          case 18: {
+            beanList_.AddEntriesFrom(ref input, _repeated_beanList_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
   /// 请求-查询历史订单
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -2492,7 +2791,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2776,7 +3075,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2963,6 +3262,843 @@ namespace Lampyris.Crypto.Protocol.Trading {
   }
 
   /// <summary>
+  /// 持仓信息
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PositionBean : pb::IMessage<PositionBean>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PositionBean> _parser = new pb::MessageParser<PositionBean>(() => new PositionBean());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PositionBean> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PositionBean() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PositionBean(PositionBean other) : this() {
+      symbol_ = other.symbol_;
+      positionSide_ = other.positionSide_;
+      quantity_ = other.quantity_;
+      unrealizedPnL_ = other.unrealizedPnL_;
+      realizedPnL_ = other.realizedPnL_;
+      initialMargin_ = other.initialMargin_;
+      maintenanceMargin_ = other.maintenanceMargin_;
+      costPrice_ = other.costPrice_;
+      markPrice_ = other.markPrice_;
+      autoDeleveragingLevel_ = other.autoDeleveragingLevel_;
+      liquidationPrice_ = other.liquidationPrice_;
+      updateTime_ = other.updateTime_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PositionBean Clone() {
+      return new PositionBean(this);
+    }
+
+    /// <summary>Field number for the "symbol" field.</summary>
+    public const int SymbolFieldNumber = 1;
+    private string symbol_ = "";
+    /// <summary>
+    /// 交易对，例如 BTCUSDT
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Symbol {
+      get { return symbol_; }
+      set {
+        symbol_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "positionSide" field.</summary>
+    public const int PositionSideFieldNumber = 2;
+    private global::Lampyris.Crypto.Protocol.Trading.PositionSide positionSide_ = global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long;
+    /// <summary>
+    /// 持仓方向，long 或 short
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Lampyris.Crypto.Protocol.Trading.PositionSide PositionSide {
+      get { return positionSide_; }
+      set {
+        positionSide_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "quantity" field.</summary>
+    public const int QuantityFieldNumber = 3;
+    private double quantity_;
+    /// <summary>
+    /// 持仓数量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double Quantity {
+      get { return quantity_; }
+      set {
+        quantity_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unrealizedPnL" field.</summary>
+    public const int UnrealizedPnLFieldNumber = 4;
+    private double unrealizedPnL_;
+    /// <summary>
+    /// 持仓未实现盈亏
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double UnrealizedPnL {
+      get { return unrealizedPnL_; }
+      set {
+        unrealizedPnL_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "realizedPnL" field.</summary>
+    public const int RealizedPnLFieldNumber = 5;
+    private double realizedPnL_;
+    /// <summary>
+    /// 持仓已实现盈亏
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double RealizedPnL {
+      get { return realizedPnL_; }
+      set {
+        realizedPnL_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "initialMargin" field.</summary>
+    public const int InitialMarginFieldNumber = 6;
+    private double initialMargin_;
+    /// <summary>
+    /// 持仓的初始保证金
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double InitialMargin {
+      get { return initialMargin_; }
+      set {
+        initialMargin_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maintenanceMargin" field.</summary>
+    public const int MaintenanceMarginFieldNumber = 7;
+    private double maintenanceMargin_;
+    /// <summary>
+    /// 持仓的维持保证金
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaintenanceMargin {
+      get { return maintenanceMargin_; }
+      set {
+        maintenanceMargin_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "costPrice" field.</summary>
+    public const int CostPriceFieldNumber = 8;
+    private double costPrice_;
+    /// <summary>
+    /// 持仓的开仓价格
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double CostPrice {
+      get { return costPrice_; }
+      set {
+        costPrice_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "markPrice" field.</summary>
+    public const int MarkPriceFieldNumber = 9;
+    private double markPrice_;
+    /// <summary>
+    /// 当前标记价格
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MarkPrice {
+      get { return markPrice_; }
+      set {
+        markPrice_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "autoDeleveragingLevel" field.</summary>
+    public const int AutoDeleveragingLevelFieldNumber = 10;
+    private int autoDeleveragingLevel_;
+    /// <summary>
+    /// 持仓被自动减仓 队列
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int AutoDeleveragingLevel {
+      get { return autoDeleveragingLevel_; }
+      set {
+        autoDeleveragingLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "liquidationPrice" field.</summary>
+    public const int LiquidationPriceFieldNumber = 11;
+    private double liquidationPrice_;
+    /// <summary>
+    /// 强平价格
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double LiquidationPrice {
+      get { return liquidationPrice_; }
+      set {
+        liquidationPrice_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "updateTime" field.</summary>
+    public const int UpdateTimeFieldNumber = 12;
+    private long updateTime_;
+    /// <summary>
+    /// 持仓的更新时间
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long UpdateTime {
+      get { return updateTime_; }
+      set {
+        updateTime_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PositionBean);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PositionBean other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Symbol != other.Symbol) return false;
+      if (PositionSide != other.PositionSide) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Quantity, other.Quantity)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(UnrealizedPnL, other.UnrealizedPnL)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(RealizedPnL, other.RealizedPnL)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(InitialMargin, other.InitialMargin)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaintenanceMargin, other.MaintenanceMargin)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(CostPrice, other.CostPrice)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MarkPrice, other.MarkPrice)) return false;
+      if (AutoDeleveragingLevel != other.AutoDeleveragingLevel) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LiquidationPrice, other.LiquidationPrice)) return false;
+      if (UpdateTime != other.UpdateTime) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) hash ^= PositionSide.GetHashCode();
+      if (Quantity != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Quantity);
+      if (UnrealizedPnL != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(UnrealizedPnL);
+      if (RealizedPnL != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(RealizedPnL);
+      if (InitialMargin != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(InitialMargin);
+      if (MaintenanceMargin != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaintenanceMargin);
+      if (CostPrice != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(CostPrice);
+      if (MarkPrice != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MarkPrice);
+      if (AutoDeleveragingLevel != 0) hash ^= AutoDeleveragingLevel.GetHashCode();
+      if (LiquidationPrice != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LiquidationPrice);
+      if (UpdateTime != 0L) hash ^= UpdateTime.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Symbol.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Symbol);
+      }
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) PositionSide);
+      }
+      if (Quantity != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(Quantity);
+      }
+      if (UnrealizedPnL != 0D) {
+        output.WriteRawTag(33);
+        output.WriteDouble(UnrealizedPnL);
+      }
+      if (RealizedPnL != 0D) {
+        output.WriteRawTag(41);
+        output.WriteDouble(RealizedPnL);
+      }
+      if (InitialMargin != 0D) {
+        output.WriteRawTag(49);
+        output.WriteDouble(InitialMargin);
+      }
+      if (MaintenanceMargin != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(MaintenanceMargin);
+      }
+      if (CostPrice != 0D) {
+        output.WriteRawTag(65);
+        output.WriteDouble(CostPrice);
+      }
+      if (MarkPrice != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(MarkPrice);
+      }
+      if (AutoDeleveragingLevel != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(AutoDeleveragingLevel);
+      }
+      if (LiquidationPrice != 0D) {
+        output.WriteRawTag(89);
+        output.WriteDouble(LiquidationPrice);
+      }
+      if (UpdateTime != 0L) {
+        output.WriteRawTag(96);
+        output.WriteInt64(UpdateTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Symbol.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Symbol);
+      }
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) PositionSide);
+      }
+      if (Quantity != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(Quantity);
+      }
+      if (UnrealizedPnL != 0D) {
+        output.WriteRawTag(33);
+        output.WriteDouble(UnrealizedPnL);
+      }
+      if (RealizedPnL != 0D) {
+        output.WriteRawTag(41);
+        output.WriteDouble(RealizedPnL);
+      }
+      if (InitialMargin != 0D) {
+        output.WriteRawTag(49);
+        output.WriteDouble(InitialMargin);
+      }
+      if (MaintenanceMargin != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(MaintenanceMargin);
+      }
+      if (CostPrice != 0D) {
+        output.WriteRawTag(65);
+        output.WriteDouble(CostPrice);
+      }
+      if (MarkPrice != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(MarkPrice);
+      }
+      if (AutoDeleveragingLevel != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(AutoDeleveragingLevel);
+      }
+      if (LiquidationPrice != 0D) {
+        output.WriteRawTag(89);
+        output.WriteDouble(LiquidationPrice);
+      }
+      if (UpdateTime != 0L) {
+        output.WriteRawTag(96);
+        output.WriteInt64(UpdateTime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Symbol.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Symbol);
+      }
+      if (PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PositionSide);
+      }
+      if (Quantity != 0D) {
+        size += 1 + 8;
+      }
+      if (UnrealizedPnL != 0D) {
+        size += 1 + 8;
+      }
+      if (RealizedPnL != 0D) {
+        size += 1 + 8;
+      }
+      if (InitialMargin != 0D) {
+        size += 1 + 8;
+      }
+      if (MaintenanceMargin != 0D) {
+        size += 1 + 8;
+      }
+      if (CostPrice != 0D) {
+        size += 1 + 8;
+      }
+      if (MarkPrice != 0D) {
+        size += 1 + 8;
+      }
+      if (AutoDeleveragingLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(AutoDeleveragingLevel);
+      }
+      if (LiquidationPrice != 0D) {
+        size += 1 + 8;
+      }
+      if (UpdateTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UpdateTime);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PositionBean other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Symbol.Length != 0) {
+        Symbol = other.Symbol;
+      }
+      if (other.PositionSide != global::Lampyris.Crypto.Protocol.Trading.PositionSide.Long) {
+        PositionSide = other.PositionSide;
+      }
+      if (other.Quantity != 0D) {
+        Quantity = other.Quantity;
+      }
+      if (other.UnrealizedPnL != 0D) {
+        UnrealizedPnL = other.UnrealizedPnL;
+      }
+      if (other.RealizedPnL != 0D) {
+        RealizedPnL = other.RealizedPnL;
+      }
+      if (other.InitialMargin != 0D) {
+        InitialMargin = other.InitialMargin;
+      }
+      if (other.MaintenanceMargin != 0D) {
+        MaintenanceMargin = other.MaintenanceMargin;
+      }
+      if (other.CostPrice != 0D) {
+        CostPrice = other.CostPrice;
+      }
+      if (other.MarkPrice != 0D) {
+        MarkPrice = other.MarkPrice;
+      }
+      if (other.AutoDeleveragingLevel != 0) {
+        AutoDeleveragingLevel = other.AutoDeleveragingLevel;
+      }
+      if (other.LiquidationPrice != 0D) {
+        LiquidationPrice = other.LiquidationPrice;
+      }
+      if (other.UpdateTime != 0L) {
+        UpdateTime = other.UpdateTime;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Symbol = input.ReadString();
+            break;
+          }
+          case 16: {
+            PositionSide = (global::Lampyris.Crypto.Protocol.Trading.PositionSide) input.ReadEnum();
+            break;
+          }
+          case 25: {
+            Quantity = input.ReadDouble();
+            break;
+          }
+          case 33: {
+            UnrealizedPnL = input.ReadDouble();
+            break;
+          }
+          case 41: {
+            RealizedPnL = input.ReadDouble();
+            break;
+          }
+          case 49: {
+            InitialMargin = input.ReadDouble();
+            break;
+          }
+          case 57: {
+            MaintenanceMargin = input.ReadDouble();
+            break;
+          }
+          case 65: {
+            CostPrice = input.ReadDouble();
+            break;
+          }
+          case 73: {
+            MarkPrice = input.ReadDouble();
+            break;
+          }
+          case 80: {
+            AutoDeleveragingLevel = input.ReadInt32();
+            break;
+          }
+          case 89: {
+            LiquidationPrice = input.ReadDouble();
+            break;
+          }
+          case 96: {
+            UpdateTime = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Symbol = input.ReadString();
+            break;
+          }
+          case 16: {
+            PositionSide = (global::Lampyris.Crypto.Protocol.Trading.PositionSide) input.ReadEnum();
+            break;
+          }
+          case 25: {
+            Quantity = input.ReadDouble();
+            break;
+          }
+          case 33: {
+            UnrealizedPnL = input.ReadDouble();
+            break;
+          }
+          case 41: {
+            RealizedPnL = input.ReadDouble();
+            break;
+          }
+          case 49: {
+            InitialMargin = input.ReadDouble();
+            break;
+          }
+          case 57: {
+            MaintenanceMargin = input.ReadDouble();
+            break;
+          }
+          case 65: {
+            CostPrice = input.ReadDouble();
+            break;
+          }
+          case 73: {
+            MarkPrice = input.ReadDouble();
+            break;
+          }
+          case 80: {
+            AutoDeleveragingLevel = input.ReadInt32();
+            break;
+          }
+          case 89: {
+            LiquidationPrice = input.ReadDouble();
+            break;
+          }
+          case 96: {
+            UpdateTime = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// 响应-查询当前持仓
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ResQueryPositions : pb::IMessage<ResQueryPositions>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ResQueryPositions> _parser = new pb::MessageParser<ResQueryPositions>(() => new ResQueryPositions());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ResQueryPositions> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResQueryPositions() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResQueryPositions(ResQueryPositions other) : this() {
+      beanList_ = other.beanList_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResQueryPositions Clone() {
+      return new ResQueryPositions(this);
+    }
+
+    /// <summary>Field number for the "beanList" field.</summary>
+    public const int BeanListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Trading.PositionBean> _repeated_beanList_codec
+        = pb::FieldCodec.ForMessage(10, global::Lampyris.Crypto.Protocol.Trading.PositionBean.Parser);
+    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Trading.PositionBean> beanList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Trading.PositionBean>();
+    /// <summary>
+    /// 持仓列表
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Trading.PositionBean> BeanList {
+      get { return beanList_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ResQueryPositions);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ResQueryPositions other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!beanList_.Equals(other.beanList_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= beanList_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      beanList_.WriteTo(output, _repeated_beanList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      beanList_.WriteTo(ref output, _repeated_beanList_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += beanList_.CalculateSize(_repeated_beanList_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ResQueryPositions other) {
+      if (other == null) {
+        return;
+      }
+      beanList_.Add(other.beanList_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            beanList_.AddEntriesFrom(input, _repeated_beanList_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            beanList_.AddEntriesFrom(ref input, _repeated_beanList_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
   /// 杠杆倍数信息
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -2980,7 +4116,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3002,6 +4138,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     public LeverageBean(LeverageBean other) : this() {
       symbol_ = other.symbol_;
       leverage_ = other.leverage_;
+      maxNotional_ = other.maxNotional_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3041,6 +4178,21 @@ namespace Lampyris.Crypto.Protocol.Trading {
       }
     }
 
+    /// <summary>Field number for the "maxNotional" field.</summary>
+    public const int MaxNotionalFieldNumber = 3;
+    private double maxNotional_;
+    /// <summary>
+    /// 最多可开仓名义价值
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaxNotional {
+      get { return maxNotional_; }
+      set {
+        maxNotional_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3058,6 +4210,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       }
       if (Symbol != other.Symbol) return false;
       if (Leverage != other.Leverage) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxNotional, other.MaxNotional)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3067,6 +4220,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
       int hash = 1;
       if (Symbol.Length != 0) hash ^= Symbol.GetHashCode();
       if (Leverage != 0) hash ^= Leverage.GetHashCode();
+      if (MaxNotional != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxNotional);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3093,6 +4247,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(16);
         output.WriteInt32(Leverage);
       }
+      if (MaxNotional != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(MaxNotional);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3111,6 +4269,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(16);
         output.WriteInt32(Leverage);
       }
+      if (MaxNotional != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(MaxNotional);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3126,6 +4288,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
       }
       if (Leverage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Leverage);
+      }
+      if (MaxNotional != 0D) {
+        size += 1 + 8;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3144,6 +4309,9 @@ namespace Lampyris.Crypto.Protocol.Trading {
       }
       if (other.Leverage != 0) {
         Leverage = other.Leverage;
+      }
+      if (other.MaxNotional != 0D) {
+        MaxNotional = other.MaxNotional;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3170,6 +4338,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
           }
           case 16: {
             Leverage = input.ReadInt32();
+            break;
+          }
+          case 25: {
+            MaxNotional = input.ReadDouble();
             break;
           }
         }
@@ -3199,6 +4371,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
             Leverage = input.ReadInt32();
             break;
           }
+          case 25: {
+            MaxNotional = input.ReadDouble();
+            break;
+          }
         }
       }
     }
@@ -3224,7 +4400,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3414,7 +4590,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3618,7 +4794,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3808,7 +4984,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4012,7 +5188,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4202,7 +5378,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4392,7 +5568,7 @@ namespace Lampyris.Crypto.Protocol.Trading {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Lampyris.Crypto.Protocol.Trading.TradingReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4441,13 +5617,13 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
     /// <summary>Field number for the "notionalCap" field.</summary>
     public const int NotionalCapFieldNumber = 2;
-    private int notionalCap_;
+    private double notionalCap_;
     /// <summary>
     /// 当前分层下的名义价值上限
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int NotionalCap {
+    public double NotionalCap {
       get { return notionalCap_; }
       set {
         notionalCap_ = value;
@@ -4456,13 +5632,13 @@ namespace Lampyris.Crypto.Protocol.Trading {
 
     /// <summary>Field number for the "notionalFloor" field.</summary>
     public const int NotionalFloorFieldNumber = 3;
-    private int notionalFloor_;
+    private double notionalFloor_;
     /// <summary>
     /// 当前分层下的名义价值下限
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int NotionalFloor {
+    public double NotionalFloor {
       get { return notionalFloor_; }
       set {
         notionalFloor_ = value;
@@ -4485,8 +5661,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
         return true;
       }
       if (Leverage != other.Leverage) return false;
-      if (NotionalCap != other.NotionalCap) return false;
-      if (NotionalFloor != other.NotionalFloor) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(NotionalCap, other.NotionalCap)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(NotionalFloor, other.NotionalFloor)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4495,8 +5671,8 @@ namespace Lampyris.Crypto.Protocol.Trading {
     public override int GetHashCode() {
       int hash = 1;
       if (Leverage != 0) hash ^= Leverage.GetHashCode();
-      if (NotionalCap != 0) hash ^= NotionalCap.GetHashCode();
-      if (NotionalFloor != 0) hash ^= NotionalFloor.GetHashCode();
+      if (NotionalCap != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(NotionalCap);
+      if (NotionalFloor != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(NotionalFloor);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4519,13 +5695,13 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(8);
         output.WriteInt32(Leverage);
       }
-      if (NotionalCap != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(NotionalCap);
+      if (NotionalCap != 0D) {
+        output.WriteRawTag(17);
+        output.WriteDouble(NotionalCap);
       }
-      if (NotionalFloor != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(NotionalFloor);
+      if (NotionalFloor != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(NotionalFloor);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4541,13 +5717,13 @@ namespace Lampyris.Crypto.Protocol.Trading {
         output.WriteRawTag(8);
         output.WriteInt32(Leverage);
       }
-      if (NotionalCap != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(NotionalCap);
+      if (NotionalCap != 0D) {
+        output.WriteRawTag(17);
+        output.WriteDouble(NotionalCap);
       }
-      if (NotionalFloor != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(NotionalFloor);
+      if (NotionalFloor != 0D) {
+        output.WriteRawTag(25);
+        output.WriteDouble(NotionalFloor);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4562,11 +5738,11 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (Leverage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Leverage);
       }
-      if (NotionalCap != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NotionalCap);
+      if (NotionalCap != 0D) {
+        size += 1 + 8;
       }
-      if (NotionalFloor != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NotionalFloor);
+      if (NotionalFloor != 0D) {
+        size += 1 + 8;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4583,10 +5759,10 @@ namespace Lampyris.Crypto.Protocol.Trading {
       if (other.Leverage != 0) {
         Leverage = other.Leverage;
       }
-      if (other.NotionalCap != 0) {
+      if (other.NotionalCap != 0D) {
         NotionalCap = other.NotionalCap;
       }
-      if (other.NotionalFloor != 0) {
+      if (other.NotionalFloor != 0D) {
         NotionalFloor = other.NotionalFloor;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -4612,12 +5788,12 @@ namespace Lampyris.Crypto.Protocol.Trading {
             Leverage = input.ReadInt32();
             break;
           }
-          case 16: {
-            NotionalCap = input.ReadInt32();
+          case 17: {
+            NotionalCap = input.ReadDouble();
             break;
           }
-          case 24: {
-            NotionalFloor = input.ReadInt32();
+          case 25: {
+            NotionalFloor = input.ReadDouble();
             break;
           }
         }
@@ -4643,12 +5819,12 @@ namespace Lampyris.Crypto.Protocol.Trading {
             Leverage = input.ReadInt32();
             break;
           }
-          case 16: {
-            NotionalCap = input.ReadInt32();
+          case 17: {
+            NotionalCap = input.ReadDouble();
             break;
           }
-          case 24: {
-            NotionalFloor = input.ReadInt32();
+          case 25: {
+            NotionalFloor = input.ReadDouble();
             break;
           }
         }

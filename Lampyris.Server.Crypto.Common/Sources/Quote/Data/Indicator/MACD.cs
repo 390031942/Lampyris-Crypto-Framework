@@ -1,65 +1,101 @@
-﻿namespace Lampyris.Server.Crypto.Common;
+﻿using Lampyris.CSharp.Common;
 
-public class MACD : IIndicator
+namespace Lampyris.Server.Crypto.Common;
+
+public class MACDCalculator : IIndicatorCalculator<(decimal DIF, decimal DEA, decimal MACD)>
 {
-    private readonly int _shortPeriod;
-    private readonly int _longPeriod;
-    private readonly int _signalPeriod;
+    private readonly int _shortPeriod;  // 短期 EMA 的周期
+    private readonly int _longPeriod;   // 长期 EMA 的周期
+    private readonly int _signalPeriod; // 信号线（DEA）的周期
 
-    public MACD(int shortPeriod = 12, int longPeriod = 26, int signalPeriod = 9)
+    public MACDCalculator(int shortPeriod = 12, int longPeriod = 26, int signalPeriod = 9)
     {
         _shortPeriod = shortPeriod;
         _longPeriod = longPeriod;
         _signalPeriod = signalPeriod;
     }
 
-    public string Name => "MACD";
-
-    public List<double> Calculate(List<QuoteCandleData> data)
+    /// <summary>
+    /// 计算 MACD 的值并存储到缓存中
+    /// </summary>
+    /// <param name="prices">价格循环列表</param>
+    /// <param name="indicateValues">存储 MACD 值的循环列表</param>
+    /// <param name="append">是否追加</param>
+    public void CalculateAndStore(
+        CircularQueue<decimal> prices,
+        CircularQueue<(decimal DIF, decimal DEA, decimal MACD)> indicateValues,
+        bool append)
     {
-        var closePrices = data.Select(d => d.Close).ToList();
-
-        // 计算短期EMA
-        var shortEma = CalculateEMA(closePrices, _shortPeriod);
-
-        // 计算长期EMA
-        var longEma = CalculateEMA(closePrices, _longPeriod);
-
-        // 计算DIF
-        var dif = shortEma.Zip(longEma, (shortVal, longVal) => shortVal - longVal).ToList();
-
-        // 计算DEA（Signal Line）
-        var dea = CalculateEMA(dif, _signalPeriod);
-
-        // 计算MACD柱（DIF - DEA）
-        var macd = dif.Zip(dea, (difVal, deaVal) => difVal - deaVal).ToList();
-
-        return macd;
-    }
-
-    public List<double> Query(List<QuoteCandleData> data, DateTime startTime, DateTime endTime)
-    {
-        var filteredData = data.Where(d => d.DateTime >= startTime && d.DateTime <= endTime).ToList();
-        return Calculate(filteredData);
-    }
-
-    private List<double> CalculateEMA(List<double> prices, int period)
-    {
-        var ema = new List<double>();
-        double multiplier = 2.0 / (period + 1);
-
-        for (int i = 0; i < prices.Count; i++)
+        if (prices.Count <= 0)
         {
-            if (i == 0)
+            return;
+        }
+
+        decimal shortEma = 0;
+        decimal longEma = 0;
+        decimal dif = 0;
+        decimal dea = 0;
+        decimal macd = 0;
+
+        // 如果没有足够的数据计算 MACD，则填充无效值
+        if (prices.Count < _longPeriod)
+        {
+            for (int i = 0; i < prices.Count; i++)
             {
-                ema.Add(prices[i]); // 第一个值直接使用价格
+                indicateValues.Enqueue((decimal.MaxValue, decimal.MaxValue, decimal.MaxValue));
             }
-            else
+            return;
+        }
+
+        // 计算短期 EMA 和长期 EMA
+        shortEma = CalculateEMA(prices, _shortPeriod);
+        longEma = CalculateEMA(prices, _longPeriod);
+
+        // 计算 DIF
+        dif = shortEma - longEma;
+
+        // 计算 DEA
+        decimal previousDea = indicateValues.Count > 0 ? indicateValues[indicateValues.Count - 1].DEA : 0;
+        dea = previousDea + (dif - previousDea) * (2.0m / (_signalPeriod + 1));
+
+        // 计算 MACD
+        macd = 2 * (dif - dea);
+
+        // 存储结果
+        if (append)
+        {
+            indicateValues.Enqueue((DIF: dif, DEA: dea, MACD: macd));
+        }
+        else
+        {
+            if (indicateValues.Count > 0)
             {
-                ema.Add((prices[i] - ema[i - 1]) * multiplier + ema[i - 1]);
+                indicateValues[indicateValues.Count - 1] = (DIF: dif, DEA: dea, MACD: macd);
             }
+        }
+    }
+
+    /// <summary>
+    /// 计算 EMA（指数移动平均线）
+    /// </summary>
+    /// <param name="prices">价格循环列表</param>
+    /// <param name="period">EMA 的周期</param>
+    /// <returns>EMA 值</returns>
+    private decimal CalculateEMA(CircularQueue<decimal> prices, int period)
+    {
+        decimal multiplier = 2.0m / (period + 1);
+        decimal ema = prices[0]; // 初始化 EMA 为第一个价格
+
+        for (int i = 1; i < prices.Count; i++)
+        {
+            ema = (prices[i] - ema) * multiplier + ema;
         }
 
         return ema;
+    }
+
+    public override string ToString()
+    {
+        return "MACD";
     }
 }

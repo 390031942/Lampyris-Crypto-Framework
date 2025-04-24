@@ -193,9 +193,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr ReqCancelOrder::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : orderid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
+      : orderid_{::int64_t{0}},
         _cached_size_{0} {}
 
 template <typename>
@@ -218,11 +216,49 @@ struct ReqCancelOrderDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReqCancelOrderDefaultTypeInternal _ReqCancelOrder_default_instance_;
 
+inline constexpr PositionBean::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : symbol_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        quantity_{0},
+        unrealizedpnl_{0},
+        realizedpnl_{0},
+        initialmargin_{0},
+        positionside_{static_cast< ::lampyris::crypto::protocol::trading::PositionSide >(0)},
+        autodeleveraginglevel_{0},
+        maintenancemargin_{0},
+        costprice_{0},
+        markprice_{0},
+        liquidationprice_{0},
+        updatetime_{::int64_t{0}},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PositionBean::PositionBean(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PositionBeanDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PositionBeanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PositionBeanDefaultTypeInternal() {}
+  union {
+    PositionBean _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PositionBeanDefaultTypeInternal _PositionBean_default_instance_;
+
 inline constexpr LeverageBracketBean::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : leverage_{0},
-        notionalcap_{0},
+      : notionalcap_{0},
         notionalfloor_{0},
+        leverage_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -250,6 +286,7 @@ inline constexpr LeverageBean::Impl_::Impl_(
       : symbol_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        maxnotional_{0},
         leverage_{0},
         _cached_size_{0} {}
 
@@ -326,6 +363,31 @@ struct SymbolLeverageBracketBeanDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SymbolLeverageBracketBeanDefaultTypeInternal _SymbolLeverageBracketBean_default_instance_;
 
+inline constexpr ResQueryPositions::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : beanlist_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ResQueryPositions::ResQueryPositions(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ResQueryPositionsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ResQueryPositionsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ResQueryPositionsDefaultTypeInternal() {}
+  union {
+    ResQueryPositions _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResQueryPositionsDefaultTypeInternal _ResQueryPositions_default_instance_;
+
 inline constexpr ResQueryLeverage::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : beanlist_{},
@@ -382,7 +444,7 @@ inline constexpr OrderBean::Impl_::Impl_(
         symbol_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        side_{static_cast< ::lampyris::crypto::protocol::trading::TradeSide >(0)},
+        side_{static_cast< ::lampyris::crypto::protocol::trading::OrderSide >(0)},
         ordertype_{static_cast< ::lampyris::crypto::protocol::trading::OrderType >(0)},
         quantity_{0},
         cashquantity_{0},
@@ -391,6 +453,7 @@ inline constexpr OrderBean::Impl_::Impl_(
         tiftype_{static_cast< ::lampyris::crypto::protocol::trading::TimeInForceType >(0)},
         reduceonly_{false},
         createdtime_{::int64_t{0}},
+        positionside_{static_cast< ::lampyris::crypto::protocol::trading::PositionSide >(0)},
         _cached_size_{0} {}
 
 template <typename>
@@ -466,10 +529,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr ReqModifyOrder::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        orderid_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        orderbean_{nullptr} {}
+        orderbean_{nullptr},
+        orderid_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ReqModifyOrder::ReqModifyOrder(::_pbi::ConstantInitialized)
@@ -495,10 +556,10 @@ inline constexpr OrderStatusBean::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         orderbean_{nullptr},
-        orderid_{0},
-        status_{static_cast< ::lampyris::crypto::protocol::trading::OrderStatus >(0)},
+        orderid_{::int64_t{0}},
         filledquantity_{0},
-        avgfilledprice_{0} {}
+        avgfilledprice_{0},
+        status_{static_cast< ::lampyris::crypto::protocol::trading::OrderStatus >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR OrderStatusBean::OrderStatusBean(::_pbi::ConstantInitialized)
@@ -519,11 +580,37 @@ struct OrderStatusBeanDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OrderStatusBeanDefaultTypeInternal _OrderStatusBean_default_instance_;
+
+inline constexpr ResQueryOrders::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : beanlist_{},
+        isactive_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ResQueryOrders::ResQueryOrders(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ResQueryOrdersDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ResQueryOrdersDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ResQueryOrdersDefaultTypeInternal() {}
+  union {
+    ResQueryOrders _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResQueryOrdersDefaultTypeInternal _ResQueryOrders_default_instance_;
 }  // namespace trading
 }  // namespace protocol
 }  // namespace crypto
 }  // namespace lampyris
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_trading_2eproto[5];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_trading_2eproto[6];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_trading_2eproto = nullptr;
 const ::uint32_t
@@ -558,6 +645,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::OrderBean, _impl_.reduceonly_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::OrderBean, _impl_.condition_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::OrderBean, _impl_.createdtime_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::OrderBean, _impl_.positionside_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::OrderStatusBean, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::OrderStatusBean, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -626,6 +714,16 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ReqQueryActiveOrders, _impl_.symbol_),
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ResQueryOrders, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ResQueryOrders, _impl_.isactive_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ResQueryOrders, _impl_.beanlist_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ReqQueryHistoricalOrders, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -646,6 +744,35 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ReqQueryPositions, _impl_.symbol_),
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.symbol_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.positionside_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.quantity_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.unrealizedpnl_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.realizedpnl_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.initialmargin_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.maintenancemargin_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.costprice_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.markprice_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.autodeleveraginglevel_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.liquidationprice_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::PositionBean, _impl_.updatetime_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ResQueryPositions, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ResQueryPositions, _impl_.beanlist_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::LeverageBean, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -655,6 +782,7 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::LeverageBean, _impl_.symbol_),
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::LeverageBean, _impl_.leverage_),
+        PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::LeverageBean, _impl_.maxnotional_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::lampyris::crypto::protocol::trading::ReqSetLeverage, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -726,22 +854,25 @@ static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ConditionTriggerBean)},
         {10, -1, -1, sizeof(::lampyris::crypto::protocol::trading::OrderBean)},
-        {29, 42, -1, sizeof(::lampyris::crypto::protocol::trading::OrderStatusBean)},
-        {47, 56, -1, sizeof(::lampyris::crypto::protocol::trading::ReqPlaceOrder)},
-        {57, 67, -1, sizeof(::lampyris::crypto::protocol::trading::ReqModifyOrder)},
-        {69, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqCancelOrder)},
-        {78, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqOneKeyClosePosition)},
-        {87, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryActiveOrders)},
-        {96, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryHistoricalOrders)},
-        {107, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryPositions)},
-        {116, -1, -1, sizeof(::lampyris::crypto::protocol::trading::LeverageBean)},
-        {126, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqSetLeverage)},
-        {135, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryLeverage)},
-        {144, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ResQueryLeverage)},
-        {153, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryLeverageBracket)},
-        {162, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ResQueryLeverageBracket)},
-        {171, -1, -1, sizeof(::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean)},
-        {180, -1, -1, sizeof(::lampyris::crypto::protocol::trading::LeverageBracketBean)},
+        {30, 43, -1, sizeof(::lampyris::crypto::protocol::trading::OrderStatusBean)},
+        {48, 57, -1, sizeof(::lampyris::crypto::protocol::trading::ReqPlaceOrder)},
+        {58, 68, -1, sizeof(::lampyris::crypto::protocol::trading::ReqModifyOrder)},
+        {70, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqCancelOrder)},
+        {79, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqOneKeyClosePosition)},
+        {88, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryActiveOrders)},
+        {97, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ResQueryOrders)},
+        {107, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryHistoricalOrders)},
+        {118, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryPositions)},
+        {127, -1, -1, sizeof(::lampyris::crypto::protocol::trading::PositionBean)},
+        {147, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ResQueryPositions)},
+        {156, -1, -1, sizeof(::lampyris::crypto::protocol::trading::LeverageBean)},
+        {167, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqSetLeverage)},
+        {176, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryLeverage)},
+        {185, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ResQueryLeverage)},
+        {194, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ReqQueryLeverageBracket)},
+        {203, -1, -1, sizeof(::lampyris::crypto::protocol::trading::ResQueryLeverageBracket)},
+        {212, -1, -1, sizeof(::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean)},
+        {221, -1, -1, sizeof(::lampyris::crypto::protocol::trading::LeverageBracketBean)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::lampyris::crypto::protocol::trading::_ConditionTriggerBean_default_instance_._instance,
@@ -752,8 +883,11 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::lampyris::crypto::protocol::trading::_ReqCancelOrder_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_ReqOneKeyClosePosition_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_ReqQueryActiveOrders_default_instance_._instance,
+    &::lampyris::crypto::protocol::trading::_ResQueryOrders_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_ReqQueryHistoricalOrders_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_ReqQueryPositions_default_instance_._instance,
+    &::lampyris::crypto::protocol::trading::_PositionBean_default_instance_._instance,
+    &::lampyris::crypto::protocol::trading::_ResQueryPositions_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_LeverageBean_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_ReqSetLeverage_default_instance_._instance,
     &::lampyris::crypto::protocol::trading::_ReqQueryLeverage_default_instance_._instance,
@@ -769,9 +903,9 @@ const char descriptor_table_protodef_trading_2eproto[] ABSL_ATTRIBUTE_SECTION_VA
     "l.trading\"p\n\024ConditionTriggerBean\022I\n\004typ"
     "e\030\001 \001(\0162;.lampyris.crypto.protocol.tradi"
     "ng.ConditionOrderTriggerType\022\r\n\005value\030\002 "
-    "\001(\t\"\233\003\n\tOrderBean\022\016\n\006symbol\030\001 \001(\t\0229\n\004sid"
+    "\001(\t\"\341\003\n\tOrderBean\022\016\n\006symbol\030\001 \001(\t\0229\n\004sid"
     "e\030\002 \001(\0162+.lampyris.crypto.protocol.tradi"
-    "ng.TradeSide\022>\n\torderType\030\003 \001(\0162+.lampyr"
+    "ng.OrderSide\022>\n\torderType\030\003 \001(\0162+.lampyr"
     "is.crypto.protocol.trading.OrderType\022\020\n\010"
     "quantity\030\004 \001(\001\022\024\n\014cashQuantity\030\005 \001(\001\022\r\n\005"
     "price\030\006 \001(\001\022B\n\007tifType\030\007 \001(\01621.lampyris."
@@ -779,60 +913,77 @@ const char descriptor_table_protodef_trading_2eproto[] ABSL_ATTRIBUTE_SECTION_VA
     "\024\n\014goodTillDate\030\010 \001(\003\022\022\n\nreduceOnly\030\t \001("
     "\010\022I\n\tcondition\030\n \003(\01326.lampyris.crypto.p"
     "rotocol.trading.ConditionTriggerBean\022\023\n\013"
-    "createdTime\030\013 \001(\003\"\321\001\n\017OrderStatusBean\022>\n"
-    "\torderBean\030\001 \001(\0132+.lampyris.crypto.proto"
-    "col.trading.OrderBean\022\017\n\007orderId\030\002 \001(\005\022="
-    "\n\006status\030\003 \001(\0162-.lampyris.crypto.protoco"
-    "l.trading.OrderStatus\022\026\n\016filledQuantity\030"
-    "\004 \001(\001\022\026\n\016avgFilledPrice\030\005 \001(\001\"O\n\rReqPlac"
-    "eOrder\022>\n\torderBean\030\001 \001(\0132+.lampyris.cry"
-    "pto.protocol.trading.OrderBean\"a\n\016ReqMod"
-    "ifyOrder\022\017\n\007orderId\030\001 \001(\t\022>\n\torderBean\030\002"
-    " \001(\0132+.lampyris.crypto.protocol.trading."
-    "OrderBean\"!\n\016ReqCancelOrder\022\017\n\007orderId\030\001"
-    " \001(\t\")\n\026ReqOneKeyClosePosition\022\017\n\007symbol"
-    "s\030\001 \003(\t\"&\n\024ReqQueryActiveOrders\022\016\n\006symbo"
-    "l\030\001 \001(\t\"N\n\030ReqQueryHistoricalOrders\022\016\n\006s"
-    "ymbol\030\001 \001(\t\022\021\n\tbeginTime\030\002 \001(\003\022\017\n\007endTim"
-    "e\030\003 \001(\003\"#\n\021ReqQueryPositions\022\016\n\006symbol\030\001"
-    " \001(\t\"0\n\014LeverageBean\022\016\n\006symbol\030\001 \001(\t\022\020\n\010"
-    "leverage\030\002 \001(\005\"R\n\016ReqSetLeverage\022@\n\010bean"
-    "List\030\001 \003(\0132..lampyris.crypto.protocol.tr"
-    "ading.LeverageBean\"\"\n\020ReqQueryLeverage\022\016"
-    "\n\006symbol\030\001 \001(\t\"T\n\020ResQueryLeverage\022@\n\010be"
-    "anList\030\001 \003(\0132..lampyris.crypto.protocol."
-    "trading.LeverageBean\")\n\027ReqQueryLeverage"
-    "Bracket\022\016\n\006symbol\030\001 \001(\t\"h\n\027ResQueryLever"
-    "ageBracket\022M\n\010beanList\030\001 \003(\0132;.lampyris."
-    "crypto.protocol.trading.SymbolLeverageBr"
-    "acketBean\"d\n\031SymbolLeverageBracketBean\022G"
-    "\n\010beanList\030\001 \003(\01325.lampyris.crypto.proto"
-    "col.trading.LeverageBracketBean\"S\n\023Lever"
-    "ageBracketBean\022\020\n\010leverage\030\001 \001(\005\022\023\n\013noti"
-    "onalCap\030\002 \001(\005\022\025\n\rnotionalFloor\030\003 \001(\005*\212\001\n"
-    "\tOrderType\022\t\n\005LIMIT\020\000\022\n\n\006MARKET\020\001\022\r\n\tSTO"
-    "P_LOSS\020\002\022\017\n\013TAKE_PROFIT\020\003\022\024\n\020STOP_LOSS_M"
-    "ARKET\020\004\022\026\n\022TAKE_PROFIT_MARKET\020\005\022\030\n\024TRAIL"
-    "ING_STOP_MARKET\020\006*w\n\013OrderStatus\022\007\n\003NEW\020"
-    "\000\022\024\n\020PARTIALLY_FILLED\020\001\022\n\n\006FILLED\020\002\022\014\n\010C"
-    "ANCELED\020\003\022\014\n\010REJECTED\020\004\022\013\n\007EXPIRED\020\005\022\024\n\020"
-    "EXPIRED_IN_MATCH\020\006*>\n\017TimeInForceType\022\007\n"
-    "\003GTC\020\000\022\007\n\003IOC\020\001\022\007\n\003FOK\020\002\022\007\n\003GTX\020\003\022\007\n\003GTD"
-    "\020\004*\036\n\tTradeSide\022\007\n\003BUY\020\000\022\010\n\004SELL\020\001*D\n\031Co"
-    "nditionOrderTriggerType\022\t\n\005PRICE\020\000\022\016\n\nRI"
-    "SE_SPEED\020\001\022\014\n\010INTERVAL\020\002b\006proto3"
+    "createdTime\030\013 \001(\003\022D\n\014positionSide\030\014 \001(\0162"
+    "..lampyris.crypto.protocol.trading.Posit"
+    "ionSide\"\321\001\n\017OrderStatusBean\022>\n\torderBean"
+    "\030\001 \001(\0132+.lampyris.crypto.protocol.tradin"
+    "g.OrderBean\022\017\n\007orderId\030\002 \001(\003\022=\n\006status\030\003"
+    " \001(\0162-.lampyris.crypto.protocol.trading."
+    "OrderStatus\022\026\n\016filledQuantity\030\004 \001(\001\022\026\n\016a"
+    "vgFilledPrice\030\005 \001(\001\"O\n\rReqPlaceOrder\022>\n\t"
+    "orderBean\030\001 \001(\0132+.lampyris.crypto.protoc"
+    "ol.trading.OrderBean\"a\n\016ReqModifyOrder\022\017"
+    "\n\007orderId\030\001 \001(\003\022>\n\torderBean\030\002 \001(\0132+.lam"
+    "pyris.crypto.protocol.trading.OrderBean\""
+    "!\n\016ReqCancelOrder\022\017\n\007orderId\030\001 \001(\003\")\n\026Re"
+    "qOneKeyClosePosition\022\017\n\007symbols\030\001 \003(\t\"&\n"
+    "\024ReqQueryActiveOrders\022\016\n\006symbol\030\001 \001(\t\"g\n"
+    "\016ResQueryOrders\022\020\n\010isActive\030\001 \001(\010\022C\n\010bea"
+    "nList\030\002 \003(\01321.lampyris.crypto.protocol.t"
+    "rading.OrderStatusBean\"N\n\030ReqQueryHistor"
+    "icalOrders\022\016\n\006symbol\030\001 \001(\t\022\021\n\tbeginTime\030"
+    "\002 \001(\003\022\017\n\007endTime\030\003 \001(\003\"#\n\021ReqQueryPositi"
+    "ons\022\016\n\006symbol\030\001 \001(\t\"\307\002\n\014PositionBean\022\016\n\006"
+    "symbol\030\001 \001(\t\022D\n\014positionSide\030\002 \001(\0162..lam"
+    "pyris.crypto.protocol.trading.PositionSi"
+    "de\022\020\n\010quantity\030\003 \001(\001\022\025\n\runrealizedPnL\030\004 "
+    "\001(\001\022\023\n\013realizedPnL\030\005 \001(\001\022\025\n\rinitialMargi"
+    "n\030\006 \001(\001\022\031\n\021maintenanceMargin\030\007 \001(\001\022\021\n\tco"
+    "stPrice\030\010 \001(\001\022\021\n\tmarkPrice\030\t \001(\001\022\035\n\025auto"
+    "DeleveragingLevel\030\n \001(\005\022\030\n\020liquidationPr"
+    "ice\030\013 \001(\001\022\022\n\nupdateTime\030\014 \001(\003\"U\n\021ResQuer"
+    "yPositions\022@\n\010beanList\030\001 \003(\0132..lampyris."
+    "crypto.protocol.trading.PositionBean\"E\n\014"
+    "LeverageBean\022\016\n\006symbol\030\001 \001(\t\022\020\n\010leverage"
+    "\030\002 \001(\005\022\023\n\013maxNotional\030\003 \001(\001\"R\n\016ReqSetLev"
+    "erage\022@\n\010beanList\030\001 \003(\0132..lampyris.crypt"
+    "o.protocol.trading.LeverageBean\"\"\n\020ReqQu"
+    "eryLeverage\022\016\n\006symbol\030\001 \001(\t\"T\n\020ResQueryL"
+    "everage\022@\n\010beanList\030\001 \003(\0132..lampyris.cry"
+    "pto.protocol.trading.LeverageBean\")\n\027Req"
+    "QueryLeverageBracket\022\016\n\006symbol\030\001 \001(\t\"h\n\027"
+    "ResQueryLeverageBracket\022M\n\010beanList\030\001 \003("
+    "\0132;.lampyris.crypto.protocol.trading.Sym"
+    "bolLeverageBracketBean\"d\n\031SymbolLeverage"
+    "BracketBean\022G\n\010beanList\030\001 \003(\01325.lampyris"
+    ".crypto.protocol.trading.LeverageBracket"
+    "Bean\"S\n\023LeverageBracketBean\022\020\n\010leverage\030"
+    "\001 \001(\005\022\023\n\013notionalCap\030\002 \001(\001\022\025\n\rnotionalFl"
+    "oor\030\003 \001(\001*\212\001\n\tOrderType\022\t\n\005LIMIT\020\000\022\n\n\006MA"
+    "RKET\020\001\022\r\n\tSTOP_LOSS\020\002\022\017\n\013TAKE_PROFIT\020\003\022\024"
+    "\n\020STOP_LOSS_MARKET\020\004\022\026\n\022TAKE_PROFIT_MARK"
+    "ET\020\005\022\030\n\024TRAILING_STOP_MARKET\020\006*w\n\013OrderS"
+    "tatus\022\007\n\003NEW\020\000\022\024\n\020PARTIALLY_FILLED\020\001\022\n\n\006"
+    "FILLED\020\002\022\014\n\010CANCELED\020\003\022\014\n\010REJECTED\020\004\022\013\n\007"
+    "EXPIRED\020\005\022\024\n\020EXPIRED_IN_MATCH\020\006*>\n\017TimeI"
+    "nForceType\022\007\n\003GTC\020\000\022\007\n\003IOC\020\001\022\007\n\003FOK\020\002\022\007\n"
+    "\003GTX\020\003\022\007\n\003GTD\020\004*\036\n\tOrderSide\022\007\n\003BUY\020\000\022\010\n"
+    "\004SELL\020\001*#\n\014PositionSide\022\010\n\004LONG\020\000\022\t\n\005SHO"
+    "RT\020\001*D\n\031ConditionOrderTriggerType\022\t\n\005PRI"
+    "CE\020\000\022\016\n\nRISE_SPEED\020\001\022\014\n\010INTERVAL\020\002b\006prot"
+    "o3"
 };
 static ::absl::once_flag descriptor_table_trading_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_trading_2eproto = {
     false,
     false,
-    2232,
+    2882,
     descriptor_table_protodef_trading_2eproto,
     "trading.proto",
     &descriptor_table_trading_2eproto_once,
     nullptr,
     0,
-    18,
+    21,
     schemas,
     file_default_instances,
     TableStruct_trading_2eproto::offsets,
@@ -870,18 +1021,27 @@ PROTOBUF_CONSTINIT const uint32_t TimeInForceType_internal_data_[] = {
 bool TimeInForceType_IsValid(int value) {
   return 0 <= value && value <= 4;
 }
-const ::google::protobuf::EnumDescriptor* TradeSide_descriptor() {
+const ::google::protobuf::EnumDescriptor* OrderSide_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_trading_2eproto);
   return file_level_enum_descriptors_trading_2eproto[3];
 }
-PROTOBUF_CONSTINIT const uint32_t TradeSide_internal_data_[] = {
+PROTOBUF_CONSTINIT const uint32_t OrderSide_internal_data_[] = {
     131072u, 0u, };
-bool TradeSide_IsValid(int value) {
+bool OrderSide_IsValid(int value) {
+  return 0 <= value && value <= 1;
+}
+const ::google::protobuf::EnumDescriptor* PositionSide_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_trading_2eproto);
+  return file_level_enum_descriptors_trading_2eproto[4];
+}
+PROTOBUF_CONSTINIT const uint32_t PositionSide_internal_data_[] = {
+    131072u, 0u, };
+bool PositionSide_IsValid(int value) {
   return 0 <= value && value <= 1;
 }
 const ::google::protobuf::EnumDescriptor* ConditionOrderTriggerType_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_trading_2eproto);
-  return file_level_enum_descriptors_trading_2eproto[4];
+  return file_level_enum_descriptors_trading_2eproto[5];
 }
 PROTOBUF_CONSTINIT const uint32_t ConditionOrderTriggerType_internal_data_[] = {
     196608u, 0u, };
@@ -1184,9 +1344,9 @@ OrderBean::OrderBean(
                offsetof(Impl_, side_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, side_),
-           offsetof(Impl_, createdtime_) -
+           offsetof(Impl_, positionside_) -
                offsetof(Impl_, side_) +
-               sizeof(Impl_::createdtime_));
+               sizeof(Impl_::positionside_));
 
   // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.OrderBean)
 }
@@ -1202,9 +1362,9 @@ inline void OrderBean::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, side_),
            0,
-           offsetof(Impl_, createdtime_) -
+           offsetof(Impl_, positionside_) -
                offsetof(Impl_, side_) +
-               sizeof(Impl_::createdtime_));
+               sizeof(Impl_::positionside_));
 }
 OrderBean::~OrderBean() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.OrderBean)
@@ -1266,15 +1426,15 @@ const ::google::protobuf::internal::ClassData* OrderBean::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 11, 1, 65, 2> OrderBean::_table_ = {
+const ::_pbi::TcParseTable<4, 12, 1, 65, 2> OrderBean::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    11, 120,  // max_field_number, fast_idx_mask
+    12, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294965248,  // skipmap
+    4294963200,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    11,  // num_field_entries
+    12,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1288,7 +1448,7 @@ const ::_pbi::TcParseTable<4, 11, 1, 65, 2> OrderBean::_table_ = {
     // string symbol = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.symbol_)}},
-    // .lampyris.crypto.protocol.trading.TradeSide side = 2;
+    // .lampyris.crypto.protocol.trading.OrderSide side = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(OrderBean, _impl_.side_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.side_)}},
     // .lampyris.crypto.protocol.trading.OrderType orderType = 3;
@@ -1318,7 +1478,9 @@ const ::_pbi::TcParseTable<4, 11, 1, 65, 2> OrderBean::_table_ = {
     // int64 createdTime = 11;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(OrderBean, _impl_.createdtime_), 63>(),
      {88, 63, 0, PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.createdtime_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .lampyris.crypto.protocol.trading.PositionSide positionSide = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(OrderBean, _impl_.positionside_), 63>(),
+     {96, 63, 0, PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.positionside_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -1328,7 +1490,7 @@ const ::_pbi::TcParseTable<4, 11, 1, 65, 2> OrderBean::_table_ = {
     // string symbol = 1;
     {PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.symbol_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .lampyris.crypto.protocol.trading.TradeSide side = 2;
+    // .lampyris.crypto.protocol.trading.OrderSide side = 2;
     {PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.side_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
     // .lampyris.crypto.protocol.trading.OrderType orderType = 3;
@@ -1358,6 +1520,9 @@ const ::_pbi::TcParseTable<4, 11, 1, 65, 2> OrderBean::_table_ = {
     // int64 createdTime = 11;
     {PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.createdtime_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
+    // .lampyris.crypto.protocol.trading.PositionSide positionSide = 12;
+    {PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.positionside_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }}, {{
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::ConditionTriggerBean>()},
   }}, {{
@@ -1377,8 +1542,8 @@ PROTOBUF_NOINLINE void OrderBean::Clear() {
   _impl_.condition_.Clear();
   _impl_.symbol_.ClearToEmpty();
   ::memset(&_impl_.side_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.createdtime_) -
-      reinterpret_cast<char*>(&_impl_.side_)) + sizeof(_impl_.createdtime_));
+      reinterpret_cast<char*>(&_impl_.positionside_) -
+      reinterpret_cast<char*>(&_impl_.side_)) + sizeof(_impl_.positionside_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1405,7 +1570,7 @@ PROTOBUF_NOINLINE void OrderBean::Clear() {
             target = stream->WriteStringMaybeAliased(1, _s, target);
           }
 
-          // .lampyris.crypto.protocol.trading.TradeSide side = 2;
+          // .lampyris.crypto.protocol.trading.OrderSide side = 2;
           if (this_._internal_side() != 0) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteEnumToArray(
@@ -1479,6 +1644,13 @@ PROTOBUF_NOINLINE void OrderBean::Clear() {
                     stream, this_._internal_createdtime(), target);
           }
 
+          // .lampyris.crypto.protocol.trading.PositionSide positionSide = 12;
+          if (this_._internal_positionside() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                12, this_._internal_positionside(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1518,7 +1690,7 @@ PROTOBUF_NOINLINE void OrderBean::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_symbol());
             }
-            // .lampyris.crypto.protocol.trading.TradeSide side = 2;
+            // .lampyris.crypto.protocol.trading.OrderSide side = 2;
             if (this_._internal_side() != 0) {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_side());
@@ -1558,6 +1730,11 @@ PROTOBUF_NOINLINE void OrderBean::Clear() {
             if (this_._internal_createdtime() != 0) {
               total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
                   this_._internal_createdtime());
+            }
+            // .lampyris.crypto.protocol.trading.PositionSide positionSide = 12;
+            if (this_._internal_positionside() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_positionside());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1604,6 +1781,9 @@ void OrderBean::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::googl
   if (from._internal_createdtime() != 0) {
     _this->_impl_.createdtime_ = from._impl_.createdtime_;
   }
+  if (from._internal_positionside() != 0) {
+    _this->_impl_.positionside_ = from._impl_.positionside_;
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1623,8 +1803,8 @@ void OrderBean::InternalSwap(OrderBean* PROTOBUF_RESTRICT other) {
   _impl_.condition_.InternalSwap(&other->_impl_.condition_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.symbol_, &other->_impl_.symbol_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.createdtime_)
-      + sizeof(OrderBean::_impl_.createdtime_)
+      PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.positionside_)
+      + sizeof(OrderBean::_impl_.positionside_)
       - PROTOBUF_FIELD_OFFSET(OrderBean, _impl_.side_)>(
           reinterpret_cast<char*>(&_impl_.side_),
           reinterpret_cast<char*>(&other->_impl_.side_));
@@ -1679,9 +1859,9 @@ OrderStatusBean::OrderStatusBean(
                offsetof(Impl_, orderid_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, orderid_),
-           offsetof(Impl_, avgfilledprice_) -
+           offsetof(Impl_, status_) -
                offsetof(Impl_, orderid_) +
-               sizeof(Impl_::avgfilledprice_));
+               sizeof(Impl_::status_));
 
   // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.OrderStatusBean)
 }
@@ -1695,9 +1875,9 @@ inline void OrderStatusBean::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, orderbean_),
            0,
-           offsetof(Impl_, avgfilledprice_) -
+           offsetof(Impl_, status_) -
                offsetof(Impl_, orderbean_) +
-               sizeof(Impl_::avgfilledprice_));
+               sizeof(Impl_::status_));
 }
 OrderStatusBean::~OrderStatusBean() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.OrderStatusBean)
@@ -1769,8 +1949,8 @@ const ::_pbi::TcParseTable<3, 5, 1, 0, 2> OrderStatusBean::_table_ = {
     // .lampyris.crypto.protocol.trading.OrderBean orderBean = 1;
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.orderbean_)}},
-    // int32 orderId = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(OrderStatusBean, _impl_.orderid_), 63>(),
+    // int64 orderId = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(OrderStatusBean, _impl_.orderid_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.orderid_)}},
     // .lampyris.crypto.protocol.trading.OrderStatus status = 3;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(OrderStatusBean, _impl_.status_), 63>(),
@@ -1789,9 +1969,9 @@ const ::_pbi::TcParseTable<3, 5, 1, 0, 2> OrderStatusBean::_table_ = {
     // .lampyris.crypto.protocol.trading.OrderBean orderBean = 1;
     {PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.orderbean_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // int32 orderId = 2;
+    // int64 orderId = 2;
     {PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.orderid_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
     // .lampyris.crypto.protocol.trading.OrderStatus status = 3;
     {PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.status_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
@@ -1820,8 +2000,8 @@ PROTOBUF_NOINLINE void OrderStatusBean::Clear() {
     _impl_.orderbean_->Clear();
   }
   ::memset(&_impl_.orderid_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.avgfilledprice_) -
-      reinterpret_cast<char*>(&_impl_.orderid_)) + sizeof(_impl_.avgfilledprice_));
+      reinterpret_cast<char*>(&_impl_.status_) -
+      reinterpret_cast<char*>(&_impl_.orderid_)) + sizeof(_impl_.status_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -1849,10 +2029,10 @@ PROTOBUF_NOINLINE void OrderStatusBean::Clear() {
                 stream);
           }
 
-          // int32 orderId = 2;
+          // int64 orderId = 2;
           if (this_._internal_orderid() != 0) {
             target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<2>(
+                WriteInt64ToArrayWithField<2>(
                     stream, this_._internal_orderid(), target);
           }
 
@@ -1910,15 +2090,10 @@ PROTOBUF_NOINLINE void OrderStatusBean::Clear() {
             }
           }
            {
-            // int32 orderId = 2;
+            // int64 orderId = 2;
             if (this_._internal_orderid() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
                   this_._internal_orderid());
-            }
-            // .lampyris.crypto.protocol.trading.OrderStatus status = 3;
-            if (this_._internal_status() != 0) {
-              total_size += 1 +
-                            ::_pbi::WireFormatLite::EnumSize(this_._internal_status());
             }
             // double filledQuantity = 4;
             if (::absl::bit_cast<::uint64_t>(this_._internal_filledquantity()) != 0) {
@@ -1927,6 +2102,11 @@ PROTOBUF_NOINLINE void OrderStatusBean::Clear() {
             // double avgFilledPrice = 5;
             if (::absl::bit_cast<::uint64_t>(this_._internal_avgfilledprice()) != 0) {
               total_size += 9;
+            }
+            // .lampyris.crypto.protocol.trading.OrderStatus status = 3;
+            if (this_._internal_status() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_status());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1955,14 +2135,14 @@ void OrderStatusBean::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
   if (from._internal_orderid() != 0) {
     _this->_impl_.orderid_ = from._impl_.orderid_;
   }
-  if (from._internal_status() != 0) {
-    _this->_impl_.status_ = from._impl_.status_;
-  }
   if (::absl::bit_cast<::uint64_t>(from._internal_filledquantity()) != 0) {
     _this->_impl_.filledquantity_ = from._impl_.filledquantity_;
   }
   if (::absl::bit_cast<::uint64_t>(from._internal_avgfilledprice()) != 0) {
     _this->_impl_.avgfilledprice_ = from._impl_.avgfilledprice_;
+  }
+  if (from._internal_status() != 0) {
+    _this->_impl_.status_ = from._impl_.status_;
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -1981,8 +2161,8 @@ void OrderStatusBean::InternalSwap(OrderStatusBean* PROTOBUF_RESTRICT other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.avgfilledprice_)
-      + sizeof(OrderStatusBean::_impl_.avgfilledprice_)
+      PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.status_)
+      + sizeof(OrderStatusBean::_impl_.status_)
       - PROTOBUF_FIELD_OFFSET(OrderStatusBean, _impl_.orderbean_)>(
           reinterpret_cast<char*>(&_impl_.orderbean_),
           reinterpret_cast<char*>(&other->_impl_.orderbean_));
@@ -2264,8 +2444,7 @@ inline PROTOBUF_NDEBUG_INLINE ReqModifyOrder::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::lampyris::crypto::protocol::trading::ReqModifyOrder& from_msg)
       : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        orderid_(arena, from.orderid_) {}
+        _cached_size_{0} {}
 
 ReqModifyOrder::ReqModifyOrder(
     ::google::protobuf::Arena* arena,
@@ -2284,18 +2463,23 @@ ReqModifyOrder::ReqModifyOrder(
   _impl_.orderbean_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::lampyris::crypto::protocol::trading::OrderBean>(
                               arena, *from._impl_.orderbean_)
                         : nullptr;
+  _impl_.orderid_ = from._impl_.orderid_;
 
   // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.ReqModifyOrder)
 }
 inline PROTOBUF_NDEBUG_INLINE ReqModifyOrder::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        orderid_(arena) {}
+      : _cached_size_{0} {}
 
 inline void ReqModifyOrder::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.orderbean_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, orderbean_),
+           0,
+           offsetof(Impl_, orderid_) -
+               offsetof(Impl_, orderbean_) +
+               sizeof(Impl_::orderid_));
 }
 ReqModifyOrder::~ReqModifyOrder() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.ReqModifyOrder)
@@ -2305,7 +2489,6 @@ inline void ReqModifyOrder::SharedDtor(MessageLite& self) {
   ReqModifyOrder& this_ = static_cast<ReqModifyOrder&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.orderid_.Destroy();
   delete this_._impl_.orderbean_;
   this_._impl_.~Impl_();
 }
@@ -2315,7 +2498,7 @@ inline void* ReqModifyOrder::PlacementNew_(const void*, void* mem,
   return ::new (mem) ReqModifyOrder(arena);
 }
 constexpr auto ReqModifyOrder::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ReqModifyOrder),
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ReqModifyOrder),
                                             alignof(ReqModifyOrder));
 }
 PROTOBUF_CONSTINIT
@@ -2346,7 +2529,7 @@ const ::google::protobuf::internal::ClassData* ReqModifyOrder::GetClassData() co
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 63, 2> ReqModifyOrder::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ReqModifyOrder::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_._has_bits_),
     0, // no _extensions_
@@ -2367,24 +2550,21 @@ const ::_pbi::TcParseTable<1, 2, 1, 63, 2> ReqModifyOrder::_table_ = {
     // .lampyris.crypto.protocol.trading.OrderBean orderBean = 2;
     {::_pbi::TcParser::FastMtS1,
      {18, 0, 0, PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderbean_)}},
-    // string orderId = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderid_)}},
+    // int64 orderId = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ReqModifyOrder, _impl_.orderid_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderid_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string orderId = 1;
+    // int64 orderId = 1;
     {PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderid_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
     // .lampyris.crypto.protocol.trading.OrderBean orderBean = 2;
     {PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderbean_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::OrderBean>()},
   }}, {{
-    "\57\7\0\0\0\0\0\0"
-    "lampyris.crypto.protocol.trading.ReqModifyOrder"
-    "orderId"
   }},
 };
 
@@ -2395,12 +2575,12 @@ PROTOBUF_NOINLINE void ReqModifyOrder::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.orderid_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.orderbean_ != nullptr);
     _impl_.orderbean_->Clear();
   }
+  _impl_.orderid_ = ::int64_t{0};
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -2420,12 +2600,11 @@ PROTOBUF_NOINLINE void ReqModifyOrder::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // string orderId = 1;
-          if (!this_._internal_orderid().empty()) {
-            const std::string& _s = this_._internal_orderid();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.trading.ReqModifyOrder.orderId");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
+          // int64 orderId = 1;
+          if (this_._internal_orderid() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt64ToArrayWithField<1>(
+                    stream, this_._internal_orderid(), target);
           }
 
           cached_has_bits = this_._impl_._has_bits_[0];
@@ -2461,18 +2640,18 @@ PROTOBUF_NOINLINE void ReqModifyOrder::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // string orderId = 1;
-            if (!this_._internal_orderid().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_orderid());
-            }
-          }
-           {
             // .lampyris.crypto.protocol.trading.OrderBean orderBean = 2;
             cached_has_bits = this_._impl_._has_bits_[0];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.orderbean_);
+            }
+          }
+           {
+            // int64 orderId = 1;
+            if (this_._internal_orderid() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+                  this_._internal_orderid());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -2488,9 +2667,6 @@ void ReqModifyOrder::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_orderid().empty()) {
-    _this->_internal_set_orderid(from._internal_orderid());
-  }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(from._impl_.orderbean_ != nullptr);
@@ -2500,6 +2676,9 @@ void ReqModifyOrder::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
     } else {
       _this->_impl_.orderbean_->MergeFrom(*from._impl_.orderbean_);
     }
+  }
+  if (from._internal_orderid() != 0) {
+    _this->_impl_.orderid_ = from._impl_.orderid_;
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -2515,12 +2694,14 @@ void ReqModifyOrder::CopyFrom(const ReqModifyOrder& from) {
 
 void ReqModifyOrder::InternalSwap(ReqModifyOrder* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.orderid_, &other->_impl_.orderid_, arena);
-  swap(_impl_.orderbean_, other->_impl_.orderbean_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderid_)
+      + sizeof(ReqModifyOrder::_impl_.orderid_)
+      - PROTOBUF_FIELD_OFFSET(ReqModifyOrder, _impl_.orderbean_)>(
+          reinterpret_cast<char*>(&_impl_.orderbean_),
+          reinterpret_cast<char*>(&other->_impl_.orderbean_));
 }
 
 ::google::protobuf::Metadata ReqModifyOrder::GetMetadata() const {
@@ -2541,36 +2722,19 @@ ReqCancelOrder::ReqCancelOrder(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.trading.ReqCancelOrder)
 }
-inline PROTOBUF_NDEBUG_INLINE ReqCancelOrder::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::lampyris::crypto::protocol::trading::ReqCancelOrder& from_msg)
-      : orderid_(arena, from.orderid_),
-        _cached_size_{0} {}
-
 ReqCancelOrder::ReqCancelOrder(
-    ::google::protobuf::Arena* arena,
-    const ReqCancelOrder& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  ReqCancelOrder* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-
-  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.ReqCancelOrder)
+    ::google::protobuf::Arena* arena, const ReqCancelOrder& from)
+    : ReqCancelOrder(arena) {
+  MergeFrom(from);
 }
 inline PROTOBUF_NDEBUG_INLINE ReqCancelOrder::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : orderid_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0} {}
 
 inline void ReqCancelOrder::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.orderid_ = {};
 }
 ReqCancelOrder::~ReqCancelOrder() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.ReqCancelOrder)
@@ -2580,7 +2744,6 @@ inline void ReqCancelOrder::SharedDtor(MessageLite& self) {
   ReqCancelOrder& this_ = static_cast<ReqCancelOrder&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.orderid_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -2589,7 +2752,7 @@ inline void* ReqCancelOrder::PlacementNew_(const void*, void* mem,
   return ::new (mem) ReqCancelOrder(arena);
 }
 constexpr auto ReqCancelOrder::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ReqCancelOrder),
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ReqCancelOrder),
                                             alignof(ReqCancelOrder));
 }
 PROTOBUF_CONSTINIT
@@ -2620,7 +2783,7 @@ const ::google::protobuf::internal::ClassData* ReqCancelOrder::GetClassData() co
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 63, 2> ReqCancelOrder::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ReqCancelOrder::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -2638,21 +2801,18 @@ const ::_pbi::TcParseTable<0, 1, 0, 63, 2> ReqCancelOrder::_table_ = {
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::ReqCancelOrder>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string orderId = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ReqCancelOrder, _impl_.orderid_)}},
+    // int64 orderId = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ReqCancelOrder, _impl_.orderid_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ReqCancelOrder, _impl_.orderid_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string orderId = 1;
+    // int64 orderId = 1;
     {PROTOBUF_FIELD_OFFSET(ReqCancelOrder, _impl_.orderid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
   }},
   // no aux_entries
   {{
-    "\57\7\0\0\0\0\0\0"
-    "lampyris.crypto.protocol.trading.ReqCancelOrder"
-    "orderId"
   }},
 };
 
@@ -2663,7 +2823,7 @@ PROTOBUF_NOINLINE void ReqCancelOrder::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.orderid_.ClearToEmpty();
+  _impl_.orderid_ = ::int64_t{0};
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -2682,12 +2842,11 @@ PROTOBUF_NOINLINE void ReqCancelOrder::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // string orderId = 1;
-          if (!this_._internal_orderid().empty()) {
-            const std::string& _s = this_._internal_orderid();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.trading.ReqCancelOrder.orderId");
-            target = stream->WriteStringMaybeAliased(1, _s, target);
+          // int64 orderId = 1;
+          if (this_._internal_orderid() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt64ToArrayWithField<1>(
+                    stream, this_._internal_orderid(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -2714,10 +2873,10 @@ PROTOBUF_NOINLINE void ReqCancelOrder::Clear() {
           (void)cached_has_bits;
 
            {
-            // string orderId = 1;
-            if (!this_._internal_orderid().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_orderid());
+            // int64 orderId = 1;
+            if (this_._internal_orderid() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+                  this_._internal_orderid());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -2732,8 +2891,8 @@ void ReqCancelOrder::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_orderid().empty()) {
-    _this->_internal_set_orderid(from._internal_orderid());
+  if (from._internal_orderid() != 0) {
+    _this->_impl_.orderid_ = from._impl_.orderid_;
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2748,10 +2907,8 @@ void ReqCancelOrder::CopyFrom(const ReqCancelOrder& from) {
 
 void ReqCancelOrder::InternalSwap(ReqCancelOrder* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.orderid_, &other->_impl_.orderid_, arena);
+        swap(_impl_.orderid_, other->_impl_.orderid_);
 }
 
 ::google::protobuf::Metadata ReqCancelOrder::GetMetadata() const {
@@ -3229,6 +3386,274 @@ void ReqQueryActiveOrders::InternalSwap(ReqQueryActiveOrders* PROTOBUF_RESTRICT 
 }
 
 ::google::protobuf::Metadata ReqQueryActiveOrders::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ResQueryOrders::_Internal {
+ public:
+};
+
+ResQueryOrders::ResQueryOrders(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.trading.ResQueryOrders)
+}
+inline PROTOBUF_NDEBUG_INLINE ResQueryOrders::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::trading::ResQueryOrders& from_msg)
+      : beanlist_{visibility, arena, from.beanlist_},
+        _cached_size_{0} {}
+
+ResQueryOrders::ResQueryOrders(
+    ::google::protobuf::Arena* arena,
+    const ResQueryOrders& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ResQueryOrders* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.isactive_ = from._impl_.isactive_;
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.ResQueryOrders)
+}
+inline PROTOBUF_NDEBUG_INLINE ResQueryOrders::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : beanlist_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void ResQueryOrders::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.isactive_ = {};
+}
+ResQueryOrders::~ResQueryOrders() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.ResQueryOrders)
+  SharedDtor(*this);
+}
+inline void ResQueryOrders::SharedDtor(MessageLite& self) {
+  ResQueryOrders& this_ = static_cast<ResQueryOrders&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* ResQueryOrders::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ResQueryOrders(arena);
+}
+constexpr auto ResQueryOrders::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(ResQueryOrders, _impl_.beanlist_) +
+          decltype(ResQueryOrders::_impl_.beanlist_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(ResQueryOrders), alignof(ResQueryOrders), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&ResQueryOrders::PlacementNew_,
+                                 sizeof(ResQueryOrders),
+                                 alignof(ResQueryOrders));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ResQueryOrders::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ResQueryOrders_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ResQueryOrders::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ResQueryOrders>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ResQueryOrders::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ResQueryOrders>(), &ResQueryOrders::ByteSizeLong,
+            &ResQueryOrders::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ResQueryOrders, _impl_._cached_size_),
+        false,
+    },
+    &ResQueryOrders::kDescriptorMethods,
+    &descriptor_table_trading_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ResQueryOrders::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> ResQueryOrders::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::ResQueryOrders>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .lampyris.crypto.protocol.trading.OrderStatusBean beanList = 2;
+    {::_pbi::TcParser::FastMtR1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ResQueryOrders, _impl_.beanlist_)}},
+    // bool isActive = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ResQueryOrders, _impl_.isactive_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ResQueryOrders, _impl_.isactive_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bool isActive = 1;
+    {PROTOBUF_FIELD_OFFSET(ResQueryOrders, _impl_.isactive_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // repeated .lampyris.crypto.protocol.trading.OrderStatusBean beanList = 2;
+    {PROTOBUF_FIELD_OFFSET(ResQueryOrders, _impl_.beanlist_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::OrderStatusBean>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void ResQueryOrders::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.trading.ResQueryOrders)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.beanlist_.Clear();
+  _impl_.isactive_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ResQueryOrders::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ResQueryOrders& this_ = static_cast<const ResQueryOrders&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ResQueryOrders::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ResQueryOrders& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.trading.ResQueryOrders)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // bool isActive = 1;
+          if (this_._internal_isactive() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                1, this_._internal_isactive(), target);
+          }
+
+          // repeated .lampyris.crypto.protocol.trading.OrderStatusBean beanList = 2;
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_beanlist_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_beanlist().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    2, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.trading.ResQueryOrders)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ResQueryOrders::ByteSizeLong(const MessageLite& base) {
+          const ResQueryOrders& this_ = static_cast<const ResQueryOrders&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ResQueryOrders::ByteSizeLong() const {
+          const ResQueryOrders& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.trading.ResQueryOrders)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .lampyris.crypto.protocol.trading.OrderStatusBean beanList = 2;
+            {
+              total_size += 1UL * this_._internal_beanlist_size();
+              for (const auto& msg : this_._internal_beanlist()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+           {
+            // bool isActive = 1;
+            if (this_._internal_isactive() != 0) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ResQueryOrders::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ResQueryOrders*>(&to_msg);
+  auto& from = static_cast<const ResQueryOrders&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.trading.ResQueryOrders)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_beanlist()->MergeFrom(
+      from._internal_beanlist());
+  if (from._internal_isactive() != 0) {
+    _this->_impl_.isactive_ = from._impl_.isactive_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ResQueryOrders::CopyFrom(const ResQueryOrders& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.trading.ResQueryOrders)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ResQueryOrders::InternalSwap(ResQueryOrders* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.beanlist_.InternalSwap(&other->_impl_.beanlist_);
+        swap(_impl_.isactive_, other->_impl_.isactive_);
+}
+
+::google::protobuf::Metadata ResQueryOrders::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -3761,6 +4186,729 @@ void ReqQueryPositions::InternalSwap(ReqQueryPositions* PROTOBUF_RESTRICT other)
 }
 // ===================================================================
 
+class PositionBean::_Internal {
+ public:
+};
+
+PositionBean::PositionBean(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.trading.PositionBean)
+}
+inline PROTOBUF_NDEBUG_INLINE PositionBean::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::trading::PositionBean& from_msg)
+      : symbol_(arena, from.symbol_),
+        _cached_size_{0} {}
+
+PositionBean::PositionBean(
+    ::google::protobuf::Arena* arena,
+    const PositionBean& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  PositionBean* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, quantity_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, quantity_),
+           offsetof(Impl_, updatetime_) -
+               offsetof(Impl_, quantity_) +
+               sizeof(Impl_::updatetime_));
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.PositionBean)
+}
+inline PROTOBUF_NDEBUG_INLINE PositionBean::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : symbol_(arena),
+        _cached_size_{0} {}
+
+inline void PositionBean::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, quantity_),
+           0,
+           offsetof(Impl_, updatetime_) -
+               offsetof(Impl_, quantity_) +
+               sizeof(Impl_::updatetime_));
+}
+PositionBean::~PositionBean() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.PositionBean)
+  SharedDtor(*this);
+}
+inline void PositionBean::SharedDtor(MessageLite& self) {
+  PositionBean& this_ = static_cast<PositionBean&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.symbol_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PositionBean::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) PositionBean(arena);
+}
+constexpr auto PositionBean::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(PositionBean),
+                                            alignof(PositionBean));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull PositionBean::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_PositionBean_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &PositionBean::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<PositionBean>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &PositionBean::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<PositionBean>(), &PositionBean::ByteSizeLong,
+            &PositionBean::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(PositionBean, _impl_._cached_size_),
+        false,
+    },
+    &PositionBean::kDescriptorMethods,
+    &descriptor_table_trading_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* PositionBean::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<4, 12, 0, 68, 2> PositionBean::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    12, 120,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294963200,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    12,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::PositionBean>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string symbol = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.symbol_)}},
+    // .lampyris.crypto.protocol.trading.PositionSide positionSide = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(PositionBean, _impl_.positionside_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.positionside_)}},
+    // double quantity = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.quantity_)}},
+    // double unrealizedPnL = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.unrealizedpnl_)}},
+    // double realizedPnL = 5;
+    {::_pbi::TcParser::FastF64S1,
+     {41, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.realizedpnl_)}},
+    // double initialMargin = 6;
+    {::_pbi::TcParser::FastF64S1,
+     {49, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.initialmargin_)}},
+    // double maintenanceMargin = 7;
+    {::_pbi::TcParser::FastF64S1,
+     {57, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.maintenancemargin_)}},
+    // double costPrice = 8;
+    {::_pbi::TcParser::FastF64S1,
+     {65, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.costprice_)}},
+    // double markPrice = 9;
+    {::_pbi::TcParser::FastF64S1,
+     {73, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.markprice_)}},
+    // int32 autoDeleveragingLevel = 10;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(PositionBean, _impl_.autodeleveraginglevel_), 63>(),
+     {80, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.autodeleveraginglevel_)}},
+    // double liquidationPrice = 11;
+    {::_pbi::TcParser::FastF64S1,
+     {89, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.liquidationprice_)}},
+    // int64 updateTime = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(PositionBean, _impl_.updatetime_), 63>(),
+     {96, 63, 0, PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.updatetime_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string symbol = 1;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.symbol_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .lampyris.crypto.protocol.trading.PositionSide positionSide = 2;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.positionside_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // double quantity = 3;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.quantity_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double unrealizedPnL = 4;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.unrealizedpnl_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double realizedPnL = 5;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.realizedpnl_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double initialMargin = 6;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.initialmargin_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double maintenanceMargin = 7;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.maintenancemargin_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double costPrice = 8;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.costprice_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double markPrice = 9;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.markprice_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // int32 autoDeleveragingLevel = 10;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.autodeleveraginglevel_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // double liquidationPrice = 11;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.liquidationprice_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // int64 updateTime = 12;
+    {PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.updatetime_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\55\6\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    "lampyris.crypto.protocol.trading.PositionBean"
+    "symbol"
+  }},
+};
+
+PROTOBUF_NOINLINE void PositionBean::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.trading.PositionBean)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.symbol_.ClearToEmpty();
+  ::memset(&_impl_.quantity_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.updatetime_) -
+      reinterpret_cast<char*>(&_impl_.quantity_)) + sizeof(_impl_.updatetime_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* PositionBean::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const PositionBean& this_ = static_cast<const PositionBean&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* PositionBean::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const PositionBean& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.trading.PositionBean)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string symbol = 1;
+          if (!this_._internal_symbol().empty()) {
+            const std::string& _s = this_._internal_symbol();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "lampyris.crypto.protocol.trading.PositionBean.symbol");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // .lampyris.crypto.protocol.trading.PositionSide positionSide = 2;
+          if (this_._internal_positionside() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                2, this_._internal_positionside(), target);
+          }
+
+          // double quantity = 3;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_quantity()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                3, this_._internal_quantity(), target);
+          }
+
+          // double unrealizedPnL = 4;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_unrealizedpnl()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                4, this_._internal_unrealizedpnl(), target);
+          }
+
+          // double realizedPnL = 5;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_realizedpnl()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                5, this_._internal_realizedpnl(), target);
+          }
+
+          // double initialMargin = 6;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_initialmargin()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                6, this_._internal_initialmargin(), target);
+          }
+
+          // double maintenanceMargin = 7;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_maintenancemargin()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                7, this_._internal_maintenancemargin(), target);
+          }
+
+          // double costPrice = 8;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_costprice()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                8, this_._internal_costprice(), target);
+          }
+
+          // double markPrice = 9;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_markprice()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                9, this_._internal_markprice(), target);
+          }
+
+          // int32 autoDeleveragingLevel = 10;
+          if (this_._internal_autodeleveraginglevel() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt32ToArrayWithField<10>(
+                    stream, this_._internal_autodeleveraginglevel(), target);
+          }
+
+          // double liquidationPrice = 11;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_liquidationprice()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                11, this_._internal_liquidationprice(), target);
+          }
+
+          // int64 updateTime = 12;
+          if (this_._internal_updatetime() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt64ToArrayWithField<12>(
+                    stream, this_._internal_updatetime(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.trading.PositionBean)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t PositionBean::ByteSizeLong(const MessageLite& base) {
+          const PositionBean& this_ = static_cast<const PositionBean&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t PositionBean::ByteSizeLong() const {
+          const PositionBean& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.trading.PositionBean)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string symbol = 1;
+            if (!this_._internal_symbol().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_symbol());
+            }
+            // double quantity = 3;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_quantity()) != 0) {
+              total_size += 9;
+            }
+            // double unrealizedPnL = 4;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_unrealizedpnl()) != 0) {
+              total_size += 9;
+            }
+            // double realizedPnL = 5;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_realizedpnl()) != 0) {
+              total_size += 9;
+            }
+            // double initialMargin = 6;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_initialmargin()) != 0) {
+              total_size += 9;
+            }
+            // .lampyris.crypto.protocol.trading.PositionSide positionSide = 2;
+            if (this_._internal_positionside() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_positionside());
+            }
+            // int32 autoDeleveragingLevel = 10;
+            if (this_._internal_autodeleveraginglevel() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+                  this_._internal_autodeleveraginglevel());
+            }
+            // double maintenanceMargin = 7;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_maintenancemargin()) != 0) {
+              total_size += 9;
+            }
+            // double costPrice = 8;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_costprice()) != 0) {
+              total_size += 9;
+            }
+            // double markPrice = 9;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_markprice()) != 0) {
+              total_size += 9;
+            }
+            // double liquidationPrice = 11;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_liquidationprice()) != 0) {
+              total_size += 9;
+            }
+            // int64 updateTime = 12;
+            if (this_._internal_updatetime() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+                  this_._internal_updatetime());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void PositionBean::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<PositionBean*>(&to_msg);
+  auto& from = static_cast<const PositionBean&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.trading.PositionBean)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_symbol().empty()) {
+    _this->_internal_set_symbol(from._internal_symbol());
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_quantity()) != 0) {
+    _this->_impl_.quantity_ = from._impl_.quantity_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_unrealizedpnl()) != 0) {
+    _this->_impl_.unrealizedpnl_ = from._impl_.unrealizedpnl_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_realizedpnl()) != 0) {
+    _this->_impl_.realizedpnl_ = from._impl_.realizedpnl_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_initialmargin()) != 0) {
+    _this->_impl_.initialmargin_ = from._impl_.initialmargin_;
+  }
+  if (from._internal_positionside() != 0) {
+    _this->_impl_.positionside_ = from._impl_.positionside_;
+  }
+  if (from._internal_autodeleveraginglevel() != 0) {
+    _this->_impl_.autodeleveraginglevel_ = from._impl_.autodeleveraginglevel_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_maintenancemargin()) != 0) {
+    _this->_impl_.maintenancemargin_ = from._impl_.maintenancemargin_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_costprice()) != 0) {
+    _this->_impl_.costprice_ = from._impl_.costprice_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_markprice()) != 0) {
+    _this->_impl_.markprice_ = from._impl_.markprice_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_liquidationprice()) != 0) {
+    _this->_impl_.liquidationprice_ = from._impl_.liquidationprice_;
+  }
+  if (from._internal_updatetime() != 0) {
+    _this->_impl_.updatetime_ = from._impl_.updatetime_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PositionBean::CopyFrom(const PositionBean& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.trading.PositionBean)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void PositionBean::InternalSwap(PositionBean* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.symbol_, &other->_impl_.symbol_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.updatetime_)
+      + sizeof(PositionBean::_impl_.updatetime_)
+      - PROTOBUF_FIELD_OFFSET(PositionBean, _impl_.quantity_)>(
+          reinterpret_cast<char*>(&_impl_.quantity_),
+          reinterpret_cast<char*>(&other->_impl_.quantity_));
+}
+
+::google::protobuf::Metadata PositionBean::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ResQueryPositions::_Internal {
+ public:
+};
+
+ResQueryPositions::ResQueryPositions(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:lampyris.crypto.protocol.trading.ResQueryPositions)
+}
+inline PROTOBUF_NDEBUG_INLINE ResQueryPositions::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::lampyris::crypto::protocol::trading::ResQueryPositions& from_msg)
+      : beanlist_{visibility, arena, from.beanlist_},
+        _cached_size_{0} {}
+
+ResQueryPositions::ResQueryPositions(
+    ::google::protobuf::Arena* arena,
+    const ResQueryPositions& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ResQueryPositions* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.ResQueryPositions)
+}
+inline PROTOBUF_NDEBUG_INLINE ResQueryPositions::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : beanlist_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void ResQueryPositions::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ResQueryPositions::~ResQueryPositions() {
+  // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.ResQueryPositions)
+  SharedDtor(*this);
+}
+inline void ResQueryPositions::SharedDtor(MessageLite& self) {
+  ResQueryPositions& this_ = static_cast<ResQueryPositions&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* ResQueryPositions::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ResQueryPositions(arena);
+}
+constexpr auto ResQueryPositions::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(ResQueryPositions, _impl_.beanlist_) +
+          decltype(ResQueryPositions::_impl_.beanlist_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(ResQueryPositions), alignof(ResQueryPositions), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&ResQueryPositions::PlacementNew_,
+                                 sizeof(ResQueryPositions),
+                                 alignof(ResQueryPositions));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ResQueryPositions::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ResQueryPositions_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ResQueryPositions::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ResQueryPositions>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ResQueryPositions::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ResQueryPositions>(), &ResQueryPositions::ByteSizeLong,
+            &ResQueryPositions::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ResQueryPositions, _impl_._cached_size_),
+        false,
+    },
+    &ResQueryPositions::kDescriptorMethods,
+    &descriptor_table_trading_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ResQueryPositions::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ResQueryPositions::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::ResQueryPositions>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .lampyris.crypto.protocol.trading.PositionBean beanList = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ResQueryPositions, _impl_.beanlist_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .lampyris.crypto.protocol.trading.PositionBean beanList = 1;
+    {PROTOBUF_FIELD_OFFSET(ResQueryPositions, _impl_.beanlist_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::PositionBean>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void ResQueryPositions::Clear() {
+// @@protoc_insertion_point(message_clear_start:lampyris.crypto.protocol.trading.ResQueryPositions)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.beanlist_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ResQueryPositions::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ResQueryPositions& this_ = static_cast<const ResQueryPositions&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ResQueryPositions::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ResQueryPositions& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:lampyris.crypto.protocol.trading.ResQueryPositions)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .lampyris.crypto.protocol.trading.PositionBean beanList = 1;
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_beanlist_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_beanlist().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:lampyris.crypto.protocol.trading.ResQueryPositions)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ResQueryPositions::ByteSizeLong(const MessageLite& base) {
+          const ResQueryPositions& this_ = static_cast<const ResQueryPositions&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ResQueryPositions::ByteSizeLong() const {
+          const ResQueryPositions& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:lampyris.crypto.protocol.trading.ResQueryPositions)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .lampyris.crypto.protocol.trading.PositionBean beanList = 1;
+            {
+              total_size += 1UL * this_._internal_beanlist_size();
+              for (const auto& msg : this_._internal_beanlist()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ResQueryPositions::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ResQueryPositions*>(&to_msg);
+  auto& from = static_cast<const ResQueryPositions&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:lampyris.crypto.protocol.trading.ResQueryPositions)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_beanlist()->MergeFrom(
+      from._internal_beanlist());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ResQueryPositions::CopyFrom(const ResQueryPositions& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:lampyris.crypto.protocol.trading.ResQueryPositions)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ResQueryPositions::InternalSwap(ResQueryPositions* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.beanlist_.InternalSwap(&other->_impl_.beanlist_);
+}
+
+::google::protobuf::Metadata ResQueryPositions::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class LeverageBean::_Internal {
  public:
 };
@@ -3793,7 +4941,13 @@ LeverageBean::LeverageBean(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.leverage_ = from._impl_.leverage_;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, maxnotional_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, maxnotional_),
+           offsetof(Impl_, leverage_) -
+               offsetof(Impl_, maxnotional_) +
+               sizeof(Impl_::leverage_));
 
   // @@protoc_insertion_point(copy_constructor:lampyris.crypto.protocol.trading.LeverageBean)
 }
@@ -3805,7 +4959,12 @@ inline PROTOBUF_NDEBUG_INLINE LeverageBean::Impl_::Impl_(
 
 inline void LeverageBean::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.leverage_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, maxnotional_),
+           0,
+           offsetof(Impl_, leverage_) -
+               offsetof(Impl_, maxnotional_) +
+               sizeof(Impl_::leverage_));
 }
 LeverageBean::~LeverageBean() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.LeverageBean)
@@ -3855,15 +5014,15 @@ const ::google::protobuf::internal::ClassData* LeverageBean::GetClassData() cons
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 60, 2> LeverageBean::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 60, 2> LeverageBean::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -3873,12 +5032,16 @@ const ::_pbi::TcParseTable<1, 2, 0, 60, 2> LeverageBean::_table_ = {
     ::_pbi::TcParser::GetTable<::lampyris::crypto::protocol::trading::LeverageBean>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // int32 leverage = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LeverageBean, _impl_.leverage_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.leverage_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string symbol = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.symbol_)}},
+    // int32 leverage = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LeverageBean, _impl_.leverage_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.leverage_)}},
+    // double maxNotional = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.maxnotional_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -3888,6 +5051,9 @@ const ::_pbi::TcParseTable<1, 2, 0, 60, 2> LeverageBean::_table_ = {
     // int32 leverage = 2;
     {PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.leverage_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // double maxNotional = 3;
+    {PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.maxnotional_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
   }},
   // no aux_entries
   {{
@@ -3905,7 +5071,9 @@ PROTOBUF_NOINLINE void LeverageBean::Clear() {
   (void) cached_has_bits;
 
   _impl_.symbol_.ClearToEmpty();
-  _impl_.leverage_ = 0;
+  ::memset(&_impl_.maxnotional_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.leverage_) -
+      reinterpret_cast<char*>(&_impl_.maxnotional_)) + sizeof(_impl_.leverage_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -3939,6 +5107,13 @@ PROTOBUF_NOINLINE void LeverageBean::Clear() {
                     stream, this_._internal_leverage(), target);
           }
 
+          // double maxNotional = 3;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_maxnotional()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                3, this_._internal_maxnotional(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -3969,6 +5144,10 @@ PROTOBUF_NOINLINE void LeverageBean::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_symbol());
             }
+            // double maxNotional = 3;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_maxnotional()) != 0) {
+              total_size += 9;
+            }
             // int32 leverage = 2;
             if (this_._internal_leverage() != 0) {
               total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
@@ -3990,6 +5169,9 @@ void LeverageBean::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::go
   if (!from._internal_symbol().empty()) {
     _this->_internal_set_symbol(from._internal_symbol());
   }
+  if (::absl::bit_cast<::uint64_t>(from._internal_maxnotional()) != 0) {
+    _this->_impl_.maxnotional_ = from._impl_.maxnotional_;
+  }
   if (from._internal_leverage() != 0) {
     _this->_impl_.leverage_ = from._impl_.leverage_;
   }
@@ -4010,7 +5192,12 @@ void LeverageBean::InternalSwap(LeverageBean* PROTOBUF_RESTRICT other) {
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.symbol_, &other->_impl_.symbol_, arena);
-        swap(_impl_.leverage_, other->_impl_.leverage_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.leverage_)
+      + sizeof(LeverageBean::_impl_.leverage_)
+      - PROTOBUF_FIELD_OFFSET(LeverageBean, _impl_.maxnotional_)>(
+          reinterpret_cast<char*>(&_impl_.maxnotional_),
+          reinterpret_cast<char*>(&other->_impl_.maxnotional_));
 }
 
 ::google::protobuf::Metadata LeverageBean::GetMetadata() const {
@@ -5474,11 +6661,11 @@ inline PROTOBUF_NDEBUG_INLINE LeverageBracketBean::Impl_::Impl_(
 inline void LeverageBracketBean::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, leverage_),
+               offsetof(Impl_, notionalcap_),
            0,
-           offsetof(Impl_, notionalfloor_) -
-               offsetof(Impl_, leverage_) +
-               sizeof(Impl_::notionalfloor_));
+           offsetof(Impl_, leverage_) -
+               offsetof(Impl_, notionalcap_) +
+               sizeof(Impl_::leverage_));
 }
 LeverageBracketBean::~LeverageBracketBean() {
   // @@protoc_insertion_point(destructor:lampyris.crypto.protocol.trading.LeverageBracketBean)
@@ -5549,24 +6736,24 @@ const ::_pbi::TcParseTable<2, 3, 0, 0, 2> LeverageBracketBean::_table_ = {
     // int32 leverage = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LeverageBracketBean, _impl_.leverage_), 63>(),
      {8, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.leverage_)}},
-    // int32 notionalCap = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LeverageBracketBean, _impl_.notionalcap_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalcap_)}},
-    // int32 notionalFloor = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LeverageBracketBean, _impl_.notionalfloor_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalfloor_)}},
+    // double notionalCap = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalcap_)}},
+    // double notionalFloor = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 63, 0, PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalfloor_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 leverage = 1;
     {PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.leverage_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 notionalCap = 2;
+    // double notionalCap = 2;
     {PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalcap_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 notionalFloor = 3;
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double notionalFloor = 3;
     {PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalfloor_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
   }},
   // no aux_entries
   {{
@@ -5580,9 +6767,9 @@ PROTOBUF_NOINLINE void LeverageBracketBean::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.leverage_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.notionalfloor_) -
-      reinterpret_cast<char*>(&_impl_.leverage_)) + sizeof(_impl_.notionalfloor_));
+  ::memset(&_impl_.notionalcap_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.leverage_) -
+      reinterpret_cast<char*>(&_impl_.notionalcap_)) + sizeof(_impl_.leverage_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -5608,18 +6795,18 @@ PROTOBUF_NOINLINE void LeverageBracketBean::Clear() {
                     stream, this_._internal_leverage(), target);
           }
 
-          // int32 notionalCap = 2;
-          if (this_._internal_notionalcap() != 0) {
-            target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<2>(
-                    stream, this_._internal_notionalcap(), target);
+          // double notionalCap = 2;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_notionalcap()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                2, this_._internal_notionalcap(), target);
           }
 
-          // int32 notionalFloor = 3;
-          if (this_._internal_notionalfloor() != 0) {
-            target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<3>(
-                    stream, this_._internal_notionalfloor(), target);
+          // double notionalFloor = 3;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_notionalfloor()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                3, this_._internal_notionalfloor(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -5647,20 +6834,18 @@ PROTOBUF_NOINLINE void LeverageBracketBean::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
+            // double notionalCap = 2;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_notionalcap()) != 0) {
+              total_size += 9;
+            }
+            // double notionalFloor = 3;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_notionalfloor()) != 0) {
+              total_size += 9;
+            }
             // int32 leverage = 1;
             if (this_._internal_leverage() != 0) {
               total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
                   this_._internal_leverage());
-            }
-            // int32 notionalCap = 2;
-            if (this_._internal_notionalcap() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-                  this_._internal_notionalcap());
-            }
-            // int32 notionalFloor = 3;
-            if (this_._internal_notionalfloor() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-                  this_._internal_notionalfloor());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -5675,14 +6860,14 @@ void LeverageBracketBean::MergeImpl(::google::protobuf::MessageLite& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_leverage() != 0) {
-    _this->_impl_.leverage_ = from._impl_.leverage_;
-  }
-  if (from._internal_notionalcap() != 0) {
+  if (::absl::bit_cast<::uint64_t>(from._internal_notionalcap()) != 0) {
     _this->_impl_.notionalcap_ = from._impl_.notionalcap_;
   }
-  if (from._internal_notionalfloor() != 0) {
+  if (::absl::bit_cast<::uint64_t>(from._internal_notionalfloor()) != 0) {
     _this->_impl_.notionalfloor_ = from._impl_.notionalfloor_;
+  }
+  if (from._internal_leverage() != 0) {
+    _this->_impl_.leverage_ = from._impl_.leverage_;
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -5699,11 +6884,11 @@ void LeverageBracketBean::InternalSwap(LeverageBracketBean* PROTOBUF_RESTRICT ot
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalfloor_)
-      + sizeof(LeverageBracketBean::_impl_.notionalfloor_)
-      - PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.leverage_)>(
-          reinterpret_cast<char*>(&_impl_.leverage_),
-          reinterpret_cast<char*>(&other->_impl_.leverage_));
+      PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.leverage_)
+      + sizeof(LeverageBracketBean::_impl_.leverage_)
+      - PROTOBUF_FIELD_OFFSET(LeverageBracketBean, _impl_.notionalcap_)>(
+          reinterpret_cast<char*>(&_impl_.notionalcap_),
+          reinterpret_cast<char*>(&other->_impl_.notionalcap_));
 }
 
 ::google::protobuf::Metadata LeverageBracketBean::GetMetadata() const {

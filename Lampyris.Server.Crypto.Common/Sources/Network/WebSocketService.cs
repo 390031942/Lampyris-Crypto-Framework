@@ -71,7 +71,7 @@ public class WebSocketService
                 ReqLogin reqLogin = request.ReqLogin;
                 ClientUserInfo clientUserInfo = m_UserDBService.QueryClientUserByDeviceMAC(reqLogin.DeviceMAC);
                 ResLogin resLogin = new ResLogin();
-                resLogin.ErrorMessage = (clientUserInfo == null) ? "登录失败!未授权的MAC地址" : "";
+                resLogin.ErrorMessage = (clientUserInfo == null) ? "Login failed! Unauthorized MAC address" : "";
 
                 // 序列化并压缩响应消息
                 await PushMessage(webSocket, resLogin);
@@ -124,6 +124,10 @@ public class WebSocketService
                     if(m_MessageHandlerRegistry.TryGetHandler(request.RequestTypeCase, out var handler))
                     {
                         handler(clientConnectionInfo.UserInfo, request);
+                    }
+                    else
+                    {
+                        Logger.LogError($"Unregistered message handler type {request.RequestTypeCase.ToString()}");
                     }
                 }
             }
@@ -192,5 +196,10 @@ public class WebSocketService
             gzip.CopyTo(output);
             return output.ToArray();
         }
+    }
+
+    public void BroadcastMessage(ResNotice resNotice)
+    {
+        throw new NotImplementedException();
     }
 }

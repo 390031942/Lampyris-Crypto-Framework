@@ -95,7 +95,7 @@ public static class DateTimeExtensions
     /// <summary>
     /// 获取 BarSize 对应的时间间隔
     /// </summary>
-    private static TimeSpan GetInterval(BarSize barSize)
+    public static TimeSpan GetInterval(BarSize barSize)
     {
         return barSize switch
         {

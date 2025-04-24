@@ -23,13 +23,14 @@ public abstract class DBService:ILifecycle
 
     public abstract string DatebaseName { get; }
 
+    public override int Priority => 0;
+
     public override void OnStart()
     {
         DBConnectionConfig dbConfig = IniConfigManager.Load<DBConnectionConfig>();
         if(dbConfig == null) 
         {
             Logger.LogError("Failed to connect database: db_connection.ini cannot be found");
-            Application.Quit();
             return;
         }
 
@@ -121,7 +122,7 @@ public abstract class DBService:ILifecycle
     private bool TableExists(string tableName)
     {
         const string query = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = @DatabaseName AND TABLE_NAME = @TableName";
-
+        
         using (var command = new MySqlCommand(query, m_Connection))
         {
             // 获取当前数据库名称
@@ -136,4 +137,63 @@ public abstract class DBService:ILifecycle
             return Convert.ToInt32(result) > 0;
         }
     }
+
+    public IEnumerable<T> QueryField<T>(string tableName, string fieldName, string whereClause = null, params MySqlParameter[] parameters)
+    {
+        // 构建查询 SQL
+        string query = $"SELECT {fieldName} FROM {tableName}";
+        if (!string.IsNullOrEmpty(whereClause))
+        {
+            query += $" WHERE {whereClause}";
+        }
+
+        using (var command = new MySqlCommand(query, m_Connection))
+        {
+            // 添加参数化查询，防止 SQL 注入
+            if (parameters != null && parameters.Length > 0)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // 每次迭代返回一个转换后的结果
+                    yield return reader.IsDBNull(0) ? default : (T)Convert.ChangeType(reader.GetValue(0), typeof(T));
+                }
+            }
+        }
+    }
+
+    public IEnumerable<(T1, T2)> QueryFields<T1, T2>(string tableName, string fieldName1, string fieldName2, string whereClause = null, params MySqlParameter[] parameters)
+    {
+        // 构建查询 SQL
+        string query = $"SELECT {fieldName1}, {fieldName2} FROM {tableName}";
+        if (!string.IsNullOrEmpty(whereClause))
+        {
+            query += $" WHERE {whereClause}";
+        }
+
+        using (var command = new MySqlCommand(query, m_Connection))
+        {
+            // 添加参数化查询，防止 SQL 注入
+            if (parameters != null && parameters.Length > 0)
+            {
+                command.Parameters.AddRange(parameters);
+            }
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // 每次迭代返回一个元组类型的结果
+                    var value1 = reader.IsDBNull(0) ? default(T1) : (T1)Convert.ChangeType(reader.GetValue(0), typeof(T1));
+                    var value2 = reader.IsDBNull(1) ? default(T2) : (T2)Convert.ChangeType(reader.GetValue(1), typeof(T2));
+                    yield return (value1, value2);
+                }
+            }
+        }
+    }
+
 }

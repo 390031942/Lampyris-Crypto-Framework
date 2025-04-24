@@ -54,26 +54,35 @@ namespace Lampyris.Crypto.Protocol.Quote {
             "IAEoARIOCgZ2b2x1bWUYBiABKAESEAoIY3VycmVuY3kYByABKAEiIgoMUmVx",
             "VHJhZGVSdWxlEhIKCnN5bWJvbExpc3QYASADKAkiVQoMUmVzVHJhZGVSdWxl",
             "EkUKCGJlYW5MaXN0GAEgAygLMjMubGFtcHlyaXMuY3J5cHRvLnByb3RvY29s",
-            "LnF1b3RlLlN5bWJvbFRyYWRlUnVsZUJlYW4iuQEKE1N5bWJvbFRyYWRlUnVs",
+            "LnF1b3RlLlN5bWJvbFRyYWRlUnVsZUJlYW4i0wEKE1N5bWJvbFRyYWRlUnVs",
             "ZUJlYW4SDgoGc3ltYm9sGAEgASgJEhAKCG1heFByaWNlGAIgASgBEhAKCG1p",
             "blByaWNlGAMgASgBEhUKDXByaWNlVGlja1NpemUYBCABKAESEwoLbWF4UXVh",
             "bnRpdHkYBSABKAESEwoLbWluUXVhbnRpdHkYBiABKAESGAoQcXVhbnRpdHlU",
-            "aWNrU2l6ZRgHIAEoARITCgttaW5Ob3Rpb25hbBgIIAEoASJoChtNYXJrZXRN",
-            "b25pdG9yTm90aWNlTGlzdEJlYW4SSQoIYmVhbkxpc3QYASADKAsyNy5sYW1w",
-            "eXJpcy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuTWFya2V0TW9uaXRvck5vdGlj",
-            "ZUJlYW4idAoXTWFya2V0TW9uaXRvck5vdGljZUJlYW4SDgoGc3ltYm9sGAEg",
-            "ASgJEhEKCXRpbWVzdGFtcBgCIAEoAxISCgpub3RpY2VUeXBlGAMgASgFEg0K",
-            "BXZhbHVlGAQgASgJEhMKC25vdGljZUxldmVsGAUgASgFIlUKGlNlbGZTZWxl",
-            "Y3RlZFN5bWJvbEluZm9CZWFuEg4KBnN5bWJvbBgBIAEoCRIRCgl0aW1lc3Rh",
-            "bXAYAiABKAMSFAoMaW5pdGlhbFByaWNlGAMgASgBIo4BChtTZWxmU2VsZWN0",
-            "ZWRTeW1ib2xHcm91cEJlYW4SDAoEbmFtZRgBIAEoCRIRCgljYW5EZWxldGUY",
-            "AiABKAgSTgoKc3ltYm9sTGlzdBgDIAMoCzI6LmxhbXB5cmlzLmNyeXB0by5w",
-            "cm90b2NvbC5xdW90ZS5TZWxmU2VsZWN0ZWRTeW1ib2xJbmZvQmVhbiJnChVS",
-            "ZXFTZWxmU2VsZWN0ZWRTeW1ib2wSTgoJZ3JvdXBMaXN0GAEgAygLMjsubGFt",
-            "cHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNlbGZTZWxlY3RlZFN5bWJv",
-            "bEdyb3VwQmVhbiJnChVSZXNTZWxmU2VsZWN0ZWRTeW1ib2wSTgoJZ3JvdXBM",
-            "aXN0GAEgAygLMjsubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNl",
-            "bGZTZWxlY3RlZFN5bWJvbEdyb3VwQmVhbmIGcHJvdG8z"));
+            "aWNrU2l6ZRgHIAEoARITCgttaW5Ob3Rpb25hbBgIIAEoARIYChBvbkJvYXJk",
+            "VGltZXN0YW1wGAkgASgDImgKG01hcmtldE1vbml0b3JOb3RpY2VMaXN0QmVh",
+            "bhJJCghiZWFuTGlzdBgBIAMoCzI3LmxhbXB5cmlzLmNyeXB0by5wcm90b2Nv",
+            "bC5xdW90ZS5NYXJrZXRNb25pdG9yTm90aWNlQmVhbiJ0ChdNYXJrZXRNb25p",
+            "dG9yTm90aWNlQmVhbhIOCgZzeW1ib2wYASABKAkSEQoJdGltZXN0YW1wGAIg",
+            "ASgDEhIKCm5vdGljZVR5cGUYAyABKAUSDQoFdmFsdWUYBCABKAkSEwoLbm90",
+            "aWNlTGV2ZWwYBSABKAUiVQoaU2VsZlNlbGVjdGVkU3ltYm9sSW5mb0JlYW4S",
+            "DgoGc3ltYm9sGAEgASgJEhEKCXRpbWVzdGFtcBgCIAEoAxIUCgxpbml0aWFs",
+            "UHJpY2UYAyABKAEijgEKG1NlbGZTZWxlY3RlZFN5bWJvbEdyb3VwQmVhbhIM",
+            "CgRuYW1lGAEgASgJEhEKCWNhbkRlbGV0ZRgCIAEoCBJOCgpzeW1ib2xMaXN0",
+            "GAMgAygLMjoubGFtcHlyaXMuY3J5cHRvLnByb3RvY29sLnF1b3RlLlNlbGZT",
+            "ZWxlY3RlZFN5bWJvbEluZm9CZWFuImcKFVJlcVNlbGZTZWxlY3RlZFN5bWJv",
+            "bBJOCglncm91cExpc3QYASADKAsyOy5sYW1weXJpcy5jcnlwdG8ucHJvdG9j",
+            "b2wucXVvdGUuU2VsZlNlbGVjdGVkU3ltYm9sR3JvdXBCZWFuImcKFVJlc1Nl",
+            "bGZTZWxlY3RlZFN5bWJvbBJOCglncm91cExpc3QYASADKAsyOy5sYW1weXJp",
+            "cy5jcnlwdG8ucHJvdG9jb2wucXVvdGUuU2VsZlNlbGVjdGVkU3ltYm9sR3Jv",
+            "dXBCZWFuIl4KHU1hcmtldFByZXZpZXdJbnRlcnZhbERhdGFCZWFuEhYKDmxv",
+            "d2VyQm91bmRQZXJjGAEgASgFEhYKDnVwcGVyQm91bmRQZXJjGAIgASgFEg0K",
+            "BWNvdW50GAMgASgFIosCChRSZXNNYXJrZXRQcmV2aWV3RGF0YRIRCglyaXNl",
+            "Q291bnQYASABKAUSEQoJZmxhdENvdW50GAIgASgFEhEKCWZhbGxDb3VudBgD",
+            "IAEoBRJXChBpbnRlcnZhbERhdGFMaXN0GAQgAygLMj0ubGFtcHlyaXMuY3J5",
+            "cHRvLnByb3RvY29sLnF1b3RlLk1hcmtldFByZXZpZXdJbnRlcnZhbERhdGFC",
+            "ZWFuEhgKEHRvcEdhaW5lckF2Z1BlcmMYBSABKAESGwoTYm90dG9tR2FpbmVy",
+            "QXZnUGVyYxgGIAEoARIPCgdhdmdQZXJjGAcgASgBEhkKEW1haW5zdHJlYW1B",
+            "dmdQZXJjGAggASgBYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -90,13 +99,15 @@ namespace Lampyris.Crypto.Protocol.Quote {
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.CandlestickBean), global::Lampyris.Crypto.Protocol.Quote.CandlestickBean.Parser, new[]{ "Time", "Open", "High", "Low", "Close", "Volume", "Currency" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule), global::Lampyris.Crypto.Protocol.Quote.ReqTradeRule.Parser, new[]{ "SymbolList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResTradeRule), global::Lampyris.Crypto.Protocol.Quote.ResTradeRule.Parser, new[]{ "BeanList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean), global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean.Parser, new[]{ "Symbol", "MaxPrice", "MinPrice", "PriceTickSize", "MaxQuantity", "MinQuantity", "QuantityTickSize", "MinNotional" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean), global::Lampyris.Crypto.Protocol.Quote.SymbolTradeRuleBean.Parser, new[]{ "Symbol", "MaxPrice", "MinPrice", "PriceTickSize", "MaxQuantity", "MinQuantity", "QuantityTickSize", "MinNotional", "OnBoardTimestamp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean), global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeListBean.Parser, new[]{ "BeanList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean), global::Lampyris.Crypto.Protocol.Quote.MarketMonitorNoticeBean.Parser, new[]{ "Symbol", "Timestamp", "NoticeType", "Value", "NoticeLevel" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean), global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolInfoBean.Parser, new[]{ "Symbol", "Timestamp", "InitialPrice" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean), global::Lampyris.Crypto.Protocol.Quote.SelfSelectedSymbolGroupBean.Parser, new[]{ "Name", "CanDelete", "SymbolList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ReqSelfSelectedSymbol.Parser, new[]{ "GroupList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol.Parser, new[]{ "GroupList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol), global::Lampyris.Crypto.Protocol.Quote.ResSelfSelectedSymbol.Parser, new[]{ "GroupList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean), global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean.Parser, new[]{ "LowerBoundPerc", "UpperBoundPerc", "Count" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Lampyris.Crypto.Protocol.Quote.ResMarketPreviewData), global::Lampyris.Crypto.Protocol.Quote.ResMarketPreviewData.Parser, new[]{ "RiseCount", "FlatCount", "FallCount", "IntervalDataList", "TopGainerAvgPerc", "BottomGainerAvgPerc", "AvgPerc", "MainstreamAvgPerc" }, null, null, null, null)
           }));
     }
     #endregion
@@ -3257,7 +3268,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
     public const int LowFieldNumber = 4;
     private double low_;
     /// <summary>
-    /// 最低价
+    /// 最f低价
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4021,6 +4032,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       minQuantity_ = other.minQuantity_;
       quantityTickSize_ = other.quantityTickSize_;
       minNotional_ = other.minNotional_;
+      onBoardTimestamp_ = other.onBoardTimestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4129,6 +4141,21 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
     }
 
+    /// <summary>Field number for the "onBoardTimestamp" field.</summary>
+    public const int OnBoardTimestampFieldNumber = 9;
+    private long onBoardTimestamp_;
+    /// <summary>
+    /// 上架时间
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long OnBoardTimestamp {
+      get { return onBoardTimestamp_; }
+      set {
+        onBoardTimestamp_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -4152,6 +4179,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MinQuantity, other.MinQuantity)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(QuantityTickSize, other.QuantityTickSize)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MinNotional, other.MinNotional)) return false;
+      if (OnBoardTimestamp != other.OnBoardTimestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4167,6 +4195,7 @@ namespace Lampyris.Crypto.Protocol.Quote {
       if (MinQuantity != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MinQuantity);
       if (QuantityTickSize != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(QuantityTickSize);
       if (MinNotional != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MinNotional);
+      if (OnBoardTimestamp != 0L) hash ^= OnBoardTimestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4217,6 +4246,10 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(65);
         output.WriteDouble(MinNotional);
       }
+      if (OnBoardTimestamp != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(OnBoardTimestamp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4259,6 +4292,10 @@ namespace Lampyris.Crypto.Protocol.Quote {
         output.WriteRawTag(65);
         output.WriteDouble(MinNotional);
       }
+      if (OnBoardTimestamp != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(OnBoardTimestamp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -4292,6 +4329,9 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
       if (MinNotional != 0D) {
         size += 1 + 8;
+      }
+      if (OnBoardTimestamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(OnBoardTimestamp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4328,6 +4368,9 @@ namespace Lampyris.Crypto.Protocol.Quote {
       }
       if (other.MinNotional != 0D) {
         MinNotional = other.MinNotional;
+      }
+      if (other.OnBoardTimestamp != 0L) {
+        OnBoardTimestamp = other.OnBoardTimestamp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4380,6 +4423,10 @@ namespace Lampyris.Crypto.Protocol.Quote {
             MinNotional = input.ReadDouble();
             break;
           }
+          case 72: {
+            OnBoardTimestamp = input.ReadInt64();
+            break;
+          }
         }
       }
     #endif
@@ -4429,6 +4476,10 @@ namespace Lampyris.Crypto.Protocol.Quote {
           }
           case 65: {
             MinNotional = input.ReadDouble();
+            break;
+          }
+          case 72: {
+            OnBoardTimestamp = input.ReadInt64();
             break;
           }
         }
@@ -5914,6 +5965,760 @@ namespace Lampyris.Crypto.Protocol.Quote {
             break;
           case 10: {
             groupList_.AddEntriesFrom(ref input, _repeated_groupList_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///--------- 市场总览 数据 ----------
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MarketPreviewIntervalDataBean : pb::IMessage<MarketPreviewIntervalDataBean>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MarketPreviewIntervalDataBean> _parser = new pb::MessageParser<MarketPreviewIntervalDataBean>(() => new MarketPreviewIntervalDataBean());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MarketPreviewIntervalDataBean> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[20]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MarketPreviewIntervalDataBean() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MarketPreviewIntervalDataBean(MarketPreviewIntervalDataBean other) : this() {
+      lowerBoundPerc_ = other.lowerBoundPerc_;
+      upperBoundPerc_ = other.upperBoundPerc_;
+      count_ = other.count_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MarketPreviewIntervalDataBean Clone() {
+      return new MarketPreviewIntervalDataBean(this);
+    }
+
+    /// <summary>Field number for the "lowerBoundPerc" field.</summary>
+    public const int LowerBoundPercFieldNumber = 1;
+    private int lowerBoundPerc_;
+    /// <summary>
+    /// 下界(%)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LowerBoundPerc {
+      get { return lowerBoundPerc_; }
+      set {
+        lowerBoundPerc_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "upperBoundPerc" field.</summary>
+    public const int UpperBoundPercFieldNumber = 2;
+    private int upperBoundPerc_;
+    /// <summary>
+    /// 上界(%)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UpperBoundPerc {
+      get { return upperBoundPerc_; }
+      set {
+        upperBoundPerc_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 3;
+    private int count_;
+    /// <summary>
+    /// 数量 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MarketPreviewIntervalDataBean);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MarketPreviewIntervalDataBean other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (LowerBoundPerc != other.LowerBoundPerc) return false;
+      if (UpperBoundPerc != other.UpperBoundPerc) return false;
+      if (Count != other.Count) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (LowerBoundPerc != 0) hash ^= LowerBoundPerc.GetHashCode();
+      if (UpperBoundPerc != 0) hash ^= UpperBoundPerc.GetHashCode();
+      if (Count != 0) hash ^= Count.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (LowerBoundPerc != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(LowerBoundPerc);
+      }
+      if (UpperBoundPerc != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(UpperBoundPerc);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Count);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (LowerBoundPerc != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(LowerBoundPerc);
+      }
+      if (UpperBoundPerc != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(UpperBoundPerc);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Count);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (LowerBoundPerc != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LowerBoundPerc);
+      }
+      if (UpperBoundPerc != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UpperBoundPerc);
+      }
+      if (Count != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MarketPreviewIntervalDataBean other) {
+      if (other == null) {
+        return;
+      }
+      if (other.LowerBoundPerc != 0) {
+        LowerBoundPerc = other.LowerBoundPerc;
+      }
+      if (other.UpperBoundPerc != 0) {
+        UpperBoundPerc = other.UpperBoundPerc;
+      }
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            LowerBoundPerc = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            UpperBoundPerc = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Count = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            LowerBoundPerc = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            UpperBoundPerc = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Count = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ResMarketPreviewData : pb::IMessage<ResMarketPreviewData>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ResMarketPreviewData> _parser = new pb::MessageParser<ResMarketPreviewData>(() => new ResMarketPreviewData());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ResMarketPreviewData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Lampyris.Crypto.Protocol.Quote.QuoteReflection.Descriptor.MessageTypes[21]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResMarketPreviewData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResMarketPreviewData(ResMarketPreviewData other) : this() {
+      riseCount_ = other.riseCount_;
+      flatCount_ = other.flatCount_;
+      fallCount_ = other.fallCount_;
+      intervalDataList_ = other.intervalDataList_.Clone();
+      topGainerAvgPerc_ = other.topGainerAvgPerc_;
+      bottomGainerAvgPerc_ = other.bottomGainerAvgPerc_;
+      avgPerc_ = other.avgPerc_;
+      mainstreamAvgPerc_ = other.mainstreamAvgPerc_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ResMarketPreviewData Clone() {
+      return new ResMarketPreviewData(this);
+    }
+
+    /// <summary>Field number for the "riseCount" field.</summary>
+    public const int RiseCountFieldNumber = 1;
+    private int riseCount_;
+    /// <summary>
+    /// 上涨数量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RiseCount {
+      get { return riseCount_; }
+      set {
+        riseCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "flatCount" field.</summary>
+    public const int FlatCountFieldNumber = 2;
+    private int flatCount_;
+    /// <summary>
+    /// 平盘数量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int FlatCount {
+      get { return flatCount_; }
+      set {
+        flatCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fallCount" field.</summary>
+    public const int FallCountFieldNumber = 3;
+    private int fallCount_;
+    /// <summary>
+    /// 下跌数量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int FallCount {
+      get { return fallCount_; }
+      set {
+        fallCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "intervalDataList" field.</summary>
+    public const int IntervalDataListFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean> _repeated_intervalDataList_codec
+        = pb::FieldCodec.ForMessage(34, global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean.Parser);
+    private readonly pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean> intervalDataList_ = new pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean>();
+    /// <summary>
+    /// 涨跌数量区间信息
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Lampyris.Crypto.Protocol.Quote.MarketPreviewIntervalDataBean> IntervalDataList {
+      get { return intervalDataList_; }
+    }
+
+    /// <summary>Field number for the "topGainerAvgPerc" field.</summary>
+    public const int TopGainerAvgPercFieldNumber = 5;
+    private double topGainerAvgPerc_;
+    /// <summary>
+    /// 涨幅前若干名平均涨跌幅
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double TopGainerAvgPerc {
+      get { return topGainerAvgPerc_; }
+      set {
+        topGainerAvgPerc_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "bottomGainerAvgPerc" field.</summary>
+    public const int BottomGainerAvgPercFieldNumber = 6;
+    private double bottomGainerAvgPerc_;
+    /// <summary>
+    /// 跌幅前若干名平均涨跌幅
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double BottomGainerAvgPerc {
+      get { return bottomGainerAvgPerc_; }
+      set {
+        bottomGainerAvgPerc_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avgPerc" field.</summary>
+    public const int AvgPercFieldNumber = 7;
+    private double avgPerc_;
+    /// <summary>
+    /// 全体平均涨跌幅
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double AvgPerc {
+      get { return avgPerc_; }
+      set {
+        avgPerc_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "mainstreamAvgPerc" field.</summary>
+    public const int MainstreamAvgPercFieldNumber = 8;
+    private double mainstreamAvgPerc_;
+    /// <summary>
+    /// 主流币合约平均涨跌幅
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MainstreamAvgPerc {
+      get { return mainstreamAvgPerc_; }
+      set {
+        mainstreamAvgPerc_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ResMarketPreviewData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ResMarketPreviewData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (RiseCount != other.RiseCount) return false;
+      if (FlatCount != other.FlatCount) return false;
+      if (FallCount != other.FallCount) return false;
+      if(!intervalDataList_.Equals(other.intervalDataList_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(TopGainerAvgPerc, other.TopGainerAvgPerc)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(BottomGainerAvgPerc, other.BottomGainerAvgPerc)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(AvgPerc, other.AvgPerc)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MainstreamAvgPerc, other.MainstreamAvgPerc)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (RiseCount != 0) hash ^= RiseCount.GetHashCode();
+      if (FlatCount != 0) hash ^= FlatCount.GetHashCode();
+      if (FallCount != 0) hash ^= FallCount.GetHashCode();
+      hash ^= intervalDataList_.GetHashCode();
+      if (TopGainerAvgPerc != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(TopGainerAvgPerc);
+      if (BottomGainerAvgPerc != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(BottomGainerAvgPerc);
+      if (AvgPerc != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(AvgPerc);
+      if (MainstreamAvgPerc != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MainstreamAvgPerc);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (RiseCount != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RiseCount);
+      }
+      if (FlatCount != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(FlatCount);
+      }
+      if (FallCount != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(FallCount);
+      }
+      intervalDataList_.WriteTo(output, _repeated_intervalDataList_codec);
+      if (TopGainerAvgPerc != 0D) {
+        output.WriteRawTag(41);
+        output.WriteDouble(TopGainerAvgPerc);
+      }
+      if (BottomGainerAvgPerc != 0D) {
+        output.WriteRawTag(49);
+        output.WriteDouble(BottomGainerAvgPerc);
+      }
+      if (AvgPerc != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(AvgPerc);
+      }
+      if (MainstreamAvgPerc != 0D) {
+        output.WriteRawTag(65);
+        output.WriteDouble(MainstreamAvgPerc);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (RiseCount != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RiseCount);
+      }
+      if (FlatCount != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(FlatCount);
+      }
+      if (FallCount != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(FallCount);
+      }
+      intervalDataList_.WriteTo(ref output, _repeated_intervalDataList_codec);
+      if (TopGainerAvgPerc != 0D) {
+        output.WriteRawTag(41);
+        output.WriteDouble(TopGainerAvgPerc);
+      }
+      if (BottomGainerAvgPerc != 0D) {
+        output.WriteRawTag(49);
+        output.WriteDouble(BottomGainerAvgPerc);
+      }
+      if (AvgPerc != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(AvgPerc);
+      }
+      if (MainstreamAvgPerc != 0D) {
+        output.WriteRawTag(65);
+        output.WriteDouble(MainstreamAvgPerc);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (RiseCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiseCount);
+      }
+      if (FlatCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FlatCount);
+      }
+      if (FallCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FallCount);
+      }
+      size += intervalDataList_.CalculateSize(_repeated_intervalDataList_codec);
+      if (TopGainerAvgPerc != 0D) {
+        size += 1 + 8;
+      }
+      if (BottomGainerAvgPerc != 0D) {
+        size += 1 + 8;
+      }
+      if (AvgPerc != 0D) {
+        size += 1 + 8;
+      }
+      if (MainstreamAvgPerc != 0D) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ResMarketPreviewData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.RiseCount != 0) {
+        RiseCount = other.RiseCount;
+      }
+      if (other.FlatCount != 0) {
+        FlatCount = other.FlatCount;
+      }
+      if (other.FallCount != 0) {
+        FallCount = other.FallCount;
+      }
+      intervalDataList_.Add(other.intervalDataList_);
+      if (other.TopGainerAvgPerc != 0D) {
+        TopGainerAvgPerc = other.TopGainerAvgPerc;
+      }
+      if (other.BottomGainerAvgPerc != 0D) {
+        BottomGainerAvgPerc = other.BottomGainerAvgPerc;
+      }
+      if (other.AvgPerc != 0D) {
+        AvgPerc = other.AvgPerc;
+      }
+      if (other.MainstreamAvgPerc != 0D) {
+        MainstreamAvgPerc = other.MainstreamAvgPerc;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            RiseCount = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            FlatCount = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            FallCount = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            intervalDataList_.AddEntriesFrom(input, _repeated_intervalDataList_codec);
+            break;
+          }
+          case 41: {
+            TopGainerAvgPerc = input.ReadDouble();
+            break;
+          }
+          case 49: {
+            BottomGainerAvgPerc = input.ReadDouble();
+            break;
+          }
+          case 57: {
+            AvgPerc = input.ReadDouble();
+            break;
+          }
+          case 65: {
+            MainstreamAvgPerc = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            RiseCount = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            FlatCount = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            FallCount = input.ReadInt32();
+            break;
+          }
+          case 34: {
+            intervalDataList_.AddEntriesFrom(ref input, _repeated_intervalDataList_codec);
+            break;
+          }
+          case 41: {
+            TopGainerAvgPerc = input.ReadDouble();
+            break;
+          }
+          case 49: {
+            BottomGainerAvgPerc = input.ReadDouble();
+            break;
+          }
+          case 57: {
+            AvgPerc = input.ReadDouble();
+            break;
+          }
+          case 65: {
+            MainstreamAvgPerc = input.ReadDouble();
             break;
           }
         }

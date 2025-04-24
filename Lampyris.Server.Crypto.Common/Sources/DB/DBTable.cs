@@ -89,8 +89,6 @@ public class DBTable<T> where T:class, new()
         {
             command.ExecuteNonQuery();
         }
-
-        Console.WriteLine($"Data inserted into table '{m_TableName}' successfully.");
     }
 
     private static void AppendSingleEntity(T entity, StringBuilder sb)
@@ -154,7 +152,7 @@ public class DBTable<T> where T:class, new()
         Console.WriteLine($"Batch data inserted into table '{m_TableName}' successfully.");
     }
 
-    public List<T> Query(string queryCondition, KeyValuePair<string,object>[]? parameters = null, string orderBy = "", bool ascending = true)
+    public List<T> Query(string queryCondition = "", KeyValuePair<string,object>[]? parameters = null, string orderBy = "", bool ascending = true)
     {
         List<T> result = new List<T>();
 

@@ -35,7 +35,7 @@ public class SubTradeAccountSummary
     /// <summary>
     /// 关于账户持仓的信息
     /// </summary>
-    public List<PositionInfo> Positions { get; set; } = new List<PositionInfo>();
+    public Dictionary<string,PositionInfo> Positions { get; set; } = new Dictionary<string,PositionInfo>();
 
     /// <summary>
     /// 总初始保证金（表示账户中所有挂单和持仓所需的初始保证金总和）

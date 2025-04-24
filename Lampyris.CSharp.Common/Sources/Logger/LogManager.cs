@@ -60,4 +60,9 @@ public static class Logger
         }
         return $"[{timestamp}][{level}] {message}";
     }
+
+    public static void LogException(Exception ex)
+    {
+        Log(ErrorString, ex.Message);
+    }
 }

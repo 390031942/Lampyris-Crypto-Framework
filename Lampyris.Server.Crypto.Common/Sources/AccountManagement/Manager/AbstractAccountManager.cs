@@ -4,24 +4,117 @@ using CryptoExchange.Net.Clients;
 namespace Lampyris.Server.Crypto.Common;
 
 /// <summary>
-/// 负责保存一个ClientUserId对应的多个API账号信息，每个账号需要对应一组APIKey和APISecret信息
+/// 1. 负责保存一个ClientUserId对应的多个API账号信息，每个账号需要对应一组APIKey和APISecret信息
+/// 2. 负责连接到每一个APIKey对应的子账号，维护WebSocket和RestAPI Client的连接
+/// 3. 负责保存子账号信息对应的资产信息镜像, 以便客户端读取
+/// 4. 负责监听子账号的变化推送，以实时更新子账号资产信息
+/// PS:子账号数据都需要实时请求，其不需要持久化保存于数据库
+/// </summary>
+/// <summary>
+/// 基类，负责管理子账户的基本信息和操作，不涉及泛型部分
 /// </summary>
 [Component]
-
-public abstract class AbstractAccountManager<T> where T: BaseSocketClient
+public abstract class AbstractAccountManagerBase:ILifecycle
 {
     [Autowired]
     protected DBService m_DBService;
 
-    protected readonly Dictionary<int, T> m_SubAccountId2Client; // 存储账户ID与BinanceSocketClient的映射
+    [Autowired]
+    protected AbstractTradingService m_TradeService;
 
-    protected readonly List<SubTradeAccount> m_AccountConfigs; // 存储账户配置信息
-
-    public AbstractAccountManager()
+    public override int Priority => 3;
+    
+    protected class SubTradeAccountContextBase
     {
-        m_SubAccountId2Client = new Dictionary<int, T>();
-        m_AccountConfigs = new List<SubTradeAccount>();
+        public SubTradeAccount AccountInfo = new SubTradeAccount();
+        public SubTradeAccountSummary AccountSummary = new SubTradeAccountSummary();
+        public bool connectivity = false;
     }
+
+    protected readonly Dictionary<int, SubTradeAccountContextBase> m_SubAccountIdContextDataMap = new();
+
+    public AbstractAccountManagerBase()
+    {
+        m_SubAccountIdContextDataMap = new();
+    }
+
+    /// <summary>
+    /// 获取所有账户的基本信息
+    /// </summary>
+    /// <returns>账户基本信息列表</returns>
+    public IEnumerable<SubTradeAccount> GetAllAccounts()
+    {
+        foreach (var pair in m_SubAccountIdContextDataMap)
+        {
+            if(pair.Value.connectivity)
+            {
+                yield return pair.Value.AccountInfo;
+            }
+        }
+    }
+
+    /// <summary>
+    /// 获取账户的基本信息
+    /// </summary>
+    /// <param name="accountId">账户ID</param>
+    /// <returns>账户基本信息</returns>
+    public SubTradeAccount GetAccountInfoById(int accountId)
+    {
+        foreach (var pair in m_SubAccountIdContextDataMap)
+        {
+            if (pair.Value.AccountInfo.AccountId == accountId)
+            {
+                return pair.Value.AccountInfo;
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 遍历所有子账户(仅限连接有效的)
+    /// </summary>
+    /// <param name="foreachFunc"></param>
+    public void ForeachSubAccount(Action<SubTradeAccount> foreachFunc)
+    {
+        foreach (var pair in m_SubAccountIdContextDataMap)
+        {
+            if (pair.Value.connectivity)
+            {
+                foreachFunc(pair.Value.AccountInfo);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 测试账户连接
+    /// </summary>
+    /// <param name="accountId">账户ID</param>
+    /// <returns>是否连接成功</returns>
+    public abstract Task<bool> TestConnectionAsync(int accountId);
+
+    /// <summary>
+    /// 获取账户的资产信息
+    /// </summary>
+    /// <param name="accountId">账户ID</param>
+    /// <returns>账户资产信息</returns>
+    public abstract SubTradeAccountSummary GetSubTradeAccountSummary(int accountId);
+}
+
+/// <summary>
+/// 泛型子类，负责管理与具体类型相关的子账户信息
+/// </summary>
+[Component]
+public abstract class AbstractAccountManager<T, U> : AbstractAccountManagerBase
+    where T : BaseSocketClient
+    where U : BaseRestClient
+{
+    protected class SubTradeAccountContext : SubTradeAccountContextBase
+    {
+        public T SocketClient;
+        public U RestClient;
+    }
+
+    protected new readonly Dictionary<int, SubTradeAccountContext> m_SubAccountIdContextDataMap = new();
 
     /// <summary>
     /// 加载账户配置
@@ -34,48 +127,41 @@ public abstract class AbstractAccountManager<T> where T: BaseSocketClient
     /// </summary>
     /// <param name="accountId">账户ID</param>
     /// <returns>BaseSocketClient实例</returns>
-    public T GetClient(int accountId)
+    public T GetWebSocketClient(int accountId)
     {
-        if (m_SubAccountId2Client.TryGetValue(accountId, out var client))
+        if (m_SubAccountIdContextDataMap.TryGetValue(accountId, out var context))
         {
-            return client;
+            return context.SocketClient;
         }
 
-        Logger.LogError($"Unabled to find account with id \"{accountId}\"");
+        Logger.LogError($"Unable to find account with id \"{accountId}\"");
         return null;
     }
 
     /// <summary>
-    /// 获取所有账户的基本信息
+    /// 获取账户的BaseRestClient实例
     /// </summary>
-    /// <returns>账户基本信息列表</returns>
-    public IEnumerable<SubTradeAccount> GetAllAccounts()
+    /// <param name="accountId">账户ID</param>
+    /// <returns>BaseRestClient实例</returns>
+    public U GetRestClient(int accountId)
     {
-        return m_AccountConfigs.AsReadOnly();
+        if (m_SubAccountIdContextDataMap.TryGetValue(accountId, out var context))
+        {
+            return context.RestClient;
+        }
+
+        Logger.LogError($"Unable to find account with id \"{accountId}\"");
+        return null;
     }
 
-    /// <summary>
-    /// 获取账户的基本信息
-    /// </summary>
-    /// <param name="accountId">账户ID</param>
-    /// <returns>账户基本信息</returns>
-    public SubTradeAccount GetAccountInfoById(int accountId)
+    public override void OnStart()
     {
-        var account = m_AccountConfigs.FirstOrDefault(a => a.AccountId == accountId);
-        return account;
+        // 从数据库中加载子账户列表
+        var db = m_DBService.GetTable<SubTradeAccount>();
+        if (db == null)
+        {
+            throw new InvalidDataException("Failed to load any valid sub-account.");
+        }
+        LoadAccounts(db.Query());
     }
-
-    /// <summary>
-    /// 测试账户连接
-    /// </summary>
-    /// <param name="accountId">账户ID</param>
-    /// <returns>是否连接成功</returns>
-    public abstract bool TestConnectionAsync(int accountId);
-
-    /// <summary>
-    /// 获取账户的资产信息
-    /// </summary>
-    /// <param name="accountId">账户ID</param>
-    /// <returns>账户资产信息</returns>
-    public abstract SubTradeAccountSummary GetSubTradeAccountSummary(int accountId);
 }

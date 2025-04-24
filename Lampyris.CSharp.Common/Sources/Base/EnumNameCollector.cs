@@ -1,4 +1,4 @@
-namespace Lampyris.CSharp.Common;
+namespace Lampyris_Crypto_Trading_Server_Common.Sources.Base;
 
 using System.Reflection;
 
@@ -9,7 +9,7 @@ public class EnumNamedValueAttribute : Attribute
 
     public EnumNamedValueAttribute(string name)
     {
-        this.Name = name;
+        Name = name;
     }
 }
 

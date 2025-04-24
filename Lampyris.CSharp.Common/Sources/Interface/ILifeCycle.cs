@@ -7,5 +7,7 @@ public class ILifecycle
     public virtual void OnUpdate() { }
 
     public virtual void OnDestroy() { }
+
+    public virtual int Priority { get => int.MaxValue; }
 }
 

@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Lampyris.Server.Crypto.Common;
+
+namespace Lampyris.Server.Crypto.Binance;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        EntryPoint.RunMain(args);
+    }
+}

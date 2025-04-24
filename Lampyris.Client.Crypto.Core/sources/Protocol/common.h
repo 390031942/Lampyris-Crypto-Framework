@@ -85,1047 +85,6 @@ namespace common {
 
 // -------------------------------------------------------------------
 
-class Response final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.common.Response) */ {
- public:
-  inline Response() : Response(nullptr) {}
-  ~Response() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(Response* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(Response));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR Response(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline Response(const Response& from) : Response(nullptr, from) {}
-  inline Response(Response&& from) noexcept
-      : Response(nullptr, std::move(from)) {}
-  inline Response& operator=(const Response& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Response& operator=(Response&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Response& default_instance() {
-    return *internal_default_instance();
-  }
-  enum ResponseTypeCase {
-    kAccountAssetInfoBean = 1,
-    kSubAccountInfoBean = 2,
-    kResQuerySubAcccountList = 3,
-    kResAccountSummaryUpdate = 4,
-    kAssetTransferHistoryInfoDetailBean = 5,
-    kAssetTransferHistoryInfoBean = 6,
-    kResLogin = 7,
-    kResHeartBeat = 8,
-    kResNotice = 9,
-    kSymbolTickerDataBean = 10,
-    kResSubscribeTickerData = 11,
-    kSymbolTradeDataBean = 12,
-    kTradeDataBean = 13,
-    kResCandlestickQuery = 14,
-    kCandlestickUpdateBean = 15,
-    kCandlestickBean = 16,
-    kResTradeRule = 17,
-    kSymbolTradeRuleBean = 18,
-    kMarketMonitorNoticeListBean = 19,
-    kMarketMonitorNoticeBean = 20,
-    kSelfSelectedSymbolInfoBean = 21,
-    kSelfSelectedSymbolGroupBean = 22,
-    kResSelfSelectedSymbol = 23,
-    kStreategyConfigBean = 24,
-    kStreategyFieldBean = 25,
-    kResModifyStreategySetting = 26,
-    kResStreategySettings = 27,
-    kStrategyExectionInfoBean = 28,
-    kResQueryStrategyExectionInfo = 29,
-    kConditionTriggerBean = 30,
-    kOrderBean = 31,
-    kOrderStatusBean = 32,
-    kLeverageBean = 33,
-    kResQueryLeverage = 34,
-    kResQueryLeverageBracket = 35,
-    kSymbolLeverageBracketBean = 36,
-    kLeverageBracketBean = 37,
-    RESPONSE_TYPE_NOT_SET = 0,
-  };
-  static inline const Response* internal_default_instance() {
-    return reinterpret_cast<const Response*>(
-        &_Response_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 1;
-  friend void swap(Response& a, Response& b) { a.Swap(&b); }
-  inline void Swap(Response* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Response* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Response* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<Response>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Response& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const Response& from) { Response::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(Response* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.common.Response"; }
-
- protected:
-  explicit Response(::google::protobuf::Arena* arena);
-  Response(::google::protobuf::Arena* arena, const Response& from);
-  Response(::google::protobuf::Arena* arena, Response&& from) noexcept
-      : Response(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kAccountAssetInfoBeanFieldNumber = 1,
-    kSubAccountInfoBeanFieldNumber = 2,
-    kResQuerySubAcccountListFieldNumber = 3,
-    kResAccountSummaryUpdateFieldNumber = 4,
-    kAssetTransferHistoryInfoDetailBeanFieldNumber = 5,
-    kAssetTransferHistoryInfoBeanFieldNumber = 6,
-    kResLoginFieldNumber = 7,
-    kResHeartBeatFieldNumber = 8,
-    kResNoticeFieldNumber = 9,
-    kSymbolTickerDataBeanFieldNumber = 10,
-    kResSubscribeTickerDataFieldNumber = 11,
-    kSymbolTradeDataBeanFieldNumber = 12,
-    kTradeDataBeanFieldNumber = 13,
-    kResCandlestickQueryFieldNumber = 14,
-    kCandlestickUpdateBeanFieldNumber = 15,
-    kCandlestickBeanFieldNumber = 16,
-    kResTradeRuleFieldNumber = 17,
-    kSymbolTradeRuleBeanFieldNumber = 18,
-    kMarketMonitorNoticeListBeanFieldNumber = 19,
-    kMarketMonitorNoticeBeanFieldNumber = 20,
-    kSelfSelectedSymbolInfoBeanFieldNumber = 21,
-    kSelfSelectedSymbolGroupBeanFieldNumber = 22,
-    kResSelfSelectedSymbolFieldNumber = 23,
-    kStreategyConfigBeanFieldNumber = 24,
-    kStreategyFieldBeanFieldNumber = 25,
-    kResModifyStreategySettingFieldNumber = 26,
-    kResStreategySettingsFieldNumber = 27,
-    kStrategyExectionInfoBeanFieldNumber = 28,
-    kResQueryStrategyExectionInfoFieldNumber = 29,
-    kConditionTriggerBeanFieldNumber = 30,
-    kOrderBeanFieldNumber = 31,
-    kOrderStatusBeanFieldNumber = 32,
-    kLeverageBeanFieldNumber = 33,
-    kResQueryLeverageFieldNumber = 34,
-    kResQueryLeverageBracketFieldNumber = 35,
-    kSymbolLeverageBracketBeanFieldNumber = 36,
-    kLeverageBracketBeanFieldNumber = 37,
-  };
-  // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 1;
-  bool has_accountassetinfobean() const;
-  private:
-  bool _internal_has_accountassetinfobean() const;
-
-  public:
-  void clear_accountassetinfobean() ;
-  const ::lampyris::crypto::protocol::account::AccountAssetInfoBean& accountassetinfobean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::AccountAssetInfoBean* release_accountassetinfobean();
-  ::lampyris::crypto::protocol::account::AccountAssetInfoBean* mutable_accountassetinfobean();
-  void set_allocated_accountassetinfobean(::lampyris::crypto::protocol::account::AccountAssetInfoBean* value);
-  void unsafe_arena_set_allocated_accountassetinfobean(::lampyris::crypto::protocol::account::AccountAssetInfoBean* value);
-  ::lampyris::crypto::protocol::account::AccountAssetInfoBean* unsafe_arena_release_accountassetinfobean();
-
-  private:
-  const ::lampyris::crypto::protocol::account::AccountAssetInfoBean& _internal_accountassetinfobean() const;
-  ::lampyris::crypto::protocol::account::AccountAssetInfoBean* _internal_mutable_accountassetinfobean();
-
-  public:
-  // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 2;
-  bool has_subaccountinfobean() const;
-  private:
-  bool _internal_has_subaccountinfobean() const;
-
-  public:
-  void clear_subaccountinfobean() ;
-  const ::lampyris::crypto::protocol::account::SubAccountInfoBean& subaccountinfobean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::SubAccountInfoBean* release_subaccountinfobean();
-  ::lampyris::crypto::protocol::account::SubAccountInfoBean* mutable_subaccountinfobean();
-  void set_allocated_subaccountinfobean(::lampyris::crypto::protocol::account::SubAccountInfoBean* value);
-  void unsafe_arena_set_allocated_subaccountinfobean(::lampyris::crypto::protocol::account::SubAccountInfoBean* value);
-  ::lampyris::crypto::protocol::account::SubAccountInfoBean* unsafe_arena_release_subaccountinfobean();
-
-  private:
-  const ::lampyris::crypto::protocol::account::SubAccountInfoBean& _internal_subaccountinfobean() const;
-  ::lampyris::crypto::protocol::account::SubAccountInfoBean* _internal_mutable_subaccountinfobean();
-
-  public:
-  // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 3;
-  bool has_resquerysubacccountlist() const;
-  private:
-  bool _internal_has_resquerysubacccountlist() const;
-
-  public:
-  void clear_resquerysubacccountlist() ;
-  const ::lampyris::crypto::protocol::account::ResQuerySubAcccountList& resquerysubacccountlist() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* release_resquerysubacccountlist();
-  ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* mutable_resquerysubacccountlist();
-  void set_allocated_resquerysubacccountlist(::lampyris::crypto::protocol::account::ResQuerySubAcccountList* value);
-  void unsafe_arena_set_allocated_resquerysubacccountlist(::lampyris::crypto::protocol::account::ResQuerySubAcccountList* value);
-  ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* unsafe_arena_release_resquerysubacccountlist();
-
-  private:
-  const ::lampyris::crypto::protocol::account::ResQuerySubAcccountList& _internal_resquerysubacccountlist() const;
-  ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* _internal_mutable_resquerysubacccountlist();
-
-  public:
-  // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 4;
-  bool has_resaccountsummaryupdate() const;
-  private:
-  bool _internal_has_resaccountsummaryupdate() const;
-
-  public:
-  void clear_resaccountsummaryupdate() ;
-  const ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate& resaccountsummaryupdate() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* release_resaccountsummaryupdate();
-  ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* mutable_resaccountsummaryupdate();
-  void set_allocated_resaccountsummaryupdate(::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* value);
-  void unsafe_arena_set_allocated_resaccountsummaryupdate(::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* value);
-  ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* unsafe_arena_release_resaccountsummaryupdate();
-
-  private:
-  const ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate& _internal_resaccountsummaryupdate() const;
-  ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* _internal_mutable_resaccountsummaryupdate();
-
-  public:
-  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 5;
-  bool has_assettransferhistoryinfodetailbean() const;
-  private:
-  bool _internal_has_assettransferhistoryinfodetailbean() const;
-
-  public:
-  void clear_assettransferhistoryinfodetailbean() ;
-  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean& assettransferhistoryinfodetailbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* release_assettransferhistoryinfodetailbean();
-  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* mutable_assettransferhistoryinfodetailbean();
-  void set_allocated_assettransferhistoryinfodetailbean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* value);
-  void unsafe_arena_set_allocated_assettransferhistoryinfodetailbean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* value);
-  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* unsafe_arena_release_assettransferhistoryinfodetailbean();
-
-  private:
-  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean& _internal_assettransferhistoryinfodetailbean() const;
-  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* _internal_mutable_assettransferhistoryinfodetailbean();
-
-  public:
-  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 6;
-  bool has_assettransferhistoryinfobean() const;
-  private:
-  bool _internal_has_assettransferhistoryinfobean() const;
-
-  public:
-  void clear_assettransferhistoryinfobean() ;
-  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean& assettransferhistoryinfobean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* release_assettransferhistoryinfobean();
-  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* mutable_assettransferhistoryinfobean();
-  void set_allocated_assettransferhistoryinfobean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* value);
-  void unsafe_arena_set_allocated_assettransferhistoryinfobean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* value);
-  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* unsafe_arena_release_assettransferhistoryinfobean();
-
-  private:
-  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean& _internal_assettransferhistoryinfobean() const;
-  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* _internal_mutable_assettransferhistoryinfobean();
-
-  public:
-  // .lampyris.crypto.protocol.app.ResLogin resLogin = 7;
-  bool has_reslogin() const;
-  private:
-  bool _internal_has_reslogin() const;
-
-  public:
-  void clear_reslogin() ;
-  const ::lampyris::crypto::protocol::app::ResLogin& reslogin() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResLogin* release_reslogin();
-  ::lampyris::crypto::protocol::app::ResLogin* mutable_reslogin();
-  void set_allocated_reslogin(::lampyris::crypto::protocol::app::ResLogin* value);
-  void unsafe_arena_set_allocated_reslogin(::lampyris::crypto::protocol::app::ResLogin* value);
-  ::lampyris::crypto::protocol::app::ResLogin* unsafe_arena_release_reslogin();
-
-  private:
-  const ::lampyris::crypto::protocol::app::ResLogin& _internal_reslogin() const;
-  ::lampyris::crypto::protocol::app::ResLogin* _internal_mutable_reslogin();
-
-  public:
-  // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 8;
-  bool has_resheartbeat() const;
-  private:
-  bool _internal_has_resheartbeat() const;
-
-  public:
-  void clear_resheartbeat() ;
-  const ::lampyris::crypto::protocol::app::ResHeartBeat& resheartbeat() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResHeartBeat* release_resheartbeat();
-  ::lampyris::crypto::protocol::app::ResHeartBeat* mutable_resheartbeat();
-  void set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
-  void unsafe_arena_set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
-  ::lampyris::crypto::protocol::app::ResHeartBeat* unsafe_arena_release_resheartbeat();
-
-  private:
-  const ::lampyris::crypto::protocol::app::ResHeartBeat& _internal_resheartbeat() const;
-  ::lampyris::crypto::protocol::app::ResHeartBeat* _internal_mutable_resheartbeat();
-
-  public:
-  // .lampyris.crypto.protocol.app.ResNotice resNotice = 9;
-  bool has_resnotice() const;
-  private:
-  bool _internal_has_resnotice() const;
-
-  public:
-  void clear_resnotice() ;
-  const ::lampyris::crypto::protocol::app::ResNotice& resnotice() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResNotice* release_resnotice();
-  ::lampyris::crypto::protocol::app::ResNotice* mutable_resnotice();
-  void set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value);
-  void unsafe_arena_set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value);
-  ::lampyris::crypto::protocol::app::ResNotice* unsafe_arena_release_resnotice();
-
-  private:
-  const ::lampyris::crypto::protocol::app::ResNotice& _internal_resnotice() const;
-  ::lampyris::crypto::protocol::app::ResNotice* _internal_mutable_resnotice();
-
-  public:
-  // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 10;
-  bool has_symboltickerdatabean() const;
-  private:
-  bool _internal_has_symboltickerdatabean() const;
-
-  public:
-  void clear_symboltickerdatabean() ;
-  const ::lampyris::crypto::protocol::quote::SymbolTickerDataBean& symboltickerdatabean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* release_symboltickerdatabean();
-  ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* mutable_symboltickerdatabean();
-  void set_allocated_symboltickerdatabean(::lampyris::crypto::protocol::quote::SymbolTickerDataBean* value);
-  void unsafe_arena_set_allocated_symboltickerdatabean(::lampyris::crypto::protocol::quote::SymbolTickerDataBean* value);
-  ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* unsafe_arena_release_symboltickerdatabean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::SymbolTickerDataBean& _internal_symboltickerdatabean() const;
-  ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* _internal_mutable_symboltickerdatabean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 11;
-  bool has_ressubscribetickerdata() const;
-  private:
-  bool _internal_has_ressubscribetickerdata() const;
-
-  public:
-  void clear_ressubscribetickerdata() ;
-  const ::lampyris::crypto::protocol::quote::ResSubscribeTickerData& ressubscribetickerdata() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* release_ressubscribetickerdata();
-  ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* mutable_ressubscribetickerdata();
-  void set_allocated_ressubscribetickerdata(::lampyris::crypto::protocol::quote::ResSubscribeTickerData* value);
-  void unsafe_arena_set_allocated_ressubscribetickerdata(::lampyris::crypto::protocol::quote::ResSubscribeTickerData* value);
-  ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* unsafe_arena_release_ressubscribetickerdata();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::ResSubscribeTickerData& _internal_ressubscribetickerdata() const;
-  ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* _internal_mutable_ressubscribetickerdata();
-
-  public:
-  // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 12;
-  bool has_symboltradedatabean() const;
-  private:
-  bool _internal_has_symboltradedatabean() const;
-
-  public:
-  void clear_symboltradedatabean() ;
-  const ::lampyris::crypto::protocol::quote::SymbolTradeDataBean& symboltradedatabean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* release_symboltradedatabean();
-  ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* mutable_symboltradedatabean();
-  void set_allocated_symboltradedatabean(::lampyris::crypto::protocol::quote::SymbolTradeDataBean* value);
-  void unsafe_arena_set_allocated_symboltradedatabean(::lampyris::crypto::protocol::quote::SymbolTradeDataBean* value);
-  ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* unsafe_arena_release_symboltradedatabean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::SymbolTradeDataBean& _internal_symboltradedatabean() const;
-  ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* _internal_mutable_symboltradedatabean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 13;
-  bool has_tradedatabean() const;
-  private:
-  bool _internal_has_tradedatabean() const;
-
-  public:
-  void clear_tradedatabean() ;
-  const ::lampyris::crypto::protocol::quote::TradeDataBean& tradedatabean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::TradeDataBean* release_tradedatabean();
-  ::lampyris::crypto::protocol::quote::TradeDataBean* mutable_tradedatabean();
-  void set_allocated_tradedatabean(::lampyris::crypto::protocol::quote::TradeDataBean* value);
-  void unsafe_arena_set_allocated_tradedatabean(::lampyris::crypto::protocol::quote::TradeDataBean* value);
-  ::lampyris::crypto::protocol::quote::TradeDataBean* unsafe_arena_release_tradedatabean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::TradeDataBean& _internal_tradedatabean() const;
-  ::lampyris::crypto::protocol::quote::TradeDataBean* _internal_mutable_tradedatabean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 14;
-  bool has_rescandlestickquery() const;
-  private:
-  bool _internal_has_rescandlestickquery() const;
-
-  public:
-  void clear_rescandlestickquery() ;
-  const ::lampyris::crypto::protocol::quote::ResCandlestickQuery& rescandlestickquery() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResCandlestickQuery* release_rescandlestickquery();
-  ::lampyris::crypto::protocol::quote::ResCandlestickQuery* mutable_rescandlestickquery();
-  void set_allocated_rescandlestickquery(::lampyris::crypto::protocol::quote::ResCandlestickQuery* value);
-  void unsafe_arena_set_allocated_rescandlestickquery(::lampyris::crypto::protocol::quote::ResCandlestickQuery* value);
-  ::lampyris::crypto::protocol::quote::ResCandlestickQuery* unsafe_arena_release_rescandlestickquery();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::ResCandlestickQuery& _internal_rescandlestickquery() const;
-  ::lampyris::crypto::protocol::quote::ResCandlestickQuery* _internal_mutable_rescandlestickquery();
-
-  public:
-  // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 15;
-  bool has_candlestickupdatebean() const;
-  private:
-  bool _internal_has_candlestickupdatebean() const;
-
-  public:
-  void clear_candlestickupdatebean() ;
-  const ::lampyris::crypto::protocol::quote::CandlestickUpdateBean& candlestickupdatebean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* release_candlestickupdatebean();
-  ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* mutable_candlestickupdatebean();
-  void set_allocated_candlestickupdatebean(::lampyris::crypto::protocol::quote::CandlestickUpdateBean* value);
-  void unsafe_arena_set_allocated_candlestickupdatebean(::lampyris::crypto::protocol::quote::CandlestickUpdateBean* value);
-  ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* unsafe_arena_release_candlestickupdatebean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::CandlestickUpdateBean& _internal_candlestickupdatebean() const;
-  ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* _internal_mutable_candlestickupdatebean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 16;
-  bool has_candlestickbean() const;
-  private:
-  bool _internal_has_candlestickbean() const;
-
-  public:
-  void clear_candlestickbean() ;
-  const ::lampyris::crypto::protocol::quote::CandlestickBean& candlestickbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::CandlestickBean* release_candlestickbean();
-  ::lampyris::crypto::protocol::quote::CandlestickBean* mutable_candlestickbean();
-  void set_allocated_candlestickbean(::lampyris::crypto::protocol::quote::CandlestickBean* value);
-  void unsafe_arena_set_allocated_candlestickbean(::lampyris::crypto::protocol::quote::CandlestickBean* value);
-  ::lampyris::crypto::protocol::quote::CandlestickBean* unsafe_arena_release_candlestickbean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::CandlestickBean& _internal_candlestickbean() const;
-  ::lampyris::crypto::protocol::quote::CandlestickBean* _internal_mutable_candlestickbean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.ResTradeRule resTradeRule = 17;
-  bool has_restraderule() const;
-  private:
-  bool _internal_has_restraderule() const;
-
-  public:
-  void clear_restraderule() ;
-  const ::lampyris::crypto::protocol::quote::ResTradeRule& restraderule() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResTradeRule* release_restraderule();
-  ::lampyris::crypto::protocol::quote::ResTradeRule* mutable_restraderule();
-  void set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value);
-  void unsafe_arena_set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value);
-  ::lampyris::crypto::protocol::quote::ResTradeRule* unsafe_arena_release_restraderule();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::ResTradeRule& _internal_restraderule() const;
-  ::lampyris::crypto::protocol::quote::ResTradeRule* _internal_mutable_restraderule();
-
-  public:
-  // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 18;
-  bool has_symboltraderulebean() const;
-  private:
-  bool _internal_has_symboltraderulebean() const;
-
-  public:
-  void clear_symboltraderulebean() ;
-  const ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean& symboltraderulebean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* release_symboltraderulebean();
-  ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* mutable_symboltraderulebean();
-  void set_allocated_symboltraderulebean(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* value);
-  void unsafe_arena_set_allocated_symboltraderulebean(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* value);
-  ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* unsafe_arena_release_symboltraderulebean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean& _internal_symboltraderulebean() const;
-  ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* _internal_mutable_symboltraderulebean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean marketMonitorNoticeListBean = 19;
-  bool has_marketmonitornoticelistbean() const;
-  private:
-  bool _internal_has_marketmonitornoticelistbean() const;
-
-  public:
-  void clear_marketmonitornoticelistbean() ;
-  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& marketmonitornoticelistbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* release_marketmonitornoticelistbean();
-  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* mutable_marketmonitornoticelistbean();
-  void set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value);
-  void unsafe_arena_set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value);
-  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* unsafe_arena_release_marketmonitornoticelistbean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& _internal_marketmonitornoticelistbean() const;
-  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* _internal_mutable_marketmonitornoticelistbean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 20;
-  bool has_marketmonitornoticebean() const;
-  private:
-  bool _internal_has_marketmonitornoticebean() const;
-
-  public:
-  void clear_marketmonitornoticebean() ;
-  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean& marketmonitornoticebean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* release_marketmonitornoticebean();
-  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* mutable_marketmonitornoticebean();
-  void set_allocated_marketmonitornoticebean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* value);
-  void unsafe_arena_set_allocated_marketmonitornoticebean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* value);
-  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* unsafe_arena_release_marketmonitornoticebean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean& _internal_marketmonitornoticebean() const;
-  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* _internal_mutable_marketmonitornoticebean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 21;
-  bool has_selfselectedsymbolinfobean() const;
-  private:
-  bool _internal_has_selfselectedsymbolinfobean() const;
-
-  public:
-  void clear_selfselectedsymbolinfobean() ;
-  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean& selfselectedsymbolinfobean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* release_selfselectedsymbolinfobean();
-  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* mutable_selfselectedsymbolinfobean();
-  void set_allocated_selfselectedsymbolinfobean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* value);
-  void unsafe_arena_set_allocated_selfselectedsymbolinfobean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* value);
-  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* unsafe_arena_release_selfselectedsymbolinfobean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean& _internal_selfselectedsymbolinfobean() const;
-  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* _internal_mutable_selfselectedsymbolinfobean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 22;
-  bool has_selfselectedsymbolgroupbean() const;
-  private:
-  bool _internal_has_selfselectedsymbolgroupbean() const;
-
-  public:
-  void clear_selfselectedsymbolgroupbean() ;
-  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean& selfselectedsymbolgroupbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* release_selfselectedsymbolgroupbean();
-  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* mutable_selfselectedsymbolgroupbean();
-  void set_allocated_selfselectedsymbolgroupbean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* value);
-  void unsafe_arena_set_allocated_selfselectedsymbolgroupbean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* value);
-  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* unsafe_arena_release_selfselectedsymbolgroupbean();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean& _internal_selfselectedsymbolgroupbean() const;
-  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* _internal_mutable_selfselectedsymbolgroupbean();
-
-  public:
-  // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 23;
-  bool has_resselfselectedsymbol() const;
-  private:
-  bool _internal_has_resselfselectedsymbol() const;
-
-  public:
-  void clear_resselfselectedsymbol() ;
-  const ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol& resselfselectedsymbol() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* release_resselfselectedsymbol();
-  ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* mutable_resselfselectedsymbol();
-  void set_allocated_resselfselectedsymbol(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* value);
-  void unsafe_arena_set_allocated_resselfselectedsymbol(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* value);
-  ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* unsafe_arena_release_resselfselectedsymbol();
-
-  private:
-  const ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol& _internal_resselfselectedsymbol() const;
-  ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* _internal_mutable_resselfselectedsymbol();
-
-  public:
-  // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 24;
-  bool has_streategyconfigbean() const;
-  private:
-  bool _internal_has_streategyconfigbean() const;
-
-  public:
-  void clear_streategyconfigbean() ;
-  const ::lampyris::crypto::protocol::strategy::StreategyConfigBean& streategyconfigbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::StreategyConfigBean* release_streategyconfigbean();
-  ::lampyris::crypto::protocol::strategy::StreategyConfigBean* mutable_streategyconfigbean();
-  void set_allocated_streategyconfigbean(::lampyris::crypto::protocol::strategy::StreategyConfigBean* value);
-  void unsafe_arena_set_allocated_streategyconfigbean(::lampyris::crypto::protocol::strategy::StreategyConfigBean* value);
-  ::lampyris::crypto::protocol::strategy::StreategyConfigBean* unsafe_arena_release_streategyconfigbean();
-
-  private:
-  const ::lampyris::crypto::protocol::strategy::StreategyConfigBean& _internal_streategyconfigbean() const;
-  ::lampyris::crypto::protocol::strategy::StreategyConfigBean* _internal_mutable_streategyconfigbean();
-
-  public:
-  // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 25;
-  bool has_streategyfieldbean() const;
-  private:
-  bool _internal_has_streategyfieldbean() const;
-
-  public:
-  void clear_streategyfieldbean() ;
-  const ::lampyris::crypto::protocol::strategy::StreategyFieldBean& streategyfieldbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::StreategyFieldBean* release_streategyfieldbean();
-  ::lampyris::crypto::protocol::strategy::StreategyFieldBean* mutable_streategyfieldbean();
-  void set_allocated_streategyfieldbean(::lampyris::crypto::protocol::strategy::StreategyFieldBean* value);
-  void unsafe_arena_set_allocated_streategyfieldbean(::lampyris::crypto::protocol::strategy::StreategyFieldBean* value);
-  ::lampyris::crypto::protocol::strategy::StreategyFieldBean* unsafe_arena_release_streategyfieldbean();
-
-  private:
-  const ::lampyris::crypto::protocol::strategy::StreategyFieldBean& _internal_streategyfieldbean() const;
-  ::lampyris::crypto::protocol::strategy::StreategyFieldBean* _internal_mutable_streategyfieldbean();
-
-  public:
-  // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 26;
-  bool has_resmodifystreategysetting() const;
-  private:
-  bool _internal_has_resmodifystreategysetting() const;
-
-  public:
-  void clear_resmodifystreategysetting() ;
-  const ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting& resmodifystreategysetting() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* release_resmodifystreategysetting();
-  ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* mutable_resmodifystreategysetting();
-  void set_allocated_resmodifystreategysetting(::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* value);
-  void unsafe_arena_set_allocated_resmodifystreategysetting(::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* value);
-  ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* unsafe_arena_release_resmodifystreategysetting();
-
-  private:
-  const ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting& _internal_resmodifystreategysetting() const;
-  ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* _internal_mutable_resmodifystreategysetting();
-
-  public:
-  // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 27;
-  bool has_resstreategysettings() const;
-  private:
-  bool _internal_has_resstreategysettings() const;
-
-  public:
-  void clear_resstreategysettings() ;
-  const ::lampyris::crypto::protocol::strategy::ResStreategySettings& resstreategysettings() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::ResStreategySettings* release_resstreategysettings();
-  ::lampyris::crypto::protocol::strategy::ResStreategySettings* mutable_resstreategysettings();
-  void set_allocated_resstreategysettings(::lampyris::crypto::protocol::strategy::ResStreategySettings* value);
-  void unsafe_arena_set_allocated_resstreategysettings(::lampyris::crypto::protocol::strategy::ResStreategySettings* value);
-  ::lampyris::crypto::protocol::strategy::ResStreategySettings* unsafe_arena_release_resstreategysettings();
-
-  private:
-  const ::lampyris::crypto::protocol::strategy::ResStreategySettings& _internal_resstreategysettings() const;
-  ::lampyris::crypto::protocol::strategy::ResStreategySettings* _internal_mutable_resstreategysettings();
-
-  public:
-  // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 28;
-  bool has_strategyexectioninfobean() const;
-  private:
-  bool _internal_has_strategyexectioninfobean() const;
-
-  public:
-  void clear_strategyexectioninfobean() ;
-  const ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean& strategyexectioninfobean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* release_strategyexectioninfobean();
-  ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* mutable_strategyexectioninfobean();
-  void set_allocated_strategyexectioninfobean(::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* value);
-  void unsafe_arena_set_allocated_strategyexectioninfobean(::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* value);
-  ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* unsafe_arena_release_strategyexectioninfobean();
-
-  private:
-  const ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean& _internal_strategyexectioninfobean() const;
-  ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* _internal_mutable_strategyexectioninfobean();
-
-  public:
-  // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 29;
-  bool has_resquerystrategyexectioninfo() const;
-  private:
-  bool _internal_has_resquerystrategyexectioninfo() const;
-
-  public:
-  void clear_resquerystrategyexectioninfo() ;
-  const ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo& resquerystrategyexectioninfo() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* release_resquerystrategyexectioninfo();
-  ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* mutable_resquerystrategyexectioninfo();
-  void set_allocated_resquerystrategyexectioninfo(::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* value);
-  void unsafe_arena_set_allocated_resquerystrategyexectioninfo(::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* value);
-  ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* unsafe_arena_release_resquerystrategyexectioninfo();
-
-  private:
-  const ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo& _internal_resquerystrategyexectioninfo() const;
-  ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* _internal_mutable_resquerystrategyexectioninfo();
-
-  public:
-  // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 30;
-  bool has_conditiontriggerbean() const;
-  private:
-  bool _internal_has_conditiontriggerbean() const;
-
-  public:
-  void clear_conditiontriggerbean() ;
-  const ::lampyris::crypto::protocol::trading::ConditionTriggerBean& conditiontriggerbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ConditionTriggerBean* release_conditiontriggerbean();
-  ::lampyris::crypto::protocol::trading::ConditionTriggerBean* mutable_conditiontriggerbean();
-  void set_allocated_conditiontriggerbean(::lampyris::crypto::protocol::trading::ConditionTriggerBean* value);
-  void unsafe_arena_set_allocated_conditiontriggerbean(::lampyris::crypto::protocol::trading::ConditionTriggerBean* value);
-  ::lampyris::crypto::protocol::trading::ConditionTriggerBean* unsafe_arena_release_conditiontriggerbean();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::ConditionTriggerBean& _internal_conditiontriggerbean() const;
-  ::lampyris::crypto::protocol::trading::ConditionTriggerBean* _internal_mutable_conditiontriggerbean();
-
-  public:
-  // .lampyris.crypto.protocol.trading.OrderBean orderBean = 31;
-  bool has_orderbean() const;
-  private:
-  bool _internal_has_orderbean() const;
-
-  public:
-  void clear_orderbean() ;
-  const ::lampyris::crypto::protocol::trading::OrderBean& orderbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::OrderBean* release_orderbean();
-  ::lampyris::crypto::protocol::trading::OrderBean* mutable_orderbean();
-  void set_allocated_orderbean(::lampyris::crypto::protocol::trading::OrderBean* value);
-  void unsafe_arena_set_allocated_orderbean(::lampyris::crypto::protocol::trading::OrderBean* value);
-  ::lampyris::crypto::protocol::trading::OrderBean* unsafe_arena_release_orderbean();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::OrderBean& _internal_orderbean() const;
-  ::lampyris::crypto::protocol::trading::OrderBean* _internal_mutable_orderbean();
-
-  public:
-  // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 32;
-  bool has_orderstatusbean() const;
-  private:
-  bool _internal_has_orderstatusbean() const;
-
-  public:
-  void clear_orderstatusbean() ;
-  const ::lampyris::crypto::protocol::trading::OrderStatusBean& orderstatusbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::OrderStatusBean* release_orderstatusbean();
-  ::lampyris::crypto::protocol::trading::OrderStatusBean* mutable_orderstatusbean();
-  void set_allocated_orderstatusbean(::lampyris::crypto::protocol::trading::OrderStatusBean* value);
-  void unsafe_arena_set_allocated_orderstatusbean(::lampyris::crypto::protocol::trading::OrderStatusBean* value);
-  ::lampyris::crypto::protocol::trading::OrderStatusBean* unsafe_arena_release_orderstatusbean();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::OrderStatusBean& _internal_orderstatusbean() const;
-  ::lampyris::crypto::protocol::trading::OrderStatusBean* _internal_mutable_orderstatusbean();
-
-  public:
-  // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 33;
-  bool has_leveragebean() const;
-  private:
-  bool _internal_has_leveragebean() const;
-
-  public:
-  void clear_leveragebean() ;
-  const ::lampyris::crypto::protocol::trading::LeverageBean& leveragebean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::LeverageBean* release_leveragebean();
-  ::lampyris::crypto::protocol::trading::LeverageBean* mutable_leveragebean();
-  void set_allocated_leveragebean(::lampyris::crypto::protocol::trading::LeverageBean* value);
-  void unsafe_arena_set_allocated_leveragebean(::lampyris::crypto::protocol::trading::LeverageBean* value);
-  ::lampyris::crypto::protocol::trading::LeverageBean* unsafe_arena_release_leveragebean();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::LeverageBean& _internal_leveragebean() const;
-  ::lampyris::crypto::protocol::trading::LeverageBean* _internal_mutable_leveragebean();
-
-  public:
-  // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 34;
-  bool has_resqueryleverage() const;
-  private:
-  bool _internal_has_resqueryleverage() const;
-
-  public:
-  void clear_resqueryleverage() ;
-  const ::lampyris::crypto::protocol::trading::ResQueryLeverage& resqueryleverage() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ResQueryLeverage* release_resqueryleverage();
-  ::lampyris::crypto::protocol::trading::ResQueryLeverage* mutable_resqueryleverage();
-  void set_allocated_resqueryleverage(::lampyris::crypto::protocol::trading::ResQueryLeverage* value);
-  void unsafe_arena_set_allocated_resqueryleverage(::lampyris::crypto::protocol::trading::ResQueryLeverage* value);
-  ::lampyris::crypto::protocol::trading::ResQueryLeverage* unsafe_arena_release_resqueryleverage();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::ResQueryLeverage& _internal_resqueryleverage() const;
-  ::lampyris::crypto::protocol::trading::ResQueryLeverage* _internal_mutable_resqueryleverage();
-
-  public:
-  // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 35;
-  bool has_resqueryleveragebracket() const;
-  private:
-  bool _internal_has_resqueryleveragebracket() const;
-
-  public:
-  void clear_resqueryleveragebracket() ;
-  const ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket& resqueryleveragebracket() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* release_resqueryleveragebracket();
-  ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* mutable_resqueryleveragebracket();
-  void set_allocated_resqueryleveragebracket(::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* value);
-  void unsafe_arena_set_allocated_resqueryleveragebracket(::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* value);
-  ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* unsafe_arena_release_resqueryleveragebracket();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket& _internal_resqueryleveragebracket() const;
-  ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* _internal_mutable_resqueryleveragebracket();
-
-  public:
-  // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 36;
-  bool has_symbolleveragebracketbean() const;
-  private:
-  bool _internal_has_symbolleveragebracketbean() const;
-
-  public:
-  void clear_symbolleveragebracketbean() ;
-  const ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean& symbolleveragebracketbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* release_symbolleveragebracketbean();
-  ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* mutable_symbolleveragebracketbean();
-  void set_allocated_symbolleveragebracketbean(::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* value);
-  void unsafe_arena_set_allocated_symbolleveragebracketbean(::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* value);
-  ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* unsafe_arena_release_symbolleveragebracketbean();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean& _internal_symbolleveragebracketbean() const;
-  ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* _internal_mutable_symbolleveragebracketbean();
-
-  public:
-  // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 37;
-  bool has_leveragebracketbean() const;
-  private:
-  bool _internal_has_leveragebracketbean() const;
-
-  public:
-  void clear_leveragebracketbean() ;
-  const ::lampyris::crypto::protocol::trading::LeverageBracketBean& leveragebracketbean() const;
-  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::LeverageBracketBean* release_leveragebracketbean();
-  ::lampyris::crypto::protocol::trading::LeverageBracketBean* mutable_leveragebracketbean();
-  void set_allocated_leveragebracketbean(::lampyris::crypto::protocol::trading::LeverageBracketBean* value);
-  void unsafe_arena_set_allocated_leveragebracketbean(::lampyris::crypto::protocol::trading::LeverageBracketBean* value);
-  ::lampyris::crypto::protocol::trading::LeverageBracketBean* unsafe_arena_release_leveragebracketbean();
-
-  private:
-  const ::lampyris::crypto::protocol::trading::LeverageBracketBean& _internal_leveragebracketbean() const;
-  ::lampyris::crypto::protocol::trading::LeverageBracketBean* _internal_mutable_leveragebracketbean();
-
-  public:
-  void clear_response_type();
-  ResponseTypeCase response_type_case() const;
-  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.common.Response)
- private:
-  class _Internal;
-  void set_has_accountassetinfobean();
-  void set_has_subaccountinfobean();
-  void set_has_resquerysubacccountlist();
-  void set_has_resaccountsummaryupdate();
-  void set_has_assettransferhistoryinfodetailbean();
-  void set_has_assettransferhistoryinfobean();
-  void set_has_reslogin();
-  void set_has_resheartbeat();
-  void set_has_resnotice();
-  void set_has_symboltickerdatabean();
-  void set_has_ressubscribetickerdata();
-  void set_has_symboltradedatabean();
-  void set_has_tradedatabean();
-  void set_has_rescandlestickquery();
-  void set_has_candlestickupdatebean();
-  void set_has_candlestickbean();
-  void set_has_restraderule();
-  void set_has_symboltraderulebean();
-  void set_has_marketmonitornoticelistbean();
-  void set_has_marketmonitornoticebean();
-  void set_has_selfselectedsymbolinfobean();
-  void set_has_selfselectedsymbolgroupbean();
-  void set_has_resselfselectedsymbol();
-  void set_has_streategyconfigbean();
-  void set_has_streategyfieldbean();
-  void set_has_resmodifystreategysetting();
-  void set_has_resstreategysettings();
-  void set_has_strategyexectioninfobean();
-  void set_has_resquerystrategyexectioninfo();
-  void set_has_conditiontriggerbean();
-  void set_has_orderbean();
-  void set_has_orderstatusbean();
-  void set_has_leveragebean();
-  void set_has_resqueryleverage();
-  void set_has_resqueryleveragebracket();
-  void set_has_symbolleveragebracketbean();
-  void set_has_leveragebracketbean();
-  inline bool has_response_type() const;
-  inline void clear_has_response_type();
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 37, 37,
-      0, 7>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const Response& from_msg);
-    union ResponseTypeUnion {
-      constexpr ResponseTypeUnion() : _constinit_{} {}
-      ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::lampyris::crypto::protocol::account::AccountAssetInfoBean* accountassetinfobean_;
-      ::lampyris::crypto::protocol::account::SubAccountInfoBean* subaccountinfobean_;
-      ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* resquerysubacccountlist_;
-      ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* resaccountsummaryupdate_;
-      ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* assettransferhistoryinfodetailbean_;
-      ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* assettransferhistoryinfobean_;
-      ::lampyris::crypto::protocol::app::ResLogin* reslogin_;
-      ::lampyris::crypto::protocol::app::ResHeartBeat* resheartbeat_;
-      ::lampyris::crypto::protocol::app::ResNotice* resnotice_;
-      ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* symboltickerdatabean_;
-      ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* ressubscribetickerdata_;
-      ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* symboltradedatabean_;
-      ::lampyris::crypto::protocol::quote::TradeDataBean* tradedatabean_;
-      ::lampyris::crypto::protocol::quote::ResCandlestickQuery* rescandlestickquery_;
-      ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* candlestickupdatebean_;
-      ::lampyris::crypto::protocol::quote::CandlestickBean* candlestickbean_;
-      ::lampyris::crypto::protocol::quote::ResTradeRule* restraderule_;
-      ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* symboltraderulebean_;
-      ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* marketmonitornoticelistbean_;
-      ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* marketmonitornoticebean_;
-      ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* selfselectedsymbolinfobean_;
-      ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* selfselectedsymbolgroupbean_;
-      ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* resselfselectedsymbol_;
-      ::lampyris::crypto::protocol::strategy::StreategyConfigBean* streategyconfigbean_;
-      ::lampyris::crypto::protocol::strategy::StreategyFieldBean* streategyfieldbean_;
-      ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* resmodifystreategysetting_;
-      ::lampyris::crypto::protocol::strategy::ResStreategySettings* resstreategysettings_;
-      ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* strategyexectioninfobean_;
-      ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* resquerystrategyexectioninfo_;
-      ::lampyris::crypto::protocol::trading::ConditionTriggerBean* conditiontriggerbean_;
-      ::lampyris::crypto::protocol::trading::OrderBean* orderbean_;
-      ::lampyris::crypto::protocol::trading::OrderStatusBean* orderstatusbean_;
-      ::lampyris::crypto::protocol::trading::LeverageBean* leveragebean_;
-      ::lampyris::crypto::protocol::trading::ResQueryLeverage* resqueryleverage_;
-      ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* resqueryleveragebracket_;
-      ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* symbolleveragebracketbean_;
-      ::lampyris::crypto::protocol::trading::LeverageBracketBean* leveragebracketbean_;
-    } response_type_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::uint32_t _oneof_case_[1];
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_common_2eproto;
-};
-// -------------------------------------------------------------------
-
 class Request final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.common.Request) */ {
  public:
@@ -1882,6 +841,1162 @@ class Request final : public ::google::protobuf::Message
       ::lampyris::crypto::protocol::trading::ReqQueryLeverage* reqqueryleverage_;
       ::lampyris::crypto::protocol::trading::ReqQueryLeverageBracket* reqqueryleveragebracket_;
     } request_type_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::uint32_t _oneof_case_[1];
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_common_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Response final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:lampyris.crypto.protocol.common.Response) */ {
+ public:
+  inline Response() : Response(nullptr) {}
+  ~Response() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Response* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Response));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Response(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Response(const Response& from) : Response(nullptr, from) {}
+  inline Response(Response&& from) noexcept
+      : Response(nullptr, std::move(from)) {}
+  inline Response& operator=(const Response& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Response& operator=(Response&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Response& default_instance() {
+    return *internal_default_instance();
+  }
+  enum ResponseTypeCase {
+    kAccountAssetInfoBean = 1,
+    kSubAccountInfoBean = 2,
+    kResQuerySubAcccountList = 3,
+    kResAccountSummaryUpdate = 4,
+    kAssetTransferHistoryInfoDetailBean = 5,
+    kAssetTransferHistoryInfoBean = 6,
+    kResLogin = 7,
+    kResHeartBeat = 8,
+    kResNotice = 9,
+    kSymbolTickerDataBean = 10,
+    kResSubscribeTickerData = 11,
+    kSymbolTradeDataBean = 12,
+    kTradeDataBean = 13,
+    kResCandlestickQuery = 14,
+    kCandlestickUpdateBean = 15,
+    kCandlestickBean = 16,
+    kResTradeRule = 17,
+    kSymbolTradeRuleBean = 18,
+    kMarketMonitorNoticeListBean = 19,
+    kMarketMonitorNoticeBean = 20,
+    kSelfSelectedSymbolInfoBean = 21,
+    kSelfSelectedSymbolGroupBean = 22,
+    kResSelfSelectedSymbol = 23,
+    kMarketPreviewIntervalDataBean = 24,
+    kResMarketPreviewData = 25,
+    kStreategyConfigBean = 26,
+    kStreategyFieldBean = 27,
+    kResModifyStreategySetting = 28,
+    kResStreategySettings = 29,
+    kStrategyExectionInfoBean = 30,
+    kResQueryStrategyExectionInfo = 31,
+    kConditionTriggerBean = 32,
+    kOrderBean = 33,
+    kOrderStatusBean = 34,
+    kResQueryOrders = 35,
+    kPositionBean = 36,
+    kResQueryPositions = 37,
+    kLeverageBean = 38,
+    kResQueryLeverage = 39,
+    kResQueryLeverageBracket = 40,
+    kSymbolLeverageBracketBean = 41,
+    kLeverageBracketBean = 42,
+    RESPONSE_TYPE_NOT_SET = 0,
+  };
+  static inline const Response* internal_default_instance() {
+    return reinterpret_cast<const Response*>(
+        &_Response_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 1;
+  friend void swap(Response& a, Response& b) { a.Swap(&b); }
+  inline void Swap(Response* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Response* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Response* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Response>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Response& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Response& from) { Response::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Response* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "lampyris.crypto.protocol.common.Response"; }
+
+ protected:
+  explicit Response(::google::protobuf::Arena* arena);
+  Response(::google::protobuf::Arena* arena, const Response& from);
+  Response(::google::protobuf::Arena* arena, Response&& from) noexcept
+      : Response(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAccountAssetInfoBeanFieldNumber = 1,
+    kSubAccountInfoBeanFieldNumber = 2,
+    kResQuerySubAcccountListFieldNumber = 3,
+    kResAccountSummaryUpdateFieldNumber = 4,
+    kAssetTransferHistoryInfoDetailBeanFieldNumber = 5,
+    kAssetTransferHistoryInfoBeanFieldNumber = 6,
+    kResLoginFieldNumber = 7,
+    kResHeartBeatFieldNumber = 8,
+    kResNoticeFieldNumber = 9,
+    kSymbolTickerDataBeanFieldNumber = 10,
+    kResSubscribeTickerDataFieldNumber = 11,
+    kSymbolTradeDataBeanFieldNumber = 12,
+    kTradeDataBeanFieldNumber = 13,
+    kResCandlestickQueryFieldNumber = 14,
+    kCandlestickUpdateBeanFieldNumber = 15,
+    kCandlestickBeanFieldNumber = 16,
+    kResTradeRuleFieldNumber = 17,
+    kSymbolTradeRuleBeanFieldNumber = 18,
+    kMarketMonitorNoticeListBeanFieldNumber = 19,
+    kMarketMonitorNoticeBeanFieldNumber = 20,
+    kSelfSelectedSymbolInfoBeanFieldNumber = 21,
+    kSelfSelectedSymbolGroupBeanFieldNumber = 22,
+    kResSelfSelectedSymbolFieldNumber = 23,
+    kMarketPreviewIntervalDataBeanFieldNumber = 24,
+    kResMarketPreviewDataFieldNumber = 25,
+    kStreategyConfigBeanFieldNumber = 26,
+    kStreategyFieldBeanFieldNumber = 27,
+    kResModifyStreategySettingFieldNumber = 28,
+    kResStreategySettingsFieldNumber = 29,
+    kStrategyExectionInfoBeanFieldNumber = 30,
+    kResQueryStrategyExectionInfoFieldNumber = 31,
+    kConditionTriggerBeanFieldNumber = 32,
+    kOrderBeanFieldNumber = 33,
+    kOrderStatusBeanFieldNumber = 34,
+    kResQueryOrdersFieldNumber = 35,
+    kPositionBeanFieldNumber = 36,
+    kResQueryPositionsFieldNumber = 37,
+    kLeverageBeanFieldNumber = 38,
+    kResQueryLeverageFieldNumber = 39,
+    kResQueryLeverageBracketFieldNumber = 40,
+    kSymbolLeverageBracketBeanFieldNumber = 41,
+    kLeverageBracketBeanFieldNumber = 42,
+  };
+  // .lampyris.crypto.protocol.account.AccountAssetInfoBean accountAssetInfoBean = 1;
+  bool has_accountassetinfobean() const;
+  private:
+  bool _internal_has_accountassetinfobean() const;
+
+  public:
+  void clear_accountassetinfobean() ;
+  const ::lampyris::crypto::protocol::account::AccountAssetInfoBean& accountassetinfobean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::AccountAssetInfoBean* release_accountassetinfobean();
+  ::lampyris::crypto::protocol::account::AccountAssetInfoBean* mutable_accountassetinfobean();
+  void set_allocated_accountassetinfobean(::lampyris::crypto::protocol::account::AccountAssetInfoBean* value);
+  void unsafe_arena_set_allocated_accountassetinfobean(::lampyris::crypto::protocol::account::AccountAssetInfoBean* value);
+  ::lampyris::crypto::protocol::account::AccountAssetInfoBean* unsafe_arena_release_accountassetinfobean();
+
+  private:
+  const ::lampyris::crypto::protocol::account::AccountAssetInfoBean& _internal_accountassetinfobean() const;
+  ::lampyris::crypto::protocol::account::AccountAssetInfoBean* _internal_mutable_accountassetinfobean();
+
+  public:
+  // .lampyris.crypto.protocol.account.SubAccountInfoBean subAccountInfoBean = 2;
+  bool has_subaccountinfobean() const;
+  private:
+  bool _internal_has_subaccountinfobean() const;
+
+  public:
+  void clear_subaccountinfobean() ;
+  const ::lampyris::crypto::protocol::account::SubAccountInfoBean& subaccountinfobean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::SubAccountInfoBean* release_subaccountinfobean();
+  ::lampyris::crypto::protocol::account::SubAccountInfoBean* mutable_subaccountinfobean();
+  void set_allocated_subaccountinfobean(::lampyris::crypto::protocol::account::SubAccountInfoBean* value);
+  void unsafe_arena_set_allocated_subaccountinfobean(::lampyris::crypto::protocol::account::SubAccountInfoBean* value);
+  ::lampyris::crypto::protocol::account::SubAccountInfoBean* unsafe_arena_release_subaccountinfobean();
+
+  private:
+  const ::lampyris::crypto::protocol::account::SubAccountInfoBean& _internal_subaccountinfobean() const;
+  ::lampyris::crypto::protocol::account::SubAccountInfoBean* _internal_mutable_subaccountinfobean();
+
+  public:
+  // .lampyris.crypto.protocol.account.ResQuerySubAcccountList resQuerySubAcccountList = 3;
+  bool has_resquerysubacccountlist() const;
+  private:
+  bool _internal_has_resquerysubacccountlist() const;
+
+  public:
+  void clear_resquerysubacccountlist() ;
+  const ::lampyris::crypto::protocol::account::ResQuerySubAcccountList& resquerysubacccountlist() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* release_resquerysubacccountlist();
+  ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* mutable_resquerysubacccountlist();
+  void set_allocated_resquerysubacccountlist(::lampyris::crypto::protocol::account::ResQuerySubAcccountList* value);
+  void unsafe_arena_set_allocated_resquerysubacccountlist(::lampyris::crypto::protocol::account::ResQuerySubAcccountList* value);
+  ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* unsafe_arena_release_resquerysubacccountlist();
+
+  private:
+  const ::lampyris::crypto::protocol::account::ResQuerySubAcccountList& _internal_resquerysubacccountlist() const;
+  ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* _internal_mutable_resquerysubacccountlist();
+
+  public:
+  // .lampyris.crypto.protocol.account.ResAccountSummaryUpdate resAccountSummaryUpdate = 4;
+  bool has_resaccountsummaryupdate() const;
+  private:
+  bool _internal_has_resaccountsummaryupdate() const;
+
+  public:
+  void clear_resaccountsummaryupdate() ;
+  const ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate& resaccountsummaryupdate() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* release_resaccountsummaryupdate();
+  ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* mutable_resaccountsummaryupdate();
+  void set_allocated_resaccountsummaryupdate(::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* value);
+  void unsafe_arena_set_allocated_resaccountsummaryupdate(::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* value);
+  ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* unsafe_arena_release_resaccountsummaryupdate();
+
+  private:
+  const ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate& _internal_resaccountsummaryupdate() const;
+  ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* _internal_mutable_resaccountsummaryupdate();
+
+  public:
+  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoDetailBean assetTransferHistoryInfoDetailBean = 5;
+  bool has_assettransferhistoryinfodetailbean() const;
+  private:
+  bool _internal_has_assettransferhistoryinfodetailbean() const;
+
+  public:
+  void clear_assettransferhistoryinfodetailbean() ;
+  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean& assettransferhistoryinfodetailbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* release_assettransferhistoryinfodetailbean();
+  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* mutable_assettransferhistoryinfodetailbean();
+  void set_allocated_assettransferhistoryinfodetailbean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* value);
+  void unsafe_arena_set_allocated_assettransferhistoryinfodetailbean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* value);
+  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* unsafe_arena_release_assettransferhistoryinfodetailbean();
+
+  private:
+  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean& _internal_assettransferhistoryinfodetailbean() const;
+  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* _internal_mutable_assettransferhistoryinfodetailbean();
+
+  public:
+  // .lampyris.crypto.protocol.account.AssetTransferHistoryInfoBean assetTransferHistoryInfoBean = 6;
+  bool has_assettransferhistoryinfobean() const;
+  private:
+  bool _internal_has_assettransferhistoryinfobean() const;
+
+  public:
+  void clear_assettransferhistoryinfobean() ;
+  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean& assettransferhistoryinfobean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* release_assettransferhistoryinfobean();
+  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* mutable_assettransferhistoryinfobean();
+  void set_allocated_assettransferhistoryinfobean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* value);
+  void unsafe_arena_set_allocated_assettransferhistoryinfobean(::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* value);
+  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* unsafe_arena_release_assettransferhistoryinfobean();
+
+  private:
+  const ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean& _internal_assettransferhistoryinfobean() const;
+  ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* _internal_mutable_assettransferhistoryinfobean();
+
+  public:
+  // .lampyris.crypto.protocol.app.ResLogin resLogin = 7;
+  bool has_reslogin() const;
+  private:
+  bool _internal_has_reslogin() const;
+
+  public:
+  void clear_reslogin() ;
+  const ::lampyris::crypto::protocol::app::ResLogin& reslogin() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResLogin* release_reslogin();
+  ::lampyris::crypto::protocol::app::ResLogin* mutable_reslogin();
+  void set_allocated_reslogin(::lampyris::crypto::protocol::app::ResLogin* value);
+  void unsafe_arena_set_allocated_reslogin(::lampyris::crypto::protocol::app::ResLogin* value);
+  ::lampyris::crypto::protocol::app::ResLogin* unsafe_arena_release_reslogin();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ResLogin& _internal_reslogin() const;
+  ::lampyris::crypto::protocol::app::ResLogin* _internal_mutable_reslogin();
+
+  public:
+  // .lampyris.crypto.protocol.app.ResHeartBeat resHeartBeat = 8;
+  bool has_resheartbeat() const;
+  private:
+  bool _internal_has_resheartbeat() const;
+
+  public:
+  void clear_resheartbeat() ;
+  const ::lampyris::crypto::protocol::app::ResHeartBeat& resheartbeat() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResHeartBeat* release_resheartbeat();
+  ::lampyris::crypto::protocol::app::ResHeartBeat* mutable_resheartbeat();
+  void set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
+  void unsafe_arena_set_allocated_resheartbeat(::lampyris::crypto::protocol::app::ResHeartBeat* value);
+  ::lampyris::crypto::protocol::app::ResHeartBeat* unsafe_arena_release_resheartbeat();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ResHeartBeat& _internal_resheartbeat() const;
+  ::lampyris::crypto::protocol::app::ResHeartBeat* _internal_mutable_resheartbeat();
+
+  public:
+  // .lampyris.crypto.protocol.app.ResNotice resNotice = 9;
+  bool has_resnotice() const;
+  private:
+  bool _internal_has_resnotice() const;
+
+  public:
+  void clear_resnotice() ;
+  const ::lampyris::crypto::protocol::app::ResNotice& resnotice() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::app::ResNotice* release_resnotice();
+  ::lampyris::crypto::protocol::app::ResNotice* mutable_resnotice();
+  void set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value);
+  void unsafe_arena_set_allocated_resnotice(::lampyris::crypto::protocol::app::ResNotice* value);
+  ::lampyris::crypto::protocol::app::ResNotice* unsafe_arena_release_resnotice();
+
+  private:
+  const ::lampyris::crypto::protocol::app::ResNotice& _internal_resnotice() const;
+  ::lampyris::crypto::protocol::app::ResNotice* _internal_mutable_resnotice();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SymbolTickerDataBean symbolTickerDataBean = 10;
+  bool has_symboltickerdatabean() const;
+  private:
+  bool _internal_has_symboltickerdatabean() const;
+
+  public:
+  void clear_symboltickerdatabean() ;
+  const ::lampyris::crypto::protocol::quote::SymbolTickerDataBean& symboltickerdatabean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* release_symboltickerdatabean();
+  ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* mutable_symboltickerdatabean();
+  void set_allocated_symboltickerdatabean(::lampyris::crypto::protocol::quote::SymbolTickerDataBean* value);
+  void unsafe_arena_set_allocated_symboltickerdatabean(::lampyris::crypto::protocol::quote::SymbolTickerDataBean* value);
+  ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* unsafe_arena_release_symboltickerdatabean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::SymbolTickerDataBean& _internal_symboltickerdatabean() const;
+  ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* _internal_mutable_symboltickerdatabean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.ResSubscribeTickerData resSubscribeTickerData = 11;
+  bool has_ressubscribetickerdata() const;
+  private:
+  bool _internal_has_ressubscribetickerdata() const;
+
+  public:
+  void clear_ressubscribetickerdata() ;
+  const ::lampyris::crypto::protocol::quote::ResSubscribeTickerData& ressubscribetickerdata() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* release_ressubscribetickerdata();
+  ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* mutable_ressubscribetickerdata();
+  void set_allocated_ressubscribetickerdata(::lampyris::crypto::protocol::quote::ResSubscribeTickerData* value);
+  void unsafe_arena_set_allocated_ressubscribetickerdata(::lampyris::crypto::protocol::quote::ResSubscribeTickerData* value);
+  ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* unsafe_arena_release_ressubscribetickerdata();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::ResSubscribeTickerData& _internal_ressubscribetickerdata() const;
+  ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* _internal_mutable_ressubscribetickerdata();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SymbolTradeDataBean symbolTradeDataBean = 12;
+  bool has_symboltradedatabean() const;
+  private:
+  bool _internal_has_symboltradedatabean() const;
+
+  public:
+  void clear_symboltradedatabean() ;
+  const ::lampyris::crypto::protocol::quote::SymbolTradeDataBean& symboltradedatabean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* release_symboltradedatabean();
+  ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* mutable_symboltradedatabean();
+  void set_allocated_symboltradedatabean(::lampyris::crypto::protocol::quote::SymbolTradeDataBean* value);
+  void unsafe_arena_set_allocated_symboltradedatabean(::lampyris::crypto::protocol::quote::SymbolTradeDataBean* value);
+  ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* unsafe_arena_release_symboltradedatabean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::SymbolTradeDataBean& _internal_symboltradedatabean() const;
+  ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* _internal_mutable_symboltradedatabean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.TradeDataBean tradeDataBean = 13;
+  bool has_tradedatabean() const;
+  private:
+  bool _internal_has_tradedatabean() const;
+
+  public:
+  void clear_tradedatabean() ;
+  const ::lampyris::crypto::protocol::quote::TradeDataBean& tradedatabean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::TradeDataBean* release_tradedatabean();
+  ::lampyris::crypto::protocol::quote::TradeDataBean* mutable_tradedatabean();
+  void set_allocated_tradedatabean(::lampyris::crypto::protocol::quote::TradeDataBean* value);
+  void unsafe_arena_set_allocated_tradedatabean(::lampyris::crypto::protocol::quote::TradeDataBean* value);
+  ::lampyris::crypto::protocol::quote::TradeDataBean* unsafe_arena_release_tradedatabean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::TradeDataBean& _internal_tradedatabean() const;
+  ::lampyris::crypto::protocol::quote::TradeDataBean* _internal_mutable_tradedatabean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.ResCandlestickQuery resCandlestickQuery = 14;
+  bool has_rescandlestickquery() const;
+  private:
+  bool _internal_has_rescandlestickquery() const;
+
+  public:
+  void clear_rescandlestickquery() ;
+  const ::lampyris::crypto::protocol::quote::ResCandlestickQuery& rescandlestickquery() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResCandlestickQuery* release_rescandlestickquery();
+  ::lampyris::crypto::protocol::quote::ResCandlestickQuery* mutable_rescandlestickquery();
+  void set_allocated_rescandlestickquery(::lampyris::crypto::protocol::quote::ResCandlestickQuery* value);
+  void unsafe_arena_set_allocated_rescandlestickquery(::lampyris::crypto::protocol::quote::ResCandlestickQuery* value);
+  ::lampyris::crypto::protocol::quote::ResCandlestickQuery* unsafe_arena_release_rescandlestickquery();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::ResCandlestickQuery& _internal_rescandlestickquery() const;
+  ::lampyris::crypto::protocol::quote::ResCandlestickQuery* _internal_mutable_rescandlestickquery();
+
+  public:
+  // .lampyris.crypto.protocol.quote.CandlestickUpdateBean candlestickUpdateBean = 15;
+  bool has_candlestickupdatebean() const;
+  private:
+  bool _internal_has_candlestickupdatebean() const;
+
+  public:
+  void clear_candlestickupdatebean() ;
+  const ::lampyris::crypto::protocol::quote::CandlestickUpdateBean& candlestickupdatebean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* release_candlestickupdatebean();
+  ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* mutable_candlestickupdatebean();
+  void set_allocated_candlestickupdatebean(::lampyris::crypto::protocol::quote::CandlestickUpdateBean* value);
+  void unsafe_arena_set_allocated_candlestickupdatebean(::lampyris::crypto::protocol::quote::CandlestickUpdateBean* value);
+  ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* unsafe_arena_release_candlestickupdatebean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::CandlestickUpdateBean& _internal_candlestickupdatebean() const;
+  ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* _internal_mutable_candlestickupdatebean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.CandlestickBean candlestickBean = 16;
+  bool has_candlestickbean() const;
+  private:
+  bool _internal_has_candlestickbean() const;
+
+  public:
+  void clear_candlestickbean() ;
+  const ::lampyris::crypto::protocol::quote::CandlestickBean& candlestickbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::CandlestickBean* release_candlestickbean();
+  ::lampyris::crypto::protocol::quote::CandlestickBean* mutable_candlestickbean();
+  void set_allocated_candlestickbean(::lampyris::crypto::protocol::quote::CandlestickBean* value);
+  void unsafe_arena_set_allocated_candlestickbean(::lampyris::crypto::protocol::quote::CandlestickBean* value);
+  ::lampyris::crypto::protocol::quote::CandlestickBean* unsafe_arena_release_candlestickbean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::CandlestickBean& _internal_candlestickbean() const;
+  ::lampyris::crypto::protocol::quote::CandlestickBean* _internal_mutable_candlestickbean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.ResTradeRule resTradeRule = 17;
+  bool has_restraderule() const;
+  private:
+  bool _internal_has_restraderule() const;
+
+  public:
+  void clear_restraderule() ;
+  const ::lampyris::crypto::protocol::quote::ResTradeRule& restraderule() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResTradeRule* release_restraderule();
+  ::lampyris::crypto::protocol::quote::ResTradeRule* mutable_restraderule();
+  void set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value);
+  void unsafe_arena_set_allocated_restraderule(::lampyris::crypto::protocol::quote::ResTradeRule* value);
+  ::lampyris::crypto::protocol::quote::ResTradeRule* unsafe_arena_release_restraderule();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::ResTradeRule& _internal_restraderule() const;
+  ::lampyris::crypto::protocol::quote::ResTradeRule* _internal_mutable_restraderule();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SymbolTradeRuleBean symbolTradeRuleBean = 18;
+  bool has_symboltraderulebean() const;
+  private:
+  bool _internal_has_symboltraderulebean() const;
+
+  public:
+  void clear_symboltraderulebean() ;
+  const ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean& symboltraderulebean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* release_symboltraderulebean();
+  ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* mutable_symboltraderulebean();
+  void set_allocated_symboltraderulebean(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* value);
+  void unsafe_arena_set_allocated_symboltraderulebean(::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* value);
+  ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* unsafe_arena_release_symboltraderulebean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean& _internal_symboltraderulebean() const;
+  ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* _internal_mutable_symboltraderulebean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeListBean marketMonitorNoticeListBean = 19;
+  bool has_marketmonitornoticelistbean() const;
+  private:
+  bool _internal_has_marketmonitornoticelistbean() const;
+
+  public:
+  void clear_marketmonitornoticelistbean() ;
+  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& marketmonitornoticelistbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* release_marketmonitornoticelistbean();
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* mutable_marketmonitornoticelistbean();
+  void set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value);
+  void unsafe_arena_set_allocated_marketmonitornoticelistbean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* value);
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* unsafe_arena_release_marketmonitornoticelistbean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean& _internal_marketmonitornoticelistbean() const;
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* _internal_mutable_marketmonitornoticelistbean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.MarketMonitorNoticeBean marketMonitorNoticeBean = 20;
+  bool has_marketmonitornoticebean() const;
+  private:
+  bool _internal_has_marketmonitornoticebean() const;
+
+  public:
+  void clear_marketmonitornoticebean() ;
+  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean& marketmonitornoticebean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* release_marketmonitornoticebean();
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* mutable_marketmonitornoticebean();
+  void set_allocated_marketmonitornoticebean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* value);
+  void unsafe_arena_set_allocated_marketmonitornoticebean(::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* value);
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* unsafe_arena_release_marketmonitornoticebean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean& _internal_marketmonitornoticebean() const;
+  ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* _internal_mutable_marketmonitornoticebean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolInfoBean selfSelectedSymbolInfoBean = 21;
+  bool has_selfselectedsymbolinfobean() const;
+  private:
+  bool _internal_has_selfselectedsymbolinfobean() const;
+
+  public:
+  void clear_selfselectedsymbolinfobean() ;
+  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean& selfselectedsymbolinfobean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* release_selfselectedsymbolinfobean();
+  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* mutable_selfselectedsymbolinfobean();
+  void set_allocated_selfselectedsymbolinfobean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* value);
+  void unsafe_arena_set_allocated_selfselectedsymbolinfobean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* value);
+  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* unsafe_arena_release_selfselectedsymbolinfobean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean& _internal_selfselectedsymbolinfobean() const;
+  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* _internal_mutable_selfselectedsymbolinfobean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.SelfSelectedSymbolGroupBean selfSelectedSymbolGroupBean = 22;
+  bool has_selfselectedsymbolgroupbean() const;
+  private:
+  bool _internal_has_selfselectedsymbolgroupbean() const;
+
+  public:
+  void clear_selfselectedsymbolgroupbean() ;
+  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean& selfselectedsymbolgroupbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* release_selfselectedsymbolgroupbean();
+  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* mutable_selfselectedsymbolgroupbean();
+  void set_allocated_selfselectedsymbolgroupbean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* value);
+  void unsafe_arena_set_allocated_selfselectedsymbolgroupbean(::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* value);
+  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* unsafe_arena_release_selfselectedsymbolgroupbean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean& _internal_selfselectedsymbolgroupbean() const;
+  ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* _internal_mutable_selfselectedsymbolgroupbean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.ResSelfSelectedSymbol resSelfSelectedSymbol = 23;
+  bool has_resselfselectedsymbol() const;
+  private:
+  bool _internal_has_resselfselectedsymbol() const;
+
+  public:
+  void clear_resselfselectedsymbol() ;
+  const ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol& resselfselectedsymbol() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* release_resselfselectedsymbol();
+  ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* mutable_resselfselectedsymbol();
+  void set_allocated_resselfselectedsymbol(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* value);
+  void unsafe_arena_set_allocated_resselfselectedsymbol(::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* value);
+  ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* unsafe_arena_release_resselfselectedsymbol();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol& _internal_resselfselectedsymbol() const;
+  ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* _internal_mutable_resselfselectedsymbol();
+
+  public:
+  // .lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean marketPreviewIntervalDataBean = 24;
+  bool has_marketpreviewintervaldatabean() const;
+  private:
+  bool _internal_has_marketpreviewintervaldatabean() const;
+
+  public:
+  void clear_marketpreviewintervaldatabean() ;
+  const ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean& marketpreviewintervaldatabean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* release_marketpreviewintervaldatabean();
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* mutable_marketpreviewintervaldatabean();
+  void set_allocated_marketpreviewintervaldatabean(::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* value);
+  void unsafe_arena_set_allocated_marketpreviewintervaldatabean(::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* value);
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* unsafe_arena_release_marketpreviewintervaldatabean();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean& _internal_marketpreviewintervaldatabean() const;
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* _internal_mutable_marketpreviewintervaldatabean();
+
+  public:
+  // .lampyris.crypto.protocol.quote.ResMarketPreviewData resMarketPreviewData = 25;
+  bool has_resmarketpreviewdata() const;
+  private:
+  bool _internal_has_resmarketpreviewdata() const;
+
+  public:
+  void clear_resmarketpreviewdata() ;
+  const ::lampyris::crypto::protocol::quote::ResMarketPreviewData& resmarketpreviewdata() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::quote::ResMarketPreviewData* release_resmarketpreviewdata();
+  ::lampyris::crypto::protocol::quote::ResMarketPreviewData* mutable_resmarketpreviewdata();
+  void set_allocated_resmarketpreviewdata(::lampyris::crypto::protocol::quote::ResMarketPreviewData* value);
+  void unsafe_arena_set_allocated_resmarketpreviewdata(::lampyris::crypto::protocol::quote::ResMarketPreviewData* value);
+  ::lampyris::crypto::protocol::quote::ResMarketPreviewData* unsafe_arena_release_resmarketpreviewdata();
+
+  private:
+  const ::lampyris::crypto::protocol::quote::ResMarketPreviewData& _internal_resmarketpreviewdata() const;
+  ::lampyris::crypto::protocol::quote::ResMarketPreviewData* _internal_mutable_resmarketpreviewdata();
+
+  public:
+  // .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 26;
+  bool has_streategyconfigbean() const;
+  private:
+  bool _internal_has_streategyconfigbean() const;
+
+  public:
+  void clear_streategyconfigbean() ;
+  const ::lampyris::crypto::protocol::strategy::StreategyConfigBean& streategyconfigbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::StreategyConfigBean* release_streategyconfigbean();
+  ::lampyris::crypto::protocol::strategy::StreategyConfigBean* mutable_streategyconfigbean();
+  void set_allocated_streategyconfigbean(::lampyris::crypto::protocol::strategy::StreategyConfigBean* value);
+  void unsafe_arena_set_allocated_streategyconfigbean(::lampyris::crypto::protocol::strategy::StreategyConfigBean* value);
+  ::lampyris::crypto::protocol::strategy::StreategyConfigBean* unsafe_arena_release_streategyconfigbean();
+
+  private:
+  const ::lampyris::crypto::protocol::strategy::StreategyConfigBean& _internal_streategyconfigbean() const;
+  ::lampyris::crypto::protocol::strategy::StreategyConfigBean* _internal_mutable_streategyconfigbean();
+
+  public:
+  // .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 27;
+  bool has_streategyfieldbean() const;
+  private:
+  bool _internal_has_streategyfieldbean() const;
+
+  public:
+  void clear_streategyfieldbean() ;
+  const ::lampyris::crypto::protocol::strategy::StreategyFieldBean& streategyfieldbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::StreategyFieldBean* release_streategyfieldbean();
+  ::lampyris::crypto::protocol::strategy::StreategyFieldBean* mutable_streategyfieldbean();
+  void set_allocated_streategyfieldbean(::lampyris::crypto::protocol::strategy::StreategyFieldBean* value);
+  void unsafe_arena_set_allocated_streategyfieldbean(::lampyris::crypto::protocol::strategy::StreategyFieldBean* value);
+  ::lampyris::crypto::protocol::strategy::StreategyFieldBean* unsafe_arena_release_streategyfieldbean();
+
+  private:
+  const ::lampyris::crypto::protocol::strategy::StreategyFieldBean& _internal_streategyfieldbean() const;
+  ::lampyris::crypto::protocol::strategy::StreategyFieldBean* _internal_mutable_streategyfieldbean();
+
+  public:
+  // .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 28;
+  bool has_resmodifystreategysetting() const;
+  private:
+  bool _internal_has_resmodifystreategysetting() const;
+
+  public:
+  void clear_resmodifystreategysetting() ;
+  const ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting& resmodifystreategysetting() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* release_resmodifystreategysetting();
+  ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* mutable_resmodifystreategysetting();
+  void set_allocated_resmodifystreategysetting(::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* value);
+  void unsafe_arena_set_allocated_resmodifystreategysetting(::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* value);
+  ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* unsafe_arena_release_resmodifystreategysetting();
+
+  private:
+  const ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting& _internal_resmodifystreategysetting() const;
+  ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* _internal_mutable_resmodifystreategysetting();
+
+  public:
+  // .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 29;
+  bool has_resstreategysettings() const;
+  private:
+  bool _internal_has_resstreategysettings() const;
+
+  public:
+  void clear_resstreategysettings() ;
+  const ::lampyris::crypto::protocol::strategy::ResStreategySettings& resstreategysettings() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::ResStreategySettings* release_resstreategysettings();
+  ::lampyris::crypto::protocol::strategy::ResStreategySettings* mutable_resstreategysettings();
+  void set_allocated_resstreategysettings(::lampyris::crypto::protocol::strategy::ResStreategySettings* value);
+  void unsafe_arena_set_allocated_resstreategysettings(::lampyris::crypto::protocol::strategy::ResStreategySettings* value);
+  ::lampyris::crypto::protocol::strategy::ResStreategySettings* unsafe_arena_release_resstreategysettings();
+
+  private:
+  const ::lampyris::crypto::protocol::strategy::ResStreategySettings& _internal_resstreategysettings() const;
+  ::lampyris::crypto::protocol::strategy::ResStreategySettings* _internal_mutable_resstreategysettings();
+
+  public:
+  // .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 30;
+  bool has_strategyexectioninfobean() const;
+  private:
+  bool _internal_has_strategyexectioninfobean() const;
+
+  public:
+  void clear_strategyexectioninfobean() ;
+  const ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean& strategyexectioninfobean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* release_strategyexectioninfobean();
+  ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* mutable_strategyexectioninfobean();
+  void set_allocated_strategyexectioninfobean(::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* value);
+  void unsafe_arena_set_allocated_strategyexectioninfobean(::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* value);
+  ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* unsafe_arena_release_strategyexectioninfobean();
+
+  private:
+  const ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean& _internal_strategyexectioninfobean() const;
+  ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* _internal_mutable_strategyexectioninfobean();
+
+  public:
+  // .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 31;
+  bool has_resquerystrategyexectioninfo() const;
+  private:
+  bool _internal_has_resquerystrategyexectioninfo() const;
+
+  public:
+  void clear_resquerystrategyexectioninfo() ;
+  const ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo& resquerystrategyexectioninfo() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* release_resquerystrategyexectioninfo();
+  ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* mutable_resquerystrategyexectioninfo();
+  void set_allocated_resquerystrategyexectioninfo(::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* value);
+  void unsafe_arena_set_allocated_resquerystrategyexectioninfo(::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* value);
+  ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* unsafe_arena_release_resquerystrategyexectioninfo();
+
+  private:
+  const ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo& _internal_resquerystrategyexectioninfo() const;
+  ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* _internal_mutable_resquerystrategyexectioninfo();
+
+  public:
+  // .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 32;
+  bool has_conditiontriggerbean() const;
+  private:
+  bool _internal_has_conditiontriggerbean() const;
+
+  public:
+  void clear_conditiontriggerbean() ;
+  const ::lampyris::crypto::protocol::trading::ConditionTriggerBean& conditiontriggerbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ConditionTriggerBean* release_conditiontriggerbean();
+  ::lampyris::crypto::protocol::trading::ConditionTriggerBean* mutable_conditiontriggerbean();
+  void set_allocated_conditiontriggerbean(::lampyris::crypto::protocol::trading::ConditionTriggerBean* value);
+  void unsafe_arena_set_allocated_conditiontriggerbean(::lampyris::crypto::protocol::trading::ConditionTriggerBean* value);
+  ::lampyris::crypto::protocol::trading::ConditionTriggerBean* unsafe_arena_release_conditiontriggerbean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::ConditionTriggerBean& _internal_conditiontriggerbean() const;
+  ::lampyris::crypto::protocol::trading::ConditionTriggerBean* _internal_mutable_conditiontriggerbean();
+
+  public:
+  // .lampyris.crypto.protocol.trading.OrderBean orderBean = 33;
+  bool has_orderbean() const;
+  private:
+  bool _internal_has_orderbean() const;
+
+  public:
+  void clear_orderbean() ;
+  const ::lampyris::crypto::protocol::trading::OrderBean& orderbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::OrderBean* release_orderbean();
+  ::lampyris::crypto::protocol::trading::OrderBean* mutable_orderbean();
+  void set_allocated_orderbean(::lampyris::crypto::protocol::trading::OrderBean* value);
+  void unsafe_arena_set_allocated_orderbean(::lampyris::crypto::protocol::trading::OrderBean* value);
+  ::lampyris::crypto::protocol::trading::OrderBean* unsafe_arena_release_orderbean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::OrderBean& _internal_orderbean() const;
+  ::lampyris::crypto::protocol::trading::OrderBean* _internal_mutable_orderbean();
+
+  public:
+  // .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 34;
+  bool has_orderstatusbean() const;
+  private:
+  bool _internal_has_orderstatusbean() const;
+
+  public:
+  void clear_orderstatusbean() ;
+  const ::lampyris::crypto::protocol::trading::OrderStatusBean& orderstatusbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::OrderStatusBean* release_orderstatusbean();
+  ::lampyris::crypto::protocol::trading::OrderStatusBean* mutable_orderstatusbean();
+  void set_allocated_orderstatusbean(::lampyris::crypto::protocol::trading::OrderStatusBean* value);
+  void unsafe_arena_set_allocated_orderstatusbean(::lampyris::crypto::protocol::trading::OrderStatusBean* value);
+  ::lampyris::crypto::protocol::trading::OrderStatusBean* unsafe_arena_release_orderstatusbean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::OrderStatusBean& _internal_orderstatusbean() const;
+  ::lampyris::crypto::protocol::trading::OrderStatusBean* _internal_mutable_orderstatusbean();
+
+  public:
+  // .lampyris.crypto.protocol.trading.ResQueryOrders resQueryOrders = 35;
+  bool has_resqueryorders() const;
+  private:
+  bool _internal_has_resqueryorders() const;
+
+  public:
+  void clear_resqueryorders() ;
+  const ::lampyris::crypto::protocol::trading::ResQueryOrders& resqueryorders() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ResQueryOrders* release_resqueryorders();
+  ::lampyris::crypto::protocol::trading::ResQueryOrders* mutable_resqueryorders();
+  void set_allocated_resqueryorders(::lampyris::crypto::protocol::trading::ResQueryOrders* value);
+  void unsafe_arena_set_allocated_resqueryorders(::lampyris::crypto::protocol::trading::ResQueryOrders* value);
+  ::lampyris::crypto::protocol::trading::ResQueryOrders* unsafe_arena_release_resqueryorders();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::ResQueryOrders& _internal_resqueryorders() const;
+  ::lampyris::crypto::protocol::trading::ResQueryOrders* _internal_mutable_resqueryorders();
+
+  public:
+  // .lampyris.crypto.protocol.trading.PositionBean positionBean = 36;
+  bool has_positionbean() const;
+  private:
+  bool _internal_has_positionbean() const;
+
+  public:
+  void clear_positionbean() ;
+  const ::lampyris::crypto::protocol::trading::PositionBean& positionbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::PositionBean* release_positionbean();
+  ::lampyris::crypto::protocol::trading::PositionBean* mutable_positionbean();
+  void set_allocated_positionbean(::lampyris::crypto::protocol::trading::PositionBean* value);
+  void unsafe_arena_set_allocated_positionbean(::lampyris::crypto::protocol::trading::PositionBean* value);
+  ::lampyris::crypto::protocol::trading::PositionBean* unsafe_arena_release_positionbean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::PositionBean& _internal_positionbean() const;
+  ::lampyris::crypto::protocol::trading::PositionBean* _internal_mutable_positionbean();
+
+  public:
+  // .lampyris.crypto.protocol.trading.ResQueryPositions resQueryPositions = 37;
+  bool has_resquerypositions() const;
+  private:
+  bool _internal_has_resquerypositions() const;
+
+  public:
+  void clear_resquerypositions() ;
+  const ::lampyris::crypto::protocol::trading::ResQueryPositions& resquerypositions() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ResQueryPositions* release_resquerypositions();
+  ::lampyris::crypto::protocol::trading::ResQueryPositions* mutable_resquerypositions();
+  void set_allocated_resquerypositions(::lampyris::crypto::protocol::trading::ResQueryPositions* value);
+  void unsafe_arena_set_allocated_resquerypositions(::lampyris::crypto::protocol::trading::ResQueryPositions* value);
+  ::lampyris::crypto::protocol::trading::ResQueryPositions* unsafe_arena_release_resquerypositions();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::ResQueryPositions& _internal_resquerypositions() const;
+  ::lampyris::crypto::protocol::trading::ResQueryPositions* _internal_mutable_resquerypositions();
+
+  public:
+  // .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 38;
+  bool has_leveragebean() const;
+  private:
+  bool _internal_has_leveragebean() const;
+
+  public:
+  void clear_leveragebean() ;
+  const ::lampyris::crypto::protocol::trading::LeverageBean& leveragebean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::LeverageBean* release_leveragebean();
+  ::lampyris::crypto::protocol::trading::LeverageBean* mutable_leveragebean();
+  void set_allocated_leveragebean(::lampyris::crypto::protocol::trading::LeverageBean* value);
+  void unsafe_arena_set_allocated_leveragebean(::lampyris::crypto::protocol::trading::LeverageBean* value);
+  ::lampyris::crypto::protocol::trading::LeverageBean* unsafe_arena_release_leveragebean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::LeverageBean& _internal_leveragebean() const;
+  ::lampyris::crypto::protocol::trading::LeverageBean* _internal_mutable_leveragebean();
+
+  public:
+  // .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 39;
+  bool has_resqueryleverage() const;
+  private:
+  bool _internal_has_resqueryleverage() const;
+
+  public:
+  void clear_resqueryleverage() ;
+  const ::lampyris::crypto::protocol::trading::ResQueryLeverage& resqueryleverage() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ResQueryLeverage* release_resqueryleverage();
+  ::lampyris::crypto::protocol::trading::ResQueryLeverage* mutable_resqueryleverage();
+  void set_allocated_resqueryleverage(::lampyris::crypto::protocol::trading::ResQueryLeverage* value);
+  void unsafe_arena_set_allocated_resqueryleverage(::lampyris::crypto::protocol::trading::ResQueryLeverage* value);
+  ::lampyris::crypto::protocol::trading::ResQueryLeverage* unsafe_arena_release_resqueryleverage();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::ResQueryLeverage& _internal_resqueryleverage() const;
+  ::lampyris::crypto::protocol::trading::ResQueryLeverage* _internal_mutable_resqueryleverage();
+
+  public:
+  // .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 40;
+  bool has_resqueryleveragebracket() const;
+  private:
+  bool _internal_has_resqueryleveragebracket() const;
+
+  public:
+  void clear_resqueryleveragebracket() ;
+  const ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket& resqueryleveragebracket() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* release_resqueryleveragebracket();
+  ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* mutable_resqueryleveragebracket();
+  void set_allocated_resqueryleveragebracket(::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* value);
+  void unsafe_arena_set_allocated_resqueryleveragebracket(::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* value);
+  ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* unsafe_arena_release_resqueryleveragebracket();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket& _internal_resqueryleveragebracket() const;
+  ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* _internal_mutable_resqueryleveragebracket();
+
+  public:
+  // .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 41;
+  bool has_symbolleveragebracketbean() const;
+  private:
+  bool _internal_has_symbolleveragebracketbean() const;
+
+  public:
+  void clear_symbolleveragebracketbean() ;
+  const ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean& symbolleveragebracketbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* release_symbolleveragebracketbean();
+  ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* mutable_symbolleveragebracketbean();
+  void set_allocated_symbolleveragebracketbean(::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* value);
+  void unsafe_arena_set_allocated_symbolleveragebracketbean(::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* value);
+  ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* unsafe_arena_release_symbolleveragebracketbean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean& _internal_symbolleveragebracketbean() const;
+  ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* _internal_mutable_symbolleveragebracketbean();
+
+  public:
+  // .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 42;
+  bool has_leveragebracketbean() const;
+  private:
+  bool _internal_has_leveragebracketbean() const;
+
+  public:
+  void clear_leveragebracketbean() ;
+  const ::lampyris::crypto::protocol::trading::LeverageBracketBean& leveragebracketbean() const;
+  PROTOBUF_NODISCARD ::lampyris::crypto::protocol::trading::LeverageBracketBean* release_leveragebracketbean();
+  ::lampyris::crypto::protocol::trading::LeverageBracketBean* mutable_leveragebracketbean();
+  void set_allocated_leveragebracketbean(::lampyris::crypto::protocol::trading::LeverageBracketBean* value);
+  void unsafe_arena_set_allocated_leveragebracketbean(::lampyris::crypto::protocol::trading::LeverageBracketBean* value);
+  ::lampyris::crypto::protocol::trading::LeverageBracketBean* unsafe_arena_release_leveragebracketbean();
+
+  private:
+  const ::lampyris::crypto::protocol::trading::LeverageBracketBean& _internal_leveragebracketbean() const;
+  ::lampyris::crypto::protocol::trading::LeverageBracketBean* _internal_mutable_leveragebracketbean();
+
+  public:
+  void clear_response_type();
+  ResponseTypeCase response_type_case() const;
+  // @@protoc_insertion_point(class_scope:lampyris.crypto.protocol.common.Response)
+ private:
+  class _Internal;
+  void set_has_accountassetinfobean();
+  void set_has_subaccountinfobean();
+  void set_has_resquerysubacccountlist();
+  void set_has_resaccountsummaryupdate();
+  void set_has_assettransferhistoryinfodetailbean();
+  void set_has_assettransferhistoryinfobean();
+  void set_has_reslogin();
+  void set_has_resheartbeat();
+  void set_has_resnotice();
+  void set_has_symboltickerdatabean();
+  void set_has_ressubscribetickerdata();
+  void set_has_symboltradedatabean();
+  void set_has_tradedatabean();
+  void set_has_rescandlestickquery();
+  void set_has_candlestickupdatebean();
+  void set_has_candlestickbean();
+  void set_has_restraderule();
+  void set_has_symboltraderulebean();
+  void set_has_marketmonitornoticelistbean();
+  void set_has_marketmonitornoticebean();
+  void set_has_selfselectedsymbolinfobean();
+  void set_has_selfselectedsymbolgroupbean();
+  void set_has_resselfselectedsymbol();
+  void set_has_marketpreviewintervaldatabean();
+  void set_has_resmarketpreviewdata();
+  void set_has_streategyconfigbean();
+  void set_has_streategyfieldbean();
+  void set_has_resmodifystreategysetting();
+  void set_has_resstreategysettings();
+  void set_has_strategyexectioninfobean();
+  void set_has_resquerystrategyexectioninfo();
+  void set_has_conditiontriggerbean();
+  void set_has_orderbean();
+  void set_has_orderstatusbean();
+  void set_has_resqueryorders();
+  void set_has_positionbean();
+  void set_has_resquerypositions();
+  void set_has_leveragebean();
+  void set_has_resqueryleverage();
+  void set_has_resqueryleveragebracket();
+  void set_has_symbolleveragebracketbean();
+  void set_has_leveragebracketbean();
+  inline bool has_response_type() const;
+  inline void clear_has_response_type();
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 42, 42,
+      0, 7>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Response& from_msg);
+    union ResponseTypeUnion {
+      constexpr ResponseTypeUnion() : _constinit_{} {}
+      ::google::protobuf::internal::ConstantInitialized _constinit_;
+      ::lampyris::crypto::protocol::account::AccountAssetInfoBean* accountassetinfobean_;
+      ::lampyris::crypto::protocol::account::SubAccountInfoBean* subaccountinfobean_;
+      ::lampyris::crypto::protocol::account::ResQuerySubAcccountList* resquerysubacccountlist_;
+      ::lampyris::crypto::protocol::account::ResAccountSummaryUpdate* resaccountsummaryupdate_;
+      ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoDetailBean* assettransferhistoryinfodetailbean_;
+      ::lampyris::crypto::protocol::account::AssetTransferHistoryInfoBean* assettransferhistoryinfobean_;
+      ::lampyris::crypto::protocol::app::ResLogin* reslogin_;
+      ::lampyris::crypto::protocol::app::ResHeartBeat* resheartbeat_;
+      ::lampyris::crypto::protocol::app::ResNotice* resnotice_;
+      ::lampyris::crypto::protocol::quote::SymbolTickerDataBean* symboltickerdatabean_;
+      ::lampyris::crypto::protocol::quote::ResSubscribeTickerData* ressubscribetickerdata_;
+      ::lampyris::crypto::protocol::quote::SymbolTradeDataBean* symboltradedatabean_;
+      ::lampyris::crypto::protocol::quote::TradeDataBean* tradedatabean_;
+      ::lampyris::crypto::protocol::quote::ResCandlestickQuery* rescandlestickquery_;
+      ::lampyris::crypto::protocol::quote::CandlestickUpdateBean* candlestickupdatebean_;
+      ::lampyris::crypto::protocol::quote::CandlestickBean* candlestickbean_;
+      ::lampyris::crypto::protocol::quote::ResTradeRule* restraderule_;
+      ::lampyris::crypto::protocol::quote::SymbolTradeRuleBean* symboltraderulebean_;
+      ::lampyris::crypto::protocol::quote::MarketMonitorNoticeListBean* marketmonitornoticelistbean_;
+      ::lampyris::crypto::protocol::quote::MarketMonitorNoticeBean* marketmonitornoticebean_;
+      ::lampyris::crypto::protocol::quote::SelfSelectedSymbolInfoBean* selfselectedsymbolinfobean_;
+      ::lampyris::crypto::protocol::quote::SelfSelectedSymbolGroupBean* selfselectedsymbolgroupbean_;
+      ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* resselfselectedsymbol_;
+      ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* marketpreviewintervaldatabean_;
+      ::lampyris::crypto::protocol::quote::ResMarketPreviewData* resmarketpreviewdata_;
+      ::lampyris::crypto::protocol::strategy::StreategyConfigBean* streategyconfigbean_;
+      ::lampyris::crypto::protocol::strategy::StreategyFieldBean* streategyfieldbean_;
+      ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* resmodifystreategysetting_;
+      ::lampyris::crypto::protocol::strategy::ResStreategySettings* resstreategysettings_;
+      ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* strategyexectioninfobean_;
+      ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* resquerystrategyexectioninfo_;
+      ::lampyris::crypto::protocol::trading::ConditionTriggerBean* conditiontriggerbean_;
+      ::lampyris::crypto::protocol::trading::OrderBean* orderbean_;
+      ::lampyris::crypto::protocol::trading::OrderStatusBean* orderstatusbean_;
+      ::lampyris::crypto::protocol::trading::ResQueryOrders* resqueryorders_;
+      ::lampyris::crypto::protocol::trading::PositionBean* positionbean_;
+      ::lampyris::crypto::protocol::trading::ResQueryPositions* resquerypositions_;
+      ::lampyris::crypto::protocol::trading::LeverageBean* leveragebean_;
+      ::lampyris::crypto::protocol::trading::ResQueryLeverage* resqueryleverage_;
+      ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* resqueryleveragebracket_;
+      ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* symbolleveragebracketbean_;
+      ::lampyris::crypto::protocol::trading::LeverageBracketBean* leveragebracketbean_;
+    } response_type_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -5183,7 +5298,143 @@ inline ::lampyris::crypto::protocol::quote::ResSelfSelectedSymbol* Response::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 24;
+// .lampyris.crypto.protocol.quote.MarketPreviewIntervalDataBean marketPreviewIntervalDataBean = 24;
+inline bool Response::has_marketpreviewintervaldatabean() const {
+  return response_type_case() == kMarketPreviewIntervalDataBean;
+}
+inline bool Response::_internal_has_marketpreviewintervaldatabean() const {
+  return response_type_case() == kMarketPreviewIntervalDataBean;
+}
+inline void Response::set_has_marketpreviewintervaldatabean() {
+  _impl_._oneof_case_[0] = kMarketPreviewIntervalDataBean;
+}
+inline ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* Response::release_marketpreviewintervaldatabean() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.marketPreviewIntervalDataBean)
+  if (response_type_case() == kMarketPreviewIntervalDataBean) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.marketpreviewintervaldatabean_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.marketpreviewintervaldatabean_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean& Response::_internal_marketpreviewintervaldatabean() const {
+  return response_type_case() == kMarketPreviewIntervalDataBean ? *_impl_.response_type_.marketpreviewintervaldatabean_ : reinterpret_cast<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean&>(::lampyris::crypto::protocol::quote::_MarketPreviewIntervalDataBean_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean& Response::marketpreviewintervaldatabean() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.marketPreviewIntervalDataBean)
+  return _internal_marketpreviewintervaldatabean();
+}
+inline ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* Response::unsafe_arena_release_marketpreviewintervaldatabean() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.marketPreviewIntervalDataBean)
+  if (response_type_case() == kMarketPreviewIntervalDataBean) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.marketpreviewintervaldatabean_;
+    _impl_.response_type_.marketpreviewintervaldatabean_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_marketpreviewintervaldatabean(::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_marketpreviewintervaldatabean();
+    _impl_.response_type_.marketpreviewintervaldatabean_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.marketPreviewIntervalDataBean)
+}
+inline ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* Response::_internal_mutable_marketpreviewintervaldatabean() {
+  if (response_type_case() != kMarketPreviewIntervalDataBean) {
+    clear_response_type();
+    set_has_marketpreviewintervaldatabean();
+    _impl_.response_type_.marketpreviewintervaldatabean_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean>(GetArena());
+  }
+  return _impl_.response_type_.marketpreviewintervaldatabean_;
+}
+inline ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* Response::mutable_marketpreviewintervaldatabean() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::quote::MarketPreviewIntervalDataBean* _msg = _internal_mutable_marketpreviewintervaldatabean();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.marketPreviewIntervalDataBean)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.quote.ResMarketPreviewData resMarketPreviewData = 25;
+inline bool Response::has_resmarketpreviewdata() const {
+  return response_type_case() == kResMarketPreviewData;
+}
+inline bool Response::_internal_has_resmarketpreviewdata() const {
+  return response_type_case() == kResMarketPreviewData;
+}
+inline void Response::set_has_resmarketpreviewdata() {
+  _impl_._oneof_case_[0] = kResMarketPreviewData;
+}
+inline ::lampyris::crypto::protocol::quote::ResMarketPreviewData* Response::release_resmarketpreviewdata() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resMarketPreviewData)
+  if (response_type_case() == kResMarketPreviewData) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resmarketpreviewdata_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.resmarketpreviewdata_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::quote::ResMarketPreviewData& Response::_internal_resmarketpreviewdata() const {
+  return response_type_case() == kResMarketPreviewData ? *_impl_.response_type_.resmarketpreviewdata_ : reinterpret_cast<::lampyris::crypto::protocol::quote::ResMarketPreviewData&>(::lampyris::crypto::protocol::quote::_ResMarketPreviewData_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::quote::ResMarketPreviewData& Response::resmarketpreviewdata() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resMarketPreviewData)
+  return _internal_resmarketpreviewdata();
+}
+inline ::lampyris::crypto::protocol::quote::ResMarketPreviewData* Response::unsafe_arena_release_resmarketpreviewdata() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resMarketPreviewData)
+  if (response_type_case() == kResMarketPreviewData) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resmarketpreviewdata_;
+    _impl_.response_type_.resmarketpreviewdata_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_resmarketpreviewdata(::lampyris::crypto::protocol::quote::ResMarketPreviewData* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_resmarketpreviewdata();
+    _impl_.response_type_.resmarketpreviewdata_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resMarketPreviewData)
+}
+inline ::lampyris::crypto::protocol::quote::ResMarketPreviewData* Response::_internal_mutable_resmarketpreviewdata() {
+  if (response_type_case() != kResMarketPreviewData) {
+    clear_response_type();
+    set_has_resmarketpreviewdata();
+    _impl_.response_type_.resmarketpreviewdata_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::quote::ResMarketPreviewData>(GetArena());
+  }
+  return _impl_.response_type_.resmarketpreviewdata_;
+}
+inline ::lampyris::crypto::protocol::quote::ResMarketPreviewData* Response::mutable_resmarketpreviewdata() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::quote::ResMarketPreviewData* _msg = _internal_mutable_resmarketpreviewdata();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resMarketPreviewData)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.strategy.StreategyConfigBean streategyConfigBean = 26;
 inline bool Response::has_streategyconfigbean() const {
   return response_type_case() == kStreategyConfigBean;
 }
@@ -5251,7 +5502,7 @@ inline ::lampyris::crypto::protocol::strategy::StreategyConfigBean* Response::mu
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 25;
+// .lampyris.crypto.protocol.strategy.StreategyFieldBean streategyFieldBean = 27;
 inline bool Response::has_streategyfieldbean() const {
   return response_type_case() == kStreategyFieldBean;
 }
@@ -5319,7 +5570,7 @@ inline ::lampyris::crypto::protocol::strategy::StreategyFieldBean* Response::mut
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 26;
+// .lampyris.crypto.protocol.strategy.ResModifyStreategySetting resModifyStreategySetting = 28;
 inline bool Response::has_resmodifystreategysetting() const {
   return response_type_case() == kResModifyStreategySetting;
 }
@@ -5387,7 +5638,7 @@ inline ::lampyris::crypto::protocol::strategy::ResModifyStreategySetting* Respon
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 27;
+// .lampyris.crypto.protocol.strategy.ResStreategySettings resStreategySettings = 29;
 inline bool Response::has_resstreategysettings() const {
   return response_type_case() == kResStreategySettings;
 }
@@ -5455,7 +5706,7 @@ inline ::lampyris::crypto::protocol::strategy::ResStreategySettings* Response::m
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 28;
+// .lampyris.crypto.protocol.strategy.StrategyExectionInfoBean strategyExectionInfoBean = 30;
 inline bool Response::has_strategyexectioninfobean() const {
   return response_type_case() == kStrategyExectionInfoBean;
 }
@@ -5523,7 +5774,7 @@ inline ::lampyris::crypto::protocol::strategy::StrategyExectionInfoBean* Respons
   return _msg;
 }
 
-// .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 29;
+// .lampyris.crypto.protocol.strategy.ResQueryStrategyExectionInfo resQueryStrategyExectionInfo = 31;
 inline bool Response::has_resquerystrategyexectioninfo() const {
   return response_type_case() == kResQueryStrategyExectionInfo;
 }
@@ -5591,7 +5842,7 @@ inline ::lampyris::crypto::protocol::strategy::ResQueryStrategyExectionInfo* Res
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 30;
+// .lampyris.crypto.protocol.trading.ConditionTriggerBean conditionTriggerBean = 32;
 inline bool Response::has_conditiontriggerbean() const {
   return response_type_case() == kConditionTriggerBean;
 }
@@ -5659,7 +5910,7 @@ inline ::lampyris::crypto::protocol::trading::ConditionTriggerBean* Response::mu
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.OrderBean orderBean = 31;
+// .lampyris.crypto.protocol.trading.OrderBean orderBean = 33;
 inline bool Response::has_orderbean() const {
   return response_type_case() == kOrderBean;
 }
@@ -5727,7 +5978,7 @@ inline ::lampyris::crypto::protocol::trading::OrderBean* Response::mutable_order
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 32;
+// .lampyris.crypto.protocol.trading.OrderStatusBean orderStatusBean = 34;
 inline bool Response::has_orderstatusbean() const {
   return response_type_case() == kOrderStatusBean;
 }
@@ -5795,7 +6046,211 @@ inline ::lampyris::crypto::protocol::trading::OrderStatusBean* Response::mutable
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 33;
+// .lampyris.crypto.protocol.trading.ResQueryOrders resQueryOrders = 35;
+inline bool Response::has_resqueryorders() const {
+  return response_type_case() == kResQueryOrders;
+}
+inline bool Response::_internal_has_resqueryorders() const {
+  return response_type_case() == kResQueryOrders;
+}
+inline void Response::set_has_resqueryorders() {
+  _impl_._oneof_case_[0] = kResQueryOrders;
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryOrders* Response::release_resqueryorders() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resQueryOrders)
+  if (response_type_case() == kResQueryOrders) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resqueryorders_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.resqueryorders_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::trading::ResQueryOrders& Response::_internal_resqueryorders() const {
+  return response_type_case() == kResQueryOrders ? *_impl_.response_type_.resqueryorders_ : reinterpret_cast<::lampyris::crypto::protocol::trading::ResQueryOrders&>(::lampyris::crypto::protocol::trading::_ResQueryOrders_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::trading::ResQueryOrders& Response::resqueryorders() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resQueryOrders)
+  return _internal_resqueryorders();
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryOrders* Response::unsafe_arena_release_resqueryorders() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resQueryOrders)
+  if (response_type_case() == kResQueryOrders) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resqueryorders_;
+    _impl_.response_type_.resqueryorders_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_resqueryorders(::lampyris::crypto::protocol::trading::ResQueryOrders* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_resqueryorders();
+    _impl_.response_type_.resqueryorders_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resQueryOrders)
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryOrders* Response::_internal_mutable_resqueryorders() {
+  if (response_type_case() != kResQueryOrders) {
+    clear_response_type();
+    set_has_resqueryorders();
+    _impl_.response_type_.resqueryorders_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::trading::ResQueryOrders>(GetArena());
+  }
+  return _impl_.response_type_.resqueryorders_;
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryOrders* Response::mutable_resqueryorders() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::trading::ResQueryOrders* _msg = _internal_mutable_resqueryorders();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resQueryOrders)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.trading.PositionBean positionBean = 36;
+inline bool Response::has_positionbean() const {
+  return response_type_case() == kPositionBean;
+}
+inline bool Response::_internal_has_positionbean() const {
+  return response_type_case() == kPositionBean;
+}
+inline void Response::set_has_positionbean() {
+  _impl_._oneof_case_[0] = kPositionBean;
+}
+inline ::lampyris::crypto::protocol::trading::PositionBean* Response::release_positionbean() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.positionBean)
+  if (response_type_case() == kPositionBean) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.positionbean_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.positionbean_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::trading::PositionBean& Response::_internal_positionbean() const {
+  return response_type_case() == kPositionBean ? *_impl_.response_type_.positionbean_ : reinterpret_cast<::lampyris::crypto::protocol::trading::PositionBean&>(::lampyris::crypto::protocol::trading::_PositionBean_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::trading::PositionBean& Response::positionbean() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.positionBean)
+  return _internal_positionbean();
+}
+inline ::lampyris::crypto::protocol::trading::PositionBean* Response::unsafe_arena_release_positionbean() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.positionBean)
+  if (response_type_case() == kPositionBean) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.positionbean_;
+    _impl_.response_type_.positionbean_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_positionbean(::lampyris::crypto::protocol::trading::PositionBean* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_positionbean();
+    _impl_.response_type_.positionbean_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.positionBean)
+}
+inline ::lampyris::crypto::protocol::trading::PositionBean* Response::_internal_mutable_positionbean() {
+  if (response_type_case() != kPositionBean) {
+    clear_response_type();
+    set_has_positionbean();
+    _impl_.response_type_.positionbean_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::trading::PositionBean>(GetArena());
+  }
+  return _impl_.response_type_.positionbean_;
+}
+inline ::lampyris::crypto::protocol::trading::PositionBean* Response::mutable_positionbean() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::trading::PositionBean* _msg = _internal_mutable_positionbean();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.positionBean)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.trading.ResQueryPositions resQueryPositions = 37;
+inline bool Response::has_resquerypositions() const {
+  return response_type_case() == kResQueryPositions;
+}
+inline bool Response::_internal_has_resquerypositions() const {
+  return response_type_case() == kResQueryPositions;
+}
+inline void Response::set_has_resquerypositions() {
+  _impl_._oneof_case_[0] = kResQueryPositions;
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryPositions* Response::release_resquerypositions() {
+  // @@protoc_insertion_point(field_release:lampyris.crypto.protocol.common.Response.resQueryPositions)
+  if (response_type_case() == kResQueryPositions) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resquerypositions_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.response_type_.resquerypositions_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::lampyris::crypto::protocol::trading::ResQueryPositions& Response::_internal_resquerypositions() const {
+  return response_type_case() == kResQueryPositions ? *_impl_.response_type_.resquerypositions_ : reinterpret_cast<::lampyris::crypto::protocol::trading::ResQueryPositions&>(::lampyris::crypto::protocol::trading::_ResQueryPositions_default_instance_);
+}
+inline const ::lampyris::crypto::protocol::trading::ResQueryPositions& Response::resquerypositions() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:lampyris.crypto.protocol.common.Response.resQueryPositions)
+  return _internal_resquerypositions();
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryPositions* Response::unsafe_arena_release_resquerypositions() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:lampyris.crypto.protocol.common.Response.resQueryPositions)
+  if (response_type_case() == kResQueryPositions) {
+    clear_has_response_type();
+    auto* temp = _impl_.response_type_.resquerypositions_;
+    _impl_.response_type_.resquerypositions_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Response::unsafe_arena_set_allocated_resquerypositions(::lampyris::crypto::protocol::trading::ResQueryPositions* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_response_type();
+  if (value) {
+    set_has_resquerypositions();
+    _impl_.response_type_.resquerypositions_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:lampyris.crypto.protocol.common.Response.resQueryPositions)
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryPositions* Response::_internal_mutable_resquerypositions() {
+  if (response_type_case() != kResQueryPositions) {
+    clear_response_type();
+    set_has_resquerypositions();
+    _impl_.response_type_.resquerypositions_ =
+        ::google::protobuf::Message::DefaultConstruct<::lampyris::crypto::protocol::trading::ResQueryPositions>(GetArena());
+  }
+  return _impl_.response_type_.resquerypositions_;
+}
+inline ::lampyris::crypto::protocol::trading::ResQueryPositions* Response::mutable_resquerypositions() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::lampyris::crypto::protocol::trading::ResQueryPositions* _msg = _internal_mutable_resquerypositions();
+  // @@protoc_insertion_point(field_mutable:lampyris.crypto.protocol.common.Response.resQueryPositions)
+  return _msg;
+}
+
+// .lampyris.crypto.protocol.trading.LeverageBean leverageBean = 38;
 inline bool Response::has_leveragebean() const {
   return response_type_case() == kLeverageBean;
 }
@@ -5863,7 +6318,7 @@ inline ::lampyris::crypto::protocol::trading::LeverageBean* Response::mutable_le
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 34;
+// .lampyris.crypto.protocol.trading.ResQueryLeverage resQueryLeverage = 39;
 inline bool Response::has_resqueryleverage() const {
   return response_type_case() == kResQueryLeverage;
 }
@@ -5931,7 +6386,7 @@ inline ::lampyris::crypto::protocol::trading::ResQueryLeverage* Response::mutabl
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 35;
+// .lampyris.crypto.protocol.trading.ResQueryLeverageBracket resQueryLeverageBracket = 40;
 inline bool Response::has_resqueryleveragebracket() const {
   return response_type_case() == kResQueryLeverageBracket;
 }
@@ -5999,7 +6454,7 @@ inline ::lampyris::crypto::protocol::trading::ResQueryLeverageBracket* Response:
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 36;
+// .lampyris.crypto.protocol.trading.SymbolLeverageBracketBean symbolLeverageBracketBean = 41;
 inline bool Response::has_symbolleveragebracketbean() const {
   return response_type_case() == kSymbolLeverageBracketBean;
 }
@@ -6067,7 +6522,7 @@ inline ::lampyris::crypto::protocol::trading::SymbolLeverageBracketBean* Respons
   return _msg;
 }
 
-// .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 37;
+// .lampyris.crypto.protocol.trading.LeverageBracketBean leverageBracketBean = 42;
 inline bool Response::has_leveragebracketbean() const {
   return response_type_case() == kLeverageBracketBean;
 }
