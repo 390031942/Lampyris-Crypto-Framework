@@ -16,4 +16,7 @@ public class MarketSummaryData
     // 前10名平均涨跌幅(相对时区 UTC+0)
     public double Top10AvgChangePerc;
     public double Last10AvgChangePerc;
+
+    // 主流币平均涨跌幅
+    public double MainStreamAvgChangePerc;
 }

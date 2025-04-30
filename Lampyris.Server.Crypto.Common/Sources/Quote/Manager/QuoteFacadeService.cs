@@ -14,6 +14,7 @@ public class QuoteFacadeService
     [Autowired]
     private WebSocketService m_WebSocketService;
 
+    #region Ticker订阅
     [MessageHandler(Request.RequestTypeOneofCase.ReqSubscribeTickerData)]
     public void ReqSubscribeTickerData(ClientUserInfo clientUserInfo, Request request)
     {
@@ -27,6 +28,7 @@ public class QuoteFacadeService
             });
         }
     }
+    #endregion
 
     [MessageHandler(Request.RequestTypeOneofCase.ReqCandlestickQuery)]
     public void ReqCandlestickQuery(ClientUserInfo clientUserInfo, Request request)
