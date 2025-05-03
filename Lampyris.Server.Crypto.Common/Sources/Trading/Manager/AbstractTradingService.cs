@@ -386,7 +386,7 @@ public abstract class AbstractTradingService:ILifecycle
 
     #region 外部更新接口
     /// <summary>
-    /// 更新订单状态，其只能在收到API消息时 被外部调用，不可以手动调用
+    /// 外部调用-更新订单状态，其只能在收到API消息时 被外部调用，不可以手动调用
     /// </summary>
     /// <param name="accountId">子账户ID</param>
     /// <param name="orderStatusInfo">订单状态</param>
@@ -396,7 +396,7 @@ public abstract class AbstractTradingService:ILifecycle
     }
 
     /// <summary>
-    /// 更新子账户的仓位信息，其只能在收到API消息时 被外部调用，不可以手动调用
+    /// 外部调用-更新子账户的仓位信息，其只能在收到API消息时 被外部调用，不可以手动调用
     /// </summary>
     /// <param name="accountId"></param>
     /// <param name="updateInfo"></param>
@@ -438,11 +438,36 @@ public abstract class AbstractTradingService:ILifecycle
     }
 
     /// <summary>
+    /// 外部调用-更新持仓的ADL自动减仓优先级
+    /// </summary>
+    /// <param name="accountId"></param>
+    /// <param name="symbol"></param>
+    /// <param name="v"></param>
+    /// <exception cref="NotImplementedException"></exception>
+    public void UpdateADLLevel(int accountId, string symbol, int adl)
+    {
+        if (m_SubAccountTradingDataMap.ContainsKey(accountId))
+        {
+            var tradingData = m_SubAccountTradingDataMap[accountId];
+            if (tradingData != null)
+            {
+                var positionInfo = tradingData.PositionInfoMap.GetValueOrDefault(symbol);
+                if (positionInfo == null)
+                {
+                    positionInfo = new PositionInfo();
+                    tradingData.PositionInfoMap[symbol] = positionInfo;
+                }
+
+                positionInfo.AutoDeleveragingLevel = adl;
+            }
+        }
+    }
+
+    /// <summary>
     /// 外部调用，设置清仓的交易对，记录"历史仓位"信息
     /// </summary>
     /// <param name="accountId"></param>
     /// <param name="symbol"></param>
-    /// <exception cref="NotImplementedException"></exception>
     public void SetClearedPositionForSymbol(int accountId, string symbol)
     {
         if (m_SymbolHistoricalPositionDataMap.ContainsKey(symbol))

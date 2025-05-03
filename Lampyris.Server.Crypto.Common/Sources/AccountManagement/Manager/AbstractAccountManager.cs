@@ -97,7 +97,16 @@ public abstract class AbstractAccountManagerBase:ILifecycle
     /// </summary>
     /// <param name="accountId">账户ID</param>
     /// <returns>账户资产信息</returns>
-    public abstract SubTradeAccountSummary GetSubTradeAccountSummary(int accountId);
+    public SubTradeAccountSummary GetSubTradeAccountSummary(int accountId)
+    {
+        return m_SubAccountIdContextDataMap.ContainsKey(accountId) ? 
+            m_SubAccountIdContextDataMap[accountId].AccountSummary : null;
+    }
+
+    /// <summary>
+    /// 更新账户相关信息
+    /// </summary>
+    protected abstract void APIUpdateSubTradeAccountInfoImpl();
 }
 
 /// <summary>

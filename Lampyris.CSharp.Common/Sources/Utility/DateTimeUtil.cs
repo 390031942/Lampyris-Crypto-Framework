@@ -22,4 +22,11 @@ public static class DateTimeUtil
     {
         return ToUnixTimestampMilliseconds(DateTime.Now);
     }
+
+    public static bool SecondEqual(DateTime lhs, DateTime rhs)
+    {
+        return lhs.Year == rhs.Year && lhs.Month == rhs.Month && lhs.Day == rhs.Day &&
+               lhs.Hour == rhs.Hour && lhs.Minute == rhs.Minute && lhs.Second == rhs.Second;
+    }
+
 }

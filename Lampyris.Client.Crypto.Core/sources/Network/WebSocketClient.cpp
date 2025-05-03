@@ -1,6 +1,13 @@
+// Project Include(s)
 #include "WebSocketClient.h"
+#include "WebSocketMessageHandlerRegistry.h"
+
+// QT Include(s)
 #include <QDebug>
 #include <QDataStream>
+#include <QDateTime>
+
+// Third-party Include(s)
 #include <zlib.h>
 
 WebSocketClient::WebSocketClient(QObject* parent) {
@@ -82,7 +89,7 @@ void WebSocketClient::onBinaryMessageReceived(const QByteArray& message) {
 
     Response response;
     if (response.ParseFromArray(decompressedData.data(), decompressedData.size())) {
-        qDebug() << "Received response:" << QString::fromStdString(response.DebugString());
+        WebSocketMessageHandlerRegistry::getInstance()->invokeHandler(response);
     }
     else {
         qDebug() << "Failed to parse response!";

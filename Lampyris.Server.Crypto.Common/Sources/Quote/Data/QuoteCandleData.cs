@@ -25,6 +25,18 @@ public class QuoteCandleData : IComparable<QuoteCandleData>
     [DBColumn("currency", "DOUBLE")] // 交易量（USDT）
     public double Currency { get; set; }
 
+    public double ChangePerc
+    {
+        get
+        {
+            if(Open != 0)
+            {
+                return (Close - Open) / Open;
+            }
+            return 0;
+        }
+
+    } 
     public int CompareTo(QuoteCandleData? other)
     {
         if (other == null)

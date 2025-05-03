@@ -35,6 +35,22 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         BarSize._1D,
     };
 
+    /// <summary>
+    /// Ticker更新事件
+    /// </summary>
+    /// <param name="dataList"></param>
+    public delegate void OnTickerUpdateHandler(IEnumerable<QuoteTickerData> dataList);
+    public OnTickerUpdateHandler OnTickerUpdated;
+
+    /// <summary>
+    /// K线更新事件
+    /// </summary>
+    /// <param name="symbol"></param>
+    /// <param name="barSize"></param>
+    /// <param name="isEnd"></param>
+    public delegate void OnCandleDataUpdateHandler(string symbol, BarSize barSize, bool isEnd);
+    public OnCandleDataUpdateHandler OnCandleDataUpdated;
+
     public override void OnStart()
     {
         Logger.LogInfo("Start to initialize Quote Provider Service, " +

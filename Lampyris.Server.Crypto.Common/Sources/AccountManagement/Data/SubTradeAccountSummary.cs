@@ -30,12 +30,7 @@ public class SubTradeAccountSummary
     /// <summary>
     /// 最大可提现数量
     /// </summary>
-    public string MaxWithdrawQuantity { get; set; }
-
-    /// <summary>
-    /// 关于账户持仓的信息
-    /// </summary>
-    public Dictionary<string,PositionInfo> Positions { get; set; } = new Dictionary<string,PositionInfo>();
+    public decimal MaxWithdrawQuantity { get; set; }
 
     /// <summary>
     /// 总初始保证金（表示账户中所有挂单和持仓所需的初始保证金总和）

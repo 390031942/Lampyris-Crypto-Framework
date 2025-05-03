@@ -1,14 +1,12 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
 using Lampyris.CSharp.Common;
-using System;
-using System.Reflection.Metadata;
 
-public class MovingAverageCalculator : IIndicatorCalculator<decimal>
+public class MovingAverage : IIndicatorCalculator
 {
     private readonly int m_Period;
 
-    public MovingAverageCalculator(int period)
+    public MovingAverage(int period)
     {
         m_Period = period;
     }
@@ -19,7 +17,7 @@ public class MovingAverageCalculator : IIndicatorCalculator<decimal>
     /// <param name="prices">价格循环列表</param>
     /// <param name="indicateValues">MA均线指标的值</param>
     /// <param name="append">是否追加</param>
-    public void CalculateAndStore(CircularQueue<decimal> prices, CircularQueue<decimal> indicateValues,bool append)
+    public void CalculateAndStore(CircularQueue<decimal> prices, CircularQueue<decimal[]> indicateValues, bool append)
     {
         if (prices.Count <= 0)
         {
@@ -36,11 +34,11 @@ public class MovingAverageCalculator : IIndicatorCalculator<decimal>
                 sum += prices[i];
                 if (i < m_Period)
                 {
-                    indicateValues.Enqueue(decimal.MaxValue);
+                    indicateValues.Enqueue(new decimal[] { decimal.MaxValue });
                 }
                 else
                 {
-                    indicateValues.Enqueue(sum / i);
+                    indicateValues.Enqueue(new decimal[] { sum / m_Period });
                     sum -= prices[i - m_Period];
                 }
             }
@@ -50,16 +48,19 @@ public class MovingAverageCalculator : IIndicatorCalculator<decimal>
             // 只计算最新的值
             for (int i = 0; i < m_Period; i++)
             {
-                sum = prices[prices.Count - m_Period + i];
+                sum += prices[prices.Count - m_Period + i];
             }
             decimal avg = sum / m_Period;
             if (append)
             {
-                indicateValues.Enqueue(avg);
+                indicateValues.Enqueue(new decimal[] { avg });
             }
             else
             {
-                indicateValues[indicateValues.Count - 1] = avg;
+                if (indicateValues.Count > 0)
+                {
+                    indicateValues[indicateValues.Count - 1] = new decimal[] { avg };
+                }
             }
         }
     }

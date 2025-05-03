@@ -2,13 +2,13 @@
 
 namespace Lampyris.Server.Crypto.Common;
 
-public class MACDCalculator : IIndicatorCalculator<(decimal DIF, decimal DEA, decimal MACD)>
+public class MACD : IIndicatorCalculator
 {
     private readonly int _shortPeriod;  // 短期 EMA 的周期
     private readonly int _longPeriod;   // 长期 EMA 的周期
     private readonly int _signalPeriod; // 信号线（DEA）的周期
 
-    public MACDCalculator(int shortPeriod = 12, int longPeriod = 26, int signalPeriod = 9)
+    public MACD(int shortPeriod = 12, int longPeriod = 26, int signalPeriod = 9)
     {
         _shortPeriod = shortPeriod;
         _longPeriod = longPeriod;
@@ -23,7 +23,7 @@ public class MACDCalculator : IIndicatorCalculator<(decimal DIF, decimal DEA, de
     /// <param name="append">是否追加</param>
     public void CalculateAndStore(
         CircularQueue<decimal> prices,
-        CircularQueue<(decimal DIF, decimal DEA, decimal MACD)> indicateValues,
+        CircularQueue<decimal[]> indicateValues,
         bool append)
     {
         if (prices.Count <= 0)
@@ -42,7 +42,7 @@ public class MACDCalculator : IIndicatorCalculator<(decimal DIF, decimal DEA, de
         {
             for (int i = 0; i < prices.Count; i++)
             {
-                indicateValues.Enqueue((decimal.MaxValue, decimal.MaxValue, decimal.MaxValue));
+                indicateValues.Enqueue(new decimal[] { decimal.MaxValue, decimal.MaxValue, decimal.MaxValue });
             }
             return;
         }
@@ -55,7 +55,7 @@ public class MACDCalculator : IIndicatorCalculator<(decimal DIF, decimal DEA, de
         dif = shortEma - longEma;
 
         // 计算 DEA
-        decimal previousDea = indicateValues.Count > 0 ? indicateValues[indicateValues.Count - 1].DEA : 0;
+        decimal previousDea = indicateValues.Count > 0 ? indicateValues[indicateValues.Count - 1][1] : 0;
         dea = previousDea + (dif - previousDea) * (2.0m / (_signalPeriod + 1));
 
         // 计算 MACD
@@ -64,13 +64,13 @@ public class MACDCalculator : IIndicatorCalculator<(decimal DIF, decimal DEA, de
         // 存储结果
         if (append)
         {
-            indicateValues.Enqueue((DIF: dif, DEA: dea, MACD: macd));
+            indicateValues.Enqueue(new decimal[] { dif, dea, macd });
         }
         else
         {
             if (indicateValues.Count > 0)
             {
-                indicateValues[indicateValues.Count - 1] = (DIF: dif, DEA: dea, MACD: macd);
+                indicateValues[indicateValues.Count - 1] = new decimal[] { dif, dea, macd };
             }
         }
     }

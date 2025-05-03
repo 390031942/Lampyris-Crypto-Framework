@@ -7,7 +7,7 @@
 #include "../Data/QuoteCandleData.h"
 #include "Network/WebSocketMessageHandlerRegistry.h"
 #include "Util/DateTimeUtil.h"
-#include "../Util/QuoteUtil.h"
+#include "Collections/BidirectionalDictionary.h"
 
 // STD Include(s)
 #include <vector>
@@ -24,6 +24,42 @@ enum TickerDataSortType {
 };
 
 class QuoteCandleDataView;
+
+class QuoteUtil {
+private:
+	const static BidirectionalDictionary<BarSize, std::string> ms_barSizeDictionary;
+public:
+	// 将 BarSize 转换为字符串
+	static std::string toStdString(BarSize barSize) {
+		return ms_barSizeDictionary.getByKey(barSize);
+	}
+
+	// 将字符串转换为 BarSize
+	static BarSize toBarSize(const std::string& barSizeString) {
+		return ms_barSizeDictionary.getByValue(barSizeString);
+	}
+
+	/// <summary>
+	/// 获取 BarSize 对应的时间间隔（以毫秒为单位）
+	/// </summary>
+	static qint64 getIntervalMs(BarSize barSize) {
+		switch (barSize) {
+		case _1m:  return 1 * 60 * 1000;          // 1 分钟
+		case _3m:  return 3 * 60 * 1000;          // 3 分钟
+		case _5m:  return 5 * 60 * 1000;          // 5 分钟
+		case _15m: return 15 * 60 * 1000;         // 15 分钟
+		case _30m: return 30 * 60 * 1000;         // 30 分钟
+		case _1H:  return 1 * 60 * 60 * 1000;     // 1 小时
+		case _2H:  return 2 * 60 * 60 * 1000;     // 2 小时
+		case _4H:  return 4 * 60 * 60 * 1000;     // 4 小时
+		case _6H:  return 6 * 60 * 60 * 1000;     // 6 小时
+		case _12H: return 12 * 60 * 60 * 1000;    // 12 小时
+		case _1D:  return 1 * 24 * 60 * 60 * 1000; // 1 天
+		case _3D:  return 3 * 24 * 60 * 60 * 1000; // 3 天
+		case _1W:  return 7 * 24 * 60 * 60 * 1000; // 1 周
+		}
+	}
+};
 
 class QuoteManager:public SingletonQObject<QuoteManager>, public IWebSocketMessageHandler {
 public:
@@ -151,8 +187,8 @@ public:
 	/// 视图调用函数，调用后向服务端发送请求k线列表
 	/// </summary>
 	/// <param name="view">视图对象</param>
-	/// <returns>k线数据是否完备</returns>
-	bool                                         requestCandleDataForView(QuoteCandleDataView* view);
+	/// <returns>预期收到的k线数量</returns>
+	int                                          requestCandleDataForView(QuoteCandleDataView* view);
 	#pragma endregion
 
 	// 订阅/反订阅

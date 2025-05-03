@@ -96,4 +96,14 @@ public class CircularQueue<T>
         // 可选：清空缓冲区中的数据（仅在需要时）
         Array.Clear(m_buffer, 0, m_buffer.Length);
     }
+
+    public T First()
+    {
+        return Count > 0 ? this[0] : default;
+    }
+
+    public T Last()
+    {
+        return Count > 0 ? this[Count - 1] : default;
+    }
 }

@@ -213,9 +213,98 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceR
         return pingAsync.Result.Success; 
     }
 
-    public override SubTradeAccountSummary GetSubTradeAccountSummary(int accountId)
+
+    /// <summary>
+    /// 根据 Binance 合约的手续费规则，获取手续费级别的万分比值
+    /// </summary>
+    /// <param name="feeTier">手续费等级（0-9）</param>
+    /// <param name="isMaker">是否为挂单（Maker）。如果为吃单（Taker），传入 false</param>
+    /// <returns>手续费级别的万分比值</returns>
+    public decimal GetFeeRate(int feeTier, bool isMaker)
     {
-        var client = GetRestClient(accountId);
-        client.UsdFuturesApi.Account.GetAccountInfoV2Async(accountId).Result.Data.Positions;
+        // Binance 合约手续费规则映射表
+        var feeRateMap = new Dictionary<int, (decimal MakerFee, decimal TakerFee)>
+        {
+            { 0, (0.0200m, 0.0500m) }, // Regular User
+            { 1, (0.0160m, 0.0400m) }, // VIP 1
+            { 2, (0.0140m, 0.0350m) }, // VIP 2
+            { 3, (0.0120m, 0.0320m) }, // VIP 3
+            { 4, (0.0100m, 0.0300m) }, // VIP 4
+            { 5, (0.0080m, 0.0270m) }, // VIP 5
+            { 6, (0.0060m, 0.0250m) }, // VIP 6
+            { 7, (0.0040m, 0.0220m) }, // VIP 7
+            { 8, (0.0020m, 0.0200m) }, // VIP 8
+            { 9, (0.0000m, 0.0170m) }  // VIP 9
+        };
+
+        // 检查 feeTier 是否在映射表范围内
+        if (!feeRateMap.ContainsKey(feeTier))
+        {
+            Logger.LogError("Fee tier must be between 0 and 9.");
+            return 0m;
+        }
+
+        // 根据 isMaker 返回对应的手续费级别
+        var (makerFee, takerFee) = feeRateMap[feeTier];
+        return isMaker ? makerFee : takerFee;
+    }
+
+    /// <summary>
+    /// 获取子交易账户的摘要信息
+    /// </summary>
+    /// <param name="accountId">账户 ID</param>
+    /// <returns>子交易账户摘要信息</returns>
+    protected override void APIUpdateSubTradeAccountInfoImpl()
+    {
+        foreach (var pair in m_SubAccountIdContextDataMap)
+        {
+            int accountId = pair.Key;
+            var client = pair.Value.RestClient;
+
+            // 调用 Binance API 获取账户信息
+            var accountInfoResponse = client.UsdFuturesApi.Account.GetAccountInfoV2Async().Result;
+
+            if (!accountInfoResponse.Success || accountInfoResponse.Data == null)
+            {
+                Logger.LogError($"Failed to fetch account info for accountId: {accountId}. Error: {accountInfoResponse.Error?.Message}");
+            }
+            else
+            {
+                var accountInfo = accountInfoResponse.Data;
+
+                // 构造 SubTradeAccountSummary 对象
+                var summary = new SubTradeAccountSummary
+                {
+                    CanDeposit = accountInfo.CanDeposit,
+                    CanTrade = accountInfo.CanTrade,
+                    CanWithdraw = accountInfo.CanWithdraw,
+                    MakerFee = GetFeeRate(accountInfo.FeeTier, true),
+                    TakerFee = GetFeeRate(accountInfo.FeeTier, false),
+                    MaxWithdrawQuantity = accountInfo.MaxWithdrawQuantity,
+                    TotalInitialMargin = accountInfo.TotalInitialMargin.ToString(),
+                    TotalMaintMargin = accountInfo.TotalMaintMargin.ToString(),
+                    TotalMarginBalance = accountInfo.TotalMarginBalance.ToString(),
+                    TotalOpenOrderInitialMargin = accountInfo.TotalOpenOrderInitialMargin.ToString(),
+                    TotalPositionInitialMargin = accountInfo.TotalPositionInitialMargin.ToString(),
+                    TotalUnrealizedProfit = accountInfo.TotalUnrealizedProfit.ToString(),
+                    TotalWalletBalance = accountInfo.TotalWalletBalance.ToString(),
+                    AvailableBalance = accountInfo.AvailableBalance.ToString(),
+                    UpdateTime = accountInfo.UpdateTime
+                };
+            }
+            // 获取ADL级别
+            var adlResponse = client.UsdFuturesApi.Account.GetPositionAdlQuantileEstimationAsync().Result;
+            if (!adlResponse.Success || adlResponse.Data == null)
+            {
+                Logger.LogError($"Failed to fetch adl level for accountId: {accountId}. Error: {accountInfoResponse.Error?.Message}");
+            }
+            else
+            {
+                foreach (var data in adlResponse.Data)
+                {
+                    m_TradeService.UpdateADLLevel(accountId, data.Symbol, data.AdlQuantile?.Both ?? 0);
+                }
+            }
+        }
     }
 }
