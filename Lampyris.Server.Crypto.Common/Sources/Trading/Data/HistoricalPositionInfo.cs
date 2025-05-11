@@ -12,7 +12,7 @@ public class HistoricalPositionInfo
     /// <summary>
     /// 交易对，例如 BTCUSDT
     /// </summary>
-    [DBColumn("symbol", "STRING")]
+    [DBColumn("Symbol", "STRING")]
     public string Symbol { get; set; }
 
     /// <summary>

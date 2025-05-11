@@ -13,7 +13,7 @@ public class OrderInfo
     [DBColumn("userId", "INTEGER", isPrimaryKey: true)] // 创建者客户端ID
     public int ClientUserId = 1;
 
-    [DBColumn("symbol", "STRING")] // 交易对，例如 BTCUSDT
+    [DBColumn("Symbol", "STRING")] // 交易对，例如 BTCUSDT
     public string Symbol = "";
 
     [DBColumn("side", "INTEGER")] // 订单方向

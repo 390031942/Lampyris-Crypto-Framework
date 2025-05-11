@@ -49,7 +49,7 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     /// <param name="symbol"></param>
     /// <param name="barSize"></param>
     /// <param name="isEnd"></param>
-    public delegate void OnCandleDataUpdateHandler(string symbol, BarSize barSize, bool isEnd);
+    public delegate void OnCandleDataUpdateHandler(string symbol, BarSize barSize, QuoteCandleData candleData, bool isEnd);
     public OnCandleDataUpdateHandler OnCandleDataUpdated;
 
     public override void OnStart()

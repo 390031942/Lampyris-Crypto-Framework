@@ -305,7 +305,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if(subscriptionInfo.Trade)
         {
-            Logger.LogWarning($"Trade data of symbol \"{symbol}\" has already been subscribed.");
+            Logger.LogWarning($"Trade data of Symbol \"{symbol}\" has already been subscribed.");
         }
         await SubscribeAsync(string.Format(MarketDataWebSocketStream.TRADE,symbol));
         subscriptionInfo.Trade = true;
@@ -316,7 +316,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (!subscriptionInfo.Trade)
         {
-            Logger.LogWarning($"Trade data of symbol \"{symbol}\" has not been subscribed.");
+            Logger.LogWarning($"Trade data of Symbol \"{symbol}\" has not been subscribed.");
         }
         await UnsubscribeAsync(string.Format(MarketDataWebSocketStream.TRADE, symbol));
         subscriptionInfo.Trade = false;
@@ -327,7 +327,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (subscriptionInfo.Depth)
         {
-            Logger.LogWarning($"Depth data of symbol \"{symbol}\" has already been subscribed.");
+            Logger.LogWarning($"Depth data of Symbol \"{symbol}\" has already been subscribed.");
         }
         await SubscribeAsync(string.Format(MarketDataWebSocketStream.DEPTH, symbol));
         subscriptionInfo.Depth = true;
@@ -338,7 +338,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (!subscriptionInfo.Depth)
         {
-            Logger.LogWarning($"Depth data of symbol \"{symbol}\" has not been subscribed.");
+            Logger.LogWarning($"Depth data of Symbol \"{symbol}\" has not been subscribed.");
         }
         await UnsubscribeAsync(string.Format(MarketDataWebSocketStream.DEPTH, symbol));
         subscriptionInfo.Depth = false;
@@ -349,7 +349,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (subscriptionInfo.KLine.Contains(barSize))
         {
-            Logger.LogWarning($"KLine data of symbol \"{symbol}\", interval = {barSize.ToParamString()} has already been subscribed.");
+            Logger.LogWarning($"KLine data of Symbol \"{symbol}\", interval = {barSize.ToParamString()} has already been subscribed.");
         }
         await SubscribeAsync(string.Format(MarketDataWebSocketStream.KLINE, symbol));
         subscriptionInfo.KLine.Add(barSize);
@@ -360,7 +360,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (!subscriptionInfo.KLine.Contains(barSize))
         {
-            Logger.LogWarning($"KLine data of symbol \"{symbol}\" interval = {barSize.ToParamString()} has not been subscribed.");
+            Logger.LogWarning($"KLine data of Symbol \"{symbol}\" interval = {barSize.ToParamString()} has not been subscribed.");
         }
         await UnsubscribeAsync(string.Format(MarketDataWebSocketStream.KLINE, symbol));
         subscriptionInfo.KLine.Remove(barSize);
@@ -371,7 +371,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (subscriptionInfo.MarkPrice)
         {
-            Logger.LogWarning($"Mark Price data of symbol \"{symbol}\" has already been subscribed.");
+            Logger.LogWarning($"Mark Price data of Symbol \"{symbol}\" has already been subscribed.");
         }
         await SubscribeAsync(string.Format(MarketDataWebSocketStream.MARK_PRICE, symbol));
         subscriptionInfo.MarkPrice = true;
@@ -382,7 +382,7 @@ public class MarketDataWebSocketClient
         var subscriptionInfo = GetOrCreateSubscriptionInfo(symbol);
         if (!subscriptionInfo.MarkPrice)
         {
-            Logger.LogWarning($"Mark Price data of symbol \"{symbol}\" has not been subscribed.");
+            Logger.LogWarning($"Mark Price data of Symbol \"{symbol}\" has not been subscribed.");
         }
         await UnsubscribeAsync(string.Format(MarketDataWebSocketStream.MARK_PRICE, symbol));
         subscriptionInfo.MarkPrice = false;

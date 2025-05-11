@@ -3,11 +3,11 @@
 public class SelfSelectedSymbolInfoData
 {
     // 交易对
-    public string symbol;
+    public string Symbol;
 
     // 自选时间戳
-    public long timestamp;
+    public long Timestamp;
 
     // 自选价格
-    public decimal initialPrice;
+    public decimal InitialPrice;
 }

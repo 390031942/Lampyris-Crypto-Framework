@@ -9,10 +9,10 @@ public class SelfSelectedSymbolData
     [DBColumn("group_name", "STRING", isPrimaryKey: true)] // 组名，主键2
     public string GroupName { get; set; }
 
-    [DBColumn("symbol", "STRING", isPrimaryKey: true)] // 交易对，主键
+    [DBColumn("Symbol", "STRING", isPrimaryKey: true)] // 交易对，主键
     public string Symbol { get; set; }
 
-    [DBColumn("timestamp", "BIGINT")] // 自选时间戳
+    [DBColumn("Timestamp", "BIGINT")] // 自选时间戳
     public long Timestamp { get; set; }
 
     [DBColumn("initial_price", "DOUBLE")] // 自选价格

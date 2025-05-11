@@ -64,7 +64,7 @@ public class IndicatorDataCacheService : ILifecycle
 
         if (isEnd == data.IsEnd)
         {
-            throw new InvalidDataException($"Failed to update indicator for symbol = \"{symbol}\", barSize = \"{barSize}\", two consecutive \"isEnd\" appeared...");
+            throw new InvalidDataException($"Failed to update indicator for Symbol = \"{symbol}\", barSize = \"{barSize}\", two consecutive \"isEnd\" appeared...");
         }
 
         bool isEndBefore = data.IsEnd;

@@ -5,7 +5,7 @@ namespace Lampyris.Server.Crypto.Common;
 [DBTable("lerverage_bracket")]
 public class LeverageBracketInfo
 {
-    [DBColumn("symbol", "INTEGER", isPrimaryKey: true)] // 交易对，主键1
+    [DBColumn("Symbol", "INTEGER", isPrimaryKey: true)] // 交易对，主键1
     public string Symbol { get; set; }
 
     [DBColumn("leverage", "INTEGER", isPrimaryKey: true)] // 当前分层下的最大杠杆倍数

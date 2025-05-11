@@ -17,7 +17,7 @@ public class CandleContinuousColorCondition : ICandleCondition
         IsRise = isRise;
     }
 
-    public bool Test(Span<QuoteCandleData> dataList)
+    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd)
     {
         foreach(QuoteCandleData data in dataList)
         {

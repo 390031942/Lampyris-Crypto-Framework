@@ -202,10 +202,32 @@ public class QuoteFacadeService
     {
         ReqSelfSelectedSymbol reqSelfSelectedSymbol = request.ReqSelfSelectedSymbol;
         List<SelfSelectedSymbolGroupData> dataList = m_SelfSelectSymbolService.QuerySymbolGroupData(clientUserInfo.UserId);
-        if()
-        foreach(SelfSelectedSymbolGroupData data in dataList)
+        ResSelfSelectedSymbol resSelfSelectedSymbol = new ResSelfSelectedSymbol();
+
+        foreach (SelfSelectedSymbolGroupData data in dataList)
         {
-            
+            SelfSelectedSymbolGroupBean bean = ToSelfSelectedSymbolGroupBean(data);
+            resSelfSelectedSymbol.GroupList.Add(bean);
         }
+
+        m_WebSocketService.PushMessge(clientUserInfo.UserId, resSelfSelectedSymbol);
+    }
+
+    private SelfSelectedSymbolGroupBean ToSelfSelectedSymbolGroupBean(SelfSelectedSymbolGroupData data)
+    {
+        SelfSelectedSymbolGroupBean bean = new SelfSelectedSymbolGroupBean();
+        bean.CanDelete = data.IsDynamicGroup;
+        bean.Name = data.Name;
+        foreach (var symbolData in data.SymbolList)
+        {
+            bean.SymbolList.Add(new SelfSelectedSymbolInfoBean() 
+            {
+                Symbol = symbolData.Symbol,
+                Timestamp = symbolData.Timestamp,
+                InitialPrice = Convert.ToDouble(symbolData.InitialPrice),
+            });
+        }
+
+        return bean;
     }
 }

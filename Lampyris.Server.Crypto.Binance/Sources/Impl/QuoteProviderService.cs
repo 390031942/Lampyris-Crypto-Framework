@@ -114,7 +114,7 @@ public class QuoteProviderService : AbstractQuoteProviderService
             var subscription = m_KlineSubscriptions[symbol];
             if (subscription.ContainsKey(interval))
             {
-                Logger.LogWarning($"Duplicated subscription for symbol = \"{symbol}\", API Interval = {interval}");
+                Logger.LogWarning($"Duplicated subscription for Symbol = \"{symbol}\", API Interval = {interval}");
                 return;
             }
             m_KlineSubscriptions[symbol][interval] = subscriptionResult.Data;
@@ -171,7 +171,7 @@ public class QuoteProviderService : AbstractQuoteProviderService
         }
         else
         {
-            Logger.LogError($"Failed to subscribe trade update for symbol \"{symbol}\"");
+            Logger.LogError($"Failed to subscribe trade update for Symbol \"{symbol}\"");
         }
     }
 
@@ -319,7 +319,7 @@ public class QuoteProviderService : AbstractQuoteProviderService
 
             if (!result.Success)
             {
-                throw new Exception($"Failed to query kline data for symbol = \"{symbol}\" , barSize = \"{barSize}\", reason: {result.Error?.Message}");
+                throw new Exception($"Failed to query kline data for Symbol = \"{symbol}\" , barSize = \"{barSize}\", reason: {result.Error?.Message}");
             }
 
             // 将当前批次的 K 线数据添加到总集合中

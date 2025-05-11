@@ -38,7 +38,7 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceR
                 {
                     var data = leverageUpdate.Data.LeverageUpdateData;
                     m_TradeService.AccountUpdateLeverage(accountId, data.Symbol, data.Leverage);
-                    Logger.LogInfo($"Lererage of sub-account id = {accountId}, symbol = {data.Symbol} changed to {data.Leverage}");
+                    Logger.LogInfo($"Lererage of sub-account id = {accountId}, Symbol = {data.Symbol} changed to {data.Leverage}");
                 }
             },
             // 保证金追加事件回调

@@ -6,11 +6,7 @@ public class CandleContinuousColorMonitor: IMarketAnomalyMonitor
 
     public CandleContinuousColorMonitor()
     {
-        CandleContinuousColorCondition condition1 = new CandleContinuousColorCondition(BarSize._1m, true, 5);
-        CandleCurrencyCondition condition2 = new CandleCurrencyCondition(BarSize._1m, 100000);
-    }
-
-    protected override bool CheckImpl(string symbol)
-    {
+        AddCondition(new CandleContinuousColorCondition(BarSize._1m, true, 5));
+        AddCondition(new CandleCurrencyCondition(BarSize._1m, 100000));
     }
 }

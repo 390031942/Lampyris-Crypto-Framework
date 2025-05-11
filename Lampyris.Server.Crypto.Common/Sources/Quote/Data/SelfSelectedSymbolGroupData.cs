@@ -13,5 +13,8 @@ public class SelfSelectedSymbolGroupData
 
     // 交易对列表
     [DBColumn("symbolList", "JSON")]
-    public List<SelfSelectedSymbolInfoData> SymbolList = new List<SelfSelectedSymbolInfoData>(); 
+    public List<SelfSelectedSymbolInfoData> SymbolList = new List<SelfSelectedSymbolInfoData>();
+
+    // 是否是动态分组，如果是则不可删除
+    public bool IsDynamicGroup;
 }

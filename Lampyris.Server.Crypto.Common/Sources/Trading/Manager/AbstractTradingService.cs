@@ -97,7 +97,7 @@ public abstract class AbstractTradingService:ILifecycle
 
         if(!m_SymbolTradeRuleInfoMap.ContainsKey(order.Symbol))
         {
-            Console.WriteLine($"Unabled to place order: {order}, symbol = \"{order.Symbol}\" is not tradable");
+            Console.WriteLine($"Unabled to place order: {order}, Symbol = \"{order.Symbol}\" is not tradable");
         }
 
         OrderStatusInfo orderStatusInfo = new OrderStatusInfo();

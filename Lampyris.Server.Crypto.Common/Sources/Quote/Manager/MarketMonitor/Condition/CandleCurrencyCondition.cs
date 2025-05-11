@@ -1,7 +1,7 @@
 namespace Lampyris.Server.Crypto.Common;
 
 /// <summary>
-/// k线流最近一根 
+/// k线流最近一根K线的成交额
 /// </summary>
 public class CandleCurrencyCondition : ICandleCondition
 {
@@ -13,7 +13,7 @@ public class CandleCurrencyCondition : ICandleCondition
         Threshold = threshold;
     }
 
-    public bool Test(Span<QuoteCandleData> dataList)
+    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd)
     {
         return dataList[dataList.Length - 1].Currency >= (double)Threshold;
     }

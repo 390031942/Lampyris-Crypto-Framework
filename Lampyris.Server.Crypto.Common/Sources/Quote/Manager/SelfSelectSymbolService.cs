@@ -15,23 +15,30 @@ public class SelfSelectSymbolService:ILifecycle
 
     private DBTable<SelfSelectedSymbolGroupData> m_Table;
 
-    public override void OnStart()
-    {
-        m_Table = m_DBService.GetTable<SelfSelectedSymbolGroupData>();
-    }
-
     /// <summary>
     /// 不可删除的默认动态分组(UserId = -1),不需要存入数据库，但是客户端查询的时候需要追加到列表里
     /// </summary>
-    private readonly List<SelfSelectedSymbolGroupData> m_DefaultGroupData = new List<SelfSelectedSymbolGroupData>()
+    private readonly HashSet<string> m_DynamicGroupName = new HashSet<string>()
     {
-        new SelfSelectedSymbolGroupData { Name = "主流币" },
-        new SelfSelectedSymbolGroupData { Name = "昨日涨幅榜" },
-        new SelfSelectedSymbolGroupData { Name = "昨日跌幅榜" },
-        new SelfSelectedSymbolGroupData { Name = "昨日振幅榜" },
-        new SelfSelectedSymbolGroupData { Name = "昨日成交榜" },
-        new SelfSelectedSymbolGroupData { Name = "近7天上新" },
+        "主流币" ,
+        "昨日涨幅榜",
+        "昨日跌幅榜",
+        "昨日振幅榜",
+        "昨日成交榜",
+        "近7天上新",
     };
+
+    private readonly List<SelfSelectedSymbolGroupData> m_DynamicGroupData = new List<SelfSelectedSymbolGroupData>();
+
+    public override void OnStart()
+    {
+        m_Table = m_DBService.GetTable<SelfSelectedSymbolGroupData>();
+
+        foreach(var groupName in m_DynamicGroupName)
+        {
+            m_DynamicGroupData.Add(new SelfSelectedSymbolGroupData() { Name = groupName });
+        }
+    }
 
     public List<SelfSelectedSymbolGroupData> QuerySymbolGroupData(int clientUserId)
     {
@@ -43,7 +50,7 @@ public class SelfSelectSymbolService:ILifecycle
                                                             .End());
 
         result.AddRange(dbData);
-        result.AddRange(m_DefaultGroupData);
+        result.AddRange(m_DynamicGroupData);
         return result;
     }
 

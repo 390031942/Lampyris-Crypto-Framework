@@ -10,7 +10,7 @@ namespace Lampyris.Server.Crypto.Common;
 [DBTable("leverage_setting")]
 public class LeverageSetting
 {
-    [DBColumn("symbol", "INTEGER", isPrimaryKey: true)] // 交易对
+    [DBColumn("Symbol", "INTEGER", isPrimaryKey: true)] // 交易对
     public string Symbol { get; set; }
 
     [DBColumn("lerverage", "INTEGER")] // 杠杆倍数

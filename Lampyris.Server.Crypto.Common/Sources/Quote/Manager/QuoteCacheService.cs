@@ -436,7 +436,7 @@ public class QuoteCacheService:ILifecycle
         cachedList.Sort((a, b) => a.DateTime.CompareTo(b.DateTime));
 
         // 异步DB写入
-        TaskManager.RunTask($"DB Write QuoteCandleData symbol = {symbol}, barSize = {barSize}", 0, (progress, token) =>
+        TaskManager.RunTask($"DB Write QuoteCandleData Symbol = {symbol}, barSize = {barSize}", 0, (progress, token) =>
         {
             progress.Percentage = 0;
             string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";
@@ -494,7 +494,7 @@ public class QuoteCacheService:ILifecycle
         }
 
         // 异步DB写入
-        TaskManager.RunTask($"DB Write QuoteCandleData symbol = {symbol}, barSize = {barSize}, size = {dataList.Count}", 0, (progress, token) =>
+        TaskManager.RunTask($"DB Write QuoteCandleData Symbol = {symbol}, barSize = {barSize}, size = {dataList.Count}", 0, (progress, token) =>
         {
             progress.Percentage = 0;
             string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";

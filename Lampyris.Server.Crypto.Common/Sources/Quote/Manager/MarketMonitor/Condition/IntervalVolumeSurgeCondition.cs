@@ -19,7 +19,7 @@ public class IntervalVolumeSurgeCondition : ICandleCondition
 
     public override int ExpectedCount => IntervalLength1;
 
-    public bool Test(Span<QuoteCandleData> dataList)
+    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd)
     {
         // IntervalLength1分钟内的平均成交额
         double avg1 = 0;
