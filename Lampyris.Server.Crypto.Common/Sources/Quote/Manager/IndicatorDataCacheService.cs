@@ -1,6 +1,5 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-using Binance.Net.Enums;
 using Lampyris.CSharp.Common;
 using System.Collections.Concurrent;
 

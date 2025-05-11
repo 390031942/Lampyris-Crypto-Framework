@@ -143,43 +143,6 @@ public class QuoteSubscriptionService
     /// </summary>
     private ObjectPool<SymbolTradeRuleBean> m_SymbolTradeRuleDataPool = new ObjectPool<SymbolTradeRuleBean>();
 
-    public void PushTradeRuleBean(int clientUserId, SymbolTradeRule data)
-    {
-        SymbolTradeRuleBean bean = ToSymbolTradeDataBean(data);
-        m_WebSocketService.PushMessge(clientUserId , bean);
-    }
-
-    public void PushTradeRuleBeanList(int clientUserId, List<SymbolTradeRule> dataList)
-    {
-        ResTradeRule res = new ResTradeRule();
-
-        foreach (SymbolTradeRule data in dataList)
-        {
-            var bean = ToSymbolTradeDataBean(data);
-        }
-
-        m_WebSocketService.PushMessge(clientUserId, res);
-
-        foreach(var bean in res.BeanList)
-        {
-            m_SymbolTradeRuleDataPool.Recycle(bean);
-        }
-    }
-
-    private static SymbolTradeRuleBean ToSymbolTradeDataBean(SymbolTradeRule data)
-    {
-        SymbolTradeRuleBean bean = new SymbolTradeRuleBean();
-        bean.Symbol = data.Symbol;
-        bean.MaxPrice = (double)data.MaxPrice;
-        bean.MinPrice = (double)data.MinPrice;
-        bean.PriceTickSize = (double)data.PriceStep;
-        bean.MaxQuantity = (double)data.MaxQuantity;
-        bean.MinQuantity = (double)data.MinQuantity;
-        bean.QuantityTickSize = (double)data.QuantityStep;
-        bean.MinNotional = (double)data.MinNotional;
-
-        return bean;
-    }
     #endregion
 
     #region 异动数据
@@ -265,6 +228,26 @@ public class QuoteSubscriptionService
             bean.SymbolList.Clear();
             m_SelfSelectedSymbolGroupBeanPool.Recycle(bean);
         }
+    }
+
+    internal bool CancelSubscribeTrade(int userId, string symbol)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal bool SubscribeTrade(int userId, string symbol)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal bool CancelSubscribeCandleUpdate(int userId, string symbol, BarSize barSize)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal bool SubscribeCandleUpdate(int userId, string symbol, BarSize barSize)
+    {
+        throw new NotImplementedException();
     }
     #endregion
 }

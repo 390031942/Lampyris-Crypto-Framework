@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>icons/asset_normal.png</file>
+        <file>icons/asset_plot_normal.png</file>
+        <file>icons/asset_plot_selected.png</file>
+        <file>icons/asset_selected.png</file>
+        <file>icons/clear.png</file>
+        <file>icons/clock.png</file>
+        <file>icons/close.png</file>
+        <file>icons/history.png</file>
+        <file>icons/home_normal.png</file>
+        <file>icons/home_selected.png</file>
+        <file>icons/lampyris_logo.png</file>
+        <file>icons/maximize.png</file>
+        <file>icons/minimize.png</file>
+        <file>icons/quote_normal.png</file>
+        <file>icons/quote_selected.png</file>
+        <file>icons/search.png</file>
+        <file>icons/trade_normal.png</file>
+        <file>icons/trade_selected.png</file>
+        <file>icons/vertical_splitter.png</file>
+        <file>qss/main.qss</file>
+    </qresource>
+</RCC>

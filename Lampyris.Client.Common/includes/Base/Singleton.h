@@ -1,6 +1,3 @@
-/*
- * Copyright (c) HongJin Investment Ltd. All rights reserved.
-*/
 #pragma once
 
 // STD Include(s)
@@ -19,11 +16,10 @@ public:
 	}
 };
 
-template<class T, class U = QObject>
-class SingletonQObject :public U {
-public:
-	static T* getInstance() {
-		static T t;
-		return &t;
-	}
-};
+// 定义一个宏，用于生成单例类
+#define DECLARE_SINGLETON_QOBJECT(ClassName) \
+public:                                      \
+    static ClassName* getInstance() {        \
+        static ClassName instance;           \
+        return &instance;                    \
+    }               

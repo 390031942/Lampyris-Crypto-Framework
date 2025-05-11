@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Source Files\AppSystem">
+      <UniqueIdentifier>{a579abb1-8930-40ba-b023-475786b02276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{f2897f5c-765f-41a0-b2b8-93998d09532f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protocol">
+      <UniqueIdentifier>{5363a10b-c98c-4fc0-ac5e-64ecb271155a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{9670f43f-2964-437d-bc26-45814992d26f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{4d2ea777-b9f9-4c6f-a2fe-4bfd5d8ef597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Quote">
+      <UniqueIdentifier>{da74adb3-fd8a-40ee-9e43-1d1b31d48b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Trade">
+      <UniqueIdentifier>{f1cb8b03-00f0-4b13-bb37-1ebc089045dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Quote\Const">
+      <UniqueIdentifier>{833e17ca-48a9-478f-bb74-8d6613ee038c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Quote\Data">
+      <UniqueIdentifier>{fecd2ae6-60d8-45e1-ae35-6a8b431013c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Quote\Manager">
+      <UniqueIdentifier>{07053cba-bf6e-4dbd-bdf7-dc711abcbacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Quote\Util">
+      <UniqueIdentifier>{4ac9adf9-cca2-4948-bc95-c81e857d1e45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Trade\Data">
+      <UniqueIdentifier>{375c4c3c-7c73-4f0a-a4a8-678a26ac58ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AppSystem\Trade\Manager">
+      <UniqueIdentifier>{c5f0e0c3-b79a-4e08-aa11-b77574d0a292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Common">
+      <UniqueIdentifier>{5218e155-753e-4e88-8a27-98d6da1a1272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Mobile">
+      <UniqueIdentifier>{e105b158-6fe8-4df2-b817-c03b02581a1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Standalong">
+      <UniqueIdentifier>{a170a47e-c8a9-4a72-bf77-9b6148f8445e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Mobile\Main">
+      <UniqueIdentifier>{8e5803b2-4d8e-4bf5-98ab-ad7f09b04d1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Standalong\Main">
+      <UniqueIdentifier>{861142d8-f90f-4249-8aba-2faa97342f94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External">
+      <UniqueIdentifier>{5d2b7d91-fb16-4aa7-8b3a-0f24deae2984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Standalong\Home">
+      <UniqueIdentifier>{ca3f9001-7c02-4e64-ba14-078f4951b60c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Standalong\Quote">
+      <UniqueIdentifier>{8399035e-e52f-4a6b-8b57-fc75612e8937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Mobile\Common">
+      <UniqueIdentifier>{ab5c59eb-6ec3-4b1c-8d01-bda9c355f519}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sources\AppSystem\Trade\Data\LeverageSetting.h">
+      <Filter>Source Files\AppSystem\Trade\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Trade\Data\OrderInfo.h">
+      <Filter>Source Files\AppSystem\Trade\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Trade\Data\OrderStatusInfo.h">
+      <Filter>Source Files\AppSystem\Trade\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Trade\Data\PositionInfo.h">
+      <Filter>Source Files\AppSystem\Trade\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Trade\Data\SymbolTradeRule.h">
+      <Filter>Source Files\AppSystem\Trade\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Trade\Data\LeverageBracketInfo.h">
+      <Filter>Source Files\AppSystem\Trade\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Const\BarSize.h">
+      <Filter>Source Files\AppSystem\Quote\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteCandleDataView.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTickerData.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTradeData.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\MarketSummaryData.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteCandleData.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Util\QuoteUtil.h">
+      <Filter>Source Files\AppSystem\Quote\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Network\WebSocketMessageHandlerRegistry.h">
+      <Filter>Source Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Util\DateTimeUtil.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\PluginEntryPoint.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Global.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\app.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\common.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\Protocols.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\quote.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\strategy.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\trading.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Protocol\account.h">
+      <Filter>Source Files\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\UI\Common\GlobalUIStyle.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\UI\Mobile\Main\MainWidget.h">
+      <Filter>Source Files\UI\Mobile\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\UI\Standalong\Main\MainToolBar.h">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Util\StringUtil.h">
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lampyris.Client.Common\includes\Base\AppConfigManager.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppContext.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\UI\Common\ControlFactory.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sources\AppSystem\Trade\Manager\TradeManager.cpp">
+      <Filter>Source Files\AppSystem\Trade\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AppSystem\Quote\Data\QuoteCandleDataView.cpp">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AppSystem\Quote\Manager\QuoteManager.cpp">
+      <Filter>Source Files\AppSystem\Quote\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AppSystem\Quote\Util\QuoteUtil.cpp">
+      <Filter>Source Files\AppSystem\Quote\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Network\WebSocketClient.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Util\DateTimeUtil.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\PluginEntryPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Protocol\app.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Protocol\common.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Protocol\quote.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Protocol\strategy.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Protocol\trading.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Protocol\account.cpp">
+      <Filter>Source Files\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\AmountText.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\BetterLineEdit.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\ControlFactory.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\CustomSlider.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\GlobalUIStyle.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\PercentageDisplayText.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\PriceText.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\QuoteListItem.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\ScrollView.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\ScrollViewContentWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\ShakingLineEdit.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\ShakingLineEditTestWindow.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\SignalStrengthWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\StatusBarQuoteItem.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\SymbolSearchResultWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\TimeWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\AbstractScrollItem.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Mobile\Main\MainWidget.cpp">
+      <Filter>Source Files\UI\Mobile\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Main\MainToolBar.cpp">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Main\MainWidget.cpp">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Main\MainStatusBar.cpp">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Main\MainTitleBar.cpp">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Main\MainToolButton.cpp">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Util\StringUtil.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lampyris.Client.Common\includes\Base\AppConfigManager.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AppContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Quote\QuoteTickerDataWidget.cpp">
+      <Filter>Source Files\UI\Standalong\Quote</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\AssetTrendCurveWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\MarketOverviewBarChartWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Mobile\Common\BottomPopupWidget.cpp">
+      <Filter>Source Files\UI\Mobile\Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="sources\UI\Standalong\Main\MainWidget.h">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\BetterLineEdit.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\CustomSlider.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Main\MainTitleBar.h">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\AppSystem\Trade\Manager\TradeManager.h">
+      <Filter>Source Files\AppSystem\Trade\Manager</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Main\MainStatusBar.h">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\AmountText.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\SymbolSearchResultWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\PercentageDisplayText.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\PriceText.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\Network\WebSocketClient.h">
+      <Filter>Source Files\Network</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\AbstractScrollItem.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\QuoteListItem.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\ScrollView.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\ScrollViewContentWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\ShakingLineEdit.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\ShakingLineEditTestWindow.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\SignalStrengthWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\StatusBarQuoteItem.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\TimeWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\AppSystem\Quote\Manager\QuoteManager.h">
+      <Filter>Source Files\AppSystem\Quote\Manager</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Main\MainToolButton.h">
+      <Filter>Source Files\UI\Standalong\Main</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Quote\QuoteTickerDataWidget.h">
+      <Filter>Source Files\UI\Standalong\Quote</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\AssetTrendCurveWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\MarketOverviewBarChartWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Mobile\Common\BottomPopupWidget.h">
+      <Filter>Source Files\UI\Mobile\Common</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="resources\main.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+</Project>

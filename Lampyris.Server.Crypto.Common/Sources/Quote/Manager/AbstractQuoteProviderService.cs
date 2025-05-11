@@ -2,6 +2,7 @@
 
 using Lampyris.CSharp.Common;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// 提供行情数据的更新服务，该类主要接受并负责处理API获得的行情数据，引起回调事件，并存储到数据库
@@ -62,6 +63,7 @@ public abstract class AbstractQuoteProviderService:ILifecycle
             APISubscriptionAllImpl(),
 
             // 验证k线数据完整性并订阅k线实时数据
+            // 完整性指的是: 对于不同BarSize，如果这个barSize的数据是需要缓存的，则要确保缓存的数据完整
             VerifyCandleDataIntegrityAndSubscription()
         };
         Task.WaitAll(taskList);
@@ -93,14 +95,72 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     }
     #endregion
 
-    #region K线查询
-    #endregion
-
     #region K线数据
+    /// <summary>
+    /// 查询指定时间范围内的k线列表
+    /// </summary>
+    /// <param name="symbol">USDT永续合约symbol</param>
+    /// <param name="barSize">k线图时间周期</param>
+    /// <param name="startTime">开始的时间范围</param>
+    /// <param name="endTime">结束的时间范围</param>
+    /// <param name="n">最多返回的k线数量，-1表示返回全部</param>
+    /// <param name="cacheOnly">是否只从缓存中查询</param>
+    /// <returns>返回符合条件的k线数据列表</returns>
+    public ReadOnlySpan<QuoteCandleData> QueryCandleData(string symbol, BarSize barSize, DateTime? startTime = null, DateTime? endTime = null, int n = -1, bool cacheOnly = true)
+    {
+        // 如果只需要从缓存中查询，调用 QueryCacheOnlyCandleData
+        if (cacheOnly)
+        {
+            return m_CacheService.QueryCacheOnlyCandleData(symbol, barSize, startTime, endTime, n);
+        }
+
+        // 从缓存和数据库中查询数据
+        List<QuoteCandleData> result = m_CacheService.QueryCandleData(symbol, barSize, startTime, endTime, n);
+
+        // 验证数据完整性
+        if (!IsDataComplete(result, startTime, endTime, barSize))
+        {
+            // 如果数据不完整，调用 API 补充缺失的数据
+            List<QuoteCandleData> apiData = APIQueryCandleDataImpl(symbol, barSize, startTime, endTime, n);
+
+            // 合并 API 数据和缓存/数据库数据
+            result = MergeCandleData(result, apiData, barSize);
+
+            // 将补充的数据写入缓存（可选，根据业务需求）
+            m_CacheService.StorageCandleData(symbol, barSize, apiData,true);
+        }
+
+        // 返回结果的 Span
+        return CollectionsMarshal.AsSpan(result);
+    }
+
+    /// <summary>
+    /// 合并缓存/数据库数据和API数据
+    /// </summary>
+    /// <param name="existingData">现有的k线数据</param>
+    /// <param name="apiData">从API获取的k线数据</param>
+    /// <param name="barSize">k线时间周期</param>
+    /// <returns>合并后的k线数据</returns>
+    private List<QuoteCandleData> MergeCandleData(List<QuoteCandleData> existingData, List<QuoteCandleData> apiData, BarSize barSize)
+    {
+        // 合并数据
+        List<QuoteCandleData> mergedData = new List<QuoteCandleData>(existingData);
+        mergedData.AddRange(apiData);
+
+        // 去重并按时间排序
+        mergedData = mergedData
+            .GroupBy(c => c.DateTime)
+            .Select(g => g.First())
+            .OrderBy(c => c.DateTime)
+            .ToList();
+
+        return mergedData;
+    }
+
     /// <summary>
     /// API查询-K线数据
     /// </summary>
-    public abstract List<QuoteCandleData> APIQueryCandleDataImpl(string symbol, BarSize barSize, DateTime startTime, DateTime endTime);
+    public abstract List<QuoteCandleData> APIQueryCandleDataImpl(string symbol, BarSize barSize, DateTime? startTime, DateTime? endTime, int n = -1);
 
     /// <summary>
     /// API订阅-k线数据
@@ -246,12 +306,76 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     }
 
     /// <summary>
+    /// 检查时间区间的完整性，并返回缺失的时间区间列表
+    /// </summary>
+    /// <param name="dateTimeList">已存在的时间点列表</param>
+    /// <param name="startTime">起始时间</param>
+    /// <param name="endTime">结束时间</param>
+    /// <param name="interval">时间间隔</param>
+    /// <returns>缺失的时间区间列表</returns>
+    private List<(DateTime, DateTime)> GetMissingIntervals(IEnumerable<DateTime> dateTimeList, DateTime? startTime, DateTime? endTime, TimeSpan interval)
+    {
+        List<(DateTime, DateTime)> missingIntervals = new List<(DateTime, DateTime)>();
+
+        // 确保时间点按升序排序
+        var sortedDateTimeList = dateTimeList.OrderBy(dt => dt);
+
+        // 检查缺失时间区间
+        DateTime? previousTime = startTime; // 从起始时间开始检查
+        foreach (var currentTime in sortedDateTimeList)
+        {
+            if (previousTime.HasValue && currentTime > previousTime.Value.Add(interval))
+            {
+                // 如果当前时间与前一个时间之间有缺失，记录缺失区间
+                missingIntervals.Add((previousTime.Value.Add(interval), currentTime));
+            }
+
+            // 更新前一个时间
+            previousTime = currentTime;
+        }
+
+        // 检查最后一个时间点到结束时间是否有缺失
+        if (previousTime.HasValue && endTime.HasValue && endTime.Value > previousTime.Value.Add(interval))
+        {
+            missingIntervals.Add((previousTime.Value.Add(interval), endTime.Value));
+        }
+
+        return missingIntervals;
+    }
+
+    /// <summary>
+    /// 验证数据的完整性
+    /// </summary>
+    /// <param name="data">现有的k线数据</param>
+    /// <param name="startTime">开始时间</param>
+    /// <param name="endTime">结束时间</param>
+    /// <param name="barSize">k线时间周期</param>
+    /// <returns>数据是否完整</returns>
+    private bool IsDataComplete(List<QuoteCandleData> data, DateTime? startTime, DateTime? endTime, BarSize barSize)
+    {
+        if (data == null || data.Count == 0)
+        {
+            return false;
+        }
+
+        // 提取现有的时间点列表
+        IEnumerable<DateTime> dateTimeList = data.Select(c => c.DateTime);
+
+        // 获取时间间隔
+        TimeSpan interval = DateTimeExtensions.GetInterval(barSize);
+
+        // 检查缺失的时间区间
+        var missingIntervals = GetMissingIntervals(dateTimeList, startTime, endTime, interval);
+
+        // 如果没有缺失区间，则数据完整
+        return missingIntervals.Count == 0;
+    }
+
+    /// <summary>
     /// 处理单个 symbol 的数据验证和补充
     /// </summary>
     private void ValifySymbol(string symbol, DateTime now)
     {
-        List<(DateTime, DateTime)> missingIntervalList = new List<(DateTime, DateTime)>();
-
         // 获取该 symbol 的上线时间
         m_Symbol2OnBoardTime.TryGetValue(symbol, out var onboardDateTime);
 
@@ -260,34 +384,14 @@ public abstract class AbstractQuoteProviderService:ILifecycle
             // 获取已存在的时间点列表
             IEnumerable<DateTime> dateTimeList = m_CacheService.QueryCandleDateTimeList(symbol, barSize);
 
-            // 确保时间点按升序排序
-            var sortedDateTimeList = dateTimeList.OrderBy(dt => dt);
-
             // 获取时间间隔
             TimeSpan interval = DateTimeExtensions.GetInterval(barSize);
 
             // 检查缺失时间区间
-            DateTime? previousTime = onboardDateTime; // 从上线时间开始检查
-            foreach (var currentTime in sortedDateTimeList)
-            {
-                if (previousTime.HasValue && currentTime > previousTime.Value.Add(interval))
-                {
-                    // 如果当前时间与前一个时间之间有缺失，记录缺失区间
-                    missingIntervalList.Add((previousTime.Value.Add(interval), currentTime));
-                }
-
-                // 更新前一个时间
-                previousTime = currentTime;
-            }
-
-            // 检查最后一个时间点到当前时间是否有缺失
-            if (previousTime.HasValue && now > previousTime.Value.Add(interval))
-            {
-                missingIntervalList.Add((previousTime.Value.Add(interval), now));
-            }
+            var missingIntervals = GetMissingIntervals(dateTimeList, onboardDateTime, now, interval);
 
             // 对于每一个缺失的时间区间，进行下载并存储
-            foreach (var missingInterval in missingIntervalList)
+            foreach (var missingInterval in missingIntervals)
             {
                 var result = APIQueryCandleDataImpl(symbol, barSize, missingInterval.Item1, missingInterval.Item2);
                 m_CacheService.StorageCandleData(symbol, barSize, result);
@@ -322,4 +426,19 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 
         await Task.WhenAll(tasks);
     }
- }
+
+    public List<SymbolTradeRule> QueryAllTradeRule()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void QueryTradeRule(string symbol)
+    {
+        throw new NotImplementedException();
+    }
+
+    public List<SymbolTradeRule> QueryTradeRuleBySymbolList(IEnumerable<string> symbol)
+    {
+        throw new NotImplementedException();
+    }
+}

@@ -40,4 +40,9 @@ public static class DateTimeUtilEx
 
         return 0;
     }
+
+    public static DateTime GetServerDateTime()
+    {
+        return DateTime.UtcNow;
+    }
 }

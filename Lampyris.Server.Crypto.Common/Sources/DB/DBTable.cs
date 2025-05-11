@@ -1,9 +1,7 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-using Google.Protobuf.Compiler;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -42,6 +40,7 @@ public class DBTable<T> where T:class, new()
     private readonly MySqlConnection               m_Connection;
     private readonly string                        m_TableName;
     private readonly string                        m_dbInsertString;
+    private readonly string                        m_dbInsertStringWithUpdate;
     private readonly string                        m_dbQueryString;
     private static readonly List<DBColumnProperty> ms_ColumnList = new List<DBColumnProperty>();
 
@@ -61,30 +60,47 @@ public class DBTable<T> where T:class, new()
             }
         }
     }
-
     public DBTable(string tableName, MySqlConnection connection)
     {
-        m_TableName  = tableName;
+        m_TableName = tableName;
         m_Connection = connection;
 
+        // 拼接字段列表
         string fieldString = string.Join(", ", ms_ColumnList.Select(c => c.ColumnName));
-        StringBuilder sb = new StringBuilder();
-        sb.Append($"INSERT INTO {m_TableName} (");
-        sb.Append(fieldString);
-        sb.Append(") VALUES {0};");
 
-        m_dbInsertString = sb.ToString();
-        m_dbQueryString =  $"SELECT {fieldString} FROM {m_TableName}";
+        // 构建 INSERT INTO 部分（无更新）
+        StringBuilder sbInsert = new StringBuilder();
+        sbInsert.Append($"INSERT INTO {m_TableName} (");
+        sbInsert.Append(fieldString);
+        sbInsert.Append(") VALUES {0};");
+        m_dbInsertString = sbInsert.ToString();
+
+        // 构建 INSERT INTO 部分（带更新）
+        StringBuilder sbInsertWithUpdate = new StringBuilder(sbInsert.ToString().TrimEnd(';')); // 去掉末尾的分号
+        if (ms_ColumnList.Any(c => !c.Attribute.IsAutoIncrement))
+        {
+            sbInsertWithUpdate.Append(" ON DUPLICATE KEY UPDATE ");
+            sbInsertWithUpdate.Append(string.Join(", ", ms_ColumnList
+                .Where(c => !c.Attribute.IsAutoIncrement) // 排除自增列
+                .Select(c => $"{c.ColumnName} = VALUES({c.ColumnName})")));
+        }
+        sbInsertWithUpdate.Append(";");
+        m_dbInsertStringWithUpdate = sbInsertWithUpdate.ToString();
+
+        // 构建 SELECT 查询的字段列表
+        m_dbQueryString = $"SELECT {fieldString} FROM {m_TableName}";
     }
 
-    public void Insert(T entity)
+    public void Insert(T entity, bool update = false)
     {
-        var values = new List<string>();
-
         StringBuilder sb = new StringBuilder();
         AppendSingleEntity(entity, sb);
 
-        var insertSql = string.Format(m_dbInsertString, sb.ToString());
+        // 根据 update 参数选择 SQL 模板
+        var insertSql = update
+            ? string.Format(m_dbInsertStringWithUpdate, sb.ToString())
+            : string.Format(m_dbInsertString, sb.ToString());
+
         using (var command = new MySqlCommand(insertSql, m_Connection))
         {
             command.ExecuteNonQuery();
@@ -119,7 +135,7 @@ public class DBTable<T> where T:class, new()
         sb.Append(")");
     }
 
-    public void Insert(IList<T> entities)
+    public void Insert(IList<T> entities, bool update = false)
     {
         if (entities == null || entities.Count == 0)
         {
@@ -131,15 +147,17 @@ public class DBTable<T> where T:class, new()
         {
             T entity = entities[i];
             AppendSingleEntity(entity, sb);
-            if(i < entities.Count - 1)
+            if (i < entities.Count - 1)
             {
                 sb.Append(",");
             }
         }
 
-        // 拼接批量插入的 SQL
-        var insertSql = string.Format(m_dbInsertString, sb.ToString());
-        // 执行 SQL
+        // 根据 update 参数选择 SQL 模板
+        var insertSql = update
+            ? string.Format(m_dbInsertStringWithUpdate, sb.ToString())
+            : string.Format(m_dbInsertString, sb.ToString());
+
         using (var transaction = m_Connection.BeginTransaction())
         {
             using (var command = new MySqlCommand(insertSql, m_Connection, transaction))
@@ -217,8 +235,6 @@ public class DBTable<T> where T:class, new()
                 }
             }
         }
-
         return result;
     }
-
 }

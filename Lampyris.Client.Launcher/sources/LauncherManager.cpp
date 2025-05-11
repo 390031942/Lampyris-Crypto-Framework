@@ -36,12 +36,12 @@ void LauncherManager::loadConfig() {
         createDefaultConfig();
     }
 
-    QSettings settings(m_configPath, QSettings::IniFormat);
+    QSettings m_settings(m_configPath, QSettings::IniFormat);
 
-    m_baseUrl = settings.value(CONFIG_KEY_BASE_URL, "").toString();
-    m_versionEndpoint = settings.value(CONFIG_KEY_VERSION_ENDPOINT, "").toString();
-    m_downloadEndpoint = settings.value(CONFIG_KEY_DOWNLOAD_ENDPOINT, "").toString();
-    m_currentVersion = settings.value(CONFIG_KEY_CURRENT_VERSION, "").toString();
+    m_baseUrl = m_settings.value(CONFIG_KEY_BASE_URL, "").toString();
+    m_versionEndpoint = m_settings.value(CONFIG_KEY_VERSION_ENDPOINT, "").toString();
+    m_downloadEndpoint = m_settings.value(CONFIG_KEY_DOWNLOAD_ENDPOINT, "").toString();
+    m_currentVersion = m_settings.value(CONFIG_KEY_CURRENT_VERSION, "").toString();
 
     if (m_baseUrl.isEmpty() || m_versionEndpoint.isEmpty() || m_downloadEndpoint.isEmpty() || m_currentVersion.isEmpty()) {
         qDebug() << "Failed to load some configuration values. Using default values.";
@@ -50,13 +50,13 @@ void LauncherManager::loadConfig() {
 }
 
 void LauncherManager::createDefaultConfig() {
-    QSettings settings(m_configPath, QSettings::IniFormat);
+    QSettings m_settings(m_configPath, QSettings::IniFormat);
 
     // Ð´ÈëÄ¬ÈÏÅäÖÃÏî
-    settings.setValue(CONFIG_KEY_BASE_URL, m_baseUrl);
-    settings.setValue(CONFIG_KEY_VERSION_ENDPOINT, m_versionEndpoint);
-    settings.setValue(CONFIG_KEY_DOWNLOAD_ENDPOINT, m_downloadEndpoint);
-    settings.setValue(CONFIG_KEY_CURRENT_VERSION, m_currentVersion);
+    m_settings.setValue(CONFIG_KEY_BASE_URL, m_baseUrl);
+    m_settings.setValue(CONFIG_KEY_VERSION_ENDPOINT, m_versionEndpoint);
+    m_settings.setValue(CONFIG_KEY_DOWNLOAD_ENDPOINT, m_downloadEndpoint);
+    m_settings.setValue(CONFIG_KEY_CURRENT_VERSION, m_currentVersion);
 }
 
 void LauncherManager::showFatalErrorTips(const QString& message) {

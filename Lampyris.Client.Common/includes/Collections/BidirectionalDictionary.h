@@ -1,3 +1,6 @@
+#pragma once
+
+// STD Include(s)
 #include <unordered_map>
 #include <stdexcept>
 #include <iostream>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtCore/qglobal.h>
-#include <interface/IPlugin.h>
+#include <Interface/IPlugin.h>
 
 #if defined(LAMPYRISCLIENTCRYPTOCORE_LIBRARY)
 #define LAMPYRIS_CLIENT_CRYPTO_CORE_EXPORT Q_DECL_EXPORT

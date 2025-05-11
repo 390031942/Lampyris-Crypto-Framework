@@ -126,7 +126,10 @@ public:
 	#pragma endregion
 
 #pragma region 查询持仓
-	void queryPosition()
+	void queryPosition(const QString& symbol = "") {
+		ReqQueryPositions reqQueryPositions;
+	}
+
 #pragma endregion
 	#pragma region 交易规则
 private:

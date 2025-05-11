@@ -5,6 +5,7 @@
     <RootNamespace>Lampyris_Crypto_Framework</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;Debug-DLL;Debug-EXE;Release-EXE</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-EXE|x64">
+      <Configuration>Debug-EXE</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-EXE|x64">
+      <Configuration>Release-EXE</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E5B45914-F7ED-4929-8E24-024217AF6A63}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'" Label="QtSettings">
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;widgets;websockets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'" Label="QtSettings">
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(ProjectDir)third-party\protobuf\includes;$(ProjectDir)sources;$(SolutionDir)Lampyris.Client.Common\includes;</IncludePath>
+    <LibraryPath>$(ProjectDir)third-party\protobuf\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">
+    <IncludePath>$(ProjectDir)sources;$(SolutionDir)Lampyris.Client.Common\includes;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)third-party\protobuf\libs;$(ProjectDir)third-party\absl\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutDir>\debug</OutDir>
+    <IntDir>debug</IntDir>
+    <IncludePath>$(ProjectDir)third-party\protobuf\includes;$(ProjectDir)sources;$(SolutionDir)Lampyris.Client.Common\includes;</IncludePath>
+    <LibraryPath>$(ProjectDir)third-party\protobuf\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">
+    <OutDir>\debug</OutDir>
+    <IntDir>debug</IntDir>
+    <IncludePath>$(ProjectDir)third-party\protobuf\includes;$(ProjectDir)sources;$(SolutionDir)Lampyris.Client.Common\includes;</IncludePath>
+    <LibraryPath>$(ProjectDir)third-party\protobuf\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PreprocessorDefinitions>LAMPYRIS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/wd4828 /wd4267 /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libprotobuf.lib;%(AdditionalDependencies);abseil_dll.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PreprocessorDefinitions>LAMPYRIS_EXE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <AdditionalOptions>/wd4828 /wd4267 /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libprotobuf.lib;%(AdditionalDependencies);abseil_dll.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>LAMPYRIS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/wd4828 /wd4267 /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libprotobufd.lib;abseil_dll.lib;absl_decode_rust_punycode.lib;absl_demangle_rust.lib;absl_flags_commandlineflag.lib;absl_flags_commandlineflag_internal.lib;absl_flags_config.lib;absl_flags_internal.lib;absl_flags_marshalling.lib;absl_flags_parse.lib;absl_flags_private_handle_accessor.lib;absl_flags_program_name.lib;absl_flags_reflection.lib;absl_flags_usage.lib;absl_flags_usage_internal.lib;absl_log_flags.lib;absl_log_internal_structured_proto.lib;absl_poison.lib;absl_tracing_internal.lib;absl_utf8_for_code_point.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>LAMPYRIS_EXE;PROTOBUF_USE_DLLS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/wd4828 /wd4267 /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libprotobufd.lib;libprotobuf-lited.lib;libprotocd.lib;abseil_dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Lampyris.Client.Common\includes\Base\AppConfigManager.h" />
+    <ClInclude Include="sources\AppContext.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Const\BarSize.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\MarketSummaryData.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteCandleData.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteCandleDataView.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTickerData.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTradeData.h" />
+    <QtMoc Include="sources\UI\Standalong\Quote\QuoteTickerDataWidget.h" />
+    <QtMoc Include="sources\UI\Common\AssetTrendCurveWidget.h" />
+    <QtMoc Include="sources\UI\Common\MarketOverviewBarChartWidget.h" />
+    <QtMoc Include="sources\UI\Mobile\Common\BottomPopupWidget.h" />
+    <ClInclude Include="sources\Util\StringUtil.h" />
+    <QtMoc Include="sources\AppSystem\Quote\Manager\QuoteManager.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Util\QuoteUtil.h" />
+    <ClInclude Include="sources\AppSystem\Trade\Data\LeverageBracketInfo.h" />
+    <ClInclude Include="sources\AppSystem\Trade\Data\LeverageSetting.h" />
+    <ClInclude Include="sources\AppSystem\Trade\Data\OrderInfo.h" />
+    <ClInclude Include="sources\AppSystem\Trade\Data\OrderStatusInfo.h" />
+    <ClInclude Include="sources\AppSystem\Trade\Data\PositionInfo.h" />
+    <ClInclude Include="sources\AppSystem\Trade\Data\SymbolTradeRule.h" />
+    <QtMoc Include="sources\AppSystem\Trade\Manager\TradeManager.h" />
+    <ClInclude Include="sources\Global.h" />
+    <QtMoc Include="sources\Network\WebSocketClient.h" />
+    <ClInclude Include="sources\Network\WebSocketMessageHandlerRegistry.h" />
+    <ClInclude Include="sources\PluginEntryPoint.h" />
+    <ClInclude Include="sources\Protocol\account.h" />
+    <ClInclude Include="sources\Protocol\app.h" />
+    <ClInclude Include="sources\Protocol\common.h" />
+    <ClInclude Include="sources\Protocol\Protocols.h" />
+    <ClInclude Include="sources\Protocol\quote.h" />
+    <ClInclude Include="sources\Protocol\strategy.h" />
+    <ClInclude Include="sources\Protocol\trading.h" />
+    <QtMoc Include="sources\UI\Common\AbstractScrollItem.h" />
+    <QtMoc Include="sources\UI\Common\AmountText.h" />
+    <QtMoc Include="sources\UI\Common\BetterLineEdit.h" />
+    <ClInclude Include="sources\UI\Common\ControlFactory.h" />
+    <QtMoc Include="sources\UI\Common\CustomSlider.h" />
+    <ClInclude Include="sources\UI\Common\GlobalUIStyle.h" />
+    <QtMoc Include="sources\UI\Common\PercentageDisplayText.h" />
+    <QtMoc Include="sources\UI\Common\PriceText.h" />
+    <QtMoc Include="sources\UI\Common\QuoteListItem.h" />
+    <QtMoc Include="sources\UI\Common\ScrollView.h" />
+    <QtMoc Include="sources\UI\Common\ScrollViewContentWidget.h" />
+    <QtMoc Include="sources\UI\Common\ShakingLineEdit.h" />
+    <QtMoc Include="sources\UI\Common\ShakingLineEditTestWindow.h" />
+    <QtMoc Include="sources\UI\Common\SignalStrengthWidget.h" />
+    <QtMoc Include="sources\UI\Common\StatusBarQuoteItem.h" />
+    <QtMoc Include="sources\UI\Common\SymbolSearchResultWidget.h" />
+    <QtMoc Include="sources\UI\Common\TimeWidget.h" />
+    <ClInclude Include="sources\UI\Mobile\Main\MainWidget.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <QtMoc Include="sources\UI\Standalong\Main\MainStatusBar.h" />
+    <QtMoc Include="sources\UI\Standalong\Main\MainTitleBar.h" />
+    <ClInclude Include="sources\UI\Standalong\Main\MainToolBar.h" />
+    <QtMoc Include="sources\UI\Standalong\Main\MainWidget.h" />
+    <QtMoc Include="sources\UI\Standalong\Main\MainToolButton.h" />
+    <ClInclude Include="sources\Util\DateTimeUtil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Lampyris.Client.Common\includes\Base\AppConfigManager.cpp" />
+    <ClCompile Include="sources\AppContext.cpp" />
+    <ClCompile Include="sources\AppSystem\Quote\Data\QuoteCandleDataView.cpp" />
+    <ClCompile Include="sources\AppSystem\Quote\Manager\QuoteManager.cpp" />
+    <ClCompile Include="sources\AppSystem\Quote\Util\QuoteUtil.cpp" />
+    <ClCompile Include="sources\AppSystem\Trade\Manager\TradeManager.cpp" />
+    <ClCompile Include="sources\Network\WebSocketClient.cpp" />
+    <ClCompile Include="sources\PluginEntryPoint.cpp" />
+    <ClCompile Include="sources\Protocol\account.cpp" />
+    <ClCompile Include="sources\Protocol\app.cpp" />
+    <ClCompile Include="sources\Protocol\common.cpp" />
+    <ClCompile Include="sources\Protocol\quote.cpp" />
+    <ClCompile Include="sources\Protocol\strategy.cpp" />
+    <ClCompile Include="sources\Protocol\trading.cpp" />
+    <ClCompile Include="sources\UI\Common\AbstractScrollItem.cpp" />
+    <ClCompile Include="sources\UI\Common\AmountText.cpp" />
+    <ClCompile Include="sources\UI\Common\AssetTrendCurveWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\BetterLineEdit.cpp" />
+    <ClCompile Include="sources\UI\Common\ControlFactory.cpp" />
+    <ClCompile Include="sources\UI\Common\CustomSlider.cpp" />
+    <ClCompile Include="sources\UI\Common\GlobalUIStyle.cpp" />
+    <ClCompile Include="sources\UI\Common\MarketOverviewBarChartWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\PercentageDisplayText.cpp" />
+    <ClCompile Include="sources\UI\Common\PriceText.cpp" />
+    <ClCompile Include="sources\UI\Common\QuoteListItem.cpp" />
+    <ClCompile Include="sources\UI\Common\ScrollView.cpp" />
+    <ClCompile Include="sources\UI\Common\ScrollViewContentWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\ShakingLineEdit.cpp" />
+    <ClCompile Include="sources\UI\Common\ShakingLineEditTestWindow.cpp" />
+    <ClCompile Include="sources\UI\Common\SignalStrengthWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\StatusBarQuoteItem.cpp" />
+    <ClCompile Include="sources\UI\Common\SymbolSearchResultWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\TimeWidget.cpp" />
+    <ClCompile Include="sources\UI\Mobile\Common\BottomPopupWidget.cpp" />
+    <ClCompile Include="sources\UI\Mobile\Main\MainWidget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Main\MainStatusBar.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Main\MainTitleBar.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Main\MainToolBar.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Main\MainToolButton.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Main\MainWidget.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Quote\QuoteTickerDataWidget.cpp" />
+    <ClCompile Include="sources\Util\DateTimeUtil.cpp" />
+    <ClCompile Include="sources\Util\StringUtil.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="resources\main.qrc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
