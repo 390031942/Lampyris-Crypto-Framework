@@ -17,12 +17,14 @@ public class CandleContinuousColorCondition : ICandleCondition
         IsRise = isRise;
     }
 
-    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd)
+    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd, out decimal value)
     {
-        foreach(QuoteCandleData data in dataList)
+        value = 0m;
+        foreach (QuoteCandleData data in dataList)
         {
             if(!(data.ChangePerc > 0 && IsRise) && !(data.ChangePerc < 0 && !IsRise))
             {
+                value = 0m;
                 return false;
             }
         }

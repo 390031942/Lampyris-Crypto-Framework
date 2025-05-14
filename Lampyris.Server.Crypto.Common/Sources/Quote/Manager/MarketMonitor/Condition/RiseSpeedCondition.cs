@@ -14,8 +14,10 @@ public class RiseSpeedCondition : ITickerCondition
         Greater = greater;
     }
 
-    public override bool Test(QuoteTickerData quoteTickerData)
+    public override bool Test(QuoteTickerData quoteTickerData, out decimal value)
     {
+        value = 0m;
+
         if (quoteTickerData == null)
         {
             return false;

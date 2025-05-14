@@ -2,6 +2,7 @@
 
 using Lampyris.CSharp.Common;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 /// <summary>
@@ -93,6 +94,26 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 
         return m_QuoteTickerDataMap[symbol];
     }
+
+    protected void PostProcessTickerData()
+    {
+        m_MarketSummaryData.Reset();
+        foreach (var quoteTickerData in m_QuoteTickerDataList)
+        {
+            if(quoteTickerData.ChangePerc > 0)
+            {
+                m_MarketSummaryData.RiseCount++;
+            }
+            else if(quoteTickerData.ChangePerc < 0)
+            {
+                m_MarketSummaryData.FallCount++;
+            }
+            else
+            {
+                m_MarketSummaryData.UnchangedCount++;
+            }
+        }
+    }
     #endregion
 
     #region K线数据
@@ -170,13 +191,17 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     public abstract void APISubscribeCandleData(string symbol, BarSize barSize);
     #endregion
 
-    #region 市场概况
-    #endregion
-
     #region 交易订阅
     #endregion
 
     #region 市场概况
+    private MarketSummaryData m_MarketSummaryData = new MarketSummaryData();
+
+    private HashSet<string> m_MainStreamSymbols = new HashSet<string>()
+    {
+        "BTCUSDT",
+        "ETHUSDT"
+    };
     #endregion
 
     #region 交易数据
@@ -199,7 +224,7 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     protected abstract void APIUpdateUsdtFuturesSymbolsImpl();
 
     /// <summary>
-    /// 更新全体USDT永续合约列表，包括上架时间
+    /// 获取全体USDT永续合约列表
     /// </summary>
     /// <returns></returns>
     public IEnumerable<string> GetSymbolList()
@@ -209,12 +234,21 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     #endregion
 
     #region Symbol增删
+
+    // 处理删减的临时集合
+    private HashSet<string> m_TempSymbolSet = new HashSet<string>();
+
     /// <summary>
     /// 动态处理新增或移除的 symbol
     /// </summary>
     protected void HandleSymbolChanges()
     {
         // 检查是否有移除的 symbol
+        m_TempSymbolSet.Clear();
+        m_TempSymbolSet.UnionWith(m_Symbols);
+
+        APIUpdateUsdtFuturesSymbolsImpl();
+
         var currentSymbols = GetSymbolList();
         var increasedSymbols = currentSymbols.Except(m_Symbols);
         var removedSymbols = m_Symbols.Except(currentSymbols);

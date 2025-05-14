@@ -1,4 +1,5 @@
-﻿namespace Lampyris.Server.Crypto.Common;
+﻿
+namespace Lampyris.Server.Crypto.Common;
 
 public class MarketSummaryData
 {
@@ -19,4 +20,16 @@ public class MarketSummaryData
 
     // 主流币平均涨跌幅
     public double MainStreamAvgChangePerc;
+
+    public void Reset()
+    {
+        RiseCount = 0;
+        FallCount = 0;
+        UnchangedCount = 0;
+        AvgChangePerc = 0;
+        Top10AvgChangePerc = 0;
+        Last10AvgChangePerc = 0;
+        Last10AvgChangePerc = 0;
+        MainStreamAvgChangePerc = 0;
+    }
 }

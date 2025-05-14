@@ -13,7 +13,7 @@ public class ProxyInfoJsonObject
     /// <summary>
     /// 最小的VPN代理 要求数量，小于这个程序将无法启动
     /// </summary>
-    public int             MinimumRequirement = 2;
+    public int             MinimumRequirement = 3;
 
     /// <summary>
     /// 代理信息

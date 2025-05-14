@@ -13,8 +13,9 @@ public class CandleCurrencyCondition : ICandleCondition
         Threshold = threshold;
     }
 
-    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd)
+    public override bool Test(ReadOnlySpan<QuoteCandleData> dataList, bool isEnd, out decimal value)
     {
+        value = 0m;
         return dataList[dataList.Length - 1].Currency >= (double)Threshold;
     }
 }

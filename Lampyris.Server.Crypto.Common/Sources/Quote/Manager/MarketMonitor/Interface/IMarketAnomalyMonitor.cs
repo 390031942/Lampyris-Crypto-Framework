@@ -44,7 +44,7 @@ public abstract class IMarketAnomalyMonitor : ISymbolCoolDownChecker
             {
                 if (barSize.Equals(condition.BarSize))
                 {
-                    if(!condition.Test(m_QuoteCacheService.QueryCacheOnlyLastestCandles(symbol, barSize, condition.ExpectedCount), isEnd))
+                    if(!condition.Test(m_QuoteCacheService.QueryCacheOnlyLastestCandles(symbol, barSize, condition.ExpectedCount), isEnd, out var a))
                     {
                         return;
                     }
@@ -77,7 +77,7 @@ public abstract class IMarketAnomalyMonitor : ISymbolCoolDownChecker
                 bool satisfield = true;
                 foreach (var condition in m_TickerConditionList)
                 {
-                    if (!condition.Test(data))
+                    if (!condition.Test(data, out var a ))
                     {
                         satisfield = false;
                         break;

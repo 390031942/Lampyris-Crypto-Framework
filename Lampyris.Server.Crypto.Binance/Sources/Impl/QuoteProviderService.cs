@@ -6,13 +6,25 @@ using Binance.Net.Objects.Models.Spot.Socket;
 using CryptoExchange.Net.Objects.Sockets;
 using Lampyris.CSharp.Common;
 using Lampyris.Server.Crypto.Common;
-using MySqlX.XDevAPI;
 using System.Collections.Concurrent;
 
 namespace Lampyris.Server.Crypto.Binance;
 
+// 单个IP可以有10个WebSocket对象
+// 每个WebSocket对象最多有200个连接
+
+// 需要订阅的行情数据有:
+// 首先，Ticker占1个WebSocket对象
+// 每个symbol 需要 1m + 15m + 1D数据 + trade数据 + 标记价格更新
+// 即:每个symbol需要占用5个WebSocket流
+// 对于剩下9个WebSocket对象最多只能订阅9 * 200 / 5 = 360个symbol的数据
+// 于是这里最少需要2个IP地址来进行运作, 2个IP最多能订阅360+400 = 720个symbol的数据
+
 public class QuoteProviderService : AbstractQuoteProviderService
 {
+    [Autowired]
+    private ProxyProvideService m_ProxyProvideService;
+
     private BinanceRestClient m_RestClient = new BinanceRestClient();
     private BinanceSocketClient m_SocketClient = new BinanceSocketClient();
 
@@ -49,9 +61,17 @@ public class QuoteProviderService : AbstractQuoteProviderService
         var exchangeInfoResult = m_RestClient.UsdFuturesApi.ExchangeData.GetExchangeInfoAsync().Result;
         if (exchangeInfoResult.Success)
         {
-            m_Symbols.UnionWith(exchangeInfoResult.Data.Symbols
-                .Where(s => s.ContractType == ContractType.Perpetual && s.QuoteAsset == "USDT")
-                .Select(s => s.Name));
+            m_Symbols.Clear();
+            m_Symbol2OnBoardTime.Clear();
+
+            var result = exchangeInfoResult.Data.Symbols
+                .Where(s => s.ContractType == ContractType.Perpetual && s.QuoteAsset == "USDT");
+
+            foreach(var symbolInfo in result)
+            {
+                m_Symbols.Add(symbolInfo.Name);
+                m_Symbol2OnBoardTime[symbolInfo.Name] = symbolInfo.ListingDate;
+            }
         }
     }
 
@@ -82,12 +102,113 @@ public class QuoteProviderService : AbstractQuoteProviderService
                 m_QuoteTickerDataMap[rawTickerData.Symbol] = Converter.ToQuoteTickerData(timestamp, rawTickerData, quoteTickerData);
             }
 
-            // 后处理
+            PostProcessTickerData();
+            OnTickerUpdated(m_QuoteTickerDataList);
         }
     }
+
     #endregion
 
     #region K线数据
+    public override List<QuoteCandleData> APIQueryCandleDataImpl(string symbol, BarSize barSize, DateTime? startTime, DateTime? endTime, int n = -1)
+    {
+        // 检查输入参数
+        if (string.IsNullOrEmpty(symbol))
+            throw new ArgumentException("Symbol cannot be null or empty.");
+
+        // 将 BarSize 转换为 Binance 的时间间隔
+        KlineInterval interval = Converter.ConvertBarSize(barSize);
+
+        // Binance 最大单次查询数量
+        const int maxQueryLimit = 1500;
+
+        // 处理 startTime 和 endTime 的默认值
+        DateTime actualStartTime = startTime ?? DateTime.UtcNow.AddYears(-1); // Binance 支持的最早时间
+        DateTime actualEndTime = endTime ?? DateTime.UtcNow;
+
+        if (actualStartTime >= actualEndTime)
+            throw new ArgumentException("StartTime must be earlier than EndTime.");
+
+        // 初始化结果列表
+        List<QuoteCandleData> result = new List<QuoteCandleData>();
+
+        // 当前查询的时间范围分段
+        List<(DateTime Start, DateTime End)> timeRanges = new List<(DateTime, DateTime)>();
+        DateTime currentStartTime = actualStartTime;
+
+        while (currentStartTime < actualEndTime)
+        {
+            DateTime currentEndTime = currentStartTime.AddMilliseconds(interval.ToMilliseconds() * maxQueryLimit);
+            if (currentEndTime > actualEndTime)
+                currentEndTime = actualEndTime;
+
+            timeRanges.Add((currentStartTime, currentEndTime));
+            currentStartTime = currentEndTime;
+        }
+
+        // 配置多个 BinanceClient，每个使用不同的代理服务器
+        var proxyList = new List<string>
+        {
+            "http://proxy1.example.com:8080",
+            "http://proxy2.example.com:8080",
+            "http://proxy3.example.com:8080"
+        };
+
+        var clients = proxyList.Select(proxy => CreateBinanceClientWithProxy(proxy)).ToList();
+
+        // 多线程并发请求
+        var tasks = timeRanges.Select((range, index) =>
+        {
+            var client = clients[index % clients.Count]; // 轮询使用不同的客户端
+            return Task.Run(() =>
+            {
+                var response = client.UsdFuturesApi.ExchangeData.GetKlinesAsync(
+                    symbol: symbol,
+                    interval: interval,
+                    startTime: range.Start,
+                    endTime: range.End,
+                    limit: maxQueryLimit
+                ).Result;
+
+                if (!response.Success || response.Data == null)
+                {
+                    throw new Exception($"Failed to query Kline data: {response.Error?.Message}");
+                }
+
+                // 转换 Binance K 线数据为 QuoteCandleData
+                return response.Data.Select(kline => new QuoteCandleData
+                {
+                    OpenTime = kline.OpenTime,
+                    Open = kline.OpenPrice,
+                    High = kline.HighPrice,
+                    Low = kline.LowPrice,
+                    Close = kline.ClosePrice,
+                    Volume = kline.Volume
+                }).ToList();
+            });
+        });
+
+        // 等待所有任务完成并合并结果
+        Task.WaitAll(tasks.ToArray());
+        foreach (var task in tasks)
+        {
+            result.AddRange(task.Result);
+        }
+
+        // 如果 n > 0，则返回最近的 n 条数据
+        if (n > 0 && result.Count > n)
+        {
+            result = result.TakeLast(n).ToList();
+        }
+
+        return result;
+    }
+
+    // 辅助方法：创建带有代理的 BinanceClient
+    private BinanceRestClient CreateBinanceClientWithProxy(string proxyUrl)
+    {
+        return new BinanceRestClient(clientOptions);
+    }
     /// <summary>
     /// 订阅全体symbol的K线数据
     /// </summary>
@@ -284,52 +405,6 @@ public class QuoteProviderService : AbstractQuoteProviderService
             m_SocketClient.UsdFuturesApi.UnsubscribeAsync(m_MarkPriceSubscriptions[symbol]);
             m_MarkPriceSubscriptions.Remove(symbol, out var _);
         }
-    }
-
-    public override List<QuoteCandleData> APIQueryCandleDataImpl(string symbol, BarSize barSize, DateTime startTime, DateTime endTime)
-    {
-        // Binance 每次请求的最大限制
-        const int maxLimit = 1500;
-
-        // 保存所有 K 线数据
-        var allCandles = new List<QuoteCandleData>();
-
-        // 当前的查询起始时间
-        var currentStartTime = startTime;
-
-        var interval = Converter.ConvertBarSize(barSize);
-
-        while (currentStartTime < endTime)
-        {
-            // 计算当前批次的结束时间
-            var currentEndTime = currentStartTime.AddSeconds((int)interval * maxLimit);
-            if (currentEndTime > endTime)
-            {
-                currentEndTime = endTime;
-            }
-
-            // 查询当前时间范围的 K 线数据
-            var result = m_RestClient.UsdFuturesApi.ExchangeData.GetKlinesAsync(
-                symbol,
-                interval,
-                currentStartTime,
-                currentEndTime,
-                maxLimit
-            ).Result;
-
-            if (!result.Success)
-            {
-                throw new Exception($"Failed to query kline data for Symbol = \"{symbol}\" , barSize = \"{barSize}\", reason: {result.Error?.Message}");
-            }
-
-            // 将当前批次的 K 线数据添加到总集合中
-            allCandles.AddRange(result.Data.Select(kline => Converter.ConvertQuoteCandleData(kline)));
-
-            // 更新起始时间为当前批次的最后一条 K 线的时间
-            currentStartTime = result.Data.Last().CloseTime.AddMilliseconds(1); // 避免重复数据
-        }
-
-        return allCandles;
     }
 
     public override void APISubscribeCandleData(string symbol, BarSize barSize)
