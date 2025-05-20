@@ -2,7 +2,6 @@
 
 using Lampyris.CSharp.Common;
 using Newtonsoft.Json;
-using System;
 using System.Net.Sockets;
 
 /// <summary>
@@ -38,14 +37,15 @@ public class ProxyProvideService:ILifecycle
 {
     private ProxyInfoJsonObject m_ProxyInfoObject;
 
-    private const string ProxyInfoObjectSaveFilePath = "Network/json_settings.json";
+    private const string ProxyInfoObjectSaveFilePath = "network/proxy.json";
 
     public override int Priority => 1;
 
     public override void OnStart()
     {
-        Logger.LogInfo($"Loading proxy settings from \"{ProxyInfoObjectSaveFilePath}\"..., and then reachable test will be made...");
-        m_ProxyInfoObject = JsonConvert.DeserializeObject<ProxyInfoJsonObject>(ProxyInfoObjectSaveFilePath);
+        Logger.LogInfo($"Loading proxy settings from \"{ProxyInfoObjectSaveFilePath}\", and then reachable test will be made...");
+        string jsonContent = File.ReadAllText(ProxyInfoObjectSaveFilePath);
+        m_ProxyInfoObject = JsonConvert.DeserializeObject<ProxyInfoJsonObject>(jsonContent);
         
         if(m_ProxyInfoObject == null)
         {

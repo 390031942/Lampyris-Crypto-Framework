@@ -11,9 +11,10 @@ namespace Lampyris.Server.Crypto.Common;
 public class SelfSelectSymbolService:ILifecycle
 {
     [Autowired]
-    private DBService m_DBService;
+    private SelfSelectSymbolDBService m_DBService;
 
     private DBTable<SelfSelectedSymbolGroupData> m_Table;
+    public override int Priority => 10;
 
     /// <summary>
     /// 不可删除的默认动态分组(UserId = -1),不需要存入数据库，但是客户端查询的时候需要追加到列表里
@@ -33,7 +34,10 @@ public class SelfSelectSymbolService:ILifecycle
     public override void OnStart()
     {
         m_Table = m_DBService.GetTable<SelfSelectedSymbolGroupData>();
-
+        if(m_Table == null)
+        {
+            m_Table = m_DBService.CreateTable<SelfSelectedSymbolGroupData>();
+        }
         foreach(var groupName in m_DynamicGroupName)
         {
             m_DynamicGroupData.Add(new SelfSelectedSymbolGroupData() { Name = groupName });

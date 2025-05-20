@@ -7,12 +7,8 @@ public class MessageHandlerRegistry
 {
     private readonly Dictionary<Request.RequestTypeOneofCase, Action<ClientUserInfo, Request>> m_RequestType2HandlerMap = new();
 
-    public MessageHandlerRegistry()
-    {
-        RegisterHandlers();
-    }
 
-    private void RegisterHandlers()
+    public void RegisterHandlers()
     {
         var methods = Components.GetComponentsByTag("MessageHandler")
             .SelectMany(obj => obj.GetType().GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))

@@ -25,7 +25,8 @@ using System;
 public abstract class AbstractTradingService:ILifecycle
 {
     [Autowired]
-    protected DBService m_DBService;
+    protected TradeDBService m_DBService;
+
     public override int Priority => 4;
 
     public class SubAccountTradingData
@@ -70,7 +71,19 @@ public abstract class AbstractTradingService:ILifecycle
     protected Dictionary<string,SymbolTradeRule> m_SymbolTradeRuleInfoMap = new Dictionary<string,SymbolTradeRule>();
 
     [Autowired]
-    private AbstractAccountManagerBase m_AccountManager;
+    protected AbstractAccountManagerBase m_AccountManager;
+
+    protected abstract void APIUpdateSubaccountInfoImpl(SubTradeAccount account);
+
+    public override void OnStart()
+    {
+        base.OnStart();
+
+        m_AccountManager.ForeachSubAccount((account) =>
+        {
+            m_SubAccountTradingDataMap[account.AccountId] = new SubAccountTradingData();
+        });
+    }
 
     #region 订单创建
 
@@ -97,7 +110,7 @@ public abstract class AbstractTradingService:ILifecycle
 
         if(!m_SymbolTradeRuleInfoMap.ContainsKey(order.Symbol))
         {
-            Console.WriteLine($"Unabled to place order: {order}, Symbol = \"{order.Symbol}\" is not tradable");
+            Logger.LogWarning($"Unabled to place order: {order}, Symbol = \"{order.Symbol}\" is not tradable");
         }
 
         OrderStatusInfo orderStatusInfo = new OrderStatusInfo();
@@ -108,7 +121,7 @@ public abstract class AbstractTradingService:ILifecycle
         {
             PlaceOrderImpl(clientUserId, accountInfo.AccountId, order);
         });
-        Console.WriteLine($"Order placed by user {clientUserId}: {order})");
+        Logger.LogInfo($"Order placed by user {clientUserId}: {order})");
 
         Task.Run(() =>
         {
@@ -160,7 +173,7 @@ public abstract class AbstractTradingService:ILifecycle
     /// 清仓指定symbol(实现)
     /// </summary>
     /// <param name="symbol">交易对</param>
-    protected abstract void ClosePositionImpl(int accountId, string symbol);
+    protected abstract void APIClosePositionImpl(int accountId, string symbol);
     
     /// <summary>
     /// 批量一键清仓
@@ -182,7 +195,7 @@ public abstract class AbstractTradingService:ILifecycle
                 foreach(var pair in m_SubAccountTradingDataMap)
                 {
                     int accountId = pair.Key;
-                    taskList[index++] = Task.Run(() => { ClosePositionImpl(accountId,symbol); });
+                    taskList[index++] = Task.Run(() => { APIClosePositionImpl(accountId,symbol); });
                 }
                 Task.WaitAll(taskList);
             }
@@ -278,7 +291,7 @@ public abstract class AbstractTradingService:ILifecycle
     /// <param name="accountId">子账号ID</param>
     /// <param name="symbol">交易对</param>
     /// <param name="leverage">杠杆倍数值</param>
-    protected abstract LeverageSettingResult SetLeverageImpl(int accountId, string symbol, int leverage);
+    protected abstract LeverageSettingResult APISetLeverageImpl(int accountId, string symbol, int leverage);
 
     /// <summary>
     /// 更新全体symbol的杠杆阶梯
@@ -300,7 +313,7 @@ public abstract class AbstractTradingService:ILifecycle
             int accountId = pair.Key;
             taskList[index] = Task.Run(() => 
             { 
-                results[index] = SetLeverageImpl(accountId, symbol, leverage);
+                results[index] = APISetLeverageImpl(accountId, symbol, leverage);
             });
             index++;
         }

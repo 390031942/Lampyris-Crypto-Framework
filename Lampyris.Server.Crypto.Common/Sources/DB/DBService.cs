@@ -2,6 +2,8 @@
 
 using Lampyris.CSharp.Common;
 using MySql.Data.MySqlClient;
+    using System.Collections.Concurrent;
+using System.Data.Common;
 using System.Reflection;
 
 [IniFile("db_connection.ini")]
@@ -17,9 +19,16 @@ public class DBConnectionConfig
     public string Password;
 }
 
-public abstract class DBService:ILifecycle
+public interface IDBConnectionProvider
 {
-    private MySqlConnection m_Connection;
+    public MySqlConnection GetConnection();
+    public void RecycleConnection(MySqlConnection connection);
+}
+
+public abstract class DBService : ILifecycle, IDBConnectionProvider
+{
+    private readonly ConcurrentBag<MySqlConnection> m_ConnectionPool = new ConcurrentBag<MySqlConnection>();
+    private int m_MaxConnections;
 
     public abstract string DatebaseName { get; }
 
@@ -28,73 +37,39 @@ public abstract class DBService:ILifecycle
     public override void OnStart()
     {
         DBConnectionConfig dbConfig = IniConfigManager.Load<DBConnectionConfig>();
-        if(dbConfig == null) 
+        if (dbConfig == null)
         {
             Logger.LogError("Failed to connect database: db_connection.ini cannot be found");
             return;
         }
 
-        string mySqlConnectStr = $"Server={dbConfig.ServerIP};" + 
+        string mySqlConnectStr = $"Server={dbConfig.ServerIP};" +
                                  $"Database={DatebaseName};" +
                                  $"User={dbConfig.User};" +
-                                 $"Password={dbConfig.Password};";
+                                 $"Password={dbConfig.Password};" +
+                                 $"ConnectionLifeTime = 999999999;";
 
-        m_Connection = new MySqlConnection(mySqlConnectStr);
-        m_Connection.Open();
+        // 获取 Task 的最大并发数
+        m_MaxConnections = Environment.ProcessorCount + 1;
+
+        // 初始化连接池
+        for (int i = 0; i < m_MaxConnections; i++)
+        {
+            var connection = new MySqlConnection(mySqlConnectStr);
+            connection.Open();
+            m_ConnectionPool.Add(connection);
+        }
     }
 
     public override void OnDestroy()
     {
-        if(m_Connection != null && m_Connection.State == System.Data.ConnectionState.Open)
+        while (m_ConnectionPool.TryTake(out var connection))
         {
-            m_Connection.Close();
-        }
-    }
-
-    public DBTable<T> CreateTable<T>(params object[] tableNameArgs) where T : class, new()
-    {
-        var tableAttribute = typeof(T).GetCustomAttribute<DBTableAttribute>();
-        if (tableAttribute == null)
-        {
-            throw new InvalidOperationException($"Class {typeof(T).Name} does not have a TableAttribute.");
-        }
-
-        var tableName = tableAttribute.GetTableName(tableNameArgs);
-        var columns = new List<string>();
-
-        foreach (var property in typeof(T).GetProperties())
-        {
-            var columnAttribute = property.GetCustomAttribute<DBColumnAttribute>();
-            if (columnAttribute != null)
+            if (connection != null && connection.State == System.Data.ConnectionState.Open)
             {
-                var columnDefinition = $"{columnAttribute.ColumnName} {columnAttribute.DataType}";
-                if (columnAttribute.IsPrimaryKey)
-                {
-                    columnDefinition += " PRIMARY KEY";
-                }
-                if (columnAttribute.IsAutoIncrement)
-                {
-                    columnDefinition += " AUTO_INCREMENT";
-                }
-                if (columnAttribute.IsNotNull)
-                {
-                    columnDefinition += " NOT NULL";
-                }
-                columns.Add(columnDefinition);
+                connection.Close();
             }
         }
-
-        var createTableSql = $"CREATE TABLE IF NOT EXISTS {tableName} ({string.Join(", ", columns)});";
-
-        using (var command = new MySqlCommand(createTableSql, m_Connection))
-        {
-            command.ExecuteNonQuery();
-        }
-        Console.WriteLine($"Table '{tableName}' created successfully.");
-
-
-        // 返回 DBTable<T> 实例
-        return new DBTable<T>(tableName, m_Connection);
     }
 
     public DBTable<T> GetTable<T>(params object[] tableNameArgs) where T : class, new()
@@ -116,84 +91,123 @@ public abstract class DBService:ILifecycle
         }
 
         // 返回 DBTable<T> 实例
-        return new DBTable<T>(tableName, m_Connection);
+        return new DBTable<T>(tableName, this);
     }
 
-    private bool TableExists(string tableName)
+    public DBTable<T> GetTable<T>(string tableName) where T : class, new()
+    {
+        // 检查表是否存在
+        if (!TableExists(tableName))
+        {
+            Console.WriteLine($"Table '{tableName}' does not exist in the database.");
+            return null;
+        }
+
+        // 返回 DBTable<T> 实例
+        return new DBTable<T>(tableName, this);
+    }
+    public DBTable<T> CreateTable<T>(string tableName) where T : class, new()
+    {
+        var columns = new List<string>();
+
+        foreach (var member in typeof(T).GetMembers())
+        {
+            if (member is PropertyInfo || member is FieldInfo)
+            {
+                var columnAttribute = member.GetCustomAttribute<DBColumnAttribute>();
+                if (columnAttribute != null)
+                {
+                    var columnDefinition = $"{columnAttribute.ColumnName} {columnAttribute.DataType}";
+                    if (columnAttribute.IsPrimaryKey)
+                    {
+                        columnDefinition += " PRIMARY KEY";
+                    }
+                    if (columnAttribute.IsAutoIncrement)
+                    {
+                        columnDefinition += " AUTO_INCREMENT";
+                    }
+                    if (columnAttribute.IsNotNull)
+                    {
+                        columnDefinition += " NOT NULL";
+                    }
+                    columns.Add(columnDefinition);
+                }
+            }
+        }
+
+        var createTableSql = $"CREATE TABLE IF NOT EXISTS {tableName} ({string.Join(", ", columns)});";
+
+        var connection = GetConnection();
+        try
+        {
+            using (var command = new MySqlCommand(createTableSql, connection))
+            {
+                command.ExecuteNonQuery();
+            }
+            Console.WriteLine($"Table '{tableName}' created successfully.");
+        }
+        finally
+        {
+            RecycleConnection(connection);
+        }
+
+        // 返回 DBTable<T> 实例
+        return new DBTable<T>(tableName, this);
+    }
+
+    public DBTable<T> CreateTable<T>(params object[] tableNameArgs) where T : class, new()
+    {
+        var tableAttribute = typeof(T).GetCustomAttribute<DBTableAttribute>();
+        if (tableAttribute == null)
+        {
+            throw new InvalidOperationException($"Class {typeof(T).Name} does not have a TableAttribute.");
+        }
+
+        var tableName = tableAttribute.GetTableName(tableNameArgs);
+        return CreateTable<T>(tableName);
+    }
+
+    public bool TableExists(string tableName)
     {
         const string query = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = @DatabaseName AND TABLE_NAME = @TableName";
-        
-        using (var command = new MySqlCommand(query, m_Connection))
+
+        var connection = GetConnection();
+        try
         {
-            // 获取当前数据库名称
-            var databaseName = m_Connection.Database;
+            using (var command = new MySqlCommand(query, connection))
+            {
+                // 获取当前数据库名称
+                var databaseName = connection.Database;
 
-            // 添加参数化查询，防止 SQL 注入
-            command.Parameters.AddWithValue("@DatabaseName", databaseName);
-            command.Parameters.AddWithValue("@TableName", tableName);
+                // 添加参数化查询，防止 SQL 注入
+                command.Parameters.AddWithValue("@DatabaseName", databaseName);
+                command.Parameters.AddWithValue("@TableName", tableName);
 
-            // 执行查询
-            var result = command.ExecuteScalar();
-            return Convert.ToInt32(result) > 0;
+                // 执行查询
+                var result = command.ExecuteScalar();
+                return Convert.ToInt32(result) > 0;
+            }
+        }
+        finally
+        {
+            RecycleConnection(connection);
         }
     }
 
-    public IEnumerable<T> QueryField<T>(string tableName, string fieldName, string whereClause = null, params MySqlParameter[] parameters)
+    public MySqlConnection GetConnection()
     {
-        // 构建查询 SQL
-        string query = $"SELECT {fieldName} FROM {tableName}";
-        if (!string.IsNullOrEmpty(whereClause))
+        if (m_ConnectionPool.TryTake(out var connection))
         {
-            query += $" WHERE {whereClause}";
+            return connection;
         }
-
-        using (var command = new MySqlCommand(query, m_Connection))
-        {
-            // 添加参数化查询，防止 SQL 注入
-            if (parameters != null && parameters.Length > 0)
-            {
-                command.Parameters.AddRange(parameters);
-            }
-
-            using (var reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    // 每次迭代返回一个转换后的结果
-                    yield return reader.IsDBNull(0) ? default : (T)Convert.ChangeType(reader.GetValue(0), typeof(T));
-                }
-            }
-        }
+        throw new InvalidOperationException("No available connections in the pool.");
     }
 
-    public IEnumerable<(T1, T2)> QueryFields<T1, T2>(string tableName, string fieldName1, string fieldName2, string whereClause = null, params MySqlParameter[] parameters)
+    public void RecycleConnection(MySqlConnection connection)
     {
-        // 构建查询 SQL
-        string query = $"SELECT {fieldName1}, {fieldName2} FROM {tableName}";
-        if (!string.IsNullOrEmpty(whereClause))
+        if (connection != null)
         {
-            query += $" WHERE {whereClause}";
-        }
-
-        using (var command = new MySqlCommand(query, m_Connection))
-        {
-            // 添加参数化查询，防止 SQL 注入
-            if (parameters != null && parameters.Length > 0)
-            {
-                command.Parameters.AddRange(parameters);
-            }
-
-            using (var reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    // 每次迭代返回一个元组类型的结果
-                    var value1 = reader.IsDBNull(0) ? default(T1) : (T1)Convert.ChangeType(reader.GetValue(0), typeof(T1));
-                    var value2 = reader.IsDBNull(1) ? default(T2) : (T2)Convert.ChangeType(reader.GetValue(1), typeof(T2));
-                    yield return (value1, value2);
-                }
-            }
+            m_ConnectionPool.Add(connection);
         }
     }
-
 }

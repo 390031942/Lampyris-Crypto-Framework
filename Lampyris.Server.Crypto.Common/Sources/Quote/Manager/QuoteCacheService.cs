@@ -10,9 +10,14 @@ using System.Runtime.InteropServices;
 public class QuoteCandleDataCacheStrategy
 {
     /// <summary>
-    /// 缓存k先数据的时间间隔
+    /// 缓存k线数据的时间间隔
     /// </summary>
     public BarSize BarSize { get; private set; }
+
+    /// <summary>
+    /// 需要缓存的K线数据的天数，如果为-1，则表示缓存每一天的是数据
+    /// </summary>
+    public int Day;
 
     /// <summary>
     /// 每个缓存数据分组的时间间隔秒数,如1min k线的缓存是1天一组，则秒数为24*3600 = 86400.
@@ -20,9 +25,10 @@ public class QuoteCandleDataCacheStrategy
     /// </summary>
     public int PerGroupIntervalSec {get; private set;}
 
-    public QuoteCandleDataCacheStrategy(BarSize barSize, int perGroupIntervalSec)
+    public QuoteCandleDataCacheStrategy(BarSize barSize, int day, int perGroupIntervalSec)
     {
         this.BarSize = barSize;
+        this.Day = day;
         this.PerGroupIntervalSec = perGroupIntervalSec;
     }
     
@@ -114,13 +120,25 @@ public class QuoteCandleDataCacheStrategy
         // 判断两个 groupId 是否相同
         return lhsGroupId == rhsGroupId;
     }
+
+    public DateTime? CalculateCacheStartDateTime(DateTime now)
+    {
+        DateTime dateTime = now;
+        if(Day > 0)
+        {
+            dateTime = dateTime.AddDays(-Day);
+            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0);
+        }
+
+        return null;
+    }
 }
 
 [Component]
 public class QuoteCacheService:ILifecycle
 {
     [Autowired]
-    private DBService m_DBService;
+    private QuoteDBService m_DBService;
 
     private ICacheService m_CacheService;
 
@@ -132,12 +150,12 @@ public class QuoteCacheService:ILifecycle
 
     private ObjectListPool<string> m_StringListPool = new ObjectListPool<string>();
 
-    public override void OnStart()
+    public QuoteCacheService()
     {
         m_CacheService = CacheServiceFactory.Get(CacheServiceType.MemoryCache);
-        m_CacheStrategyList.Add(new QuoteCandleDataCacheStrategy(BarSize._1m, 24 * 60 * 60));
-        m_CacheStrategyList.Add(new QuoteCandleDataCacheStrategy(BarSize._15m, 24 * 60 * 60));
-        m_CacheStrategyList.Add(new QuoteCandleDataCacheStrategy(BarSize._1D, -1));
+        m_CacheStrategyList.Add(new QuoteCandleDataCacheStrategy(BarSize._1m, 7, 24 * 60 * 60));
+        m_CacheStrategyList.Add(new QuoteCandleDataCacheStrategy(BarSize._15m, 14,24 * 60 * 60));
+        m_CacheStrategyList.Add(new QuoteCandleDataCacheStrategy(BarSize._1D, -1, -1));
 
         foreach(var strategy in m_CacheStrategyList)
         {
@@ -503,7 +521,7 @@ public class QuoteCacheService:ILifecycle
             {
                 dbTable = m_DBService.CreateTable<QuoteCandleData>(tableName);
             }
-            dbTable.Insert(dataList);
+            dbTable.Insert(dataList, true);
             progress.Percentage = 100;
         });
     }
@@ -590,7 +608,12 @@ public class QuoteCacheService:ILifecycle
     /// <returns></returns>
     public IEnumerable<DateTime> QueryCandleDateTimeList(string symbol, BarSize barSize)
     {
-        string tableName = $"quote_candle_data_{symbol}{barSize.ToString()}";
-        return m_DBService.QueryField<DateTime>(tableName, "dateTime");
+        string tableName = $"quote_candle_data_{symbol}{barSize}";
+        if(!m_DBService.TableExists(tableName))
+        {
+            return Enumerable.Empty<DateTime>();
+        }
+        var table = m_DBService.GetTable<QuoteCandleData>(tableName);
+        return table.QueryField<DateTime>("dateTime");
     }
 }

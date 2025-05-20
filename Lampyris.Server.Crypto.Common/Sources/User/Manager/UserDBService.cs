@@ -5,7 +5,7 @@ namespace Lampyris.Server.Crypto.Common;
 [Component("UserDBService")]
 public class UserDBService:DBService
 {
-    public override string DatebaseName => "lampyris.server.crypto.user";
+    public override string DatebaseName => "lampyris.crpyto.db.user";
 
     public ClientUserInfo QueryClientUserByDeviceMAC(string deviceMAC)
     {

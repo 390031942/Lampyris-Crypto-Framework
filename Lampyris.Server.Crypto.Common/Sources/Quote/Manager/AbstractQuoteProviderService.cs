@@ -23,11 +23,6 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     protected HashSet<string> m_Symbols = new HashSet<string>();
 
     /// <summary>
-    /// symbol -> 上架时间
-    /// </summary>
-    protected Dictionary<string, DateTime> m_Symbol2OnBoardTime = new Dictionary<string, DateTime>();
-
-    /// <summary>
     /// 需要监听与更新的k线时间周期列表
     /// </summary>
     protected readonly BarSize[] m_ConcernedBarSizeList = new BarSize[3]
@@ -59,15 +54,20 @@ public abstract class AbstractQuoteProviderService:ILifecycle
                        "integrity of candlestick data will be checked firstly, " +
                        "and then API-Level quote subscriptions will be made.");
 
-        Task[] taskList = new Task[] {
-            // API订阅ticker, 标记价格，trade数据等...
-            APISubscriptionAllImpl(),
+        // 首先需要获取所有symbol的交易规则，对于交易规则，我们需要利用到每个symbol的上架时间
+        APIUpdateUsdtFuturesSymbolsImpl();
 
-            // 验证k线数据完整性并订阅k线实时数据
-            // 完整性指的是: 对于不同BarSize，如果这个barSize的数据是需要缓存的，则要确保缓存的数据完整
-            VerifyCandleDataIntegrityAndSubscription()
-        };
-        Task.WaitAll(taskList);
+        if (m_Symbols.Count == 0)
+        {
+            throw new InvalidDataException("Failed to verify market data: Symbol list is empty");
+        }
+
+        // 验证k线数据完整性并订阅k线实时数据
+        // 完整性指的是: 对于不同BarSize，如果这个barSize的数据是需要缓存的，则要确保缓存的数据完整
+        Task.WaitAll(VerifyCandleDataIntegrityAndSubscription());
+
+        // API订阅ticker, 标记价格，trade数据等...
+        // Task.WaitAll(APISubscriptionAllImpl());
     }
 
     #region Ticker行情
@@ -98,8 +98,21 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     protected void PostProcessTickerData()
     {
         m_MarketSummaryData.Reset();
-        foreach (var quoteTickerData in m_QuoteTickerDataList)
+
+        decimal percentageSum = 0.0m;
+        decimal top10PercentageSum = 0.0m;
+        decimal last10PercentageSum = 0.0m;
+        decimal mainStreamPercentageSum = 0.0m;
+
+        m_QuoteTickerDataList.Sort((lhs, rhs) =>
         {
+            if (lhs.ChangePerc == rhs.ChangePerc) return 0;
+            return rhs.ChangePerc > lhs.ChangePerc ? 1 : -1;
+        });
+
+        for(int i = 0; i < m_QuoteTickerDataList.Count; i++)
+        {
+            var quoteTickerData = m_QuoteTickerDataList[i];
             if(quoteTickerData.ChangePerc > 0)
             {
                 m_MarketSummaryData.RiseCount++;
@@ -112,7 +125,34 @@ public abstract class AbstractQuoteProviderService:ILifecycle
             {
                 m_MarketSummaryData.UnchangedCount++;
             }
+
+            if (m_MainStreamSymbols.Contains(quoteTickerData.Symbol))
+            {
+                mainStreamPercentageSum += quoteTickerData.ChangePerc;
+            }
+
+            if(i < 10) 
+            {
+                top10PercentageSum += quoteTickerData.ChangePerc;
+            }
+            else if(i >= m_QuoteTickerDataList.Count - 10)
+            {
+                last10PercentageSum += quoteTickerData.ChangePerc;
+            } 
+            percentageSum += quoteTickerData.ChangePerc;
+
+            var span = m_CacheService.QueryCacheOnlyLastestCandles(quoteTickerData.Symbol, BarSize._1m, 3);
+            // 涨速计算
+            if (span.Length > 0)
+            { 
+                quoteTickerData.RiseSpeed = 0m; 
+            }
         }
+
+        m_MarketSummaryData.AvgChangePerc = percentageSum / m_QuoteTickerDataList.Count;
+        m_MarketSummaryData.MainStreamAvgChangePerc = mainStreamPercentageSum / m_QuoteTickerDataList.Count;
+        m_MarketSummaryData.Top10AvgChangePerc = top10PercentageSum / m_QuoteTickerDataList.Count;
+        m_MarketSummaryData.Last10AvgChangePerc = last10PercentageSum / m_QuoteTickerDataList.Count;
     }
     #endregion
 
@@ -139,7 +179,7 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         List<QuoteCandleData> result = m_CacheService.QueryCandleData(symbol, barSize, startTime, endTime, n);
 
         // 验证数据完整性
-        if (!IsDataComplete(result, startTime, endTime, barSize))
+        if (!IsDataComplete(symbol, result, startTime, endTime, barSize))
         {
             // 如果数据不完整，调用 API 补充缺失的数据
             List<QuoteCandleData> apiData = APIQueryCandleDataImpl(symbol, barSize, startTime, endTime, n);
@@ -313,30 +353,27 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 
     /// <summary>
     /// 验证行情数据的完整性
-    /// </summary>
+    /// </summary>s
     protected async Task VerifyCandleDataIntegrityAndSubscription()
     {
-        // 首先需要获取所有symbol的交易规则，对于交易规则，我们需要利用到每个symbol的上架时间
-        APIUpdateUsdtFuturesSymbolsImpl();
-
-        if (m_Symbols.Count == 0)
-        {
-            throw new InvalidDataException("Failed to verify market data: Symbol list is empty");
-        }
-
         // 记录当前时间
         DateTime now = GetAPIServerDateTime();
 
         // 使用 Task 并行处理每个 symbol
-        var tasks = m_Symbols.Select(symbol => Task.Run(() => ValifySymbol(symbol, now)));
-        await Task.WhenAll(tasks);
+        foreach(var symbol in m_Symbols)
+        {
+            // VerifySymbol(symbol, now);
+        }
+
+        // var tasks = m_Symbols.Select(symbol => Task.Run(() => VerifySymbol(symbol, now)));
+        // await Task.WhenAll(tasks);
 
         // 补充完缺失的时间段数据后，再次对每个symbol进行处理:
         // 补充下载 时间段为 [之前记录的当前时间now，当前时间]之间的数据，下载完毕后立刻开启数据的订阅。
         // 特别注意：如果当前时间的秒数大于55秒，则在下一分钟开始时候再进行操作
         // 这样做的目的是为了避免在：时刻dateTime1的时候请求，在dateTime2的时候完成，且dateTime1.minute != dateTime2.minute的时候
         // dateTime1.minute分钟的数据是不对的，因为请求完成后订阅的是dateTime2.minute开始的数据了，导致dateTime1.minute的数据不是最终的数据。
-        await SubscribeAndDownloadMissingData(now);
+        // await SubscribeAndDownloadMissingData(now);
     }
 
     /// <summary>
@@ -347,10 +384,15 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     /// <param name="endTime">结束时间</param>
     /// <param name="interval">时间间隔</param>
     /// <returns>缺失的时间区间列表</returns>
-    private List<(DateTime, DateTime)> GetMissingIntervals(IEnumerable<DateTime> dateTimeList, DateTime? startTime, DateTime? endTime, TimeSpan interval)
+    private List<(DateTime, DateTime)> GetMissingIntervals(IEnumerable<DateTime> dateTimeList, DateTime startTime, DateTime endTime, TimeSpan interval)
     {
         List<(DateTime, DateTime)> missingIntervals = new List<(DateTime, DateTime)>();
 
+        if(!dateTimeList.Any())
+        {
+            missingIntervals.Add((startTime, endTime));
+            return missingIntervals;
+        }
         // 确保时间点按升序排序
         var sortedDateTimeList = dateTimeList.OrderBy(dt => dt);
 
@@ -369,9 +411,9 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         }
 
         // 检查最后一个时间点到结束时间是否有缺失
-        if (previousTime.HasValue && endTime.HasValue && endTime.Value > previousTime.Value.Add(interval))
+        if (endTime > previousTime.Value.Add(interval))
         {
-            missingIntervals.Add((previousTime.Value.Add(interval), endTime.Value));
+            missingIntervals.Add((previousTime.Value.Add(interval), endTime));
         }
 
         return missingIntervals;
@@ -385,7 +427,7 @@ public abstract class AbstractQuoteProviderService:ILifecycle
     /// <param name="endTime">结束时间</param>
     /// <param name="barSize">k线时间周期</param>
     /// <returns>数据是否完整</returns>
-    private bool IsDataComplete(List<QuoteCandleData> data, DateTime? startTime, DateTime? endTime, BarSize barSize)
+    private bool IsDataComplete(string symbol, List<QuoteCandleData> data, DateTime? startTime, DateTime? endTime, BarSize barSize)
     {
         if (data == null || data.Count == 0)
         {
@@ -398,36 +440,85 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         // 获取时间间隔
         TimeSpan interval = DateTimeExtensions.GetInterval(barSize);
 
+        if(!startTime.HasValue)
+        {
+            if(m_Symbol2TradeRuleMap.TryGetValue(symbol, out var tradeRule))
+            {
+                startTime = DateTimeUtil.FromUnixTimestamp(tradeRule.OnBoardTimestamp);
+            }
+        }
+
+        if(!endTime.HasValue)
+        {
+            endTime = GetAPIServerDateTime();
+        }
+
         // 检查缺失的时间区间
-        var missingIntervals = GetMissingIntervals(dateTimeList, startTime, endTime, interval);
+        var missingIntervals = GetMissingIntervals(dateTimeList, startTime.Value, endTime.Value, interval);
 
         // 如果没有缺失区间，则数据完整
         return missingIntervals.Count == 0;
     }
 
-    /// <summary>
-    /// 处理单个 symbol 的数据验证和补充
+    /// 处理单个 symbol 的数据验证和补充, 以确保"缓存数据中最早的时刻"到now时刻之间的数据完整
+    /// 其中"缓存数据中最早的时刻"，是由barSize决定的。
+    /// 针对不同的barSize有不同的缓存策略(参考QuoteCandleDataCacheStrategy类)
+    /// "缓存数据中最早的时刻"根据缓存策略所需的数据时长计算得到
     /// </summary>
-    private void ValifySymbol(string symbol, DateTime now)
+    /// <param name="symbol">交易对</param>
+    /// <param name="now">当前时刻</param>
+    private void VerifySymbol(string symbol,DateTime now)
     {
         // 获取该 symbol 的上线时间
-        m_Symbol2OnBoardTime.TryGetValue(symbol, out var onboardDateTime);
-
-        foreach (BarSize barSize in m_ConcernedBarSizeList)
+        if(!m_Symbol2TradeRuleMap.TryGetValue(symbol, out var tradeRule))
         {
+            Logger.LogError($"Failed to verify symbol \"{symbol}\", because it's trade rule doesn't represent in m_Symbol2TradeRuleMap");
+            return;
+        }
+
+        Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Start to verify symbol \"{symbol}\"");
+
+        DateTime onBoardDateTime = DateTimeUtil.FromUnixTimestamp(tradeRule.OnBoardTimestamp);
+
+        foreach (var strategy in m_CacheService.GetCacheStrategies())
+        {
+            var barSize = strategy.BarSize;
+
+            DateTime? cacheStartDateTime = null; //  strategy.CalculateCacheStartDateTime(now);
+
+            if(cacheStartDateTime == null)
+            {
+                cacheStartDateTime = onBoardDateTime;
+            }
+            else
+            {
+                // 缓存的开始时间不能比上架时间还早
+                if (cacheStartDateTime < onBoardDateTime)
+                {
+                    cacheStartDateTime = onBoardDateTime;
+                }
+            }
+
             // 获取已存在的时间点列表
-            IEnumerable<DateTime> dateTimeList = m_CacheService.QueryCandleDateTimeList(symbol, barSize);
+            List<DateTime> dateTimeList = m_CacheService.QueryCandleDateTimeList(symbol, barSize).ToList();
 
             // 获取时间间隔
             TimeSpan interval = DateTimeExtensions.GetInterval(barSize);
 
             // 检查缺失时间区间
-            var missingIntervals = GetMissingIntervals(dateTimeList, onboardDateTime, now, interval);
+            var missingIntervals = GetMissingIntervals(dateTimeList, cacheStartDateTime.Value, now, interval);
+            Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Symbol \"{symbol}\",{barSize} missingIntervalsCount =  {missingIntervals.Count}");
 
             // 对于每一个缺失的时间区间，进行下载并存储
             foreach (var missingInterval in missingIntervals)
             {
+                Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Begin to uery to symbol \"{symbol}\", interval = ({missingInterval.Item1.ToString("yyyy-MM-dd)")}" +
+                 $"{missingInterval.Item2.ToString("yyyy-MM-dd)")}");
+
                 var result = APIQueryCandleDataImpl(symbol, barSize, missingInterval.Item1, missingInterval.Item2);
+
+                Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Finished to query to symbol \"{symbol}\", interval = ({missingInterval.Item1.ToString("yyyy-MM-dd)")}" +
+                 $"{missingInterval.Item2.ToString("yyyy-MM-dd)")}");
                 m_CacheService.StorageCandleData(symbol, barSize, result);
             }
         }
@@ -461,18 +552,26 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         await Task.WhenAll(tasks);
     }
 
-    public List<SymbolTradeRule> QueryAllTradeRule()
+    #region 交易规则
+
+    protected Dictionary<string, SymbolTradeRule> m_Symbol2TradeRuleMap = new Dictionary<string, SymbolTradeRule>();
+
+    public IEnumerable<SymbolTradeRule> QueryAllTradeRule()
     {
-        throw new NotImplementedException();
+        return m_Symbol2TradeRuleMap.Select(kvp => kvp.Value);
     }
 
-    public void QueryTradeRule(string symbol)
+    public SymbolTradeRule QueryTradeRule(string symbol)
     {
-        throw new NotImplementedException();
+        return m_Symbol2TradeRuleMap.ContainsKey(symbol) ? m_Symbol2TradeRuleMap[symbol] : null;
     }
 
-    public List<SymbolTradeRule> QueryTradeRuleBySymbolList(IEnumerable<string> symbol)
+    public IEnumerable<SymbolTradeRule> QueryTradeRuleBySymbolList(IEnumerable<string> symbolList)
     {
-        throw new NotImplementedException();
+        foreach(string symbol in symbolList)
+        {
+            yield return QueryTradeRule(symbol);
+        }
     }
+    #endregion
 }

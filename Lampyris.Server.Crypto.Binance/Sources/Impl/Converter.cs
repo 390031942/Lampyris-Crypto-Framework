@@ -271,7 +271,6 @@ public static class Converter
         throw new ArgumentException($"Unsupported Interval value: {interval}");
     }
 
-
     public static QuoteCandleData ConvertQuoteCandleData(IBinanceKline klineData)
     {
         if (klineData == null)
@@ -289,5 +288,25 @@ public static class Converter
             Volume = (double)klineData.Volume,
             Currency = (double)klineData.QuoteVolume
         };
+    }
+
+    public static SymbolTradeRule ToSymbolTradeRule(BinanceFuturesSymbol symbol, SymbolTradeRule allocated)
+    {
+        var priceFilter = symbol.PriceFilter;
+        var lotSizeFilter = symbol.LotSizeFilter;
+        var minNotionalFilter = symbol.MinNotionalFilter;
+
+        var tradeRule = allocated != null ? allocated : new SymbolTradeRule();
+        tradeRule.Symbol = symbol.Name;
+        tradeRule.MinPrice = priceFilter?.MinPrice ?? 0;
+        tradeRule.MaxPrice = priceFilter?.MaxPrice ?? 0;
+        tradeRule.PriceStep = priceFilter?.TickSize ?? 0;
+        tradeRule.MinQuantity = lotSizeFilter?.MinQuantity ?? 0;
+        tradeRule.MaxQuantity = lotSizeFilter?.MaxQuantity ?? 0;
+        tradeRule.QuantityStep = lotSizeFilter?.StepSize ?? 0;
+        tradeRule.MinNotional = minNotionalFilter?.MinNotional ?? 0;
+        tradeRule.OnBoardTimestamp = DateTimeUtil.ToUnixTimestampMilliseconds(symbol.ListingDate);
+
+        return tradeRule;
     }
 }

@@ -20,10 +20,10 @@ public class FileLogger : ILogger
     {
         try
         {
-            using (StreamWriter writer = new StreamWriter(filePath, true))
-            {
-                writer.WriteLine(message);
-            }
+            // using (StreamWriter writer = new StreamWriter(filePath, true))
+            // {
+            //     writer.WriteLine(message);
+            // }
         }
         catch (Exception ex)
         {

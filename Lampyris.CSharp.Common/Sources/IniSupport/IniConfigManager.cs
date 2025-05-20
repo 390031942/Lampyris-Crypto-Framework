@@ -22,7 +22,7 @@ public static class IniConfigManager
             throw new InvalidOperationException($"Class {type.Name} does not have IniFileAttribute.");
         }
 
-        string fileName = iniFileAttribute.FileName;
+        string fileName = "cfgs/" + iniFileAttribute.FileName;
         if (!File.Exists(fileName))
         {
             throw new FileNotFoundException($"INI file '{fileName}' not found.");
@@ -41,7 +41,7 @@ public static class IniConfigManager
             if (iniFieldAttribute == null) continue;
 
             string section = iniFieldAttribute.Section;
-            string name = iniFieldAttribute.Name;
+            string name = string.IsNullOrEmpty(iniFieldAttribute.Name) ? member.Name : iniFieldAttribute.Name;
 
             // 查找 INI 文件中的对应值
             string value = GetIniValue(iniData, section, name);
@@ -76,7 +76,7 @@ public static class IniConfigManager
             throw new InvalidOperationException($"Class {type.Name} does not have IniFileAttribute.");
         }
 
-        string fileName = iniFileAttribute.FileName;
+        string fileName = "cfgs" + iniFileAttribute.FileName;
 
         // 用于存储 INI 文件内容
         var iniData = new Dictionary<string, List<(string Key, string Value, string Desc)>>();
@@ -136,7 +136,7 @@ public static class IniConfigManager
     /// </summary>
     private static string GetIniValue(string[] iniData, string section, string key)
     {
-        bool inSection = false;
+        bool inSection = string.IsNullOrEmpty(section);
 
         foreach (var line in iniData)
         {

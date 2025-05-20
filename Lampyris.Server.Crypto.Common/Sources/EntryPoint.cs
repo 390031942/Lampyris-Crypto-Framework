@@ -6,6 +6,8 @@ public static class EntryPoint
 {
     public static void RunMain(string[] args)
     {
+        Logger.AddLogger(new ConsoleLogger());
+        Logger.AddLogger(new FileLogger($"log_{DateTime.Now.ToString("yyyyMMddhhmmss")}.log"));
         Logger.LogInfo("Starting Server Application...");
 
         // 获取当前应用程序域中加载的所有程序集
@@ -16,19 +18,16 @@ public static class EntryPoint
             .Where(assembly => assembly.GetName().Name.Contains("Lampyris.Server.Crypto"))
             .ToList();
 
-        foreach (var assembly in matchingAssemblies)
-        {
-            Components.RegisterComponents(assembly);
-        }
-
+        Components.RegisterComponents(matchingAssemblies);
+        Components.PerformDependencyInjection();
         // 注册退出事件，在程序退出前执行 OnDestroy
         AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
         {
-            Console.WriteLine("Program is exiting...");
+            Logger.LogInfo("Program is exiting...");
             Components.DestroyLifecycle(); // 调用 OnDestroy
         };
 
-        Console.WriteLine("Program started.");
+        Logger.LogInfo("Program started.");
         try
         {
             Components.StartLifecycle(); // 调用 OnStart
@@ -47,7 +46,7 @@ public static class EntryPoint
             // 检测用户是否按下退出键（例如 Ctrl+C）
             if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape)
             {
-                Console.WriteLine("Exit key pressed. Exiting...");
+                Logger.LogInfo("Exit key pressed. Exiting...");
                 break; // 跳出循环，程序退出
             }
         }

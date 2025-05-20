@@ -11,11 +11,45 @@ namespace Lampyris.Server.Crypto.Binance;
 public class TradingService : AbstractTradingService
 {
     [Autowired]
-    private AccountManager m_AccountManager;
+    private AccountManager m_AccountManagerImpl;
+
+    public override void OnStart()
+    {
+        base.OnStart();
+
+        UpdateAllPositionInfo();
+        UpdateAllOpenOrders();
+        UpdateAllLeverageSettings();
+        UpdateAllLeverageBracketImpl();
+    }
+
+    private void UpdateAllLeverageSettings()
+    {
+        m_AppTradingData.LeverageSettingsDataMap.Clear();
+
+        // 对于每一个子账户
+        foreach (var pair in m_SubAccountTradingDataMap)
+        {
+            int subaccountId = pair.Key;
+            var tradingData = pair.Value;
+
+            // 获取 REST 客户端对象
+            var restClient = m_AccountManagerImpl.GetRestClient(subaccountId);
+            var result = restClient.UsdFuturesApi.Account.GetSymbolConfigurationAsync().Result;
+
+            if (result.Success)
+            {
+                foreach(var data in result.Data)
+                {
+                    tradingData.LeverageSettingsDataMap[data.Symbol] = (int)data.Leverage;
+                }
+            }
+        }
+    }
 
     public override void CancelOrderImpl(int clientUserId, string symbol, int orderId)
     {
-        var webSocketClient = m_AccountManager.GetWebSocketClient(clientUserId);
+        var webSocketClient = m_AccountManagerImpl.GetWebSocketClient(clientUserId);
         if (webSocketClient == null)
         {
             throw new InvalidOperationException($"WebSocket client not found for clientUserId: {clientUserId}");
@@ -49,11 +83,12 @@ public class TradingService : AbstractTradingService
             int subaccountId = pair.Key;
 
             // 获取 REST 客户端对象
-            var restClient = m_AccountManager.GetRestClient(subaccountId);
+            var restClient = m_AccountManagerImpl.GetRestClient(subaccountId);
+            var socketClient = m_AccountManagerImpl.GetWebSocketClient(subaccountId);
 
             // 请求所有持仓信息
             var apiPositionInfoReqResult = restClient.UsdFuturesApi.Trading.GetPositionsAsync().Result;
-
+            
             if(apiPositionInfoReqResult != null && apiPositionInfoReqResult.Success)
             {
                 var apiPositionInfoList = apiPositionInfoReqResult.Data;
@@ -135,7 +170,7 @@ public class TradingService : AbstractTradingService
             var tradingData = pair.Value;
 
             // 获取 REST 客户端对象
-            var restClient = m_AccountManager.GetRestClient(subaccountId);
+            var restClient = m_AccountManagerImpl.GetRestClient(subaccountId);
 
             // 对于子账户中每一个symbol的Order列表
             foreach (var pair2 in tradingData.OpenOrderInfoList)
@@ -228,7 +263,7 @@ public class TradingService : AbstractTradingService
     public override void ModifyOrderImpl(int clientUserId, int orderId, OrderInfo updatedOrderInfo)
     {
         // 获取 WebSocket 客户端
-        var webSocketClient = m_AccountManager.GetWebSocketClient(clientUserId);
+        var webSocketClient = m_AccountManagerImpl.GetWebSocketClient(clientUserId);
         if (webSocketClient == null)
         {
             throw new InvalidOperationException($"WebSocket client not found for clientUserId: {clientUserId}");
@@ -259,7 +294,7 @@ public class TradingService : AbstractTradingService
     public override long PlaceOrderImpl(int clientUserId, int subAccountId, OrderInfo order)
     {
         // 获取 WebSocket 客户端
-        var webSocketClient = m_AccountManager.GetWebSocketClient(clientUserId);
+        var webSocketClient = m_AccountManagerImpl.GetWebSocketClient(clientUserId);
         if (webSocketClient == null)
         {
             throw new InvalidOperationException($"WebSocket client not found for clientUserId: {clientUserId}");
@@ -320,7 +355,7 @@ public class TradingService : AbstractTradingService
     /// </summary>
     protected override OrderTradeSummaryData GetAndSummarizeTradesImpl(int accountId, string symbol, long orderId)
     {
-        BinanceRestClient client = m_AccountManager.GetRestClient(accountId);
+        BinanceRestClient client = m_AccountManagerImpl.GetRestClient(accountId);
 
         const int limit = 500; // 每次请求的最大记录数
         var allTrades = new List<BinanceFuturesUsdtTrade>();
@@ -382,18 +417,70 @@ public class TradingService : AbstractTradingService
         };
     }
 
-    protected override void ClosePositionImpl(int accountId, string symbol)
+    protected override void APIClosePositionImpl(int accountId, string symbol)
     {
         throw new NotImplementedException();
     }
 
-    protected override LeverageSettingResult SetLeverageImpl(int accountId, string symbol, int leverage)
+    protected override LeverageSettingResult APISetLeverageImpl(int accountId, string symbol, int leverage)
     {
-        throw new NotImplementedException();
+        var client = m_AccountManagerImpl.GetRestClient(accountId);
+        var result = client.UsdFuturesApi.Account.ChangeInitialLeverageAsync(symbol, leverage).Result;
+        LeverageSettingResult leverageSettingResult = new LeverageSettingResult();
+        leverageSettingResult.MaxNotional = Convert.ToDouble(result.Data.MaxNotionalValue);
+        leverageSettingResult.Leverage = result.Data.Leverage;
+        leverageSettingResult.Symbol = result.Data.Symbol;
+        if (!result.Success)
+        {
+            leverageSettingResult.ErrorMessage = result?.Error?.Message;
+        }
+        return leverageSettingResult;
     }
 
     protected override void UpdateAllLeverageBracketImpl()
     {
-        throw new NotImplementedException();
+        m_AppTradingData.LeverageSettingsDataMap.Clear();
+
+        // 对于每一个子账户
+        foreach (var pair in m_SubAccountTradingDataMap)
+        {
+            int subaccountId = pair.Key;
+            var tradingData = pair.Value;
+
+            // 获取 REST 客户端对象
+            var restClient = m_AccountManagerImpl.GetRestClient(subaccountId);
+            var result = restClient.UsdFuturesApi.Account.GetBracketsAsync().Result;
+
+            if (result.Success)
+            {
+                foreach (var data in result.Data)
+                {
+                    if(!tradingData.LeverageBracketDataMap.ContainsKey(data.Symbol))
+                    {
+                        tradingData.LeverageBracketDataMap[data.Symbol] = new List<LeverageBracketInfo>();
+                    }
+
+                    var bracketDataList = tradingData.LeverageBracketDataMap[data.Symbol];
+                    foreach (var bracket in data.Brackets)
+                    {
+                        LeverageBracketInfo leverageBracketInfo = new LeverageBracketInfo();
+                        leverageBracketInfo.Symbol        = data.Symbol;
+                        leverageBracketInfo.Leverage      = bracket.InitialLeverage;
+                        leverageBracketInfo.NotionalCap   = bracket.Cap;
+                        leverageBracketInfo.NotionalFloor = bracket.Floor;
+
+                        bracketDataList.Add(leverageBracketInfo);
+                    }
+
+                    bracketDataList.Sort((lhs, rhs) => lhs.Leverage - rhs.Leverage);
+                }
+            }
+        }
+    }
+
+    protected override void APIUpdateSubaccountInfoImpl(SubTradeAccount account)
+    {
+        var client = m_AccountManagerImpl.GetRestClient(account.AccountId);
+        client.UsdFuturesApi.Trading.GetPositionsAsync();
     }
 }

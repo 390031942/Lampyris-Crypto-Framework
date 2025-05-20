@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lampyris.Server.Crypto.Common;
 
-[Component]
+[Component(tag:"MessageHandler")]
 public class QuoteFacadeService
 {
     [Autowired]
@@ -185,7 +185,7 @@ public class QuoteFacadeService
     public void ReqTradeRule(ClientUserInfo clientUserInfo, Request request)
     {
         ReqTradeRule reqTradeRule = request.ReqTradeRule;
-        List<SymbolTradeRule> tradeRuleList;
+        IEnumerable<SymbolTradeRule> tradeRuleList;
         if (reqTradeRule.SymbolList.Count <= 0) // 查询全体数据
         {
             tradeRuleList = m_QuoteProviderService.QueryAllTradeRule();

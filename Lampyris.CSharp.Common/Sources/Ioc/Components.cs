@@ -2,7 +2,6 @@
 
 using System.Collections.ObjectModel;
 using System.Reflection;
-using System.Xml.Linq;
 
 public static class Components
 {
@@ -13,158 +12,193 @@ public static class Components
 
     /// <summary>
     /// 存储按名称注册的组件
+    /// 其中Type是抽象一个类
     /// </summary>
-    private static readonly Dictionary<string, object> m_NamedComponents = new();
+    private static Dictionary<Type, Dictionary<string,object>> m_NamedComponents = new();
 
     /// <summary>
-    /// 存储tag->组件列表
+    /// 存储按名称注册的组件
+    /// 其中Type是抽象一个类
     /// </summary>
-    private static readonly Dictionary<string, List<object>> m_Tag2Components = new();
+    private static Dictionary<string, List<object>> m_Tag2Components = new();
 
     /// <summary>
     /// 存储实现了 ILifecycle 的组件
     /// </summary>
     private static readonly List<ILifecycle> m_LifecycleComponents = new();
 
+    /// <summary>
+    /// 是否已经注册
+    /// </summary>
+    private static bool m_IsRegistered = false;
+
     // 扫描并注册所有标记为 [Component] 的类
-    public static void RegisterComponents(Assembly? assembly)
+    public static void RegisterComponents(List<Assembly> assemblies)
     {
-        if (assembly == null)
+        if (assemblies == null || assemblies.Count == 0 || m_IsRegistered)
             return;
 
         // 获取所有标记了 [Component] 的类
-        var componentTypes = assembly.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract && t.GetCustomAttribute<ComponentAttribute>() != null);
+        List<Type> componentTypes = new List<Type>();
+        foreach (Assembly assembly in assemblies)
+        {
+            componentTypes.AddRange(assembly.GetTypes()
+            .Where(t => t.IsClass && t.GetCustomAttribute<ComponentAttribute>() != null));
+        }
+        
+        componentTypes.Sort((lhs,rhs) => 
+        {
+            if (lhs.IsAbstract && !rhs.IsAbstract) return -1; // 抽象类排在前面
+            if (!lhs.IsAbstract && rhs.IsAbstract) return 1;  // 非抽象类排在后面
+            return 0; // 两者相等
+        });
 
         foreach (var type in componentTypes)
         {
-            // 创建实例并注册到容器中
-            var instance = Activator.CreateInstance(type);
-            if (instance != null)
+            if (type.IsAbstract)
             {
-                m_Components[type] = instance;
-
-                // 如果组件实现了 ILifecycle，则加入生命周期管理列表
-                if (instance is ILifecycle lifecycleComponent)
+                m_NamedComponents[type] = new Dictionary<string, object>();
+            }
+            else
+            {
+                // 创建实例并注册到容器中
+                var instance = Activator.CreateInstance(type);
+                if (instance != null)
                 {
-                    m_LifecycleComponents.Add(lifecycleComponent);
+                    m_Components[type] = instance;
+
+                    ComponentAttribute? attribute = type.GetCustomAttribute<ComponentAttribute>();
+                    if (attribute != null)
+                    {
+                        if (type.BaseType != null && type.BaseType.IsAbstract)
+                        {
+                            Type? baseType = type.BaseType;
+                            while (baseType != null)
+                            {
+                                if (baseType.IsAbstract && !baseType.IsGenericType) // 自顶向下遍历所有继承的非泛型的抽象类
+                                {
+                                    if (!string.IsNullOrEmpty(attribute.Name))
+                                    {
+                                        if (m_NamedComponents.ContainsKey(type))
+                                        {
+                                            var dict = m_NamedComponents[type];
+                                            if (dict.ContainsKey(attribute.Name)) // 确保组件名称的唯一性
+                                            {
+                                                throw new InvalidOperationException($"Duplicated component Name \"{attribute.Name}\"");
+                                            }
+                                            m_NamedComponents[type][attribute.Name] = instance;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if(!m_Components.ContainsKey(baseType))
+                                        {
+                                            m_Components[baseType] = instance;
+                                        }
+                                        else
+                                        {
+                                            throw new InvalidOperationException($"Duplicated name-less component instance, base type = {baseType.Name}");
+                                        }
+                                    }
+                                }
+
+                                baseType = baseType.BaseType;
+                            }
+                        }
+       
+                        if (!string.IsNullOrEmpty(attribute.Tag))
+                        {
+                            if (!m_Tag2Components.ContainsKey(attribute.Tag))
+                            {
+                                m_Tag2Components[attribute.Tag] = new List<object>();
+                            }
+
+                            m_Tag2Components[attribute.Tag].Add(instance);
+                        }
+                    }
+
+                    // 如果组件实现了 ILifecycle，则加入生命周期管理列表
+                    if (instance is ILifecycle lifecycleComponent)
+                    {
+                        m_LifecycleComponents.Add(lifecycleComponent);
+                    }
                 }
             }
         }
 
         // 按优先级排序生命周期组件
-        m_LifecycleComponents.Sort((a, b) => b.Priority.CompareTo(a.Priority));
-    }
+        m_LifecycleComponents.Sort((a, b) => a.Priority.CompareTo(b.Priority));
 
-    // 从 XML 配置中注册组件
-    public static void RegisterComponentsFromXml(string xmlFilePath)
-    {
-        var doc = XDocument.Load(xmlFilePath);
-        if (doc == null || doc.Root == null)
-        {
-            return;
-        }
-        var components = doc.Root.Elements("component");
-
-        foreach (var component in components)
-        {
-            var typeName = component.Attribute("type")?.Value;
-            var name = component.Attribute("name")?.Value;
-
-            if (string.IsNullOrEmpty(typeName))
-            {
-                throw new InvalidOperationException($"Component type '{typeName}' is missing in XML configuration.");
-            }
-
-            var type = Type.GetType(typeName);
-            if (type == null)
-            {
-                throw new InvalidOperationException($"Type '{typeName}' not found.");
-            }
-
-            var instance = Activator.CreateInstance(type);
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                m_NamedComponents[name] = instance; // 按名称注册
-            }
-            else
-            {
-                m_Components[type] = instance; // 按类型注册
-            }
-
-            // 如果组件实现了 ILifecycle，则加入生命周期管理列表
-            if (instance is ILifecycle lifecycleComponent)
-            {
-                m_LifecycleComponents.Add(lifecycleComponent);
-            }
-        }
-
-        // 按优先级排序生命周期组件
-        m_LifecycleComponents.Sort((a, b) => b.Priority.CompareTo(a.Priority));
+        m_IsRegistered = true;
     }
 
     // 自动注入 [Autowired] 标记的字段和属性
+    // 规则: 
+    // 1) 如果Type是一个非抽象类，则直接返回对应示例
+    // 2) 如果Type是一个抽象类，则找到对应名称的组件示例
     public static void PerformDependencyInjection()
     {
-        foreach (var component in m_Components.Values.Concat(m_NamedComponents.Values))
+        foreach (var component in m_Components.Values)
         {
             var componentType = component.GetType();
 
             // 注入字段
-            var fields = componentType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
+            var fields = componentType.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)
                 .Where(f => f.GetCustomAttribute<AutowiredAttribute>() != null);
 
             foreach (var field in fields)
             {
-                var dependency = ResolveDependency(field.FieldType);
+                AutowiredAttribute? attribute = field.GetCustomAttribute<AutowiredAttribute>();
+                var dependency = ResolveDependency(field.FieldType, attribute != null ? attribute.Name : null);
                 field.SetValue(component, dependency);
             }
 
             // 注入属性
-            var properties = componentType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+            var properties = componentType.GetProperties(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)
                 .Where(p => p.GetCustomAttribute<AutowiredAttribute>() != null);
 
             foreach (var property in properties)
             {
-                var dependency = ResolveDependency(property.PropertyType);
-                property.SetValue(component, dependency);
+                if(property.CanWrite)
+                {
+                    AutowiredAttribute? attribute = property.GetCustomAttribute<AutowiredAttribute>();
+                    var dependency = ResolveDependency(property.PropertyType, attribute != null ? attribute.Name : null);
+                    property.SetValue(component, dependency);
+                }
             }
         }
     }
 
     // 解析依赖
-    private static object ResolveDependency(Type type)
+    private static object ResolveDependency(Type type, string? name)
     {
-        if (m_Components.TryGetValue(type, out var dependency))
+        if(!type.IsAbstract || string.IsNullOrEmpty(name))
         {
-            return dependency;
+            if (m_Components.TryGetValue(type, out var dependency))
+            {
+                return dependency;
+            }
         }
-
+        else
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                if(m_NamedComponents.TryGetValue(type, out var dict))
+                {
+                    if (dict.ContainsKey(name))
+                    {
+                        return dict[name];
+                    }
+                }
+            }
+        }
         throw new InvalidOperationException($"No component found for type {type.FullName}");
-    }
-
-    // 按名称解析依赖
-    public static object ResolveDependencyByName(string name)
-    {
-        if (m_NamedComponents.TryGetValue(name, out var dependency))
-        {
-            return dependency;
-        }
-
-        throw new InvalidOperationException($"No component found with name '{name}'");
     }
 
     // 获取组件实例
     public static T GetComponent<T>()
     {
         return (T)m_Components[typeof(T)];
-    }
-
-    // 按名称获取组件实例
-    public static object GetComponentByName(string name)
-    {
-        return m_NamedComponents[name];
     }
 
     public static ReadOnlyCollection<object> GetComponentsByTag(string tag)

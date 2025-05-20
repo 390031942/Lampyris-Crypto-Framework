@@ -1,6 +1,6 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
-[DBTable("self_selected_symbol{0}_{1}")]
+[DBTable("self_selected_symbol")]
 
 public class SelfSelectedSymbolGroupData
 {

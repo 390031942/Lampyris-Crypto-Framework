@@ -8,7 +8,8 @@ using Lampyris.CSharp.Common;
 
 namespace Lampyris.Server.Crypto.Common;
 
-public class WebSocketService
+[Component]
+public class WebSocketService:ILifecycle
 {
     [Autowired("UserDBService")]
     private UserDBService m_UserDBService;
@@ -25,9 +26,9 @@ public class WebSocketService
         public ClientUserInfo UserInfo { get; set; }
     }
 
-    public WebSocketService()
+    public override void OnStart()
     {
-
+        m_MessageHandlerRegistry.RegisterHandlers();
     }
 
     public async Task StartAsync(string url)
@@ -47,7 +48,6 @@ public class WebSocketService
             }
         }
     }
-
     private async Task HandleWebSocketAsync(WebSocket webSocket)
     {
         byte[] buffer = new byte[1024 * 4];

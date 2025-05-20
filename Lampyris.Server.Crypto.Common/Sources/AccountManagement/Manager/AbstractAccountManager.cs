@@ -17,7 +17,7 @@ namespace Lampyris.Server.Crypto.Common;
 public abstract class AbstractAccountManagerBase:ILifecycle
 {
     [Autowired]
-    protected DBService m_DBService;
+    protected AccountDBService m_DBService;
 
     [Autowired]
     protected AbstractTradingService m_TradeService;
@@ -28,7 +28,7 @@ public abstract class AbstractAccountManagerBase:ILifecycle
     {
         public SubTradeAccount AccountInfo = new SubTradeAccount();
         public SubTradeAccountSummary AccountSummary = new SubTradeAccountSummary();
-        public bool connectivity = false;
+        public bool Connectivity = false;
     }
 
     protected readonly Dictionary<int, SubTradeAccountContextBase> m_SubAccountIdContextDataMap = new();
@@ -46,7 +46,7 @@ public abstract class AbstractAccountManagerBase:ILifecycle
     {
         foreach (var pair in m_SubAccountIdContextDataMap)
         {
-            if(pair.Value.connectivity)
+            if(pair.Value.Connectivity)
             {
                 yield return pair.Value.AccountInfo;
             }
@@ -78,7 +78,7 @@ public abstract class AbstractAccountManagerBase:ILifecycle
     {
         foreach (var pair in m_SubAccountIdContextDataMap)
         {
-            if (pair.Value.connectivity)
+            if (pair.Value.Connectivity)
             {
                 foreachFunc(pair.Value.AccountInfo);
             }
@@ -123,8 +123,6 @@ public abstract class AbstractAccountManager<T, U> : AbstractAccountManagerBase
         public U RestClient;
     }
 
-    protected new readonly Dictionary<int, SubTradeAccountContext> m_SubAccountIdContextDataMap = new();
-
     /// <summary>
     /// º”‘ÿ’Àªß≈‰÷√
     /// </summary>
@@ -140,7 +138,7 @@ public abstract class AbstractAccountManager<T, U> : AbstractAccountManagerBase
     {
         if (m_SubAccountIdContextDataMap.TryGetValue(accountId, out var context))
         {
-            return context.SocketClient;
+            return ((SubTradeAccountContext)context).SocketClient;
         }
 
         Logger.LogError($"Unable to find account with id \"{accountId}\"");
@@ -156,7 +154,7 @@ public abstract class AbstractAccountManager<T, U> : AbstractAccountManagerBase
     {
         if (m_SubAccountIdContextDataMap.TryGetValue(accountId, out var context))
         {
-            return context.RestClient;
+            return ((SubTradeAccountContext)context).RestClient;
         }
 
         Logger.LogError($"Unable to find account with id \"{accountId}\"");
@@ -169,8 +167,17 @@ public abstract class AbstractAccountManager<T, U> : AbstractAccountManagerBase
         var db = m_DBService.GetTable<SubTradeAccount>();
         if (db == null)
         {
+            db = m_DBService.CreateTable<SubTradeAccount>();
+        }
+
+        var subAccounts = db.Query();
+        if(subAccounts.Count > 0)
+        {
+            LoadAccounts(subAccounts);
+        }
+        else
+        {
             throw new InvalidDataException("Failed to load any valid sub-account.");
         }
-        LoadAccounts(db.Query());
     }
 }

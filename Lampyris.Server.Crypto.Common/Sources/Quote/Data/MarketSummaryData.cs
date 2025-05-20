@@ -12,14 +12,14 @@ public class MarketSummaryData
     public int UnchangedCount;
 
     // 平均涨跌幅(相对时区 UTC+0)
-    public double AvgChangePerc;
+    public decimal AvgChangePerc;
 
     // 前10名平均涨跌幅(相对时区 UTC+0)
-    public double Top10AvgChangePerc;
-    public double Last10AvgChangePerc;
+    public decimal Top10AvgChangePerc;
+    public decimal Last10AvgChangePerc;
 
     // 主流币平均涨跌幅
-    public double MainStreamAvgChangePerc;
+    public decimal MainStreamAvgChangePerc;
 
     public void Reset()
     {

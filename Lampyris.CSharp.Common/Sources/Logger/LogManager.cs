@@ -63,6 +63,6 @@ public static class Logger
 
     public static void LogException(Exception ex)
     {
-        Log(ErrorString, ex.Message);
+        Log(ErrorString, ex.Message + "\nstack trace:\n" + ex.StackTrace);
     }
 }

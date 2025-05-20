@@ -10,7 +10,7 @@ public static class QuotePushUtil
         webSocketService.PushMessge(clientUserId, bean);
     }
 
-    public static void PushTradeRuleBeanList(WebSocketService webSocketService,int clientUserId, List<SymbolTradeRule> dataList)
+    public static void PushTradeRuleBeanList(WebSocketService webSocketService,int clientUserId, IEnumerable<SymbolTradeRule> dataList)
     {
         ResTradeRule resTradeRule = new ResTradeRule();
 

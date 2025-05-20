@@ -14,7 +14,6 @@ public class RedisConnectionConfig
     public int    Port;
 }
 
-[Component]
 public class RedisCacheService : ICacheService
 {
     private readonly ConnectionMultiplexer m_Redis;

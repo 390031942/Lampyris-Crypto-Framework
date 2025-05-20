@@ -1,13 +1,12 @@
-﻿using Lampyris.CSharp.Common;
+﻿namespace Lampyris.Server.Crypto.Binance;
+
+using Lampyris.CSharp.Common;
 using Lampyris.Server.Crypto.Common;
-using Binance.Net.Clients;
 using CryptoExchange.Net.Authentication;
-using CryptoExchange.Net.Interfaces;
-using Binance.Net.Objects.Models.Futures;
 using Lampyris.Crypto.Protocol.App;
-using MySqlX.XDevAPI;
-using CryptoExchange.Net.CommonObjects;
-using Binance.Net.Objects.Models.Futures.Socket;
+using global::Binance.Net.Clients;
+using global::Binance.Net.Objects.Models.Futures.Socket;
+using global::Binance.Net.Objects.Models.Futures;
 
 [Component]
 
@@ -143,6 +142,9 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceR
         }
     }
 
+    [Autowired]
+    private ProxyProvideService m_ProxyProvideService;
+
     /// <summary>
     /// 加载账户配置,创建并初始化WebSocket和Rest Client对象
     /// </summary>
@@ -157,9 +159,14 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceR
                 var apiCredentitals = new ApiCredentials(account.ApiKey, account.ApiSecret);
                 
                 // Client
-                var restClient = new BinanceRestClient();
-                restClient.SetApiCredentials(apiCredentitals);
+                var proxyInfo = m_ProxyProvideService.Get(0);
+                if (proxyInfo == null)
+                {
+                    throw new InvalidProgramException("Failed to allocate create REST client: proxy info is invalid");
+                }
+                BinanceRestClient restClient = new BinanceRestClient();
 
+                restClient.SetApiCredentials(apiCredentitals);
                 // 获取 Listen Key
                 var listenKeyResult = restClient.UsdFuturesApi.Account.StartUserStreamAsync().Result;
                 if (!listenKeyResult.Success)
@@ -179,6 +186,8 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceR
                 subTradeAccountContext.RestClient = restClient;
                 subTradeAccountContext.SocketClient = webSocketClient;
                 subTradeAccountContext.AccountInfo = account;
+                m_SubAccountIdContextDataMap[account.AccountId] = subTradeAccountContext;
+                subTradeAccountContext.Connectivity = TestConnectionAsync(account.AccountId).Result;
 
                 // 初始化拥有的资产信息
                 // 绑定资产更新事件
@@ -259,7 +268,7 @@ public class AccountManager: AbstractAccountManager<BinanceSocketClient,BinanceR
         foreach (var pair in m_SubAccountIdContextDataMap)
         {
             int accountId = pair.Key;
-            var client = pair.Value.RestClient;
+            var client = ((SubTradeAccountContext)pair.Value).RestClient;
 
             // 调用 Binance API 获取账户信息
             var accountInfoResponse = client.UsdFuturesApi.Account.GetAccountInfoV2Async().Result;

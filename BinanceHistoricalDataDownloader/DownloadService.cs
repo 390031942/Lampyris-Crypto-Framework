@@ -27,7 +27,7 @@ public class DownloadService
 
     public async Task<List<List<object>>> DownloadKlineDataAsync(string symbol, string interval, string date)
     {
-        string baseUrl = "https://data.binance.vision/data/futures/um/daily/klines";
+        string baseUrl = "https://data.binance.vision/?prefix=data/futures/um/daily/klines/1000000MOGUSDT/1m/";
         string url = $"{baseUrl}/{symbol}/{interval}/{symbol}-{interval}-{date}.zip";
 
         string tempFilePath = Path.GetTempFileName();

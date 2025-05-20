@@ -55,8 +55,6 @@ public class AnnouncementService:AbstractAnnouncementService
                 // 如果没有压缩，直接解码为字符串
                 responseBody = Encoding.UTF8.GetString(responseBytes);
             }
-
-
         }
     }
 }
