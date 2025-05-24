@@ -22,6 +22,26 @@ void QuoteManager::handleMessage(Response response) {
 	}
 }
 
+Delegate<const QuoteTickerData&>& QuoteManager::getSymbolTickerUpdateDelegate(const QString& symbol) {
+	if (!m_symbolTickerDataUpdateDelegateMap.contains(symbol)) {
+		m_symbolTickerDataUpdateDelegateMap[symbol] = Delegate<const QuoteTickerData&>();
+	}
+	return m_symbolTickerDataUpdateDelegateMap[symbol];
+}
+
+QuoteTickerDataViewPtr QuoteManager::allocateQuoteTickerDataView() {
+	auto ptr          = std::make_shared<QuoteTickerDataView>();
+	ptr->m_dataList   = std::vector<QuoteTickerDataPtr>(m_tickerDataList.begin(), m_tickerDataList.end());
+	ptr->m_dataMapRef = &m_symbol2TickerDataMap;
+	m_quoteTickeDataViewList.push_back(ptr);
+
+	return ptr;
+}
+
+void QuoteManager::recycleQuoteTickerDataView(QuoteTickerDataViewPtr dataView) {
+
+}
+
 void QuoteManager::subscribeTickerData() {
 	ReqSubscribeTickerData reqSubscribeTickerData;
 	reqSubscribeTickerData.set_iscancel(false);
@@ -32,29 +52,6 @@ void QuoteManager::cancelSubscribeTickerData() {
 	ReqSubscribeTickerData reqSubscribeTickerData;
 	reqSubscribeTickerData.set_iscancel(true);
 	WebSocketClient::getInstance()->sendMessage(reqSubscribeTickerData);
-}
-
-void QuoteManager::sortTickerData(TickerDataSortType sortType, bool descending) {
-    // 定义排序规则
-    auto comparator = [sortType, descending](const QuoteTickerDataPtr& a, const QuoteTickerDataPtr& b) {
-        switch (sortType) {
-        case TickerDataSortType::NONE:  // 根据上架时间从早到晚排序
-            return descending ? a->timestamp > b->timestamp : a->timestamp < b->timestamp;
-        case TickerDataSortType::NAME:  // 名称字典序
-            return descending ? a->symbol > b->symbol : a->symbol < b->symbol;
-        case TickerDataSortType::PRICE:  // 当前价
-            return descending ? a->price > b->price : a->price < b->price;
-        case TickerDataSortType::CURRENCY:  // 成交额
-            return descending ? a->currency > b->currency : a->currency < b->currency;
-        case TickerDataSortType::PERCENTAGE:  // 涨跌幅
-            return descending ? a->changePerc > b->changePerc : a->changePerc < b->changePerc;
-        default:
-            return false;  // 默认情况下不进行排序
-        }
-    };
-
-    // 使用 std::sort 对 tickerDataList 排序
-    std::sort(m_tickerDataList.begin(), m_tickerDataList.end(), comparator);
 }
 
 void QuoteManager::handleTickerData(ResSubscribeTickerData resSubscribeTickerData) {
@@ -74,6 +71,11 @@ void QuoteManager::handleTickerData(ResSubscribeTickerData resSubscribeTickerDat
 		tickerData->fundingRate = tickerDataBean.fundingrate();
 		tickerData->nextFundingTime = tickerDataBean.nextfundingtime();
 		tickerData->riseSpeed = tickerDataBean.risespeed();
+	}
+
+	// 通知视图进行更新
+	for (int i = 0; i < m_quoteTickeDataViewList.size(); i++) {
+		m_quoteTickeDataViewList[i]->onUpdate();
 	}
 }
 
@@ -200,6 +202,32 @@ bool QuoteManager::requestCandleDataForView(QuoteCandleDataView* view) {
 
 	bool fullData = QuoteUtil::calculateCandleCount(onBoardTime, endDateTime, barSize) <= QUOTE_CANDLE_DATA_SEGMENT_SIZE;
 	return fullData;
+}
+
+const SymbolTradeRulePtr QuoteManager::queryTradeRule(const QString& symbol) {
+	uint32_t hashValue = std::hash<QString>()(symbol);
+	return m_symbol2TradeRuleMap.contains(hashValue) ?
+		m_symbol2TradeRuleMap[hashValue] : nullptr;
+}
+
+void QuoteManager::handleTradeRule(ResTradeRule resTradeRule) {
+	for (auto bean : resTradeRule.beanlist()) {
+		uint32_t hashValue = std::hash<std::string>()(bean.symbol());
+		if (!m_symbol2TradeRuleMap.contains(hashValue)) {
+			auto& tradeRule = m_symbol2TradeRuleMap[hashValue] = std::make_shared<SymbolTradeRule>();
+			tradeRule->symbol = QString::fromStdString(bean.symbol());
+		}
+
+		auto& tradeRule = m_symbol2TradeRuleMap[hashValue];
+		tradeRule->minPrice = bean.minprice();
+		tradeRule->maxPrice = bean.maxprice();
+		tradeRule->priceStep = bean.priceticksize();
+		tradeRule->minQuantity = bean.minquantity();
+		tradeRule->maxQuantity = bean.maxquantity();
+		tradeRule->quantityStep = bean.quantityticksize();
+		tradeRule->minNotional = bean.minnotional();
+		tradeRule->onBoardTime = DateTimeUtil::fromUtcTimestamp(bean.onboardtimestamp());
+	}
 }
 
 void QuoteManager::subscribeAll() {

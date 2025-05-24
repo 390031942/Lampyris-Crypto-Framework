@@ -11,7 +11,7 @@ class AmountText : public QLabel {
     Q_OBJECT
 public:
     explicit AmountText(QWidget* parent = nullptr);
-    void     setValue(double amount, QString unit);
+    void     setValue(double amount, QString unit = "USDT");
 private:
     QString  formatNumberWithCommas(double value) const;
     void     updateText();

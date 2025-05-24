@@ -3,27 +3,21 @@
 #include "Network/WebSocketClient.h"
 #include "Protocol/Protocols.h"
 #include "Base/Singleton.h"
-#include "../Data/QuoteTickerData.h"
-#include "../Data/QuoteCandleData.h"
-#include "../Data/MarketSummaryData.h"
 #include "Network/WebSocketMessageHandlerRegistry.h"
 #include "Util/DateTimeUtil.h"
-#include "../Util/QuoteUtil.h"
 #include "Collections/Delegate.h"
+#include "Base/ObjectPool.h"
+#include "Const/DataSortingOrder.h"
+#include "../Util/QuoteUtil.h"
+#include "../Data/QuoteCandleData.h"
+#include "../Data/MarketSummaryData.h"
+#include "../Data/QuoteTickerDataView.h"
+#include "../Data/SymbolTradeRule.h"
 
 // STD Include(s)
 #include <vector>
 #include <queue>
 #include <unordered_map>
-
-// Ticker数据排序类型
-enum TickerDataSortType {
-	NONE, // 默认排序,根据上架时间从早到晚排序
-	NAME, // 名称字典序
- 	PRICE, // 当前价
-	CURRENCY,// 成交额
-	PERCENTAGE, // 涨跌幅
-};
 
 class QuoteCandleDataView;
 
@@ -37,14 +31,15 @@ public:
 
 	#pragma region Ticker行情
 public:
-	Delegate<const QuoteTickerData&>& getSymbolTickerUpdateDelegate(const QString& symbol) {
-		if (!m_symbolTickerDataUpdateDelegateMap.contains(symbol)) {
-			m_symbolTickerDataUpdateDelegateMap[symbol] = Delegate<const QuoteTickerData&>();
-		}
-		return m_symbolTickerDataUpdateDelegateMap[symbol];
-	}
+	Delegate<const QuoteTickerData&>&   getSymbolTickerUpdateDelegate(const QString& symbol);
+	QuoteTickerDataViewPtr              allocateQuoteTickerDataView();
+	void                                recycleQuoteTickerDataView(QuoteTickerDataViewPtr dataView);
 private:
+	std::queue<QuoteTickerDataViewPtr>  m_quoteTickeDataViewPool;
+	std::vector<QuoteTickerDataViewPtr> m_quoteTickeDataViewList;
+
 	// symbol字符串哈希值 -> QuoteTickerDataPtr, 存储了所有Ticker行情的字典
+	// 用uint32_t的原因是避免字符串的转换
 	std::unordered_map<uint32_t, QuoteTickerDataPtr> m_symbol2TickerDataMap;
 
 	//  存储了所有Ticker行情的列表，方便展示排序的结果
@@ -54,12 +49,8 @@ private:
 	void subscribeTickerData();
 	void cancelSubscribeTickerData();
 
-	/// <summary>
-	/// 对行情列表进行排序
-	/// </summary>
-	/// <param name="sortType">字段排序类型</param>
-	/// <param name="descending">是否降序</param>
-	void sortTickerData(TickerDataSortType sortType, bool descending);
+	// 处理符号对增减
+	void handleSymbolChange() {}
 
 	void handleTickerData(ResSubscribeTickerData resSubscribeTickerData);
 
@@ -77,7 +68,7 @@ private:
 	void handleCandlestickBean(CandlestickUpdateBean candlestickUpdateBean);
 	#pragma endregion
 
-#pragma region 市场总览
+	#pragma region 市场总览
 public:
 	Delegate<const MarketSummaryData&> onMarketSummaryDataUpdate;
 #pragma endregion
@@ -115,6 +106,12 @@ public:
 	bool                                         requestCandleDataForView(QuoteCandleDataView* view);
 	#pragma endregion
 
+#pragma region 交易规则
+	const SymbolTradeRulePtr queryTradeRule(const QString& symbol);
+	void handleTradeRule(ResTradeRule resTradeRule);
+private:
+	std::unordered_map<uint32_t, SymbolTradeRulePtr> m_symbol2TradeRuleMap;
+#pragma endregion
 	// 订阅/反订阅
 	void subscribeAll();
 	void cancelAllSubscription();

@@ -79,6 +79,9 @@
     <Filter Include="Source Files\UI\Mobile\Common">
       <UniqueIdentifier>{ab5c59eb-6ec3-4b1c-8d01-bda9c355f519}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Const">
+      <UniqueIdentifier>{961a6501-b6a3-4e97-967d-8ad7b5fd00d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\AppSystem\Trade\Data\LeverageSetting.h">
@@ -91,9 +94,6 @@
       <Filter>Source Files\AppSystem\Trade\Data</Filter>
     </ClInclude>
     <ClInclude Include="sources\AppSystem\Trade\Data\PositionInfo.h">
-      <Filter>Source Files\AppSystem\Trade\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\AppSystem\Trade\Data\SymbolTradeRule.h">
       <Filter>Source Files\AppSystem\Trade\Data</Filter>
     </ClInclude>
     <ClInclude Include="sources\AppSystem\Trade\Data\LeverageBracketInfo.h">
@@ -173,6 +173,15 @@
     </ClInclude>
     <ClInclude Include="sources\UI\Common\ControlFactory.h">
       <Filter>Source Files\UI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Const\TickerDataSortType.h">
+      <Filter>Source Files\AppSystem\Quote\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTickerDataView.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\AppSystem\Quote\Data\SymbolTradeRule.h">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +314,24 @@
     <ClCompile Include="sources\UI\Mobile\Common\BottomPopupWidget.cpp">
       <Filter>Source Files\UI\Mobile\Common</Filter>
     </ClCompile>
+    <ClCompile Include="sources\UI\Common\ColoredLabel.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\TableHeader.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\QuoteTableWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\AppSystem\Quote\Data\QuoteTickerDataView.cpp">
+      <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\TabButtonItem.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\TabButtonView.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="sources\UI\Standalong\Main\MainWidget.h">
@@ -385,10 +412,30 @@
     <QtMoc Include="sources\UI\Mobile\Common\BottomPopupWidget.h">
       <Filter>Source Files\UI\Mobile\Common</Filter>
     </QtMoc>
+    <QtMoc Include="sources\UI\Common\ColoredLabel.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\TableHeader.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\QuoteTableWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\TabButtonItem.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\TabButtonView.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resources\main.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="sources\Const\DataSortingOrder.h">
+      <Filter>Source Files\Const</Filter>
+    </Text>
   </ItemGroup>
 </Project>

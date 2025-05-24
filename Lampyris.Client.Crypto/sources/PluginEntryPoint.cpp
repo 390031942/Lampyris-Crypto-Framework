@@ -51,7 +51,7 @@ int main3(int argc, char* argv[]) {
 }
 
 #include "UI/Mobile/Common/BottomPopupWidget.h"
-int main(int argc, char* argv[]) {
+int main6(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
     // 主窗口
@@ -78,11 +78,71 @@ int main(int argc, char* argv[]) {
 
     // 点击按钮时显示弹出窗口
     QObject::connect(openPopupButton, &QPushButton::clicked, [&]() {
-        // popupWidget->showPopup();
+        popupWidget->showPopup(contentWidget);
     });
 
     mainWindow.show();
     return app.exec();
 }
 
+#include "UI/Standalong/Quote/QuoteTickerDataWidget.h"
+#include "UI/Common/QuoteListItem.h"
+#include "UI/Common/TableHeader.h"
+
+int main7(int argc, char* argv[]) {
+    QApplication app(argc, argv);
+    // 加载资源文件中的 main.qss
+    QFile qssFile(":/res/qss/main.qss");
+    if (qssFile.open(QFile::ReadOnly)) {
+        QString qss = qssFile.readAll();
+        // app.setStyleSheet(qss); // 设置应用程序样式表
+        qssFile.close();
+    }
+    else {
+        qDebug() << "Failed to load QSS file.";
+    }
+
+    // QuoteListItem w(QuoteListItem::PCListMode);
+    TableHeader w;
+
+    TableHeaderDefinition definition;
+    definition.startFieldGroup(0.4)
+        .addField("代码", true)
+        .addField("成交额", false)
+        .end();
+    definition.startFieldGroup(0.3)
+        .addField("价格", true)
+        .addField("涨速", true)
+        .end();
+    definition.startFieldGroup(0.3)
+        .addField("涨幅", true)
+        .end();
+
+    w.setHeaderDefinition(definition);
+    w.show();
+    return app.exec();
+}
+
+#include "UI/Common/TabButtonView.h"
+int main(int argc, char* argv[]) {
+    QApplication app(argc, argv);
+
+    QWidget mainWindow;
+    QVBoxLayout* layout = new QVBoxLayout(&mainWindow);
+
+    TabButtonView* tabView = new TabButtonView;
+    tabView->addTab("Tab 1");
+    tabView->addTab("Tab 2");
+    tabView->addTab("Tab 3");
+    tabView->addTab("Tab 4");
+
+    tabView->setDragEnabled(true); // 启用拖拽模式
+
+    layout->addWidget(tabView);
+    mainWindow.setLayout(layout);
+    mainWindow.resize(600, 200);
+    mainWindow.show();
+
+    return app.exec();
+}
 #endif // !LAMPYRIS_EXE

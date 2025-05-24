@@ -1,13 +1,16 @@
 // Project Include(s)
 #include "PriceText.h"
+#include "UI/Common/GlobalUIStyle.h"
 
-PriceText::PriceText(QWidget* parent) : QLabel(parent), m_value(0.0), m_minTick(0.01) {
+PriceText::PriceText(QWidget* parent) : 
+    ColoredLabel(parent), m_value(0.0), m_minTick(0.01), m_percentage(0) {
     setAlignment(Qt::AlignCenter); // 文本居中
 }
 
 // 设置价格
-void PriceText::setValue(double value) {
+void PriceText::setValue(double value, double percentage) {
     m_value = value;
+    m_percentage = percentage;
     updateText();
 }
 

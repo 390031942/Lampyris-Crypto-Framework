@@ -6,6 +6,7 @@ using Binance.Net.Objects.Models.Spot.Socket;
 using CryptoExchange.Net.Objects.Sockets;
 using Lampyris.CSharp.Common;
 using Lampyris.Server.Crypto.Common;
+using MySqlX.XDevAPI.Common;
 using System.Collections.Concurrent;
 using System.IO.Compression;
 
@@ -158,8 +159,11 @@ public class QuoteProviderService : AbstractQuoteProviderService
     private ConcurrentDictionary<string, UpdateSubscription> m_TradeSubscriptions = new();
     private UpdateSubscription m_MarkPriceSubscription;
 
+    private QuoteDBConfig m_QuoteDBConfig;
+
     public override void OnStart()
     {
+        m_QuoteDBConfig = IniConfigManager.Load<QuoteDBConfig>();
         m_RestClientList = new List<BinanceRestClient>(m_ProxyProvideService.ProxyCount);
 
         for (int i = 0; i < m_ProxyProvideService.ProxyCount; i++)
@@ -171,6 +175,9 @@ public class QuoteProviderService : AbstractQuoteProviderService
             }
             BinanceRestClient client = new BinanceRestClient(options =>
             {
+                options.AutoTimestamp = true;
+                options.RateLimiterEnabled = true;
+                options.RateLimitingBehaviour = CryptoExchange.Net.Objects.RateLimitingBehaviour.Wait;
                 options.Proxy = new CryptoExchange.Net.Objects.ApiProxy("http://" + proxyInfo.Address, proxyInfo.Port);
             });
 
@@ -356,18 +363,13 @@ public class QuoteProviderService : AbstractQuoteProviderService
                 n = 1 + Math.Max(0, (int)Math.Ceiling((double)(actualEndTime - actualStartTime).TotalSeconds / (double)interval));
             }
 
-            // 当前日期减去2天的数据,都会存到Binance数据服务器里
+            // 当前日期减去1天的数据,都会存到Binance数据服务器里
             // 所以需要分段处理，一部分从数据服务器里中下载，一部分根据API下载
             DateTime dataVisionDownloadStartTime = new DateTime(actualStartTime.Year, actualStartTime.Month, actualStartTime.Day);
-            DateTime dataVisionDownloadEndTime = actualEndTime.AddDays(-2);
+            DateTime dataVisionDownloadEndTime = actualEndTime.AddDays(-1);
             dataVisionDownloadEndTime = new DateTime(dataVisionDownloadEndTime.Year, dataVisionDownloadEndTime.Month, dataVisionDownloadEndTime.Day);
 
-            if(dataVisionDownloadStartTime < new DateTime(2020,1,1))
-            {
-                dataVisionDownloadStartTime = new DateTime(2020, 1, 1);
-            }
-
-            string dirPath = $"F:/QuoteDB/{symbol}/{barSize.ToParamString()}";
+            string dirPath = Path.Combine(m_QuoteDBConfig.DirecotryPath, $"{symbol}/{barSize.ToParamString()}");
             if (!Directory.Exists(dirPath))
             {
                 Directory.CreateDirectory(dirPath);
@@ -380,6 +382,8 @@ public class QuoteProviderService : AbstractQuoteProviderService
                 dateList.Add(dataVisionDownloadStartTime);
                 dataVisionDownloadStartTime = dataVisionDownloadStartTime.AddDays(1);
             }
+
+            ConcurrentQueue<DateTime> failedDateTime = new ConcurrentQueue<DateTime>();
 
             // 并发下载任务
             var tasks = dateList.Select(date => Task.Run(async () =>
@@ -414,9 +418,9 @@ public class QuoteProviderService : AbstractQuoteProviderService
                     // 解压 ZIP 文件
                     ZipFile.ExtractToDirectory(tempFilePath, dirPath);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Logger.LogException(ex);
+                    failedDateTime.Enqueue(date);
                 }
                 finally
                 {
@@ -427,9 +431,89 @@ public class QuoteProviderService : AbstractQuoteProviderService
 
             // 等待所有任务完成
             Task.WaitAll(tasks.ToArray());
-            result = new List<QuoteCandleData>(); //  QueryKlinesMultiThread(symbol, interval, actualStartTime, actualEndTime, n);
+
+            // TODO:下载失败的文件，使用API下载并保存为csv
+            // csv表头:open_time,open,high,low,close,volume,close_time,quote_volume,count,taker_buy_volume,taker_buy_quote_volume,ignore
+            if(failedDateTime.Count > 0)
+            {
+                APIQueryCandleDataAndWriteToCSV(symbol, barSize, failedDateTime);
+            }
+
+            // IO读取指定日期内的文件，并合并读取结果
+
+            foreach (var date in dateList)
+            {
+                break;
+                string barSizeString = barSize.ToParamString().ToLower();
+                string formattedDate = date.ToString("yyyy-MM-dd");
+                string fileName = $"{symbol}-{barSizeString}-{formattedDate}.csv";
+                string filePath = Path.Combine(dirPath, fileName);
+                try
+                {
+                    using (var reader = new StreamReader(filePath))
+                    {
+                        reader.ReadLine();
+                        string? line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            var parts = line.Split(',');
+                            var candle = new QuoteCandleData
+                            {
+                                DateTime = DateTimeUtil.FromUnixTimestamp(long.Parse(parts[0])),
+                                Open = double.Parse(parts[1]),
+                                High = double.Parse(parts[2]),
+                                Low = double.Parse(parts[3]),
+                                Close = double.Parse(parts[4]),
+                                Volume = double.Parse(parts[5]),
+                                Currency = double.Parse(parts[7]),
+                            };
+                            result.Add(candle);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to read file {filePath}: {ex.Message}");
+                }
+            }
         }
         return result;
+    }
+
+    public void APIQueryCandleDataAndWriteToCSV(string symbol, BarSize barSize, IEnumerable<DateTime> failedDateTime)
+    {
+        KlineInterval interval = Converter.ConvertBarSize(barSize);
+        string dirPath = Path.Combine(m_QuoteDBConfig.DirecotryPath, $"{symbol}/{barSize.ToParamString()}");
+
+        foreach (var failedDate in failedDateTime)
+        {
+            try
+            {
+                DateTime startTime = failedDate;
+                DateTime endTime = failedDate.AddDays(1).AddSeconds(-1);
+                var candles = QueryKlines(symbol, interval, startTime, endTime, 1500);
+
+                string barSizeString = barSize.ToParamString().ToLower();
+                string formattedDate = failedDate.ToString("yyyy-MM-dd");
+                string fileName = $"{symbol}-{barSizeString}-{formattedDate}.csv";
+                string filePath = Path.Combine(dirPath, fileName);
+
+                using (var writer = new StreamWriter(filePath))
+                {
+                    writer.WriteLine("open_time,open,high,low,close,volume,close_time,quote_volume,count,taker_buy_volume,taker_buy_quote_volume,ignore");
+                    foreach (       var candle in candles)
+                    {
+                        long openTime = DateTimeUtil.ToUnixTimestampMilliseconds(candle.DateTime);
+                        long closeTime = openTime + (int)interval * 1000 - 1;
+                        writer.WriteLine($"{openTime},{candle.Open},{candle.High},{candle.Low},{candle.Close},{candle.Volume},{closeTime},{candle.Currency},0, 0, 0 ,0");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to download data for {failedDate}: {ex.Message}");
+            }
+        }
     }
 
     /// <summary>

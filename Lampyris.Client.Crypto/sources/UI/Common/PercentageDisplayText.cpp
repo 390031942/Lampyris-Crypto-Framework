@@ -5,7 +5,6 @@
 PercentageDisplayText::PercentageDisplayText(QWidget* parent)
     : QLabel(parent), m_mode(FontColorMode), m_value(0.0) {
     setAlignment(Qt::AlignCenter); // 居中显示
-    setFixedSize(100, 40);        // 设置固定大小
     setStyleSheet("font-size: 16px; font-weight: bold;"); // 设置字体样式
 }
 

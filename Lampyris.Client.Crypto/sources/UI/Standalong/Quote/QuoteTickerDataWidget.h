@@ -12,6 +12,8 @@
 #include <QTimer>
 #include <unordered_map>
 #include <vector>
+#include <QLabel>
+#include <QPushButton>
 
 class QuoteTickerDataWidget : public QWidget {
     Q_OBJECT
@@ -24,7 +26,7 @@ private slots:
     void onReplyFinished(QNetworkReply* reply); // 处理 API 响应
     void onHeaderClicked(int index); // 表头点击事件
     void resetCellColor(int row, int column); // 重置单元格颜色
-
+    void toggleExpandRow(int row, QPushButton* button);
 private:
     QTableWidget* tableWidget; // 表格控件
     QNetworkAccessManager* networkManager; // 网络管理器

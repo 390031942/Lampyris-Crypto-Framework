@@ -20,5 +20,8 @@
         <file>icons/trade_selected.png</file>
         <file>icons/vertical_splitter.png</file>
         <file>qss/main.qss</file>
+        <file>icons/sort_ascending.png</file>
+        <file>icons/sort_descending.png</file>
+        <file>icons/sort_none.png</file>
     </qresource>
 </RCC>

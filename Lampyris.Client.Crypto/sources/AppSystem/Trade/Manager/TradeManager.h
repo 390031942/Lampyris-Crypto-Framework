@@ -6,7 +6,7 @@
 #include "Network/WebSocketMessageHandlerRegistry.h"
 #include "Util/DateTimeUtil.h"
 #include "Collections/BidirectionalDictionary.h"
-#include "../Data/SymbolTradeRule.h"
+#include "AppSystem/Quote/Data/SymbolTradeRule.h"
 #include "../Data/OrderInfo.h"
 #include "../Data/OrderStatusInfo.h"
 #include "../Data/PositionInfo.h"

@@ -221,15 +221,23 @@
     <ClInclude Include="..\Lampyris.Client.Common\includes\Base\AppConfigManager.h" />
     <ClInclude Include="sources\AppContext.h" />
     <ClInclude Include="sources\AppSystem\Quote\Const\BarSize.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Const\TickerDataSortType.h" />
     <ClInclude Include="sources\AppSystem\Quote\Data\MarketSummaryData.h" />
     <ClInclude Include="sources\AppSystem\Quote\Data\QuoteCandleData.h" />
     <ClInclude Include="sources\AppSystem\Quote\Data\QuoteCandleDataView.h" />
     <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTickerData.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTickerDataView.h" />
     <ClInclude Include="sources\AppSystem\Quote\Data\QuoteTradeData.h" />
     <QtMoc Include="sources\UI\Standalong\Quote\QuoteTickerDataWidget.h" />
     <QtMoc Include="sources\UI\Common\AssetTrendCurveWidget.h" />
     <QtMoc Include="sources\UI\Common\MarketOverviewBarChartWidget.h" />
     <QtMoc Include="sources\UI\Mobile\Common\BottomPopupWidget.h" />
+    <QtMoc Include="sources\UI\Common\ColoredLabel.h" />
+    <QtMoc Include="sources\UI\Common\TableHeader.h" />
+    <QtMoc Include="sources\UI\Common\QuoteTableWidget.h" />
+    <ClInclude Include="sources\AppSystem\Quote\Data\SymbolTradeRule.h" />
+    <QtMoc Include="sources\UI\Common\TabButtonItem.h" />
+    <QtMoc Include="sources\UI\Common\TabButtonView.h" />
     <ClInclude Include="sources\Util\StringUtil.h" />
     <QtMoc Include="sources\AppSystem\Quote\Manager\QuoteManager.h" />
     <ClInclude Include="sources\AppSystem\Quote\Util\QuoteUtil.h" />
@@ -238,7 +246,6 @@
     <ClInclude Include="sources\AppSystem\Trade\Data\OrderInfo.h" />
     <ClInclude Include="sources\AppSystem\Trade\Data\OrderStatusInfo.h" />
     <ClInclude Include="sources\AppSystem\Trade\Data\PositionInfo.h" />
-    <ClInclude Include="sources\AppSystem\Trade\Data\SymbolTradeRule.h" />
     <QtMoc Include="sources\AppSystem\Trade\Manager\TradeManager.h" />
     <ClInclude Include="sources\Global.h" />
     <QtMoc Include="sources\Network\WebSocketClient.h" />
@@ -282,6 +289,7 @@
     <ClCompile Include="..\Lampyris.Client.Common\includes\Base\AppConfigManager.cpp" />
     <ClCompile Include="sources\AppContext.cpp" />
     <ClCompile Include="sources\AppSystem\Quote\Data\QuoteCandleDataView.cpp" />
+    <ClCompile Include="sources\AppSystem\Quote\Data\QuoteTickerDataView.cpp" />
     <ClCompile Include="sources\AppSystem\Quote\Manager\QuoteManager.cpp" />
     <ClCompile Include="sources\AppSystem\Quote\Util\QuoteUtil.cpp" />
     <ClCompile Include="sources\AppSystem\Trade\Manager\TradeManager.cpp" />
@@ -297,6 +305,7 @@
     <ClCompile Include="sources\UI\Common\AmountText.cpp" />
     <ClCompile Include="sources\UI\Common\AssetTrendCurveWidget.cpp" />
     <ClCompile Include="sources\UI\Common\BetterLineEdit.cpp" />
+    <ClCompile Include="sources\UI\Common\ColoredLabel.cpp" />
     <ClCompile Include="sources\UI\Common\ControlFactory.cpp" />
     <ClCompile Include="sources\UI\Common\CustomSlider.cpp" />
     <ClCompile Include="sources\UI\Common\GlobalUIStyle.cpp" />
@@ -304,6 +313,7 @@
     <ClCompile Include="sources\UI\Common\PercentageDisplayText.cpp" />
     <ClCompile Include="sources\UI\Common\PriceText.cpp" />
     <ClCompile Include="sources\UI\Common\QuoteListItem.cpp" />
+    <ClCompile Include="sources\UI\Common\QuoteTableWidget.cpp" />
     <ClCompile Include="sources\UI\Common\ScrollView.cpp" />
     <ClCompile Include="sources\UI\Common\ScrollViewContentWidget.cpp" />
     <ClCompile Include="sources\UI\Common\ShakingLineEdit.cpp" />
@@ -311,6 +321,27 @@
     <ClCompile Include="sources\UI\Common\SignalStrengthWidget.cpp" />
     <ClCompile Include="sources\UI\Common\StatusBarQuoteItem.cpp" />
     <ClCompile Include="sources\UI\Common\SymbolSearchResultWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\TabButtonItem.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\TabButtonView.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release-EXE|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\TableHeader.cpp" />
     <ClCompile Include="sources\UI\Common\TimeWidget.cpp" />
     <ClCompile Include="sources\UI\Mobile\Common\BottomPopupWidget.cpp" />
     <ClCompile Include="sources\UI\Mobile\Main\MainWidget.cpp">
@@ -327,6 +358,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resources\main.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="sources\Const\DataSortingOrder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

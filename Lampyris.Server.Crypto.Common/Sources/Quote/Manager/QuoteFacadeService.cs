@@ -16,7 +16,7 @@ public class QuoteFacadeService
     private AbstractQuoteProviderService m_QuoteProviderService;
 
     [Autowired]
-    private SelfSelectSymbolService m_SelfSelectSymbolService;
+    private SelfSelectSymbolService m_SelfSelectSymbolService; // 自选
 
     [Autowired]
     private WebSocketService m_WebSocketService;

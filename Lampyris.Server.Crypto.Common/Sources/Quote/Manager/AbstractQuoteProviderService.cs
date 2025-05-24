@@ -1,8 +1,10 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
 using Lampyris.CSharp.Common;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Runtime.InteropServices;
 
 /// <summary>
@@ -14,6 +16,10 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 {
     [Autowired]
     protected QuoteCacheService m_CacheService;
+
+    private QuoteDBIntegrityData m_QuoteDBIntegrityData;
+
+    private const string QuoteDBIntegrityDataJsonPath = "quote/db_integrity.json";
 
     public override int Priority => 2;
 
@@ -62,9 +68,25 @@ public abstract class AbstractQuoteProviderService:ILifecycle
             throw new InvalidDataException("Failed to verify market data: Symbol list is empty");
         }
 
+        string? dirPath = Path.GetDirectoryName(QuoteDBIntegrityDataJsonPath);
+        if (!Directory.Exists(dirPath))
+        {
+            Directory.CreateDirectory(dirPath);
+        }
+        if (File.Exists(QuoteDBIntegrityDataJsonPath))
+        {
+            string jsonContent = File.ReadAllText(QuoteDBIntegrityDataJsonPath);
+            m_QuoteDBIntegrityData = JsonConvert.DeserializeObject<QuoteDBIntegrityData>(jsonContent);
+        }
+        else
+        {
+            m_QuoteDBIntegrityData = new QuoteDBIntegrityData();
+        }
+
         // 验证k线数据完整性并订阅k线实时数据
         // 完整性指的是: 对于不同BarSize，如果这个barSize的数据是需要缓存的，则要确保缓存的数据完整
         Task.WaitAll(VerifyCandleDataIntegrityAndSubscription());
+        File.WriteAllText(QuoteDBIntegrityDataJsonPath, JsonConvert.SerializeObject(m_QuoteDBIntegrityData));
 
         // API订阅ticker, 标记价格，trade数据等...
         // Task.WaitAll(APISubscriptionAllImpl());
@@ -359,10 +381,11 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         // 记录当前时间
         DateTime now = GetAPIServerDateTime();
 
+        now = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
         // 使用 Task 并行处理每个 symbol
-        foreach(var symbol in m_Symbols)
+        foreach (var symbol in m_Symbols)
         {
-            // VerifySymbol(symbol, now);
+            VerifySymbol(symbol, now);
         }
 
         // var tasks = m_Symbols.Select(symbol => Task.Run(() => VerifySymbol(symbol, now)));
@@ -509,9 +532,19 @@ public abstract class AbstractQuoteProviderService:ILifecycle
             var missingIntervals = GetMissingIntervals(dateTimeList, cacheStartDateTime.Value, now, interval);
             Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Symbol \"{symbol}\",{barSize} missingIntervalsCount =  {missingIntervals.Count}");
 
+            if (!m_QuoteDBIntegrityData.SymbolIntegrityDataMap.ContainsKey(symbol))
+            {
+                m_QuoteDBIntegrityData.SymbolIntegrityDataMap[symbol] = new QuoteDBIntegrityData.PerSymbolIntegrityData();
+            }
+
+            QuoteDBIntegrityData.PerSymbolIntegrityData integrityData = m_QuoteDBIntegrityData.SymbolIntegrityDataMap[symbol];
+            
             // 对于每一个缺失的时间区间，进行下载并存储
             foreach (var missingInterval in missingIntervals)
             {
+                if (missingInterval.Item1 >= integrityData.StartDate && missingInterval.Item2 <= integrityData.EndDate)
+                    continue;
+
                 Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Begin to uery to symbol \"{symbol}\", interval = ({missingInterval.Item1.ToString("yyyy-MM-dd)")}" +
                  $"{missingInterval.Item2.ToString("yyyy-MM-dd)")}");
 
@@ -519,8 +552,11 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 
                 Logger.LogInfo($"[{Thread.CurrentThread.ManagedThreadId}]Finished to query to symbol \"{symbol}\", interval = ({missingInterval.Item1.ToString("yyyy-MM-dd)")}" +
                  $"{missingInterval.Item2.ToString("yyyy-MM-dd)")}");
-                m_CacheService.StorageCandleData(symbol, barSize, result);
+                // m_CacheService.StorageCandleData(symbol, barSize, result);
             }
+
+            integrityData.StartDate = cacheStartDateTime.Value;
+            integrityData.EndDate   = now;
         }
     }
 
