@@ -3,7 +3,7 @@
 // QT Include(s)
 #include <QApplication>
 
-QuoteListItem::QuoteListItem(DisplayMode mode, QWidget* parent) : QWidget(parent) {
+QuoteListItem::QuoteListItem(QuoteListItemDisplayMode mode, QWidget* parent) : QWidget(parent) {
     // 初始化控件
     m_symbol = new QLabel(this);
     m_24hVolumeCurrency = new AmountText(this);
@@ -45,50 +45,62 @@ void QuoteListItem::refresh(const QuoteTickerDataPtr tickerData, double minTick)
     }
 }
 
-void QuoteListItem::setupUI(DisplayMode mode) {
-    // 清空布局
-    QLayout* existingLayout = this->layout();
-    if (existingLayout) {
-        delete existingLayout;
+void QuoteListItem::resizeFields(const std::vector<TableColumnWidthInfo>& widthList) {
+    int currentX = 0; // 当前列的起始位置
+
+    for (int i = 0; i < m_resizeWidgets.size(); i++) {
+        if (i < widthList.size()) {
+            auto& widthInfo = widthList[i];
+            auto& widget = m_resizeWidgets[i];
+
+            widget->setGeometry(currentX, 0, widthInfo.width, this->height());
+            currentX += widthInfo.width;
+        }
     }
+}
 
-    // 创建布局
-    QHBoxLayout* hLayout = new QHBoxLayout(this);
-    hLayout->setContentsMargins(5, 0, 0, 0);
+void QuoteListItem::setupUI(QuoteListItemDisplayMode mode) {
+    // 无需设置布局，子窗口布局由表头决定
 
-    if (mode == SearchListMode) {
+    if (mode == QuoteListItemDisplayMode::SEARCH_LIST) {
         // 搜索列表模式布局: | 符号对 | 价格 | 涨跌幅 |
-        hLayout->addWidget(m_symbol);
-        hLayout->addWidget(m_price);
-        hLayout->addWidget(m_percentage);
+        m_resizeWidgets.push_back(m_symbol);
+        m_resizeWidgets.push_back(m_price);
+        m_resizeWidgets.push_back(m_percentage);
     }
-    else if (mode == MobileListMode) {
+    else if (mode == QuoteListItemDisplayMode::MOBILE_QUOTE_LIST) {
         // 移动端行情列表模式布局: 
         // 符号对     |  价格  |    涨跌幅
         // 24h成交额  |  涨速  |
-        QVBoxLayout* vLayout = new QVBoxLayout;
-        vLayout->setContentsMargins(0, 0, 0, 0);
-        QVBoxLayout* vLayout2 = new QVBoxLayout(this);
-        vLayout2->setContentsMargins(0, 0, 0, 0);
 
-        vLayout->setSpacing(0);
-        vLayout2->setSpacing(0);
-        vLayout->addWidget(m_symbol);
-        vLayout->addWidget(m_24hVolumeCurrency);
-        hLayout->addLayout(vLayout);
-        hLayout->addItem(new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum));
-        vLayout2->addWidget(m_price);
-        vLayout2->addWidget(m_riseSpeed);
-        hLayout->addLayout(vLayout2);
-        hLayout->addItem(new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum));
-        hLayout->addWidget(m_percentage);
+        QWidget* leftWidget = new QWidget(this);
+        {
+            QVBoxLayout* leftWidgetLayout = new QVBoxLayout(leftWidget);
+            leftWidgetLayout->setContentsMargins(0, 0, 0, 0);
+            leftWidgetLayout->setSpacing(0);
+            leftWidgetLayout->addWidget(m_symbol);
+            leftWidgetLayout->addWidget(m_24hVolumeCurrency);
+        }
+
+        QWidget* middleWidget = new QWidget(this);
+        {
+            QVBoxLayout* middleWidgetLayout = new QVBoxLayout(this);
+            middleWidgetLayout->setContentsMargins(0, 0, 0, 0);
+            middleWidgetLayout->setSpacing(0);
+            middleWidgetLayout->addWidget(m_price);
+            middleWidgetLayout->addWidget(m_riseSpeed);
+        }
+
+        m_resizeWidgets.push_back(leftWidget);
+        m_resizeWidgets.push_back(middleWidget);
+        m_resizeWidgets.push_back(m_percentage);
     }
-    else if (mode == PCListMode) {
+    else if (mode == QuoteListItemDisplayMode::STANDALONG_QUOTE_LIST) {
         // PC端行情列表模式布局: | 符号对 | 价格 | 成交额 | 涨跌幅 | 涨速 |
-        hLayout->addWidget(m_symbol);
-        hLayout->addWidget(m_price);
-        hLayout->addWidget(m_24hVolumeCurrency);
-        hLayout->addWidget(m_percentage);
-        hLayout->addWidget(m_riseSpeed);
+        m_resizeWidgets.push_back(m_symbol);
+        m_resizeWidgets.push_back(m_price);
+        m_resizeWidgets.push_back(m_24hVolumeCurrency);
+        m_resizeWidgets.push_back(m_percentage);
+        m_resizeWidgets.push_back(m_riseSpeed);
     }
 }

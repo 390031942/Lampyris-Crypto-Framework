@@ -129,8 +129,10 @@ int main(int argc, char* argv[]) {
 
     QWidget mainWindow;
     QVBoxLayout* layout = new QVBoxLayout(&mainWindow);
+    layout->setContentsMargins(0, 0, 0, 0);
 
     TabButtonView* tabView = new TabButtonView;
+    tabView->setStyleSheet("background-color: black;");
     tabView->addTab("Tab 1");
     tabView->addTab("Tab 2");
     tabView->addTab("Tab 3");
@@ -145,4 +147,26 @@ int main(int argc, char* argv[]) {
 
     return app.exec();
 }
+
+#include "UI/Common/BetterLineEdit.h"
+int mainBetterLineEdit(int argc, char* argv[]) {
+    QApplication app(argc, argv);
+    BetterLineEdit lineEdit;
+    lineEdit.setOptions({ "option1","option2","option3" });
+    lineEdit.show();
+
+    return app.exec();
+}
+
+#include "UI/Standalong/Trade/TradeWidget.h"
+int mainTradeWidget(int argc, char* argv[]) {
+    QApplication app(argc, argv);
+    TradeWidget tradeWidget;
+    tradeWidget.setObjectName("tradeWidget");
+    tradeWidget.setStyleSheet("QWidget#tradeWidget{background-color: black;} QWidget{color:white;} QPushButton {background-color:transparent;}");
+    tradeWidget.show();
+
+    return app.exec();
+}
+
 #endif // !LAMPYRIS_EXE

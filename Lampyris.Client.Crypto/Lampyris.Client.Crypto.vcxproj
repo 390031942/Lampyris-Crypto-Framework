@@ -238,6 +238,14 @@
     <ClInclude Include="sources\AppSystem\Quote\Data\SymbolTradeRule.h" />
     <QtMoc Include="sources\UI\Common\TabButtonItem.h" />
     <QtMoc Include="sources\UI\Common\TabButtonView.h" />
+    <ClInclude Include="sources\UI\Common\CrossPlatformWidget.h" />
+    <ClInclude Include="sources\UI\Common\Trade\TradeComboBox.h" />
+    <QtMoc Include="sources\UI\Common\Trade\TradeLineEdit.h" />
+    <QtMoc Include="sources\UI\Standalong\Trade\TradeWidget.h" />
+    <QtMoc Include="sources\UI\Standalong\Common\DropDownSelectItem.h" />
+    <QtMoc Include="sources\UI\Standalong\Common\DropDownWidget.h" />
+    <QtMoc Include="sources\UI\Standalong\Home\HomeWidget.h" />
+    <ClInclude Include="sources\Util\LayoutBuilder.h" />
     <ClInclude Include="sources\Util\StringUtil.h" />
     <QtMoc Include="sources\AppSystem\Quote\Manager\QuoteManager.h" />
     <ClInclude Include="sources\AppSystem\Quote\Util\QuoteUtil.h" />
@@ -343,16 +351,22 @@
     </ClCompile>
     <ClCompile Include="sources\UI\Common\TableHeader.cpp" />
     <ClCompile Include="sources\UI\Common\TimeWidget.cpp" />
+    <ClCompile Include="sources\UI\Common\Trade\TradeComboBox.cpp" />
+    <ClCompile Include="sources\UI\Common\Trade\TradeLineEdit.cpp" />
     <ClCompile Include="sources\UI\Mobile\Common\BottomPopupWidget.cpp" />
     <ClCompile Include="sources\UI\Mobile\Main\MainWidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Common\DropDownSelectItem.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Common\DropDownWidget.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Home\HomeWidget.cpp" />
     <ClCompile Include="sources\UI\Standalong\Main\MainStatusBar.cpp" />
     <ClCompile Include="sources\UI\Standalong\Main\MainTitleBar.cpp" />
     <ClCompile Include="sources\UI\Standalong\Main\MainToolBar.cpp" />
     <ClCompile Include="sources\UI\Standalong\Main\MainToolButton.cpp" />
     <ClCompile Include="sources\UI\Standalong\Main\MainWidget.cpp" />
     <ClCompile Include="sources\UI\Standalong\Quote\QuoteTickerDataWidget.cpp" />
+    <ClCompile Include="sources\UI\Standalong\Trade\TradeWidget.cpp" />
     <ClCompile Include="sources\Util\DateTimeUtil.cpp" />
     <ClCompile Include="sources\Util\StringUtil.cpp" />
   </ItemGroup>

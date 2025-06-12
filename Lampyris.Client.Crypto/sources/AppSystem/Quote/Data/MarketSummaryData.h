@@ -4,9 +4,16 @@
 
 // STD Include(s)
 #include <memory>
+#include <vector>
 
-class MarketSummaryData {
-public:
+// 涨跌分布区域数据
+struct MarketPreviewIntervalData {
+    int lowerBoundPerc; // 下界(%)
+    int upperBoundPerc; // 上界(%)
+    int count;          // 数量(家)
+};
+
+struct MarketSummaryData {
     // 涨跌平数量
     int riseCount;
     int fallCount;
@@ -26,6 +33,8 @@ public:
     inline int getContractCount() const {
         return riseCount + fallCount + unchangedCount;
     }
+
+    std::vector<MarketPreviewIntervalData> intervalData;
 };
 
 typedef std::shared_ptr<MarketSummaryData> MarketSummaryDataPtr;

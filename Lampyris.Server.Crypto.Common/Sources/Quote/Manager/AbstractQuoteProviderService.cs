@@ -1,5 +1,6 @@
 ﻿namespace Lampyris.Server.Crypto.Common;
 
+using Lampyris.Crypto.Protocol.Quote;
 using Lampyris.CSharp.Common;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 {
     [Autowired]
     protected QuoteCacheService m_CacheService;
+
+    [Autowired]
+    protected WebSocketService m_WebSocketService;
 
     private QuoteDBIntegrityData m_QuoteDBIntegrityData;
 
@@ -116,66 +120,6 @@ public abstract class AbstractQuoteProviderService:ILifecycle
 
         return m_QuoteTickerDataMap[symbol];
     }
-
-    protected void PostProcessTickerData()
-    {
-        m_MarketSummaryData.Reset();
-
-        decimal percentageSum = 0.0m;
-        decimal top10PercentageSum = 0.0m;
-        decimal last10PercentageSum = 0.0m;
-        decimal mainStreamPercentageSum = 0.0m;
-
-        m_QuoteTickerDataList.Sort((lhs, rhs) =>
-        {
-            if (lhs.ChangePerc == rhs.ChangePerc) return 0;
-            return rhs.ChangePerc > lhs.ChangePerc ? 1 : -1;
-        });
-
-        for(int i = 0; i < m_QuoteTickerDataList.Count; i++)
-        {
-            var quoteTickerData = m_QuoteTickerDataList[i];
-            if(quoteTickerData.ChangePerc > 0)
-            {
-                m_MarketSummaryData.RiseCount++;
-            }
-            else if(quoteTickerData.ChangePerc < 0)
-            {
-                m_MarketSummaryData.FallCount++;
-            }
-            else
-            {
-                m_MarketSummaryData.UnchangedCount++;
-            }
-
-            if (m_MainStreamSymbols.Contains(quoteTickerData.Symbol))
-            {
-                mainStreamPercentageSum += quoteTickerData.ChangePerc;
-            }
-
-            if(i < 10) 
-            {
-                top10PercentageSum += quoteTickerData.ChangePerc;
-            }
-            else if(i >= m_QuoteTickerDataList.Count - 10)
-            {
-                last10PercentageSum += quoteTickerData.ChangePerc;
-            } 
-            percentageSum += quoteTickerData.ChangePerc;
-
-            var span = m_CacheService.QueryCacheOnlyLastestCandles(quoteTickerData.Symbol, BarSize._1m, 3);
-            // 涨速计算
-            if (span.Length > 0)
-            { 
-                quoteTickerData.RiseSpeed = 0m; 
-            }
-        }
-
-        m_MarketSummaryData.AvgChangePerc = percentageSum / m_QuoteTickerDataList.Count;
-        m_MarketSummaryData.MainStreamAvgChangePerc = mainStreamPercentageSum / m_QuoteTickerDataList.Count;
-        m_MarketSummaryData.Top10AvgChangePerc = top10PercentageSum / m_QuoteTickerDataList.Count;
-        m_MarketSummaryData.Last10AvgChangePerc = last10PercentageSum / m_QuoteTickerDataList.Count;
-    }
     #endregion
 
     #region K线数据
@@ -264,6 +208,77 @@ public abstract class AbstractQuoteProviderService:ILifecycle
         "BTCUSDT",
         "ETHUSDT"
     };
+
+    protected void RecalculateMarketPreviewData()
+    {
+        m_MarketSummaryData.Reset();
+
+        decimal percentageSum = 0.0m;
+        decimal top10PercentageSum = 0.0m;
+        decimal last10PercentageSum = 0.0m;
+        decimal mainStreamPercentageSum = 0.0m;
+
+        m_QuoteTickerDataList.Sort((lhs, rhs) =>
+        {
+            if (lhs.ChangePerc == rhs.ChangePerc) return 0;
+            return rhs.ChangePerc > lhs.ChangePerc ? 1 : -1;
+        });
+
+        for (int i = 0; i < m_QuoteTickerDataList.Count; i++)
+        {
+            var quoteTickerData = m_QuoteTickerDataList[i];
+            if (quoteTickerData.ChangePerc > 0)
+            {
+                m_MarketSummaryData.RiseCount++;
+            }
+            else if (quoteTickerData.ChangePerc < 0)
+            {
+                m_MarketSummaryData.FallCount++;
+            }
+            else
+            {
+                m_MarketSummaryData.UnchangedCount++;
+            }
+
+            if (m_MainStreamSymbols.Contains(quoteTickerData.Symbol))
+            {
+                mainStreamPercentageSum += quoteTickerData.ChangePerc;
+            }
+
+            if (i < 10)
+            {
+                top10PercentageSum += quoteTickerData.ChangePerc;
+            }
+            else if (i >= m_QuoteTickerDataList.Count - 10)
+            {
+                last10PercentageSum += quoteTickerData.ChangePerc;
+            }
+            percentageSum += quoteTickerData.ChangePerc;
+
+            // 计算的涨速的分钟间隔数
+            const int riseSpeedIntervalMinute = 3;
+
+            var span = m_CacheService.QueryCacheOnlyLastestCandles(quoteTickerData.Symbol, BarSize._1m, riseSpeedIntervalMinute);
+            // 涨速计算
+            if (span.Length > 0)
+            {
+                quoteTickerData.RiseSpeed = 0m;
+            }
+
+            m_MarketSummaryData.RecordPerc(quoteTickerData.ChangePerc);
+        }
+
+        m_MarketSummaryData.AvgChangePerc = percentageSum / m_QuoteTickerDataList.Count;
+        m_MarketSummaryData.MainStreamAvgChangePerc = mainStreamPercentageSum / m_QuoteTickerDataList.Count;
+        m_MarketSummaryData.Top10AvgChangePerc = top10PercentageSum / m_QuoteTickerDataList.Count;
+        m_MarketSummaryData.Last10AvgChangePerc = last10PercentageSum / m_QuoteTickerDataList.Count;
+    }
+
+    protected void PushMarketPreviewData()
+    {
+        QuotePushUtil.PushMarketPreviewData(m_WebSocketService, m_MarketSummaryData);
+    }
+
     #endregion
 
     #region 交易数据

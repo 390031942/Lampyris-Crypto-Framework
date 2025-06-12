@@ -71,6 +71,7 @@ private:
 	#pragma region 市场总览
 public:
 	Delegate<const MarketSummaryData&> onMarketSummaryDataUpdate;
+	void handleMarketPreviewData(ResMarketPreviewData resMarketPreviewData);
 #pragma endregion
 
 	#pragma region 视图相关

@@ -1,37 +1,48 @@
+// Project Include(s)
 #include "MarketOverviewBarChartWidget.h"
+
+// QT Include(s)
 #include <QPainter>
 #include <QFontMetrics>
 #include <QDebug>
 
 MarketOverviewBarChartWidget::MarketOverviewBarChartWidget(QWidget* parent)
-    : QWidget(parent), m_barWidth(30), m_distributionBarHeight(20), m_distributionBarSpacing(5) {
-    // 默认柱状宽度为 30，分布条高度为 20，矩形间距为 5
+    : QWidget(parent), m_barWidth(30), 
+    m_distributionBarHeight(20), 
+    m_distributionBarSpacing(5),
+    m_callbackId(-1) {
+    m_callbackId = QuoteManager::getInstance()->onMarketSummaryDataUpdate += [this](const MarketSummaryData& data) {
+        this->updateSumamryData(data);
+    };
 }
 
-void MarketOverviewBarChartWidget::setData(const QVector<MarketPreviewIntervalDataBean>& data) {
-    m_data = data;
-    update(); // 更新绘图
+MarketOverviewBarChartWidget::~MarketOverviewBarChartWidget() {
+
 }
 
 void MarketOverviewBarChartWidget::setBarWidth(int width) {
     m_barWidth = width;
-    update(); // 更新绘图
+    update();
 }
 
 void MarketOverviewBarChartWidget::setDistributionBarHeight(int height) {
     m_distributionBarHeight = height;
-    update(); // 更新绘图
+    update();
 }
 
 void MarketOverviewBarChartWidget::setDistributionBarSpacing(int spacing) {
     m_distributionBarSpacing = spacing;
-    update(); // 更新绘图
+    update();
+}
+
+void MarketOverviewBarChartWidget::setExpectedIntervals(std::initializer_list<int> list) {
+    m_intervals = std::vector<int>(list.begin(), list.end());
 }
 
 void MarketOverviewBarChartWidget::paintEvent(QPaintEvent* event) {
     Q_UNUSED(event);
 
-    if (m_data.isEmpty()) {
+    if (m_data.empty()) {
         return; // 如果没有数据，不绘制
     }
 
@@ -160,4 +171,52 @@ void MarketOverviewBarChartWidget::paintEvent(QPaintEvent* event) {
     painter.setPen(Qt::black);
     painter.drawText(distributionBarX, distributionBarY + m_distributionBarHeight + 20, upText);
     painter.drawText(distributionBarX + distributionBarWidth - downTextWidth, distributionBarY + m_distributionBarHeight + 20, downText);
+}
+
+void MarketOverviewBarChartWidget::updateSumamryData(const MarketSummaryData& data) {
+    m_data.clear();
+
+    // 处理 <-10% 的区间
+    if (!m_intervals.empty()) {
+        MarketPreviewIntervalData firstInterval;
+        firstInterval.lowerBoundPerc = INT_MIN;
+        firstInterval.upperBoundPerc = m_intervals[0];
+        firstInterval.count = 0;
+        for (const auto& interval : data.intervalData) {
+            if (interval.upperBoundPerc < m_intervals[0]) {
+                firstInterval.count += interval.count;
+            }
+        }
+        m_data.push_back(firstInterval);
+    }
+
+    // 处理中间的区间
+    for (size_t i = 0; i < m_intervals.size() - 1; ++i) {
+        MarketPreviewIntervalData interval;
+        interval.lowerBoundPerc = m_intervals[i];
+        interval.upperBoundPerc = m_intervals[i + 1];
+        interval.count = 0;
+        for (const auto& dataInterval : data.intervalData) {
+            if (dataInterval.lowerBoundPerc >= m_intervals[i] && dataInterval.upperBoundPerc < m_intervals[i + 1]) {
+                interval.count += dataInterval.count;
+            }
+        }
+        m_data.push_back(interval);
+    }
+
+    // 处理 >10% 的区间
+    if (!m_intervals.empty()) {
+        MarketPreviewIntervalData lastInterval;
+        lastInterval.lowerBoundPerc = m_intervals.back();
+        lastInterval.upperBoundPerc = INT_MAX;
+        lastInterval.count = 0;
+        for (const auto& interval : data.intervalData) {
+            if (interval.lowerBoundPerc >= m_intervals.back()) {
+                lastInterval.count += interval.count;
+            }
+        }
+        m_data.push_back(lastInterval);
+    }
+
+    this->update();
 }

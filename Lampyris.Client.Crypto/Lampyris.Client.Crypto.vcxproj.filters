@@ -82,6 +82,15 @@
     <Filter Include="Source Files\Const">
       <UniqueIdentifier>{961a6501-b6a3-4e97-967d-8ad7b5fd00d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\Common\Trade">
+      <UniqueIdentifier>{b22ce2a1-5df7-4a67-8100-6a3acf8e0f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Standalong\Trade">
+      <UniqueIdentifier>{dee60b8f-e60b-4efb-9e03-c3e54c0de313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Standalong\Common">
+      <UniqueIdentifier>{091e0da0-2cf8-472e-8a7c-3d11f864db7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\AppSystem\Trade\Data\LeverageSetting.h">
@@ -182,6 +191,15 @@
     </ClInclude>
     <ClInclude Include="sources\AppSystem\Quote\Data\SymbolTradeRule.h">
       <Filter>Source Files\AppSystem\Quote\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\UI\Common\CrossPlatformWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\UI\Common\Trade\TradeComboBox.h">
+      <Filter>Source Files\UI\Common\Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Util\LayoutBuilder.h">
+      <Filter>Source Files\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -332,6 +350,24 @@
     <ClCompile Include="sources\UI\Common\TabButtonView.cpp">
       <Filter>Source Files\UI\Common</Filter>
     </ClCompile>
+    <ClCompile Include="sources\UI\Common\Trade\TradeLineEdit.cpp">
+      <Filter>Source Files\UI\Common\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Common\Trade\TradeComboBox.cpp">
+      <Filter>Source Files\UI\Common\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Trade\TradeWidget.cpp">
+      <Filter>Source Files\UI\Standalong\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Common\DropDownWidget.cpp">
+      <Filter>Source Files\UI\Standalong\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Common\DropDownSelectItem.cpp">
+      <Filter>Source Files\UI\Standalong\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\UI\Standalong\Home\HomeWidget.cpp">
+      <Filter>Source Files\UI\Standalong\Home</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="sources\UI\Standalong\Main\MainWidget.h">
@@ -426,6 +462,21 @@
     </QtMoc>
     <QtMoc Include="sources\UI\Common\TabButtonView.h">
       <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Common\Trade\TradeLineEdit.h">
+      <Filter>Source Files\UI\Common\Trade</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Trade\TradeWidget.h">
+      <Filter>Source Files\UI\Standalong\Trade</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Common\DropDownSelectItem.h">
+      <Filter>Source Files\UI\Standalong\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Common\DropDownWidget.h">
+      <Filter>Source Files\UI\Standalong\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="sources\UI\Standalong\Home\HomeWidget.h">
+      <Filter>Source Files\UI\Standalong\Home</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

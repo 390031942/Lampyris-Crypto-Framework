@@ -167,7 +167,7 @@ public class WebSocketService:ILifecycle
     }
 
 
-    private async void broadcastMessage(IMessage message)
+    public async void BroadcastMessage(IMessage message)
     {
         foreach(var pair in m_UserId2ConnectionInfoMap)
         {

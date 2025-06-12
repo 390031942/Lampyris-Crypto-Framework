@@ -20,7 +20,7 @@ if not exist "%CSHARP_OUTPUT_DIR%" (
     mkdir "%CSHARP_OUTPUT_DIR%"
 )
 
-bin\ProtocolCommonFileCodeGen.exe C:\Users\wsh39\source\repos\Lampyris-Crypto-Framework\Protocol
+bin\ProtocolCommonFileCodeGen.exe C:\Users\wsh39\source\repos\Lampyris-Crypto-Framework\Protocol lampyris.crypto.protocol.common
 
 REM Define the list of proto files to compile
 set PROTO_FILES=account.proto app.proto quote.proto strategy.proto trading.proto common.proto

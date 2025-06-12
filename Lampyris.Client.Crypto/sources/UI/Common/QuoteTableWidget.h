@@ -13,8 +13,15 @@
 #include "TableHeader.h"
 #include "AppSystem/Quote/Const/TickerDataSortType.h"
 #include "AppSystem/Quote/Data/QuoteTickerDataView.h"
+#include "Const/UIDisplayMode.h"
+#include "UI/Common/CrossPlatformWidget.h"
 
-class QuoteTableWidget : public QWidget {
+enum class QuoteTableListMode {
+    QUOTE_LIST = 0,
+    SEARCH_LIST = 1,
+};
+
+class QuoteTableWidget : public CrossPlatformWidget {
     Q_OBJECT
     
     const QString COLUMN_NAME_SYMBOL       = "名称";
@@ -31,8 +38,10 @@ class QuoteTableWidget : public QWidget {
         {COLUMN_NAME_PERCENTAGE,   TickerDataSortType::PERCENTAGE},
     };
 public:
-    explicit                    QuoteTableWidget(QWidget* parent = nullptr);
+    explicit                    QuoteTableWidget(UIDisplayMode displayMode, QuoteTableListMode listMode, QWidget* parent = nullptr);
     virtual~                    QuoteTableWidget();
+protected:
+    virtual void                setupDisplayMode(UIDisplayMode displayMode);
 private slots:
     void                        onColumnWidthResized(const std::vector<TableColumnWidthInfo>& fieldWidths);
     void                        onSortRequested(const QString& fieldName, DataSortingOrder sortOrder);
@@ -44,6 +53,9 @@ private:
     DataSortingOrder            m_sortOrder;
     QuoteTickerDataViewPtr      m_dataView;
     int                         m_updateCallbackId;
+    QuoteTableListMode          m_listMode;
+    QuoteListItemDisplayMode    m_itemMode;
+
     void                        sortItems();
     void                        handleDataUpdate();
 };

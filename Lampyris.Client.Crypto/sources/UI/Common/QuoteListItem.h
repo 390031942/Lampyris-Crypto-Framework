@@ -9,6 +9,13 @@
 #include "AmountText.h"
 #include "PriceText.h"
 #include "AppSystem/Quote/Data/QuoteTickerData.h"
+#include "TableHeader.h"
+
+enum QuoteListItemDisplayMode {
+    STANDALONG_QUOTE_LIST = 0,
+    MOBILE_QUOTE_LIST = 0,
+    SEARCH_LIST = 2,
+};
 
 /// <summary>
 // 行情列表中的Item, 用于桌面平台顶部的搜索联想词列表 以及行情列表 
@@ -16,18 +23,16 @@
 class QuoteListItem : public QWidget {
     Q_OBJECT
 public:
-    enum DisplayMode {
-        SearchListMode,       // 搜索列表模式
-        MobileListMode,       // 移动端行情列表模式
-        PCListMode            // PC端行情列表模式
-    };
-    explicit QuoteListItem(DisplayMode mode, QWidget* parent = Q_NULLPTR);
+    explicit QuoteListItem(QuoteListItemDisplayMode mode, QWidget* parent = Q_NULLPTR);
     void                   refresh(const QuoteTickerDataPtr tickerData, double minTick);
+    void                   resizeFields(const std::vector<TableColumnWidthInfo>& widthList);
 private:
-    void                   setupUI(DisplayMode mode); // 根据模式设置UI布局
+    void                   setupUI(QuoteListItemDisplayMode mode); // 根据模式设置UI布局
     QLabel*                m_symbol;
     AmountText*            m_24hVolumeCurrency;
     PriceText*             m_price;
     PercentageDisplayText* m_percentage;
     PercentageDisplayText* m_riseSpeed;
+
+    std::vector<QWidget*>  m_resizeWidgets;
 };

@@ -23,5 +23,10 @@
         <file>icons/sort_ascending.png</file>
         <file>icons/sort_descending.png</file>
         <file>icons/sort_none.png</file>
+        <file>icons/asset_exchange.png</file>
+        <file>icons/down_triangle.png</file>
+        <file>icons/dropdown_checked.png</file>
+        <file>icons/main.qrc</file>
+        <file>icons/up_triangle.png</file>
     </qresource>
 </RCC>

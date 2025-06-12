@@ -14,6 +14,9 @@ void QuoteManager::handleMessage(Response response) {
 	if (typeCase == Response::ResponseTypeCase::kResSubscribeTickerData) {
 		handleTickerData(response.ressubscribetickerdata());
 	}
+	if (typeCase == Response::ResponseTypeCase::kResMarketPreviewData) {
+		handleMarketPreviewData(response.resmarketpreviewdata());
+	}
 	else if (typeCase == Response::ResponseTypeCase::kResCandlestickQuery) {
 		handleResCandlestickQuery(response.rescandlestickquery());
 	}
@@ -133,6 +136,23 @@ void QuoteManager::handleCandlestickBean(CandlestickUpdateBean candlestickUpdate
 			}
 		}
 	}
+}
+
+void QuoteManager::handleMarketPreviewData(ResMarketPreviewData resMarketPreviewData) {
+	MarketSummaryData summaryData;
+	summaryData.riseCount = resMarketPreviewData.risecount();
+	summaryData.unchangedCount = resMarketPreviewData.flatcount();
+	summaryData.fallCount = resMarketPreviewData.fallcount();
+	summaryData.avgChangePerc = resMarketPreviewData.avgperc();
+	summaryData.top10AvgChangePerc = resMarketPreviewData.topgaineravgperc();
+	summaryData.last10AvgChangePerc = resMarketPreviewData.bottomgaineravgperc();
+	summaryData.mainStreamAvgChangePerc = resMarketPreviewData.mainstreamavgperc();
+	summaryData.intervalData.clear();
+
+	for (auto& interval : resMarketPreviewData.intervaldatalist()) {
+		summaryData.intervalData.push_back({ interval.lowerboundperc(),interval.upperboundperc(),interval.count() });
+	}
+	onMarketSummaryDataUpdate(summaryData);
 }
 
 QuoteCandleDataSegmentPtr QuoteManager::allocateSegment() {

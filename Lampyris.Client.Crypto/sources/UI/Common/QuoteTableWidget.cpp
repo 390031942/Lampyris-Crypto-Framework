@@ -2,8 +2,8 @@
 #include "QuoteTableWidget.h"
 #include "AppSystem/Quote/Manager/QuoteManager.h"
 
-QuoteTableWidget::QuoteTableWidget(QWidget* parent)
-    : QWidget(parent), m_sortOrder(DataSortingOrder::NONE) {
+QuoteTableWidget::QuoteTableWidget(UIDisplayMode displayMode, QuoteTableListMode listMode, QWidget* parent)
+    : CrossPlatformWidget(displayMode,parent), m_sortOrder(DataSortingOrder::NONE), m_listMode(listMode) {
     // 初始化布局
     m_layout = new QVBoxLayout(this);
     m_layout->setContentsMargins(0, 0, 0, 0);
@@ -12,29 +12,15 @@ QuoteTableWidget::QuoteTableWidget(QWidget* parent)
     // 初始化表头
     m_tableHeader = new TableHeader(this);
     m_layout->addWidget(m_tableHeader);
-
+    
     // 连接表头信号
     connect(m_tableHeader, &TableHeader::columnWidthResized, this, &QuoteTableWidget::onColumnWidthResized);
     connect(m_tableHeader, &TableHeader::sortRequested, this, &QuoteTableWidget::onSortRequested);
 
-    // 模拟表头定义
-    TableHeaderDefinition headerDef;
-    headerDef.startFieldGroup(0.4)
-        .addField(COLUMN_NAME_SYMBOL, true)
-        .addField(COLUMN_NAME_24H_CURRENCY, true)
-        .end();
-    headerDef.startFieldGroup(0.3)
-        .addField(COLUMN_NAME_PRICE, true)
-        .addField(COLUMN_NAME_RISE_SPEED, true)
-        .end();
-    headerDef.startFieldGroup(0.3)
-        .addField(COLUMN_NAME_PERCENTAGE, true)
-        .end();
-
-    m_tableHeader->setHeaderDefinition(headerDef);
-
     // 分配视图
     m_dataView = QuoteManager::getInstance()->allocateQuoteTickerDataView();
+
+    this->setupDisplayMode(displayMode);
 }
 
 QuoteTableWidget::~QuoteTableWidget() {
@@ -42,8 +28,70 @@ QuoteTableWidget::~QuoteTableWidget() {
     QuoteManager::getInstance()->recycleQuoteTickerDataView(m_dataView);
 }
 
+void QuoteTableWidget::setupDisplayMode(UIDisplayMode displayMode) {
+    TableHeaderDefinition tableDef;
+
+    if (m_listMode == QuoteTableListMode::QUOTE_LIST) {
+        if (displayMode == UIDisplayMode::STANDALONG) {
+            tableDef.startFieldGroup(0.4)
+                .addField(COLUMN_NAME_SYMBOL, true)
+                .end();
+            tableDef.startFieldGroup(0.15)
+                .addField(COLUMN_NAME_PRICE, true)
+                .end();
+            tableDef.startFieldGroup(0.15
+            )
+                .addField(COLUMN_NAME_24H_CURRENCY, true)
+                .end();
+            tableDef.startFieldGroup(0.15)
+                .addField(COLUMN_NAME_PERCENTAGE, true)
+                .end();
+            tableDef.startFieldGroup(0.15)
+                .addField(COLUMN_NAME_RISE_SPEED, true)
+                .end();
+
+        }
+        else if (displayMode == UIDisplayMode::MOBILE) {
+            tableDef.startFieldGroup(0.4)
+                .addField(COLUMN_NAME_SYMBOL, true)
+                .addField(COLUMN_NAME_24H_CURRENCY, true)
+                .end();
+            tableDef.startFieldGroup(0.3)
+                .addField(COLUMN_NAME_PRICE, true)
+                .addField(COLUMN_NAME_RISE_SPEED, true)
+                .end();
+            tableDef.startFieldGroup(0.3)
+                .addField(COLUMN_NAME_PERCENTAGE, true)
+                .end();
+
+            m_itemMode = QuoteListItemDisplayMode::STANDALONG_QUOTE_LIST;
+        }
+
+    }
+    else if(m_listMode == QuoteTableListMode::SEARCH_LIST) {
+        tableDef.startFieldGroup(0.4)
+            .addField(COLUMN_NAME_SYMBOL, true)
+            .end();
+        tableDef.startFieldGroup(0.3)
+            .addField(COLUMN_NAME_PRICE, true)
+            .end();
+        tableDef.startFieldGroup(0.3)
+            .addField(COLUMN_NAME_PERCENTAGE, true)
+            .end();
+
+        m_itemMode = QuoteListItemDisplayMode::SEARCH_LIST;
+    }
+    m_tableHeader->setHeaderDefinition(tableDef);
+}
+
 void QuoteTableWidget::onColumnWidthResized(const std::vector<TableColumnWidthInfo>& fieldWidths) {
-    
+    // 遍历所有的 QuoteListItem
+    for (auto* item : m_items) {
+        item->resizeFields(fieldWidths);
+    }
+
+    // 重绘界面
+    update();
 }
 
 void QuoteTableWidget::onSortRequested(const QString& fieldName, DataSortingOrder sortOrder) {
@@ -73,13 +121,13 @@ void QuoteTableWidget::handleDataUpdate() {
         m_items.reserve(size);
 
         for (int i = 0; i < size; i++) {
-            m_items.push_back(new QuoteListItem(QuoteListItem::DisplayMode::PCListMode, this));
+            m_items.push_back(new QuoteListItem(m_itemMode, this));
         }
     }
     else {
         int itemCount = m_items.size();
         if (size > itemCount) {
-            m_items.push_back(new QuoteListItem(QuoteListItem::DisplayMode::PCListMode, this));
+            m_items.push_back(new QuoteListItem(m_itemMode, this));
         }
     }
 

@@ -6,7 +6,6 @@ using Binance.Net.Objects.Models.Spot.Socket;
 using CryptoExchange.Net.Objects.Sockets;
 using Lampyris.CSharp.Common;
 using Lampyris.Server.Crypto.Common;
-using MySqlX.XDevAPI.Common;
 using System.Collections.Concurrent;
 using System.IO.Compression;
 
@@ -291,7 +290,8 @@ public class QuoteProviderService : AbstractQuoteProviderService
             m_QuoteTickerDataMap[rawTickerData.Symbol] = Converter.ToQuoteTickerData(timestamp, rawTickerData, quoteTickerData);
         }
 
-        PostProcessTickerData();
+        RecalculateMarketPreviewData();
+        PushMarketPreviewData();
 
         if (OnTickerUpdated != null)
         {

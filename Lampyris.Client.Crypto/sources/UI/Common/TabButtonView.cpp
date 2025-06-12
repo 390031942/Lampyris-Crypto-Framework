@@ -8,11 +8,12 @@ TabButtonView::TabButtonView(QWidget* parent)
     : QScrollArea(parent), m_dragEnabled(false), m_lastMousePos(0, 0) {
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     m_container = new QWidget(this);
     m_layout = new QHBoxLayout(m_container);
     m_layout->setSpacing(10);
-    m_layout->setContentsMargins(0, 0, 0, 0);
+    m_layout->setContentsMargins(9, 6, 9, 6);
 
     m_container->setLayout(m_layout);
     setWidget(m_container);
@@ -23,10 +24,6 @@ void TabButtonView::addTab(const QString& text) {
     auto* tabItem = new TabButtonItem(text, this);
     m_layout->addWidget(tabItem);
     m_tabs.append(tabItem);
-
-    // 添加空白填充
-    QSpacerItem* spacer = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-    m_layout->addSpacerItem(spacer);
 
     connect(tabItem, &TabButtonItem::clicked, this, [this, tabItem]() {
         setSelectedTab(tabItem);
