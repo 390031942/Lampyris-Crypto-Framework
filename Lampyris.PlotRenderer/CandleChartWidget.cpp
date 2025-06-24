@@ -1,10 +1,10 @@
-#include "CandleChartWidget.h"
+﻿#include "CandleChartWidget.h"
 #include "PlotRenderer.h"
 
 void CandleChartWidget::paintEvent(QPaintEvent* e) {
 	QPainter p(this);
-	m_renderer->drawCandleChart(p);
 	m_renderer->drawGrid(p);
+	m_renderer->drawCandleChart(p);
 }
 
 CandleChartWidget::CandleChartWidget(QWidget *parent)

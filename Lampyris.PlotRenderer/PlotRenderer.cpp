@@ -1,11 +1,11 @@
-#include "PlotRenderer.h"
+ï»¿#include "PlotRenderer.h"
 #include <QPainterPath>
 
 void PlotRenderer::render(QPainter& painter) {
     double maxPrice = 0, minPrice = 1e9;
     int maxIndex = -1, minIndex = -1;
 
-    // Ô¤¼ÆËãÕÒµ½×î¸ß¼ÛºÍ×îµÍ¼Û
+    // é¢„è®¡ç®—æ‰¾åˆ°æœ€é«˜ä»·å’Œæœ€ä½ä»·
     for (size_t i = 0; i < m_dataList.size(); ++i) {
         const auto& data = m_dataList[i];
         if (data->high > maxPrice) {
@@ -18,33 +18,33 @@ void PlotRenderer::render(QPainter& painter) {
         }
     }
 
-    // Ô¤¼ÆËã¾ùÏß
+    // é¢„è®¡ç®—å‡çº¿
     calculateMovingAverages(m_dataList);
 
     double gridMaxPrice = MathUtil::ceilModulo(maxPrice * 1.005, 4, m_config.gridRowCount);
     double gridMinPrice = MathUtil::floorModulo(minPrice * 0.995, 4, m_config.gridRowCount);
     int gridTextWidth = painter.fontMetrics().horizontalAdvance(MathUtil::formatDoubleWithStep(gridMaxPrice, m_context->minTick));
 
-    // »æÖÆÃèÊöÎÄ±¾
+    // ç»˜åˆ¶æè¿°æ–‡æœ¬
     drawIndicatorText(painter);
 
-    // »æÖÆÍø¸ñ
+    // ç»˜åˆ¶ç½‘æ ¼
     // drawGrid(painter, maxPrice, minPrice, gridMaxPrice, gridMinPrice);
 
-    // »æÖÆ K ÏßÍ¼
+    // ç»˜åˆ¶ K çº¿å›¾
     // drawCandleChart(painter, maxPrice, minPrice, maxIndex, minIndex, gridMaxPrice, gridMinPrice, gridTextWidth);
 
-    // »æÖÆ±³¾°
+    // ç»˜åˆ¶èƒŒæ™¯
     // QRect volumeAreaRect = image.rect();
     // volumeAreaRect.setTop(image.rect().height() * 0.7);
     // volumeAreaRect.setBottom(image.rect().height());
     // painter.setViewport(volumeAreaRect);
     // painter.setWindow(0, 0, image.rect().width(), image.rect().height() * 0.3f);
 
-    // »æÖÆ³É½»Á¿Öù×´Í¼
+    // ç»˜åˆ¶æˆäº¤é‡æŸ±çŠ¶å›¾
     drawVolume(painter);
 
-    // ±£´æÍ¼Æ¬
+    // ä¿å­˜å›¾ç‰‡
     // image.save(config.outputFile);
 }
 
@@ -53,14 +53,14 @@ void PlotRenderer::drawGrid(QPainter& painter) {
     int width = painter.viewport().width();
     int height = painter.viewport().height();
 
-    // ¿Ì¶È
+    // åˆ»åº¦
     int textWidth = m_context->gridScaleTextWidth;
     int textHeight = painter.fontMetrics().height();
 
-    // Íø¸ñ¸ß¶È
+    // ç½‘æ ¼é«˜åº¦
     int gridHeight = (painter.viewport().height() - m_config.gridTopPadding) / (rows - 1);
 
-    // Íø¸ñÓÒ²àÊúÏßÎ»ÖÃ
+    // ç½‘æ ¼å³ä¾§ç«–çº¿ä½ç½®
     int gridEndPosX = width - m_context->gridScaleTextLeftPadding - m_context->gridScaleTextRightPadding - m_context->gridScaleTextWidth;
     int gridScaleTextPosX = gridEndPosX + m_context->gridScaleTextLeftPadding;
     for (int i = 0; i < rows; ++i) {
@@ -68,7 +68,7 @@ void PlotRenderer::drawGrid(QPainter& painter) {
         painter.setPen(m_config.gridColor);
         painter.drawLine(0, y, gridEndPosX, y);
 
-        painter.setPen(Qt::darkGray);
+        painter.setPen(Qt::white);
 
         double gridPrice = m_context->gridMaxPrice + i * (m_context->gridMinPrice - m_context->gridMaxPrice) / (rows - 1);
         QString gridPriceStr = QString::number(gridPrice);
@@ -77,7 +77,7 @@ void PlotRenderer::drawGrid(QPainter& painter) {
         painter.drawText(gridScaleTextPosX, y - textHeight, textWidth, textHeight, 0, str);
     }
 
-    // Íø¸ñÓÒ²àÊúÏß×÷Îª±ß½ç
+    // ç½‘æ ¼å³ä¾§ç«–çº¿ä½œä¸ºè¾¹ç•Œ
     painter.drawLine(gridEndPosX, m_config.gridTopPadding, gridEndPosX, height);
 }
 
@@ -127,14 +127,14 @@ void PlotRenderer::drawCandleChart(QPainter& painter) {
     }
 
     QRect viewport = painter.viewport();
-    // K ÏßÍ¼ÇøÓò
+    // K çº¿å›¾åŒºåŸŸ
     int klineAreaHeight = viewport.height();
 
-    // Ôö¼ÓÉÏÏÂ±ß¾àµ½¼Û¸ñ·¶Î§
+    // å¢åŠ ä¸Šä¸‹è¾¹è·åˆ°ä»·æ ¼èŒƒå›´
     double priceRange = m_context->gridMaxPrice - m_context->gridMinPrice;
     float candleWidth = m_context->width;
 
-    // »æÖÆ K Ïß
+    // ç»˜åˆ¶ K çº¿
     for (size_t i = m_context->startIndex; i < m_context->endIndex; ++i) {
         const auto& data = m_context->dataList[i];
         float x = m_context->leftOffset + (i - m_context->startIndex) * (candleWidth + m_context->spacing);
@@ -145,22 +145,22 @@ void PlotRenderer::drawCandleChart(QPainter& painter) {
 
         QColor color = (data->close >= data->open) ? m_config.riseColor : m_config.fallColor;
         painter.setPen(color);
-        painter.drawLine(QPointF(x + candleWidth / 2.0, yHigh),QPointF(x + candleWidth / 2, yLow)); // »æÖÆÓ°Ïß
+        painter.drawLine(QPointF(x + candleWidth / 2.0, yHigh),QPointF(x + candleWidth / 2, yLow)); // ç»˜åˆ¶å½±çº¿
         painter.setBrush(color);
-        painter.drawRect(QRectF(x, std::min(yOpen, yClose), candleWidth, std::abs(yClose - yOpen))); // »æÖÆÊµÌå
+        painter.drawRect(QRectF(x, std::min(yOpen, yClose), candleWidth, std::abs(yClose - yOpen))); // ç»˜åˆ¶å®ä½“
 
-        // »æÖÆfocusµÄÊúÏß
+        // ç»˜åˆ¶focusçš„ç«–çº¿
         if (m_context->focusIndex >= 0 && m_context->focusIndex == i) {
-            painter.setPen(Qt::black);
-            painter.drawLine(QPointF(x + candleWidth / 2.0, 0), QPointF(x + candleWidth / 2, klineAreaHeight)); // »æÖÆÓ°Ïß
+            painter.setPen(Qt::white);
+            painter.drawLine(QPointF(x + candleWidth / 2.0, 0), QPointF(x + candleWidth / 2, klineAreaHeight)); // ç»˜åˆ¶å½±çº¿
         }
     }
 
-    // »æÖÆ×î¸ß¼ÛºÍ×îµÍ¼Û±ê¼Ç
+    // ç»˜åˆ¶æœ€é«˜ä»·å’Œæœ€ä½ä»·æ ‡è®°
     drawPriceMarker(painter, m_context->maxIndex, m_context->maxPrice, m_context->gridMinPrice, true, klineAreaHeight, priceRange,  m_context->minPrice, candleWidth, 0);
     drawPriceMarker(painter, m_context->minIndex, m_context->minPrice, m_context->gridMinPrice, false, klineAreaHeight, priceRange, m_context->minPrice, candleWidth, 0);
 
-    // »æÖÆ¾ùÏß
+    // ç»˜åˆ¶å‡çº¿
     // drawKLineMA(painter  offsetof(QuoteCandleData, ma5), klineHeight, priceRange, minPrice, candleWidth);
     // drawKLineMA(painter, offsetof(QuoteCandleData, ma10), klineHeight, priceRange, minPrice, candleWidth);
     // drawKLineMA(painter, offsetof(QuoteCandleData, ma20), klineHeight, priceRange, minPrice, candleWidth);
@@ -171,14 +171,14 @@ void PlotRenderer::drawVolume(QPainter& painter) {
         return;
     }
 
-    // ³É½»Á¿Öù×´Í¼ÇøÓò
+    // æˆäº¤é‡æŸ±çŠ¶å›¾åŒºåŸŸ
     int volumeHeight = painter.viewport().height();
     int candleWidth = m_context->width;
-    // K ÏßÍ¼ÇøÓò
+    // K çº¿å›¾åŒºåŸŸ
     QRect viewport = painter.viewport();
     int klineAreaHeight = viewport.height();
 
-    // ÕÒµ½×î´ó³É½»Á¿£¬ÓÃÓÚ¹éÒ»»¯
+    // æ‰¾åˆ°æœ€å¤§æˆäº¤é‡ï¼Œç”¨äºå½’ä¸€åŒ–
     double maxVolume = 0;
     double minVolume = 1e30;
     for (size_t i = m_context->startIndex; i < m_context->endIndex; ++i) {
@@ -187,34 +187,34 @@ void PlotRenderer::drawVolume(QPainter& painter) {
         minVolume = std::min(minVolume, data->volume);
     }
 
-    // »æÖÆÃ¿¸ù³É½»Á¿Öù×´Í¼
+    // ç»˜åˆ¶æ¯æ ¹æˆäº¤é‡æŸ±çŠ¶å›¾
     for (size_t i = m_context->startIndex; i < m_context->endIndex; ++i) {
         const auto& data = m_context->dataList[i];
         float x = m_context->leftOffset + (i - m_context->startIndex) * (candleWidth + m_context->spacing);
         int y = volumeHeight - (data->volume / maxVolume) * volumeHeight;
         int height = (data->volume / maxVolume) * volumeHeight;
 
-        // ÉèÖÃÑÕÉ«£¨ºìÕÇÂÌµø£©
+        // è®¾ç½®é¢œè‰²ï¼ˆçº¢æ¶¨ç»¿è·Œï¼‰
         QColor color = (data->close >= data->open) ? m_config.riseColor : m_config.fallColor;
         painter.setBrush(color);
         painter.setPen(Qt::NoPen);
         painter.drawRect(x, y, candleWidth, height);
 
-        // »æÖÆfocusµÄÊúÏß
+        // ç»˜åˆ¶focusçš„ç«–çº¿
         if (m_context->focusIndex >= 0 && m_context->focusIndex == i) {
-            painter.setPen(Qt::black);
-            painter.drawLine(QPointF(x + candleWidth / 2.0, 0), QPointF(x + candleWidth / 2, klineAreaHeight)); // »æÖÆÓ°Ïß
+            painter.setPen(Qt::white);
+            painter.drawLine(QPointF(x + candleWidth / 2.0, 0), QPointF(x + candleWidth / 2, klineAreaHeight)); // ç»˜åˆ¶å½±çº¿
         }
     }
 }
 
-// ¼ÆËãÒÆ¶¯Æ½¾ùÖµ²¢Ìî³äµ½ QuoteCandleData ÖĞ
+// è®¡ç®—ç§»åŠ¨å¹³å‡å€¼å¹¶å¡«å……åˆ° QuoteCandleData ä¸­
 void PlotRenderer::calculateMovingAverages(std::vector<QuoteCandleDataPtr>& dataList) {
     int dataSize = dataList.size();
 
     for (int i = 0; i < dataSize; ++i) {
-        // ¼ÆËã MA5
-        if (i >= 4) { // ÖÁÉÙĞèÒª 5 ¸öÊı¾İ
+        // è®¡ç®— MA5
+        if (i >= 4) { // è‡³å°‘éœ€è¦ 5 ä¸ªæ•°æ®
             double sum = 0.0;
             for (int j = i; j > i - 5; --j) {
                 sum += dataList[j]->close;
@@ -222,8 +222,8 @@ void PlotRenderer::calculateMovingAverages(std::vector<QuoteCandleDataPtr>& data
             dataList[i]->ma5 = sum / 5.0;
         }
 
-        // ¼ÆËã MA10
-        if (i >= 9) { // ÖÁÉÙĞèÒª 10 ¸öÊı¾İ
+        // è®¡ç®— MA10
+        if (i >= 9) { // è‡³å°‘éœ€è¦ 10 ä¸ªæ•°æ®
             double sum = 0.0;
             for (int j = i; j > i - 10; --j) {
                 sum += dataList[j]->close;
@@ -231,8 +231,8 @@ void PlotRenderer::calculateMovingAverages(std::vector<QuoteCandleDataPtr>& data
             dataList[i]->ma10 = sum / 10.0;
         }
 
-        // ¼ÆËã MA20
-        if (i >= 19) { // ÖÁÉÙĞèÒª 20 ¸öÊı¾İ
+        // è®¡ç®— MA20
+        if (i >= 19) { // è‡³å°‘éœ€è¦ 20 ä¸ªæ•°æ®
             double sum = 0.0;
             for (int j = i; j > i - 20; --j) {
                 sum += dataList[j]->close;
@@ -249,7 +249,7 @@ void PlotRenderer::drawVolumeMA(QPainter& painter, const std::vector<double>& ma
 
     QPainterPath path;
     for (size_t i = 0; i < ma.size(); ++i) {
-        if (ma[i] == 0) continue; // Ìø¹ıÎŞĞ§Êı¾İ
+        if (ma[i] == 0) continue; // è·³è¿‡æ— æ•ˆæ•°æ® 
 
         int x = i * (m_config.width / m_dataList.size()) + (m_config.width / m_dataList.size()) / 2;
         int y = volumeTop + volumeHeight - (ma[i] / maxVolume) * volumeHeight;
@@ -271,62 +271,62 @@ void PlotRenderer::drawPriceMarker(QPainter& painter, int index, double price, d
     }
 
     painter.save();
-    // ¼ÆËã±ê¼ÇÎ»ÖÃ
+    // è®¡ç®—æ ‡è®°ä½ç½®
     float x = m_context->leftOffset + (index - m_context->startIndex) * (candleWidth + m_context->spacing);
     float y = padding + (1 - (price - gridMinPrice) / priceRange) * (klineAreaHeight);
 
-    // ÅĞ¶ÏĞéÏßÑÓÉì·½Ïò
-    bool extendRight = (index < (m_context->endIndex - m_context->startIndex) / 2); // Èç¹ûÔÚ×ó°ë²¿·Ö£¬ÔòÏòÓÒÑÓÉì
+    // åˆ¤æ–­è™šçº¿å»¶ä¼¸æ–¹å‘
+    bool extendRight = (index < (m_context->endIndex - m_context->startIndex) / 2); // å¦‚æœåœ¨å·¦åŠéƒ¨åˆ†ï¼Œåˆ™å‘å³å»¶ä¼¸
 
-    // ÉèÖÃĞéÏßÑùÊ½
+    // è®¾ç½®è™šçº¿æ ·å¼
     QPen pen;
-    pen.setColor(Qt::darkGray);
-    pen.setStyle(Qt::DashLine);// ÉèÖÃÎªĞéÏß
+    pen.setColor(Qt::white);
+    pen.setStyle(Qt::DashLine);// è®¾ç½®ä¸ºè™šçº¿
     pen.setWidth(1);
     painter.setPen(pen);
 
-    // »æÖÆĞéÏß
-    int lineLength = 20; // ĞéÏßµÄ³¤¶È
-    int xEnd = extendRight ? x + lineLength : x - lineLength; // ¸ù¾İ·½Ïò¼ÆËãĞéÏßÖÕµã
+    // ç»˜åˆ¶è™šçº¿
+    int lineLength = 20; // è™šçº¿çš„é•¿åº¦
+    int xEnd = extendRight ? x + lineLength : x - lineLength; // æ ¹æ®æ–¹å‘è®¡ç®—è™šçº¿ç»ˆç‚¹
     painter.drawLine(x, y, xEnd, y);
 
-    // »æÖÆ¼Û¸ñÎÄ×Ö
+    // ç»˜åˆ¶ä»·æ ¼æ–‡å­—
     QString priceText = QString::number(price, 'f', 2); 
     QFont font = painter.font();
     font.setPointSize(10);
     painter.setFont(font);
-    painter.setPen(Qt::white); // ÉèÖÃÎÄ×ÖÑÕÉ«Îª°×É«
+    painter.setPen(Qt::white); // è®¾ç½®æ–‡å­—é¢œè‰²ä¸ºç™½è‰²
 
-    int textOffset = 5; // ÎÄ×ÖÓëĞéÏßµÄ¼ä¾à
+    int textOffset = 5; // æ–‡å­—ä¸è™šçº¿çš„é—´è·
     if (extendRight) {
-        // Èç¹ûÏòÓÒÑÓÉì£¬ÎÄ×ÖÏÔÊ¾ÔÚĞéÏßÓÒ¶Ë
+        // å¦‚æœå‘å³å»¶ä¼¸ï¼Œæ–‡å­—æ˜¾ç¤ºåœ¨è™šçº¿å³ç«¯
         painter.drawText(xEnd + textOffset, y, priceText);
     }
 
     else {
-        // Èç¹ûÏò×óÑÓÉì£¬ÎÄ×ÖÏÔÊ¾ÔÚĞéÏß×ó¶Ë
+        // å¦‚æœå‘å·¦å»¶ä¼¸ï¼Œæ–‡å­—æ˜¾ç¤ºåœ¨è™šçº¿å·¦ç«¯
         painter.drawText(xEnd - textOffset - painter.fontMetrics().horizontalAdvance(priceText), y, priceText);
     }
     painter.restore();
 }
 
 void PlotRenderer::drawKLineMA(QPainter& painter, int fieldOffset, const QColor& color, int klineHeight, double priceRange, double minPrice, int candleWidth) {
-    painter.setPen(QPen(color, 2)); // ÉèÖÃ¾ùÏßÑÕÉ«ºÍÏß¿í
+    painter.setPen(QPen(color, 2)); // è®¾ç½®å‡çº¿é¢œè‰²å’Œçº¿å®½
 
     QPainterPath path;
     for (size_t i = 0; i < m_dataList.size(); ++i) {
         double ma = *(double*)((&m_dataList[i]) + fieldOffset);
         if (ma == 0) continue;
-        // Ìø¹ıÎŞĞ§Êı¾İ
+        // è·³è¿‡æ— æ•ˆæ•°æ®
 
         int x = i * candleWidth + candleWidth / 2;
         int y = klineHeight - (ma - minPrice) / priceRange * klineHeight;
 
         if (i == 0) {
-            path.moveTo(x, y); // Æğµã
+            path.moveTo(x, y); // èµ·ç‚¹
         }
         else {
-            path.lineTo(x, y); // Á¬Ïß
+            path.lineTo(x, y); // è¿çº¿
         }
     }
     painter.drawPath(path);

@@ -1,33 +1,36 @@
 using Lampyris.Crypto.Protocol.Common;
 using Lampyris.CSharp.Common;
-using Lampyris.Server.Crypto.Common;
 using System.Reflection;
 
 public class MessageHandlerRegistry
 {
-    private readonly Dictionary<Request.RequestTypeOneofCase, Action<ClientUserInfo, Request>> m_RequestType2HandlerMap = new();
+    private readonly Dictionary<Request.RequestTypeOneofCase, Action<int, Request>> m_RequestType2HandlerMap = new();
 
 
     public void RegisterHandlers()
     {
-        var methods = Components.GetComponentsByTag("MessageHandler")
-            .SelectMany(obj => obj.GetType().GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
-            .Where(method => method.GetCustomAttributes<MessageHandlerAttribute>().Any());
+        var handlers = Components.GetComponentsByTag("MessageHandler");
 
-        foreach (var method in methods)
+        foreach (var handler in handlers)
         {
-            var attribute = method.GetCustomAttribute<MessageHandlerAttribute>();
-            if (attribute != null)
-            {
-                var handlerDelegate = (Action<ClientUserInfo, Request>)Delegate.CreateDelegate(
-                    typeof(Action<ClientUserInfo, Request>), method);
+            var methods = handler.GetType().GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                .Where(method => method.GetCustomAttributes<MessageHandlerAttribute>().Any());
 
-                m_RequestType2HandlerMap[attribute.RequestType] = handlerDelegate;
+            foreach (var method in methods)
+            {
+                var attribute = method.GetCustomAttribute<MessageHandlerAttribute>();
+                if (attribute != null)
+                {
+                    var handlerDelegate = (Action<int, Request>)Delegate.CreateDelegate(
+                        typeof(Action<int, Request>), handler, method);
+
+                    m_RequestType2HandlerMap[attribute.RequestType] = handlerDelegate;
+                }
             }
         }
     }
 
-    public bool TryGetHandler(Request.RequestTypeOneofCase requestType, out Action<ClientUserInfo, Request> handler)
+    public bool TryGetHandler(Request.RequestTypeOneofCase requestType, out Action<int, Request> handler)
     {
         return m_RequestType2HandlerMap.TryGetValue(requestType, out handler);
     }

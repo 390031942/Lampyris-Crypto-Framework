@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 // QT Include(s)
 #include <QString>
@@ -9,37 +9,37 @@
 class MathUtil {
 public:
     /// <summary>
-    /// ÌáÈ¡¸¡µãÊýµÄÇ° N ¸öÓÐÐ§Êý×Ö£¬²¢·µ»ØËõ·ÅºóµÄÕûÊýºÍÊýÁ¿¼¶¡£
+    /// æå–æµ®ç‚¹æ•°çš„å‰ N ä¸ªæœ‰æ•ˆæ•°å­—ï¼Œå¹¶è¿”å›žç¼©æ”¾åŽçš„æ•´æ•°å’Œæ•°é‡çº§ã€‚
     /// </summary>
-    /// <param name="num">ÊäÈëµÄ¸¡µãÊý¡£</param>
-    /// <param name="N">ÒªÌáÈ¡µÄÓÐÐ§Êý×ÖµÄ¸öÊý¡£</param>
-    /// <param name="significantDigits">·µ»ØµÄËõ·ÅºóµÄÕûÊýÖµ£¨Ç° N ¸öÓÐÐ§Êý×Ö£©¡£</param>
-    /// <param name="magnitude">·µ»ØµÄÊýÁ¿¼¶£¨10 µÄÃÝ´Î£©¡£</param>
+    /// <param name="num">è¾“å…¥çš„æµ®ç‚¹æ•°ã€‚</param>
+    /// <param name="N">è¦æå–çš„æœ‰æ•ˆæ•°å­—çš„ä¸ªæ•°ã€‚</param>
+    /// <param name="significantDigits">è¿”å›žçš„ç¼©æ”¾åŽçš„æ•´æ•°å€¼ï¼ˆå‰ N ä¸ªæœ‰æ•ˆæ•°å­—ï¼‰ã€‚</param>
+    /// <param name="magnitude">è¿”å›žçš„æ•°é‡çº§ï¼ˆ10 çš„å¹‚æ¬¡ï¼‰ã€‚</param>
     static void extractSignificantDigits(double num, int N, int& significantDigits, double& magnitude);
 
     /// <summary>
-    /// ¶Ô¸¡µãÊýµÄÇ° N ¸öÓÐÐ§Êý×Ö½øÐÐ¶ÔÄ£ M µÄÉÏÈ¡Õû¡£
+    /// å¯¹æµ®ç‚¹æ•°çš„å‰ N ä¸ªæœ‰æ•ˆæ•°å­—è¿›è¡Œå¯¹æ¨¡ M çš„ä¸Šå–æ•´ã€‚
     /// </summary>
-    /// <param name="num">ÊäÈëµÄ¸¡µãÊý¡£</param>
-    /// <param name="N">ÒªÌáÈ¡µÄÓÐÐ§Êý×ÖµÄ¸öÊý¡£</param>
-    /// <param name="M">Ä£Öµ£¬ÓÃÓÚ¼ÆËãÉÏÈ¡Õû¡£</param>
-    /// <returns>·µ»Ø¾­¹ý´¦ÀíºóµÄ¸¡µãÊý¡£</returns>
+    /// <param name="num">è¾“å…¥çš„æµ®ç‚¹æ•°ã€‚</param>
+    /// <param name="N">è¦æå–çš„æœ‰æ•ˆæ•°å­—çš„ä¸ªæ•°ã€‚</param>
+    /// <param name="M">æ¨¡å€¼ï¼Œç”¨äºŽè®¡ç®—ä¸Šå–æ•´ã€‚</param>
+    /// <returns>è¿”å›žç»è¿‡å¤„ç†åŽçš„æµ®ç‚¹æ•°ã€‚</returns>
     static double ceilModulo(double num, int N, int M);
 
     /// <summary>
-    /// ¶Ô¸¡µãÊýµÄÇ° N ¸öÓÐÐ§Êý×Ö½øÐÐ¶ÔÄ£ M µÄÏÂÈ¡Õû¡£
+    /// å¯¹æµ®ç‚¹æ•°çš„å‰ N ä¸ªæœ‰æ•ˆæ•°å­—è¿›è¡Œå¯¹æ¨¡ M çš„ä¸‹å–æ•´ã€‚
     /// </summary>
-    /// <param name="num">ÊäÈëµÄ¸¡µãÊý¡£</param>
-    /// <param name="N">ÒªÌáÈ¡µÄÓÐÐ§Êý×ÖµÄ¸öÊý¡£</param>
-    /// <param name="M">Ä£Öµ£¬ÓÃÓÚ¼ÆËãÏÂÈ¡Õû¡£</param>
-    /// <returns>·µ»Ø¾­¹ý´¦ÀíºóµÄ¸¡µãÊý¡£</returns>
+    /// <param name="num">è¾“å…¥çš„æµ®ç‚¹æ•°ã€‚</param>
+    /// <param name="N">è¦æå–çš„æœ‰æ•ˆæ•°å­—çš„ä¸ªæ•°ã€‚</param>
+    /// <param name="M">æ¨¡å€¼ï¼Œç”¨äºŽè®¡ç®—ä¸‹å–æ•´ã€‚</param>
+    /// <returns>è¿”å›žç»è¿‡å¤„ç†åŽçš„æµ®ç‚¹æ•°ã€‚</returns>
     static double floorModulo(double num, int N, int M);
 
     /// <summary>
-    /// ½«¸¡µãÊý×ª»»ÎªÂú×ã×îÐ¡²½½øµÄ×Ö·û´®¡£
+    /// å°†æµ®ç‚¹æ•°è½¬æ¢ä¸ºæ»¡è¶³æœ€å°æ­¥è¿›çš„å­—ç¬¦ä¸²ã€‚
     /// </summary>
-    /// <param name="value">ÊäÈëµÄ¸¡µãÊý¡£</param>
-    /// <param name="step">×îÐ¡²½½øÖµ£¬±íÊ¾½á¹ûÐèÒªÂú×ãµÄ¾«¶ÈÒªÇó£¨ÀýÈç "0.01" ±íÊ¾¾«È·µ½Ð¡ÊýµãºóÁ½Î»£©¡£</param>
-    /// <returns>·µ»Ø¸ñÊ½»¯ºóµÄ×Ö·û´®¡£</returns>
+    /// <param name="value">è¾“å…¥çš„æµ®ç‚¹æ•°ã€‚</param>
+    /// <param name="step">æœ€å°æ­¥è¿›å€¼ï¼Œè¡¨ç¤ºç»“æžœéœ€è¦æ»¡è¶³çš„ç²¾åº¦è¦æ±‚ï¼ˆä¾‹å¦‚ "0.01" è¡¨ç¤ºç²¾ç¡®åˆ°å°æ•°ç‚¹åŽä¸¤ä½ï¼‰ã€‚</param>
+    /// <returns>è¿”å›žæ ¼å¼åŒ–åŽçš„å­—ç¬¦ä¸²ã€‚</returns>
     static QString formatDoubleWithStep(double value, const QString& step);
 };

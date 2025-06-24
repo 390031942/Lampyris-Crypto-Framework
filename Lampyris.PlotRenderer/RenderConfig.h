@@ -1,24 +1,24 @@
-#pragma once
+ï»¿#pragma once
 
 // QT Include(s)
 #include <QColor>
 
-// ÅäÖÃ²ÎÊı½á¹¹
+// é…ç½®å‚æ•°ç»“æ„
 struct RenderConfig {
     QColor backgroundColor;
-    QColor gridColor = QColor(Qt::black);
+    QColor gridColor = QColor(Qt::white);
 
     QColor ma5Color;
     QColor ma10Color;
     QColor ma20Color;
 
-    QColor riseColor = QColor(244,79,95); // ÕÇµÄÑÕÉ«
-    QColor fallColor = QColor(82,189,133); // µøµÄÑÕÉ«
-    QColor flatColor = QColor(139,143,152); // Æ½µÄÑÕÉ«
+    QColor riseColor = QColor(244,79,95); // æ¶¨çš„é¢œè‰²
+    QColor fallColor = QColor(82,189,133); // è·Œçš„é¢œè‰²
+    QColor flatColor = QColor(139,143,152); // å¹³çš„é¢œè‰²
     int width;
     int height;
 
-    // kÏßÍ¼Íø¸ñ
+    // kçº¿å›¾ç½‘æ ¼
     int    gridColunnCount = 5;
     int    gridRowCount = 4;
     int    gridTopPadding;

@@ -1,17 +1,16 @@
 // Project Include(s)
 #include "QuoteCandleDataView.h"
-#include "AppSystem/Quote/Manager/QuoteManager.h"
 
-QuoteCandleDataView::QuoteCandleDataView(size_t m_displaySize)
+QuoteCandleDataView::QuoteCandleDataView(const QString& symbol, BarSize barSize)
     : m_displaySize(m_displaySize), m_startIndex(0), m_focusIndex(-1), m_lastSegmentSize(0) {
-    m_dynamicSegment = QuoteManager::getInstance()->allocateDynamicSegment();
+    QObject::connect(&m_binanceAPI, &BinanceAPI::dataFetched, [this](const std::vector<QuoteCandleDataPtr>& dataList) {
+        this->dataFetched(dataList);
+    });
+    m_binanceAPI.fetchKlines(symbol, "1m", QUOTE_CANDLE_DATA_SEGMENT_SIZE);
 }
 
 QuoteCandleDataView::~QuoteCandleDataView() {
-    QuoteManager::getInstance()->recycleDynamicSegement(m_dynamicSegment);
-    for (auto segment : m_segments) {
-        QuoteManager::getInstance()->recycleSegement(segment);
-    }
+
 }
 
 // 向左移动视图
@@ -24,15 +23,15 @@ void QuoteCandleDataView::moveRight() {
     m_startIndex = std::clamp(m_startIndex++, 0, m_displaySize - 1);
 }
 
+void QuoteCandleDataView::slideLeft(int pixel) {}
+
+void QuoteCandleDataView::slideRight(int pixel) {}
+
 void QuoteCandleDataView::setFocusIndex(int index) {
     m_focusIndex = std::clamp(index, 0, m_displaySize - 1);
 }
 
-void QuoteCandleDataView::expand(int displaySize) {
-    if (displaySize <= m_displaySize) {
-        return;
-    }
-
+void QuoteCandleDataView::expand() {
     if (m_isLoading) {
         return;
     }
@@ -56,11 +55,7 @@ void QuoteCandleDataView::expand(int displaySize) {
     }
 }
 
-void QuoteCandleDataView::shrink(int displaySize) {
-    if (displaySize >= m_displaySize) {
-        return;
-    }
-
+void QuoteCandleDataView::shrink() {
     int totalSize = getTotalSize();
     int endIndex = m_displaySize + m_startIndex;
     int diff = displaySize - m_displaySize;
@@ -110,9 +105,9 @@ size_t QuoteCandleDataView::getTotalSize() const {
 }
 
 // 根据全局索引获取 K 线数据
-const QuoteCandleData& QuoteCandleDataView::getCandleDataByGlobalIndex(int globalIndex) const {
+const QuoteCandleDataPtr& QuoteCandleDataView::getCandleDataByGlobalIndex(int globalIndex) const {
     if (globalIndex <= 0 && globalIndex >= getTotalSize()) {
-        return QuoteCandleData();  // 越界返回默认值
+        return nullptr;  // 越界返回默认值
     }
 
     int segmentIndex = globalIndex / QUOTE_CANDLE_DATA_SEGMENT_SIZE;
@@ -121,9 +116,9 @@ const QuoteCandleData& QuoteCandleDataView::getCandleDataByGlobalIndex(int globa
 }
 
 // 运算符[]：根据视图中的索引返回 K 线数据
-const QuoteCandleData& QuoteCandleDataView::operator[](int index) const {
+const QuoteCandleDataPtr& QuoteCandleDataView::operator[](int index) const {
     if (index <= 0 || index >= m_displaySize) {
-        return QuoteCandleData();  // 越界返回默认值
+        return nullptr;  // 越界返回默认值
     }
     int globalIndex = m_startIndex + index;
     return getCandleDataByGlobalIndex(globalIndex);
@@ -136,5 +131,36 @@ void QuoteCandleDataView::notifyDataReceived() {
 // 获取最后一个数据对应的DateTime
 QDateTime QuoteCandleDataView::getFirstDataDateTime() {
     const auto& quoteCandleData = getCandleDataByGlobalIndex(0);
-    return quoteCandleData.dateTime;
+    return quoteCandleData->dateTime;
+}
+
+void QuoteCandleDataView::dataFetched(const std::vector<QuoteCandleDataPtr>& dataList) {
+    if (dataList.empty())
+        return;
+
+    bool isFirstReceived = m_segments.size() == 0;
+    if (isFirstReceived) {
+        m_segments.push_back(std::make_shared<QuoteCandleDataSegment>());
+    }
+
+    int currentIndex = 0;
+
+    // 将数据塞入分段中
+    while (true) {
+        auto& segment = *m_segments.back();
+        int canAddCount = std::min(dataList.size() - currentIndex, QUOTE_CANDLE_DATA_SEGMENT_SIZE - segment.size());
+        int startAddIndex = segment.size();
+        for (int i = startAddIndex; i < startAddIndex + canAddCount; i++) {
+            segment[i] = dataList[currentIndex];
+            currentIndex++;
+        }
+
+        // 数据加完了，跳出
+        if (currentIndex == dataList.size() - 1) {
+            break;
+        }
+        
+        // 插入新的数据段
+        m_segments.push_back(std::make_shared<QuoteCandleDataSegment>());
+    }
 }

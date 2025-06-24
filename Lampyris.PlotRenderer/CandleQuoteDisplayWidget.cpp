@@ -1,15 +1,21 @@
-#include "TestWidget.h"
+// Project Include(s)
+#include "CandleQuoteDisplayWidget.h"
 #include "MathUtil.h"
 #include "PlotRenderer.h"
-#include <qlayout.h>
+
+// QT Include(s)
+#include <QLayout>
 #include <QTimer>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <qregularexpression.h>
 
-// ÊÂ¼ş¹ıÂËÆ÷
-bool TestWidget::eventFilter(QObject* watched, QEvent* event) {
+const std::array<double, 13> CandleQuoteDisplayWidget::WIDTH_ARRAY =
+{ 0.0625, 0.125, 0.25, 0.5, 0.7, 1, 2, 3, 4, 6, 12, 18, 24 };
+
+// äº‹ä»¶è¿‡æ»¤å™¨
+bool CandleQuoteDisplayWidget::eventFilter(QObject* watched, QEvent* event) {
 	if (watched == m_candleChart) {
 		if (event->type() == QEvent::MouseMove) {
 			QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
@@ -24,11 +30,11 @@ bool TestWidget::eventFilter(QObject* watched, QEvent* event) {
 			qDebug() << "Key pressed in child window:" << keyEvent->key();
 		}
 	}
-	// Ä¬ÈÏ´¦Àí
+	// é»˜è®¤å¤„ç†
 	return QWidget::eventFilter(watched, event);
 }
 
-void TestWidget::resizeEvent(QResizeEvent* e) {
+void CandleQuoteDisplayWidget::resizeEvent(QResizeEvent* e) {
 	if (!m_context.dataList.empty()) {
 		QSize size = e->size();
 		int width = size.width();
@@ -45,7 +51,7 @@ void TestWidget::resizeEvent(QResizeEvent* e) {
 	QWidget::resizeEvent(e);
 }
 
-void TestWidget::keyPressEvent(QKeyEvent* e) {
+void CandleQuoteDisplayWidget::keyPressEvent(QKeyEvent* e) {
 	auto key = e->key();
 	if (key == Qt::Key::Key_Left || key == Qt::Key::Key_Right) {
 		this->handleKeyArrowLeftOrRight(key);
@@ -62,17 +68,17 @@ void TestWidget::keyPressEvent(QKeyEvent* e) {
 	QWidget::keyPressEvent(e);
 }
 
-void TestWidget::mouseMoveEvent(QMouseEvent* e) {
+void CandleQuoteDisplayWidget::mouseMoveEvent(QMouseEvent* e) {
 	this->handleMouseMove(e);
 	QWidget::mouseMoveEvent(e);
 }
 
-void TestWidget::handleMouseMove(QMouseEvent* e) {
+void CandleQuoteDisplayWidget::handleMouseMove(QMouseEvent* e) {
 	QPoint pos = e->pos();
 	int x = pos.x();
 	int focusIndex = m_context.focusIndex;
 
-	// ¼ÆËãfocuxsIndex
+	// è®¡ç®—focuxsIndex
 	m_context.focusIndex = calculateFocusIndex(x, m_context.leftOffset, m_context.width, m_context.spacing, m_context.endIndex - m_context.startIndex) + m_context.startIndex;
 	if (focusIndex != m_context.focusIndex) {
 		qDebug() << m_context.focusIndex;
@@ -81,33 +87,33 @@ void TestWidget::handleMouseMove(QMouseEvent* e) {
 	this->repaintChart();
 }
 
-int TestWidget::calculateFocusIndex(double X, double leftOffset, double width, double spacing, int numKlines) {
-	// Ã¿¸ö K ÏßµÄ×Ü¿í¶È
+int CandleQuoteDisplayWidget::calculateFocusIndex(double X, double leftOffset, double width, double spacing, int numKlines) {
+	// æ¯ä¸ª K çº¿çš„æ€»å®½åº¦
 	double totalWidth = width + spacing;
 
-	// Êó±êÏà¶ÔÓÚ K ÏßÇøÓòµÄÆ«ÒÆÁ¿
+	// é¼ æ ‡ç›¸å¯¹äº K çº¿åŒºåŸŸçš„åç§»é‡
 	double relativeX = X - leftOffset;
 
-	// Èç¹ûÊó±êÔÚ K ÏßÇøÓòµÄ×ó²à
+	// å¦‚æœé¼ æ ‡åœ¨ K çº¿åŒºåŸŸçš„å·¦ä¾§
 	if (relativeX < 0) {
 		return 0;
 	}
 
-	// Èç¹ûÊó±êÔÚ K ÏßÇøÓòµÄÓÒ²à
+	// å¦‚æœé¼ æ ‡åœ¨ K çº¿åŒºåŸŸçš„å³ä¾§
 	if (relativeX > numKlines * totalWidth) {
 		return numKlines - 1;
 	}
 
-	// ´óÖÂµÄ K ÏßË÷Òı
+	// å¤§è‡´çš„ K çº¿ç´¢å¼•
 	int approxIndex = floor(relativeX / totalWidth);
 
-	// ×ó²à K ÏßµÄÖĞĞÄÎ»ÖÃ
+	// å·¦ä¾§ K çº¿çš„ä¸­å¿ƒä½ç½®
 	double centerLeft = leftOffset + approxIndex * totalWidth + width / 2;
 
-	// ÓÒ²à K ÏßµÄÖĞĞÄÎ»ÖÃ
+	// å³ä¾§ K çº¿çš„ä¸­å¿ƒä½ç½®
 	double centerRight = centerLeft + totalWidth;
 
-	// ÅĞ¶ÏÊó±êÀëÄÄ¸ù K ÏßµÄÖĞĞÄ¸ü½ü
+	// åˆ¤æ–­é¼ æ ‡ç¦»å“ªæ ¹ K çº¿çš„ä¸­å¿ƒæ›´è¿‘
 	int focusIndex;
 	if (fabs(X - centerLeft) <= fabs(X - centerRight)) {
 		focusIndex = approxIndex;
@@ -116,7 +122,7 @@ int TestWidget::calculateFocusIndex(double X, double leftOffset, double width, d
 		focusIndex = approxIndex + 1;
 	}
 
-	// È·±£Ë÷ÒıºÏ·¨
+	// ç¡®ä¿ç´¢å¼•åˆæ³•
 	if (focusIndex < 0) {
 		focusIndex = 0;
 	}
@@ -127,31 +133,31 @@ int TestWidget::calculateFocusIndex(double X, double leftOffset, double width, d
 	return focusIndex;
 }
 
-int TestWidget::calculateCandleCount(double leftOffset, double width, double spacing, double windowWidth) {
-	// Ã¿¸ù K ÏßµÄ×Ü¿í¶È
+int CandleQuoteDisplayWidget::calculateCandleCount(double leftOffset, double width, double spacing, double windowWidth) {
+	// æ¯æ ¹ K çº¿çš„æ€»å®½åº¦
 	double totalWidth = width + spacing;
 
-	// ¿ÉÓÃ»æÖÆ¿í¶È
+	// å¯ç”¨ç»˜åˆ¶å®½åº¦
 	double availableWidth = windowWidth - leftOffset;
 
-	// Èç¹û¿ÉÓÃ¿í¶È²»×ãÒÔÏÔÊ¾ÈÎºÎ K Ïß
+	// å¦‚æœå¯ç”¨å®½åº¦ä¸è¶³ä»¥æ˜¾ç¤ºä»»ä½• K çº¿
 	if (availableWidth <= 0) {
 		return 0;
 	}
 
-	// ¼ÆËã×î¶àÏÔÊ¾µÄ K ÏßÊıÁ¿
+	// è®¡ç®—æœ€å¤šæ˜¾ç¤ºçš„ K çº¿æ•°é‡
 	int candleCount = floor(availableWidth / totalWidth);
 
 	return candleCount;
 }
 
-TestWidget::TestWidget(QWidget *parent)
+CandleQuoteDisplayWidget::CandleQuoteDisplayWidget(QWidget *parent)
 	: QWidget(parent), 
 	m_candleChart(new CandleChartWidget(this)), 
 	m_volumeChart(new VolumeChartWidget(this)),
 	m_betterSplitter(new BetterSplitter(Qt::Orientation::Vertical,this)) {
 
-	// ÉèÖÃ QSplitter µÄ handle ÑùÊ½
+	// è®¾ç½® QSplitter çš„ handle æ ·å¼
 	m_betterSplitter->setStyleSheet("QSplitter::handle { background: gray; }");
 	m_betterSplitter->setHandleWidth(1);
 
@@ -164,8 +170,8 @@ TestWidget::TestWidget(QWidget *parent)
 	m_betterSplitter->addWidget(m_candleChart);
 	m_betterSplitter->addWidget(m_volumeChart);
 
-	QObject::connect(&api, &BinanceAPI::dataFetched, this, &TestWidget::onDataFetched);
-	api.fetchKlines("VINEUSDT", "1m", 1000);
+	QObject::connect(&api, &BinanceAPI::dataFetched, this, &CandleQuoteDisplayWidget::onDataFetched);
+	api.fetchKlines("NXPCUSDT", "1m", 1000);
 	m_context.expectedSize = 1000;
 
 	this->m_candleChart->installEventFilter(this);
@@ -187,15 +193,15 @@ TestWidget::TestWidget(QWidget *parent)
 		this->m_volumeChart->repaint();
 	});
 
-	m_context.minTick = getMinTick("VINEUSDT");
+	m_context.minTick = getMinTick("NXPCUSDT");
 	// timer->setInterval(30);
 	// timer->start();
 }
 
-TestWidget::~TestWidget()
+CandleQuoteDisplayWidget::~CandleQuoteDisplayWidget()
 {}
 
-void TestWidget::handleMouseMove(QPoint mousePos) {
+void CandleQuoteDisplayWidget::handleMouseMove(QPoint mousePos) {
 	if (!m_context.dataList.empty()) {
 		int widgetWidth = width();
 		int candleWidth = m_context.width;
@@ -205,7 +211,7 @@ void TestWidget::handleMouseMove(QPoint mousePos) {
 	}
 }
 
-void TestWidget::handleKeyArrowLeftOrRight(int key) {
+void CandleQuoteDisplayWidget::handleKeyArrowLeftOrRight(int key) {
 	if (m_context.dataList.empty()) {
 		return;
 	}
@@ -223,9 +229,9 @@ void TestWidget::handleKeyArrowLeftOrRight(int key) {
 
 		if (m_context.focusIndex < 0) {
 			if (!m_context.isFullData) {
-				// ÇëÇóĞÂµÄÀúÊ·Êı¾İ
+				// è¯·æ±‚æ–°çš„å†å²æ•°æ®
 				m_context.isWaitingHistoryData = true;
-				api.fetchKlinesFromEndTime("VINEUSDT", "1m", 100, m_context.dataList.front()->dateTime);
+				api.fetchKlinesFromEndTime("NXPCUSDT", "1m", 100, m_context.dataList.front()->dateTime);
 				m_context.expectedSize = 100;
 				m_context.needAdjustFocusIndex = 100;
 			}
@@ -253,31 +259,31 @@ void TestWidget::handleKeyArrowLeftOrRight(int key) {
 	this->recalculateContextParam();
 }
 
-void TestWidget::handleKeyArrowUpOrDown(int key) {
+void CandleQuoteDisplayWidget::handleKeyArrowUpOrDown(int key) {
 	if (m_context.dataList.empty()) {
 		return;
 	}
 
 	int targetWidthArrayIndex = std::clamp(key == Qt::Key::Key_Up ?
 		                                   m_widthArrayIndex + 1 : m_widthArrayIndex - 1, 
-		                                   0, (int)widthArray.size() - 1);
+		                                   0, (int)WIDTH_ARRAY.size() - 1);
 
 	if (targetWidthArrayIndex != m_widthArrayIndex) {
 		m_widthArrayIndex = targetWidthArrayIndex;
-		m_context.width = widthArray[targetWidthArrayIndex];
+		m_context.width = WIDTH_ARRAY[targetWidthArrayIndex];
 		m_context.spacing = 0.5 * m_context.width;
 		int expectedCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width() - this->m_context.gridScaleAreaWidth());
 		int currentCount = m_context.endIndex - m_context.startIndex;
 		int diffCount = expectedCount - currentCount;
 		
-		// ÖØĞÂ¼ÆËãstartIndexºÍendIndex
+		// é‡æ–°è®¡ç®—startIndexå’ŒendIndex
 		if (m_context.focusIndex == -1) {
 			m_context.startIndex -= diffCount;
 
 			if (m_context.startIndex < 0) {
-				// ÇëÇóĞÂµÄÀúÊ·Êı¾İ
+				// è¯·æ±‚æ–°çš„å†å²æ•°æ®
 				m_context.isWaitingHistoryData = true;
-				api.fetchKlinesFromEndTime("VINEUSDT", "1m", -m_context.startIndex, m_context.dataList.front()->dateTime);
+				api.fetchKlinesFromEndTime("NXPCUSDT", "1m", -m_context.startIndex, m_context.dataList.front()->dateTime);
 				m_context.expectedSize = -m_context.startIndex;
 				m_context.startIndex = 0;
 			}
@@ -301,9 +307,9 @@ void TestWidget::handleKeyArrowUpOrDown(int key) {
 			m_context.endIndex += rightSideExpectedCount;
 
 			if (m_context.startIndex < 0) {
-				// ÇëÇóĞÂµÄÀúÊ·Êı¾İ
+				// è¯·æ±‚æ–°çš„å†å²æ•°æ®
 				m_context.isWaitingHistoryData = true;
-				api.fetchKlinesFromEndTime("VINEUSDT", "1m", -m_context.startIndex, m_context.dataList.front()->dateTime);
+				api.fetchKlinesFromEndTime("NXPCUSDT", "1m", -m_context.startIndex, m_context.dataList.front()->dateTime);
 				m_context.expectedSize = -m_context.startIndex;
 				m_context.startIndex = 0;
 			}
@@ -315,7 +321,7 @@ void TestWidget::handleKeyArrowUpOrDown(int key) {
 	}
 }
 
-void TestWidget::recalculateContextParam() {
+void CandleQuoteDisplayWidget::recalculateContextParam() {
 	if (m_context.dataList.empty()) {
 		return;
 	}
@@ -340,7 +346,7 @@ void TestWidget::recalculateContextParam() {
 		}
 	}
 	 
-	// ¼ÆËãgrid×î¸ß¼ÛºÍ×îµÍ¼Û
+	// è®¡ç®—gridæœ€é«˜ä»·å’Œæœ€ä½ä»·
 	const int gridRowCount = 5; 
 	const int gridColCount = 4;
 
@@ -348,33 +354,33 @@ void TestWidget::recalculateContextParam() {
 	m_context.gridMinPrice = MathUtil::floorModulo(m_context.minPrice, 4, gridRowCount);
 }
 
-QString TestWidget::getMinTick(const QString& symbol) {
-	// Binance API µØÖ·
+QString CandleQuoteDisplayWidget::getMinTick(const QString& symbol) {
+	// Binance API åœ°å€
 	const QString apiUrl = "https://fapi.binance.com/fapi/v1/exchangeInfo";
 
-	// ´´½¨ÍøÂç·ÃÎÊ¹ÜÀíÆ÷
+	// åˆ›å»ºç½‘ç»œè®¿é—®ç®¡ç†å™¨
 	QNetworkAccessManager manager;
 
-	// ´´½¨ HTTP ÇëÇó
+	// åˆ›å»º HTTP è¯·æ±‚
 	QNetworkRequest request;
 	request.setUrl(QUrl(apiUrl));
 
-	// Í¬²½·¢ËÍÇëÇó
+	// åŒæ­¥å‘é€è¯·æ±‚
 	QNetworkReply* reply = manager.get(request);
 
-	// Ê¹ÓÃÊÂ¼şÑ­»·µÈ´ıÇëÇóÍê³É
+	// ä½¿ç”¨äº‹ä»¶å¾ªç¯ç­‰å¾…è¯·æ±‚å®Œæˆ
 	QEventLoop loop;
 	QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
 	loop.exec();
 
-	// ¼ì²éÇëÇóÊÇ·ñ³É¹¦
+	// æ£€æŸ¥è¯·æ±‚æ˜¯å¦æˆåŠŸ
 	if (reply->error() != QNetworkReply::NoError) {
 		qWarning() << "Error:" << reply->errorString();
 		reply->deleteLater();
 		return QString();
 	}
 
-	// ½âÎö·µ»ØµÄ JSON Êı¾İ
+	// è§£æè¿”å›çš„ JSON æ•°æ®
 	QByteArray responseData = reply->readAll();
 	reply->deleteLater();
 
@@ -394,7 +400,7 @@ QString TestWidget::getMinTick(const QString& symbol) {
 	for (const QJsonValue& value : symbolsArray) {
 		QJsonObject symbolObj = value.toObject();
 		if (symbolObj["symbol"].toString() == symbol) {
-			// ÕÒµ½Ä¿±ê½»Ò×¶Ô£¬ÌáÈ¡ minTick ĞÅÏ¢
+			// æ‰¾åˆ°ç›®æ ‡äº¤æ˜“å¯¹ï¼Œæå– minTick ä¿¡æ¯
 			if (symbolObj.contains("filters")) {
 				QJsonArray filtersArray = symbolObj["filters"].toArray();
 				for (const QJsonValue& filterValue : filtersArray) {
@@ -407,31 +413,31 @@ QString TestWidget::getMinTick(const QString& symbol) {
 		}
 	}
 
-	// Èç¹ûÎ´ÕÒµ½Ä¿±ê½»Ò×¶Ô»ò minTick ĞÅÏ¢
+	// å¦‚æœæœªæ‰¾åˆ°ç›®æ ‡äº¤æ˜“å¯¹æˆ– minTick ä¿¡æ¯
 	qWarning() << "Symbol or minTick not found";
 	return QString();
 }
 
-QString TestWidget::removeTrailingZeros(const QString& numberStr) {
-	// Ê¹ÓÃ QRegularExpression Ìæ´ú QRegExp
+QString CandleQuoteDisplayWidget::removeTrailingZeros(const QString& numberStr) {
+	// ä½¿ç”¨ QRegularExpression æ›¿ä»£ QRegExp
 	QRegularExpression trailingZerosRegex("0+$");
 	QRegularExpression trailingDotRegex("\\.$");
 
 	QString result = numberStr;
-	result.remove(trailingZerosRegex); // ÒÆ³ıÎ²ËæµÄ 0
-	result.remove(trailingDotRegex);   // ÒÆ³ı¹ÂÁ¢µÄĞ¡Êıµã
+	result.remove(trailingZerosRegex); // ç§»é™¤å°¾éšçš„ 0
+	result.remove(trailingDotRegex);   // ç§»é™¤å­¤ç«‹çš„å°æ•°ç‚¹
 	return result;
 }
 
-void TestWidget::reset() {
+void CandleQuoteDisplayWidget::reset() {
 	m_widthArrayIndex = 11;
-	m_context.width = widthArray[m_widthArrayIndex];
+	m_context.width = WIDTH_ARRAY[m_widthArrayIndex];
 	m_context.spacing = 0.5 * m_context.width;
 
 	this->m_isFirstTime = true;
 }
 
-void TestWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) {
+void CandleQuoteDisplayWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) {
 	if (dataList.size() == 0) {
 		return;
 	}
@@ -444,11 +450,11 @@ void TestWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) 
 	if (this->m_isFirstTime) {
 		this->reset();
 
-		// ¼ÆËã¿Ì¶ÈÎÄ±¾³¤¶È
+		// è®¡ç®—åˆ»åº¦æ–‡æœ¬é•¿åº¦
 		double close = dataList.back()->close;
 		m_context.gridScaleTextWidth = QFontMetrics(QApplication::font()).horizontalAdvance(QString::number(close));
 
-		// ÒªÔ¤Áô¿Ì¶ÈµÄ¿Õ¼ä
+		// è¦é¢„ç•™åˆ»åº¦çš„ç©ºé—´
 		int candleCount = this->calculateCandleCount(m_context.leftOffset, m_context.width, m_context.spacing, width() - this->m_context.gridScaleAreaWidth());
 
 		this->m_context.endIndex = (int)m_context.dataList.size();
@@ -471,4 +477,9 @@ void TestWidget::onDataFetched(const std::vector<QuoteCandleDataPtr>& dataList) 
  	this->recalculateContextParam();
 	this->m_candleChart->update();
 	this->m_volumeChart->update();
+}
+
+void CandleQuoteDisplayWidget::repaintChart() {
+	this->m_candleChart->repaint();
+	this->m_volumeChart->repaint();
 }

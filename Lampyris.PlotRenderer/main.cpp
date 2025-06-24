@@ -16,129 +16,61 @@
 #include <vector>
 #include <cmath>
 
-// ½âÎöÃüÁîĞĞ²ÎÊı
-/*
-bool parseCommandLine(QCommandLineParser& parser, RenderConfig& config, std::vector<KLineData>& klineData) {
-    parser.addHelpOption();
-    parser.addOption({ "background", "±³¾°ÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#000000" });
-    parser.addOption({ "grid", "Íø¸ñÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#333333" });
-    parser.addOption({ "ma5", "MA5 ÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#EAB835" });
-    parser.addOption({ "ma10", "MA10 ÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#EA4ABB" });
-    parser.addOption({ "ma20", "MA20 ÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#8B68C6" });
-    parser.addOption({ "rise", "ÕÇµÄÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#EE525C" });
-    parser.addOption({ "fall", "µøµÄÑÕÉ« (Ê®Áù½øÖÆ)", "color", "#56BB84" });
-    parser.addOption({ "width", "Êä³öÍ¼Æ¬¿í¶È", "width", "800" });
-    parser.addOption({ "height", "Êä³öÍ¼Æ¬¸ß¶È", "height", "600" });
-    parser.addOption({ "output", "Êä³öÎÄ¼şÂ·¾¶", "file", "output.png" });
-    parser.addOption({ "gridColunnCount", "kÏßÍ¼Íø¸ñÁĞÊı", "gridColunnCount", "4" });
-    parser.addOption({ "gridRowCount", "kÏßÍ¼Íø¸ñĞĞÊı", "gridRowCount", "6" });
-    parser.addOption({ "gridTopPadding", "kÏßÍ¼Íø¸ñ¶¥²¿±ß¾à", "gridTopPadding", "25" });
-    parser.addOption({ "data", "KÏßÊı¾İÎÄ¼şÂ·¾¶ (JSON ¸ñÊ½)", "file" });
-    parser.addOption({ "minTick", "¼Û¸ñ×îĞ¡±ä»¯µ¥Î»", "minTick", "0.0001"});
-
-    if (!parser.parse(QCoreApplication::arguments())) {
-        qWarning() << parser.errorText();
-        return false;
-    }
-
-    config.backgroundColor = QColor(parser.value("background"));
-    config.gridColor = QColor(parser.value("grid"));
-    config.ma5Color = QColor(parser.value("ma5"));
-    config.ma10Color = QColor(parser.value("ma10"));
-    config.ma20Color = QColor(parser.value("ma20"));
-    config.riseColor = QColor(parser.value("rise"));
-    config.fallColor = QColor(parser.value("fall"));
-    config.width = parser.value("width").toInt();
-    config.height = parser.value("height").toInt();
-    config.outputFile = parser.value("output");
-    config.gridColunnCount = parser.value("gridColunnCount").toInt();
-    config.gridRowCount = parser.value("gridRowCount").toInt();
-    config.gridTopPadding = parser.value("gridTopPadding").toInt();
-    config.minTick = parser.value("minTick");
-
-    QString dataFile = parser.value("data");
-    if (dataFile.isEmpty()) {
-        qWarning() << "KÏßÊı¾İÎÄ¼şÎ´Ö¸¶¨";
-        return false;
-    }
-
-    QFile file(dataFile);
-    if (!file.open(QIODevice::ReadOnly)) {
-        qWarning() << "ÎŞ·¨´ò¿ªÊı¾İÎÄ¼ş£º" << dataFile;
-        return false;
-    }
-
-    QByteArray jsonData = file.readAll();
-    file.close();
-
-    QJsonDocument doc = QJsonDocument::fromJson(jsonData);
-    if (!doc.isArray()) {
-        qWarning() << "Êı¾İÎÄ¼ş¸ñÊ½´íÎó";
-        return false;
-    }
-
-    QJsonArray array = doc.array();
-    for (const QJsonValue& value : array) {
-        QJsonObject obj = value.toObject();
-        KLineData data;
-        data.open = obj["open"].toDouble();
-        data.close = obj["close"].toDouble();
-        data.high = obj["high"].toDouble();
-        data.low = obj["low"].toDouble();
-        data.volume = obj["volume"].toDouble();
-        data.time = obj["time"].toString();
-        klineData.push_back(data);
-    }
-
-    return true;
-}
-*/
-
 int main1(int argc, char* argv[]) {
     QApplication app(argc, argv);
-    // ¼ÓÔØ±¾µØ×ÖÌåÎÄ¼ş
-    QString fontPath = "moon_plex_regular.otf"; // Ìæ»»ÎªÄãµÄ×ÖÌåÎÄ¼şÂ·¾¶
+    // åŠ è½½æœ¬åœ°å­—ä½“æ–‡ä»¶
+    QString fontPath = "moon_plex_regular.otf"; // æ›¿æ¢ä¸ºä½ çš„å­—ä½“æ–‡ä»¶è·¯å¾„
     int fontId = QFontDatabase::addApplicationFont(fontPath);
     if (fontId == -1) {
         qDebug() << "Failed to load font:" << fontPath;
         return -1;
     }
-    // »ñÈ¡×ÖÌåÃû³Æ
+    // è·å–å­—ä½“åç§°
     QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
     if (fontFamilies.isEmpty()) {
         qDebug() << "No font families found for font ID:" << fontId;
         return -1;
     }
 
-    QString fontFamily = fontFamilies.at(0); // Ê¹ÓÃ¼ÓÔØ×ÖÌåµÄµÚÒ»¸ö×ÖÌå×å
+    QString fontFamily = fontFamilies.at(0); // ä½¿ç”¨åŠ è½½å­—ä½“çš„ç¬¬ä¸€ä¸ªå­—ä½“æ—
     qDebug() << "Loaded font family:" << fontFamily;
     QFont font(fontFamily);
-    font.setPointSize(10); // ÉèÖÃ×ÖÌå´óĞ¡
+    font.setPointSize(10); // è®¾ç½®å­—ä½“å¤§å°
     app.setFont(font);
-
-    // QCommandLineParser parser;
-    // RenderConfig config;
-    // std::vector<KLineData> klineData;
-    // 
-    // if (!parseCommandLine(parser, config, klineData)) {
-    //     return 1;
-    // }
-    // KLineRenderer renderer(config, klineData);
-    // renderer.render();
 
     return 0;
 }
 
 #include "BetterSplitter.h"
 #include <QMainWindow>
-#include "TestWidget.h"
+#include "CandleQuoteDisplayWidget.h"
 #include <QSslConfiguration>
 #include "qsslsocket.h"
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
+    // åŠ è½½æœ¬åœ°å­—ä½“æ–‡ä»¶
+    QString fontPath = "moon_plex_medium.otf"; // æ›¿æ¢ä¸ºä½ çš„å­—ä½“æ–‡ä»¶è·¯å¾„
+    int fontId = QFontDatabase::addApplicationFont(fontPath);
+    if (fontId == -1) {
+        qDebug() << "Failed to load font:" << fontPath;
+        return -1;
+    }
+    // è·å–å­—ä½“åç§°
+    QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
+    if (fontFamilies.isEmpty()) {
+        qDebug() << "No font families found for font ID:" << fontId;
+        return -1;
+    }
 
-    TestWidget w(nullptr);
+    QString fontFamily = fontFamilies.at(0); // ä½¿ç”¨åŠ è½½å­—ä½“çš„ç¬¬ä¸€ä¸ªå­—ä½“æ—
+    qDebug() << "Loaded font family:" << fontFamily;
+    QFont font(fontFamily);
+    font.setPointSize(10); // è®¾ç½®å­—ä½“å¤§å°
+    app.setFont(font);
+
+    CandleQuoteDisplayWidget w(nullptr);
+    w.setStyleSheet("QWidget{background-color:black;}");
     w.show();
 
     return app.exec();

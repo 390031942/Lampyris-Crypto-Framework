@@ -1,4 +1,4 @@
-#include <QApplication>
+ï»¿#include <QApplication>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
@@ -15,8 +15,9 @@
 #include <vector>
 #include <memory>
 #include <QSslSocket>
-
+#include <QWebSocket>
 #include "QuoteCandleData.h"
+#include <QJsonObject>
 
 class BinanceAPI : public QObject {
     Q_OBJECT
@@ -24,50 +25,76 @@ class BinanceAPI : public QObject {
 public:
     explicit BinanceAPI(QObject* parent = nullptr) : QObject(parent) {
         manager = new QNetworkAccessManager(this);
+        webSocket = new QWebSocket();
     }
 
-    // fetchKlines Ö§³Ö¶àÏß³Ì·Ö¶ÎÇëÇó
+    ~BinanceAPI() {
+        webSocket->close();
+        delete webSocket;
+    }
+
+    // è®¢é˜… 1min K çº¿æ›´æ–°
+    void subscribeKlineUpdates(const QString& symbol, const QString& interval = "1m") {
+        // æ„é€  WebSocket URL
+        QString url = QString("wss://fstream.binance.com/ws/%1@kline_%2").arg(symbol.toLower()).arg(interval);
+
+        // è¿æ¥ WebSocket
+        connect(webSocket, &QWebSocket::connected, this, [this]() {
+            qDebug() << "WebSocket connected!";
+            });
+
+        connect(webSocket, &QWebSocket::disconnected, this, [this]() {
+            qDebug() << "WebSocket disconnected!";
+            });
+
+        connect(webSocket, &QWebSocket::textMessageReceived, this, &BinanceAPI::onKlineMessageReceived);
+
+        webSocket->open(QUrl(url));
+    }
+
+    // fetchKlines æ”¯æŒå¤šçº¿ç¨‹åˆ†æ®µè¯·æ±‚
     void fetchKlines(const QString& symbol, const QString& interval, int limit, const QDateTime& startTime = QDateTime(), const QDateTime& endTime = QDateTime()) {
         executeKlinesRequest(symbol, interval, limit, startTime, endTime);
     }
 
-    // fetchKlinesFromEndTime Ö§³Ö¶àÏß³Ì·Ö¶ÎÇëÇó
+    // fetchKlinesFromEndTime æ”¯æŒå¤šçº¿ç¨‹åˆ†æ®µè¯·æ±‚
     void fetchKlinesFromEndTime(const QString& symbol, const QString& interval, int limit, const QDateTime& endTime) {
-        // ¼ÆËãÃ¿¸ö interval µÄ³ÖĞøÊ±¼ä£¨ÒÔºÁÃëÎªµ¥Î»£©
+        // è®¡ç®—æ¯ä¸ª interval çš„æŒç»­æ—¶é—´ï¼ˆä»¥æ¯«ç§’ä¸ºå•ä½ï¼‰
         qint64 intervalDuration = getIntervalDuration(interval);
         if (intervalDuration == 0) {
             qDebug() << "Invalid interval:" << interval;
             return;
         }
 
-        // ¼ÆËã¿ªÊ¼Ê±¼ä
+        // è®¡ç®—å¼€å§‹æ—¶é—´
         qint64 startTimeMs = endTime.toMSecsSinceEpoch() - (limit * intervalDuration);
         QDateTime startTime = QDateTime::fromMSecsSinceEpoch(startTimeMs);
 
-        // µ÷ÓÃÍ¨ÓÃµÄÖ´ĞĞº¯Êı
+        // è°ƒç”¨é€šç”¨çš„æ‰§è¡Œå‡½æ•°
         executeKlinesRequest(symbol, interval, limit, startTime, endTime);
     }
 
 signals:
-    // Êı¾İÇëÇóÍê³Éºó·¢ÉäĞÅºÅ
+    // æ•°æ®è¯·æ±‚å®Œæˆåå‘å°„ä¿¡å·
     void dataFetched(const std::vector<QuoteCandleDataPtr>& dataList);
-
+    // æ¯æ¬¡æ¥æ”¶åˆ°æ–°çš„ K çº¿æ•°æ®æ—¶å‘å°„ä¿¡å·
+    void klineUpdated(const QuoteCandleDataPtr& data);
 private:
     QNetworkAccessManager* manager;
 
-    // Í¨ÓÃµÄ K ÏßÇëÇóÖ´ĞĞº¯Êı
+    // é€šç”¨çš„ K çº¿è¯·æ±‚æ‰§è¡Œå‡½æ•°
     void executeKlinesRequest(const QString& symbol, const QString& interval, int limit, const QDateTime& startTime, const QDateTime& endTime) {
         if (!startTime.isValid() || !endTime.isValid()) {
-            // Èç¹ûÎ´Ìá¹©Ê±¼ä·¶Î§£¬Ö±½ÓÇëÇó×îĞÂµÄ limit ÌõÊı¾İ
+            // å¦‚æœæœªæä¾›æ—¶é—´èŒƒå›´ï¼Œç›´æ¥è¯·æ±‚æœ€æ–°çš„ limit æ¡æ•°æ®
             sendKlinesRequest(symbol, interval, limit, QDateTime(), QDateTime());
         }
         else if (limit <= 1000) {
-            // Èç¹û limit Ğ¡ÓÚµÈÓÚ 1000£¬Ö±½Ó·¢ËÍµ¥´ÎÇëÇó
+            // å¦‚æœ limit å°äºç­‰äº 1000ï¼Œç›´æ¥å‘é€å•æ¬¡è¯·æ±‚
             sendKlinesRequest(symbol, interval, limit, startTime, endTime);
         }
         else {
-            // Èç¹û limit ´óÓÚ 1000£¬½øĞĞ·Ö¶ÎÇëÇó
-            int numSegments = (limit + 999) / 1000; // ¼ÆËã·Ö¶ÎÊıÁ¿
+            // å¦‚æœ limit å¤§äº 1000ï¼Œè¿›è¡Œåˆ†æ®µè¯·æ±‚
+            int numSegments = (limit + 999) / 1000; // è®¡ç®—åˆ†æ®µæ•°é‡
             qint64 intervalDuration = getIntervalDuration(interval);
             if (intervalDuration == 0) {
                 qDebug() << "Invalid interval:" << interval;
@@ -77,7 +104,7 @@ private:
             QList<QDateTime> segmentStartTimes;
             QList<QDateTime> segmentEndTimes;
 
-            // ¼ÆËãÃ¿¶ÎµÄÊ±¼ä·¶Î§
+            // è®¡ç®—æ¯æ®µçš„æ—¶é—´èŒƒå›´
             for (int i = 0; i < numSegments; ++i) {
                 QDateTime segmentEndTime = endTime.addMSecs(-i * 1000 * intervalDuration);
                 QDateTime segmentStartTime = segmentEndTime.addMSecs(-1000 * intervalDuration);
@@ -85,7 +112,7 @@ private:
                 segmentEndTimes.append(segmentEndTime);
             }
 
-            // ¶àÏß³Ì´¦Àí
+            // å¤šçº¿ç¨‹å¤„ç†
             QThreadPool threadPool;
             std::vector<QuoteCandleDataPtr> results;
             QMutex mutex;
@@ -96,21 +123,21 @@ private:
                 threadPool.start(runnable);
             }
 
-            // µÈ´ıËùÓĞÏß³ÌÍê³É
+            // ç­‰å¾…æ‰€æœ‰çº¿ç¨‹å®Œæˆ
             threadPool.waitForDone();
 
-            // ·¢ÉäĞÅºÅ£¬Í¨ÖªÊı¾İÒÑÍê³É
+            // å‘å°„ä¿¡å·ï¼Œé€šçŸ¥æ•°æ®å·²å®Œæˆ
             emit dataFetched(results);
         }
     }
 
-    // µ¥´ÎÇëÇóµÄ·¢ËÍº¯Êı
+    // å•æ¬¡è¯·æ±‚çš„å‘é€å‡½æ•°
     void sendKlinesRequest(const QString& symbol, const QString& interval, int limit, const QDateTime& startTime, const QDateTime& endTime) {
         qDebug() << "Supports SSL:" << QSslSocket::supportsSsl();
         qDebug() << "SSL Library Version:" << QSslSocket::sslLibraryVersionString();
         qDebug() << "SSL Build Version:" << QSslSocket::sslLibraryBuildVersionString();
         
-        // ¹¹ÔìÇëÇó URL
+        // æ„é€ è¯·æ±‚ URL
         QUrl url("https://fapi.binance.com/fapi/v1/klines");
         QUrlQuery query;
         query.addQueryItem("symbol", symbol);
@@ -126,7 +153,7 @@ private:
 
         QNetworkRequest request(url);
 
-        // ·¢ËÍ GET ÇëÇó
+        // å‘é€ GET è¯·æ±‚
         QNetworkReply* reply = manager->get(request);
         connect(reply, &QNetworkReply::finished, this, [this, reply]() {
             if (reply->error() != QNetworkReply::NoError) {
@@ -135,7 +162,7 @@ private:
                 return;
             }
 
-            // ½âÎö JSON Êı¾İ
+            // è§£æ JSON æ•°æ®
             QByteArray responseData = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
             if (!jsonDoc.isArray()) {
@@ -147,14 +174,14 @@ private:
             QJsonArray jsonArray = jsonDoc.array();
             std::vector<QuoteCandleDataPtr> dataList = parseKlinesData(jsonArray);
 
-            // ·¢ÉäĞÅºÅ£¬Í¨ÖªÊı¾İÒÑÍê³É
+            // å‘å°„ä¿¡å·ï¼Œé€šçŸ¥æ•°æ®å·²å®Œæˆ
             emit dataFetched(dataList);
 
             reply->deleteLater();
         });
     }
 
-    // ½âÎö JSON Êı¾İÎª QuoteCandleDataPtr ÁĞ±í
+    // è§£æ JSON æ•°æ®ä¸º QuoteCandleDataPtr åˆ—è¡¨
     std::vector<QuoteCandleDataPtr> parseKlinesData(const QJsonArray& jsonArray) {
         std::vector<QuoteCandleDataPtr> dataList;
         for (const QJsonValue& value : jsonArray) {
@@ -177,37 +204,68 @@ private:
         return dataList;
     }
 
-    // »ñÈ¡ interval µÄ³ÖĞøÊ±¼ä£¨ÒÔºÁÃëÎªµ¥Î»£©
+    // è·å– interval çš„æŒç»­æ—¶é—´ï¼ˆä»¥æ¯«ç§’ä¸ºå•ä½ï¼‰
     qint64 getIntervalDuration(const QString& interval) {
-        static const QMap<QString, qint64> intervalMap = {
-            {"1m", 60 * 1000},
-            {"3m", 3 * 60 * 1000},
-            {"5m", 5 * 60 * 1000},
-            {"15m", 15 * 60 * 1000},
-            {"30m", 30 * 60 * 1000},
-            {"1h", 60 * 60 * 1000},
-            {"2h", 2 * 60 * 60 * 1000},
-            {"4h", 4 * 60 * 60 * 1000},
-            {"6h", 6 * 60 * 60 * 1000},
-            {"8h", 8 * 60 * 60 * 1000},
-            {"12h", 12 * 60 * 60 * 1000},
-            {"1d", 24 * 60 * 60 * 1000},
-            {"3d", 3 * 24 * 60 * 60 * 1000},
-            {"1w", 7 * 24 * 60 * 60 * 1000},
-            {"1M", 30 * 24 * 60 * 60 * 1000}
+       static const QMap<QString, qint64> intervalMap = {
+        { "1m", 60LL * 1000 },
+        { "3m", 3LL * 60 * 1000 },
+        { "5m", 5LL * 60 * 1000 },
+        { "15m", 15LL * 60 * 1000 },
+        { "30m", 30LL * 60 * 1000 },
+        { "1h", 60LL * 60 * 1000 },
+        { "2h", 2LL * 60 * 60 * 1000 },
+        { "4h", 4LL * 60 * 60 * 1000 },
+        { "6h", 6LL * 60 * 60 * 1000 },
+        { "8h", 8LL * 60 * 60 * 1000 },
+        { "12h", 12LL * 60 * 60 * 1000 },
+        { "1d", 24LL * 60 * 60 * 1000 },
+        { "3d", 3LL * 24 * 60 * 60 * 1000 },
+        { "1w", 7LL * 24 * 60 * 60 * 1000 },
+        { "1M", 30LL * 24 * 60 * 60 * 1000 }
         };
 
         return intervalMap.value(interval, 0);
     }
 
-    // ¶àÏß³ÌÈÎÎñÀà
+    QWebSocket* webSocket;
+
+    // å¤„ç† WebSocket æ¶ˆæ¯
+    void onKlineMessageReceived(const QString& message) {
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(message.toUtf8());
+        if (!jsonDoc.isObject()) {
+            qDebug() << "Invalid WebSocket message format";
+            return;
+        }
+
+        QJsonObject jsonObj = jsonDoc.object();
+        if (!jsonObj.contains("k")) {
+            qDebug() << "No kline data in message";
+            return;
+        }
+
+        QJsonObject klineObj = jsonObj["k"].toObject();
+
+        // è§£æ K çº¿æ•°æ®
+        auto data = std::make_shared<QuoteCandleData>();
+        data->dateTime = QDateTime::fromMSecsSinceEpoch(klineObj["t"].toVariant().toLongLong());
+        data->open = klineObj["o"].toString().toDouble();
+        data->high = klineObj["h"].toString().toDouble();
+        data->low = klineObj["l"].toString().toDouble();
+        data->close = klineObj["c"].toString().toDouble();
+        data->volume = klineObj["v"].toString().toDouble();
+
+        // å‘å°„ä¿¡å·
+        emit klineUpdated(data);
+    }
+
+    // å¤šçº¿ç¨‹ä»»åŠ¡ç±»
     class KlineFetcherRunnable : public QRunnable {
     public:
         KlineFetcherRunnable(const QString& symbol, const QString& interval, int limit, const QDateTime& startTime, const QDateTime& endTime, QNetworkAccessManager* manager, std::vector<QuoteCandleDataPtr>* results, QMutex* mutex, QWaitCondition* waitCondition)
             : symbol(symbol), interval(interval), limit(limit), startTime(startTime), endTime(endTime), manager(manager), results(results), mutex(mutex), waitCondition(waitCondition) {}
 
         void run() override {
-            // ¹¹ÔìÇëÇó URL
+            // æ„é€ è¯·æ±‚ URL
             QUrl url("https://fapi.binance.com/fapi/v1/klines");
             QUrlQuery query;
             query.addQueryItem("symbol", symbol);
@@ -219,7 +277,7 @@ private:
 
             QNetworkRequest request(url);
 
-            // ·¢ËÍ GET ÇëÇó
+            // å‘é€ GET è¯·æ±‚
             QNetworkReply* reply = manager->get(request);
             QEventLoop loop;
             connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
@@ -231,7 +289,7 @@ private:
                 return;
             }
 
-            // ½âÎö JSON Êı¾İ
+            // è§£æ JSON æ•°æ®
             QByteArray responseData = reply->readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
             if (!jsonDoc.isArray()) {
@@ -243,7 +301,7 @@ private:
             QJsonArray jsonArray = jsonDoc.array();
             auto dataList = parseKlinesData(jsonArray);
 
-            // ¼ÓËø²¢´æ´¢½á¹û
+            // åŠ é”å¹¶å­˜å‚¨ç»“æœ
             QMutexLocker locker(mutex);
             results->insert(results->end(), dataList.begin(), dataList.end());
             waitCondition->wakeAll();
@@ -262,7 +320,7 @@ private:
         QMutex* mutex;
         QWaitCondition* waitCondition;
 
-        // ½âÎö JSON Êı¾İÎª QuoteCandleDataPtr ÁĞ±í
+        // è§£æ JSON æ•°æ®ä¸º QuoteCandleDataPtr åˆ—è¡¨
         std::vector<QuoteCandleDataPtr> parseKlinesData(const QJsonArray& jsonArray) {
             std::vector<QuoteCandleDataPtr> dataList;
             for (const QJsonValue& value : jsonArray) {

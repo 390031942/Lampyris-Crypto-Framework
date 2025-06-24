@@ -17,7 +17,7 @@ public:
 class WebSocketMessageHandlerRegistry:public Singleton<WebSocketMessageHandlerRegistry> {
 public:
 	void registry(IWebSocketMessageHandler* handler)  {
-		if (std::find(m_handlerList.begin(), m_handlerList.end(), handler) == m_handlerList.end()) {
+		if (std::find(m_handlerList.begin(), m_handlerList.end(), handler) != m_handlerList.end()) {
 			m_handlerList.push_back(handler);
 		}
 	}

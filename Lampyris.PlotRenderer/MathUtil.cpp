@@ -1,4 +1,4 @@
-#include "MathUtil.h"
+ï»¿#include "MathUtil.h"
 
 void MathUtil::extractSignificantDigits(double num, int N, int& significantDigits, double& magnitude) {
     if (num == 0) {
@@ -7,10 +7,10 @@ void MathUtil::extractSignificantDigits(double num, int N, int& significantDigit
         return;
     }
 
-    // ¼ÆËãÊıÁ¿¼¶£¨10 µÄÃİ´Î£©
+    // è®¡ç®—æ•°é‡çº§ï¼ˆ10 çš„å¹‚æ¬¡ï¼‰
     magnitude = std::pow(10, std::floor(std::log10(std::fabs(num))) + 1 - N);
 
-    // ÌáÈ¡Ç° N ¸öÓĞĞ§Êı×Ö²¢×ª»»ÎªÕûÊı
+    // æå–å‰ N ä¸ªæœ‰æ•ˆæ•°å­—å¹¶è½¬æ¢ä¸ºæ•´æ•°
     significantDigits = static_cast<int>(std::round(num / magnitude));
 }
 
@@ -18,13 +18,13 @@ double MathUtil::ceilModulo(double num, int N, int M) {
     int significantDigits;
     double magnitude;
 
-    // ÌáÈ¡Ç° N ¸öÓĞĞ§Êı×Ö
+    // æå–å‰ N ä¸ªæœ‰æ•ˆæ•°å­—
     extractSignificantDigits(num, N, significantDigits, magnitude);
 
-    // ÉÏÈ¡Õû£ºÏòÉÏµ÷Õûµ½×î½üµÄ M µÄ±¶Êı
+    // ä¸Šå–æ•´ï¼šå‘ä¸Šè°ƒæ•´åˆ°æœ€è¿‘çš„ M çš„å€æ•°
     int ceilInt = (significantDigits % M == 0) ? significantDigits : ((significantDigits / M) + 1) * M;
 
-    // »Ö¸´Îª¸¡µãÊı
+    // æ¢å¤ä¸ºæµ®ç‚¹æ•°
     return ceilInt * magnitude;
 }
 
@@ -32,25 +32,25 @@ double MathUtil::floorModulo(double num, int N, int M) {
     int significantDigits;
     double magnitude;
 
-    // ÌáÈ¡Ç° N ¸öÓĞĞ§Êı×Ö
+    // æå–å‰ N ä¸ªæœ‰æ•ˆæ•°å­—
     extractSignificantDigits(num, N, significantDigits, magnitude);
 
-    // ÏÂÈ¡Õû£ºÏòÏÂµ÷Õûµ½×î½üµÄ M µÄ±¶Êı
+    // ä¸‹å–æ•´ï¼šå‘ä¸‹è°ƒæ•´åˆ°æœ€è¿‘çš„ M çš„å€æ•°
     int floorInt = (significantDigits / M) * M;
 
-    // »Ö¸´Îª¸¡µãÊı
+    // æ¢å¤ä¸ºæµ®ç‚¹æ•°
     return floorInt * magnitude;
 }
 
 QString MathUtil::formatDoubleWithStep(double value, const QString& step) {
-    // ½âÎö×îĞ¡²½½ø×Ö·û´®£¬¼ÆËãĞ¡ÊıµãºóĞèÒª±£ÁôµÄÎ»Êı
+    // è§£ææœ€å°æ­¥è¿›å­—ç¬¦ä¸²ï¼Œè®¡ç®—å°æ•°ç‚¹åéœ€è¦ä¿ç•™çš„ä½æ•°
     int decimalPlaces = 0;
     int dotIndex = step.indexOf('.');
     if (dotIndex != -1) {
-        decimalPlaces = step.length() - dotIndex - 1; // Ğ¡ÊıµãºóµÄÎ»Êı
+        decimalPlaces = step.length() - dotIndex - 1; // å°æ•°ç‚¹åçš„ä½æ•°
     }
 
-    // Ê¹ÓÃ QString::number ¸ñÊ½»¯ double ÊıÖµ
+    // ä½¿ç”¨ QString::number æ ¼å¼åŒ– double æ•°å€¼
     QString formattedValue = QString::number(value, 'f', decimalPlaces);
 
     return formattedValue;

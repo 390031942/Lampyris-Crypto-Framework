@@ -1,49 +1,49 @@
-#pragma once
+ï»¿#pragma once
 #include<vector>
 
 struct CandleRenderContext {
-	// Ô¤ÏÈ¼ÆËãµÃµ½µÄ×î¸ß¼ÛºÍ×îµÍ¼Û£¬ÒÔ¼°Æä¶ÔÓ¦µÄË÷Òı
+	// é¢„å…ˆè®¡ç®—å¾—åˆ°çš„æœ€é«˜ä»·å’Œæœ€ä½ä»·ï¼Œä»¥åŠå…¶å¯¹åº”çš„ç´¢å¼•
 	double                        maxPrice;
 	double                        minPrice;
 	int                           maxIndex = -1;
 	int                           minIndex = -1;
 								  
-	// Íø¸ñ¿Ì¶ÈµÄ×î´óÖµºÍ×îĞ¡Öµ	  
+	// ç½‘æ ¼åˆ»åº¦çš„æœ€å¤§å€¼å’Œæœ€å°å€¼	  
 	double                        gridMaxPrice;
 	double                        gridMinPrice;
 								  
 	double                        gridTextWidth;
 
-	// ´ıÕ¹Ê¾Êı¾İµÄÒ»¸öÊÓÍ¼
+	// å¾…å±•ç¤ºæ•°æ®çš„ä¸€ä¸ªè§†å›¾
 	std::vector<QuoteCandleDataPtr>dataList;
 
-	// µ±Ç°ÏÔÊ¾µÄÊ×¸ö/×îºóÒ»¸öÊı¾İµÄË÷Òı
+	// å½“å‰æ˜¾ç¤ºçš„é¦–ä¸ª/æœ€åä¸€ä¸ªæ•°æ®çš„ç´¢å¼•
 	int                           startIndex;
 	int                           endIndex;
 
-	// µ±Ç°Ñ¡ÖĞµÄÊı¾İµÄË÷Òı
+	// å½“å‰é€‰ä¸­çš„æ•°æ®çš„ç´¢å¼•
 	int                           focusIndex = -1;
 	bool                          needAdjustFocusIndex = false;
 
-	// µ¥¸ùkÏßµÄ¿í¶È
+	// å•æ ¹kçº¿çš„å®½åº¦
 	double                        width;
 
-	// ÊÇ·ñµÈ´ıÔÚ¸üÔçµÄÀúÊ·Êı¾İ¼ÓÔØ
+	// æ˜¯å¦ç­‰å¾…åœ¨æ›´æ—©çš„å†å²æ•°æ®åŠ è½½
 	bool                          isWaitingHistoryData;
 
-	// Ô¤ÆÚÊÕµ½µÄÊı¾İ³¤¶È
+	// é¢„æœŸæ”¶åˆ°çš„æ•°æ®é•¿åº¦
 	int                           expectedSize;
 
-	// Êı¾İÊÇ·ñÍêÕû
+	// æ•°æ®æ˜¯å¦å®Œæ•´
 	bool                          isFullData;
 
-	// Í¼±ê×ó²à¹Ì¶¨Æ«ÒÆÖµ
+	// å›¾æ ‡å·¦ä¾§å›ºå®šåç§»å€¼
 	double                        leftOffset = 10;
 
-	// Ë®Æ½¼ä¾à
+	// æ°´å¹³é—´è·
 	double                        spacing = 5;
 
-	// Íø¸ñÓÒ²à¿Ì¶ÈÎÄ±¾µÄ¿í¶È
+	// ç½‘æ ¼å³ä¾§åˆ»åº¦æ–‡æœ¬çš„å®½åº¦
 	double                        gridScaleTextLeftPadding  = 10;
 	double                        gridScaleTextRightPadding = 24;
 	double                        gridScaleTextWidth = 0.0;

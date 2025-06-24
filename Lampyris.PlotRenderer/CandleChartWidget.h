@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <QWidget>
 #include <QPaintEvent>
@@ -11,10 +11,6 @@ class CandleChartWidget:public QWidget {
 
 protected:
 	void paintEvent(QPaintEvent* e) override;
-
-	void mouseMoveEvent(QMouseEvent* e) override {
-		QWidget::mouseMoveEvent(e);
-	}
 public:
 	CandleChartWidget(QWidget *parent);
 	~CandleChartWidget();

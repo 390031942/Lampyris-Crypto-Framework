@@ -17,6 +17,9 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Source Files\Better">
+      <UniqueIdentifier>{cbec1fa3-a95b-477c-a2c1-0f14ac9a7f07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -34,9 +37,6 @@
     <ClCompile Include="QuoteCandleData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CandleChartWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -48,6 +48,24 @@
     </ClCompile>
     <ClCompile Include="BinanceAPI.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CandleQuoteDisplayWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridChartWidget.cpp">
+      <Filter>Source Files\Better</Filter>
+    </ClCompile>
+    <ClCompile Include="BetterCandleQuoteChart.cpp">
+      <Filter>Source Files\Better</Filter>
+    </ClCompile>
+    <ClCompile Include="BetterCandleChartWidget.cpp">
+      <Filter>Source Files\Better</Filter>
+    </ClCompile>
+    <ClCompile Include="BetterVolumeChartWidget.cpp">
+      <Filter>Source Files\Better</Filter>
+    </ClCompile>
+    <ClCompile Include="QuoteCandleDataView.cpp">
+      <Filter>Source Files\Better</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,11 +84,17 @@
     <ClInclude Include="RenderContext.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="BetterVolumeChartWidget.h">
+      <Filter>Source Files\Better</Filter>
+    </ClInclude>
+    <ClInclude Include="QuoteCandleDataView.h">
+      <Filter>Source Files\Better</Filter>
+    </ClInclude>
+    <ClInclude Include="BarSize.h">
+      <Filter>Source Files\Better</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="TestWidget.h">
-      <Filter>Source Files</Filter>
-    </QtMoc>
     <QtMoc Include="CandleChartWidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
@@ -83,5 +107,22 @@
     <QtMoc Include="BinanceAPI.h">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="CandleQuoteDisplayWidget.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="GridChartWidget.h">
+      <Filter>Source Files\Better</Filter>
+    </QtMoc>
+    <QtMoc Include="BetterCandleQuoteChart.h">
+      <Filter>Source Files\Better</Filter>
+    </QtMoc>
+    <QtMoc Include="BetterCandleChartWidget.h">
+      <Filter>Source Files\Better</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="BetterChart.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

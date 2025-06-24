@@ -1,19 +1,15 @@
-#pragma once
+ï»¿#pragma once
+// QT Include(s)
 #include <QSplitter>
 
+/// <summary>
+/// QSpliiteré‡è½½,å½“é¼ æ ‡æ”¾åˆ°Handlerä¸Šæ—¶æ”¹å˜é¼ æ ‡å›¾æ ‡
+/// </summary>
 class BetterSplitter : public QSplitter {
     Q_OBJECT
-
 public:
     explicit BetterSplitter(Qt::Orientation orientation, QWidget* parent = nullptr)
         : QSplitter(orientation, parent) {}
-
 protected:
-    // ÖØĞ´ createHandle ·½·¨ÒÔ×Ô¶¨Òå QSplitterHandle
-    QSplitterHandle* createHandle() override {
-        QSplitterHandle* handle = QSplitter::createHandle();
-        handle->setCursor((orientation() == Qt::Orientation::Vertical) ?
-            Qt::CursorShape::SizeVerCursor : Qt::CursorShape::SizeHorCursor);
-        return handle;
-    }
+    QSplitterHandle* createHandle() override;
 };

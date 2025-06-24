@@ -1,1 +1,1 @@
-#include "QuoteCandleData.h"
+﻿#include "QuoteCandleData.h"

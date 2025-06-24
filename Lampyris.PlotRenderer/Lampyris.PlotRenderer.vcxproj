@@ -66,8 +66,8 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>Qt6</QtInstall>
-    <QtModules>core;gui;widgets;network</QtModules>
+    <QtInstall>6.8.3_msvc2022_64</QtInstall>
+    <QtModules>core;gui;network;widgets;websockets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-EXE|x64'" Label="QtSettings">
@@ -192,18 +192,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BetterCandleChartWidget.cpp" />
+    <ClCompile Include="BetterCandleQuoteChart.cpp" />
     <ClCompile Include="BetterSplitter.cpp" />
+    <ClCompile Include="BetterVolumeChartWidget.cpp" />
     <ClCompile Include="BinanceAPI.cpp" />
     <ClCompile Include="CandleChartWidget.cpp" />
+    <ClCompile Include="CandleQuoteDisplayWidget.cpp" />
+    <ClCompile Include="GridChartWidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtil.cpp" />
     <ClCompile Include="PlotRenderer.cpp" />
     <ClCompile Include="QuoteCandleData.cpp" />
+    <ClCompile Include="QuoteCandleDataView.cpp" />
     <ClCompile Include="RenderConfig.cpp" />
-    <ClCompile Include="TestWidget.cpp" />
     <ClCompile Include="VolumeChartWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="CandleQuoteDisplayWidget.h" />
+    <QtMoc Include="BetterCandleQuoteChart.h" />
+    <QtMoc Include="BetterCandleChartWidget.h" />
+    <ClInclude Include="BarSize.h" />
+    <ClInclude Include="BetterVolumeChartWidget.h" />
+    <QtMoc Include="GridChartWidget.h" />
+    <ClInclude Include="QuoteCandleDataView.h" />
     <ClInclude Include="RenderContext.h" />
     <QtMoc Include="VolumeChartWidget.h" />
     <QtMoc Include="CandleChartWidget.h" />
@@ -213,7 +225,9 @@
     <ClInclude Include="PlotRenderer.h" />
     <ClInclude Include="QuoteCandleData.h" />
     <ClInclude Include="RenderConfig.h" />
-    <QtMoc Include="TestWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="BetterChart.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
